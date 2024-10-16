@@ -1,0 +1,6 @@
+PSWebsite/
+├── index.html
+├── gameproject.html
+├── styles.css
+├── scripts.js
+└── menu.js

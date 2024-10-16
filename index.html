@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Francesco Castaldi</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="backgroundAnimation.js" defer></script>
+    <script src="pageCounter.js" defer></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="content">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="bike-maintenance.html">Bike-Tracker</a></li>
+            <li><a href="strava.html">Strava</a></li> <!-- New Strava link -->
+            <li><a href="contact.html">Contact Me</a></li> <!-- New Contact Me link -->
+
+        </ul>
+    </nav>
+
+  
+    <div class="container" id="main-content">
+        <h1>Francesco Castaldi</h1>
+        <p>Welcome! I'm an IT engineer with a deep passion for computer science, cybersecurity, and cycling.</p>
+        <p>Explore my projects and learn more about my journey in tech and cycling adventures.</p>
+    </div>
+
+    <!-- Slideshow -->
+    <div class="slideshow-container">
+        <div class="slideshow">
+            <div class="mySlides fade">
+                <img src="photos/cycling_scene.jpg" class="slideshow-image">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="photos/digital_workspace.jpg" class="slideshow-image">
+            </div>
+
+            <div class="mySlides fade">
+                <img src="photos/aerodynamics.jpg" class="slideshow-image">
+            </div>
+
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Francesco Castaldi</p>
+        <p id="visit-count"> Page Views: </p> <!-- Contatore delle visite -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let slideIndex = 1;
+            showSlides(slideIndex);
+    
+            function plusSlides(n) {
+                showSlides(slideIndex += n);
+            }
+    
+            function showSlides(n) {
+                let i;
+                let slides = document.getElementsByClassName("mySlides");
+                if (n > slides.length) {slideIndex = 1}
+                if (n < 1) {slideIndex = slides.length}
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                slides[slideIndex - 1].style.display = "block";
+            }
+    
+            setInterval(() => plusSlides(1), 7500); // Change slide every 5 seconds
+    
+            document.querySelector('.prev').addEventListener('click', () => plusSlides(-1));
+            document.querySelector('.next').addEventListener('click', () => plusSlides(1));
+        });
+    </script>
+</body>
+</html>

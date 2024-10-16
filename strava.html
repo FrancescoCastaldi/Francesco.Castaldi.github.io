@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="backgroundAnimation.js" defer></script>
+    <script src="pageCounter.js" defer></script>
+    <title>Francesco Castaldi - Strava Stats</title>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="content">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="bike-maintenance.html">Bike-Tracker</a></li>
+            <li><a href="strava.html">Strava</a></li>
+            <li><a href="contact.html">Contact Me</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container" id="main-content">
+        <h1>My Strava Cycling Stats</h1>
+        <div class="widget-container">
+            <iframe frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/103631745/activity-summary/b894b72e8a7176c3a18f9e8264383d62769d3d1f'></iframe>
+            <iframe frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/103631745/latest-rides/b894b72e8a7176c3a18f9e8264383d62769d3d1f'></iframe>
+            <div class="widget-image">
+                <img src="photos/bici.jpg" alt="Cycling Photo">
+                <div class="bike-description">
+                    Giant TCR ADVANCED SL RABOBANK EDITION with CAMPAGNOLO CHORUS 11-speed carbon, 2015.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Francesco Castaldi</p>
+        <p id="visit-count"> Page Views: </p>
+    </div>
+</body>
+</html>
