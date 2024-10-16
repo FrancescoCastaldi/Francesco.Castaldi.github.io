@@ -155,12 +155,12 @@ ul li {
 }
 
 .slideshow {
-    max-width: 60%; /* Reduced width for the slideshow */
+    max-width: 30%; /* Reduced width for the slideshow */
     position: relative;
     overflow: hidden;
-    border: 2px solid #00e676;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border: 2px solid #fcfdfd;
+    border-radius: 12px;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.3);
 }
 
 .mySlides {
