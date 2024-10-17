@@ -23,6 +23,7 @@ PersonalSite/
     └── bici.jpg
 ```
 
+
 ## Description
 
 ### index.html
@@ -36,6 +37,12 @@ Displays Francesco's Strava cycling stats using embedded iframes.
 
 ### contact.html
 Provides contact information and a video introduction.
+
+### giant-tcr.html
+Details about the Giant TCR Advanced SL ISP Rabobank Edition bike.
+
+### giant-tcr-maintenance.html
+Provides maintenance tips for the Giant TCR Advanced SL ISP Rabobank Edition bike.
 
 ### styles.css
 Contains the CSS styles for the website.
