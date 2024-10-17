@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giant TCR Maintenance Tips</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="backgroundAnimation.js" defer></script>
+    <script src="pageCounter.js" defer></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="content">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">University</a>
+                <div class="dropdown-content">
+                    <a href="bike-maintenance.html">Bike-Tracker</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">Strava</a>
+                <div class="dropdown-content">
+                    <a href="strava.html">Strava Stats</a>
+                    <a href="giant-tcr.html">Giant TCR</a>
+                    <a href="giant-tcr-maintenance.html">Maintenance Tips</a>
+                </div>
+            </li>
+            <li><a href="contact.html">Contact Me</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main content -->
+    <div class="container" id="main-content">
+        <h1>Maintenance Tips for Giant TCR Advanced SL ISP Rabobank Edition</h1>
+        <div class="content-flex">
+            <div class="text-content">
+                <p>Maintaining your <span class="highlight-red">Giant TCR Advanced SL ISP Rabobank Edition</span> is crucial to ensure its longevity and optimal performance. Here are some maintenance tips:</p>
+                <h2>Regular Cleaning</h2>
+                <p>Clean your bike regularly to remove <span class="highlight-blue">dirt</span>, <span class="highlight-blue">grime</span>, and <span class="highlight-blue">sweat</span>. Use a gentle bike-specific cleaner and a soft brush or sponge. Pay special attention to the <span class="highlight-green">drivetrain</span>, including the <span class="highlight-green">chain</span>, <span class="highlight-green">cassette</span>, and <span class="highlight-green">chainrings</span>.</p>
+                <h2>Lubrication</h2>
+                <p>Lubricate the <span class="highlight-green">chain</span> regularly to ensure smooth shifting and reduce wear. Use a high-quality bike chain lubricant. Wipe off excess lubricant to prevent dirt buildup.</p>
+                <h2>Inspect and Tighten Bolts</h2>
+                <p>Regularly check all <span class="highlight-orange">bolts</span> and <span class="highlight-orange">screws</span> on your bike, including those on the <span class="highlight-orange">stem</span>, <span class="highlight-orange">handlebars</span>, <span class="highlight-orange">seatpost</span>, and <span class="highlight-orange">crankset</span>. Use a torque wrench to ensure bolts are tightened to the manufacturer's specifications.</p>
+                <h2>Check Tire Pressure</h2>
+                <p>Maintain the recommended <span class="highlight-purple">tire pressure</span> for optimal performance and to prevent flats. Check the pressure before every ride. Inspect tires for <span class="highlight-purple">cuts</span>, <span class="highlight-purple">punctures</span>, and <span class="highlight-purple">wear</span>. Replace them if necessary.</p>
+                <h2>Brake Maintenance</h2>
+                <p>Inspect <span class="highlight-red">brake pads</span> for wear and replace them if they are worn down. Ensure that the <span class="highlight-red">brake calipers</span> are aligned correctly and that the <span class="highlight-red">brake cables</span> or <span class="highlight-red">hydraulic lines</span> are in good condition.</p>
+                <h2>Drivetrain Care</h2>
+                <p>Regularly check the condition of the <span class="highlight-green">chain</span>, <span class="highlight-green">cassette</span>, and <span class="highlight-green">chainrings</span>. Replace them if they show signs of excessive wear. Ensure that the <span class="highlight-green">derailleur</span> is properly adjusted for smooth shifting.</p>
+                <h2>Wheel Maintenance</h2>
+                <p>Check the <span class="highlight-blue">wheels</span> for true (straightness) and ensure that the <span class="highlight-blue">spokes</span> are properly tensioned. Inspect the <span class="highlight-blue">hubs</span> and <span class="highlight-blue">bearings</span> for smooth rotation and service them if necessary.</p>
+                <h2>Suspension and Fork</h2>
+                <p>If your bike has a <span class="highlight-orange">suspension fork</span>, follow the manufacturer's maintenance schedule for servicing. Check for any signs of <span class="highlight-orange">oil leakage</span> or damage to the fork stanchions.</p>
+                <h2>Seatpost and Saddle</h2>
+                <p>Ensure that the <span class="highlight-purple">integrated seat post (ISP)</span> is properly secured and adjusted to the correct height. Check the <span class="highlight-purple">saddle</span> for any signs of wear or damage and replace it if necessary.</p>
+                <h2>Professional Tune-Up</h2>
+                <p>Schedule regular <span class="highlight-red">tune-ups</span> with a professional bike mechanic to ensure that all components are in good working order. A professional tune-up can help identify and address any potential issues before they become major problems.</p>
+            </div>
+            <div class="image-content">
+                <div class="slideshow-container">
+                    <div class="slideshow">
+                        <!-- Images will be inserted here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Francesco Castaldi</p>
+        <p id="visit-count"> Page Views: </p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = [
+                'photos/4524730C-3F34-48C3-839F-1F1719C248AA.jpg',
+                'photos/aerodynamics.jpg',
+                'photos/bici.jpg',
+                'photos/cycling_scene.jpg',
+                'photos/digital_workspace.jpg',
+                'photos/IMG_4919.jpg',
+                'photos/IMG_6623.jpg',
+                'photos/IMG_7758.jpg',
+                'photos/IMG_7938.jpg',
+                'photos/IMG_8709.jpg'
+            ];
+
+            const slideshowContainer = document.querySelector('.slideshow');
+            let currentIndex = 0;
+
+            function showNextImage() {
+                // Clear the current image
+                slideshowContainer.innerHTML = '';
+
+                // Create a new image element
+                const img = document.createElement('img');
+                img.src = images[currentIndex];
+                img.classList.add('slideshow-image');
+
+                // Append the image to the slideshow container
+                slideshowContainer.appendChild(img);
+
+                // Update the index to show the next image
+                currentIndex = (currentIndex + 1) % images.length;
+            }
+
+            // Shuffle the images array
+            function shuffle(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+            }
+
+            // Shuffle the images initially
+            shuffle(images);
+
+            // Show the first image
+            showNextImage();
+
+            // Set an interval to show the next image every 5 seconds
+            setInterval(showNextImage, 5000);
+        });
+    </script>
+</body>
+</html>
