@@ -7,20 +7,18 @@ Welcome to the PersonalSite project! This repository contains the source code fo
 The project is organized as follows:
 
 ```
-PersonalSite/
+PSWebsite/
 ├── index.html
-├── gameproject.html
 ├── styles.css
 ├── scripts.js
 ├── menu.js
-├── strava.html
+├── bike-maintenance.html
 ├── contact.html
+├── giant-tcr-maintenance.html
 ├── backgroundAnimation.js
 ├── pageCounter.js
 ├── stravaLoop.js
-└── photos/
-    └── me.mp4
-    └── bici.jpg
+
 ```
 
 

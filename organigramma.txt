@@ -1,6 +1,11 @@
 PSWebsite/
 ├── index.html
-├── gameproject.html
 ├── styles.css
 ├── scripts.js
-└── menu.js
+├── menu.js
+├── bike-maintenance.html
+├── contact.html
+├── giant-tcr-maintenance.html
+├── backgroundAnimation.js
+├── pageCounter.js
+├── stravaLoop.js
