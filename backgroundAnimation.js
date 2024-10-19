@@ -77,6 +77,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.onload = function() {
         showSlides(slideIndex); // Initialize slideshow
-        setInterval(() => plusSlides(1), 5000); // Change slide every 5 seconds
+        setInterval(() => plusSlides(1), 15000); // Change slide every 5 seconds
     };
 });
