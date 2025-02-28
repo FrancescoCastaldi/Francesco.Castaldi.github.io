@@ -103,7 +103,18 @@ nav ul li a:hover, .dropdown:hover .dropbtn {
     text-align: center;
     flex: 1; /* Allow the container to grow and fill the available space */
 }
+.footer{
 
+    background: #975151; /* Change this value to your desired background color */
+    color: #e0e0e0;
+    text-align: left;
+    padding: 10px 0;
+    position: relative;
+    bottom: 2;
+    width: 100%;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+    flex-shrink: 0; /* Prevent the footer from shrinking */
+}
 /* Aggiungi queste regole al tuo file CSS esistente */
 h1 {
     font-size: 2.5em; /* Dimensione di partenza */
