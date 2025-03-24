@@ -38,10 +38,11 @@
         <div class="widget-container">
             <iframe frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/103631745/activity-summary/b894b72e8a7176c3a18f9e8264383d62769d3d1f'></iframe>
             <iframe frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/103631745/latest-rides/b894b72e8a7176c3a18f9e8264383d62769d3d1f'></iframe>
-            <div class="widget-image">
-                <img src="photos/bici.jpg" alt="Cycling Photo">
-                <div class="bike-description">
-                    Giant TCR ADVANCED SL RABOBANK EDITION with CAMPAGNOLO CHORUS 11-speed carbon, 2015.
+            <div class="image-content">
+                <div class="slideshow-container">
+                    <div class="slideshow">
+                        <!-- Images will be inserted here by JavaScript -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -49,8 +50,60 @@
 
     <!-- Footer -->
     <div class="footer">
-        <p>&copy; 2024 Francesco Castaldi</p>
+        <p>&copy; 2025 Francesco Castaldi</p>
         <p id="visit-count"> Page Views: </p>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = [
+               
+                'photos/bici.jpg',
+                'photos/IMG_4919.jpg',
+                'photos/trekmadone1.jpg',
+                'photos/trekmadone2.jpg',
+                'photos/trekmadone3.jpg',
+                'photos/trekmadone4.jpg',
+                'photos/trekmadone5.jpg',
+                'photos/trekmadone6.jpg'
+               
+            ];
+
+            const slideshowContainer = document.querySelector('.slideshow');
+            let currentIndex = 0;
+
+            function showNextImage() {
+                // Clear the current image
+                slideshowContainer.innerHTML = '';
+
+                // Create a new image element
+                const img = document.createElement('img');
+                img.src = images[currentIndex];
+                img.classList.add('slideshow-image');
+
+                // Append the image to the slideshow container
+                slideshowContainer.appendChild(img);
+
+                // Update the index to show the next image
+                currentIndex = (currentIndex + 1) % images.length;
+            }
+
+            // Shuffle the images array
+            function shuffle(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+            }
+
+            // Shuffle the images initially
+            shuffle(images);
+
+            // Show the first image
+            showNextImage();
+
+            // Set an interval to show the next image every 5 seconds
+            setInterval(showNextImage, 5000);
+        });
+    </script>
 </body>
 </html>
