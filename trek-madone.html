@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trek Madone SL5 Gen8 - Deep Smoke Black</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
+    <script src="backgroundAnimation.js" defer></script>
+    <script src="pageCounter.js" defer></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="content">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">University</a>
+                <div class="dropdown-content">
+                    <a href="bike-maintenance.html">Bike-Tracker</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">Strava</a>
+                <div class="dropdown-content">
+                    <a href="strava.html">Strava Stats</a>
+                    <a href="trek-madone.html">Trek Madone</a>
+                    <a href="trek-madone-maintenance.html">Maintenance Tips</a>
+                </div>
+            </li>
+            <li><a href="contact.html">Contact Me</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main content -->
+    <div class="container" id="main-content">
+        <h1>Trek Madone SL5 Gen8 - Deep Smoke Black</h1>
+        <div class="content-flex">
+            <div class="text-content">
+                <p>The <span class="highlight">Trek Madone SL5 Gen8</span> is an aerodynamic road bike built for <span class="highlight">performance</span> and <span class="highlight">speed</span>. Designed with cutting-edge technology, it delivers <span class="highlight">lightweight efficiency</span> and a sleek aesthetic, making it a top choice for dedicated cyclists.</p>
+                <h2>Key Features</h2>
+                <ul>
+                    <li><span class="highlight">IsoFlow technology</span> for enhanced aerodynamics and comfort</li>
+                    <li><span class="highlight">500 Series OCLV Carbon frame</span> for superior stiffness-to-weight ratio</li>
+                    <li><span class="highlight">Integrated cockpit</span> for a seamless look and improved performance</li>
+                    <li><span class="highlight">Hidden cables</span> for better aerodynamics</li>
+                    <li>Reliable and precise <span class="highlight">Shimano 105 12-speed groupset</span></li>
+                </ul>
+                <h2>Specifications</h2>
+                <ul>
+                    <li>Frame: <span class="highlight">500 Series OCLV Carbon</span></li>
+                    <li>Fork: <span class="highlight">Full Carbon, tapered steerer</span></li>
+                    <li>Seatpost: <span class="highlight">Madone Aero Seatpost</span></li>
+                    <li>Drivetrain: <span class="highlight">Shimano 105 R7100 12-speed</span></li>
+                    <li>Brakes: <span class="highlight">Shimano 105 hydraulic disc</span></li>
+                    <li>Wheels: <span class="highlight">Bontrager Aeolus Elite 35 carbon</span></li>
+                    <li>Tires: <span class="highlight">Bontrager R3 Hard-Case Lite, 700x28c</span></li>
+                </ul>
+                <p>With its cutting-edge aerodynamics and high-quality components, the <span class="highlight">Trek Madone SL5 Gen8</span> is perfect for cyclists who aim for top speeds and a competitive edge.</p>
+            </div>
+            <div class="image-content">
+                <div class="slideshow-container">
+                    <div class="slideshow">
+                        <!-- Images will be inserted here by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Francesco Castaldi</p>
+        <p id="visit-count"> Page Views: </p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = [
+                'photos/trek_madone_1.jpg',
+                'photos/trek_madone_2.jpg',
+            ];
+
+            const slideshowContainer = document.querySelector('.slideshow');
+            let currentIndex = 0;
+
+            function showNextImage() {
+                slideshowContainer.innerHTML = '';
+                const img = document.createElement('img');
+                img.src = images[currentIndex];
+                img.classList.add('slideshow-image');
+                slideshowContainer.appendChild(img);
+                currentIndex = (currentIndex + 1) % images.length;
+            }
+
+            function shuffle(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+            }
+
+            shuffle(images);
+            showNextImage();
+            setInterval(showNextImage, 5000);
+        });
+    </script>
+</body>
+</html>
