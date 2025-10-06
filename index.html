@@ -10,6 +10,7 @@
     <script src="gallery.js" defer></script>
     <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
     <script src="pageCounter.js" defer></script>
+    <script src="homeInteractions.js" defer></script>
 </head>
 <body>
 <header id="site-header"></header>
@@ -18,7 +19,9 @@
     <section class="hero">
         <div class="hero-text">
             <span class="glitch" data-text="Francesco Castaldi">Francesco Castaldi</span>
-            <p class="hero-subtitle">Sono un ingegnere informatico: sto perfezionando gli studi in informatica per trasformare la mia esperienza tecnica in valore come business consultant nel settore healthcare digitale.</p>
+            <p class="hero-subtitle">
+                Sono un ingegnere informatico: sto perfezionando gli studi in informatica per trasformare la mia esperienza tecnica in valore come business consultant nel settore healthcare digitale.
+            </p>
             <ul class="hero-highlights">
                 <li>Collego strategie aziendali e soluzioni IT per realtà sanitarie.</li>
                 <li>Porto metodi data-driven per ottimizzare processi clinici e amministrativi.</li>
@@ -29,6 +32,7 @@
                 <a class="neon-button ghost" href="strava.html">Dati da Strava</a>
             </div>
         </div>
+
         <div class="hero-terminal" aria-label="Personal mission terminal">
             <div class="terminal-header">
                 <span class="dot red"></span>
@@ -61,6 +65,7 @@ $ prossimo-step
                 <h3>Healthcare IT Consulting</h3>
                 <p>Analisi dei bisogni di strutture sanitarie, roadmap digitali e supporto all'adozione di piattaforme interoperabili.</p>
             </article>
+
             <article class="tech-card">
                 <div class="card-icon" aria-hidden="true">
                     <svg viewBox="0 0 64 64" role="img" focusable="false"><path d="M12 8h40v8H12zm6 12h28v8H18zm-6 12h40v8H12zm6 12h28v12H18z"/></svg>
@@ -68,6 +73,7 @@ $ prossimo-step
                 <h3>Architetture cloud &amp; dati</h3>
                 <p>Progetto ambienti scalabili e sicuri per integrare dati clinici, business intelligence e analytics regolamentati.</p>
             </article>
+
             <article class="tech-card">
                 <div class="card-icon" aria-hidden="true">
                     <svg viewBox="0 0 64 64" role="img" focusable="false"><path d="M10 20l22-12 22 12-22 12L10 20zm22 16l22-12v24l-22 12-22-12V24l22 12z"/></svg>
@@ -96,25 +102,23 @@ $ prossimo-step
         </div>
     </section>
 
-    <!-- Slideshow -->
     <section class="slideshow-wrapper" aria-label="Cycling and technology moments">
         <div class="slideshow-container">
             <div class="slideshow">
                 <div class="mySlides fade">
-                    <img src="photos/cycling_scene.jpg" class="slideshow-image" alt="Cyclist climbing a scenic mountain road">
+                    <img src="photos/cycling_scene.jpg" class="slideshow-image" alt="Ciclista che sale una strada di montagna">
                 </div>
 
                 <div class="mySlides fade">
-                    <img src="photos/digital_workspace.jpg" class="slideshow-image" alt="Digital workspace with code on multiple monitors">
+                    <img src="photos/digital_workspace.jpg" class="slideshow-image" alt="Workspace digitale con codice su più monitor">
                 </div>
 
                 <div class="mySlides fade">
-                    <img src="photos/aerodynamics.jpg" class="slideshow-image" alt="Wind tunnel testing of a bike frame">
+                    <img src="photos/aerodynamics.jpg" class="slideshow-image" alt="Test aerodinamico di un telaio in galleria del vento">
                 </div>
 
-                <!-- Next and previous buttons -->
-                <button type="button" class="prev" aria-label="Previous slide">&#10094;</button>
-                <button type="button" class="next" aria-label="Next slide">&#10095;</button>
+                <button type="button" class="prev" aria-label="Slide precedente">&#10094;</button>
+                <button type="button" class="next" aria-label="Slide successiva">&#10095;</button>
             </div>
         </div>
     </section>
@@ -124,39 +128,5 @@ $ prossimo-step
     <p>&copy; 2025 Francesco Castaldi</p>
     <p id="visit-count">Page Views: </p>
 </footer>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        let slideIndex = 1;
-        const slides = document.getElementsByClassName('mySlides');
-        const prevButton = document.querySelector('.prev');
-        const nextButton = document.querySelector('.next');
-
-        function showSlides(n) {
-            if (slides.length === 0) return;
-
-            if (n > slides.length) { slideIndex = 1; }
-            if (n < 1) { slideIndex = slides.length; }
-
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = 'none';
-            }
-
-            slides[slideIndex - 1].style.display = 'block';
-        }
-
-        function changeSlide(delta) {
-            showSlides(slideIndex += delta);
-        }
-
-        showSlides(slideIndex);
-        setInterval(() => changeSlide(1), 7500);
-
-        if (prevButton && nextButton) {
-            prevButton.addEventListener('click', () => changeSlide(-1));
-            nextButton.addEventListener('click', () => changeSlide(1));
-        }
-    });
-</script>
 </body>
 </html>
