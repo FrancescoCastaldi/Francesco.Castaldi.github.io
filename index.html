@@ -114,8 +114,10 @@ $ next-step
     </section>
 </main>
 
-<!-- Footer -->
-<footer id="site-footer"></footer>
+<footer id="site-footer" class="footer">
+    <p>&copy; 2025 Francesco Castaldi</p>
+    <p id="visit-count">Page Views: </p>
+</footer>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -125,9 +127,7 @@ $ next-step
         const nextButton = document.querySelector('.next');
 
         function showSlides(n) {
-            if (slides.length === 0) {
-                return;
-            }
+            if (slides.length === 0) return;
 
             if (n > slides.length) { slideIndex = 1; }
             if (n < 1) { slideIndex = slides.length; }
