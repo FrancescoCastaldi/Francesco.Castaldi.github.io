@@ -1,5 +1,5 @@
-/* Import Orbitron font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+/* Import fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;700&display=swap');
 
 /* Global reset for consistency */
 * {
@@ -10,7 +10,7 @@
 
 /* General styles */
 body {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
     margin: 0;
     padding: 0;
     background: radial-gradient(circle at top left, rgba(20, 91, 255, 0.4), transparent 45%),
@@ -18,10 +18,27 @@ body {
                 linear-gradient(135deg, #060b1a, #141b2d 45%, #04070f);
     background-size: 300% 300%;
     animation: gradientAnimation 18s ease infinite;
-    color: #e0e0e0;
+    color: #dce2ee;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6,
+.glitch {
+    font-family: 'Orbitron', 'Inter', sans-serif;
+    letter-spacing: 0.05em;
+}
+
+p, li {
+    max-width: 72ch;
+    color: rgba(224, 232, 246, 0.86);
+}
+
+a {
+    color: inherit;
 }
 
 @keyframes gradientAnimation {
@@ -38,8 +55,10 @@ main.main-content {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 80px;
-    padding: 70px 6vw 120px;
+    gap: 64px;
+    padding: 70px clamp(20px, 6vw, 80px) 120px;
+    width: min(1100px, 100%);
+    margin: 0 auto;
 }
 
 /* Navigation */
@@ -77,8 +96,8 @@ nav ul li a, .dropbtn {
     padding: 10px 18px;
     text-decoration: none;
     transition: background 0.3s, color 0.3s, transform 0.3s;
-    font-size: 1.05em;
-    letter-spacing: 0.08em;
+    font-size: 1.02em;
+    letter-spacing: 0.05em;
     border-radius: 999px;
 }
 
@@ -168,21 +187,22 @@ main.subpage-main {
 }
 
 .page-hero .eyebrow {
-    font-size: 0.9rem;
-    letter-spacing: 0.28em;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(0, 230, 118, 0.75);
+    color: rgba(0, 230, 118, 0.7);
 }
 
 .page-hero h1 {
-    font-size: clamp(2.2rem, 4vw, 3.2rem);
-    letter-spacing: 0.08em;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: 0.04em;
+    line-height: 1.3;
 }
 
 .page-hero p {
     font-size: 1.05rem;
-    line-height: 1.7;
-    color: rgba(224, 224, 224, 0.88);
+    line-height: 1.75;
+    color: rgba(224, 232, 246, 0.85);
 }
 
 .hero-meta {
@@ -218,14 +238,14 @@ main.subpage-main {
 
 .content-panel h2 {
     font-size: 1.6rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-transform: none;
     color: rgba(0, 230, 118, 0.85);
 }
 
 .content-panel h3 {
     font-size: 1.25rem;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.04em;
 }
 
 .content-panel p {
@@ -238,6 +258,10 @@ main.subpage-main {
     display: grid;
     gap: 12px;
     padding-left: 0;
+}
+
+.content-panel ul li {
+    line-height: 1.6;
 }
 
 .content-panel ul li {
@@ -469,13 +493,42 @@ main.subpage-main {
 .hero-subtitle {
     font-size: 1.2rem;
     line-height: 1.8;
-    color: rgba(224, 224, 224, 0.85);
+    color: rgba(224, 232, 246, 0.88);
+    max-width: 60ch;
 }
 
 .hero-buttons {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
+}
+
+.hero-highlights {
+    display: grid;
+    gap: 10px;
+    margin: 8px 0 12px;
+    padding: 0;
+    list-style: none;
+}
+
+.hero-highlights li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 500;
+    color: rgba(224, 232, 246, 0.9);
+}
+
+.hero-highlights li::before {
+    content: '\2713';
+    color: #00e676;
+    font-size: 0.95rem;
+    background: rgba(0, 230, 118, 0.14);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: grid;
+    place-items: center;
 }
 
 .neon-button {
@@ -560,17 +613,21 @@ main.subpage-main {
 .timeline-section,
 .slideshow-wrapper {
     position: relative;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1100px;
+    padding: 0 clamp(8px, 2vw, 20px);
 }
 
 .neon-section h2,
 .timeline-section h2 {
     font-size: clamp(2rem, 4vw, 2.6rem);
     color: #00e676;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: 26px;
-    text-align: center;
-    text-shadow: 0 0 18px rgba(0, 230, 118, 0.45);
+    text-transform: none;
+    letter-spacing: 0.08em;
+    margin-bottom: 24px;
+    text-align: left;
+    text-shadow: 0 0 18px rgba(0, 230, 118, 0.35);
 }
 
 .tech-grid {
