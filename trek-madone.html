@@ -7,108 +7,76 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
     <script src="backgroundAnimation.js" defer></script>
+    <script src="menu.js" defer></script>
+    <script src="gallery.js" defer></script>
     <script src="pageCounter.js" defer></script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav id="content">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn">University</a>
-                <div class="dropdown-content">
-                    <a href="bike-maintenance.html">Bike-Tracker</a>
-                </div>
-            </li>
-            <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn">Strava</a>
-                <div class="dropdown-content">
-                    <a href="strava.html">Strava Stats</a>
-                    <a href="giant-tcr.html">Giant TCR</a>
-                    <a href="giant-tcr-maintenance.html">Maintenance Tips</a>
-                    <a href="trek-madone.html">Trek Madone</a>
-                </div>
-            </li>
-            <li><a href="contact.html">Contact Me</a></li>
-        </ul>
-    </nav>
+<header id="site-header"></header>
 
-    <!-- Main content -->
-    <div class="container" id="main-content">
-        <h1>Trek Madone SL5 Gen8 - Matte Deep Smoke Black</h1>
-        <div class="content-flex">
-            <div class="text-content">
-                <p>The <span class="highlight">Trek Madone SL5 Gen8</span> is an aerodynamic road bike built for <span class="highlight">performance</span> and <span class="highlight">speed</span>. Designed with cutting-edge technology, it delivers <span class="highlight">lightweight efficiency</span> and a sleek aesthetic, making it a top choice for dedicated cyclists.</p>
-                <h2>Key Features</h2>
-                <ul>
-                    <li><span class="highlight">IsoFlow technology</span> for enhanced aerodynamics and comfort</li>
-                    <li><span class="highlight">500 Series OCLV Carbon frame</span> for superior stiffness-to-weight ratio</li>
-                    <li><span class="highlight">Integrated cockpit</span> for a seamless look and improved performance</li>
-                    <li><span class="highlight">Hidden cables</span> for better aerodynamics</li>
-                    <li>Reliable and precise <span class="highlight">Shimano 105 12-speed groupset</span></li>
-                </ul>
-                <h2>Specifications</h2>
-                <ul>
-                    <li>Frame: <span class="highlight">500 Series OCLV Carbon</span></li>
-                    <li>Fork: <span class="highlight">Full Carbon, tapered steerer</span></li>
-                    <li>Seatpost: <span class="highlight">Madone Aero Seatpost</span></li>
-                    <li>Drivetrain: <span class="highlight">Shimano 105 R7100 12-speed</span></li>
-                    <li>Brakes: <span class="highlight">Shimano 105 hydraulic disc</span></li>
-                    <li>Wheels: <span class="highlight">Bontrager Aeolus Elite 35 carbon</span></li>
-                    <li>Tires: <span class="highlight">Bontrager R3 Hard-Case Lite, 700x28c</span></li>
-                </ul>
-                <p>With its cutting-edge aerodynamics and high-quality components, the <span class="highlight">Trek Madone SL5 Gen8</span> is perfect for cyclists who aim for top speeds and a competitive edge.</p>
-            </div>
-            <div class="image-content">
-                <div class="slideshow-container">
-                    <div class="slideshow">
-                        <!-- Images will be inserted here by JavaScript -->
-                    </div>
-                </div>
+<main class="main-content subpage-main" id="main-content">
+    <section class="page-hero">
+        <div>
+            <span class="eyebrow">Aero obsession</span>
+            <h1>Trek Madone SL5 Gen8</h1>
+            <p>A Matte Deep Smoke Black missile shaped by IsoFlow technology for riders chasing podiums and perfect line choice.</p>
+            <div class="hero-meta">
+                <span class="meta-pill">IsoFlow</span>
+                <span class="meta-pill">OCLV carbon</span>
+                <span class="meta-pill">Shimano 105 12-speed</span>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Footer -->
-    <div class="footer">
-        <p>&copy; 2025 Francesco Castaldi</p>
-        <p id="visit-count"> Page Views: </p>
-    </div>
+    <section class="content-panel feature-grid">
+        <article class="feature-card">
+            <h3>Aerodynamic IsoFlow</h3>
+            <p>Reengineered seat tube shaping smooths airflow while delivering compliance on rough sections.</p>
+        </article>
+        <article class="feature-card">
+            <h3>Integrated cockpit</h3>
+            <p>Hidden cables and a unified bar-stem keep the silhouette clean and responsive.</p>
+        </article>
+        <article class="feature-card">
+            <h3>Race-ready endurance</h3>
+            <p>The Madone balances light weight with everyday durability for training blocks and race day surges.</p>
+        </article>
+    </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = [
-                'photos/trekmadone1.jpg',
-                'photos/trekmadone2.jpg',
-                'photos/trekmadone3.jpg',
-                'photos/trekmadone4.jpg',
-                'photos/trekmadone5.jpg',
-                'photos/trekmadone6.jpg'
-            ];
+    <section class="content-panel spec-grid">
+        <article class="spec-card">
+            <h3>Frame platform</h3>
+            <ul>
+                <li><strong>Frame:</strong> 500 Series OCLV Carbon</li>
+                <li><strong>Fork:</strong> Full carbon with tapered steerer</li>
+                <li><strong>Seatpost:</strong> Madone Aero Seatpost</li>
+            </ul>
+        </article>
+        <article class="spec-card">
+            <h3>Drivetrain &amp; brakes</h3>
+            <ul>
+                <li><strong>Groupset:</strong> Shimano 105 R7100 12-speed</li>
+                <li><strong>Brakes:</strong> Shimano 105 hydraulic disc</li>
+            </ul>
+        </article>
+        <article class="spec-card">
+            <h3>Rolling stock</h3>
+            <ul>
+                <li><strong>Wheels:</strong> Bontrager Aeolus Elite 35 carbon</li>
+                <li><strong>Tires:</strong> Bontrager R3 Hard-Case Lite, 700x28c</li>
+            </ul>
+        </article>
+    </section>
 
-            const slideshowContainer = document.querySelector('.slideshow');
-            let currentIndex = 0;
+    <section class="content-panel">
+        <h2>Gallery</h2>
+        <p>Angles from recent rides showcasing the Madone's stealth profile and custom touches.</p>
+        <div class="slideshow-container" data-slideshow="photos/trekmadone1.jpg, photos/trekmadone2.jpg, photos/trekmadone3.jpg, photos/trekmadone4.jpg, photos/trekmadone5.jpg, photos/trekmadone6.jpg" data-alt="Trek Madone gallery" data-interval="6000">
+            <div class="slideshow"></div>
+        </div>
+    </section>
+</main>
 
-            function showNextImage() {
-                slideshowContainer.innerHTML = '';
-                const img = document.createElement('img');
-                img.src = images[currentIndex];
-                img.classList.add('slideshow-image');
-                slideshowContainer.appendChild(img);
-                currentIndex = (currentIndex + 1) % images.length;
-            }
-
-            function shuffle(array) {
-                for (let i = array.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [array[i], array[j]] = [array[j], array[i]];
-                }
-            }
-
-            shuffle(images);
-            showNextImage();
-            setInterval(showNextImage, 5000);
-        });
-    </script>
+<footer id="site-footer"></footer>
 </body>
 </html>

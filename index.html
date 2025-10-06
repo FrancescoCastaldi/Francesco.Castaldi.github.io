@@ -6,89 +6,151 @@
     <title>Francesco Castaldi</title>
     <link rel="stylesheet" href="styles.css">
     <script src="backgroundAnimation.js" defer></script>
+    <script src="menu.js" defer></script>
+    <script src="gallery.js" defer></script>
     <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
     <script src="pageCounter.js" defer></script>
 </head>
 <body>
-<!-- Navigation -->
-<nav id="content">
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">University</a>
-            <div class="dropdown-content">
-                <a href="bike-maintenance.html">Bike-Tracker</a>
+<header id="site-header"></header>
+
+<main class="main-content" id="main-content">
+    <section class="hero">
+        <div class="hero-text">
+            <span class="glitch" data-text="Francesco Castaldi">Francesco Castaldi</span>
+            <p class="hero-subtitle">Cybersecurity engineer, code artisan and cyclist pushing the limits.</p>
+            <div class="hero-buttons">
+                <a class="neon-button" href="contact.html">Let's collaborate</a>
+                <a class="neon-button ghost" href="strava.html">View Strava stats</a>
             </div>
-        </li>
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Strava</a>
-            <div class="dropdown-content">
-                <a href="strava.html">Strava Stats</a>
-                <a href="giant-tcr.html">Giant TCR</a>
-                <a href="giant-tcr-maintenance.html">Maintenance Tips</a>
+        </div>
+        <div class="hero-terminal" aria-label="Personal mission terminal">
+            <div class="terminal-header">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
             </div>
-        </li>
-        <li><a href="contact.html">Contact Me</a></li>
-    </ul>
-</nav>
-    <div class="container" id="main-content">
-        <h1>Francesco Castaldi</h1>
-        <p>Welcome! I'm an IT engineer with a deep passion for computer science, cybersecurity, and cycling.</p>
-        <p>Explore my projects and learn more about my journey in tech and cycling adventures.</p>
-    </div>
+            <div class="terminal-body">
+<pre><code>$ whoami
+francesco.castaldi
+
+$ mission-status
+- defending networks &amp; data integrity
+- crafting automation for endurance athletes
+- capturing every watt on the road &amp; in code
+
+$ next-step
+&gt;&gt; explore_projects.sh</code></pre>
+            </div>
+        </div>
+    </section>
+
+    <section class="neon-section">
+        <h2>Latest Focus Areas</h2>
+        <div class="tech-grid">
+            <article class="tech-card">
+                <div class="card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 64 64" role="img" focusable="false"><path d="M32 6l14 8v16L32 38l-14-8V14l14-8zm0 4.618L22 16v12l10 5.382L42 28V16L32 10.618zM12 46h40v4H12zm6 8h28v4H18z"/></svg>
+                </div>
+                <h3>Security Automation</h3>
+                <p>Designing resilient pipelines, SIEM correlations and incident response playbooks powered by clean code.</p>
+            </article>
+            <article class="tech-card">
+                <div class="card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 64 64" role="img" focusable="false"><path d="M12 8h40v8H12zm6 12h28v8H18zm-6 12h40v8H12zm6 12h28v12H18z"/></svg>
+                </div>
+                <h3>Cloud &amp; DevOps</h3>
+                <p>Building scalable, observable platforms with IaC, container orchestration and self-healing services.</p>
+            </article>
+            <article class="tech-card">
+                <div class="card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 64 64" role="img" focusable="false"><path d="M10 20l22-12 22 12-22 12L10 20zm22 16l22-12v24l-22 12-22-12V24l22 12z"/></svg>
+                </div>
+                <h3>Cycling Analytics</h3>
+                <p>Transforming ride data into actionable strategies for endurance, racing and performance tracking.</p>
+            </article>
+        </div>
+    </section>
+
+    <section class="timeline-section">
+        <h2>Recent Highlights</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="timeline-date">2024</span>
+                <p>Led a zero-trust migration, combining network segmentation with automated compliance checks.</p>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-date">2023</span>
+                <p>Developed telemetry dashboards fusing Strava APIs and custom ML models to predict race readiness.</p>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-date">2022</span>
+                <p>Built a secure automation toolkit streamlining patch management across hybrid cloud environments.</p>
+            </div>
+        </div>
+    </section>
 
     <!-- Slideshow -->
-    <div class="slideshow-container">
-        <div class="slideshow">
-            <div class="mySlides fade">
-                <img src="photos/cycling_scene.jpg" class="slideshow-image">
-            </div>
+    <section class="slideshow-wrapper" aria-label="Cycling and technology moments">
+        <div class="slideshow-container">
+            <div class="slideshow">
+                <div class="mySlides fade">
+                    <img src="photos/cycling_scene.jpg" class="slideshow-image" alt="Cyclist climbing a scenic mountain road">
+                </div>
 
-            <div class="mySlides fade">
-                <img src="photos/digital_workspace.jpg" class="slideshow-image">
-            </div>
+                <div class="mySlides fade">
+                    <img src="photos/digital_workspace.jpg" class="slideshow-image" alt="Digital workspace with code on multiple monitors">
+                </div>
 
-            <div class="mySlides fade">
-                <img src="photos/aerodynamics.jpg" class="slideshow-image">
-            </div>
+                <div class="mySlides fade">
+                    <img src="photos/aerodynamics.jpg" class="slideshow-image" alt="Wind tunnel testing of a bike frame">
+                </div>
 
-            <!-- Next and previous buttons -->
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                <!-- Next and previous buttons -->
+                <button type="button" class="prev" aria-label="Previous slide">&#10094;</button>
+                <button type="button" class="next" aria-label="Next slide">&#10095;</button>
+            </div>
         </div>
-    </div>
+    </section>
+</main>
 
-    <!-- Footer -->
-    <div class="footer">
-        <p>&copy; 2024 Francesco Castaldi</p>
-        <p id="visit-count"> Page Views: </p> <!-- Contatore delle visite -->
-    </div>
+<!-- Footer -->
+<footer id="site-footer"></footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            let slideIndex = 1;
-            showSlides(slideIndex);
-    
-            function plusSlides(n) {
-                showSlides(slideIndex += n);
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let slideIndex = 1;
+        const slides = document.getElementsByClassName('mySlides');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+
+        function showSlides(n) {
+            if (slides.length === 0) {
+                return;
             }
-    
-            function showSlides(n) {
-                let i;
-                let slides = document.getElementsByClassName("mySlides");
-                if (n > slides.length) {slideIndex = 1}
-                if (n < 1) {slideIndex = slides.length}
-                for (i = 0; i < slides.length; i++) {
-                    slides[i].style.display = "none";
-                }
-                slides[slideIndex - 1].style.display = "block";
+
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = 'none';
             }
-    
-            setInterval(() => plusSlides(1), 7500); // Change slide every 5 seconds
-    
-            document.querySelector('.prev').addEventListener('click', () => plusSlides(-1));
-            document.querySelector('.next').addEventListener('click', () => plusSlides(1));
-        });
-    </script>
+
+            slides[slideIndex - 1].style.display = 'block';
+        }
+
+        function changeSlide(delta) {
+            showSlides(slideIndex += delta);
+        }
+
+        showSlides(slideIndex);
+        setInterval(() => changeSlide(1), 7500);
+
+        if (prevButton && nextButton) {
+            prevButton.addEventListener('click', () => changeSlide(-1));
+            nextButton.addEventListener('click', () => changeSlide(1));
+        }
+    });
+</script>
 </body>
 </html>
