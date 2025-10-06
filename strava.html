@@ -5,105 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <script src="backgroundAnimation.js" defer></script>
+    <script src="menu.js" defer></script>
+    <script src="gallery.js" defer></script>
     <script src="pageCounter.js" defer></script>
     <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
     <title>Francesco Castaldi - Strava Stats</title>
 </head>
 <body>
- <!-- Navigation -->
- <nav id="content">
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">University</a>
-            <div class="dropdown-content">
-                <a href="bike-maintenance.html">Bike-Tracker</a>
-            </div>
-        </li>
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Strava</a>
-            <div class="dropdown-content">
-                <a href="strava.html">Strava Stats</a>
-                <a href="giant-tcr.html">Giant TCR</a>
-                <a href="giant-tcr-maintenance.html">Maintenance Tips</a>
-            </div>
-        </li>
-        <li><a href="contact.html">Contact Me</a></li>
-    </ul>
-</nav>
+<header id="site-header"></header>
 
-    <!-- Main Content -->
-    <div class="container" id="main-content">
-        <h1>My Strava Cycling Stats</h1>
-        <div class="widget-container">
-            <iframe frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/103631745/activity-summary/b894b72e8a7176c3a18f9e8264383d62769d3d1f'></iframe>
-            <iframe frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/103631745/latest-rides/b894b72e8a7176c3a18f9e8264383d62769d3d1f'></iframe>
-            <div class="image-content">
-                <div class="slideshow-container">
-                    <div class="slideshow">
-                        <!-- Images will be inserted here by JavaScript -->
-                    </div>
-                </div>
+<main class="main-content subpage-main" id="main-content">
+    <section class="page-hero">
+        <div>
+            <span class="eyebrow">Strava dashboard</span>
+            <h1>Turning every ride into actionable telemetry</h1>
+            <p>Performance analytics, training load and gallery highlights update automatically so I can focus on the next climb.</p>
+            <div class="hero-meta">
+                <span class="meta-pill">Data-driven</span>
+                <span class="meta-pill">Endurance</span>
+                <span class="meta-pill">Performance</span>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Footer -->
-    <div class="footer">
-        <p>&copy; 2025 Francesco Castaldi</p>
-        <p id="visit-count"> Page Views: </p>
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = [
-               
-                'photos/bici.jpg',
-                'photos/IMG_4919.jpg',
-                'photos/trekmadone1.jpg',
-                'photos/trekmadone2.jpg',
-                'photos/trekmadone3.jpg',
-                'photos/trekmadone4.jpg',
-                'photos/trekmadone5.jpg',
-                'photos/trekmadone6.jpg'
-               
-            ];
+    <section class="content-panel embed-grid">
+        <article class="embed-card">
+            <h2>Activity summary</h2>
+            <p>A snapshot of annual mileage, elevation and time in the saddle curated directly from Strava.</p>
+            <div class="embed-frame">
+                <iframe frameborder="0" allowtransparency="true" scrolling="no" src="https://www.strava.com/athletes/103631745/activity-summary/b894b72e8a7176c3a18f9e8264383d62769d3d1f"></iframe>
+            </div>
+        </article>
+        <article class="embed-card">
+            <h2>Latest rides</h2>
+            <p>Track the freshest sessions, routes and power efforts fueling upcoming goals.</p>
+            <div class="embed-frame">
+                <iframe frameborder="0" allowtransparency="true" scrolling="no" src="https://www.strava.com/athletes/103631745/latest-rides/b894b72e8a7176c3a18f9e8264383d62769d3d1f"></iframe>
+            </div>
+        </article>
+        <article class="embed-card">
+            <h2>Moments on and off the bike</h2>
+            <p>Scenes from the road, the workshop and the data lab keep the story behind the stats alive.</p>
+            <div class="slideshow-container" data-slideshow="photos/bici.jpg, photos/IMG_4919.jpg, photos/trekmadone1.jpg, photos/trekmadone2.jpg, photos/trekmadone3.jpg, photos/trekmadone4.jpg, photos/trekmadone5.jpg, photos/trekmadone6.jpg" data-interval="6000" data-alt="Cycling gallery">
+                <div class="slideshow"></div>
+            </div>
+        </article>
+    </section>
+</main>
 
-            const slideshowContainer = document.querySelector('.slideshow');
-            let currentIndex = 0;
-
-            function showNextImage() {
-                // Clear the current image
-                slideshowContainer.innerHTML = '';
-
-                // Create a new image element
-                const img = document.createElement('img');
-                img.src = images[currentIndex];
-                img.classList.add('slideshow-image');
-
-                // Append the image to the slideshow container
-                slideshowContainer.appendChild(img);
-
-                // Update the index to show the next image
-                currentIndex = (currentIndex + 1) % images.length;
-            }
-
-            // Shuffle the images array
-            function shuffle(array) {
-                for (let i = array.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [array[i], array[j]] = [array[j], array[i]];
-                }
-            }
-
-            // Shuffle the images initially
-            shuffle(images);
-
-            // Show the first image
-            showNextImage();
-
-            // Set an interval to show the next image every 5 seconds
-            setInterval(showNextImage, 5000);
-        });
-    </script>
+<footer id="site-footer"></footer>
 </body>
 </html>

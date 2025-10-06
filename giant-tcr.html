@@ -7,119 +7,76 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
     <script src="backgroundAnimation.js" defer></script>
+    <script src="menu.js" defer></script>
+    <script src="gallery.js" defer></script>
     <script src="pageCounter.js" defer></script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav id="content">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn">University</a>
-                <div class="dropdown-content">
-                    <a href="bike-maintenance.html">Bike-Tracker</a>
-                </div>
-            </li>
-            <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn">Strava</a>
-                <div class="dropdown-content">
-                    <a href="strava.html">Strava Stats</a>
-                    <a href="giant-tcr.html">Giant TCR</a>
-                    <a href="giant-tcr-maintenance.html">Maintenance Tips</a>
-                    <a href="trek-madone.html">Trek Madone</a>
-                </div>
-            </li>
-            <li><a href="contact.html">Contact Me</a></li>
-        </ul>
-    </nav>
+<header id="site-header"></header>
 
-    <!-- Main content -->
-    <div class="container" id="main-content">
-        <h1>Giant TCR Advanced SL ISP Rabobank Edition</h1>
-        <div class="content-flex">
-            <div class="text-content">
-                <p>The <span class="highlight">Giant TCR Advanced SL ISP Rabobank Edition</span> is a high-performance racing bike designed for <span class="highlight">speed</span> and <span class="highlight">aerodynamics</span>. This bike is a special edition created for the <span class="highlight">Rabobank cycling team</span>, featuring advanced materials and cutting-edge technology.</p>
-                <h2>Key Features</h2>
-                <ul>
-                    <li><span class="highlight">Integrated Seat Post (ISP)</span> for improved stiffness and comfort</li>
-                    <li><span class="highlight">Advanced SL-grade composite frame</span></li>
-                    <li><span class="highlight">Aerodynamic design</span> for reduced drag</li>
-                    <li><span class="highlight">Lightweight</span> and durable construction</li>
-                    <li>High-performance components for optimal performance</li>
-                </ul>
-                <h2>Specifications</h2>
-                <ul>
-                    <li>Frame: <span class="highlight">Advanced SL-grade composite</span></li>
-                    <li>Fork: <span class="highlight">Advanced SL-grade composite</span>, full-composite OverDrive 2 steerer</li>
-                    <li>Seatpost: <span class="highlight">Integrated Seat Post (ISP)</span></li>
-                    <li>Drivetrain: <span class="highlight">Campagnolo Chorus 11v carbon (2015)</span></li>
-                    <li>Brakes: <span class="highlight">Campagnolo Chorus 11v carbon (2015)</span></li>
-                    <li>Wheels: <span class="highlight">Campagnolo Scirocco 35mm c15</span></li>
-                    <li>Tires: <span class="highlight">Continental GrandPrix</span>, innerTube, 700x25c</li>
-                </ul>
-                <p>This bike is designed for serious cyclists who demand the best in performance and technology. Whether you're racing or training, the <span class="highlight">Giant TCR Advanced SL ISP Rabobank Edition</span> will help you achieve your goals.</p>
-            </div>
-            <div class="image-content">
-                <div class="slideshow-container">
-                    <div class="slideshow">
-                        <!-- Images will be inserted here by JavaScript -->
-                    </div>
-                </div>
+<main class="main-content subpage-main" id="main-content">
+    <section class="page-hero">
+        <div>
+            <span class="eyebrow">Race machine</span>
+            <h1>Giant TCR Advanced SL ISP Rabobank Edition</h1>
+            <p>A limited Rabobank edition engineered for elite speed—pairing an Advanced SL composite chassis with a fully integrated seat mast to maximise stiffness and aerodynamics.</p>
+            <div class="hero-meta">
+                <span class="meta-pill">Aero efficiency</span>
+                <span class="meta-pill">Campagnolo Chorus</span>
+                <span class="meta-pill">Pro heritage</span>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Footer -->
-    <div class="footer">
-        <p>&copy; 2024 Francesco Castaldi</p>
-        <p id="visit-count"> Page Views: </p>
-    </div>
+    <section class="content-panel feature-grid">
+        <article class="feature-card">
+            <h3>Integrated Seat Post</h3>
+            <p>The ISP design eliminates excess hardware, increasing ride feedback and comfort across long stages.</p>
+        </article>
+        <article class="feature-card">
+            <h3>Advanced SL carbon layup</h3>
+            <p>Giant's flagship composite construction delivers an ultra-responsive platform optimised for climbing and sprints.</p>
+        </article>
+        <article class="feature-card">
+            <h3>Aerodynamic cockpit</h3>
+            <p>Every junction is sculpted to cut drag, keeping the bike razor sharp when riding in the wind.</p>
+        </article>
+    </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = [
-               
-                'photos/bici.jpg',
-                'photos/IMG_4919.jpg',
-               
-            ];
+    <section class="content-panel spec-grid">
+        <article class="spec-card">
+            <h3>Frame &amp; fork</h3>
+            <ul>
+                <li><strong>Frame:</strong> Advanced SL-grade composite with ISP</li>
+                <li><strong>Fork:</strong> Advanced SL composite, OverDrive 2 steerer</li>
+                <li><strong>Seatpost:</strong> Integrated Seat Post (ISP)</li>
+            </ul>
+        </article>
+        <article class="spec-card">
+            <h3>Drivetrain &amp; brakes</h3>
+            <ul>
+                <li><strong>Groupset:</strong> Campagnolo Chorus 11v carbon (2015)</li>
+                <li><strong>Brakes:</strong> Campagnolo Chorus 11v carbon (2015)</li>
+            </ul>
+        </article>
+        <article class="spec-card">
+            <h3>Wheels &amp; tires</h3>
+            <ul>
+                <li><strong>Wheelset:</strong> Campagnolo Scirocco 35mm c15</li>
+                <li><strong>Tires:</strong> Continental GrandPrix, 700x25c inner tube setup</li>
+            </ul>
+        </article>
+    </section>
 
-            const slideshowContainer = document.querySelector('.slideshow');
-            let currentIndex = 0;
+    <section class="content-panel">
+        <h2>On-road personality</h2>
+        <p>Designed for serious cyclists who demand the best in performance and technology, the TCR Rabobank edition thrives on aggressive race profiles, technical descents and long training miles.</p>
+        <div class="slideshow-container" data-slideshow="photos/bici.jpg, photos/IMG_4919.jpg" data-alt="Giant TCR gallery">
+            <div class="slideshow"></div>
+        </div>
+    </section>
+</main>
 
-            function showNextImage() {
-                // Clear the current image
-                slideshowContainer.innerHTML = '';
-
-                // Create a new image element
-                const img = document.createElement('img');
-                img.src = images[currentIndex];
-                img.classList.add('slideshow-image');
-
-                // Append the image to the slideshow container
-                slideshowContainer.appendChild(img);
-
-                // Update the index to show the next image
-                currentIndex = (currentIndex + 1) % images.length;
-            }
-
-            // Shuffle the images array
-            function shuffle(array) {
-                for (let i = array.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [array[i], array[j]] = [array[j], array[i]];
-                }
-            }
-
-            // Shuffle the images initially
-            shuffle(images);
-
-            // Show the first image
-            showNextImage();
-
-            // Set an interval to show the next image every 5 seconds
-            setInterval(showNextImage, 5000);
-        });
-    </script>
+<footer id="site-footer"></footer>
 </body>
 </html>

@@ -6,65 +6,60 @@
     <title>Bike Maintenance Tracker</title>
     <link rel="stylesheet" href="styles.css">
     <script src="backgroundAnimation.js" defer></script>
+    <script src="menu.js" defer></script>
+    <script src="gallery.js" defer></script>
     <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
     <script src="pageCounter.js" defer></script>
 </head>
 <body>
-<!-- Navigation -->
-<nav id="content">
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">University</a>
-            <div class="dropdown-content">
-                <a href="bike-maintenance.html">Bike-Tracker</a>
+<header id="site-header"></header>
+
+<main class="main-content subpage-main" id="main-content">
+    <section class="page-hero">
+        <div>
+            <span class="eyebrow">University project</span>
+            <h1>Bike Maintenance Tracker</h1>
+            <p>A digital logbook that helps cyclists record maintenance, surface insights and plan the next tune-up with precision.</p>
+            <div class="hero-meta">
+                <span class="meta-pill">Full-stack</span>
+                <span class="meta-pill">Node.js &amp; Express</span>
+                <span class="meta-pill">MongoDB</span>
             </div>
-        </li>
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Strava</a>
-            <div class="dropdown-content">
-                <a href="strava.html">Strava Stats</a>
-                <a href="giant-tcr.html">Giant TCR</a>
-                <a href="giant-tcr-maintenance.html">Maintenance Tips</a>
-            </div>
-        </li>
-        <li><a href="contact.html">Contact Me</a></li>
-    </ul>
-</nav>
+        </div>
+    </section>
 
-    <div class="container">
-        <h1>Bike Maintenance Tracker</h1>
-        <p>This project is a simple "Bike Maintenance Tracker" designed to help users log and track maintenance tasks for their bikes. The application is built using modern web technologies and follows clean coding principles.</p>
-        
-        <h2>Repository Overview</h2>
-        <p>The <a href="https://github.com/FrancescoCastaldi/Bike-Maintenance-Tracker-Application.git" target="_blank">Bike Maintenance Tracker repository</a> contains the full source code of the application. The project includes the following components:</p>
+    <section class="content-panel">
+        <h2>Repository overview</h2>
+        <p>The <a class="accent-link" href="https://github.com/FrancescoCastaldi/Bike-Maintenance-Tracker-Application" target="_blank" rel="noopener">Bike Maintenance Tracker repository</a> hosts a clean, modular codebase built to streamline bike care from any device.</p>
         <ul>
-            <li><strong>Frontend:</strong> Built with HTML, CSS, and JavaScript, offering an intuitive interface for users to add, view, and manage bike maintenance tasks.</li>
-            <li><strong>Backend:</strong> Developed using Node.js and Express to handle API requests and communicate with the database.</li>
-            <li><strong>Database:</strong> MongoDB is used for storing maintenance logs and user information.</li>
+            <li><strong>Frontend:</strong> Responsive views in HTML, CSS and JavaScript offer an intuitive dashboard to add, review and organise maintenance tasks.</li>
+            <li><strong>Backend:</strong> A Node.js and Express API manages CRUD operations, validation and business rules for every bike in the fleet.</li>
+            <li><strong>Database:</strong> MongoDB persists bikes, service history and user data so patterns become visible over time.</li>
         </ul>
+    </section>
 
-        <h2>How the Code Works</h2>
-        <p>The application is structured as a full-stack project with the following workflow:</p>
-        <ul>
-            <li>Users can add their bikes and log maintenance tasks (such as changing tires, oiling chains, etc.).</li>
-            <li>The frontend interacts with the backend using RESTful APIs to store and retrieve data from the MongoDB database.</li>
-            <li>The backend handles API requests for adding new tasks, editing existing ones, and deleting completed tasks.</li>
-            <li>MongoDB stores each bike's details and the history of maintenance tasks, enabling users to track maintenance activities over time.</li>
-        </ul>
+    <section class="content-panel feature-grid">
+        <article class="feature-card">
+            <h3>Actionable maintenance timeline</h3>
+            <p>Log tasks such as drivetrain refreshes or wheel truing and immediately see what is due next based on mileage and time since last service.</p>
+        </article>
+        <article class="feature-card">
+            <h3>Collaborative ready APIs</h3>
+            <p>RESTful endpoints keep the tracker extensible so teammates can integrate notifications, analytics or companion mobile apps.</p>
+        </article>
+        <article class="feature-card">
+            <h3>Insights for every rider</h3>
+            <p>Historical data highlights wear trends, costs and component lifecycles—vital intel for cyclists balancing performance with reliability.</p>
+        </article>
+    </section>
 
-        <p>This tracker helps cycling enthusiasts like myself to keep their bikes in optimal condition and plan maintenance more efficiently.</p>
-        
-        <h3>Explore the Code:</h3>
-        <p>You can explore the full project on <a href="https://github.com/FrancescoCastaldi/Bike-Maintenance-Tracker-Application.git" target="_blank">GitHub</a> for further details.</p>
-    </div>
+    <section class="content-panel cta-panel">
+        <h2>Explore the code</h2>
+        <p>Clone the repository, run it locally and tailor the tracker to your workshop or club. Contributions and ideas are always welcome.</p>
+        <a class="neon-button" href="https://github.com/FrancescoCastaldi/Bike-Maintenance-Tracker-Application" target="_blank" rel="noopener">View on GitHub</a>
+    </section>
+</main>
 
-    <script src="scripts.js"></script>
-    <script src="menu.js"></script>
-    <!-- Footer -->
-    <div class="footer">
-        <p>&copy; 2024 Francesco Castaldi</p>
-        <p id="visit-count"> Page Views: </p> <!-- Contatore delle visite -->
-    </div>
+<footer id="site-footer"></footer>
 </body>
 </html>

@@ -6,50 +6,51 @@
     <title>Contact Me - Francesco Castaldi</title>
     <link rel="stylesheet" href="styles.css">
     <script src="backgroundAnimation.js" defer></script>
+    <script src="menu.js" defer></script>
+    <script src="gallery.js" defer></script>
     <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
     <script src="pageCounter.js" defer></script>
 </head>
 <body>
-<!-- Navigation -->
-<nav id="content">
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">University</a>
-            <div class="dropdown-content">
-                <a href="bike-maintenance.html">Bike-Tracker</a>
+<header id="site-header"></header>
+
+<main class="main-content subpage-main" id="main-content">
+    <section class="page-hero">
+        <div>
+            <span class="eyebrow">Let's collaborate</span>
+            <h1>Secure, automate and analyze with confidence</h1>
+            <p>Whether you need a security partner, automation architect or data-informed cycling strategy, I'm ready to craft a solution tailored to your goals.</p>
+            <div class="hero-meta">
+                <span class="meta-pill">Cybersecurity</span>
+                <span class="meta-pill">Automation</span>
+                <span class="meta-pill">Cycling analytics</span>
             </div>
-        </li>
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Strava</a>
-            <div class="dropdown-content">
-                <a href="strava.html">Strava Stats</a>
-                <a href="giant-tcr.html">Giant TCR</a>
-                <a href="giant-tcr-maintenance.html">Maintenance Tips</a>
-            </div>
-        </li>
-        <li><a href="contact.html">Contact Me</a></li>
-    </ul>
-</nav>
+        </div>
+    </section>
 
-    <!-- Main content -->
-    <div class="container" id="main-content">
-        <h1>Contact Me</h1>
-        <p>If you have any questions, comments, or just want to get in touch, feel free to contact me via email. I am always open to discussing new projects, creative ideas, or opportunities to be part of your visions.</p>
-        <p>You can reach me at my personal email: <a href="mailto:francesco.castaldi@proton.me">francesco.castaldi@proton.me</a></p>
-        
-    
-    <script src="stravaLoop.js"></script>
+    <section class="content-panel info-grid">
+        <article class="info-card">
+            <h2>Direct line</h2>
+            <p>The fastest way to reach me is via email. Share a few details about your project, timeline or challenge so I can prepare meaningful insight before we talk.</p>
+            <a class="accent-link" href="mailto:francesco.castaldi@proton.me">francesco.castaldi@proton.me</a>
+        </article>
+        <article class="info-card">
+            <h2>Connect &amp; follow</h2>
+            <p>Track my latest rides, experiments and code drops to see what I am refining between sprints.</p>
+            <ul class="detail-list">
+                <li><a class="accent-link" href="https://www.strava.com/athletes/103631745" target="_blank" rel="noopener">Strava profile</a></li>
+                <li><a class="accent-link" href="https://github.com/FrancescoCastaldi" target="_blank" rel="noopener">GitHub projects</a></li>
+            </ul>
+        </article>
+    </section>
 
+    <section class="content-panel cta-panel">
+        <h2>Working on something ambitious?</h2>
+        <p>From zero-trust roadmaps to performance telemetry, I love designing reliable systems that deliver measurable impact. Send a quick overview and I'll respond within one business day.</p>
+        <a class="neon-button" href="mailto:francesco.castaldi@proton.me">Start the conversation</a>
+    </section>
+</main>
 
-
-
-    <!-- Footer -->
-    <div class="footer">
-        <p>&copy; 2024 Francesco Castaldi</p>
-        <p id="visit-count"> Page Views: </p> <!-- Contatore delle visite -->
-    </div>
-
-    
+<footer id="site-footer"></footer>
 </body>
 </html>
