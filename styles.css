@@ -980,3 +980,116 @@ iframe { width: 550px; height: 600px; }
     }
     .timeline-item { font-size: 0.95rem; }
 }
+
+
+/* ===== Project page styles (hospital-sanitization-tracker) ===== */
+.project-card {
+    background: rgba(4, 10, 24, 0.85);
+    border: 1px solid rgba(0, 230, 118, 0.16);
+    border-radius: 18px;
+    padding: 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.project-card h2 {
+    font-size: 1.5rem;
+    color: rgba(0, 230, 118, 0.85);
+    letter-spacing: 0.06em;
+}
+
+.project-card h3 {
+    font-size: 1.1rem;
+    color: rgba(0, 230, 118, 0.65);
+    letter-spacing: 0.04em;
+    margin-top: 8px;
+}
+
+.project-card code {
+    font-family: 'Fira Code', 'Courier New', monospace;
+    background: rgba(0, 230, 118, 0.1);
+    border: 1px solid rgba(0, 230, 118, 0.2);
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 0.9em;
+    color: #a8ff60;
+}
+
+.tech-item {
+    background: rgba(6, 16, 38, 0.9);
+    border: 1px solid rgba(64, 120, 255, 0.22);
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.tech-item:hover {
+    border-color: rgba(0, 230, 118, 0.45);
+    transform: translateY(-4px);
+}
+
+.tech-name {
+    font-family: 'Orbitron', 'Inter', sans-serif;
+    font-size: 0.95rem;
+    color: #e0f2ff;
+    letter-spacing: 0.06em;
+}
+
+.tech-role {
+    font-size: 0.85rem;
+    color: rgba(0, 230, 118, 0.65);
+    letter-spacing: 0.04em;
+}
+
+.deploy-info {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    border: 1px solid rgba(0, 230, 118, 0.15);
+    border-radius: 14px;
+    padding: 20px 24px;
+    background: rgba(3, 8, 20, 0.7);
+}
+
+.deploy-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(0, 230, 118, 0.08);
+}
+
+.deploy-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.deploy-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(0, 230, 118, 0.6);
+    min-width: 110px;
+    flex-shrink: 0;
+    padding-top: 3px;
+}
+
+.deploy-value {
+    color: rgba(224, 232, 246, 0.88);
+    font-size: 0.97rem;
+}
+
+.neon-button.small {
+    padding: 8px 18px;
+    font-size: 0.82rem;
+}
+
+.project-cta {
+    align-items: flex-start;
+    border-color: rgba(0, 230, 118, 0.3);
+    background: linear-gradient(145deg, rgba(6, 16, 38, 0.95), rgba(0, 80, 50, 0.2));
+}
