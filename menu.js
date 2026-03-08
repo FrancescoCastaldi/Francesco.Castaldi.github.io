@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             label: 'University',
             children: [
-                { label: 'Bike-Tracker', href: 'bike-maintenance.html' }
+                { label: 'Bike-Tracker', href: 'bike-maintenance.html' },
+            { label: 'Hospital Sanitization Tracker', href: 'hospital-sanitization-tracker.html' }
             ]
         },
         {
