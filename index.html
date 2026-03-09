@@ -7,20 +7,20 @@
     <link rel="stylesheet" href="styles.css">
     <script src="backgroundAnimation.js" defer></script>
     <script src="menu.js" defer></script>
-    <script src="gallery.js" defer></script>
     <script src="tech-animations.js" defer></script>
     <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
     <script src="pageCounter.js" defer></script>
 </head>
 <body>
     <header id="site-header"></header>
-    
+
     <main class="main-content">
+        <!-- HERO -->
         <section class="hero">
             <div class="hero-text">
                 <h1 class="hero-title">Francesco Castaldi</h1>
                 <p class="hero-subtitle">
-                    Ingegnere Informatico & Business Consultant. 
+                    Ingegnere Informatico & Business Consultant. <br>
                     Trasformo dati in valore per il settore healthcare digitale.
                 </p>
                 <div class="hero-buttons">
@@ -40,10 +40,46 @@
                 <code>> ready_to_innovate()</code>
             </div>
         </section>
+
+        <!-- SKILLS -->
+        <section class="skills" style="padding: 4rem 10%;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 2rem; color: var(--accent-blue);">Expertise</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div class="glass-card">
+                    <h3 style="color: var(--accent-orange); margin-bottom: 1rem;">Clinical IT</h3>
+                    <p style="color: var(--text-secondary);">Integrazione di sistemi ospedalieri e gestione workflow sanitari digitali.</p>
+                </div>
+                <div class="glass-card">
+                    <h3 style="color: var(--accent-blue); margin-bottom: 1rem;">Data Science</h3>
+                    <p style="color: var(--text-secondary);">Analisi predittiva e ottimizzazione processi tramite modelli SQL & Python.</p>
+                </div>
+                <div class="glass-card">
+                    <h3 style="color: var(--accent-gray); margin-bottom: 1rem;">Cloud Arch</h3>
+                    <p style="color: var(--text-secondary);">Progettazione infrastrutture scalabili e sicure per dati sensibili.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section class="projects" style="padding: 4rem 10%; background: rgba(255,255,255,0.01);">
+            <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Featured Projects</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                <a href="hospital-sanitization-tracker.html" style="text-decoration: none;">
+                    <div class="glass-card" style="border-left: 4px solid var(--accent-orange);">
+                        <h4 style="color: #fff;">Hospital Sanitization</h4>
+                        <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--text-secondary);">Tracking IoT per la sicurezza clinica.</p>
+                    </div>
+                </a>
+                <a href="bike-maintenance.html" style="text-decoration: none;">
+                    <div class="glass-card" style="border-left: 4px solid var(--accent-blue);">
+                        <h4 style="color: #fff;">Bike Tracker</h4>
+                        <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--text-secondary);">Gestione performance e manutenzione proattiva.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
     </main>
 
-    <footer id="site-footer">
-        <p>&copy; 2024 Francesco Castaldi. Minimal Tech Design.</p>
-    </footer>
+    <footer id="site-footer"></footer>
 </body>
 </html>
