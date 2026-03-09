@@ -8,6 +8,8 @@
     <script src="backgroundAnimation.js" defer></script>
     <script src="menu.js" defer></script>
     <script src="tech-animations.js" defer></script>
+    <script src="particles.js" defer></script>
+    <script src="homeInteractions.js" defer></script>
     <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
     <script src="pageCounter.js" defer></script>
 </head>
@@ -29,7 +31,7 @@
                 </div>
             </div>
 
-            <div class="hero-terminal">
+        <div class="hero-terminal">
                 <code>$ whoami</code>
                 <code>> francesco.castaldi</code>
                 <br>
@@ -42,18 +44,18 @@
         </section>
 
         <!-- SKILLS -->
-        <section class="skills" style="padding: 4rem 10%;">
+        <section class="skills content-panel" style="padding: 4rem 10%;">
             <h2 style="font-size: 2.5rem; margin-bottom: 2rem; color: var(--accent-blue);">Expertise</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                <div class="glass-card">
+                <div class="glass-card content-panel">
                     <h3 style="color: var(--accent-orange); margin-bottom: 1rem;">Clinical IT</h3>
                     <p style="color: var(--text-secondary);">Integrazione di sistemi ospedalieri e gestione workflow sanitari digitali.</p>
                 </div>
-                <div class="glass-card">
+                <div class="glass-card content-panel">
                     <h3 style="color: var(--accent-blue); margin-bottom: 1rem;">Data Science</h3>
                     <p style="color: var(--text-secondary);">Analisi predittiva e ottimizzazione processi tramite modelli SQL & Python.</p>
                 </div>
-                <div class="glass-card">
+                <div class="glass-card content-panel">
                     <h3 style="color: var(--accent-gray); margin-bottom: 1rem;">Cloud Arch</h3>
                     <p style="color: var(--text-secondary);">Progettazione infrastrutture scalabili e sicure per dati sensibili.</p>
                 </div>
@@ -61,25 +63,22 @@
         </section>
 
         <!-- PROJECTS -->
-        <section class="projects" style="padding: 4rem 10%; background: rgba(255,255,255,0.01);">
-            <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Featured Projects</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
-                <a href="hospital-sanitization-tracker.html" style="text-decoration: none;">
-                    <div class="glass-card" style="border-left: 4px solid var(--accent-orange);">
-                        <h4 style="color: #fff;">Hospital Sanitization</h4>
-                        <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--text-secondary);">Tracking IoT per la sicurezza clinica.</p>
-                    </div>
+        <section class="projects content-panel" style="padding: 4rem 10%;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 2rem; color: var(--accent-orange);">Featured Projects</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+                <a href="hospital-sanitization-tracker.html" class="glass-card content-panel" style="text-decoration: none; display: block;">
+                    <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem; font-size: 1.1rem;">Hospital Sanitization</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Tracking IoT per la sicurezza clinica.</p>
                 </a>
-                <a href="bike-maintenance.html" style="text-decoration: none;">
-                    <div class="glass-card" style="border-left: 4px solid var(--accent-blue);">
-                        <h4 style="color: #fff;">Bike Tracker</h4>
-                        <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--text-secondary);">Gestione performance e manutenzione proattiva.</p>
-                    </div>
+                <a href="bike-maintenance.html" class="glass-card content-panel" style="text-decoration: none; display: block;">
+                    <h4 style="color: var(--accent-orange); margin-bottom: 0.5rem; font-size: 1.1rem;">Bike Tracker</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Gestione performance e manutenzione proattiva.</p>
                 </a>
             </div>
         </section>
     </main>
 
     <footer id="site-footer"></footer>
+    <canvas id="bg-canvas"></canvas>
 </body>
 </html>
