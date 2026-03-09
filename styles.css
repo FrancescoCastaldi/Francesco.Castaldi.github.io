@@ -1060,3 +1060,53 @@ img {
   from { opacity: 0; transform: translateX(-12px); }
   to   { opacity: 1; transform: translateX(0); }
 }
+
+
+/* ================================================
+   ANIMATION FIX — Remove opacity-hiding on hero/page elements
+   Use transform-only for entrance to prevent invisible content
+   ================================================ */
+
+/* Override: hero elements stay visible, only translateY animates */
+.hero-title,
+.hero-subtitle,
+.hero-buttons,
+.hero-terminal,
+.page-hero .eyebrow,
+.page-hero h1,
+.page-hero p,
+.page-hero .hero-meta,
+.eyebrow,
+.meta-pill {
+  opacity: 1 !important;
+}
+
+/* Redefine slideUp without opacity for hero (only translate) */
+@keyframes slideUp {
+  from { transform: translateY(20px); }
+  to   { transform: translateY(0); }
+}
+
+/* Redefine fadeSlideRight without opacity */
+@keyframes fadeSlideRight {
+  from { transform: translateX(-10px); }
+  to   { transform: translateX(0); }
+}
+
+/* Redefine popIn without opacity */
+@keyframes popIn {
+  from { transform: scale(0.85); }
+  to   { transform: scale(1); }
+}
+
+/* Page fade-in: only subtle translateY, no opacity hiding */
+@keyframes pageFadeIn {
+  from { transform: translateY(4px); }
+  to   { transform: translateY(0); }
+}
+
+/* Ensure img animation never hides images */
+@keyframes imgFadeIn {
+  from { opacity: 0.7; }
+  to   { opacity: 1; }
+}
