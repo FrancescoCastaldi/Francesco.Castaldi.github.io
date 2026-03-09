@@ -706,3 +706,357 @@ body {
     font-size: 2rem;
   }
 }
+
+
+/* ================================================
+   PHOTO & GALLERY FIX — Responsive images, slideshow,
+   feature-grid, feature-card, lightbox overlay
+   ================================================ */
+
+/* Universal image safety — prevent ANY image overflow */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Slideshow wrapper */
+.slideshow-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  background: rgba(0,0,0,0.3);
+  aspect-ratio: 16 / 9;
+}
+
+/* Slideshow container */
+.slideshow {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 12px;
+}
+
+/* Auto-fit slideshow images */
+.slideshow-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 12px;
+  transition: opacity 0.6s ease;
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+
+/* Feature grid (trek-madone, giant-tcr) */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.feature-card h3 {
+  color: var(--accent-orange);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* Spec list inside feature-card / content-panel */
+.feature-card ul,
+.spec-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-card li,
+.spec-list li {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.feature-card li strong,
+.spec-list li strong {
+  color: var(--text-primary);
+  min-width: 120px;
+}
+
+/* Photo grid for strava/gallery pages */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.photo-grid img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.photo-grid img:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+}
+
+/* Lightbox overlay for full-size photo view */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  cursor: pointer;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: min(90vw, 1200px);
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 80px rgba(0,0,0,0.9);
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 1.5rem;
+  right: 2rem;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  z-index: 10000;
+  background: none;
+  border: none;
+  line-height: 1;
+}
+
+.lightbox-close:hover {
+  opacity: 1;
+}
+
+/* Responsive photos */
+@media (max-width: 768px) {
+  .slideshow-wrapper {
+    aspect-ratio: 4 / 3;
+  }
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+  .photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .photo-grid img {
+    height: 130px;
+  }
+}
+
+@media (max-width: 480px) {
+  .photo-grid {
+    grid-template-columns: 1fr;
+  }
+  .photo-grid img {
+    height: 200px;
+  }
+}
+
+/* ================================================
+   PAGE ANIMATIONS — Smooth entrance, improved reveal
+   ================================================ */
+
+/* Page fade-in on load */
+body {
+  animation: pageFadeIn 0.5s ease forwards;
+}
+
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero text stagger entrance */
+.hero-title {
+  animation: slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.hero-subtitle {
+  animation: slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+.hero-buttons {
+  animation: slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+.hero-terminal {
+  animation: slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+
+/* Subpage hero stagger */
+.page-hero .eyebrow {
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.page-hero h1 {
+  animation: slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.page-hero p {
+  animation: slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both;
+}
+
+.page-hero .hero-meta {
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+}
+
+/* Slide-up keyframe */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll-reveal base state — controlled by JS */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Nav link underline slide-in animation */
+#site-header nav a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: var(--accent-blue);
+  transition: width 0.3s ease;
+  margin-top: 2px;
+}
+
+#site-header nav a:hover::after,
+#site-header nav .active-link::after {
+  width: 100%;
+}
+
+/* Glass card entrance stagger */
+.glass-card,
+.info-card,
+.embed-card,
+.tech-card,
+.stat-card,
+.feature-card,
+.project-card {
+  transition: transform 0.3s ease, border-color 0.3s ease,
+              box-shadow 0.3s ease, opacity 0.5s ease;
+}
+
+/* Smooth image fade-in when loaded */
+img {
+  animation: imgFadeIn 0.4s ease both;
+}
+
+@keyframes imgFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Neon button pulse glow on hover */
+.neon-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.neon-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.08) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.neon-button:hover::before {
+  opacity: 1;
+}
+
+/* Meta pill pop-in */
+.meta-pill {
+  animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.meta-pill:nth-child(1) { animation-delay: 0.5s; }
+.meta-pill:nth-child(2) { animation-delay: 0.6s; }
+.meta-pill:nth-child(3) { animation-delay: 0.7s; }
+.meta-pill:nth-child(4) { animation-delay: 0.8s; }
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.7); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Eyebrow badge slide in */
+.eyebrow {
+  animation: fadeSlideRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+}
+
+@keyframes fadeSlideRight {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
