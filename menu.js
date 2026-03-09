@@ -127,3 +127,14 @@ document.addEventListener('DOMContentLoaded', () => {
         menu.addEventListener('mouseleave', closeMenu);
     });
 });
+
+
+// Auto-inject homeInteractions.js on every page
+// so all subpages get animations without editing each HTML
+(function injectInteractions() {
+  if (document.querySelector('script[src="homeInteractions.js"]')) return;
+  const s = document.createElement('script');
+  s.src = 'homeInteractions.js';
+  s.defer = true;
+  document.head.appendChild(s);
+})();
