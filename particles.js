@@ -3,7 +3,15 @@ class ParticleSystem {
   constructor() {
     this.canvas = document.createElement('canvas');
     this.canvas.id = 'particles-js';
-    document.body.prepend(this.canvas);
+    // Fix: position fixed so it doesn't block page content
+    this.canvas.style.position = 'fixed';
+    this.canvas.style.top = '0';
+    this.canvas.style.left = '0';
+    this.canvas.style.width = '100%';
+    this.canvas.style.height = '100%';
+    this.canvas.style.zIndex = '-1';
+    this.canvas.style.pointerEvents = 'none';
+    document.body.appendChild(this.canvas);
     this.ctx = this.canvas.getContext('2d');
     this.particles = [];
     this.resize();
@@ -37,7 +45,6 @@ class ParticleSystem {
       p.y += p.speedY;
       if (p.x < 0 || p.x > this.canvas.width) p.speedX *= -1;
       if (p.y < 0 || p.y > this.canvas.height) p.speedY *= -1;
-
       this.ctx.beginPath();
       this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
       this.ctx.fillStyle = p.color + '22'; // low opacity
