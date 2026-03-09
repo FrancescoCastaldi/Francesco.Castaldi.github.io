@@ -1,82 +1,87 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const colors = [
-        [30, 60, 114],  // #1e3c72
-        [42, 82, 152],  // #2a5298
-        [23, 82, 33],   // #175221
-        [219, 34, 12],  // #db220c
-        [0, 128, 128],  // #008080
-        [255, 165, 0],  // #ffa500
-        [75, 0, 130],   // #4b0082
-        [0, 255, 255]   // #00ffff
-    ];
-    let step = 0;
-    const colorIndices = [0, 1, 2, 3];
+/* 
+  Background Animation: Minimal Tech Particles
+  Palette: Gray, Blue, Black, Orange
+*/
 
-    const gradientSpeed = 0.002;
+document.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.createElement('canvas');
+    canvas.id = 'bg-canvas';
+    document.body.prepend(canvas);
+    const ctx = canvas.getContext('2d');
 
-    function updateGradient() {
-        const c0_0 = colors[colorIndices[0]];
-        const c0_1 = colors[colorIndices[1]];
-        const c1_0 = colors[colorIndices[2]];
-        const c1_1 = colors[colorIndices[3]];
+    let particles = [];
+    const particleCount = 60;
+    const colors = ['#3b82f6', '#f97316', '#94a3b8', '#1e293b'];
 
-        const istep = 1 - step;
-        const r1 = Math.round(istep * c0_0[0] + step * c0_1[0]);
-        const g1 = Math.round(istep * c0_0[1] + step * c0_1[1]);
-        const b1 = Math.round(istep * c0_0[2] + step * c0_1[2]);
-        const color1 = `rgb(${r1},${g1},${b1})`;
+    class Particle {
+        constructor() {
+            this.init();
+        }
 
-        const r2 = Math.round(istep * c1_0[0] + step * c1_1[0]);
-        const g2 = Math.round(istep * c1_0[1] + step * c1_1[1]);
-        const b2 = Math.round(istep * c1_0[2] + step * c1_1[2]);
-        const color2 = `rgb(${r2},${g2},${b2})`;
+        init() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2 + 1;
+            this.speedX = (Math.random() - 0.5) * 0.5;
+            this.speedY = (Math.random() - 0.5) * 0.5;
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+            this.opacity = Math.random() * 0.5 + 0.1;
+        }
 
-        document.body.style.background = `linear-gradient(135deg, ${color1} 0%, ${color2} 100%)`;
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
 
-        step += gradientSpeed;
-        if (step >= 1) {
-            step %= 1;
-            colorIndices[0] = colorIndices[1];
-            colorIndices[2] = colorIndices[3];
+            if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+            if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        }
 
-            colorIndices[1] = (colorIndices[1] + Math.floor(1 + Math.random() * (colors.length - 1))) % colors.length;
-            colorIndices[3] = (colorIndices[3] + Math.floor(1 + Math.random() * (colors.length - 1))) % colors.length;
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.globalAlpha = this.opacity;
+            ctx.fill();
         }
     }
 
-    setInterval(updateGradient, 10);
-
-    const dropdown = document.querySelector('.dropdown');
-    const dropdownContent = document.querySelector('.dropdown-content');
-
-    dropdown.addEventListener('mouseover', function() {
-        dropdownContent.style.display = 'block';
-    });
-
-    dropdown.addEventListener('mouseout', function() {
-        dropdownContent.style.display = 'none';
-    });
-
-    // Slideshow functionality
-    let slideIndex = 1;
-
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
-    }
-
-    function showSlides(n) {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        if (n > slides.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = slides.length}
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
+    function init() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        particles = [];
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
         }
-        slides[slideIndex - 1].style.display = "block";
     }
 
-    window.onload = function() {
-        showSlides(slideIndex); // Initialize slideshow
-        setInterval(() => plusSlides(1), 15000); // Change slide every 5 seconds
-    };
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw connections
+        ctx.strokeStyle = 'rgba(148, 163, 184, 0.05)';
+        ctx.lineWidth = 0.5;
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < 150) {
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.stroke();
+                }
+            }
+        }
+
+        particles.forEach(p => {
+            p.update();
+            p.draw();
+        });
+        requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', init);
+    init();
+    animate();
 });
