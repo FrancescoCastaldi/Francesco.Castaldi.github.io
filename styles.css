@@ -214,3 +214,250 @@ img { max-width: 100% !important; height: auto !important; border-radius: 8px; }
   color: var(--accent-blue); text-decoration: none; border-bottom: 1px solid transparent; transition: 0.3s;
 }
 .accent-link:hover { border-color: var(--accent-blue); }
+
+/* ========== SUBPAGE STYLES ========== */
+
+/* Subpage main container */
+.subpage-main {
+  padding-top: 120px;
+  min-height: 100vh;
+}
+
+/* Page hero section */
+.page-hero {
+  padding: 80px 5% 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--accent-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.page-hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+.page-hero p {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.meta-pill {
+  padding: 0.5rem 1.2rem;
+  background: rgba(74, 144, 226, 0.1);
+  border: 1px solid rgba(74, 144, 226, 0.3);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: var(--accent-blue);
+  font-weight: 500;
+}
+
+/* Content panels */
+.content-panel {
+  padding: 60px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-top: 1px solid var(--glass-border);
+}
+
+.content-panel h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.content-panel h3 {
+  font-size: 1.5rem;
+  margin: 2rem 0 1rem 0;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.content-panel p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.content-panel ul {
+  margin: 1.5rem 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.content-panel li {
+  padding: 0.75rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.content-panel li:before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent-blue);
+  font-weight: bold;
+}
+
+.content-panel code {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.2em 0.5em;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+  color: var(--accent-orange);
+}
+
+/* Buttons */
+.btn-primary, .btn-secondary {
+  display: inline-block;
+  padding: 0.9rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-right: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-primary {
+  background: var(--accent-blue);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: rgba(74, 144, 226, 0.8);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--accent-blue);
+  border: 1px solid var(--accent-blue);
+}
+
+.btn-secondary:hover {
+  background: rgba(74, 144, 226, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Info grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+}
+
+.info-card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-primary);
+}
+
+.info-card p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Contact methods */
+.contact-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.contact-method h3 {
+  font-size: 1.2rem;
+  margin: 0 0 0.5rem 0;
+  color: var(--accent-blue);
+}
+
+.contact-method p {
+  margin: 0;
+}
+
+.contact-method a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-method a:hover {
+  color: var(--accent-blue);
+}
+
+/* Embed grid */
+.embed-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.embed-card {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+}
+
+.embed-card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.embed-card iframe {
+  margin-top: 1rem;
+  border-radius: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-hero h1 {
+    font-size: 2rem;
+  }
+  
+  .page-hero p {
+    font-size: 1.1rem;
+  }
+  
+  .content-panel h2 {
+    font-size: 1.6rem;
+  }
+  
+  .subpage-main {
+    padding-top: 100px;
+  }
+}
