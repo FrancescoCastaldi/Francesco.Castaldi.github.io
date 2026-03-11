@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Francesco Castaldi - Hospital Sanitization Tracker</title>
+    <title>Hospital Sanitization Tracker - Francesco Castaldi</title>
     <link rel="stylesheet" href="styles.css">
     <script src="backgroundAnimation.js" defer></script>
     <script src="menu.js" defer></script>
-    <script src="gallery.js" defer></script>
-    <script src="pageCounter.js" defer></script>
+    <script src="tech-animations.js" defer></script>
     <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -30,116 +29,48 @@
     </section>
 
     <section class="content-panel">
-        <article class="project-card">
-            <h2>Descrizione del Progetto</h2>
-            <p>
-                Hospital Sanitization Tracker e' un sistema basato su smart contract Ethereum che permette
-                ad operatori autorizzati di <strong>registrare e certificare le operazioni di sanificazione</strong>
-                di aree ospedaliere. Ogni evento viene memorizzato in modo <strong>immutabile sulla blockchain</strong>,
-                garantendo trasparenza, tracciabilita' e non-ripudiabilita' dei dati.
-            </p>
-            <p>
-                Il progetto e' stato sviluppato per il corso di <strong>Blockchain e Criptovalute</strong>
-                dell'Universita' di Bologna (Proposal 7 &ndash; DLTs for Traceability in Supply Chain,
-                AnaNSi Research Group).
-            </p>
-        </article>
+        <h2>Descrizione del Progetto</h2>
+        <p>Hospital Sanitization Tracker è un sistema basato su smart contract Ethereum che permette ad operatori autorizzati di <strong>registrare e certificare le operazioni di sanificazione</strong> di aree ospedaliere. Ogni evento viene memorizzato in modo <strong>immutabile sulla blockchain</strong>, garantendo trasparenza, tracciabilità e non‑ripudiabilità dei dati.</p>
+        <p>Il progetto è stato sviluppato per il corso di <strong>Blockchain e Criptovalute</strong> dell’Università di Bologna (Proposal 7 – DLTs for Traceability in Supply Chain, AnaNSi Research Group).</p>
+    </section>
 
-        <article class="project-card">
-            <h2>Tecnologie Utilizzate</h2>
-            <div class="tech-grid">
-                <div class="tech-item">
-                    <span class="tech-name">Solidity 0.8.20</span>
-                    <span class="tech-role">Smart Contract Language</span>
-                </div>
-                <div class="tech-item">
-                    <span class="tech-name">Hardhat 2.28.0</span>
-                    <span class="tech-role">Sviluppo / Test / Deploy</span>
-                </div>
-                <div class="tech-item">
-                    <span class="tech-name">Ethers.js v6</span>
-                    <span class="tech-role">Interazione frontend-contratto</span>
-                </div>
-                <div class="tech-item">
-                    <span class="tech-name">Node.js v22</span>
-                    <span class="tech-role">Runtime JavaScript</span>
-                </div>
-                <div class="tech-item">
-                    <span class="tech-name">MetaMask</span>
-                    <span class="tech-role">Wallet per firma transazioni</span>
-                </div>
-                <div class="tech-item">
-                    <span class="tech-name">Ethereum Sepolia</span>
-                    <span class="tech-role">Testnet di Deploy</span>
-                </div>
-            </div>
-        </article>
+    <section class="content-panel">
+        <h2>Tecnologie Utilizzate</h2>
+        <ul>
+            <li><strong>Solidity 0.8.20</strong> Smart Contract Language</li>
+            <li><strong>Hardhat 2.28.0</strong> Sviluppo / Test / Deploy</li>
+            <li><strong>Ethers.js v6</strong> Interazione frontend‑contratto</li>
+            <li><strong>Node.js v22</strong> Runtime JavaScript</li>
+            <li><strong>MetaMask Wallet</strong> per firma transazioni</li>
+            <li><strong>Ethereum Sepolia Testnet</strong> di Deploy</li>
+        </ul>
+    </section>
 
-        <article class="project-card">
-            <h2>Architettura e Funzionalita'</h2>
-            <h3>Smart Contract</h3>
-            <p>
-                Il contratto <code>SanitizationTracker.sol</code> gestisce tre entita' principali:
-                <strong>Aree</strong> (aree ospedaliere da sanificare), <strong>Operatori</strong>
-                (personale autorizzato) e <strong>Eventi di sanificazione</strong>.
-                Il solo admin (deployer) puo' registrare aree e operatori; solo gli operatori attivi
-                possono registrare sanificazioni.
-            </p>
-            <h3>Frontend DApp</h3>
-            <p>
-                L'interfaccia web si connette al contratto tramite MetaMask e rileva automaticamente
-                il ruolo dell'utente connesso (Admin, Operatore o Guest). Permette di registrare
-                aree e operatori, registrare eventi di sanificazione e consultare lo storico completo
-                per ciascuna area.
-            </p>
-            <h3>Test Suite</h3>
-            <p>
-                Il progetto include una test suite completa con <strong>14/14 test superati</strong>,
-                sviluppata con Mocha e Hardhat.
-            </p>
-        </article>
+    <section class="content-panel">
+        <h2>Architettura e Funzionalità</h2>
+        
+        <h3>Smart Contract</h3>
+        <p>Il contratto <code>SanitizationTracker.sol</code> gestisce tre entità principali: <strong>Aree</strong> (aree ospedaliere da sanificare), <strong>Operatori</strong> (personale autorizzato) e <strong>Eventi di sanificazione</strong>. Il solo admin (deployer) può registrare aree e operatori; solo gli operatori attivi possono registrare sanificazioni.</p>
+        
+        <h3>Frontend DApp</h3>
+        <p>L’interfaccia web si connette al contratto tramite MetaMask e rileva automaticamente il ruolo dell’utente connesso (Admin, Operatore o Guest). Permette di registrare aree e operatori, registrare eventi di sanificazione e consultare lo storico completo per ciascuna area.</p>
+        
+        <h3>Test Suite</h3>
+        <p>Il progetto include una test suite completa con 14/14 test superati, sviluppata con Mocha e Hardhat.</p>
+    </section>
 
-        <article class="project-card">
-            <h2>Contratto Deployato</h2>
-            <div class="deploy-info">
-                <div class="deploy-row">
-                    <span class="deploy-label">Rete</span>
-                    <span class="deploy-value">Ethereum Sepolia Testnet</span>
-                </div>
-                <div class="deploy-row">
-                    <span class="deploy-label">Indirizzo</span>
-                    <span class="deploy-value"><code>0x679C6625f9479cf3b711F7a246C8F7a6655E4517</code></span>
-                </div>
-                <div class="deploy-row">
-                    <span class="deploy-label">Data Deploy</span>
-                    <span class="deploy-value">21 Febbraio 2026</span>
-                </div>
-                <div class="deploy-row">
-                    <span class="deploy-label">Etherscan</span>
-                    <span class="deploy-value">
-                        <a href="https://sepolia.etherscan.io/address/0x679C6625f9479cf3b711F7a246C8F7a6655E4517"
-                           target="_blank" rel="noopener noreferrer" class="neon-button ghost small">
-                            Visualizza su Sepolia Etherscan
-                        </a>
-                    </span>
-                </div>
-            </div>
-        </article>
-
-        <article class="project-card project-cta">
-            <h2>Esplora il Codice Sorgente</h2>
-            <p>
-                Tutto il codice e' disponibile pubblicamente su GitHub. Puoi esplorare il contratto
-                Solidity, la test suite, gli script di deploy e il frontend della DApp.
-            </p>
-            <a href="https://github.com/FrancescoCastaldi/HospitalSanitizationTracker"
-               target="_blank" rel="noopener noreferrer" class="neon-button">
-                Vai alla Repository GitHub
-            </a>
-        </article>
+    <section class="content-panel">
+        <h2>Prova il Progetto</h2>
+        <p>Puoi interagire con l’applicazione live sulla testnet Sepolia. La DApp è disponibile su GitHub Pages.</p>
+        <a href="https://francescocastaldi.github.io/hospital-sanitization-tracker/" target="_blank" rel="noopener" class="btn-primary">Prova l'App Live</a>
+        <a href="https://github.com/FrancescoCastaldi/hospital-sanitization-tracker" target="_blank" rel="noopener" class="btn-secondary">View on GitHub</a>
     </section>
 </main>
 
-<footer id="site-footer"></footer>
+<footer>
+    <p>&copy; 2025 Francesco Castaldi</p>
+</footer>
+
+<script src="pageCounter.js" defer></script>
 </body>
 </html>
