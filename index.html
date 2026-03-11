@@ -1,84 +1,128 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Francesco Castaldi | Tech & Healthcare Consultant</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="backgroundAnimation.js" defer></script>
-    <script src="menu.js" defer></script>
-    <script src="tech-animations.js?v=2" defer></script>
-    <script src="particles.js" defer></script>
-    <script src="homeInteractions.js" defer></script>
-    <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
-    <script src="pageCounter.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Francesco Castaldi | Tech & Healthcare Consultant</title>
+  <link rel="stylesheet" href="styles.css?v=2">
+  <script src="backgroundAnimation.js" defer></script>
+  <script src="menu.js" defer></script>
+  <script src="tech-animations.js?v=2" defer></script>
+  <script src="particles.js" defer></script>
+  <script src="homeInteractions.js" defer></script>
+  <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
+  <script src="pageCounter.js" defer></script>
 </head>
 <body>
-    <header id="site-header"></header>
+  <header id="site-header"></header>
 
-    <main class="main-content">
-        <!-- HERO -->
-        <section class="hero">
-            <div class="hero-text">
-                <h1 class="hero-title">Francesco Castaldi</h1>
-                <p class="hero-subtitle">
-                    Ingegnere Informatico & Business Consultant. <br>
-                    Trasformo dati in valore per il settore healthcare digitale.
-                </p>
-                <div class="hero-buttons">
-                    <a href="contact.html" class="neon-button">Contattami</a>
-                    <a href="strava.html" class="neon-button ghost">Performance Strava</a>
-                </div>
-            </div>
+  <main class="main-content">
 
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+
+        <!-- LEFT: testo -->
+        <div class="hero-text">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            Available for consulting
+          </div>
+          <h1 class="hero-title">Francesco<br>Castaldi</h1>
+          <p class="hero-subtitle" id="hero-subtitle">Ingegnere Informatico &amp; Business Consultant.<br>Trasformo dati in valore per il settore healthcare digitale.</p>
+          <div class="hero-meta">
+            <span class="meta-tag">Healthcare IT</span>
+            <span class="meta-tag">Data Science</span>
+            <span class="meta-tag">Cloud Arch</span>
+          </div>
+          <div class="hero-buttons">
+            <a href="contact.html" class="btn-primary">Contattami</a>
+            <a href="strava.html" class="btn-ghost">Performance Strava &rarr;</a>
+          </div>
+        </div>
+
+        <!-- RIGHT: terminal -->
         <div class="hero-terminal">
-                <code>$ whoami</code>
-                <code>> francesco.castaldi</code>
-                <br>
-                <code>$ focus</code>
-                <code>> healthcare_it, cloud_arch, data_science</code>
-                <br>
-                <code>$ status</code>
-                <code>> ready_to_innovate()</code>
-            </div>
-        </section>
+          <div class="terminal-header">
+            <span class="t-dot red"></span>
+            <span class="t-dot yellow"></span>
+            <span class="t-dot green"></span>
+            <span class="t-title">castaldi@pro ~ </span>
+          </div>
+          <div class="terminal-body">
+            <div class="t-line"><span class="t-prompt">$</span> whoami</div>
+            <div class="t-line t-output">&gt; francesco.castaldi</div>
+            <div class="t-line t-gap"></div>
+            <div class="t-line"><span class="t-prompt">$</span> focus</div>
+            <div class="t-line t-output">&gt; healthcare_it, cloud_arch, data_science</div>
+            <div class="t-line t-gap"></div>
+            <div class="t-line"><span class="t-prompt">$</span> location</div>
+            <div class="t-line t-output">&gt; Milan, Italy &#x1F1EE;&#x1F1F9;</div>
+            <div class="t-line t-gap"></div>
+            <div class="t-line"><span class="t-prompt">$</span> status</div>
+            <div class="t-line t-output t-blink">&gt; ready_to_innovate() <span class="cursor">_</span></div>
+          </div>
+        </div>
 
-        <!-- SKILLS -->
-        <section class="skills content-panel" style="padding: 4rem 10%;">
-            <h2 style="font-size: 2.5rem; margin-bottom: 2rem; color: var(--accent-blue);">Expertise</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                <div class="glass-card content-panel">
-                    <h3 style="color: var(--accent-orange); margin-bottom: 1rem;">Clinical IT</h3>
-                    <p style="color: var(--text-secondary);">Integrazione di sistemi ospedalieri e gestione workflow sanitari digitali.</p>
-                </div>
-                <div class="glass-card content-panel">
-                    <h3 style="color: var(--accent-blue); margin-bottom: 1rem;">Data Science</h3>
-                    <p style="color: var(--text-secondary);">Analisi predittiva e ottimizzazione processi tramite modelli SQL & Python.</p>
-                </div>
-                <div class="glass-card content-panel">
-                    <h3 style="color: var(--accent-gray); margin-bottom: 1rem;">Cloud Arch</h3>
-                    <p style="color: var(--text-secondary);">Progettazione infrastrutture scalabili e sicure per dati sensibili.</p>
-                </div>
-            </div>
-        </section>
+      </div>
+    </section>
 
-        <!-- PROJECTS -->
-        <section class="projects content-panel" style="padding: 4rem 10%;">
-            <h2 style="font-size: 2.5rem; margin-bottom: 2rem; color: var(--accent-orange);">Featured Projects</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
-                <a href="hospital-sanitization-tracker.html" class="glass-card content-panel" style="text-decoration: none; display: block;">
-                    <h4 style="color: var(--accent-blue); margin-bottom: 0.5rem; font-size: 1.1rem;">Hospital Sanitization</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Tracking IoT per la sicurezza clinica.</p>
-                </a>
-                <a href="bike-maintenance.html" class="glass-card content-panel" style="text-decoration: none; display: block;">
-                    <h4 style="color: var(--accent-orange); margin-bottom: 0.5rem; font-size: 1.1rem;">Bike Tracker</h4>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Gestione performance e manutenzione proattiva.</p>
-                </a>
-            </div>
-        </section>
-    </main>
+    <!-- DIVIDER -->
+    <div class="section-divider"></div>
 
-    <footer id="site-footer"></footer>
-    <canvas id="bg-canvas"></canvas>
+    <!-- SKILLS -->
+    <section class="skills-section content-panel">
+      <div class="section-label">Expertise</div>
+      <h2 class="section-title">Le mie aree di specializzazione</h2>
+      <div class="skills-grid">
+        <div class="skill-card glass-card content-panel">
+          <div class="skill-icon">&#x2695;</div>
+          <h3>Clinical IT</h3>
+          <p>Integrazione di sistemi ospedalieri, gestione workflow sanitari digitali e interoperabilit&agrave; HL7/FHIR.</p>
+          <div class="skill-tag">HIS &bull; EMR &bull; HL7</div>
+        </div>
+        <div class="skill-card glass-card content-panel">
+          <div class="skill-icon">&#x1F4CA;</div>
+          <h3>Data Science</h3>
+          <p>Analisi predittiva e ottimizzazione processi tramite modelli SQL, Python e machine learning applicato al healthcare.</p>
+          <div class="skill-tag">SQL &bull; Python &bull; ML</div>
+        </div>
+        <div class="skill-card glass-card content-panel">
+          <div class="skill-icon">&#x2601;</div>
+          <h3>Cloud Architecture</h3>
+          <p>Progettazione di infrastrutture scalabili, sicure e conformi GDPR per dati sanitari sensibili.</p>
+          <div class="skill-tag">AWS &bull; Azure &bull; GDPR</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="projects-section content-panel">
+      <div class="section-label">Projects</div>
+      <h2 class="section-title">Featured Work</h2>
+      <div class="projects-grid">
+        <a href="hospital-sanitization-tracker.html" class="project-card glass-card content-panel">
+          <div class="project-header">
+            <span class="project-tag">IoT &bull; Healthcare</span>
+            <span class="project-arrow">&rarr;</span>
+          </div>
+          <h4>Hospital Sanitization Tracker</h4>
+          <p>Sistema di tracking IoT per la gestione della sicurezza clinica e la sanitizzazione in tempo reale.</p>
+        </a>
+        <a href="bike-maintenance.html" class="project-card glass-card content-panel">
+          <div class="project-header">
+            <span class="project-tag">Analytics &bull; Sport</span>
+            <span class="project-arrow">&rarr;</span>
+          </div>
+          <h4>Bike Performance Tracker</h4>
+          <p>Dashboard per la gestione delle performance ciclistiche, manutenzione proattiva e integrazione Strava.</p>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="site-footer"></footer>
+  <canvas id="bg-canvas"></canvas>
 </body>
 </html>
