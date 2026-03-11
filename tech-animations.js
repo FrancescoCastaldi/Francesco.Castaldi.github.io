@@ -6,20 +6,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Typewriter Effect for Hero Subtitle
     const subtitle = document.querySelector('.hero-subtitle');
     if (subtitle) {
-        const text = subtitle.textContent;
-        subtitle.textContent = '';
-        let i = 0;
-        
-        function type() {
-            if (i < text.length) {
-                subtitle.textContent += text.charAt(i);
-                i++;
-                setTimeout(type, 30);
-            }
+      const lines = ['Ingegnere Informatico & Business Consultant.', 'Trasformo dati in valore per il settore healthcare digitale.'];
+      let lineIndex = 0;
+      let charIndex = 0;
+      subtitle.textContent = '';
+
+      function type() {
+        if (lineIndex < lines.length) {
+          if (charIndex < lines[lineIndex].length) {
+            subtitle.textContent += lines[lineIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(type, 30);
+          } else {
+            subtitle.textContent += ' ';
+            lineIndex++;
+            charIndex = 0;
+            setTimeout(type, 200);
+          }
         }
-        
-        // Start typewriter after a small delay
-        setTimeout(type, 500);
+      }
+
+      setTimeout(type, 500);
     }
 
     // 2. Scroll Reveal Animation for Sections
