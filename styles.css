@@ -469,13 +469,11 @@ img { max-width: 100% !important; height: auto !important; border-radius: 8px; }
   margin: 0 auto;
   padding: 2rem 0;
 }
-
-/* Immagini della gallery - formato rettangolare */
+  max-width: 800px;/* Immagini della gallery - formato rettangolare */
 #gallery img {
   width: 100%;
   max-width: 900px;
-  max-height: 600px;
-  height: auto;
+  max-height: 450px;  height: auto;
   object-fit: contain;
   margin: 0 auto;
   display: block;
@@ -495,7 +493,6 @@ img { max-width: 100% !important; height: auto !important; border-radius: 8px; }
 /* Responsive - mobile */
 @media (max-width: 768px) {
   #gallery img {
-    max-height: 400px;
-  }
+    max-height: 300px;  }
 }
 }
