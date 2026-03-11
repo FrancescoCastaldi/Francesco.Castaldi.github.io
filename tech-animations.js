@@ -6,13 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Typewriter Effect for Hero Subtitle
     const subtitle = document.querySelector('.hero-subtitle');
     if (subtitle) {
-        const text = subtitle.innerText;
-        subtitle.innerText = '';
+        const text = subtitle.textContent;
+        subtitle.textContent = '';
         let i = 0;
         
         function type() {
             if (i < text.length) {
-                subtitle.innerText += text.charAt(i);
+                subtitle.textContent += text.charAt(i);
                 i++;
                 setTimeout(type, 30);
             }
