@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strava Stats - Francesco Castaldi</title>
     <link rel="stylesheet" href="styles.css">
     <script src="backgroundAnimation.js" defer></script>
     <script src="menu.js" defer></script>
-    <script src="gallery.js" defer></script>
-    <script src="pageCounter.js" defer></script>
+    <script src="tech-animations.js" defer></script>
     <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
-    <title>Francesco Castaldi - Strava Stats</title>
 </head>
 <body>
 <header id="site-header"></header>
@@ -32,27 +31,29 @@
         <article class="embed-card">
             <h2>Activity summary</h2>
             <p>A snapshot of annual mileage, elevation and time in the saddle curated directly from Strava.</p>
-            <div class="embed-frame">
-                <iframe frameborder="0" allowtransparency="true" scrolling="no" src="https://www.strava.com/athletes/103631745/activity-summary/b894b72e8a7176c3a18f9e8264383d62769d3d1f"></iframe>
-            </div>
+            <iframe height='454' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/139639773/latest-rides/ee93abafc5a2fb9ae4ccb26b0ef9c1e1a80bf7dc'></iframe>
         </article>
-        <article class="embed-card">
-            <h2>Latest rides</h2>
-            <p>Track the freshest sessions, routes and power efforts fueling upcoming goals.</p>
-            <div class="embed-frame">
-                <iframe frameborder="0" allowtransparency="true" scrolling="no" src="https://www.strava.com/athletes/103631745/latest-rides/b894b72e8a7176c3a18f9e8264383d62769d3d1f"></iframe>
-            </div>
-        </article>
-        <article class="embed-card">
-            <h2>Moments on and off the bike</h2>
-            <p>Scenes from the road, the workshop and the data lab keep the story behind the stats alive.</p>
-            <div class="slideshow-container" data-slideshow="photos/bici.jpg, photos/IMG_4919.jpg, photos/trekmadone1.jpg, photos/trekmadone2.jpg, photos/trekmadone3.jpg, photos/trekmadone4.jpg, photos/trekmadone5.jpg, photos/trekmadone6.jpg" data-interval="6000" data-alt="Cycling gallery">
-                <div class="slideshow"></div>
-            </div>
-        </article>
+    </section>
+
+    <section class="content-panel">
+        <h2>Latest rides</h2>
+        <p>Track the freshest sessions, routes and power efforts fueling upcoming goals.</p>
+        <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no' src='https://www.strava.com/athletes/139639773/activity-summary/ee93abafc5a2fb9ae4ccb26b0ef9c1e1a80bf7dc'></iframe>
+    </section>
+
+    <section class="content-panel">
+        <h2>Moments on and off the bike</h2>
+        <p>Scenes from the road, the workshop and the data lab keep the story behind the stats alive.</p>
+        <div id="gallery"></div>
     </section>
 </main>
 
-<footer id="site-footer"></footer>
+<footer>
+    <p>&copy; 2025 Francesco Castaldi</p>
+</footer>
+
+<script src="gallery.js" defer></script>
+<script src="stravaLoop.js" defer></script>
+<script src="pageCounter.js" defer></script>
 </body>
 </html>
