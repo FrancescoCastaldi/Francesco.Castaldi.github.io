@@ -1,0 +1,16 @@
+# Visual Studio local config
+.vs/
+
+# VS Code extensions
+*.vsix
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temp files
+*.tmp
+*.bak
