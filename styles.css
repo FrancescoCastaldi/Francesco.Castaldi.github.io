@@ -432,7 +432,7 @@ code, kbd, .mono {
 /* ============================================================
    FOOTER
    ============================================================ */
-#site-footer {
+footer, #site-footer {
   padding: var(--space-12) 5%; text-align: center;
   border-top: 1px solid var(--glass-border);
   color: var(--text-muted); font-size: var(--text-xs);
