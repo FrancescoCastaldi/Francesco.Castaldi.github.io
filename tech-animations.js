@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
   Object.assign(iconContainer.style, {
     position: 'fixed', top: '0', left: '0',
     width: '100%', height: '100%',
-    zIndex: '-1', pointerEvents: 'none',
+    zIndex: '-999', pointerEvents: 'none',
     overflow: 'hidden'
   });
   document.body.appendChild(iconContainer);
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
       color: lColors[i % lColors.length],
       fontSize: (Math.random() * 12 + 9) + 'px',
       fontFamily: 'JetBrains Mono, monospace',
-      opacity: '0.07',
+      opacity: '0.04',
       left: Math.random() * 95 + '%',
       top:  Math.random() * 95 + '%',
       userSelect: 'none'
