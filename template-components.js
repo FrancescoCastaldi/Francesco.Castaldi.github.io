@@ -9,8 +9,8 @@ const SITE_CONFIG = {
     copyrightYear: new Date().getFullYear(),
     navigation: [
         { name: 'HOME', href: 'index.html' },
-        { 
-            name: 'UNIVERSITY', 
+        {
+            name: 'UNIVERSITY',
             href: '#',
             dropdown: [
                 { name: 'BIKE-TRACKER', href: 'bike-maintenance.html' },
@@ -26,7 +26,7 @@ const SITE_CONFIG = {
 function getHeaderHTML() {
     const nav = SITE_CONFIG.navigation.map(item => {
         if (item.dropdown) {
-            const dropdownItems = item.dropdown.map(sub => 
+            const dropdownItems = item.dropdown.map(sub =>
                 `<a href="${sub.href}">${sub.name}</a>`
             ).join('');
             return `
@@ -40,7 +40,6 @@ function getHeaderHTML() {
         }
         return `<a href="${item.href}" class="nav-item">${item.name}</a>`;
     }).join('');
-
     return `
         <nav class="main-nav">
             ${nav}
@@ -48,11 +47,10 @@ function getHeaderHTML() {
     `;
 }
 
-// Template del footer
+// Template del footer — unica fonte di verita' per tutte le pagine
 function getFooterHTML() {
-    return `
-        <p>&copy; ${SITE_CONFIG.copyrightYear} ${SITE_CONFIG.siteName}</p>
-    `;
+    const year = new Date().getFullYear();
+    return `<p>&copy; ${year} ${SITE_CONFIG.siteName}</p>`;
 }
 
 // Inietta i componenti nel DOM
@@ -63,12 +61,11 @@ function injectComponents() {
         headerElement.innerHTML = getHeaderHTML();
     }
 
-    // Inietta footer se esiste un elemento footer
+    // Inietta footer su TUTTI gli elementi footer — sovrascrive sempre
+    // qualunque contenuto precedente, garantendo coerenza su ogni pagina
     const footerElements = document.querySelectorAll('footer');
     footerElements.forEach(footer => {
-        if (!footer.innerHTML.trim()) {
-            footer.innerHTML = getFooterHTML();
-        }
+        footer.innerHTML = getFooterHTML();
     });
 
     // Evidenzia la pagina corrente nel menu
@@ -79,17 +76,17 @@ function injectComponents() {
 function highlightCurrentPage() {
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('.main-nav a');
-    
+
     navLinks.forEach(link => {
         const linkHref = link.getAttribute('href');
-        if (linkHref === currentPage || 
+        if (linkHref === currentPage ||
             (currentPage === '' && linkHref === 'index.html')) {
             link.classList.add('active');
         }
     });
 }
 
-// Esegui quando il DOM è pronto
+// Esegui quando il DOM e' pronto
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', injectComponents);
 } else {
