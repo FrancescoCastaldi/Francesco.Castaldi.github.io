@@ -1,17 +1,18 @@
 function initHomeInteractions() {
-  // Terminal typing effect (Home Page)
-  const lines = document.querySelectorAll('.hero-terminal code');
+  // Terminal Typing Simulation
+  const lines = document.querySelectorAll('.hero-terminal .t-line, .hero-terminal .t-output');
   lines.forEach((line, i) => {
     line.style.opacity = '0';
-    setTimeout(() => line.style.opacity = '1', 400 + i * 300);
+    line.style.transform = 'translateX(-10px)';
+    line.style.transition = 'all 0.4s ease';
+    setTimeout(() => {
+      line.style.opacity = '1';
+      line.style.transform = 'translateX(0)';
+    }, 500 + i * 200);
   });
 
-  // Intersection Observer for reveal animations (All Pages)
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
+  // Reveal Animations
+  const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -21,13 +22,8 @@ function initHomeInteractions() {
     });
   }, observerOptions);
 
-  const targets = document.querySelectorAll('.reveal-on-scroll, .content-panel, .feature-card, .glass-card, .page-hero');
+  const targets = document.querySelectorAll('.skill-card, .project-card, .section-title, .hero-title');
   targets.forEach(el => observer.observe(el));
 }
 
-// Ensure execution even if injected after DOMContentLoaded
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initHomeInteractions);
-} else {
-  initHomeInteractions();
-}
+document.addEventListener('DOMContentLoaded', initHomeInteractions);
