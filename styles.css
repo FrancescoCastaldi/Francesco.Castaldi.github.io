@@ -61,14 +61,12 @@ img { max-width: 100%; height: auto; border-radius: var(--radius-md); display: b
 button { background: none; border: none; font: inherit; color: inherit; cursor: none; }
 a { cursor: none; }
 
-/* focus-visible per accessibilità */
 :focus-visible {
   outline: 2px solid var(--accent-blue);
   outline-offset: 3px;
   border-radius: var(--radius-sm);
 }
 
-/* reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -79,7 +77,6 @@ a { cursor: none; }
   body { animation: none; }
 }
 
-/* mobile: ripristina cursore standard */
 @media (pointer: coarse) {
   body, a, button, [role="button"] { cursor: auto; }
   #cursor-dot, #cursor-ring { display: none !important; }
@@ -102,9 +99,12 @@ body::before {
 
 /* ============================================================
    CUSTOM CURSOR
+   FIX: aggiunto top:0; left:0 — senza, position:fixed non ha
+        un'ancora e transform:translate(x,y) del JS parte fuori viewport
    ============================================================ */
 #cursor-dot {
   position: fixed;
+  top: 0; left: 0;
   width: 6px; height: 6px;
   background: var(--accent-blue);
   border-radius: 50%;
@@ -116,6 +116,7 @@ body::before {
 }
 #cursor-ring {
   position: fixed;
+  top: 0; left: 0;
   width: 32px; height: 32px;
   border: 1.5px solid rgba(59, 130, 246, 0.5);
   border-radius: 50%;
@@ -212,7 +213,6 @@ h1, .page-hero h1 {
   color: var(--text-primary);
   text-wrap: balance;
 }
-/* gradient solo sull'hero title della homepage */
 .hero-title {
   font-family: var(--font-display);
   font-size: var(--text-hero);
@@ -534,8 +534,6 @@ code, kbd, .mono {
 
 /* ============================================================
    REVEAL ANIMATIONS
-   FIX: opacity:0 solo su .reveal-on-scroll e .feature-card,
-        NON su .content-panel (altrimenti la pagina resta bianca senza JS)
    ============================================================ */
 .reveal-on-scroll,
 .feature-card {
