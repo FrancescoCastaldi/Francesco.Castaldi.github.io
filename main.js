@@ -390,6 +390,22 @@
     });
   }
 
+    /* ================================================================
+   * 9. STRAVA VIDEO LOOP (ex stravaLoop.js)
+   *    Loop video #myVideo per un massimo di 3 volte
+   * ================================================================ */
+  function initStravaLoop() {
+    var video = document.getElementById('myVideo');
+    if (!video) return;
+    var loopCount = 0;
+    var maxLoops  = 3;
+    video.addEventListener('ended', function () {
+      loopCount++;
+      if (loopCount < maxLoops) video.play();
+    });
+  }
+
+
   /* ================================================================
    * BOOTSTRAP — un solo DOMContentLoaded
    * ================================================================ */
@@ -402,6 +418,7 @@
     initTechAnimations();
     initHomeInteractions();
     initGallery();
+        initStravaLoop();
   });
 
 })();
