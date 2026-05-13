@@ -3,15 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="Francesco Castaldi — Ingegnere Informatico e Business Consultant specializzato in Healthcare IT, Data Science e Cloud Architecture. Portfolio, progetti universitari e performance ciclistica.">
+    <meta name="keywords" content="Francesco Castaldi, ingegnere informatico, business consultant, healthcare IT, data science, cloud architecture, portfolio, Parma">
+    <meta name="author" content="Francesco Castaldi">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://francescocastaldi.github.io/">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://francescocastaldi.github.io/">
+    <meta property="og:title" content="Francesco Castaldi | Tech & Healthcare Consultant">
+    <meta property="og:description" content="Ingegnere Informatico e Business Consultant specializzato in Healthcare IT, Data Science e Cloud Architecture. Scopri i miei progetti e contattami.">
+    <meta property="og:image" content="https://francescocastaldi.github.io/photos/favicon.ico">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Francesco Castaldi | Tech & Healthcare Consultant">
+    <meta name="twitter:description" content="Ingegnere Informatico e Business Consultant. Healthcare IT, Data Science, Cloud Architecture.">
   <title>Francesco Castaldi | Tech & Healthcare Consultant</title>
-  <link rel="stylesheet" href="styles.css?v=2">
-  <script src="backgroundAnimation.js" defer></script>
-  <script src="menu.js" defer></script>
-  <script src="tech-animations.js?v=2" defer></script>
-  <script src="particles.js" defer></script>
-  <script src="homeInteractions.js" defer></script>
-  <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
-  <script src="pageCounter.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=5">
+<link rel="icon" href="photos/favicon.ico" type="image/x-icon">
+        <script src="main.js" defer></script>
 </head>
 <body>
   <header id="site-header"></header>
@@ -24,7 +36,6 @@
 
         <!-- LEFT: testo -->
         <div class="hero-text">
-         
           <h1 class="hero-title">Francesco<br>Castaldi</h1>
           <p class="hero-subtitle" id="hero-subtitle">Ingegnere Informatico &amp; Business Consultant.<br>Trasformo dati in valore per il settore healthcare digitale.</p>
           <div class="hero-meta">
@@ -34,7 +45,7 @@
           </div>
           <div class="hero-buttons">
             <a href="contact.html" class="btn-primary">Contattami</a>
-            <a href="strava.html" class="btn-ghost">Performance Strava</a>
+            <a href="strava.html" class="btn-secondary">Performance Strava</a>
           </div>
         </div>
 
@@ -54,7 +65,7 @@
             <div class="t-line t-output">&gt; healthcare_it, cloud_arch, data_science</div>
             <div class="t-line t-gap"></div>
             <div class="t-line"><span class="t-prompt">$</span> location</div>
-            <div class="t-line t-output">&gt;Italy &#x1F1EE;&#x1F1F9;</div>
+            <div class="t-line t-output">&gt; Italy &#x1F1EE;&#x1F1F9;</div>
             <div class="t-line t-gap"></div>
             <div class="t-line"><span class="t-prompt">$</span> status</div>
             <div class="t-line t-output t-blink">&gt; ready_to_innovate() <span class="cursor">_</span></div>
@@ -72,19 +83,19 @@
       <div class="section-label">Expertise</div>
       <h2 class="section-title">Le mie aree di specializzazione</h2>
       <div class="skills-grid">
-        <div class="skill-card glass-card content-panel">
+        <div class="skill-card glass-card reveal-on-scroll">
           <div class="skill-icon">&#x2695;</div>
           <h3>Clinical IT</h3>
           <p>Integrazione di sistemi ospedalieri, gestione workflow sanitari digitali e interoperabilit&agrave; HL7/FHIR.</p>
           <div class="skill-tag">HIS &bull; EMR &bull; HL7</div>
         </div>
-        <div class="skill-card glass-card content-panel">
+        <div class="skill-card glass-card reveal-on-scroll">
           <div class="skill-icon">&#x1F4CA;</div>
           <h3>Data Science</h3>
           <p>Analisi predittiva e ottimizzazione processi tramite modelli SQL, Python e machine learning applicato al healthcare.</p>
           <div class="skill-tag">SQL &bull; Python &bull; ML</div>
         </div>
-        <div class="skill-card glass-card content-panel">
+        <div class="skill-card glass-card reveal-on-scroll">
           <div class="skill-icon">&#x2601;</div>
           <h3>Cloud Architecture</h3>
           <p>Progettazione di infrastrutture scalabili, sicure e conformi GDPR per dati sanitari sensibili.</p>
@@ -93,12 +104,15 @@
       </div>
     </section>
 
+    <!-- DIVIDER -->
+    <div class="section-divider"></div>
+
     <!-- PROJECTS -->
     <section class="projects-section content-panel">
       <div class="section-label">Projects</div>
       <h2 class="section-title">Featured Work</h2>
       <div class="projects-grid">
-        <a href="hospital-sanitization-tracker.html" class="project-card glass-card content-panel">
+        <a href="hospital-sanitization-tracker.html" class="project-card glass-card reveal-on-scroll">
           <div class="project-header">
             <span class="project-tag">IoT &bull; Healthcare</span>
             <span class="project-arrow">&rarr;</span>
@@ -106,7 +120,7 @@
           <h4>Hospital Sanitization Tracker</h4>
           <p>Sistema di tracking IoT per la gestione della sicurezza clinica e la sanitizzazione in tempo reale.</p>
         </a>
-        <a href="bike-maintenance.html" class="project-card glass-card content-panel">
+        <a href="bike-maintenance.html" class="project-card glass-card reveal-on-scroll">
           <div class="project-header">
             <span class="project-tag">Analytics &bull; Sport</span>
             <span class="project-arrow">&rarr;</span>
