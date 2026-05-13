@@ -663,3 +663,97 @@ code {
     gap: 1rem;
   }
 }
+
+
+/* ================================================================
+   MEDIA RESPONSIVI (immagini, iframe, slideshow)
+   ================================================================ */
+
+/* Contenitore per iframe (es. Strava) */
+.embed-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: 1.5rem 0;
+  overflow: hidden;
+}
+
+.embed-container iframe {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 160px; /* per i riepiloghi Strava */
+  border: none;
+  border-radius: 12px;
+  background: #0a0a0c;
+}
+
+/* Slideshow: immagini e contenitori */
+.slideshow-container,
+[data-slideshow] {
+  width: 100%;
+  max-width: 100%;
+  margin: 1.5rem 0;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-glow);
+}
+
+.slideshow {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slideshow-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 500px; /* limita altezza per evitare fuoriuscita */
+  object-fit: contain; /* mantiene proporzioni senza tagli */
+  display: block;
+  margin: 0 auto;
+}
+
+/* Tutte le immagini dentro .content-panel */
+.content-panel img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  margin: 1rem 0;
+}
+
+/* Video (es. #myVideo) */
+video {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  margin: 1rem 0;
+}
+
+/* Galleria generica (#gallery) */
+#gallery {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Fix per iframe Strava specifici (se hanno attributi width/height fissi) */
+iframe[src*="strava.com"] {
+  max-width: 100%;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 160px;
+}
+
+/* Responsive: su schermi piccoli riduci ulteriormente */
+@media (max-width: 768px) {
+  .slideshow-image {
+    max-height: 300px;
+  }
+  .embed-container iframe {
+    min-height: 120px;
+  }
+}

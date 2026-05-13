@@ -1,25 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strava Stats - Francesco Castaldi</title>
-    <link rel="stylesheet" href="styles.css">
-<script src="main.js" defer></script>
+    <title>Strava Stats – Francesco Castaldi</title>
+    <link rel="stylesheet" href="styles.css?v=5">
     <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
+    <script src="main.js" defer></script>
 </head>
-
 <body>
     <header id="site-header"></header>
 
-    <main class="main-content subpage-main" id="main-content">
+    <main class="main-content subpage-main">
         <section class="page-hero">
             <div>
-                <span class="eyebrow">Strava dashboard</span>
-                <h1>Turning every ride into actionable telemetry</h1>
-                <p>Performance analytics, training load and gallery highlights update automatically so I can focus on
-                    the next climb.</p>
+                <span class="eyebrow">Dashboard Strava</span>
+                <h1>Ogni uscita diventa telemetria utilizzabile</h1>
+                <p>Analisi delle performance, carico di allenamento e galleria di momenti salienti si aggiornano automaticamente così posso concentrarmi sulla prossima salita.</p>
                 <div class="hero-meta">
                     <span class="meta-pill">Data-driven</span>
                     <span class="meta-pill">Endurance</span>
@@ -28,36 +25,35 @@
             </div>
         </section>
 
-        <section class="content-panel embed-grid">
-            <article class="embed-card">
-                <h2>Activity summary</h2>
-                <p>A snapshot of annual mileage, elevation and time in the saddle curated directly from Strava.</p>
-
-                <iframe height='160' width='300' frameborder='0' allowtransparency='true' scrolling='no'
-                    src='https://www.strava.com/athletes/103631745/activity-summary/b894b72e8a7176c3a18f9e8264383d62769d3d1f'></iframe>
+        <section class="content-panel">
+            <h2>Riepilogo attività</h2>
+            <p>Un'istantanea di chilometraggio annuale, dislivello e tempo in sella, curata direttamente da Strava.</p>
+            <div class="embed-container" style="margin: 1.5rem 0;">
+                <iframe height="160" width="100%" frameborder="0" allowtransparency="true" scrolling="no"
+                    src="https://www.strava.com/athletes/103631745/activity-summary/b894b72e8a7176c3a18f9e8264383d62769d3d1f"></iframe>
+            </div>
         </section>
 
         <section class="content-panel">
-            <h2>Latest rides</h2>
-            <p>Track the freshest sessions, routes and power efforts fueling upcoming goals.</p>
-            <iframe height='454' width='600' frameborder='0' allowtransparency='true' scrolling='no'
-                src='https://www.strava.com/athletes/103631745/latest-rides/b894b72e8a7176c3a18f9e8264383d62769d3d1f'></iframe>
+            <h2>Ultime uscite</h2>
+            <p>Traccia le sessioni più recenti, i percorsi e gli sforzi in potenza che alimentano i prossimi obiettivi.</p>
+            <div class="embed-container" style="margin: 1.5rem 0;">
+                <iframe height="454" width="100%" frameborder="0" allowtransparency="true" scrolling="no"
+                    src="https://www.strava.com/athletes/103631745/latest-rides/b894b72e8a7176c3a18f9e8264383d62769d3d1f"></iframe>
+            </div>
         </section>
 
         <section class="content-panel">
-            <h2>Moments on and off the bike</h2>
-            <p>Scenes from the road, the workshop and the data lab keep the story behind the stats alive.</p>
-            <div id="gallery"></div>
+            <h2>Momenti in e fuori sella</h2>
+            <p>Scene dalla strada, dall'officina e dal laboratorio dati mantengono viva la storia dietro le statistiche.</p>
+            <!-- Galleria: main.js la gestirà automaticamente con data-slideshow -->
+            <div id="gallery" data-slideshow="photos/cycling_scene.jpg, photos/IMG_4919.jpg, photos/IMG_6623.jpg, photos/IMG_7758.jpg" data-alt="Momenti in bicicletta" data-interval="4000" data-shuffle="false">
+                <div class="slideshow" style="margin-top: 1.5rem;"></div>
+            </div>
         </section>
     </main>
 
-    <footer>
-        
-    </footer>
-
-    <script src="gallery.js" defer></script>
-    <script src="stravaLoop.js" defer></script>
-    <script src="pageCounter.js" defer></script>
+    <footer id="site-footer"></footer>
+    <canvas id="bg-canvas"></canvas>
 </body>
-
 </html>
