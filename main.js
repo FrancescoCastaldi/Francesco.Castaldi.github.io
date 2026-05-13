@@ -221,6 +221,31 @@
       el.style.transition = 'opacity 0.5s cubic-bezier(0.2, 0.9, 0.4, 1), transform 0.5s ease';
       revealObserver.observe(el);
     });
+    function initCustomCursor() {
+  if (window.matchMedia('(pointer: fine)').matches && !document.getElementById('cursor-dot')) {
+    const dot = document.createElement('div');
+    const ring = document.createElement('div');
+    dot.id = 'cursor-dot';
+    ring.id = 'cursor-ring';
+    document.body.appendChild(dot);
+    document.body.appendChild(ring);
+    let mx = -100, my = -100, rx = -100, ry = -100;
+    document.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
+    function animate() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      dot.style.transform = `translate(${mx}px, ${my}px)`;
+      ring.style.transform = `translate(${rx}px, ${ry}px)`;
+      requestAnimationFrame(animate);
+    }
+    animate();
+    document.querySelectorAll('a, button, .btn-primary, .btn-ghost, .project-card, .skill-card')
+      .forEach(el => {
+        el.addEventListener('mouseenter', () => ring.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => ring.classList.remove('cursor-hover'));
+      });
+  }
+}
   }
 
   /* ================================================================
