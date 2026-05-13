@@ -476,7 +476,7 @@
     injectHeader();
     injectFooter();
     initPageCounter();
-    initBgAnimation();
+    //initBgAnimation();
     initParticles();
     initTechAnimations();
     initCustomCursor();
