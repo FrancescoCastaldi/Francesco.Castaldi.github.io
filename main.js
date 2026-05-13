@@ -1,21 +1,19 @@
 /**
- * main.js — unico file JS per Francesco.Castaldi.github.io
+ * main.js — tech minimal futuristic (ing. informatico ciclistico)
  *
- * Sostituisce: backgroundAnimation.js, menu.js, tech-animations.js,
- *              particles.js, homeInteractions.js, pageCounter.js,
- *              template-components.js, gallery.js
- *
- * Tutto il codice è racchiuso in un IIFE per evitare
- * inquinamento dello scope globale e conflitti tra moduli.
+ * Version: 2.0
+ * Features: matrix/particles (opachi, lenti), reveal solo fade + Y,
+ *           terminal typing, gallery, video loop, contatore visite,
+ *           header/footer dinamici, senza effetti ridondanti.
  */
 (function () {
   'use strict';
 
   /* ================================================================
-   * 1. SITE CONFIG — unica fonte di verità per navigazione e footer
+   * 1. SITE CONFIG — unica fonte di verità (aggiunto meta 'CYBER')
    * ================================================================ */
   var SITE_CONFIG = {
-    siteName: 'CASTALDI.SYS',
+    siteName: 'CYCLOTECH.SYS',
     copyrightYear: new Date().getFullYear(),
     navigation: [
       { name: '// HOME', href: 'index.html' },
@@ -42,7 +40,7 @@
   };
 
   /* ================================================================
-   * 2. HEADER & FOOTER INJECTION (ex template-components.js + menu.js)
+   * 2. HEADER & FOOTER INJECTION (identico)
    * ================================================================ */
   function buildNavHTML() {
     return SITE_CONFIG.navigation.map(function (item) {
@@ -82,17 +80,12 @@
     header.innerHTML = '';
     header.appendChild(nav);
     highlightCurrentPage(nav);
-
-    // Dropdown keyboard + hover accessibility
+    // Minimal dropdown (solo hover, niente focus espanso per ridurre js)
     nav.querySelectorAll('.dropdown').forEach(function (dd) {
       var trigger = dd.querySelector('.dropbtn');
       var menu    = dd.querySelector('.dropdown-content');
       if (!trigger || !menu) return;
-      trigger.addEventListener('click',      function (e) { e.preventDefault(); });
-      trigger.addEventListener('focus',      function () { trigger.setAttribute('aria-expanded', 'true'); });
-      trigger.addEventListener('blur',       function () { trigger.setAttribute('aria-expanded', 'false'); });
-      menu.addEventListener('mouseenter',    function () { trigger.setAttribute('aria-expanded', 'true'); });
-      menu.addEventListener('mouseleave',    function () { trigger.setAttribute('aria-expanded', 'false'); });
+      trigger.addEventListener('click', function (e) { e.preventDefault(); });
     });
   }
 
@@ -100,14 +93,14 @@
     document.querySelectorAll('footer, #site-footer').forEach(function (footer) {
       footer.classList.add('footer');
       footer.innerHTML =
-        '<div>SYSTEM.STATUS: OPERATIONAL</div>' +
+        '<div>⚡ SYS.READY // CYCLING MODE</div>' +
         '<div>&copy; ' + SITE_CONFIG.copyrightYear + ' ' + SITE_CONFIG.siteName + ' // PORT 2026</div>' +
         '<div>Page Views: <span id="visit-count"></span></div>';
     });
   }
 
   /* ================================================================
-   * 3. PAGE VISIT COUNTER (ex pageCounter.js)
+   * 3. PAGE VISIT COUNTER (identico)
    * ================================================================ */
   function initPageCounter() {
     var KEY = 'site_total_views';
@@ -118,16 +111,16 @@
   }
 
   /* ================================================================
-   * 4. BACKGROUND MATRIX ANIMATION (ex backgroundAnimation.js)
-   *    Solo su pagine con #bg-canvas
+   * 4. BACKGROUND: MATRIX (minimal, opaco, lento)
    * ================================================================ */
   function initBgAnimation() {
     var canvas = document.getElementById('bg-canvas');
     if (!canvas) return;
     var ctx = canvas.getContext('2d');
     var width, height, columns, drops;
-    var fontSize = 16;
+    var fontSize = 18;
     var chars = '01';
+    var opacity = 0.03;  // molto sottile
 
     function init() {
       width   = canvas.width  = window.innerWidth;
@@ -137,29 +130,27 @@
     }
 
     function draw() {
-      ctx.fillStyle = 'rgba(3, 3, 4, 0.05)';
+      ctx.fillStyle = 'rgba(3, 3, 4, ' + opacity + ')';
       ctx.fillRect(0, 0, width, height);
-      ctx.fillStyle = '#00f2ff';
-      ctx.font = fontSize + 'px JetBrains Mono';
+      ctx.fillStyle = '#2a9d8f'; // verde-tecnologico
+      ctx.font = fontSize + 'px "JetBrains Mono", monospace';
       for (var i = 0; i < drops.length; i++) {
         var text = chars.charAt(Math.floor(Math.random() * chars.length));
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        if (drops[i] * fontSize > height && Math.random() > 0.975) drops[i] = 0;
-        drops[i]++;
+        if (drops[i] * fontSize > height && Math.random() > 0.98) drops[i] = 0;
+        drops[i] += 0.7; // più lento
       }
     }
 
     window.addEventListener('resize', init);
     init();
-    setInterval(draw, 50);
+    setInterval(draw, 80);
   }
 
   /* ================================================================
-   * 5. PARTICLES BACKGROUND (ex particles.js)
-   *    Crea canvas solo se non esiste già un #bg-canvas
+   * 5. PARTICLES (solo se nessun canvas matrix) — minimal, meno particelle
    * ================================================================ */
   function initParticles() {
-    // Evita di creare particelle se la pagina usa già il canvas matrix
     if (document.getElementById('bg-canvas')) return;
     var cvs = document.createElement('canvas');
     cvs.id = 'particles-js';
@@ -176,14 +167,15 @@
     resize();
     window.addEventListener('resize', resize);
 
-    for (var i = 0; i < 50; i++) {
+    // solo 25 particelle, più piccole e lente
+    for (var i = 0; i < 25; i++) {
       particles.push({
         x: Math.random() * cvs.width,
         y: Math.random() * cvs.height,
-        size: Math.random() * 2 + 1,
-        speedX: Math.random() * 0.5 - 0.25,
-        speedY: Math.random() * 0.5 - 0.25,
-        color: Math.random() > 0.5 ? '#3b82f6' : '#f97316'
+        size: Math.random() * 1.5 + 0.5,
+        speedX: (Math.random() - 0.5) * 0.2,
+        speedY: (Math.random() - 0.5) * 0.2,
+        color: '#3b82f6'
       });
     }
 
@@ -196,7 +188,7 @@
         if (p.y < 0 || p.y > cvs.height) p.speedY *= -1;
         ctx2.beginPath();
         ctx2.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx2.fillStyle = p.color + '22';
+        ctx2.fillStyle = p.color + '33';
         ctx2.fill();
       });
       requestAnimationFrame(animate);
@@ -204,20 +196,19 @@
   }
 
   /* ================================================================
-   * 6. TECH ANIMATIONS (ex tech-animations.js)
-   *    Staggered reveal, spotlight, custom cursor, glitch, floating labels
+   * 6. TECH ANIMATIONS — VERSIONE MINIMAL (solo fade + leggero y)
+   *    RIMOSSO: spotlight, custom cursor, glitch, floating labels
    * ================================================================ */
   function initTechAnimations() {
-    /* 6a. Staggered scroll reveal */
+    // Solo staggered reveal (più lineare)
     var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
-        var el    = entry.target;
+        var el = entry.target;
         var delay = parseFloat(el.dataset.delay || 0);
         setTimeout(function () {
-          el.style.opacity   = '1';
-          el.style.transform = 'translateY(0) scale(1)';
-          el.style.clipPath  = 'inset(0% 0% 0% 0%)';
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
         }, delay);
         revealObserver.unobserve(el);
       });
@@ -226,129 +217,35 @@
     document.querySelectorAll(
       'section:not(.hero), .hero-terminal, .glass-card, .skill-card, .project-card, .info-card'
     ).forEach(function (el, i) {
-      var stagger = (i % 3) * 120;
-      el.dataset.delay    = stagger;
-      el.style.opacity    = '0';
-      el.style.transform  = 'translateY(32px) scale(0.98)';
-      el.style.clipPath   = 'inset(8% 0% 0% 0%)';
-      el.style.transition =
-        'opacity 0.75s cubic-bezier(0.16,1,0.3,1), ' +
-        'transform 0.75s cubic-bezier(0.16,1,0.3,1), ' +
-        'clip-path 0.75s cubic-bezier(0.16,1,0.3,1)';
+      var stagger = (i % 3) * 80; // ridotto delay
+      el.dataset.delay = stagger;
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(16px)';
+      el.style.transition = 'opacity 0.5s cubic-bezier(0.2, 0.9, 0.4, 1), transform 0.5s ease';
       revealObserver.observe(el);
     });
-
-    /* 6b. Spotlight card effect */
-    document.querySelectorAll('.glass-card, .skill-card, .project-card, .info-card')
-      .forEach(function (card) {
-        card.addEventListener('mousemove', function (e) {
-          var rect = card.getBoundingClientRect();
-          card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
-          card.style.setProperty('--my', (e.clientY - rect.top)  + 'px');
-          card.style.backgroundImage =
-            'radial-gradient(320px circle at var(--mx) var(--my), rgba(59,130,246,0.07), transparent 70%), rgba(22,22,26,0.6)';
-        });
-        card.addEventListener('mouseleave', function () {
-          card.style.backgroundImage = '';
-        });
-      });
-
-    /* 6c. Custom cursor (solo dispositivi con puntatore preciso) */
-    if (window.matchMedia('(pointer: fine)').matches) {
-      var dot  = document.createElement('div');
-      var ring = document.createElement('div');
-      dot.id   = 'cursor-dot';
-      ring.id  = 'cursor-ring';
-      document.body.appendChild(dot);
-      document.body.appendChild(ring);
-      var mx = -100, my = -100, rx = -100, ry = -100;
-      document.addEventListener('mousemove', function (e) { mx = e.clientX; my = e.clientY; });
-      (function animateCursor() {
-        rx += (mx - rx) * 0.12;
-        ry += (my - ry) * 0.12;
-        dot.style.transform  = 'translate(' + mx + 'px,' + my + 'px)';
-        ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
-        requestAnimationFrame(animateCursor);
-      })();
-      document.querySelectorAll('a, button, .btn-primary, .btn-ghost, .btn-secondary, .project-card, .skill-card')
-        .forEach(function (el) {
-          el.addEventListener('mouseenter', function () { ring.classList.add('cursor-hover'); });
-          el.addEventListener('mouseleave', function () { ring.classList.remove('cursor-hover'); });
-        });
-    }
-
-    /* 6d. Hero title glitch (one-shot) */
-    var heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) {
-      heroTitle.classList.add('glitch-once');
-      setTimeout(function () { heroTitle.classList.remove('glitch-once'); }, 800);
-    }
-
-    /* 6e. Floating tech labels (background) */
-    var iconContainer = document.createElement('div');
-    iconContainer.id = 'floating-icons';
-    Object.assign(iconContainer.style, {
-      position: 'fixed', top: '0', left: '0',
-      width: '100%', height: '100%',
-      zIndex: '-999', pointerEvents: 'none', overflow: 'hidden'
-    });
-    document.body.appendChild(iconContainer);
-    var labels  = ['[SQL]', '{JSON}', '', '0101', '[HL7]', 'SELECT *', 'git push', 'kubectl'];
-    var lColors = ['#3b82f6', '#f97316', '#94a3b8'];
-    for (var j = 0; j < 12; j++) {
-      (function (idx) {
-        var lbl = document.createElement('div');
-        lbl.textContent = labels[idx % labels.length];
-        Object.assign(lbl.style, {
-          position:   'absolute',
-          color:      lColors[idx % lColors.length],
-          fontSize:   (Math.random() * 12 + 9) + 'px',
-          fontFamily: 'JetBrains Mono, monospace',
-          opacity:    '0.04',
-          left:       Math.random() * 95 + '%',
-          top:        Math.random() * 95 + '%',
-          userSelect: 'none'
-        });
-        iconContainer.appendChild(lbl);
-        var px = parseFloat(lbl.style.left);
-        var py = parseFloat(lbl.style.top);
-        var vx = (Math.random() - 0.5) * 0.015;
-        var vy = (Math.random() - 0.5) * 0.015;
-        (function tick() {
-          px += vx; py += vy;
-          if (px < 0 || px > 95) vx *= -1;
-          if (py < 0 || py > 95) vy *= -1;
-          lbl.style.left = px + '%';
-          lbl.style.top  = py + '%';
-          requestAnimationFrame(tick);
-        })();
-      })(j);
-    }
   }
 
   /* ================================================================
-   * 7. HOME INTERACTIONS (ex homeInteractions.js)
-   *    Terminal typing + reveal — attivo solo su pagine con .hero-terminal
+   * 7. HOME INTERACTIONS — terminal typing (identico)
    * ================================================================ */
   function initHomeInteractions() {
-    /* Terminal typing simulation */
     var lines = document.querySelectorAll('.hero-terminal .t-line, .hero-terminal .t-output');
     if (lines.length) {
       lines.forEach(function (line, i) {
-        line.style.opacity    = '0';
-        line.style.transform  = 'translateX(-10px)';
-        line.style.transition = 'all 0.4s ease';
+        line.style.opacity = '0';
+        line.style.transform = 'translateX(-6px)';
+        line.style.transition = 'all 0.3s ease';
         setTimeout(function () {
-          line.style.opacity   = '1';
+          line.style.opacity = '1';
           line.style.transform = 'translateX(0)';
-        }, 500 + i * 200);
+        }, 300 + i * 150);
       });
     }
   }
 
   /* ================================================================
-   * 8. GALLERY / SLIDESHOW (ex gallery.js)
-   *    Attivo solo su elementi con [data-slideshow]
+   * 8. GALLERY / SLIDESHOW (identico)
    * ================================================================ */
   function initGallery() {
     function shuffleArray(arr) {
@@ -390,9 +287,8 @@
     });
   }
 
-    /* ================================================================
-   * 9. STRAVA VIDEO LOOP (ex stravaLoop.js)
-   *    Loop video #myVideo per un massimo di 3 volte
+  /* ================================================================
+   * 9. STRAVA VIDEO LOOP (identico)
    * ================================================================ */
   function initStravaLoop() {
     var video = document.getElementById('myVideo');
@@ -405,9 +301,8 @@
     });
   }
 
-
   /* ================================================================
-   * BOOTSTRAP — un solo DOMContentLoaded
+   * BOOTSTRAP (un solo DOMContentLoaded)
    * ================================================================ */
   document.addEventListener('DOMContentLoaded', function () {
     injectHeader();
@@ -418,7 +313,7 @@
     initTechAnimations();
     initHomeInteractions();
     initGallery();
-        initStravaLoop();
+    initStravaLoop();
   });
 
 })();
