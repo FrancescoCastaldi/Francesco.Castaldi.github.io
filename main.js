@@ -1,16 +1,16 @@
 /**
  * main.js — tech minimal futuristic (ing. informatico ciclistico)
  *
- * Version: 2.0
- * Features: matrix/particles (opachi, lenti), reveal solo fade + Y,
- *           terminal typing, gallery, video loop, contatore visite,
- *           header/footer dinamici, senza effetti ridondanti.
+ * Version: 2.1
+ * Features: matrix/particles, reveal fade+Y, terminal typing, gallery, video loop,
+ *           header/footer dinamici, contatore visite.
+ * Modifica: aggiunta voce GPX-EDITOR nel menu UNIVERSITY.
  */
 (function () {
   'use strict';
 
   /* ================================================================
-   * 1. SITE CONFIG — unica fonte di verità (aggiunto meta 'CYBER')
+   * 1. SITE CONFIG — unica fonte di verità
    * ================================================================ */
   var SITE_CONFIG = {
     siteName: 'CYCLOTECH.SYS',
@@ -22,7 +22,8 @@
         href: '#',
         dropdown: [
           { name: 'BIKE-TRACKER',      href: 'bike-maintenance.html' },
-          { name: 'HOSPITAL-SYSTEM',   href: 'hospital-sanitization-tracker.html' }
+          { name: 'HOSPITAL-SYSTEM',   href: 'hospital-sanitization-tracker.html' },
+          { name: 'GPX-EDITOR',        href: 'gpx-editor.html' }   // <-- NUOVA VOCE
         ]
       },
       {
@@ -40,7 +41,7 @@
   };
 
   /* ================================================================
-   * 2. HEADER & FOOTER INJECTION (identico)
+   * 2. HEADER & FOOTER INJECTION
    * ================================================================ */
   function buildNavHTML() {
     return SITE_CONFIG.navigation.map(function (item) {
@@ -80,7 +81,6 @@
     header.innerHTML = '';
     header.appendChild(nav);
     highlightCurrentPage(nav);
-    // Minimal dropdown (solo hover, niente focus espanso per ridurre js)
     nav.querySelectorAll('.dropdown').forEach(function (dd) {
       var trigger = dd.querySelector('.dropbtn');
       var menu    = dd.querySelector('.dropdown-content');
@@ -100,7 +100,7 @@
   }
 
   /* ================================================================
-   * 3. PAGE VISIT COUNTER (identico)
+   * 3. PAGE VISIT COUNTER
    * ================================================================ */
   function initPageCounter() {
     var KEY = 'site_total_views';
@@ -120,7 +120,7 @@
     var width, height, columns, drops;
     var fontSize = 18;
     var chars = '01';
-    var opacity = 0.03;  // molto sottile
+    var opacity = 0.03;
 
     function init() {
       width   = canvas.width  = window.innerWidth;
@@ -132,13 +132,13 @@
     function draw() {
       ctx.fillStyle = 'rgba(3, 3, 4, ' + opacity + ')';
       ctx.fillRect(0, 0, width, height);
-      ctx.fillStyle = '#2a9d8f'; // verde-tecnologico
+      ctx.fillStyle = '#2a9d8f';
       ctx.font = fontSize + 'px "JetBrains Mono", monospace';
       for (var i = 0; i < drops.length; i++) {
         var text = chars.charAt(Math.floor(Math.random() * chars.length));
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
         if (drops[i] * fontSize > height && Math.random() > 0.98) drops[i] = 0;
-        drops[i] += 0.7; // più lento
+        drops[i] += 0.7;
       }
     }
 
@@ -148,7 +148,7 @@
   }
 
   /* ================================================================
-   * 5. PARTICLES (solo se nessun canvas matrix) — minimal, meno particelle
+   * 5. PARTICLES (solo se nessun canvas matrix)
    * ================================================================ */
   function initParticles() {
     if (document.getElementById('bg-canvas')) return;
@@ -167,7 +167,6 @@
     resize();
     window.addEventListener('resize', resize);
 
-    // solo 25 particelle, più piccole e lente
     for (var i = 0; i < 25; i++) {
       particles.push({
         x: Math.random() * cvs.width,
@@ -196,11 +195,9 @@
   }
 
   /* ================================================================
-   * 6. TECH ANIMATIONS — VERSIONE MINIMAL (solo fade + leggero y)
-   *    RIMOSSO: spotlight, custom cursor, glitch, floating labels
+   * 6. TECH ANIMATIONS — VERSIONE MINIMAL
    * ================================================================ */
   function initTechAnimations() {
-    // Solo staggered reveal (più lineare)
     var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
@@ -217,7 +214,7 @@
     document.querySelectorAll(
       'section:not(.hero), .hero-terminal, .glass-card, .skill-card, .project-card, .info-card'
     ).forEach(function (el, i) {
-      var stagger = (i % 3) * 80; // ridotto delay
+      var stagger = (i % 3) * 80;
       el.dataset.delay = stagger;
       el.style.opacity = '0';
       el.style.transform = 'translateY(16px)';
@@ -227,7 +224,7 @@
   }
 
   /* ================================================================
-   * 7. HOME INTERACTIONS — terminal typing (identico)
+   * 7. HOME INTERACTIONS — terminal typing
    * ================================================================ */
   function initHomeInteractions() {
     var lines = document.querySelectorAll('.hero-terminal .t-line, .hero-terminal .t-output');
@@ -245,7 +242,7 @@
   }
 
   /* ================================================================
-   * 8. GALLERY / SLIDESHOW (identico)
+   * 8. GALLERY / SLIDESHOW
    * ================================================================ */
   function initGallery() {
     function shuffleArray(arr) {
@@ -288,7 +285,7 @@
   }
 
   /* ================================================================
-   * 9. STRAVA VIDEO LOOP (identico)
+   * 9. STRAVA VIDEO LOOP
    * ================================================================ */
   function initStravaLoop() {
     var video = document.getElementById('myVideo');
@@ -302,7 +299,7 @@
   }
 
   /* ================================================================
-   * BOOTSTRAP (un solo DOMContentLoaded)
+   * BOOTSTRAP
    * ================================================================ */
   document.addEventListener('DOMContentLoaded', function () {
     injectHeader();
