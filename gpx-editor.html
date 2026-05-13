@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPX Editor – Francesco Castaldi</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
+    <script src="main.js" defer></script>
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
+    <header id="site-header"></header>
+
+    <main class="main-content subpage-main" id="main-content" style="flex: 1;">
+        <section class="page-hero">
+            <div>
+                <span class="eyebrow">Progetto Universitario</span>
+                <h1>GPX Editor</h1>
+                <p>Strumento web per modificare e ottimizzare tracce GPS (formato GPX) per ciclismo, running e outdoor.</p>
+                <div class="hero-meta">
+                    <span class="meta-pill">TypeScript</span>
+                    <span class="meta-pill">Leaflet</span>
+                    <span class="meta-pill">GPX</span>
+                    <span class="meta-pill">OpenStreetMap</span>
+                    <span class="meta-pill">Vite</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-panel">
+            <h2>Descrizione del Progetto</h2>
+            <p><strong>GPX Editor</strong> è un'applicazione web che permette di caricare, visualizzare e modificare file GPX (GPS Exchange Format). Le tracce GPX sono comunemente usate per registrare percorsi di ciclismo, corsa, escursionismo. L'editor consente di:</p>
+            <ul>
+                <li>Visualizzare la traccia su mappa interattiva (Leaflet + OpenStreetMap)</li>
+                <li>Rimuovere punti indesiderati (es. outlier, punti erratici)</li>
+                <li>Smoothing del tracciato (riduzione rumore)</li>
+                <li>Tagliare l'inizio o la fine della traccia</li>
+                <li>Esportare il risultato in nuovo file GPX</li>
+            </ul>
+            <p>Sviluppato come progetto per il corso di <strong>Sistemi Informativi Geografici</strong> (Università di Bologna).</p>
+        </section>
+
+        <section class="content-panel">
+            <h2>Tecnologie Utilizzate</h2>
+            <ul>
+                <li><strong>TypeScript</strong> – linguaggio principale</li>
+                <li><strong>Vite</strong> – build tool e dev server</li>
+                <li><strong>Leaflet</strong> – libreria mappe interattive</li>
+                <li><strong>OpenStreetMap</strong> – tiles cartografici</li>
+                <li><strong>Turf.js</strong> – operazioni geometriche (semplificazione, distanze)</li>
+                <li><strong>FileSaver.js</strong> – export file lato client</li>
+            </ul>
+        </section>
+
+        <section class="content-panel">
+            <h2>Architettura e Funzionalità</h2>
+            
+            <h3>Parsing e validazione GPX</h3>
+            <p>Il file GPX viene letto lato client tramite <code>FileReader</code> e parsato con DOMParser. Viene validato lo schema minimo (punti con latitudine/longitudine).</p>
+            
+            <h3>Modifica interattiva</h3>
+            <p>L'utente seleziona i punti sulla mappa o utilizza slider per definire un intervallo di tempo/distanza. L'editor supporta undo/redo delle operazioni principali.</p>
+            
+            <h3>Visualizzazione profilo altimetrico</h3>
+            <p>Grafico interattivo (Chart.js) che mostra altitudine vs distanza progressiva, utile per individuare segmenti da tagliare.</p>
+        </section>
+
+        <section class="content-panel">
+            <h2>Prova il Progetto</h2>
+            <p>Il codice sorgente è disponibile su GitHub. Puoi clonarlo e provarlo localmente seguendo le istruzioni nel README.</p>
+            <p><a href="https://github.com/FrancescoCastaldi/gpx-editor.git" target="_blank" rel="noopener" class="btn-secondary">📂 Repository GitHub</a></p>
+        </section>
+    </main>
+
+    <footer id="site-footer"></footer>
+</body>
+</html>
