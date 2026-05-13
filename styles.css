@@ -779,5 +779,68 @@ body {
   margin-top: auto;  /* Forza il footer verso il basso */
   margin-bottom: 0;  /* Nessun margine extra sotto */
   /* eventuali altri stili rimangono */
+
+}
+
+/* ===== ELIMINA SPAZIO EXTRA DOPO FOOTER ===== */
+
+/* Assicura che html e body occupino esattamente l'altezza della viewport */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body flessibile: il main cresce, il footer resta in basso */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Il contenuto principale occupa tutto lo spazio disponibile */
+.main-content, .subpage-main {
+  flex: 1 0 auto;
+}
+
+/* Footer non si comprime e non ha margini esterni */
+.footer {
+  flex-shrink: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 1rem 5%;  /* riduci il padding verticale se troppo grande */
+}
+
+/* Rimuove margini inferiori dall'ultimo elemento prima del footer */
+.content-panel:last-child,
+.section-divider:last-child,
+.skills-section:last-child,
+.projects-section:last-child,
+.page-hero:last-child {
+  margin-bottom: 0;
+  padding-bottom: 1rem;  /* solo padding interno, non margine */
+}
+
+/* Il canvas di sfondo non deve influenzare il layout */
+#bg-canvas {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Se nel footer ci sono div con margini, li azzeriamo */
+.footer > div {
+  margin: 0;
+  padding: 0.25rem 0;
+}
+
+/* Opzionale: se vuoi che il footer sia più compatto */
+.footer {
+  font-size: 0.7rem;
+  line-height: 1.4;
 }
 
