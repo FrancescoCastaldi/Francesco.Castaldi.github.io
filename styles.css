@@ -757,3 +757,27 @@ iframe[src*="strava.com"] {
     min-height: 120px;
   }
 }
+
+/* Assicura che il footer sia incollato in basso e che lo scroll finisca lì */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content, .subpage-main {
+  flex: 1; /* Occupa lo spazio disponibile, spingendo il footer in basso */
+}
+
+.footer {
+  margin-top: auto;  /* Forza il footer verso il basso */
+  margin-bottom: 0;  /* Nessun margine extra sotto */
+  /* eventuali altri stili rimangono */
+}
+
