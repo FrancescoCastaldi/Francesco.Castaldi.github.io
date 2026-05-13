@@ -1,5 +1,5 @@
 /* ================================================================
-   RESET & BASE (minimal tech 2026)
+   RESET & BASE (minimal tech 2026) — VERSIONE UNIFICATA
    ================================================================ */
 * {
   margin: 0;
@@ -45,6 +45,16 @@ a {
   text-decoration: none;
   color: inherit;
   transition: var(--transition);
+}
+
+.accent-link {
+  color: var(--accent-blue);
+  border-bottom: 1px dashed var(--accent-blue);
+}
+
+.accent-link:hover {
+  color: var(--accent-cyan);
+  border-bottom-color: var(--accent-cyan);
 }
 
 /* ================================================================
@@ -115,7 +125,7 @@ a {
 }
 
 .subpage-main {
-  padding-top: 100px; /* per evitare sovrapposizione header fisso */
+  padding-top: 100px;
 }
 
 /* Hero della sottopagina */
@@ -172,12 +182,15 @@ a {
   transform: translateY(-2px);
 }
 
-/* Content panel (sezioni testo) */
+/* Content panel (sezioni testo) - senza bordo superiore automatico */
 .content-panel {
   max-width: 1000px;
   margin: 0 auto;
   padding: 2rem 5%;
-  border-top: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+.content-panel:first-of-type {
+  padding-top: 1rem;
 }
 
 .content-panel h2 {
@@ -199,19 +212,19 @@ a {
   margin-bottom: 1rem;
 }
 
-.content-panel ul {
+.content-panel ul, .spec-card ul, .feature-card ul {
   list-style: none;
   margin: 1rem 0;
 }
 
-.content-panel li {
+.content-panel li, .spec-card li, .feature-card li {
   padding: 0.5rem 0;
   padding-left: 1.5rem;
   position: relative;
   color: var(--text-secondary);
 }
 
-.content-panel li:before {
+.content-panel li:before, .spec-card li:before, .feature-card li:before {
   content: "→";
   position: absolute;
   left: 0;
@@ -515,6 +528,71 @@ code {
 }
 
 /* ================================================================
+   STILI PER LE PAGINE SECONDARIE (feature-card, spec-card, grid)
+   ================================================================ */
+.feature-grid, .spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 5%;
+}
+
+.feature-card, .spec-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: var(--transition);
+}
+
+.feature-card:hover, .spec-card:hover {
+  border-color: var(--accent-blue);
+  transform: translateY(-3px);
+  background: rgba(22, 22, 28, 0.9);
+}
+
+.feature-card h3, .spec-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  color: var(--accent-cyan);
+}
+
+.feature-card p, .spec-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Slideshow */
+.slideshow-container {
+  margin: 2rem 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-glow);
+}
+
+.slideshow {
+  width: 100%;
+  background: #000;
+}
+
+.slideshow-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Glass card (se usata) */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+/* ================================================================
    CUSTOM CURSOR (opzionale)
    ================================================================ */
 #cursor-dot {
@@ -549,7 +627,7 @@ code {
 }
 
 /* ================================================================
-   SCROLL REVEAL (opzionale)
+   SCROLL REVEAL
    ================================================================ */
 .reveal-on-scroll {
   opacity: 0;
@@ -579,5 +657,9 @@ code {
   }
   .page-hero {
     padding-top: 6rem;
+  }
+  .feature-grid, .spec-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }
