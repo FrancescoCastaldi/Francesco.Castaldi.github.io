@@ -1,16 +1,16 @@
 /**
  * main.js — tech minimal futuristic (ing. informatico ciclistico)
  *
- * Version: 2.1
+ * Version: 2.2
  * Features: matrix/particles, reveal fade+Y, terminal typing, gallery, video loop,
- *           header/footer dinamici, contatore visite.
- * Modifica: aggiunta voce GPX-EDITOR nel menu UNIVERSITY.
+ *           header/footer dinamici, contatore visite, custom cursor (opzionale).
+ * Modifiche: corretta struttura, aggiunto cursore custom separato.
  */
 (function () {
   'use strict';
 
   /* ================================================================
-   * 1. SITE CONFIG — unica fonte di verità
+   * 1. SITE CONFIG
    * ================================================================ */
   var SITE_CONFIG = {
     siteName: 'CYCLOTECH.SYS',
@@ -23,7 +23,7 @@
         dropdown: [
           { name: 'BIKE-TRACKER',      href: 'bike-maintenance.html' },
           { name: 'HOSPITAL-SYSTEM',   href: 'hospital-sanitization-tracker.html' },
-          { name: 'GPX-EDITOR',        href: 'gpx-editor.html' }   // <-- NUOVA VOCE
+          { name: 'GPX-EDITOR',        href: 'gpx-editor.html' }
         ]
       },
       {
@@ -195,7 +195,7 @@
   }
 
   /* ================================================================
-   * 6. TECH ANIMATIONS — VERSIONE MINIMAL
+   * 6. TECH ANIMATIONS — VERSIONE MINIMAL (solo reveal)
    * ================================================================ */
   function initTechAnimations() {
     var revealObserver = new IntersectionObserver(function (entries) {
@@ -221,35 +221,38 @@
       el.style.transition = 'opacity 0.5s cubic-bezier(0.2, 0.9, 0.4, 1), transform 0.5s ease';
       revealObserver.observe(el);
     });
-    function initCustomCursor() {
-  if (window.matchMedia('(pointer: fine)').matches && !document.getElementById('cursor-dot')) {
-    const dot = document.createElement('div');
-    const ring = document.createElement('div');
-    dot.id = 'cursor-dot';
-    ring.id = 'cursor-ring';
-    document.body.appendChild(dot);
-    document.body.appendChild(ring);
-    let mx = -100, my = -100, rx = -100, ry = -100;
-    document.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
-    function animate() {
-      rx += (mx - rx) * 0.12;
-      ry += (my - ry) * 0.12;
-      dot.style.transform = `translate(${mx}px, ${my}px)`;
-      ring.style.transform = `translate(${rx}px, ${ry}px)`;
-      requestAnimationFrame(animate);
-    }
-    animate();
-    document.querySelectorAll('a, button, .btn-primary, .btn-ghost, .project-card, .skill-card')
-      .forEach(el => {
-        el.addEventListener('mouseenter', () => ring.classList.add('cursor-hover'));
-        el.addEventListener('mouseleave', () => ring.classList.remove('cursor-hover'));
-      });
-  }
-}
   }
 
   /* ================================================================
-   * 7. HOME INTERACTIONS — terminal typing
+   * 7. CUSTOM CURSOR (opzionale, solo pointer fine)
+   * ================================================================ */
+  function initCustomCursor() {
+    if (window.matchMedia('(pointer: fine)').matches && !document.getElementById('cursor-dot')) {
+      var dot = document.createElement('div');
+      var ring = document.createElement('div');
+      dot.id = 'cursor-dot';
+      ring.id = 'cursor-ring';
+      document.body.appendChild(dot);
+      document.body.appendChild(ring);
+      var mx = -100, my = -100, rx = -100, ry = -100;
+      document.addEventListener('mousemove', function (e) { mx = e.clientX; my = e.clientY; });
+      (function animate() {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        dot.style.transform = 'translate(' + mx + 'px, ' + my + 'px)';
+        ring.style.transform = 'translate(' + rx + 'px, ' + ry + 'px)';
+        requestAnimationFrame(animate);
+      })();
+      document.querySelectorAll('a, button, .btn-primary, .btn-ghost, .btn-secondary, .project-card, .skill-card')
+        .forEach(function (el) {
+          el.addEventListener('mouseenter', function () { ring.classList.add('cursor-hover'); });
+          el.addEventListener('mouseleave', function () { ring.classList.remove('cursor-hover'); });
+        });
+    }
+  }
+
+  /* ================================================================
+   * 8. HOME INTERACTIONS — terminal typing
    * ================================================================ */
   function initHomeInteractions() {
     var lines = document.querySelectorAll('.hero-terminal .t-line, .hero-terminal .t-output');
@@ -267,7 +270,7 @@
   }
 
   /* ================================================================
-   * 8. GALLERY / SLIDESHOW
+   * 9. GALLERY / SLIDESHOW
    * ================================================================ */
   function initGallery() {
     function shuffleArray(arr) {
@@ -310,7 +313,7 @@
   }
 
   /* ================================================================
-   * 9. STRAVA VIDEO LOOP
+   * 10. STRAVA VIDEO LOOP
    * ================================================================ */
   function initStravaLoop() {
     var video = document.getElementById('myVideo');
@@ -333,6 +336,7 @@
     initBgAnimation();
     initParticles();
     initTechAnimations();
+    initCustomCursor();   // <-- attiva cursore personalizzato (opzionale)
     initHomeInteractions();
     initGallery();
     initStravaLoop();
