@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hospital Sanitization Tracker – Francesco Castaldi</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=5">
     <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
     <script src="main.js" defer></script>
-    <!-- pageCounter.js è già incluso in main.js, non serve duplicarlo -->
 </head>
-<body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
+<body>
     <header id="site-header"></header>
 
-    <main class="main-content subpage-main" id="main-content" style="flex: 1;">
+    <main class="main-content subpage-main">
         <section class="page-hero">
             <div>
                 <span class="eyebrow">Progetto Universitario</span>
@@ -47,13 +46,10 @@
 
         <section class="content-panel">
             <h2>Architettura e Funzionalità</h2>
-
             <h3>Smart Contract</h3>
             <p>Il contratto <code>SanitizationTracker.sol</code> gestisce tre entità principali: <strong>Aree</strong> (aree ospedaliere da sanificare), <strong>Operatori</strong> (personale autorizzato) e <strong>Eventi di sanificazione</strong>. Il solo admin (deployer) può registrare aree e operatori; solo gli operatori attivi possono registrare sanificazioni.</p>
-
             <h3>Frontend DApp</h3>
             <p>L'interfaccia web si connette al contratto tramite MetaMask e rileva automaticamente il ruolo dell'utente connesso (Admin, Operatore o Guest). Permette di registrare aree e operatori, registrare eventi di sanificazione e consultare lo storico completo per ciascuna area.</p>
-
             <h3>Test Suite</h3>
             <p>Il progetto include una test suite completa con <strong>14/14 test superati</strong>, sviluppata con Mocha e Hardhat.</p>
         </section>
@@ -65,9 +61,7 @@
         </section>
     </main>
 
-    <footer>
-        
-    </footer>
-    <!-- main.js si occuperà di popolare il footer e gestire il contatore visite -->
+    <footer id="site-footer"></footer>
+    <canvas id="bg-canvas"></canvas>
 </body>
 </html>

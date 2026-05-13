@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GPX Editor – Francesco Castaldi</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=5">
     <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
     <script src="main.js" defer></script>
 </head>
-<body style="display: flex; flex-direction: column; min-height: 100vh; margin: 0;">
+<body>
     <header id="site-header"></header>
 
-    <main class="main-content subpage-main" id="main-content" style="flex: 1;">
+    <main class="main-content subpage-main">
         <section class="page-hero">
             <div>
                 <span class="eyebrow">Progetto Universitario</span>
@@ -54,13 +54,10 @@
 
         <section class="content-panel">
             <h2>Architettura e Funzionalità</h2>
-            
             <h3>Parsing e validazione GPX</h3>
             <p>Il file GPX viene letto lato client tramite <code>FileReader</code> e parsato con DOMParser. Viene validato lo schema minimo (punti con latitudine/longitudine).</p>
-            
             <h3>Modifica interattiva</h3>
             <p>L'utente seleziona i punti sulla mappa o utilizza slider per definire un intervallo di tempo/distanza. L'editor supporta undo/redo delle operazioni principali.</p>
-            
             <h3>Visualizzazione profilo altimetrico</h3>
             <p>Grafico interattivo (Chart.js) che mostra altitudine vs distanza progressiva, utile per individuare segmenti da tagliare.</p>
         </section>
@@ -73,5 +70,6 @@
     </main>
 
     <footer id="site-footer"></footer>
+    <canvas id="bg-canvas"></canvas>
 </body>
 </html>
