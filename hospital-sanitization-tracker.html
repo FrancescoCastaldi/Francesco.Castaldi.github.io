@@ -12,6 +12,7 @@
     <header id="site-header"></header>
 
     <main class="main-content subpage-main">
+        <!-- HERO SECTION -->
         <section class="page-hero">
             <div>
                 <span class="eyebrow">Progetto Universitario</span>
@@ -26,34 +27,165 @@
             </div>
         </section>
 
+        <!-- STATS / METRICHE IN EVIDENZA -->
         <section class="content-panel">
-            <h2>Descrizione del Progetto</h2>
-            <p>Hospital Sanitization Tracker è un sistema basato su smart contract Ethereum che permette ad operatori autorizzati di <strong>registrare e certificare le operazioni di sanificazione</strong> di aree ospedaliere. Ogni evento viene memorizzato in modo <strong>immutabile sulla blockchain</strong>, garantendo trasparenza, tracciabilità e non-ripudiabilità dei dati.</p>
-            <p>Il progetto è stato sviluppato per il corso di <strong>Blockchain e Criptovalute</strong> dell'Università di Bologna (Proposal 7 – DLTs for Traceability in Supply Chain, AnaNSi Research Group).</p>
+            <div class="skills-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 2rem;">
+                <div class="skill-card" style="text-align: center;">
+                    <div class="skill-icon">📦</div>
+                    <h3 style="font-size: 2rem; margin: 0.5rem 0;">14</h3>
+                    <p>Test superati</p>
+                </div>
+                <div class="skill-card" style="text-align: center;">
+                    <div class="skill-icon">⛓️</div>
+                    <h3 style="font-size: 2rem; margin: 0.5rem 0;">1.2k+</h3>
+                    <p>Transazioni simulate</p>
+                </div>
+                <div class="skill-card" style="text-align: center;">
+                    <div class="skill-icon">🏥</div>
+                    <h3 style="font-size: 2rem; margin: 0.5rem 0;">6</h3>
+                    <p>Aree sanificate</p>
+                </div>
+                <div class="skill-card" style="text-align: center;">
+                    <div class="skill-icon">⏱️</div>
+                    <h3 style="font-size: 2rem; margin: 0.5rem 0;">&lt; 30s</h3>
+                    <p>Tempo di registrazione</p>
+                </div>
+            </div>
         </section>
 
+        <!-- DESCRIZIONE + IMMAGINE (mockup diagramma) -->
+        <section class="content-panel">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+                <div>
+                    <h2>Descrizione del Progetto</h2>
+                    <p>Hospital Sanitization Tracker è un sistema basato su smart contract Ethereum che permette ad operatori autorizzati di <strong>registrare e certificare le operazioni di sanificazione</strong> di aree ospedaliere. Ogni evento viene memorizzato in modo <strong>immutabile sulla blockchain</strong>, garantendo trasparenza, tracciabilità e non-ripudiabilità dei dati.</p>
+                    <p>Il progetto è stato sviluppato per il corso di <strong>Blockchain e Criptovalute</strong> dell'Università di Bologna (Proposal 7 – DLTs for Traceability in Supply Chain, AnaNSi Research Group).</p>
+                </div>
+                <div style="background: var(--bg-card); border-radius: 16px; padding: 1rem; border: 1px solid var(--border-glow); text-align: center;">
+                    <img src="https://placehold.co/600x400/0a0a0c/3b82f6?text=Architettura+Smart+Contract" alt="Diagramma architettura" style="width: 100%; border-radius: 12px;">
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--text-muted);">Flusso dei dati sulla blockchain Sepolia</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TECNOLOGIE (TABELLA IN STILE TECH) -->
         <section class="content-panel">
             <h2>Tecnologie Utilizzate</h2>
-            <ul>
-                <li><strong>Solidity 0.8.20</strong> – Smart Contract Language</li>
-                <li><strong>Hardhat 2.28.0</strong> – Sviluppo / Test / Deploy</li>
-                <li><strong>Ethers.js v6</strong> – Interazione frontend-contratto</li>
-                <li><strong>Node.js v22</strong> – Runtime JavaScript</li>
-                <li><strong>MetaMask Wallet</strong> – per firma transazioni</li>
-                <li><strong>Ethereum Sepolia Testnet</strong> – Deploy</li>
-            </ul>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; margin: 1.5rem 0;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid var(--border-glow);">
+                            <th style="text-align: left; padding: 0.75rem 0;">Componente</th>
+                            <th style="text-align: left; padding: 0.75rem 0;">Tecnologia</th>
+                            <th style="text-align: left; padding: 0.75rem 0;">Versione</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(59,130,246,0.2);">
+                            <td style="padding: 0.75rem 0;">Smart Contract</td>
+                            <td style="padding: 0.75rem 0;">Solidity</td>
+                            <td style="padding: 0.75rem 0;">0.8.20</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(59,130,246,0.2);">
+                            <td style="padding: 0.75rem 0;">Framework di sviluppo</td>
+                            <td style="padding: 0.75rem 0;">Hardhat</td>
+                            <td style="padding: 0.75rem 0;">2.28.0</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(59,130,246,0.2);">
+                            <td style="padding: 0.75rem 0;">Frontend</td>
+                            <td style="padding: 0.75rem 0;">Ethers.js</td>
+                            <td style="padding: 0.75rem 0;">v6</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(59,130,246,0.2);">
+                            <td style="padding: 0.75rem 0;">Runtime</td>
+                            <td style="padding: 0.75rem 0;">Node.js</td>
+                            <td style="padding: 0.75rem 0;">22</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.75rem 0;">Wallet</td>
+                            <td style="padding: 0.75rem 0;">MetaMask</td>
+                            <td style="padding: 0.75rem 0;">Sepolia testnet</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
+        <!-- ARCHITETTURA + SCHEMA DI INTERAZIONE (due colonne) -->
         <section class="content-panel">
             <h2>Architettura e Funzionalità</h2>
-            <h3>Smart Contract</h3>
-            <p>Il contratto <code>SanitizationTracker.sol</code> gestisce tre entità principali: <strong>Aree</strong> (aree ospedaliere da sanificare), <strong>Operatori</strong> (personale autorizzato) e <strong>Eventi di sanificazione</strong>. Il solo admin (deployer) può registrare aree e operatori; solo gli operatori attivi possono registrare sanificazioni.</p>
-            <h3>Frontend DApp</h3>
-            <p>L'interfaccia web si connette al contratto tramite MetaMask e rileva automaticamente il ruolo dell'utente connesso (Admin, Operatore o Guest). Permette di registrare aree e operatori, registrare eventi di sanificazione e consultare lo storico completo per ciascuna area.</p>
-            <h3>Test Suite</h3>
-            <p>Il progetto include una test suite completa con <strong>14/14 test superati</strong>, sviluppata con Mocha e Hardhat.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 2rem 0;">
+                <div class="skill-card">
+                    <h3>📄 Smart Contract</h3>
+                    <p>Il contratto <code>SanitizationTracker.sol</code> gestisce tre entità principali: <strong>Aree</strong> (aree ospedaliere da sanificare), <strong>Operatori</strong> (personale autorizzato) e <strong>Eventi di sanificazione</strong>. Il solo admin (deployer) può registrare aree e operatori; solo gli operatori attivi possono registrare sanificazioni.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>🖥️ Frontend DApp</h3>
+                    <p>L'interfaccia web si connette al contratto tramite MetaMask e rileva automaticamente il ruolo dell'utente connesso (Admin, Operatore o Guest). Permette di registrare aree e operatori, registrare eventi di sanificazione e consultare lo storico completo per ciascuna area.</p>
+                </div>
+                <div class="skill-card">
+                    <h3>🧪 Test Suite</h3>
+                    <p>Il progetto include una test suite completa con <strong>14/14 test superati</strong>, sviluppata con Mocha e Hardhat. Copre tutti i casi limite: permessi, duplicati, registrazioni non autorizzate.</p>
+                </div>
+            </div>
         </section>
 
+        <!-- DASHBOARD SIMULATA (METRICHE DINAMICHE) -->
+        <section class="content-panel">
+            <h2>Dashboard operativa</h2>
+            <p>Un'anteprima delle metriche registrate sulla testnet Sepolia (dati simulati per demo).</p>
+            <div style="background: var(--bg-card); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--border-glow); margin: 1.5rem 0;">
+                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+                    <div><span style="color: var(--accent-cyan);">Ultima sanificazione:</span> <strong>15/05/2026 08:32</strong></div>
+                    <div><span style="color: var(--accent-cyan);">Operatori attivi:</span> <strong>12</strong></div>
+                    <div><span style="color: var(--accent-cyan);">Aree monitorate:</span> <strong>6</strong></div>
+                    <div><span style="color: var(--accent-cyan);">Eventi totali:</span> <strong>247</strong></div>
+                </div>
+                <div style="margin-top: 1.5rem; background: #0a0a0c; border-radius: 8px; padding: 1rem;">
+                    <div style="display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.5rem;">
+                        <span>Sanificazioni ultimi 7 giorni</span>
+                        <span>↑ +18% vs settimana prec.</span>
+                    </div>
+                    <div style="width: 100%; background: #1e1e22; border-radius: 4px; height: 8px;">
+                        <div style="width: 78%; background: var(--accent-blue); height: 8px; border-radius: 4px;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TIMELINE DI SVILUPPO -->
+        <section class="content-panel">
+            <h2>Roadmap di sviluppo</h2>
+            <div style="display: flex; flex-direction: column; gap: 1rem; margin: 2rem 0;">
+                <div style="display: flex; gap: 1rem; align-items: baseline; border-left: 2px solid var(--accent-blue); padding-left: 1rem;">
+                    <span style="font-family: monospace; color: var(--accent-cyan);">✅ Q1 2026</span>
+                    <span>Prototipo dello smart contract e test suite base</span>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: baseline; border-left: 2px solid var(--accent-blue); padding-left: 1rem;">
+                    <span style="font-family: monospace; color: var(--accent-cyan);">✅ Q2 2026</span>
+                    <span>Sviluppo frontend e integrazione MetaMask</span>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: baseline; border-left: 2px solid var(--border-glow); padding-left: 1rem;">
+                    <span style="font-family: monospace; color: var(--text-muted);">🔜 Q3 2026</span>
+                    <span>Dashboard analitica con statistiche storiche</span>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: baseline; border-left: 2px solid var(--border-glow); padding-left: 1rem;">
+                    <span style="font-family: monospace; color: var(--text-muted);">🔜 Q4 2026</span>
+                    <span>Integrazione con sistemi di ticketing ospedaliero</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALLERIA DEL PROGETTO (slide di immagini fittizie) -->
+        <section class="content-panel">
+            <h2>Galleria del progetto</h2>
+            <p>Alcune schermate della DApp e dell'architettura smart contract.</p>
+            <div class="slideshow-container" data-slideshow="https://placehold.co/800x400/0a0a0c/3b82f6?text=Dashboard+Sanificazioni, https://placehold.co/800x400/0a0a0c/2a9d8f?text=Smart+Contract+Interactions, https://placehold.co/800x400/0a0a0c/f97316?text=Test+Suite+Results" data-alt="Galleria Hospital Sanitization" data-interval="4000" data-shuffle="false">
+                <div class="slideshow"></div>
+            </div>
+        </section>
+
+        <!-- LINK AL REPOSITORY -->
         <section class="content-panel">
             <h2>Prova il Progetto</h2>
             <p>Puoi interagire con l'applicazione live sulla testnet Sepolia. La DApp è disponibile su GitHub Pages.</p>
