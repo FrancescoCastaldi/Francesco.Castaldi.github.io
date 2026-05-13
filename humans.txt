@@ -1,0 +1,16 @@
+/* HUMAN.TXT – Francesco Castaldi Portfolio */
+/* Site: https://francescocastaldi.github.io */
+
+/* TEAM */
+    Developer & Content: Francesco Castaldi
+    Role: Ingegnere Informatico, Business Consultant
+    Contact: https://francescocastaldi.github.io/contact.html
+
+/* TECH STACK */
+    HTML5, CSS3, JavaScript
+    Hosting: GitHub Pages
+    Fonts: Inter, JetBrains Mono
+    Icons: Emoji, SVG
+
+/* LAST UPDATE */
+    2026-05-14
