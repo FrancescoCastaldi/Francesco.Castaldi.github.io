@@ -1,10 +1,6 @@
 /**
- * main.js — tech minimal futuristic (ing. informatico ciclistico)
- *
- * Version: 2.2
- * Features: matrix/particles, reveal fade+Y, terminal typing, gallery, video loop,
- *           header/footer dinamici, contatore visite, custom cursor (opzionale).
- * Modifiche: corretta struttura, aggiunto cursore custom separato.
+ * main.js — SUPER TECH MINIMAL 2026
+ * Ingegnere informatico ciclistico — versione futuristico essenziale
  */
 (function () {
   'use strict';
@@ -41,7 +37,31 @@
   };
 
   /* ================================================================
-   * 2. HEADER & FOOTER INJECTION
+   * 2. UTILITIES (throttle, debounce, prefers-reduced-motion)
+   * ================================================================ */
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function throttle(fn, delay) {
+    var last = 0;
+    return function () {
+      var now = Date.now();
+      if (now - last >= delay) {
+        fn.apply(this, arguments);
+        last = now;
+      }
+    };
+  }
+
+  function debounce(fn, delay) {
+    var timer;
+    return function () {
+      clearTimeout(timer);
+      timer = setTimeout(fn.bind(this), delay);
+    };
+  }
+
+  /* ================================================================
+   * 3. HEADER & FOOTER (identico ma più pulito)
    * ================================================================ */
   function buildNavHTML() {
     return SITE_CONFIG.navigation.map(function (item) {
@@ -50,7 +70,7 @@
           return '<a href="' + sub.href + '">' + sub.name + '</a>';
         }).join('');
         return '<li class="dropdown"><a href="' + item.href +
-               '" class="dropbtn" role="button" aria-haspopup="true" aria-expanded="false">' +
+               '" class="dropbtn" role="button">' +
                item.name + '</a><div class="dropdown-content">' + subs + '</div></li>';
       }
       return '<li><a href="' + item.href + '">' + item.name + '</a></li>';
@@ -65,7 +85,6 @@
       var isHome = (href === 'index.html' && (currentPage === 'index.html' || currentPage === ''));
       if (isHome || href === currentPage) {
         link.classList.add('active-link');
-        link.setAttribute('aria-current', 'page');
         var parent = link.closest('.dropdown');
         if (parent) parent.classList.add('active-parent');
       }
@@ -83,9 +102,7 @@
     highlightCurrentPage(nav);
     nav.querySelectorAll('.dropdown').forEach(function (dd) {
       var trigger = dd.querySelector('.dropbtn');
-      var menu    = dd.querySelector('.dropdown-content');
-      if (!trigger || !menu) return;
-      trigger.addEventListener('click', function (e) { e.preventDefault(); });
+      if (trigger) trigger.addEventListener('click', function (e) { e.preventDefault(); });
     });
   }
 
@@ -100,7 +117,7 @@
   }
 
   /* ================================================================
-   * 3. PAGE VISIT COUNTER
+   * 4. PAGE VISIT COUNTER
    * ================================================================ */
   function initPageCounter() {
     var KEY = 'site_total_views';
@@ -111,7 +128,7 @@
   }
 
   /* ================================================================
-   * 4. BACKGROUND: MATRIX (minimal, opaco, lento)
+   * 5. BACKGROUND: MATRIX (parallax leggero)
    * ================================================================ */
   function initBgAnimation() {
     var canvas = document.getElementById('bg-canvas');
@@ -121,6 +138,7 @@
     var fontSize = 18;
     var chars = '01';
     var opacity = 0.03;
+    var scrollOffset = 0;
 
     function init() {
       width   = canvas.width  = window.innerWidth;
@@ -136,19 +154,23 @@
       ctx.font = fontSize + 'px "JetBrains Mono", monospace';
       for (var i = 0; i < drops.length; i++) {
         var text = chars.charAt(Math.floor(Math.random() * chars.length));
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-        if (drops[i] * fontSize > height && Math.random() > 0.98) drops[i] = 0;
+        var y = drops[i] * fontSize + (scrollOffset * 0.1);
+        ctx.fillText(text, i * fontSize, y % height);
+        if (y > height && Math.random() > 0.98) drops[i] = 0;
         drops[i] += 0.7;
       }
     }
 
-    window.addEventListener('resize', init);
+    window.addEventListener('resize', throttle(init, 100));
+    window.addEventListener('scroll', throttle(function () {
+      scrollOffset = window.scrollY;
+    }, 50));
     init();
     setInterval(draw, 80);
   }
 
   /* ================================================================
-   * 5. PARTICLES (solo se nessun canvas matrix)
+   * 6. PARTICLES (solo se nessun canvas matrix)
    * ================================================================ */
   function initParticles() {
     if (document.getElementById('bg-canvas')) return;
@@ -165,7 +187,7 @@
 
     function resize() { cvs.width = window.innerWidth; cvs.height = window.innerHeight; }
     resize();
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', throttle(resize, 100));
 
     for (var i = 0; i < 25; i++) {
       particles.push({
@@ -195,7 +217,76 @@
   }
 
   /* ================================================================
-   * 6. TECH ANIMATIONS — VERSIONE MINIMAL (solo reveal)
+   * 7. MAGNETIC BUTTONS & GLITCH HOVER
+   * ================================================================ */
+  function initMagneticButtons() {
+    var buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-ghost, .project-card, .skill-card');
+    buttons.forEach(function (btn) {
+      btn.addEventListener('mousemove', function (e) {
+        if (reduceMotion) return;
+        var rect = btn.getBoundingClientRect();
+        var x = e.clientX - rect.left - rect.width / 2;
+        var y = e.clientY - rect.top - rect.height / 2;
+        var maxMove = 8;
+        var moveX = x * 0.05;
+        var moveY = y * 0.05;
+        moveX = Math.min(maxMove, Math.max(-maxMove, moveX));
+        moveY = Math.min(maxMove, Math.max(-maxMove, moveY));
+        btn.style.transform = 'translate(' + moveX + 'px, ' + moveY + 'px)';
+      });
+      btn.addEventListener('mouseleave', function () {
+        btn.style.transform = '';
+      });
+    });
+  }
+
+  function initGlitchHover() {
+    var items = document.querySelectorAll('.project-card, .skill-card, .btn-primary');
+    items.forEach(function (el) {
+      el.addEventListener('mouseenter', function () {
+        if (reduceMotion) return;
+        el.classList.add('glitch-effect');
+        setTimeout(function () { el.classList.remove('glitch-effect'); }, 200);
+      });
+    });
+  }
+
+  /* ================================================================
+   * 8. SMOOTH SCROLL (custom easing)
+   * ================================================================ */
+  function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+      anchor.addEventListener('click', function (e) {
+        var targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        var target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+        }
+      });
+    });
+  }
+
+  /* ================================================================
+   * 9. PRELOADER MINIMALE (scompare dopo load)
+   * ================================================================ */
+  function initPreloader() {
+    var preloader = document.createElement('div');
+    preloader.id = 'preloader';
+    preloader.innerHTML = '<div class="preloader-dot"></div><div class="preloader-dot"></div><div class="preloader-dot"></div>';
+    preloader.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:#0a0a0c; display:flex; justify-content:center; align-items:center; gap:0.5rem; z-index:10000; transition:opacity 0.5s;';
+    document.body.appendChild(preloader);
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        preloader.style.opacity = '0';
+        setTimeout(function () { preloader.remove(); }, 500);
+      }, 300);
+    });
+  }
+
+  /* ================================================================
+   * 10. TECH ANIMATIONS — reveal + performance
    * ================================================================ */
   function initTechAnimations() {
     var revealObserver = new IntersectionObserver(function (entries) {
@@ -224,7 +315,7 @@
   }
 
   /* ================================================================
-   * 7. CUSTOM CURSOR (opzionale, solo pointer fine)
+   * 11. CUSTOM CURSOR (opzionale, ultra minimal)
    * ================================================================ */
   function initCustomCursor() {
     if (window.matchMedia('(pointer: fine)').matches && !document.getElementById('cursor-dot')) {
@@ -235,7 +326,7 @@
       document.body.appendChild(dot);
       document.body.appendChild(ring);
       var mx = -100, my = -100, rx = -100, ry = -100;
-      document.addEventListener('mousemove', function (e) { mx = e.clientX; my = e.clientY; });
+      document.addEventListener('mousemove', throttle(function (e) { mx = e.clientX; my = e.clientY; }, 10));
       (function animate() {
         rx += (mx - rx) * 0.12;
         ry += (my - ry) * 0.12;
@@ -252,25 +343,83 @@
   }
 
   /* ================================================================
-   * 8. HOME INTERACTIONS — terminal typing
+   * 12. HOME INTERACTIONS — terminal typing + comandi finti
    * ================================================================ */
   function initHomeInteractions() {
-    var lines = document.querySelectorAll('.hero-terminal .t-line, .hero-terminal .t-output');
-    if (lines.length) {
-      lines.forEach(function (line, i) {
-        line.style.opacity = '0';
-        line.style.transform = 'translateX(-6px)';
-        line.style.transition = 'all 0.3s ease';
-        setTimeout(function () {
-          line.style.opacity = '1';
-          line.style.transform = 'translateX(0)';
-        }, 300 + i * 150);
-      });
+    var terminalBody = document.querySelector('.hero-terminal .terminal-body');
+    if (!terminalBody) return;
+    var lines = terminalBody.querySelectorAll('.t-line, .t-output');
+    lines.forEach(function (line, i) {
+      line.style.opacity = '0';
+      line.style.transform = 'translateX(-6px)';
+      line.style.transition = 'all 0.3s ease';
+      setTimeout(function () {
+        line.style.opacity = '1';
+        line.style.transform = 'translateX(0)';
+      }, 300 + i * 150);
+    });
+
+    // Terminal interattivo (simula comandi base)
+    var inputLine = document.createElement('div');
+    inputLine.className = 't-line';
+    inputLine.innerHTML = '<span class="t-prompt">$></span> <span class="t-input"></span><span class="cursor-blink">_</span>';
+    terminalBody.appendChild(inputLine);
+    var inputSpan = inputLine.querySelector('.t-input');
+    var commands = ['help', 'skills', 'clear', 'contact'];
+    var cmdIndex = 0;
+
+    function typeCommand() {
+      if (cmdIndex >= commands.length) return;
+      var cmd = commands[cmdIndex];
+      var i = 0;
+      inputSpan.textContent = '';
+      function typeChar() {
+        if (i < cmd.length) {
+          inputSpan.textContent += cmd[i];
+          i++;
+          setTimeout(typeChar, 100);
+        } else {
+          setTimeout(executeCommand, 500);
+        }
+      }
+      typeChar();
     }
+
+    function executeCommand() {
+      var cmd = inputSpan.textContent;
+      var output = '';
+      switch (cmd) {
+        case 'help':
+          output = 'Comandi disponibili: skills, clear, contact';
+          break;
+        case 'skills':
+          output = 'Clinical IT, Data Science, Cloud Architecture';
+          break;
+        case 'clear':
+          terminalBody.innerHTML = '';
+          terminalBody.appendChild(inputLine);
+          cmdIndex = commands.length;
+          return;
+        case 'contact':
+          output = 'Email: francesco@castaldi.dev';
+          break;
+        default:
+          output = 'Comando non riconosciuto. Digita help.';
+      }
+      var outputLine = document.createElement('div');
+      outputLine.className = 't-output';
+      outputLine.textContent = '> ' + output;
+      terminalBody.insertBefore(outputLine, inputLine);
+      cmdIndex++;
+      inputSpan.textContent = '';
+      if (cmdIndex < commands.length) setTimeout(typeCommand, 800);
+    }
+
+    setTimeout(typeCommand, 2500);
   }
 
   /* ================================================================
-   * 9. GALLERY / SLIDESHOW
+   * 13. GALLERY / SLIDESHOW (ottimizzato)
    * ================================================================ */
   function initGallery() {
     function shuffleArray(arr) {
@@ -288,9 +437,9 @@
       var imageList = rawImages.split(',').map(function (s) { return s.trim(); }).filter(Boolean);
       if (!imageList.length) return;
       var shouldShuffle = wrapper.getAttribute('data-shuffle') !== 'false';
-      var delay   = Number(wrapper.getAttribute('data-interval')) || 5000;
+      var delay = Number(wrapper.getAttribute('data-interval')) || 5000;
       var altText = wrapper.getAttribute('data-alt') || 'Photo';
-      var images  = shouldShuffle ? shuffleArray(imageList.slice()) : imageList;
+      var images = shouldShuffle ? shuffleArray(imageList.slice()) : imageList;
       var current = 0;
 
       function renderImage() {
@@ -304,26 +453,20 @@
 
       renderImage();
       if (images.length > 1) {
-        setInterval(function () {
-          current = (current + 1) % images.length;
-          renderImage();
-        }, delay);
+        setInterval(function () { current = (current + 1) % images.length; renderImage(); }, delay);
       }
     });
   }
 
   /* ================================================================
-   * 10. STRAVA VIDEO LOOP
+   * 14. STRAVA VIDEO LOOP
    * ================================================================ */
   function initStravaLoop() {
     var video = document.getElementById('myVideo');
     if (!video) return;
     var loopCount = 0;
-    var maxLoops  = 3;
-    video.addEventListener('ended', function () {
-      loopCount++;
-      if (loopCount < maxLoops) video.play();
-    });
+    var maxLoops = 3;
+    video.addEventListener('ended', function () { if (++loopCount < maxLoops) video.play(); });
   }
 
   /* ================================================================
@@ -336,10 +479,13 @@
     initBgAnimation();
     initParticles();
     initTechAnimations();
-    initCustomCursor();   // <-- attiva cursore personalizzato (opzionale)
+    initCustomCursor();
+    initMagneticButtons();
+    initGlitchHover();
+    initSmoothScroll();
+    initPreloader();
     initHomeInteractions();
     initGallery();
     initStravaLoop();
   });
-
 })();
