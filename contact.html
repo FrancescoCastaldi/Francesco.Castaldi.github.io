@@ -4,9 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contatti – Francesco Castaldi</title>
+    <meta name="description" content="Contatta Francesco Castaldi per consulenze, collaborazioni o semplicemente per parlare di tecnologia, ciclismo e innovazione.">
+    <link rel="canonical" href="https://francescocastaldi.github.io/contact.html">
     <link rel="stylesheet" href="styles.css?v=5">
     <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
     <script src="main.js" defer></script>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("OzP2S3TnbouKhEvz7");   // Public Key
+        })();
+    </script>
 </head>
 <body>
     <header id="site-header"></header>
@@ -40,15 +49,26 @@
             </div>
         </section>
 
+        <!-- MODULO DI CONTATTO (separato) -->
         <section class="content-panel">
-            <h2>Contattami</h2>
-            <p>Scrivimi o pianifichiamo una chiamata per esplorare come la mia esperienza possa portare avanti la tua prossima iniziativa.</p>
-            
-            <div class="contact-methods">
-                <div class="contact-method">
-                    <h3>Email</h3>
-                    <p><a href="mailto:francesco.castaldi4@studio.unibo.it" class="accent-link">francesco.castaldi4@studio.unibo.it</a></p>
-                </div>
+            <h2>Scrivimi</h2>
+            <p>Compila il modulo qui sotto, ti risponderò al più presto.</p>
+            <form id="contact-form" style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 600px; margin: 2rem 0;">
+                <input type="text" name="from_name" placeholder="Il tuo nome" required
+                       style="background: var(--bg-card); border: 1px solid var(--border-glow); border-radius: 8px; padding: 0.8rem; color: var(--text-primary);">
+                <input type="email" name="reply_to" placeholder="La tua email" required
+                       style="background: var(--bg-card); border: 1px solid var(--border-glow); border-radius: 8px; padding: 0.8rem; color: var(--text-primary);">
+                <textarea name="message" placeholder="Messaggio" rows="5" required
+                          style="background: var(--bg-card); border: 1px solid var(--border-glow); border-radius: 8px; padding: 0.8rem; color: var(--text-primary);"></textarea>
+                <button type="submit" class="btn-primary" style="width: fit-content;">Invia messaggio</button>
+                <div id="form-message"></div>
+            </form>
+        </section>
+
+        <!-- CONTATTI SOCIAL -->
+        <section class="content-panel">
+            <h2>Altri canali</h2>
+            <div class="contact-methods" style="display: flex; gap: 2rem; flex-wrap: wrap;">
                 <div class="contact-method">
                     <h3>LinkedIn</h3>
                     <p><a href="https://www.linkedin.com/in/francesco-castaldi-b99685251/" target="_blank" rel="noopener" class="accent-link">Connect on LinkedIn</a></p>
@@ -63,5 +83,43 @@
 
     <footer id="site-footer"></footer>
     <canvas id="bg-canvas"></canvas>
+
+    <!-- Script per l'invio del form via EmailJS -->
+    <script>
+        (function() {
+            const form = document.getElementById('contact-form');
+            if (!form) return;
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const btn = form.querySelector('button[type="submit"]');
+                const originalText = btn.textContent;
+                const messageDiv = document.getElementById('form-message');
+
+                btn.disabled = true;
+                btn.textContent = 'Invio in corso...';
+
+                // Invia il form usando i tuoi Service ID e Template ID
+                emailjs.sendForm('service_ir661io', 'template_p0m1rk3', this)
+                    .then(function(response) {
+                        console.log('Successo!', response);
+                        if (messageDiv) {
+                            messageDiv.innerHTML = '<span style="color: #10b981;">✅ Messaggio inviato! Ti risponderò presto.</span>';
+                        }
+                        form.reset();
+                    })
+                    .catch(function(error) {
+                        console.error('Errore:', error);
+                        if (messageDiv) {
+                            messageDiv.innerHTML = '<span style="color: #ef4444;">❌ Errore nell\'invio. Riprova più tardi.</span>';
+                        }
+                    })
+                    .finally(function() {
+                        btn.disabled = false;
+                        btn.textContent = originalText;
+                    });
+            });
+        })();
+    </script>
 </body>
 </html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter – Francesco Castaldi</title>
+    <meta name="description" content="Iscriviti alla newsletter di Francesco Castaldi per ricevere aggiornamenti su nuovi progetti, articoli e performance ciclistiche.">
+    <meta name="keywords" content="newsletter, aggiornamenti, Francesco Castaldi, tech, ciclismo">
+    <meta name="author" content="Francesco Castaldi">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://francescocastaldi.github.io/newsletter.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Newsletter – Francesco Castaldi">
+    <meta property="og:description" content="Ricevi aggiornamenti su progetti tech, ciclismo e molto altro. Iscriviti ora!">
+    <meta property="og:url" content="https://francescocastaldi.github.io/newsletter.html">
+    <link rel="stylesheet" href="styles.css?v=5">
+    <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
+    <script src="main.js" defer></script>
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("OzP2S3TnbouKhEvz7");
+        })();
+    </script>
+</head>
+<body>
+    <header id="site-header"></header>
+    <main class="main-content subpage-main">
+        <section class="page-hero">
+            <div>
+                <span class="eyebrow">Stay updated</span>
+                <h1>Newsletter</h1>
+                <p>Ricevi aggiornamenti su nuovi progetti, articoli e performance ciclistiche direttamente nella tua inbox. Nessuno spam, solo contenuti tech e pedalate.</p>
+            </div>
+        </section>
+        <section class="content-panel">
+            <h2>📬 Iscriviti ora</h2>
+            <form id="newsletter-form">
+                <div style="margin-bottom: 1.5rem;">
+                    <label for="name" style="display: block; margin-bottom: 0.5rem; color: var(--accent-cyan);">Nome</label>
+                    <input type="text" id="name" name="name" required style="width: 100%; padding: 0.8rem; background: var(--bg-card); border: 1px solid var(--border-glow); border-radius: 8px; color: var(--text-primary);">
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <label for="email" style="display: block; margin-bottom: 0.5rem; color: var(--accent-cyan);">Email</label>
+                    <input type="email" id="email" name="email" required style="width: 100%; padding: 0.8rem; background: var(--bg-card); border: 1px solid var(--border-glow); border-radius: 8px; color: var(--text-primary);">
+                </div>
+                <button type="submit" class="btn-primary">Iscriviti</button>
+                <div id="form-message" style="margin-top: 1rem;"></div>
+            </form>
+        </section>
+    </main>
+    <footer id="site-footer"></footer>
+    <canvas id="bg-canvas"></canvas>
+    <script>
+        // 🔧 CONFIGURAZIONE EMAILJS
+        // Service ID (già configurato)
+        const SERVICE_ID = 'service_ir661io';
+        // Template ID (per la newsletter – se vuoi un template dedicato, crealo su EmailJS e sostituisci qui)
+        const TEMPLATE_ID = 'template_p0m1rk3'; // <-- SOSTITUISCI CON IL TUO TEMPLATE PER NEWSLETTER
+
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const btn = this.querySelector('button');
+            const originalText = btn.textContent;
+            const messageDiv = document.getElementById('form-message');
+
+            btn.disabled = true;
+            btn.textContent = 'Invio...';
+
+            emailjs.send(SERVICE_ID, TEMPLATE_ID, {
+                from_name: name,
+                reply_to: email,
+                to_name: "Francesco",
+                message: `📩 Nuovo iscritto alla newsletter: ${name} (${email})`
+            })
+            .then(function(response) {
+                messageDiv.innerHTML = '<span style="color: #10b981;">✅ Iscrizione completata! Riceverai aggiornamenti.</span>';
+                document.getElementById('newsletter-form').reset();
+            })
+            .catch(function(error) {
+                console.error('Errore EmailJS:', error);
+                messageDiv.innerHTML = '<span style="color: #ef4444;">❌ Errore, riprova più tardi. Dettagli in console.</span>';
+            })
+            .finally(function() {
+                btn.disabled = false;
+                btn.textContent = originalText;
+            });
+        });
+    </script>
+</body>
+</html>

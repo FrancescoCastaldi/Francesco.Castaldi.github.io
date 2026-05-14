@@ -39,6 +39,7 @@
           { name: '8H',      href: 'allenamento-ciclismo-8-ore.html' }
         ]
       },
+      { name: '// NEWSLETTER', href: 'newsletter.html' },
       { name: '// CONTACT', href: 'contact.html' }
     ]
   };
