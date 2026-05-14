@@ -3,7 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GPX Editor – Francesco Castaldi</title>
+    <title>GPX Editor – Ottimizzazione Tracce GPS per Ciclismo e Outdoor</title>
+    <meta name="description" content="GPX Editor: strumento web open source per modificare, pulire e ottimizzare file GPX. Visualizzazione mappe, smoothing, taglio tracce ed esportazione per ciclismo, running e outdoor.">
+    <meta name="keywords" content="GPX Editor, modificare GPX, tracce GPS, ciclismo, running, Leaflet, OpenStreetMap, smoothing, GPS editing, Francesco Castaldi">
+    <meta name="author" content="Francesco Castaldi">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://francescocastaldi.github.io/gpx-editor.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="product">
+    <meta property="og:title" content="GPX Editor – Strumento Professionale per Tracce GPS">
+    <meta property="og:description" content="Modifica, pulisci e ottimizza i tuoi file GPX. Visualizzazione mappe interattiva, smoothing, taglio e analisi altimetrica. Ideale per ciclisti, runner e escursionisti.">
+    <meta property="og:url" content="https://francescocastaldi.github.io/gpx-editor.html">
+    <meta property="og:image" content="https://images.pexels.com/photos/1762917/pexels-photo-1762917.jpeg?auto=compress&cs=tinysrgb&w=1200">
+    <meta property="og:site_name" content="Francesco Castaldi">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GPX Editor – Modifica e Ottimizza Tracce GPS">
+    <meta name="twitter:description" content="Strumento web completo per la gestione di file GPX. Funzionalità professionali per ciclismo, running e outdoor.">
+    <meta name="twitter:image" content="https://images.pexels.com/photos/1762917/pexels-photo-1762917.jpeg?auto=compress&cs=tinysrgb&w=1200">
+    
+    <!-- Schema.org SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "GPX Editor",
+      "description": "Applicazione web open source per visualizzare, modificare e ottimizzare file GPS in formato GPX. Include visualizzazione mappe Leaflet, smoothing, taglio tracce e analisi altimetrica.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Web",
+      "url": "https://francescocastaldi.github.io/gpx-editor.html",
+      "author": {
+        "@type": "Person",
+        "name": "Francesco Castaldi"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      },
+      "keywords": "gpx, editor, gps, ciclismo, running, leaflet, openstreetmap"
+    }
+    </script>
+
     <link rel="stylesheet" href="styles.css?v=5">
     <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
     <script src="main.js" defer></script>
@@ -12,6 +54,7 @@
     <header id="site-header"></header>
 
     <main class="main-content subpage-main">
+        <!-- HERO SECTION -->
         <section class="page-hero">
             <div>
                 <span class="eyebrow">Progetto Universitario</span>
@@ -27,41 +70,104 @@
             </div>
         </section>
 
+        <!-- STATS / METRICHE IN EVIDENZA -->
         <section class="content-panel">
-            <h2>Descrizione del Progetto</h2>
-            <p><strong>GPX Editor</strong> è un'applicazione web che permette di caricare, visualizzare e modificare file GPX (GPS Exchange Format). Le tracce GPX sono comunemente usate per registrare percorsi di ciclismo, corsa, escursionismo. L'editor consente di:</p>
-            <ul>
-                <li>Visualizzare la traccia su mappa interattiva (Leaflet + OpenStreetMap)</li>
-                <li>Rimuovere punti indesiderati (es. outlier, punti erratici)</li>
-                <li>Smoothing del tracciato (riduzione rumore)</li>
-                <li>Tagliare l'inizio o la fine della traccia</li>
-                <li>Esportare il risultato in nuovo file GPX</li>
-            </ul>
-            <p>Sviluppato come progetto per il corso di <strong>Sistemi Informativi Geografici</strong> (Università di Bologna).</p>
+            <div class="skills-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 2rem;">
+                <div class="skill-card" style="text-align: center;">
+                    <div class="skill-icon">🗺️</div>
+                    <h3 style="font-size: 2rem; margin: 0.5rem 0;">GPX</h3>
+                    <p>Formato universale</p>
+                </div>
+                <div class="skill-card" style="text-align: center;">
+                    <div class="skill-icon">⚡</div>
+                    <h3 style="font-size: 2rem; margin: 0.5rem 0;">100%</h3>
+                    <p>Lato client</p>
+                </div>
+                <div class="skill-card" style="text-align: center;">
+                    <div class="skill-icon">📈</div>
+                    <h3 style="font-size: 2rem; margin: 0.5rem 0;">Real-time</h3>
+                    <p>Visualizzazione</p>
+                </div>
+                <div class="skill-card" style="text-align: center;">
+                    <div class="skill-icon">🔓</div>
+                    <h3 style="font-size: 2rem; margin: 0.5rem 0;">Open Source</h3>
+                    <p>Su GitHub</p>
+                </div>
+            </div>
         </section>
 
+        <!-- DESCRIZIONE + IMMAGINE -->
+        <section class="content-panel">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+                <div>
+                    <h2>Descrizione del Progetto</h2>
+                    <p><strong>GPX Editor</strong> è un'applicazione web che permette di caricare, visualizzare e modificare file GPX (GPS Exchange Format). Le tracce GPX sono comunemente usate per registrare percorsi di ciclismo, corsa, escursionismo.</p>
+                </div>
+                <div style="background: var(--bg-card); border-radius: 16px; padding: 1rem; border: 1px solid var(--border-glow); text-align: center;">
+                    <img src="https://images.pexels.com/photos/1762917/pexels-photo-1762917.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Visualizzazione traccia GPX su mappa" style="width: 100%; border-radius: 12px;">
+                    <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--text-muted);">Traccia GPX visualizzata su OpenStreetMap</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FUNZIONALITÀ PRINCIPALI -->
+        <section class="content-panel">
+            <h2>Funzionalità Principali</h2>
+            <div class="skills-grid" style="margin-bottom: 1.5rem;">
+                <div class="skill-card"><h3>🗺️ Mappa interattiva</h3><p>Visualizzazione della traccia su mappa Leaflet con supporto OpenStreetMap, zoom e panoramica.</p></div>
+                <div class="skill-card"><h3>✂️ Taglio punti</h3><p>Rimozione di outlier e punti erratici, taglio dell'inizio o della fine del percorso.</p></div>
+                <div class="skill-card"><h3>🔄 Smoothing</h3><p>Riduzione del rumore e semplificazione della traccia per un percorso più pulito.</p></div>
+                <div class="skill-card"><h3>💾 Esportazione</h3><p>Salvataggio del risultato in un nuovo file GPX pronto per l'uso su dispositivi GPS e app.</p></div>
+                <div class="skill-card"><h3>📊 Profilo altimetrico</h3><p>Grafico interattivo (Chart.js) che mostra altitudine vs distanza progressiva.</p></div>
+                <div class="skill-card"><h3>⏪ Undo/Redo</h3><p>Supporto completo per annullare/ripetere le operazioni di modifica.</p></div>
+            </div>
+        </section>
+
+        <!-- TECNOLOGIE (TABELLA) -->
         <section class="content-panel">
             <h2>Tecnologie Utilizzate</h2>
-            <ul>
-                <li><strong>TypeScript</strong> – linguaggio principale</li>
-                <li><strong>Vite</strong> – build tool e dev server</li>
-                <li><strong>Leaflet</strong> – libreria mappe interattive</li>
-                <li><strong>OpenStreetMap</strong> – tiles cartografici</li>
-                <li><strong>Turf.js</strong> – operazioni geometriche (semplificazione, distanze)</li>
-                <li><strong>FileSaver.js</strong> – export file lato client</li>
-            </ul>
+            <div style="overflow-x: auto;">
+                <table style="width:100%; border-collapse:collapse; margin:1.5rem 0; background:var(--bg-card); border-radius:16px; overflow:hidden;">
+                    <thead>
+                        <tr style="background:rgba(59,130,246,0.15); border-bottom:1px solid var(--border-glow);">
+                            <th style="padding:1rem; text-align:left;">Componente</th>
+                            <th style="padding:1rem; text-align:left;">Tecnologia</th>
+                            <th style="padding:1rem; text-align:left;">Versione</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom:1px solid rgba(59,130,246,0.1);"><td style="padding:1rem;">Linguaggio</td><td style="padding:1rem;">TypeScript</td><td style="padding:1rem;">5.2+</td></tr>
+                        <tr style="border-bottom:1px solid rgba(59,130,246,0.1);"><td style="padding:1rem;">Build tool</td><td style="padding:1rem;">Vite</td><td style="padding:1rem;">5.0+</td></tr>
+                        <tr style="border-bottom:1px solid rgba(59,130,246,0.1);"><td style="padding:1rem;">Mappe</td><td style="padding:1rem;">Leaflet + OpenStreetMap</td><td style="padding:1rem;">1.9+</td></tr>
+                        <tr style="border-bottom:1px solid rgba(59,130,246,0.1);"><td style="padding:1rem;">Geometrie</td><td style="padding:1rem;">Turf.js</td><td style="padding:1rem;">6.5+</td></tr>
+                        <tr style="border-bottom:1px solid rgba(59,130,246,0.1);"><td style="padding:1rem;">Grafici</td><td style="padding:1rem;">Chart.js</td><td style="padding:1rem;">4.4+</td></tr>
+                        <tr><td style="padding:1rem;">Export</td><td style="padding:1rem;">FileSaver.js</td><td style="padding:1rem;">2.0+</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
+        <!-- ARCHITETTURA -->
         <section class="content-panel">
             <h2>Architettura e Funzionalità</h2>
-            <h3>Parsing e validazione GPX</h3>
-            <p>Il file GPX viene letto lato client tramite <code>FileReader</code> e parsato con DOMParser. Viene validato lo schema minimo (punti con latitudine/longitudine).</p>
-            <h3>Modifica interattiva</h3>
-            <p>L'utente seleziona i punti sulla mappa o utilizza slider per definire un intervallo di tempo/distanza. L'editor supporta undo/redo delle operazioni principali.</p>
-            <h3>Visualizzazione profilo altimetrico</h3>
-            <p>Grafico interattivo (Chart.js) che mostra altitudine vs distanza progressiva, utile per individuare segmenti da tagliare.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 2rem 0;">
+                <div class="skill-card"><h3>📂 Parsing e validazione GPX</h3><p>Il file GPX viene letto lato client tramite FileReader e parsato con DOMParser. Viene validato lo schema minimo (punti con latitudine/longitudine).</p></div>
+                <div class="skill-card"><h3>✏️ Modifica interattiva</h3><p>L'utente seleziona i punti sulla mappa o utilizza slider per definire un intervallo di tempo/distanza. Supporto completo Undo/Redo.</p></div>
+                <div class="skill-card"><h3>📊 Visualizzazione profilo altimetrico</h3><p>Grafico interattivo (Chart.js) che mostra altitudine vs distanza progressiva, utile per individuare segmenti da tagliare.</p></div>
+            </div>
         </section>
 
+        <!-- GALLERIA DEL PROGETTO -->
+        <section class="content-panel">
+            <h2>Galleria del progetto</h2>
+            <p>Alcune schermate dell'interfaccia e dell'architettura.</p>
+            <div class="slideshow-container" data-slideshow="https://images.pexels.com/photos/1762917/pexels-photo-1762917.jpeg?auto=compress&cs=tinysrgb&w=800, https://images.pexels.com/photos/248550/pexels-photo-248550.jpeg?auto=compress&cs=tinysrgb&w=800, https://images.pexels.com/photos/2293762/pexels-photo-2293762.jpeg?auto=compress&cs=tinysrgb&w=800" data-alt="Galleria GPX Editor" data-interval="4000" data-shuffle="false">
+                <div class="slideshow"></div>
+            </div>
+            <p style="font-size:0.7rem; margin-top:0.5rem;">📸 Immagini: Pexels (CC0) – Esempi di tracce GPS e ciclisti in azione.</p>
+        </section>
+
+        <!-- LINK AL REPOSITORY -->
         <section class="content-panel">
             <h2>Prova il Progetto</h2>
             <p>Il codice sorgente è disponibile su GitHub. Puoi clonarlo e provarlo localmente seguendo le istruzioni nel README.</p>
