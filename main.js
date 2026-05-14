@@ -32,6 +32,7 @@
           { name: 'TREK MADONE',       href: 'trek-madone.html' }
         ]
       },
+      { name: '// BLOG', href: 'allenamento-ciclismo-8-ore.html' },
       { name: '// CONTACT', href: 'contact.html' }
     ]
   };
