@@ -3,7 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hospital Sanitization Tracker – Francesco Castaldi</title>
+    <title>Hospital Sanitization Tracker – DApp Blockchain per Sanificazione Ospedaliera</title>
+    <meta name="description" content="Hospital Sanitization Tracker: DApp Ethereum per la tracciabilità immutabile delle attività di sanificazione ospedaliera. Smart contract Solidity, testnet Sepolia.">
+    <meta name="keywords" content="blockchain, sanificazione, ospedale, DApp, Ethereum, Solidity, Hardhat, tracciabilità, Francesco Castaldi">
+    <meta name="author" content="Francesco Castaldi">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://francescocastaldi.github.io/hospital-sanitization-tracker.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Hospital Sanitization Tracker – Blockchain per la Sanificazione">
+    <meta property="og:description" content="DApp per registrare e certificare in modo immutabile le operazioni di sanificazione ospedaliera su Ethereum Sepolia.">
+    <meta property="og:url" content="https://francescocastaldi.github.io/hospital-sanitization-tracker.html">
+    <meta property="og:image" content="https://francescocastaldi.github.io/photos/hospital-tracker-og.jpg">
+    <meta property="og:site_name" content="Francesco Castaldi">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hospital Sanitization Tracker">
+    <meta name="twitter:description" content="Tracciabilità blockchain per sanificazione ospedaliera. Smart contract Solidity, Hardhat, Ethers.js.">
+    <meta name="twitter:image" content="https://francescocastaldi.github.io/photos/hospital-tracker-og.jpg">
+    
+    <!-- Schema.org (SoftwareApplication) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Hospital Sanitization Tracker",
+      "description": "Applicazione decentralizzata (DApp) per la tracciabilità delle sanificazioni ospedaliere su blockchain Ethereum.",
+      "applicationCategory": "HealthcareApplication",
+      "operatingSystem": "Web",
+      "url": "https://francescocastaldi.github.io/hospital-sanitization-tracker.html",
+      "author": {
+        "@type": "Person",
+        "name": "Francesco Castaldi"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      },
+      "keywords": "blockchain, solidity, ethereum, healthcare, sanitization"
+    }
+    </script>
+
     <link rel="stylesheet" href="styles.css?v=5">
     <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
     <script src="main.js" defer></script>
@@ -53,7 +95,7 @@
             </div>
         </section>
 
-        <!-- DESCRIZIONE + IMMAGINE (mockup diagramma) -->
+        <!-- DESCRIZIONE + IMMAGINE -->
         <section class="content-panel">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
                 <div>
@@ -62,13 +104,13 @@
                     <p>Il progetto è stato sviluppato per il corso di <strong>Blockchain e Criptovalute</strong> dell'Università di Bologna (Proposal 7 – DLTs for Traceability in Supply Chain, AnaNSi Research Group).</p>
                 </div>
                 <div style="background: var(--bg-card); border-radius: 16px; padding: 1rem; border: 1px solid var(--border-glow); text-align: center;">
-                    <img src="https://placehold.co/600x400/0a0a0c/3b82f6?text=Architettura+Smart+Contract" alt="Diagramma architettura" style="width: 100%; border-radius: 12px;">
+                    <img src="https://placehold.co/600x400/0a0a0c/3b82f6?text=Architettura+Smart+Contract" alt="Diagramma architettura smart contract" style="width: 100%; border-radius: 12px;">
                     <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--text-muted);">Flusso dei dati sulla blockchain Sepolia</p>
                 </div>
             </div>
         </section>
 
-        <!-- TECNOLOGIE (TABELLA IN STILE TECH) -->
+        <!-- TECNOLOGIE (TABELLA) -->
         <section class="content-panel">
             <h2>Tecnologie Utilizzate</h2>
             <div style="overflow-x: auto;">
@@ -81,59 +123,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="border-bottom: 1px solid rgba(59,130,246,0.2);">
-                            <td style="padding: 0.75rem 0;">Smart Contract</td>
-                            <td style="padding: 0.75rem 0;">Solidity</td>
-                            <td style="padding: 0.75rem 0;">0.8.20</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(59,130,246,0.2);">
-                            <td style="padding: 0.75rem 0;">Framework di sviluppo</td>
-                            <td style="padding: 0.75rem 0;">Hardhat</td>
-                            <td style="padding: 0.75rem 0;">2.28.0</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(59,130,246,0.2);">
-                            <td style="padding: 0.75rem 0;">Frontend</td>
-                            <td style="padding: 0.75rem 0;">Ethers.js</td>
-                            <td style="padding: 0.75rem 0;">v6</td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid rgba(59,130,246,0.2);">
-                            <td style="padding: 0.75rem 0;">Runtime</td>
-                            <td style="padding: 0.75rem 0;">Node.js</td>
-                            <td style="padding: 0.75rem 0;">22</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 0.75rem 0;">Wallet</td>
-                            <td style="padding: 0.75rem 0;">MetaMask</td>
-                            <td style="padding: 0.75rem 0;">Sepolia testnet</td>
-                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(59,130,246,0.2);"><td style="padding: 0.75rem 0;">Smart Contract</td><td>Solidity</td><td>0.8.20</td></tr>
+                        <tr style="border-bottom: 1px solid rgba(59,130,246,0.2);"><td style="padding: 0.75rem 0;">Framework</td><td>Hardhat</td><td>2.28.0</td></tr>
+                        <tr style="border-bottom: 1px solid rgba(59,130,246,0.2);"><td style="padding: 0.75rem 0;">Frontend</td><td>Ethers.js</td><td>v6</td></tr>
+                        <tr style="border-bottom: 1px solid rgba(59,130,246,0.2);"><td style="padding: 0.75rem 0;">Runtime</td><td>Node.js</td><td>22</td></tr>
+                        <tr><td style="padding: 0.75rem 0;">Wallet</td><td>MetaMask</td><td>Sepolia testnet</td></tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <!-- ARCHITETTURA + SCHEMA DI INTERAZIONE (due colonne) -->
+        <!-- ARCHITETTURA -->
         <section class="content-panel">
             <h2>Architettura e Funzionalità</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 2rem 0;">
-                <div class="skill-card">
-                    <h3>📄 Smart Contract</h3>
-                    <p>Il contratto <code>SanitizationTracker.sol</code> gestisce tre entità principali: <strong>Aree</strong> (aree ospedaliere da sanificare), <strong>Operatori</strong> (personale autorizzato) e <strong>Eventi di sanificazione</strong>. Il solo admin (deployer) può registrare aree e operatori; solo gli operatori attivi possono registrare sanificazioni.</p>
-                </div>
-                <div class="skill-card">
-                    <h3>🖥️ Frontend DApp</h3>
-                    <p>L'interfaccia web si connette al contratto tramite MetaMask e rileva automaticamente il ruolo dell'utente connesso (Admin, Operatore o Guest). Permette di registrare aree e operatori, registrare eventi di sanificazione e consultare lo storico completo per ciascuna area.</p>
-                </div>
-                <div class="skill-card">
-                    <h3>🧪 Test Suite</h3>
-                    <p>Il progetto include una test suite completa con <strong>14/14 test superati</strong>, sviluppata con Mocha e Hardhat. Copre tutti i casi limite: permessi, duplicati, registrazioni non autorizzate.</p>
-                </div>
+                <div class="skill-card"><h3>📄 Smart Contract</h3><p>Il contratto <code>SanitizationTracker.sol</code> gestisce Aree, Operatori ed Eventi. Solo admin può registrare aree e operatori; solo operatori attivi registrano sanificazioni.</p></div>
+                <div class="skill-card"><h3>🖥️ Frontend DApp</h3><p>Interfaccia web che si connette tramite MetaMask e rileva ruolo utente (Admin, Operatore, Guest). Permette registrazione e storico.</p></div>
+                <div class="skill-card"><h3>🧪 Test Suite</h3><p>Test suite completa con <strong>14/14 test superati</strong> (Mocha + Hardhat). Copre permessi, duplicati, casi limite.</p></div>
             </div>
         </section>
 
-        <!-- DASHBOARD SIMULATA (METRICHE DINAMICHE) -->
+        <!-- DASHBOARD SIMULATA -->
         <section class="content-panel">
             <h2>Dashboard operativa</h2>
-            <p>Un'anteprima delle metriche registrate sulla testnet Sepolia (dati simulati per demo).</p>
+            <p>Metriche in tempo reale sulla testnet Sepolia (dati simulati).</p>
             <div style="background: var(--bg-card); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--border-glow); margin: 1.5rem 0;">
                 <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
                     <div><span style="color: var(--accent-cyan);">Ultima sanificazione:</span> <strong>15/05/2026 08:32</strong></div>
@@ -153,42 +166,30 @@
             </div>
         </section>
 
-        <!-- TIMELINE DI SVILUPPO -->
+        <!-- TIMELINE -->
         <section class="content-panel">
             <h2>Roadmap di sviluppo</h2>
             <div style="display: flex; flex-direction: column; gap: 1rem; margin: 2rem 0;">
-                <div style="display: flex; gap: 1rem; align-items: baseline; border-left: 2px solid var(--accent-blue); padding-left: 1rem;">
-                    <span style="font-family: monospace; color: var(--accent-cyan);">✅ Q1 2026</span>
-                    <span>Prototipo dello smart contract e test suite base</span>
-                </div>
-                <div style="display: flex; gap: 1rem; align-items: baseline; border-left: 2px solid var(--accent-blue); padding-left: 1rem;">
-                    <span style="font-family: monospace; color: var(--accent-cyan);">✅ Q2 2026</span>
-                    <span>Sviluppo frontend e integrazione MetaMask</span>
-                </div>
-                <div style="display: flex; gap: 1rem; align-items: baseline; border-left: 2px solid var(--border-glow); padding-left: 1rem;">
-                    <span style="font-family: monospace; color: var(--text-muted);">🔜 Q3 2026</span>
-                    <span>Dashboard analitica con statistiche storiche</span>
-                </div>
-                <div style="display: flex; gap: 1rem; align-items: baseline; border-left: 2px solid var(--border-glow); padding-left: 1rem;">
-                    <span style="font-family: monospace; color: var(--text-muted);">🔜 Q4 2026</span>
-                    <span>Integrazione con sistemi di ticketing ospedaliero</span>
-                </div>
+                <div style="display: flex; gap: 1rem; align-items: baseline; border-left: 2px solid var(--accent-blue); padding-left: 1rem;"><span style="font-family: monospace; color: var(--accent-cyan);">✅ Q1 2026</span><span>Prototipo smart contract e test suite base</span></div>
+                <div style="display: flex; gap: 1rem; align-items: baseline; border-left: 2px solid var(--accent-blue); padding-left: 1rem;"><span style="font-family: monospace; color: var(--accent-cyan);">✅ Q2 2026</span><span>Sviluppo frontend e integrazione MetaMask</span></div>
+                <div style="display: flex; gap: 1rem; align-items: baseline; border-left: 2px solid var(--border-glow); padding-left: 1rem;"><span style="font-family: monospace; color: var(--text-muted);">🔜 Q3 2026</span><span>Dashboard analitica con statistiche storiche</span></div>
+                <div style="display: flex; gap: 1rem; align-items: baseline; border-left: 2px solid var(--border-glow); padding-left: 1rem;"><span style="font-family: monospace; color: var(--text-muted);">🔜 Q4 2026</span><span>Integrazione con sistemi di ticketing ospedaliero</span></div>
             </div>
         </section>
 
-        <!-- GALLERIA DEL PROGETTO (slide di immagini fittizie) -->
+        <!-- GALLERIA -->
         <section class="content-panel">
             <h2>Galleria del progetto</h2>
-            <p>Alcune schermate della DApp e dell'architettura smart contract.</p>
+            <p>Schermate della DApp e architettura smart contract.</p>
             <div class="slideshow-container" data-slideshow="https://placehold.co/800x400/0a0a0c/3b82f6?text=Dashboard+Sanificazioni, https://placehold.co/800x400/0a0a0c/2a9d8f?text=Smart+Contract+Interactions, https://placehold.co/800x400/0a0a0c/f97316?text=Test+Suite+Results" data-alt="Galleria Hospital Sanitization" data-interval="4000" data-shuffle="false">
                 <div class="slideshow"></div>
             </div>
         </section>
 
-        <!-- LINK AL REPOSITORY -->
+        <!-- LINK REPOSITORY -->
         <section class="content-panel">
             <h2>Prova il Progetto</h2>
-            <p>Puoi interagire con l'applicazione live sulla testnet Sepolia. La DApp è disponibile su GitHub Pages.</p>
+            <p>La DApp è disponibile su GitHub. Interagisci con la testnet Sepolia.</p>
             <p><a href="https://github.com/FrancescoCastaldi/HospitalSanitizationTracker.git" target="_blank" rel="noopener" class="btn-secondary">📂 View on GitHub</a></p>
         </section>
     </main>
