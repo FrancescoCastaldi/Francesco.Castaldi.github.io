@@ -1,125 +1,113 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contatti – Francesco Castaldi</title>
-    <meta name="description" content="Contatta Francesco Castaldi per consulenze, collaborazioni o semplicemente per parlare di tecnologia, ciclismo e innovazione.">
-    <link rel="canonical" href="https://francescocastaldi.github.io/Francesco.Castaldi.github.io/contact.html">
-    <link rel="stylesheet" href="styles.css?v=5">
-    <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
-    <script src="main.js" defer></script>
-    <!-- EmailJS SDK -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script>
-        (function() {
-            emailjs.init("OzP2S3TnbouKhEvz7");   // Public Key
-        })();
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contatti - Francesco Castaldi</title>
+  <meta name="description" content="Contatta Francesco Castaldi. Sono disponibile per parlare di data engineering, healthcare IT, ciclismo o qualsiasi cosa di interessante.">
+  <link rel="canonical" href="https://francescocastaldi.github.io/Francesco.Castaldi.github.io/contact.html">
+  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
+  <script src="main.js" defer></script>
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("OzP2S3TnbouKhEvz7");
+    })();
+  </script>
 </head>
 <body>
-    <header id="site-header"></header>
+  <header id="site-header"></header>
 
-    <main class="main-content subpage-main">
-        <section class="page-hero">
-            <div>
-                <span class="eyebrow">Collaboriamo</span>
-                <h1>Proteggi, automatizza, analizza con fiducia</h1>
-                <p>Che tu abbia bisogno di un partner per la sicurezza, un architetto dell'automazione o una strategia dati per il ciclismo, sono pronto a creare una soluzione su misura per i tuoi obiettivi.</p>
-                <div class="hero-meta">
-                    <span class="meta-pill">Cybersecurity</span>
-                    <span class="meta-pill">Automazione</span>
-                    <span class="meta-pill">Analisi ciclismo</span>
-                </div>
-            </div>
-        </section>
+  <main class="main-content subpage-main">
 
-        <section class="content-panel info-grid">
-            <div class="info-card">
-                <h2>Disponibile ovunque</h2>
-                <p>Remoto o in loco. Mi adatto al tuo flusso di lavoro.</p>
-            </div>
-            <div class="info-card">
-                <h2>Risposta rapida</h2>
-                <p>Rispondo entro 24 ore. Il tuo tempo è importante.</p>
-            </div>
-            <div class="info-card">
-                <h2>Consulenza & Formazione</h2>
-                <p>Hai bisogno di un workshop, audit o strumenti personalizzati? Parliamone.</p>
-            </div>
-        </section>
+    <!-- HERO -->
+    <section class="page-hero">
+      <div>
+        <h1>Contatti</h1>
+        <p>Sono Francesco. Ingegnere informatico, appassionato di dati, ciclismo e sistemi che funzionano bene.<br>Se vuoi scrivermi per qualsiasi motivo, sono qui.</p>
+      </div>
+    </section>
 
-        <!-- LINKEDIN SOCIAL LINK -->         <section class="content-panel" style="text-align:center; padding: 1.5rem;">           <a href="https://www.linkedin.com/in/francescocastaldi"              target="_blank" rel="noopener noreferrer"              style="display:inline-flex;align-items:center;gap:0.6rem;padding:0.8rem 1.6rem;background:var(--bg-card);border:1px solid var(--accent);border-radius:8px;color:var(--accent);text-decoration:none;font-weight:600;letter-spacing:0.05em;font-size:1rem;"              aria-label="Profilo LinkedIn di Francesco Castaldi">             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>             </svg>             Connettiti su LinkedIn           </a>         </section>          <!-- MODULO DI CONTATTO (separato) -->
-        <section class="content-panel">
-            <h2>Scrivimi</h2>
-            <p>Compila il modulo qui sotto, ti risponderò al più presto.</p>
-            <form id="contact-form" style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 600px; margin: 2rem 0;">
-                <input type="text" name="from_name" placeholder="Il tuo nome" required
-                       style="background: var(--bg-card); border: 1px solid var(--border-glow); border-radius: 8px; padding: 0.8rem; color: var(--text-primary);">
-                <input type="email" name="reply_to" placeholder="La tua email" required
-                       style="background: var(--bg-card); border: 1px solid var(--border-glow); border-radius: 8px; padding: 0.8rem; color: var(--text-primary);">
-                <textarea name="message" placeholder="Messaggio" rows="5" required
-                          style="background: var(--bg-card); border: 1px solid var(--border-glow); border-radius: 8px; padding: 0.8rem; color: var(--text-primary);"></textarea>
-                <button type="submit" class="btn-primary" style="width: fit-content;">Invia messaggio</button>
-                <div id="form-message"></div>
-            </form>
-        </section>
+    <!-- CONNESSIONI -->
+    <section class="content-panel" style="padding: 2rem 1.5rem;">
+      <h2 style="margin-bottom: 1.5rem; font-size: 1rem; letter-spacing: 0.1em; opacity: 0.6;">TROVAMI SU</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
 
-        <!-- CONTATTI SOCIAL -->
-        <section class="content-panel">
-            <h2>Altri canali</h2>
-            <div class="contact-methods" style="display: flex; gap: 2rem; flex-wrap: wrap;">
-                <div class="contact-method">
-                    <h3>LinkedIn</h3>
-                    <p><a href="https://www.linkedin.com/in/francesco-castaldi-b99685251/" target="_blank" rel="noopener" class="accent-link">Connect on LinkedIn</a></p>
-                </div>
-                <div class="contact-method">
-                    <h3>GitHub</h3>
-                    <p><a href="https://github.com/FrancescoCastaldi" target="_blank" rel="noopener" class="accent-link">View my repositories</a></p>
-                </div>
-            </div>
-        </section>
-    </main>
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/francescocastaldi"
+           target="_blank" rel="noopener noreferrer"
+           class="btn-secondary"
+           style="display:inline-flex;align-items:center;gap:0.5rem;"
+           aria-label="Profilo LinkedIn di Francesco Castaldi">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
 
-    <footer id="site-footer"></footer>
-    <canvas id="bg-canvas"></canvas>
+        <!-- GitHub -->
+        <a href="https://github.com/FrancescoCastaldi"
+           target="_blank" rel="noopener noreferrer"
+           class="btn-secondary"
+           style="display:inline-flex;align-items:center;gap:0.5rem;"
+           aria-label="Profilo GitHub di Francesco Castaldi">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          GitHub
+        </a>
 
-    <!-- Script per l'invio del form via EmailJS -->
-    <script>
-        (function() {
-            const form = document.getElementById('contact-form');
-            if (!form) return;
+        <!-- Strava -->
+        <a href="https://www.strava.com/athletes/francescocastaldi"
+           target="_blank" rel="noopener noreferrer"
+           class="btn-secondary"
+           style="display:inline-flex;align-items:center;gap:0.5rem;"
+           aria-label="Profilo Strava di Francesco Castaldi">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169"/></svg>
+          Strava
+        </a>
 
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const btn = form.querySelector('button[type="submit"]');
-                const originalText = btn.textContent;
-                const messageDiv = document.getElementById('form-message');
+      </div>
+    </section>
 
-                btn.disabled = true;
-                btn.textContent = 'Invio in corso...';
+    <!-- FORM -->
+    <section class="content-panel" style="padding: 2rem 1.5rem;">
+      <h2 style="margin-bottom: 0.5rem; font-size: 1rem; letter-spacing: 0.1em; opacity: 0.6;">SCRIVIMI</h2>
+      <p style="margin-bottom: 1.5rem; opacity: 0.7;">Ti rispondo appena posso.</p>
+      <form id="contact-form" style="display:flex;flex-direction:column;gap:1rem;max-width:480px;">
+        <input type="text" name="from_name" placeholder="Il tuo nome" required
+               style="background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:0.75rem 1rem;color:var(--text-primary);font-family:inherit;font-size:0.95rem;outline:none;">
+        <input type="email" name="reply_to" placeholder="La tua email" required
+               style="background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:0.75rem 1rem;color:var(--text-primary);font-family:inherit;font-size:0.95rem;outline:none;">
+        <textarea name="message" placeholder="Messaggio" rows="5" required
+                  style="background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:0.75rem 1rem;color:var(--text-primary);font-family:inherit;font-size:0.95rem;outline:none;resize:vertical;"></textarea>
+        <button type="submit" class="btn-primary" style="align-self:flex-start;">Invia messaggio</button>
+        <p id="form-status" style="font-size:0.85rem;opacity:0.7;"></p>
+      </form>
+    </section>
 
-                // Invia il form usando i tuoi Service ID e Template ID
-                emailjs.sendForm('service_ir661io', 'template_p0m1rk3', this)
-                    .then(function(response) {
-                        console.log('Successo!', response);
-                        if (messageDiv) {
-                            messageDiv.innerHTML = '<span style="color: #10b981;">✅ Messaggio inviato! Ti risponderò presto.</span>';
-                        }
-                        form.reset();
-                    })
-                    .catch(function(error) {
-                        console.error('Errore:', error);
-                        if (messageDiv) {
-                            messageDiv.innerHTML = '<span style="color: #ef4444;">❌ Errore nell\'invio. Riprova più tardi.</span>';
-                        }
-                    })
-                    .finally(function() {
-                        btn.disabled = false;
-                        btn.textContent = originalText;
-                    });
-            });
-        })();
-    </script>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('button[type="submit"]');
+      const status = document.getElementById('form-status');
+      btn.disabled = true;
+      btn.textContent = 'Invio...';
+      emailjs.sendForm('service_castaldi', 'template_contact', this)
+        .then(function() {
+          status.textContent = 'Messaggio inviato. Grazie!';
+          document.getElementById('contact-form').reset();
+          btn.textContent = 'Invia messaggio';
+          btn.disabled = false;
+        }, function(error) {
+          status.textContent = 'Errore nell\'invio. Riprova o scrivimi su LinkedIn.';
+          btn.textContent = 'Invia messaggio';
+          btn.disabled = false;
+        });
+    });
+  </script>
+
 </body>
 </html>
