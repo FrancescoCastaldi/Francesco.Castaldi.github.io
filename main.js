@@ -118,6 +118,7 @@
     document.querySelectorAll('footer, #site-footer').forEach(function (footer) {
       footer.classList.add('footer');
       footer.innerHTML =
+        '<div><a href="https://www.linkedin.com/in/francescocastaldi" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;letter-spacing:0.05em;">&#x1F517; LINKEDIN // CONNECT</a></div>' +
         '<div>⚡ SYS.READY // CYCLING MODE</div>' +
         '<div>&copy; ' + SITE_CONFIG.copyrightYear + ' ' + SITE_CONFIG.siteName + ' // PORT 2026</div>' +
         '<div>Page Views: <span id="visit-count"></span></div>';
