@@ -1,84 +1,109 @@
-# PersonalSite
+# Francesco Castaldi — Personal Website
 
-Welcome to the PersonalSite project! This repository contains the source code for Francesco Castaldi's personal website. The website showcases various aspects of Francesco's interests, projects, and contact information.
+Personal website of **Francesco Castaldi**, Healthcare Business Consultant & Software Engineer.
+Live at 👉 [francescocastaldi.github.io](https://francescocastaldi.github.io/Francesco.Castaldi.github.io)
 
-## Project Structure
+---
 
-The project is organized as follows:
+## Architecture Overview
 
-```
-PSWebsite/
-├── index.html
-├── styles.css
-├── scripts.js
-├── menu.js
-├── bike-maintenance.html
-├── contact.html
-├── giant-tcr-maintenance.html
-├── backgroundAnimation.js
-├── pageCounter.js
-├── stravaLoop.js
+Static site hosted on **GitHub Pages** — no build step, no framework. All pages are standalone HTML files sharing a single CSS stylesheet and a main JS module.
 
 ```
+Francesco.Castaldi.github.io/
+│
+├── index.html                        # Landing page / homepage
+├── styles.css                        # Global stylesheet (shared across all pages)
+├── main.js                           # Core JavaScript (animations, navigation, shared logic)
+├── contact.js                        # Contact form logic
+│
+├── 404.html                          # Custom 404 error page
+├── contact.html                      # Contact page
+├── newsletter.html                   # Newsletter subscription page
+├── strava.html                       # Strava cycling stats
+│
+├── giant-tcr.html                    # Giant TCR bike page
+├── giant-tcr-maintenance.html        # Giant TCR maintenance guide
+├── bike-maintenance.html             # General bike maintenance tips
+├── trek-madone.html                  # Trek Madone bike page
+├── trek-madone-animazione.html       # Trek Madone animated showcase
+│
+├── allenamento-ciclismo-8-ore.html   # 8-hour cycling training plan
+├── gpx-editor.html                   # GPX route editor tool
+├── hospital-sanitization-tracker.html # Healthcare sanitization tracker app
+├── love.html                         # Personal/creative page
+│
+├── sitemap.xml                       # XML sitemap for SEO
+├── robots.txt                        # Crawler directives
+├── humans.txt                        # humans.txt credits
+│
+├── photos/                           # Media assets (images, photos)
+│
+└── .github/
+    └── workflows/                    # GitHub Actions CI/CD workflows
+```
 
+---
 
-## Description
+## Page Descriptions
 
-### index.html
-The main landing page of the website.
+| File | Description |
+|------|-------------|
+| `index.html` | Main landing page — personal intro, skills, links |
+| `contact.html` | Contact form and personal info |
+| `newsletter.html` | Newsletter signup page |
+| `strava.html` | Embedded Strava cycling activity stats |
+| `giant-tcr.html` | Dedicated page for the Giant TCR Advanced SL ISP Rabobank Edition |
+| `giant-tcr-maintenance.html` | Maintenance log and tips for the Giant TCR |
+| `bike-maintenance.html` | General cycling maintenance reference |
+| `trek-madone.html` | Dedicated page for the Trek Madone bike |
+| `trek-madone-animazione.html` | Animated visual showcase of the Trek Madone |
+| `allenamento-ciclismo-8-ore.html` | Structured 8-hour cycling training plan |
+| `gpx-editor.html` | Client-side GPX route viewer and editor |
+| `hospital-sanitization-tracker.html` | Healthcare tool: sanitization tracking dashboard |
+| `love.html` | Personal/creative page |
+| `404.html` | Custom error page for broken links |
 
-### gameproject.html
-A page dedicated to showcasing game projects.
+---
 
-### strava.html
-Displays Francesco's Strava cycling stats using embedded iframes.
+## Tech Stack
 
-### contact.html
-Provides contact information and a video introduction.
+| Layer | Technology |
+|-------|------------|
+| Hosting | GitHub Pages |
+| Markup | HTML5 |
+| Styling | CSS3 (`styles.css`) |
+| Scripting | Vanilla JavaScript (`main.js`, `contact.js`) |
+| SEO | `sitemap.xml`, `robots.txt`, `humans.txt` |
+| CI/CD | GitHub Actions (`.github/workflows/`) |
 
-### giant-tcr.html
-Details about the Giant TCR Advanced SL ISP Rabobank Edition bike.
+---
 
-### giant-tcr-maintenance.html
-Provides maintenance tips for the Giant TCR Advanced SL ISP Rabobank Edition bike.
+## Local Development
 
-### styles.css
-Contains the CSS styles for the website.
+```sh
+git clone https://github.com/FrancescoCastaldi/Francesco.Castaldi.github.io.git
+cd Francesco.Castaldi.github.io
+```
 
-### scripts.js
-General JavaScript functionalities for the website.
+Open `index.html` directly in a browser — no build step required.
 
-### menu.js
-Handles the display of the navigation menu.
+> Alternatively, use a local server to avoid CORS issues with JS modules:
+> ```sh
+> npx serve .
+> # or
+> python3 -m http.server 8080
+> ```
 
-### backgroundAnimation.js
-Manages the background gradient animation and slideshow functionality.
+---
 
-### pageCounter.js
-Counts page visits using `localStorage`.
+## Deployment
 
-### stravaLoop.js
-Additional JavaScript for the Strava page.
+Every push to `main` is automatically deployed to GitHub Pages.
+No manual action required.
 
-### photos/
-Contains media files used in the website.
-
-## How to Run
-
-1. Clone the repository:
-    ```sh
-    git clone https://github.com/yourusername/PersonalSite.git
-    ```
-2. Navigate to the project directory:
-    ```sh
-    cd PersonalSite
-    ```
-3. Open `index.html` in your web browser to view the website.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+---
 
 ## Contact
 
-For any questions or inquiries, please contact Francesco Castaldi at [francesco.castaldi@proton.me](mailto:francesco.castaldi@proton.me).
+Francesco Castaldi — [francesco.castaldi@proton.me](mailto:francesco.castaldi@proton.me)
