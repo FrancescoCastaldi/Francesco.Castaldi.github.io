@@ -53,7 +53,7 @@
       "@type": "CollegeOrUniversity",
       "name": "Universita degli Studi"
     },
-    "knowsAbout": ["Healthcare IT", "Data Science", "Cloud Architecture", "Business Consulting", "SQL Server", "Docker", "Python"],
+    "knowsAbout": ["Healthcare IT", "Data Science", "Cloud Architecture", "Business Consulting", "SQL Server", "Docker", "Python", "Cybersecurity", "AI Prompting", "Data Lake"],
     "sameAs": [
       "https://github.com/FrancescoCastaldi",
       "https://www.linkedin.com/in/francescocastaldi"
@@ -61,7 +61,7 @@
   }
   </script>
 
-  <!-- WebSite Schema per Sitelinks Search Box -->
+  <!-- WebSite Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -72,10 +72,9 @@
   }
   </script>
 
-  <title>Francesco Castaldi | Ingegnere Informatico & Business Consultant</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="stylesheet" href="styles.css?v=6">
   <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
   <script src="main.js" defer></script>
 </head>
@@ -111,7 +110,7 @@
             <p><span class="t-prompt">~$</span> <span class="t-cmd">cat skills.txt</span></p>
             <p class="t-output">Healthcare IT | Data Science | Cloud</p>
             <p><span class="t-prompt">~$</span> <span class="t-cmd">echo $LOCATION</span></p>
-            <p class="t-output">Modena, Italy</p>
+            <p class="t-output">Piacenza, Italy</p>
             <p><span class="t-prompt">~$</span> <span class="t-cursor">_</span></p>
           </div>
         </div>
@@ -122,75 +121,119 @@
 
     <!-- EXPERTISE -->
     <section class="expertise-section content-panel">
-      <div class="section-label">Expertise</div>
+      <div class="section-label">// expertise.sys</div>
       <h2 class="section-title">Le mie aree di specializzazione</h2>
       <div class="expertise-grid">
 
-        <div class="expertise-card reveal-on-scroll">
-          <div class="card-icon">&#x2665;</div>
-          <h3>Healthcare IT</h3>
-          <p>Progettazione e implementazione di sistemi informativi ospedalieri, data warehouse clinici e soluzioni IoT per la sanita digitale.</p>
+        <!-- 1. Healthcare Business Consulting -->
+        <div class="expertise-card">
+          <div class="card-icon">&#x2665;&#xFE0F;</div>
+          <h3>Healthcare Business Consulting</h3>
+          <p>Supporto strategico ad aziende sanitarie e pharma nella digitalizzazione dei processi clinici e amministrativi. Traduco complessit&agrave; organizzativa in roadmap tecnologiche misurabili, con focus su ROI, compliance normativa e change management rivolto al personale sanitario.</p>
           <div class="skill-tags">
-            <div class="skill-tag">HL7 FHIR</div>
-            <div class="skill-tag">ICD-10</div>
-            <div class="skill-tag">GDPR</div>
+            <span class="skill-tag">Process Design</span>
+            <span class="skill-tag">HL7 FHIR</span>
+            <span class="skill-tag">KPI Framework</span>
+            <span class="skill-tag">Change Management</span>
+            <span class="skill-tag">GDPR Sanitario</span>
           </div>
         </div>
 
-        <div class="expertise-card reveal-on-scroll">
+        <!-- 2. Data Analyst -->
+        <div class="expertise-card">
           <div class="card-icon">&#x1F4CA;</div>
-          <h3>Data Science</h3>
-          <p>Analisi avanzata dei dati, machine learning applicato e business intelligence per trasformare dati grezzi in insights azionabili.</p>
+          <h3>Data Analyst</h3>
+          <p>Trasformo dataset grezzi in insight azionabili attraverso pipeline di analisi strutturate, dashboard interattive e reportistica esecutiva. Specializzato in dati clinici, KPI operativi sanitari e metriche di performance per il management.</p>
           <div class="skill-tags">
-            <div class="skill-tag">Python</div>
-            <div class="skill-tag">SQL</div>
-            <div class="skill-tag">Apache Superset</div>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL Server</span>
+            <span class="skill-tag">Apache Superset</span>
+            <span class="skill-tag">Power BI</span>
+            <span class="skill-tag">Pandas</span>
           </div>
         </div>
 
-        <div class="expertise-card reveal-on-scroll">
-          <div class="card-icon">&#x2601;</div>
+        <!-- 3. AI Prompting -->
+        <div class="expertise-card">
+          <div class="card-icon">&#x1F916;</div>
+          <h3>AI Prompt Engineering</h3>
+          <p>Progettazione di prompt avanzati per LLM (GPT-4, Claude, Gemini) applicati a workflow aziendali, automazione documentale e analisi semantica. Sviluppo di agenti AI contestuali per il dominio healthcare, con attenzione alla riproducibilit&agrave; e al controllo dell&rsquo;output.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">GPT-4 / Claude</span>
+            <span class="skill-tag">LLM Workflow</span>
+            <span class="skill-tag">RAG</span>
+            <span class="skill-tag">Prompt Chains</span>
+            <span class="skill-tag">AI Automation</span>
+          </div>
+        </div>
+
+        <!-- 4. SQL Optimization -->
+        <div class="expertise-card">
+          <div class="card-icon">&#x26A1;</div>
+          <h3>SQL Optimization</h3>
+          <p>Query tuning e ottimizzazione di database relazionali su ambienti SQL Server ad alto carico. Analisi degli execution plan, refactoring T-SQL, progettazione di indici e riduzione dei tempi di risposta su data warehouse clinici con milioni di record.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">T-SQL</span>
+            <span class="skill-tag">Execution Plan</span>
+            <span class="skill-tag">Index Tuning</span>
+            <span class="skill-tag">ETL Pipelines</span>
+            <span class="skill-tag">Stored Procedures</span>
+          </div>
+        </div>
+
+        <!-- 5. DW to Data Lake -->
+        <div class="expertise-card">
+          <div class="card-icon">&#x1F9CA;</div>
+          <h3>DW &rarr; Data Lake Migration</h3>
+          <p>Studio e progettazione della migrazione da architetture Data Warehouse tradizionali verso ecosistemi Data Lake e Lakehouse. Valutazione di pattern architetturali (Lambda, Kappa), governance dei dati e compatibilit&agrave; con pipeline analitiche in cloud.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Data Lakehouse</span>
+            <span class="skill-tag">Delta Lake</span>
+            <span class="skill-tag">Azure Data Factory</span>
+            <span class="skill-tag">Parquet</span>
+            <span class="skill-tag">Schema Evolution</span>
+          </div>
+        </div>
+
+        <!-- 6. Cybersecurity -->
+        <div class="expertise-card">
+          <div class="card-icon">&#x1F512;</div>
+          <h3>Cybersecurity</h3>
+          <p>Approccio alla sicurezza informatica orientato alla protezione di infrastrutture critiche in ambito sanitario. Analisi delle superfici di attacco, hardening di sistemi Windows Server e SQL Server, gestione delle identit&agrave; e conformit&agrave; alle direttive NIS2 e GDPR.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">NIS2</span>
+            <span class="skill-tag">GDPR</span>
+            <span class="skill-tag">Zero Trust</span>
+            <span class="skill-tag">IAM</span>
+            <span class="skill-tag">Vulnerability Assessment</span>
+          </div>
+        </div>
+
+        <!-- 7. Cloud Architecture -->
+        <div class="expertise-card">
+          <div class="card-icon">&#x2601;&#xFE0F;</div>
           <h3>Cloud Architecture</h3>
-          <p>Design e deployment di infrastrutture cloud scalabili, containerizzazione e automazione dei processi DevOps.</p>
+          <p>Design di infrastrutture cloud scalabili per applicazioni healthcare-grade, con containerizzazione, CI/CD e infrastruttura as code. Progettazione di ambienti ibridi on-premise / cloud con requisiti di alta disponibilit&agrave; e disaster recovery.</p>
           <div class="skill-tags">
-            <div class="skill-tag">Docker</div>
-            <div class="skill-tag">AWS</div>
-            <div class="skill-tag">Azure</div>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Azure</span>
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">Terraform</span>
+            <span class="skill-tag">CI/CD</span>
           </div>
         </div>
 
-        <div class="expertise-card reveal-on-scroll">
-          <div class="card-icon">&#x1F4BC;</div>
-          <h3>Business Consulting</h3>
-          <p>Supporto strategico a organizzazioni sanitarie nella digitalizzazione dei processi, ottimizzazione operativa e gestione del cambiamento tecnologico.</p>
-          <div class="skill-tags">
-            <div class="skill-tag">Process Optimization</div>
-            <div class="skill-tag">Change Management</div>
-            <div class="skill-tag">KPI Design</div>
-          </div>
-        </div>
-
-        <div class="expertise-card reveal-on-scroll">
-          <div class="card-icon">&#x1F5C4;</div>
-          <h3>SQL &amp; ETL</h3>
-          <p>Progettazione di pipeline ETL e data warehouse su SQL Server, con pattern Full Refresh e gestione di flussi dati complessi tra sistemi eterogenei.</p>
-          <div class="skill-tags">
-            <div class="skill-tag">SQL Server</div>
-            <div class="skill-tag">T-SQL</div>
-            <div class="skill-tag">ETL Pipelines</div>
-            <div class="skill-tag">Data Warehouse</div>
-          </div>
-        </div>
-
-        <div class="expertise-card reveal-on-scroll">
+        <!-- 8. Ciclismo -->
+        <div class="expertise-card">
           <div class="card-icon">&#x1F6B4;</div>
-          <h3>Ciclismo &amp; Performance</h3>
-          <p>Analisi delle performance ciclistiche, pianificazione degli allenamenti per granfondo e gestione tecnica della bici da strada ad alto livello.</p>
+          <h3>Ciclismo &amp; Performance Data</h3>
+          <p>Analisi quantitativa delle performance ciclistiche con approccio data-driven: power output, zone di allenamento, recupero e progressione stagionale. Gestione tecnica di bici da strada ad alto livello e pianificazione di granfondo con modelli predittivi.</p>
           <div class="skill-tags">
-            <div class="skill-tag">Strava</div>
-            <div class="skill-tag">Training Zones</div>
-            <div class="skill-tag">GPX Analysis</div>
-            <div class="skill-tag">Bike Fitting</div>
+            <span class="skill-tag">Strava API</span>
+            <span class="skill-tag">GPX Analysis</span>
+            <span class="skill-tag">Training Zones</span>
+            <span class="skill-tag">FTP Tracking</span>
+            <span class="skill-tag">Bike Fitting</span>
           </div>
         </div>
 
@@ -201,10 +244,10 @@
 
     <!-- PROJECTS -->
     <section class="projects-section content-panel">
-      <div class="section-label">Projects</div>
+      <div class="section-label">// projects.log</div>
       <h2 class="section-title">Featured Work</h2>
       <div class="projects-grid">
-        <a href="hospital-sanitization-tracker.html" class="project-card reveal-on-scroll">
+        <a href="hospital-sanitization-tracker.html" class="project-card">
           <div class="project-header">
             <span class="project-tag">IoT &#x2022; Healthcare</span>
             <span class="project-arrow">&#x2192;</span>
@@ -212,7 +255,7 @@
           <h4>Hospital Sanitization Tracker</h4>
           <p>Sistema di tracking IoT per la gestione della sicurezza clinica e la sanitizzazione in tempo reale.</p>
         </a>
-        <a href="bike-maintenance.html" class="project-card reveal-on-scroll">
+        <a href="bike-maintenance.html" class="project-card">
           <div class="project-header">
             <span class="project-tag">Analytics &#x2022; Sport</span>
             <span class="project-arrow">&#x2192;</span>
