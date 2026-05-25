@@ -45,7 +45,7 @@
   };
 
   /* ================================================================
-   * 2. UTILITIES (throttle, debounce, prefers-reduced-motion)
+   * 2. UTILITIES
    * ================================================================ */
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -69,7 +69,7 @@
   }
 
   /* ================================================================
-   * 3. HEADER & FOOTER (identico ma più pulito)
+   * 3. HEADER & FOOTER
    * ================================================================ */
   function buildNavHTML() {
     return SITE_CONFIG.navigation.map(function (item) {
@@ -137,7 +137,7 @@
   }
 
   /* ================================================================
-   * 5. BACKGROUND: MATRIX (parallax leggero)
+   * 5. BACKGROUND: MATRIX
    * ================================================================ */
   function initBgAnimation() {
     var canvas = document.getElementById('bg-canvas');
@@ -179,7 +179,7 @@
   }
 
   /* ================================================================
-   * 6. PARTICLES (solo se nessun canvas matrix)
+   * 6. PARTICLES
    * ================================================================ */
   function initParticles() {
     if (document.getElementById('bg-canvas')) return;
@@ -229,7 +229,7 @@
    * 7. MAGNETIC BUTTONS & GLITCH HOVER
    * ================================================================ */
   function initMagneticButtons() {
-    var buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-ghost, .project-card, .skill-card');
+    var buttons = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-ghost, .project-card, .skill-card, .expertise-card');
     buttons.forEach(function (btn) {
       btn.addEventListener('mousemove', function (e) {
         if (reduceMotion) return;
@@ -237,10 +237,8 @@
         var x = e.clientX - rect.left - rect.width / 2;
         var y = e.clientY - rect.top - rect.height / 2;
         var maxMove = 8;
-        var moveX = x * 0.05;
-        var moveY = y * 0.05;
-        moveX = Math.min(maxMove, Math.max(-maxMove, moveX));
-        moveY = Math.min(maxMove, Math.max(-maxMove, moveY));
+        var moveX = Math.min(maxMove, Math.max(-maxMove, x * 0.05));
+        var moveY = Math.min(maxMove, Math.max(-maxMove, y * 0.05));
         btn.style.transform = 'translate(' + moveX + 'px, ' + moveY + 'px)';
       });
       btn.addEventListener('mouseleave', function () {
@@ -250,7 +248,7 @@
   }
 
   function initGlitchHover() {
-    var items = document.querySelectorAll('.project-card, .skill-card, .btn-primary');
+    var items = document.querySelectorAll('.project-card, .skill-card, .expertise-card, .btn-primary');
     items.forEach(function (el) {
       el.addEventListener('mouseenter', function () {
         if (reduceMotion) return;
@@ -261,7 +259,7 @@
   }
 
   /* ================================================================
-   * 8. SMOOTH SCROLL (custom easing)
+   * 8. SMOOTH SCROLL
    * ================================================================ */
   function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
@@ -278,7 +276,7 @@
   }
 
   /* ================================================================
-   * 9. PRELOADER MINIMALE (scompare dopo load)
+   * 9. PRELOADER
    * ================================================================ */
   function initPreloader() {
     var preloader = document.createElement('div');
@@ -295,7 +293,7 @@
   }
 
   /* ================================================================
-   * 10. TECH ANIMATIONS — reveal + performance
+   * 10. TECH ANIMATIONS — reveal on scroll
    * ================================================================ */
   function initTechAnimations() {
     var revealObserver = new IntersectionObserver(function (entries) {
@@ -312,7 +310,7 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll(
-      'section:not(.hero), .hero-terminal, .glass-card, .skill-card, .project-card, .info-card'
+      'section:not(.hero), .hero-terminal, .glass-card, .skill-card, .project-card, .info-card, .expertise-card'
     ).forEach(function (el, i) {
       var stagger = (i % 3) * 80;
       el.dataset.delay = stagger;
@@ -324,7 +322,7 @@
   }
 
   /* ================================================================
-   * 11. CUSTOM CURSOR (opzionale, ultra minimal)
+   * 11. CUSTOM CURSOR
    * ================================================================ */
   function initCustomCursor() {
     if (window.matchMedia('(pointer: fine)').matches && !document.getElementById('cursor-dot')) {
@@ -343,7 +341,7 @@
         ring.style.transform = 'translate(' + rx + 'px, ' + ry + 'px)';
         requestAnimationFrame(animate);
       })();
-      document.querySelectorAll('a, button, .btn-primary, .btn-ghost, .btn-secondary, .project-card, .skill-card')
+      document.querySelectorAll('a, button, .btn-primary, .btn-ghost, .btn-secondary, .project-card, .skill-card, .expertise-card')
         .forEach(function (el) {
           el.addEventListener('mouseenter', function () { ring.classList.add('cursor-hover'); });
           el.addEventListener('mouseleave', function () { ring.classList.remove('cursor-hover'); });
@@ -352,7 +350,7 @@
   }
 
   /* ================================================================
-   * 12. HOME INTERACTIONS — terminal typing + comandi finti
+   * 12. HOME INTERACTIONS — terminal typing
    * ================================================================ */
   function initHomeInteractions() {
     var terminalBody = document.querySelector('.hero-terminal .terminal-body');
@@ -368,7 +366,6 @@
       }, 300 + i * 150);
     });
 
-    // Terminal interattivo (simula comandi base)
     var inputLine = document.createElement('div');
     inputLine.className = 't-line';
     inputLine.innerHTML = '<span class="t-prompt">$></span> <span class="t-input"></span><span class="cursor-blink">_</span>';
@@ -398,22 +395,15 @@
       var cmd = inputSpan.textContent;
       var output = '';
       switch (cmd) {
-        case 'help':
-          output = 'Comandi disponibili: skills, clear, contact';
-          break;
-        case 'skills':
-          output = 'Clinical IT, Data Science, Cloud Architecture';
-          break;
+        case 'help':    output = 'Comandi disponibili: skills, clear, contact'; break;
+        case 'skills':  output = 'Clinical IT, Data Science, Cloud Architecture'; break;
         case 'clear':
           terminalBody.innerHTML = '';
           terminalBody.appendChild(inputLine);
           cmdIndex = commands.length;
           return;
-        case 'contact':
-          output = 'Email: francesco@castaldi.dev';
-          break;
-        default:
-          output = 'Comando non riconosciuto. Digita help.';
+        case 'contact': output = 'Email: francesco@castaldi.dev'; break;
+        default:        output = 'Comando non riconosciuto. Digita help.';
       }
       var outputLine = document.createElement('div');
       outputLine.className = 't-output';
@@ -428,7 +418,7 @@
   }
 
   /* ================================================================
-   * 13. GALLERY / SLIDESHOW (ottimizzato)
+   * 13. GALLERY / SLIDESHOW
    * ================================================================ */
   function initGallery() {
     function shuffleArray(arr) {
@@ -485,7 +475,6 @@
     injectHeader();
     injectFooter();
     initPageCounter();
-    //initBgAnimation();
     initParticles();
     initTechAnimations();
     initCustomCursor();
