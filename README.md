@@ -106,14 +106,9 @@ The site implements full SEO coverage:
 
 ## Local Development
 
-```sh
-git clone https://github.com/FrancescoCastaldi/Francesco.Castaldi.github.io.git
-cd Francesco.Castaldi.github.io
-```
-
 Open `index.html` directly in a browser — no build step required.
 
-> For JS modules or to avoid CORS issues, use a local server:
+> For JS modules or to avoid CORS issues, use a local static server:
 > ```sh
 > npx serve .
 > # or
