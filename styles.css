@@ -128,14 +128,13 @@ a {
    MAIN CONTENT (sottopagine)
    ================================================================ */
 .main-content {
-  flex: 1 0 auto; /* spinge il footer in basso */
+  flex: 1 0 auto;
 }
 
 .subpage-main {
   padding-top: 100px;
 }
 
-/* Hero della sottopagina */
 .page-hero {
   padding: 4rem 5% 2rem;
   max-width: 1200px;
@@ -189,7 +188,6 @@ a {
   transform: translateY(-2px);
 }
 
-/* Content panel (sezioni testo) */
 .content-panel {
   max-width: 1000px;
   margin: 0 auto;
@@ -300,7 +298,7 @@ code {
 }
 
 /* ================================================================
-   FOOTER (sticky, senza spazio extra)
+   FOOTER
    ================================================================ */
 .footer {
   flex-shrink: 0;
@@ -324,7 +322,7 @@ code {
 }
 
 /* ================================================================
-   HOMEPAGE STYLES (hero, terminal, cards)
+   HOMEPAGE — HERO
    ================================================================ */
 .hero {
   min-height: 100vh;
@@ -449,13 +447,9 @@ code {
   50% { opacity: 0; }
 }
 
-/* Cards per homepage */
-.skills-section, .projects-section {
-  padding: 3rem 5%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
+/* ================================================================
+   HOMEPAGE — SECTION LABELS & DIVIDER
+   ================================================================ */
 .section-label {
   font-family: monospace;
   font-size: 0.7rem;
@@ -468,6 +462,87 @@ code {
 .section-title {
   font-size: clamp(1.8rem, 4vw, 2.5rem);
   margin-bottom: 2rem;
+}
+
+.section-divider {
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+  margin: 4rem auto;
+}
+
+/* ================================================================
+   HOMEPAGE — EXPERTISE SECTION
+   ================================================================ */
+.expertise-section {
+  padding: 3rem 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.expertise-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 16px;
+  padding: 1.8rem;
+  transition: var(--transition);
+}
+
+.expertise-card:hover {
+  border-color: var(--accent-blue);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 30px -12px rgba(59, 130, 246, 0.2);
+  background: rgba(22, 22, 28, 0.9);
+}
+
+.expertise-card .card-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.expertise-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.6rem;
+  color: var(--text-primary);
+}
+
+.expertise-card p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.skill-tag {
+  font-family: monospace;
+  font-size: 0.68rem;
+  color: var(--accent-cyan);
+  background: rgba(42, 157, 143, 0.1);
+  border: 1px solid rgba(42, 157, 143, 0.3);
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+/* ================================================================
+   HOMEPAGE — SKILLS & PROJECTS (legacy)
+   ================================================================ */
+.skills-section, .projects-section {
+  padding: 3rem 5%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .skills-grid, .projects-grid {
@@ -509,17 +584,17 @@ code {
   margin-bottom: 1rem;
 }
 
-.skill-tag, .project-tag {
-  font-family: monospace;
-  font-size: 0.7rem;
-  color: var(--accent-cyan);
-}
-
 .project-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
+}
+
+.project-tag {
+  font-family: monospace;
+  font-size: 0.7rem;
+  color: var(--accent-cyan);
 }
 
 .project-arrow {
@@ -532,15 +607,8 @@ code {
   color: var(--accent-blue);
 }
 
-.section-divider {
-  width: 80%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
-  margin: 4rem auto;
-}
-
 /* ================================================================
-   STILI PER LE PAGINE SECONDARIE (feature-card, spec-card, grid)
+   PAGINE SECONDARIE (feature-card, spec-card)
    ================================================================ */
 .feature-grid, .spec-grid {
   display: grid;
@@ -578,7 +646,9 @@ code {
   line-height: 1.5;
 }
 
-/* Slideshow */
+/* ================================================================
+   SLIDESHOW & MEDIA
+   ================================================================ */
 .slideshow-container {
   margin: 2rem 0;
   border-radius: 12px;
@@ -597,7 +667,6 @@ code {
   display: block;
 }
 
-/* Glass card (se usata) */
 .glass-card {
   background: var(--bg-card);
   backdrop-filter: blur(4px);
@@ -605,7 +674,7 @@ code {
 }
 
 /* ================================================================
-   CUSTOM CURSOR (opzionale)
+   CUSTOM CURSOR
    ================================================================ */
 #cursor-dot {
   position: fixed;
@@ -653,7 +722,7 @@ code {
 }
 
 /* ================================================================
-   MEDIA RESPONSIVI (immagini, iframe, slideshow)
+   MEDIA RESPONSIVE
    ================================================================ */
 .embed-container {
   position: relative;
@@ -719,6 +788,10 @@ iframe[src*="strava.com"] {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
+  .expertise-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
   .slideshow-image {
     max-height: 300px;
   }
@@ -727,7 +800,6 @@ iframe[src*="strava.com"] {
   }
 }
 
-/* Il canvas di sfondo non deve influenzare il layout */
 #bg-canvas, #particles-js {
   position: fixed;
   top: 0;
