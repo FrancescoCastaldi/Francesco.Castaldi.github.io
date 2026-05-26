@@ -82,6 +82,7 @@
         <button type="submit" class="btn-primary" style="align-self:flex-start;">Invia messaggio</button>
         <p id="form-status" style="font-size:0.85rem;opacity:0.7;"></p>
       </form>
+      <p style="font-size:0.75rem; margin-top:1rem; opacity:0.5;">Inviando questo messaggio acconsenti al trattamento dei tuoi dati per ricevere una risposta. <br> <strong>Nota tecnica:</strong> l'email viene recapitata a <code>info@francescocastaldi.it</code> tramite EmailJS.</p>
     </section>
 
   </main>
@@ -93,21 +94,34 @@
       e.preventDefault();
       const btn = this.querySelector('button[type="submit"]');
       const status = document.getElementById('form-status');
+      
       btn.disabled = true;
       btn.textContent = 'Invio...';
-      emailjs.sendForm('service_castaldi', 'template_contact', this)
-        .then(function() {
-          status.textContent = 'Messaggio inviato. Grazie!';
+      status.textContent = '';
+      
+      // Imposta esplicitamente il destinatario come info@francescocastaldi.it
+      // Il template di EmailJS deve contenere un placeholder {{to_email}} nella sezione "To"
+      const templateParams = {
+        to_email: 'info@francescocastaldi.it',   // RECIPIENT fisso
+        from_name: this.from_name.value,
+        reply_to: this.reply_to.value,
+        message: this.message.value
+      };
+      
+      // Utilizzo emailjs.send (invece di sendForm) per avere controllo completo sui parametri
+      emailjs.send('service_castaldi', 'template_contact', templateParams)
+        .then(function(response) {
+          status.textContent = '✅ Messaggio inviato correttamente. Grazie! Ti risponderò al più presto.';
           document.getElementById('contact-form').reset();
           btn.textContent = 'Invia messaggio';
           btn.disabled = false;
         }, function(error) {
-          status.textContent = 'Errore nell\'invio. Riprova o scrivimi su LinkedIn.';
+          console.error('Errore EmailJS:', error);
+          status.textContent = '❌ Errore nell\'invio. Riprova più tardi oppure contattami direttamente su LinkedIn.';
           btn.textContent = 'Invia messaggio';
           btn.disabled = false;
         });
     });
   </script>
-
 </body>
 </html>
