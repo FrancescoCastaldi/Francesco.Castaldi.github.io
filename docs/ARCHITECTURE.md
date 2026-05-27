@@ -6,7 +6,7 @@ This is a **static website** deployed on GitHub Pages. There is no server-side r
 
 **Owner:** Francesco Castaldi — Computer Engineer & Healthcare Business Consultant  
 **Company:** Maps Group  
-**Location:** Piacenza / Modena, Emilia-Romagna, Italy  
+**Location:** Modena, Emilia-Romagna, Italy  
 **Live URL:** https://francescocastaldi.github.io/Francesco.Castaldi.github.io/
 
 ---
