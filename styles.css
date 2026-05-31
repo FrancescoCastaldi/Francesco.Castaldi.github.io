@@ -172,16 +172,19 @@ a {
   border-radius: 8px;
   min-width: 200px;
   display: none;
+  flex-direction: column;
   padding: 0.5rem 0;
   z-index: 3000;
   box-shadow: var(--shadow-md), 0 0 40px rgba(0, 0, 0, 0.5);
   opacity: 0;
   transform: translateY(-8px);
-  transition: var(--transition-base);
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.dropdown:hover .dropdown-content {
-  display: block;
+/* Apre al hover (desktop) e con classe .open (click/tastiera) */
+.dropdown:hover .dropdown-content,
+.dropdown.open .dropdown-content {
+  display: flex;
   opacity: 1;
   transform: translateY(0);
 }
@@ -193,11 +196,14 @@ a {
   font-size: 0.7rem;
   letter-spacing: 0.05em;
   text-transform: none;
+  color: var(--text-secondary);
 }
 
-.dropdown-content a:hover {
+.dropdown-content a:hover,
+.dropdown-content a:focus {
   background: var(--accent-blue-dim);
   color: var(--accent-blue);
+  outline: none;
 }
 
 .dropdown-content a::after {
@@ -324,7 +330,7 @@ a {
 }
 
 .content-panel li:before, .spec-card li:before, .feature-card li:before {
-  content: "→";
+  content: "\2192";
   position: absolute;
   left: 0;
   color: var(--accent-blue);
@@ -853,6 +859,54 @@ code {
 .project-card:hover .project-arrow {
   transform: translateX(6px);
   color: var(--accent-blue);
+}
+
+/* ================================================================
+   BLOG GRID — layout responsive a 4/2/1 colonne
+   ================================================================ */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.blog-grid .project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.blog-grid .post-date {
+  margin-top: auto;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  display: block;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.blog-grid .post-tags {
+  font-size: 0.72rem;
+  color: var(--accent-cyan);
+}
+
+.blog-cta {
+  margin-top: 2rem;
+  text-align: center;
 }
 
 /* ================================================================

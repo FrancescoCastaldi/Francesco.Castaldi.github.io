@@ -36,11 +36,13 @@
         name: '// BLOG',
         href: '#',
         dropdown: [
-          { name: '8H',      href: 'allenamento-ciclismo-8-ore.html' }
+          { name: 'TUTTI I POST',  href: 'blog/index.html' },
+          { name: 'SPORT',         href: 'blog/sport.html' },
+          { name: '8H CICLISMO',   href: 'allenamento-ciclismo-8-ore.html' }
         ]
       },
       { name: '// NEWSLETTER', href: 'newsletter.html' },
-      { name: '// CONTACT', href: 'contact.html' }
+      { name: '// CONTACT',    href: 'contact.html' }
     ]
   };
 
@@ -78,8 +80,8 @@
           return '<a href="' + sub.href + '">' + sub.name + '</a>';
         }).join('');
         return '<li class="dropdown"><a href="' + item.href +
-               '" class="dropbtn" role="button">' +
-               item.name + '</a><div class="dropdown-content">' + subs + '</div></li>';
+               '" class="dropbtn" role="button" aria-haspopup="true" aria-expanded="false">' +
+               item.name + '</a><div class="dropdown-content" role="menu">' + subs + '</div></li>';
       }
       return '<li><a href="' + item.href + '">' + item.name + '</a></li>';
     }).join('');
@@ -108,9 +110,49 @@
     header.innerHTML = '';
     header.appendChild(nav);
     highlightCurrentPage(nav);
+
+    /* Dropdown: click + keyboard + close-on-outside */
     nav.querySelectorAll('.dropdown').forEach(function (dd) {
       var trigger = dd.querySelector('.dropbtn');
-      if (trigger) trigger.addEventListener('click', function (e) { e.preventDefault(); });
+      var content = dd.querySelector('.dropdown-content');
+      if (!trigger || !content) return;
+
+      function openDropdown() {
+        dd.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function closeDropdown() {
+        dd.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+
+      /* Toggle al click */
+      trigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        dd.classList.contains('open') ? closeDropdown() : openDropdown();
+      });
+
+      /* Tastiera: Enter/Space apre, Escape chiude */
+      trigger.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          dd.classList.contains('open') ? closeDropdown() : openDropdown();
+        }
+        if (e.key === 'Escape') closeDropdown();
+      });
+
+      /* Escape dai link interni chiude e riporta il focus */
+      content.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') { closeDropdown(); trigger.focus(); }
+        });
+      });
+
+      /* Click fuori chiude */
+      document.addEventListener('click', function (e) {
+        if (!dd.contains(e.target)) closeDropdown();
+      });
     });
   }
 
@@ -469,6 +511,56 @@
   }
 
   /* ================================================================
+   * 15. BLOG POSTS — carica, filtra per categoria, ordina per data, limita a N
+   * ================================================================ */
+  function formatDate(isoDate) {
+    var d = new Date(isoDate + 'T00:00:00');
+    return d.toLocaleDateString('it-IT', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+
+  function initBlogPosts() {
+    var container = document.getElementById('blog-posts-grid');
+    if (!container) return;
+    if (typeof BLOG_POSTS === 'undefined' || !BLOG_POSTS.length) return;
+
+    var category = container.getAttribute('data-category') || null;
+    var limit    = parseInt(container.getAttribute('data-limit'), 10) || 4;
+
+    /* Filtra per categoria se specificata */
+    var filtered = BLOG_POSTS.filter(function (post) {
+      return category ? post.category === category : true;
+    });
+
+    /* Ordina dal più recente */
+    filtered.sort(function (a, b) {
+      return new Date(b.date) - new Date(a.date);
+    });
+
+    /* Limita a N post */
+    var posts = filtered.slice(0, limit);
+
+    var html = posts.map(function (post) {
+      var tagsHtml = post.tags.map(function (t) {
+        return '<span class="project-tag">' + t + '</span>';
+      }).join(' <span style="color:var(--text-muted)">&#x2022;</span> ');
+
+      return [
+        '<a href="' + post.href + '" class="project-card">',
+        '  <div class="project-header">',
+        '    <span class="post-tags">' + tagsHtml + '</span>',
+        '    <span class="project-arrow">&#x2192;</span>',
+        '  </div>',
+        '  <h4>' + post.title + '</h4>',
+        '  <p>' + post.excerpt + '</p>',
+        '  <time class="post-date" datetime="' + post.date + '">' + formatDate(post.date) + '</time>',
+        '</a>'
+      ].join('');
+    }).join('');
+
+    container.innerHTML = html;
+  }
+
+  /* ================================================================
    * BOOTSTRAP
    * ================================================================ */
   document.addEventListener('DOMContentLoaded', function () {
@@ -485,5 +577,6 @@
     initHomeInteractions();
     initGallery();
     initStravaLoop();
+    initBlogPosts();
   });
 })();
