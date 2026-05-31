@@ -48,6 +48,7 @@ htmlcov/
 *.tar
 *.tgz
 *.bz2
+._*
 *.xz
 *.7z
 *.rar
