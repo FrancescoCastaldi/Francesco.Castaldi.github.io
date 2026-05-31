@@ -5,20 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO Primary -->
-  <title>Francesco Castaldi | Ingegnere Informatico & Business Consultant</title>
+  <title>Francesco Castaldi | Ingegnere Informatico &amp; Business Consultant</title>
   <meta name="description" content="Francesco Castaldi - Ingegnere Informatico e Business Consultant specializzato in Healthcare IT, Data Science, Modena, Italia.">
   <meta name="keywords" content="Francesco Castaldi, ingegnere informatico, business consultant, healthcare IT, data science, Modena, portfolio">
   <meta name="author" content="Francesco Castaldi">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://francescocastaldi.github.io/Francesco.Castaldi.github.io/">
 
-  <!-- Google Search Console verification c-->
+  <!-- Google Search Console verification -->
   <meta name="google-site-verification" content="lcTpgAAIX9iM4RWilyGPa5GeRy4n9BpYMwYRlJxw93U" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://francescocastaldi.github.io/Francesco.Castaldi.github.io/">
-  <meta property="og:title" content="Francesco Castaldi | Ingegnere Informatico & Business Consultant">
+  <meta property="og:title" content="Francesco Castaldi | Ingegnere Informatico &amp; Business Consultant">
   <meta property="og:description" content="Francesco Castaldi - Ingegnere Informatico e Business Consultant specializzato in Healthcare IT, Data Science. Scopri il mio portfolio.">
   <meta property="og:image" content="https://francescocastaldi.github.io/Francesco.Castaldi.github.io/photos/favicon.ico">
   <meta property="og:locale" content="it_IT">
@@ -28,7 +28,7 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Francesco Castaldi | Ingegnere Informatico & Business Consultant">
+  <meta name="twitter:title" content="Francesco Castaldi | Ingegnere Informatico &amp; Business Consultant">
   <meta name="twitter:description" content="Ingegnere Informatico e Business Consultant. Healthcare IT, Data Science.">
 
   <!-- Schema.org JSON-LD -->
@@ -73,8 +73,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="styles.css?v=8">
   <link rel="icon" href="photos/favicon.ico" type="image/x-icon">
+  <!-- posts.js deve essere caricato PRIMA di main.js per rendere BLOG_POSTS disponibile -->
+  <script src="posts.js" defer></script>
   <script src="main.js" defer></script>
 </head>
 <body>
@@ -124,7 +126,6 @@
       <h2 class="section-title">Le mie aree di specializzazione</h2>
       <div class="expertise-grid">
 
-        <!-- 1. Healthcare Business Consulting -->
         <div class="expertise-card">
           <div class="card-icon">&#x2665;&#xFE0F;</div>
           <h3>Healthcare Business Consulting</h3>
@@ -141,7 +142,6 @@
           </div>
         </div>
 
-        <!-- 2. Data Analyst -->
         <div class="expertise-card">
           <div class="card-icon">&#x1F4CA;</div>
           <h3>Data Analyst</h3>
@@ -155,7 +155,6 @@
           </div>
         </div>
 
-        <!-- 3. AI Prompt Engineering -->
         <div class="expertise-card">
           <div class="card-icon">&#x1F916;</div>
           <h3>AI Prompt Engineering</h3>
@@ -169,7 +168,6 @@
           </div>
         </div>
 
-        <!-- 4. SQL Optimization -->
         <div class="expertise-card">
           <div class="card-icon">&#x26A1;</div>
           <h3>SQL Optimization</h3>
@@ -183,7 +181,6 @@
           </div>
         </div>
 
-        <!-- 5. DW to Data Lake -->
         <div class="expertise-card">
           <div class="card-icon">&#x1F9CA;</div>
           <h3>DW &rarr; Data Lake Migration</h3>
@@ -197,7 +194,6 @@
           </div>
         </div>
 
-        <!-- 6. Cybersecurity -->
         <div class="expertise-card">
           <div class="card-icon">&#x1F512;</div>
           <h3>Cybersecurity</h3>
@@ -211,7 +207,6 @@
           </div>
         </div>
 
-        <!-- 7. Ciclismo -->
         <div class="expertise-card">
           <div class="card-icon">&#x1F6B4;</div>
           <h3>Ciclismo &amp; Performance Data</h3>
@@ -253,194 +248,24 @@
         </a>
       </div>
     </section>
-    
-      <!-- // blog.log -->
-      <section id="blog">
-        <h2 class="section-title">Blog Posts</h2>
-        <div class="projects-grid">
 
-          <a href="blog/piano-allenamento-granfondo.html" class="project-card">
-            <div class="project-header">
-              <span class="project-tag">Allenamento &#x2022; Ciclismo</span>
-              <span class="project-arrow">&#x2192;</span>
-            </div>
-            <h4>Come Costruire un Piano di Allenamento per Granfondo</h4>
-            <p>Guida completa alla periodizzazione dell'allenamento per preparare una granfondo di 200km. Zone di potenza, volumi settimanali e tapering.</p>
-          </a>
+    <div class="section-divider"></div>
 
-          <a href="blog/analisi-power-meter-strava.html" class="project-card">
-            <div class="project-header">
-              <span class="project-tag">Analytics &#x2022; Strava</span>
-              <span class="project-arrow">&#x2192;</span>
-            </div>
-            <h4>Analisi del Power Meter: Interpretare i Dati Strava</h4>
-            <p>Impara a leggere i dati del power meter: NP, IF, TSS e come usarli per ottimizzare le tue uscite e monitorare i progressi.</p>
-          </a>
+    <!-- BLOG — rendering dinamico via posts.js + initBlogPosts() -->
+    <section id="blog" class="content-panel">
+      <div class="section-label">// blog.log</div>
+      <h2 class="section-title">Ultimi Post</h2>
+      <div
+        id="blog-posts-grid"
+        class="blog-grid"
+        data-category="Sport"
+        data-limit="4"
+      ></div>
+      <div class="blog-cta">
+        <a href="blog/sport.html" class="btn-secondary">Tutti i post Sport &rarr;</a>
+      </div>
+    </section>
 
-          <a href="blog/manutenzione-trasmissione.html" class="project-card">
-            <div class="project-header">
-              <span class="project-tag">Manutenzione &#x2022; Meccanica</span>
-              <span class="project-arrow">&#x2192;</span>
-            </div>
-            <h4>Manutenzione della Trasmissione: Guida Completa</h4>
-            <p>Pulizia, lubrificazione e regolazione di cambio e deragliatori. Quando sostituire catena e pignoni per mantenere prestazioni ottimali.</p>
-          </a>
-
-          <a href="blog/nutrizione-pre-gara.html" class="project-card">
-            <div class="project-header">
-              <span class="project-tag">Nutrizione &#x2022; Endurance</span>
-              <span class="project-arrow">&#x2192;</span>
-            </div>
-            <h4>Nutrizione Pre-Gara: Cosa Mangiare Prima di una Granfondo</h4>
-            <p>Strategia nutrizionale nelle 48 ore precedenti la gara. Carb loading, timing dei pasti e integrazione specifica per endurance.</p>
-          </a>
-
-          <a href="blog/bike-fitting-aero.html" class="project-card">
-            <div class="project-header">
-              <span class="project-tag">Aerodinamica &#x2022; Fitting</span>
-              <span class="project-arrow">&#x2192;</span>
-            </div>
-            <h4>Posizione in Bicicletta: Bike Fitting per Aero</h4>
-            <p>Come ottimizzare la posizione per ridurre la resistenza aerodinamica senza compromettere comfort e potenza sostenibile.</p>
-          </a>
-
-          <a href="blog/interval-training-vo2max.html" class="project-card">
-            <div class="project-header">
-              <span class="project-tag">Allenamento &#x2022; VO2 Max</span>
-              <span class="project-arrow">&#x2192;</span>
-            </div>
-            <h4>Interval Training: Come Strutturare le Sessioni VO2 Max</h4>
-            <p>Protocolli scientifici per migliorare il VO2 max. Durata degli intervalli, recuperi e frequenza settimanale ottimale.</p>
-          </a>
-
-          <a href="blog/scelta-ruote-profili.html" class="project-card">
-            <div class="project-header">
-              <span class="project-tag">Attrezzatura &#x2022; Ruote</span>
-              <span class="project-arrow">&#x2192;</span>
-            </div>
-            <h4>Scelta delle Ruote: Profili Alto vs Basso</h4>
-            <p>Analisi comparativa tra ruote da 30mm e 60mm. Quando usare profili alti, gestione del vento laterale e risparmio wattico.</p>
-          </a>
-
-          <a href="blog/idratazione-lungo.html" class="project-card">
-            <div class="project-header">
-              <span class="project-tag">Nutrizione &#x2022; Idratazione</span>
-              <span class="project-arrow">&#x2192;</span>
-            </div>
-            <h4>Idratazione Durante l'Allenamento Lungo</h4>
-            <p>Calcolo del fabbisogno idrico, elettroliti essenziali e strategia di assunzione per uscite superiori a 3 ore.</p>
-          </a>
-
-          <a href="blog/diagnosi-rumori.html" class="project-card">
-            <div class="project-header">
-              <span class="project-tag">Manutenzione &#x2022; Troubleshooting</span>
-              <span class="project-arrow">&#x2192;</span>
-            </div>
-            <h4>Diagnosi Rumori della Bicicletta</h4>
-            <p>Guida pratica per identificare e risolvere i rumori più comuni: movimento centrale, ruotine, freni e mozzi.</p>
-          </a>
-
-          <a href="blog/ftp-test-protocolli.html" class="project-card">
-            <div class="project-header">
-              <span class="project-tag">Allenamento &#x2022; FTP</span>
-              <span class="project-arrow">&#x2192;</span>
-            </div>
-            <h4>FTP Test: Protocolli e Come Interpretare i Risultati</h4>
-            <p>Test da 20 minuti, ramp test e test di campo. Come calcolare l'FTP e definire le zone di allenamento corrette.</p>
-          </a>
-
-          <a href="blog/caffeina-integrazione.html" class="project-card">
-            <div class="project-header">
-              <span class="project-tag">Nutrizione &#x2022; Integrazione</span>
-              <span class="project-arrow">&#x2192;</span>
-            </div>
-            <h4>Integrazione con Caffeina: Timing e Dosaggi</h4>
-            <p>Evidence-based approach all'uso della caffeina nel ciclismo. Quando assumerla, dosaggi ottimali e tolleranza individuale.</p>
-          </a>
-
-          <a href="blog/setup-tubeless.html" class="project-card">
-            <div class="project-header">
-              <span class="project-tag">Manutenzione &#x2022; Tubeless</span>
-              <span class="project-arrow">&#x2192;</span>
-            </div>
-            <h4>Setup Tubeless: Vantaggi e Procedura Corretta</h4>
-            <p>Come montare copertoni tubeless, scelta del lattice, pressioni ottimali e risoluzione problemi comuni.</p>
-          </a>
-
-          <a href="blog/drafting-gruppo.html" class="project-card">
-            <div class="project-header">
-              <span class="project-tag">Tattica &#x2022; Gruppo</span>
-              <span class="project-arrow">&#x2192;</span>
-            </div>
-            <h4>Drafting in Gruppo: Risparmio Energetico e Sicurezza</h4>
-            <p>Quanti watt si risparmiano in gruppo, tecniche di scia corrette e come mantenere la posizione in sicurezza.</p>
-          </a>
-
-          <a href="blog/recupero-attivo-passivo.html" class="project-card">
-            <div class="project-header">
-              <span class="project-tag">Recupero &#x2022; Scienza</span>
-              <span class="project-arrow">&#x2192;</span>
-            </div>
-            <h4>Recupero Attivo vs Passivo: Cosa Dice la Scienza</h4>
-            <p>Analisi comparativa delle strategie di recupero post-allenamento. Defaticamento, sonno attivo e tempistiche ottimali.</p>
-          </a>
-
-          <a href="blog/gps-garmin-wahoo.html" class="project-card">
-            <div class="project-header">
-              <span class="project-tag">Attrezzatura &#x2022; GPS</span>
-              <span class="project-arrow">&#x2192;</span>
-            </div>
-            <h4>Computer GPS: Confronto Garmin vs Wahoo</h4>
-            <p>Analisi dettagliata delle funzionalità, accuratezza GPS, integrazione sensori e user experience dei principali ciclocomputer.</p>
-          </a>
-
-          <a href="blog/carburi-grassi-endurance.html" class="project-card">
-            <div class="project-header">
-              <span class="project-tag">Nutrizione &#x2022; Metabolismo</span>
-              <span class="project-arrow">&#x2192;</span>
-            </div>
-            <h4>Carburi vs Grassi: Substrato Energetico nell'Endurance</h4>
-            <p>Come il corpo utilizza carboidrati e grassi durante sforzi prolungati. Metabolic flexibility e allenamento specifico.</p>
-          </a>
-
-          <a href="blog/regolazione-freni-disco.html" class="project-card">
-            <div class="project-header">
-              <span class="project-tag">Manutenzione &#x2022; Freni</span>
-              <span class="project-arrow">&#x2192;</span>
-            </div>
-            <h4>Regolazione Freni a Disco: Guida Step-by-Step</h4>
-            <p>Allineamento pinze, bleeding idraulico e sostituzione pastiglie. Manutenzione ordinaria e troubleshooting.</p>
-          </a>
-
-          <a href="blog/salite-piedi-seduti.html" class="project-card">
-            <div class="project-header">
-              <span class="project-tag">Tecnica &#x2022; Biomeccanica</span>
-              <span class="project-arrow">&#x2192;</span>
-            </div>
-            <h4>Salite in Piedi vs Seduti: Analisi Biomeccanica</h4>
-            <p>Quando conviene alzarsi sui pedali, consumo energetico comparato e tecnica corretta per massimizzare l'efficienza.</p>
-          </a>
-
-          <a href="blog/aerodinamica-casco.html" class="project-card">
-            <div class="project-header">
-              <span class="project-tag">Aerodinamica &#x2022; Attrezzatura</span>
-              <span class="project-arrow">&#x2192;</span>
-            </div>
-            <h4>Aerodinamica del Casco: Test in Galleria del Vento</h4>
-            <p>Dati reali su differenza wattica tra caschi aero e tradizionali. Posizionamento ottimale e interazione con la testa.</p>
-          </a>
-
-          <a href="blog/app-analisi-performance.html" class="project-card">
-            <div class="project-header">
-              <span class="project-tag">Software &#x2022; Analytics</span>
-              <span class="project-arrow">&#x2192;</span>
-            </div>
-            <h4>App e Software per Analisi Performance Ciclistica</h4>
-            <p>Recensione di TrainingPeaks, WKO5, GoldenCheetah e Intervals.icu. Come scegliere lo strumento giusto per le tue esigenze.</p>
-          </a>
-
-        </div>
-      </section>
   </main>
 
   <footer id="site-footer"></footer>
