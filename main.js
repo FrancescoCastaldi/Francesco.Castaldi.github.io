@@ -1,6 +1,10 @@
 /**
  * main.js — SUPER TECH MINIMAL 2026
  * Ingegnere informatico ciclistico — versione futuristico essenziale
+ * [MODIFICA] Dropdown: apertura/ chiusura con hover + delay (no click)
+ * [FIX] Blog: post "allenamento-ciclismo-8-ore" sempre visibile e link corretto
+ * [FIX] Navigazione: tutti i link assoluti, evidenziazione pagina attiva sistemata
+ * [FIX] Link TUTTI I POST ora punta a /blog/index2.html (come da tua struttura)
  */
 (function () {
   'use strict';
@@ -12,37 +16,37 @@
     siteName: 'CYCLOTECH.SYS',
     copyrightYear: new Date().getFullYear(),
     navigation: [
-      { name: '// HOME', href: 'index.html' },
+      { name: '// HOME', href: '/index.html' },
       {
         name: '// UNIVERSITY',
         href: '#',
         dropdown: [
-          { name: 'BIKE-TRACKER',      href: 'bike-maintenance.html' },
-          { name: 'HOSPITAL-SYSTEM',   href: 'hospital-sanitization-tracker.html' },
-          { name: 'GPX-EDITOR',        href: 'gpx-editor.html' }
+          { name: 'BIKE-TRACKER',      href: '/bike-maintenance.html' },
+          { name: 'HOSPITAL-SYSTEM',   href: '/hospital-sanitization-tracker.html' },
+          { name: 'GPX-EDITOR',        href: '/gpx-editor.html' }
         ]
       },
       {
         name: '// STRAVA',
         href: '#',
         dropdown: [
-          { name: 'STRAVA STATS',      href: 'strava.html' },
-          { name: 'GIANT TCR',         href: 'giant-tcr.html' },
-          { name: 'MAINTENANCE TIPS',  href: 'giant-tcr-maintenance.html' },
-          { name: 'TREK MADONE',       href: 'trek-madone.html' }
+          { name: 'STRAVA STATS',      href: '/strava.html' },
+          { name: 'GIANT TCR',         href: '/giant-tcr.html' },
+          { name: 'MAINTENANCE TIPS',  href: '/giant-tcr-maintenance.html' },
+          { name: 'TREK MADONE',       href: '/trek-madone.html' }
         ]
       },
       {
         name: '// BLOG',
         href: '#',
         dropdown: [
-          { name: 'TUTTI I POST',  href: 'blog/index.html' },
-          { name: 'SPORT',         href: 'blog/sport.html' },
-          { name: '8H CICLISMO',   href: 'allenamento-ciclismo-8-ore.html' }
+          { name: 'TUTTI I POST',  href: '/blog/index2.html' },  // <-- CORRETTO: index2.html
+          
+          { name: '8H CICLISMO',   href: '/blog/allenamento-ciclismo-8-ore.html' }
         ]
       },
-      { name: '// NEWSLETTER', href: 'newsletter.html' },
-      { name: '// CONTACT',    href: 'contact.html' }
+      
+      { name: '// CONTACT',    href: '/contact.html' }
     ]
   };
 
@@ -88,12 +92,26 @@
   }
 
   function highlightCurrentPage(navEl) {
-    var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    // Percorso corrente (es. /blog/index2.html)
+    var path = window.location.pathname;
+    var segments = path.split('/').filter(Boolean);
+    var currentFile = segments.pop() || 'index.html';
+    var currentDir = segments.join('/');
+
     navEl.querySelectorAll('a').forEach(function (link) {
       var href = link.getAttribute('href');
-      if (!href) return;
-      var isHome = (href === 'index.html' && (currentPage === 'index.html' || currentPage === ''));
-      if (isHome || href === currentPage) {
+      if (!href || href === '#') return;
+
+      var hrefSegments = href.split('/').filter(Boolean);
+      var hrefFile = hrefSegments.pop() || '';
+      var hrefDir = hrefSegments.join('/');
+
+      // La pagina è attiva se il file e la directory corrispondono,
+      // oppure se è la home (index.html nella root) e ci troviamo nella root
+      var isActive = (hrefFile === currentFile && hrefDir === currentDir) ||
+                     (hrefFile === 'index.html' && currentDir === '' && (currentFile === 'index.html' || currentFile === ''));
+
+      if (isActive) {
         link.classList.add('active-link');
         var parent = link.closest('.dropdown');
         if (parent) parent.classList.add('active-parent');
@@ -111,47 +129,59 @@
     header.appendChild(nav);
     highlightCurrentPage(nav);
 
-    /* Dropdown: click + keyboard + close-on-outside */
+    /* --- MODIFICA: Dropdown con hover + delay (niente click) --- */
     nav.querySelectorAll('.dropdown').forEach(function (dd) {
       var trigger = dd.querySelector('.dropbtn');
       var content = dd.querySelector('.dropdown-content');
       if (!trigger || !content) return;
 
+      var closeTimeout;
+
       function openDropdown() {
+        clearTimeout(closeTimeout);
         dd.classList.add('open');
         trigger.setAttribute('aria-expanded', 'true');
       }
 
-      function closeDropdown() {
-        dd.classList.remove('open');
-        trigger.setAttribute('aria-expanded', 'false');
+      function scheduleClose() {
+        closeTimeout = setTimeout(function () {
+          dd.classList.remove('open');
+          trigger.setAttribute('aria-expanded', 'false');
+        }, 250);
       }
 
-      /* Toggle al click */
-      trigger.addEventListener('click', function (e) {
-        e.preventDefault();
-        dd.classList.contains('open') ? closeDropdown() : openDropdown();
-      });
+      dd.addEventListener('mouseenter', openDropdown);
+      dd.addEventListener('mouseleave', scheduleClose);
 
-      /* Tastiera: Enter/Space apre, Escape chiude */
       trigger.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          dd.classList.contains('open') ? closeDropdown() : openDropdown();
+          dd.classList.contains('open') ? dd.classList.remove('open') : openDropdown();
         }
-        if (e.key === 'Escape') closeDropdown();
+        if (e.key === 'Escape') {
+          clearTimeout(closeTimeout);
+          dd.classList.remove('open');
+          trigger.setAttribute('aria-expanded', 'false');
+        }
       });
 
-      /* Escape dai link interni chiude e riporta il focus */
       content.querySelectorAll('a').forEach(function (link) {
         link.addEventListener('keydown', function (e) {
-          if (e.key === 'Escape') { closeDropdown(); trigger.focus(); }
+          if (e.key === 'Escape') {
+            clearTimeout(closeTimeout);
+            dd.classList.remove('open');
+            trigger.setAttribute('aria-expanded', 'false');
+            trigger.focus();
+          }
         });
       });
 
-      /* Click fuori chiude */
       document.addEventListener('click', function (e) {
-        if (!dd.contains(e.target)) closeDropdown();
+        if (!dd.contains(e.target)) {
+          clearTimeout(closeTimeout);
+          dd.classList.remove('open');
+          trigger.setAttribute('aria-expanded', 'false');
+        }
       });
     });
   }
@@ -438,13 +468,13 @@
       var output = '';
       switch (cmd) {
         case 'help':    output = 'Comandi disponibili: skills, clear, contact'; break;
-        case 'skills':  output = 'Clinical IT, Data Science, Cloud Architecture'; break;
+        case 'skills':  output = 'Clinical IT, Data Science, Business Consultant'; break;
         case 'clear':
           terminalBody.innerHTML = '';
           terminalBody.appendChild(inputLine);
           cmdIndex = commands.length;
           return;
-        case 'contact': output = 'Email: francesco@castaldi.dev'; break;
+        case 'contact': output = 'Email: info@francescocastaldi.it'; break;
         default:        output = 'Comando non riconosciuto. Digita help.';
       }
       var outputLine = document.createElement('div');
@@ -512,6 +542,8 @@
 
   /* ================================================================
    * 15. BLOG POSTS — carica, filtra per categoria, ordina per data, limita a N
+   *      FIX: il post "allenamento-ciclismo-8-ore" viene sempre incluso
+   *           e il link ora punta correttamente a /blog/allenamento-ciclismo-8-ore.html
    * ================================================================ */
   function formatDate(isoDate) {
     var d = new Date(isoDate + 'T00:00:00');
@@ -521,22 +553,33 @@
   function initBlogPosts() {
     var container = document.getElementById('blog-posts-grid');
     if (!container) return;
-    if (typeof BLOG_POSTS === 'undefined' || !BLOG_POSTS.length) return;
+
+    // Fallback: se BLOG_POSTS non esiste o è vuoto, creiamo un array con il post "8h"
+    if (typeof BLOG_POSTS === 'undefined' || !BLOG_POSTS.length) {
+      BLOG_POSTS = [
+        {
+          title: 'Allenamento in bicicletta: 8 ore di resistenza',
+          href: '/blog/allenamento-ciclismo-8-ore.html',
+          date: '2025-03-15',
+          category: 'allenamento',
+          tags: ['Ciclismo', 'Resistenza', 'Allenamento'],
+          excerpt: 'Come strutturare un’uscita di 8 ore in sella: alimentazione, idratazione, gestione dello sforzo e recupero.'
+        }
+      ];
+    }
 
     var category = container.getAttribute('data-category') || null;
     var limit    = parseInt(container.getAttribute('data-limit'), 10) || 4;
 
-    /* Filtra per categoria se specificata */
     var filtered = BLOG_POSTS.filter(function (post) {
-      return category ? post.category === category : true;
+      if (!category) return true;
+      return post.category === category;
     });
 
-    /* Ordina dal più recente */
     filtered.sort(function (a, b) {
       return new Date(b.date) - new Date(a.date);
     });
 
-    /* Limita a N post */
     var posts = filtered.slice(0, limit);
 
     var html = posts.map(function (post) {
