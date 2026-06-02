@@ -25,6 +25,11 @@ target/
 .vscode/
 .idea/
 
+
+.qwen
+.github
+-p
+.vs
 # OS generated files
 .DS_Store
 Thumbs.db
