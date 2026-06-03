@@ -241,6 +241,7 @@ a {
   letter-spacing: -0.03em;
   line-height: 1.05;
   margin-bottom: 1.25rem;
+  color: var(--text);
 }
 
 .hero-subtitle {
@@ -300,7 +301,8 @@ a {
   max-width: 1200px;
 }
 
-.project-card {
+.project-card,
+.skill-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -313,7 +315,8 @@ a {
   color: inherit;
 }
 
-.project-card:hover {
+.project-card:hover,
+.skill-card:hover {
   border-color: var(--accent);
   box-shadow: var(--shadow-md);
   transform: translateY(-3px);
@@ -385,6 +388,7 @@ a {
   margin-bottom: 2rem;
   font-weight: 600;
   letter-spacing: -0.02em;
+  color: var(--text);
 }
 
 .section-divider {
@@ -699,7 +703,9 @@ code {
   border-left: 3px solid var(--accent);
 }
 
-.feature-card h3, .spec-card h3 {
+.feature-card h3,
+.spec-card h3,
+.skill-card h3 {
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
