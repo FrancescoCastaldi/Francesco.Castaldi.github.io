@@ -81,6 +81,7 @@
   <script src="main.js" defer></script>
 </head>
 <body>
+  <canvas id="bg-canvas"></canvas>
   <header id="site-header"></header>
 
   <main class="main-content">
@@ -100,18 +101,35 @@
              <a href="fitness/strava.html" class="btn-secondary">Performance Strava</a>
            </div>
          </div>
-         <p class="hero-description">Scopri i miei progetti:</p>
-         <div class="project-grid">
-           <a href="projects/hospital-sanitization-tracker.html" class="project-card">
-             <div class="project-icon">🏥</div>
-             <h3>Hospital Sanitization Tracker</h3>
-             <p>Sistema per monitorare e ottimizzare i cicli di sanificazione in ambienti sanitari.</p>
-           </a>
-           <a href="bikes/bike-maintenance.html" class="project-card">
-             <div class="project-icon">🚴</div>
-             <h3>Bike Maintenance Tracker</h3>
-             <p>Registro digitale per ciclisti che aiuta a pianificare la manutenzione della bicicletta.</p>
-           </a>
+        <div class="hero-terminal">
+          <div class="terminal-header">
+            <span class="t-dot red"></span>
+            <span class="t-dot yellow"></span>
+            <span class="t-dot green"></span>
+            <span class="t-title">~/portfolio.sh</span>
+          </div>
+          <div class="terminal-body">
+            <div class="t-line"><span class="t-prompt">$></span> <span class="t-cmd">system.info</span></div>
+            <div class="t-output">name: Francesco Castaldi</div>
+            <div class="t-line"><span class="t-prompt">$></span> <span class="t-cmd">system.location</span></div>
+            <div class="t-output">locale: Modena, Italy</div>
+            <div class="t-line"><span class="t-prompt">$></span> <span class="t-cmd">system.skills</span></div>
+            <div class="t-output">Healthcare IT · Data Science · Business Intelligence</div>
+          </div>
+        </div>
+      </div>
+      <p class="hero-description">Scopri i miei progetti:</p>
+      <div class="project-grid">
+        <a href="projects/hospital-sanitization-tracker.html" class="project-card">
+          <div class="project-icon">🏥</div>
+          <h3>Hospital Sanitization Tracker</h3>
+          <p>Sistema per monitorare e ottimizzare i cicli di sanificazione in ambienti sanitari.</p>
+        </a>
+        <a href="bikes/bike-maintenance.html" class="project-card">
+          <div class="project-icon">🚴</div>
+          <h3>Bike Maintenance Tracker</h3>
+          <p>Registro digitale per ciclisti che aiuta a pianificare la manutenzione della bicicletta.</p>
+        </a>
         <a href="bikes/bike-maintenance.html" class="project-card">
           <div class="project-header">
             <span class="project-tag">Analytics &#x2022; Sport</span>
