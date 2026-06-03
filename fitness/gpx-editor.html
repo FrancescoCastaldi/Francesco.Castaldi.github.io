@@ -71,25 +71,25 @@
 
         <!-- STATS / METRICHE IN EVIDENZA -->
         <section class="content-panel">
-            <div class="skills-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 2rem;">
-                <div class="skill-card" style="text-align: center;">
+            <div class="stats-grid-4">
+                <div class="skill-card text-center">
                     <div class="skill-icon">🗺️</div>
-                    <h3 style="font-size: 2rem; margin: 0.5rem 0;">GPX</h3>
+                    <h3 class="stat-highlight">GPX</h3>
                     <p>Formato universale</p>
                 </div>
-                <div class="skill-card" style="text-align: center;">
+                <div class="skill-card text-center">
                     <div class="skill-icon">⚡</div>
-                    <h3 style="font-size: 2rem; margin: 0.5rem 0;">100%</h3>
+                    <h3 class="stat-highlight">100%</h3>
                     <p>Lato client</p>
                 </div>
-                <div class="skill-card" style="text-align: center;">
+                <div class="skill-card text-center">
                     <div class="skill-icon">📈</div>
-                    <h3 style="font-size: 2rem; margin: 0.5rem 0;">Real-time</h3>
+                    <h3 class="stat-highlight">Real-time</h3>
                     <p>Visualizzazione</p>
                 </div>
-                <div class="skill-card" style="text-align: center;">
+                <div class="skill-card text-center">
                     <div class="skill-icon">🔓</div>
-                    <h3 style="font-size: 2rem; margin: 0.5rem 0;">Open Source</h3>
+                    <h3 class="stat-highlight">Open Source</h3>
                     <p>Su GitHub</p>
                 </div>
             </div>
@@ -105,7 +105,7 @@
         <!-- FUNZIONALITÀ PRINCIPALI -->
         <section class="content-panel">
             <h2>Funzionalità Principali</h2>
-            <div class="skills-grid" style="margin-bottom: 1.5rem;">
+            <div class="skills-grid">
                 <div class="skill-card"><h3>🗺️ Mappa interattiva</h3><p>Visualizzazione della traccia su mappa Leaflet con supporto OpenStreetMap, zoom e panoramica.</p></div>
                 <div class="skill-card"><h3>✂️ Taglio punti</h3><p>Rimozione di outlier e punti erratici, taglio dell'inizio o della fine del percorso.</p></div>
                 <div class="skill-card"><h3>🔄 Smoothing</h3><p>Riduzione del rumore e semplificazione della traccia per un percorso più pulito.</p></div>
@@ -118,22 +118,22 @@
         <!-- TECNOLOGIE (TABELLA) -->
         <section class="content-panel">
             <h2>Tecnologie Utilizzate</h2>
-            <div style="overflow-x: auto;">
-                <table style="width:100%; border-collapse:collapse; margin:1.5rem 0; background:var(--bg-card); border-radius:16px; overflow:hidden;">
+            <div class="table-wrap">
+                <table class="data-table" style="overflow:hidden;">
                     <thead>
-                        <tr style="background:rgba(59,130,246,0.15); border-bottom:1px solid var(--border-glow);">
-                            <th style="padding:1rem; text-align:left;">Componente</th>
-                            <th style="padding:1rem; text-align:left;">Tecnologia</th>
-                            <th style="padding:1rem; text-align:left;">Versione</th>
+                        <tr>
+                            <th>Componente</th>
+                            <th>Tecnologia</th>
+                            <th>Versione</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="border-bottom:1px solid rgba(59,130,246,0.1);"><td style="padding:1rem;">Linguaggio</td><td style="padding:1rem;">TypeScript</td><td style="padding:1rem;">5.2+</td></tr>
-                        <tr style="border-bottom:1px solid rgba(59,130,246,0.1);"><td style="padding:1rem;">Build tool</td><td style="padding:1rem;">Vite</td><td style="padding:1rem;">5.0+</td></tr>
-                        <tr style="border-bottom:1px solid rgba(59,130,246,0.1);"><td style="padding:1rem;">Mappe</td><td style="padding:1rem;">Leaflet + OpenStreetMap</td><td style="padding:1rem;">1.9+</td></tr>
-                        <tr style="border-bottom:1px solid rgba(59,130,246,0.1);"><td style="padding:1rem;">Geometrie</td><td style="padding:1rem;">Turf.js</td><td style="padding:1rem;">6.5+</td></tr>
-                        <tr style="border-bottom:1px solid rgba(59,130,246,0.1);"><td style="padding:1rem;">Grafici</td><td style="padding:1rem;">Chart.js</td><td style="padding:1rem;">4.4+</td></tr>
-                        <tr style="border-bottom:1px solid rgba(59,130,246,0.1);"><td style="padding:1rem;">Export</td><td style="padding:1rem;">FileSaver.js</td><td style="padding:1rem;">2.0+</td></tr>
+                        <tr "><td ">Linguaggio</td><td ">TypeScript</td><td ">5.2+</td></tr>
+                        <tr "><td ">Build tool</td><td ">Vite</td><td ">5.0+</td></tr>
+                        <tr "><td ">Mappe</td><td ">Leaflet + OpenStreetMap</td><td ">1.9+</td></tr>
+                        <tr "><td ">Geometrie</td><td ">Turf.js</td><td ">6.5+</td></tr>
+                        <tr "><td ">Grafici</td><td ">Chart.js</td><td ">4.4+</td></tr>
+                        <tr "><td ">Export</td><td ">FileSaver.js</td><td ">2.0+</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -142,7 +142,7 @@
         <!-- ARCHITETTURA -->
         <section class="content-panel">
             <h2>Architettura e Funzionalità</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 2rem 0;">
+            <div class="grid-auto">
                 <div class="skill-card"><h3>📂 Parsing e validazione GPX</h3><p>Il file GPX viene letto lato client tramite FileReader e parsato con DOMParser. Viene validato lo schema minimo (punti con latitudine/longitudine).</p></div>
                 <div class="skill-card"><h3>✏️ Modifica interattiva</h3><p>L'utente seleziona i punti sulla mappa o utilizza slider per definire un intervallo di tempo/distanza. Supporto completo Undo/Redo.</p></div>
                 <div class="skill-card"><h3>📊 Visualizzazione profilo altimetrico</h3><p>Grafico interattivo (Chart.js) che mostra altitudine vs distanza progressiva, utile per individuare segmenti da tagliare.</p></div>

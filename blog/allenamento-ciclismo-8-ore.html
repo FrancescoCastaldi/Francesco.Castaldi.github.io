@@ -109,40 +109,40 @@
         <!-- Tabella principale delle sessioni -->
         <section class="content-panel">
             <h2>📅 Struttura settimanale</h2>
-            <div style="overflow-x: auto;">
-                <table style="width:100%; border-collapse:collapse; margin:2rem 0; background:var(--bg-card); border-radius:16px; overflow:hidden;">
+            <div class="table-wrap">
+                <table class="data-table" style="overflow:hidden;">
                     <thead>
-                        <tr style="background:rgba(59,130,246,0.15); border-bottom:1px solid var(--border-glow);">
-                            <th style="padding:1rem; text-align:left;">Giorno</th>
-                            <th style="padding:1rem; text-align:left;">Durata</th>
-                            <th style="padding:1rem; text-align:left;">Intensità (FTP/FC)</th>
-                            <th style="padding:1rem; text-align:left;">Obiettivo</th>
+                        <tr>
+                            <th>Giorno</th>
+                            <th>Durata</th>
+                            <th>Intensità (FTP/FC)</th>
+                            <th>Obiettivo</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="border-bottom:1px solid rgba(59,130,246,0.1);"><td style="padding:1rem;"><strong>Lunedì</strong></td><td style="padding:1rem;">1h30'</td><td style="padding:1rem;">Z2 (55-70% FTP)</td><td style="padding:1rem;">Recupero attivo, allungamenti</td></tr>
-                        <tr style="border-bottom:1px solid rgba(59,130,246,0.1);"><td style="padding:1rem;"><strong>Mercoledì</strong></td><td style="padding:1rem;">2h</td><td style="padding:1rem;">3x10' al 90-95% FTP</td><td style="padding:1rem;">Soglia, resistenza alla fatica</td></tr>
-                        <tr style="border-bottom:1px solid rgba(59,130,246,0.1);"><td style="padding:1rem;"><strong>Venerdì</strong></td><td style="padding:1rem;">1h30'</td><td style="padding:1rem;">Sprint 30" + ripetute salita</td><td style="padding:1rem;">Forza e scatto</td></tr>
-                        <tr style="border-bottom:1px solid rgba(59,130,246,0.1);"><td style="padding:1rem;"><strong>Sabato</strong></td><td style="padding:1rem;">2h30'</td><td style="padding:1rem;">Z2 (65-75% FTP)</td><td style="padding:1rem;">Lungo fondo aerobico</td></tr>
-                        <tr><td style="padding:1rem;"><strong>Domenica</strong></td><td style="padding:1rem;">1h30'</td><td style="padding:1rem;">Sensazione / libera</td><td style="padding:1rem;">Divertimento, rullata</td></tr>
+                        <tr "><td "><strong>Lunedì</strong></td><td ">1h30'</td><td ">Z2 (55-70% FTP)</td><td ">Recupero attivo, allungamenti</td></tr>
+                        <tr "><td "><strong>Mercoledì</strong></td><td ">2h</td><td ">3x10' al 90-95% FTP</td><td ">Soglia, resistenza alla fatica</td></tr>
+                        <tr "><td "><strong>Venerdì</strong></td><td ">1h30'</td><td ">Sprint 30 + ripetute salita</td><td ">Forza e scatto</td></tr>
+                        <tr "><td "><strong>Sabato</strong></td><td ">2h30'</td><td ">Z2 (65-75% FTP)</td><td ">Lungo fondo aerobico</td></tr>
+                        <tr><td><strong>Domenica</strong></td><td>1h30'</td><td>Sensazione / libera</td><td>Divertimento, rullata</td></tr>
                     </tbody>
                 </table>
             </div>
-            <p style="font-size:0.85rem; color:var(--text-muted);">⚠️ Adatta le intensità al tuo FTP attuale. Esegui un test ogni 4‑6 settimane.</p>
+            <p class="image-caption">⚠️ Adatta le intensità al tuo FTP attuale. Esegui un test ogni 4‑6 settimane.</p>
         </section>
 
         <!-- Immagine hero (free copyright da Pexels) -->
         <section class="content-panel" style="padding-top:0;">
-            <div style="border-radius:24px; overflow:hidden; border:1px solid var(--border-glow);">
-                <img src="https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Ciclista in allenamento su strada" style="width:100%; height:auto; display:block;">
-                <p style="padding:0.75rem 1rem; margin:0; background:var(--bg-card); font-size:0.75rem; color:var(--text-muted);">📸 Foto: Pexels (Dominio pubblico)</p>
+            <div class="image-frame" style="padding:0;">
+                <img src="https://images.pexels.com/photos/248547/pexels-photo-248547.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Ciclista in allenamento su strada">
+                <p class="image-caption" style="padding:0.75rem 1rem; margin:0; background:var(--bg-card);">📸 Foto: Pexels (Dominio pubblico)</p>
             </div>
         </section>
 
         <!-- Consigli pratici e nutrizione -->
         <section class="content-panel">
             <h2>🥤 Nutrizione e recupero</h2>
-            <div class="skills-grid" style="margin-bottom:1.5rem;">
+            <div class="skills-grid">
                 <div class="skill-card"><h3>🚴‍♂️ Prima della sessione</h3><p>Porridge, banana o barretta integrale 1h prima. Idratazione con elettroliti.</p></div>
                 <div class="skill-card"><h3>⏱️ Durante lo sforzo</h3><p>Per sessioni > 90’: 40‑60g carboidrati/ora (gel, barrette o maltodestrine).</p></div>
                 <div class="skill-card"><h3>😴 Post allenamento</h3><p>Proteine 20g + carboidrati entro 30’, sonno ≥7h per supercompensazione.</p></div>
@@ -152,9 +152,9 @@
         <!-- Tabella avanzata: settimana tipo con dettagli -->
         <section class="content-panel">
             <h2>🔍 Dettaglio sedute (esempio)</h2>
-            <div style="overflow-x:auto;">
-                <table style="width:100%; border-collapse:collapse; background:var(--bg-card);">
-                    <thead><tr style="border-bottom:1px solid var(--border-glow);"><th style="padding:0.75rem;">Giorno</th><th style="padding:0.75rem;">Tipo</th><th style="padding:0.75rem;">Esempio pratico</th></tr></thead>
+            <div class="table-wrap">
+                <table class="data-table" style="border-radius:0;">
+                    <thead><tr><th>Giorno</th><th>Tipo</th><th>Esempio pratico</th></tr></thead>
                     <tbody>
                         <tr style="border-bottom:1px solid rgba(59,130,246,0.1);"><td style="padding:0.75rem;">Lunedì</td><td style="padding:0.75rem;">Fondo leggero</td><td style="padding:0.75rem;">1h30’ in pianura, frequenza cardiaca 120‑130 bpm, cadenza 85‑90 rpm.</td></tr>
                         <tr style="border-bottom:1px solid rgba(59,130,246,0.1);"><td style="padding:0.75rem;">Mercoledì</td><td style="padding:0.75rem;">Soglia</td><td style="padding:0.75rem;">Riscaldamento 20’, 3x10’ a 90‑95% FTP (5’ recupero), defaticamento 15’.</td></tr>
@@ -178,14 +178,14 @@
                 <li><strong>Diario di allenamento:</strong> annota sensazioni, fatica, peso forma e qualità del sonno.</li>
             </ul>
             <div class="section-divider" style="margin:2rem auto;"></div>
-            <p style="text-align:center;">👉 Scarica la <strong>tabella stampabile in PDF</strong> (disponibile su richiesta) o condividi questa guida con i tuoi compagni di squadra.</p>
+            <p class="text-center">👉 Scarica la <strong>tabella stampabile in PDF</strong> (disponibile su richiesta) o condividi questa guida con i tuoi compagni di squadra.</p>
         </section>
 
         <!-- Call to action per condivisione social -->
-        <section class="content-panel" style="text-align:center;">
+        <section class="content-panel text-center">
             <h2>🚀 Condividi questa guida</h2>
             <p>Se hai trovato utile il piano, salvalo, stampalo o inoltralo ad altri ciclisti. Più saremo, più dati avremo per affinare la scienza dell'allenamento!</p>
-            <div style="display:flex; gap:1rem; justify-content:center; margin-top:1.5rem; flex-wrap:wrap;">
+            <div class="flex-between" style="justify-content:center; margin-top:1.5rem;">
                 <a href="https://twitter.com/intent/tweet?text=Piano%20di%20allenamento%20ciclismo%20da%208%20ore%20a%20settimana%20%E2%9C%A8%20https%3A%2F%2Ffrancescocastaldi.github.io%2FFrancesco.Castaldi.github.io%2Fblog%2Fallenamento-ciclismo-8-ore.html" target="_blank" class="btn-secondary">🐦 Condividi su X</a>
                 <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ffrancescocastaldi.github.io%2FFrancesco.Castaldi.github.io%2Fblog%2Fallenamento-ciclismo-8-ore.html" target="_blank" class="btn-secondary">📘 Condividi su Facebook</a>
                 <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ffrancescocastaldi.github.io%2FFrancesco.Castaldi.github.io%2Fblog%2Fallenamento-ciclismo-8-ore.html" target="_blank" class="btn-secondary">🔗 LinkedIn</a>
