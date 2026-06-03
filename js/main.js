@@ -189,11 +189,69 @@
   }
 
   /* ================================================================
+   * NAV SLIDER
+   * ================================================================ */
+  var CATEGORIES = [
+    { name: 'Bikes', icon: '🚴', base: 'bikes/', pages: [
+      { name: 'Giant TCR', file: 'giant-tcr.html' },
+      { name: 'Trek Madone', file: 'trek-madone.html' },
+      { name: 'Madone Anim.', file: 'trek-madone-animazione.html' },
+      { name: 'Manutenzione', file: 'bike-maintenance.html' },
+      { name: 'TCR Manut.', file: 'giant-tcr-maintenance.html' },
+    ]},
+    { name: 'Fitness', icon: '📊', base: 'fitness/', pages: [
+      { name: 'Strava Stats', file: 'strava.html' },
+      { name: 'GPX Editor', file: 'gpx-editor.html' },
+    ]},
+    { name: 'Projects', icon: '💻', base: 'projects/', pages: [
+      { name: 'Sanitization Tracker', file: 'hospital-sanitization-tracker.html' },
+    ]},
+    { name: 'Blog', icon: '📝', base: 'blog/', pages: [
+      { name: 'Tutti i Post', file: 'index2.html' },
+      { name: 'Sport', file: 'sport.html' },
+    ]},
+    { name: 'Personal', icon: '👤', base: 'personal/', pages: [
+      { name: 'Contattami', file: 'contact.html' },
+    ]},
+  ];
+
+  function injectNavSlider() {
+    var baseEl = document.querySelector('base');
+    var baseHref = baseEl ? baseEl.getAttribute('href') : '';
+    var path = window.location.pathname;
+    if (baseHref && path.startsWith(baseHref)) {
+      path = path.slice(baseHref.length);
+    }
+    var currentFile = path.split('/').pop() || 'index.html';
+    var slider = document.createElement('section');
+    slider.className = 'nav-slider';
+    slider.innerHTML = '<div class="nav-slider-inner">' +
+      CATEGORIES.map(function (cat) {
+        var isActive = currentFile && cat.pages.some(function (p) { return p.file === currentFile; });
+        return '<div class="nav-slider-item' + (isActive ? ' active' : '') + '">' +
+          '<h4>' + cat.icon + ' ' + cat.name + '</h4>' +
+          '<div class="nav-slider-links">' +
+          cat.pages.map(function (p) {
+            return '<a href="' + cat.base + p.file + '">' + p.name + '</a>';
+          }).join('') +
+          '</div></div>';
+      }).join('') +
+      '</div>';
+    var footer = document.querySelector('footer, #site-footer, .footer');
+    if (footer) {
+      footer.parentNode.insertBefore(slider, footer);
+    } else {
+      document.body.appendChild(slider);
+    }
+  }
+
+  /* ================================================================
    * BOOTSTRAP
    * ================================================================ */
   document.addEventListener('DOMContentLoaded', function () {
     injectHeader();
     injectFooter();
+    injectNavSlider();
     initPageCounter();
     initBlogPosts();
   });
