@@ -1,107 +1,174 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Homepage -->
   <url>
     <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Cycling -->
   <url>
-    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/allenamento-ciclismo-8-ore.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/bikes/bike-maintenance.html</loc>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/bike-maintenance.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/bikes/giant-tcr.html</loc>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/giant-tcr.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/bikes/giant-tcr-maintenance.html</loc>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/giant-tcr-maintenance.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/bikes/trek-madone.html</loc>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/trek-madone.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/bikes/trek-madone-animazione.html</loc>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/trek-madone-animazione.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/fitness/strava.html</loc>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/strava.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Tools -->
-  <url>
-    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/gpx-editor.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Projects -->
-  <url>
-    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/hospital-sanitization-tracker.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/fitness/gpx-editor.html</loc>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/gameproject.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/projects/hospital-sanitization-tracker.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/blog/index2.html</loc>
     <priority>0.7</priority>
   </url>
 
-  <!-- Other -->
   <url>
-    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/newsletter.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/blog/allenamento-ciclismo-8-ore.html</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/blog/sport.html</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/blog/aerodinamica-casco.html</loc>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/contact.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/blog/analisi-power-meter-strava.html</loc>
+    <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/love.html</loc>
-    <lastmod>2026-05-24</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/blog/app-analisi-performance.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/blog/bike-fitting-aero.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/blog/caffeina-integrazione.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/blog/carburi-grassi-endurance.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/blog/diagnosi-rumori.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/blog/drafting-gruppo.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/blog/ftp-test-protocolli.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/blog/gps-garmin-wahoo.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/blog/idratazione-lungo.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/blog/interval-training-vo2max.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/blog/manutenzione-trasmissione.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/blog/nutrizione-pre-gara.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/blog/piano-allenamento-granfondo.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/blog/recupero-attivo-passivo.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/blog/regolazione-freni-disco.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/blog/salite-piedi-seduti.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/blog/scelta-ruote-profili.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/blog/setup-tubeless.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/personal/contact.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.github.io/Francesco.Castaldi.github.io/personal/love.html</loc>
+    <priority>0.3</priority>
   </url>
 
 </urlset>
