@@ -21,16 +21,16 @@ This is a **static website** deployed on GitHub Pages. There is no server-side r
          ┌─────────────────┼──────────────────────────┐
          ▼                 ▼                          ▼
    [Cycling pages]   [Tools & Apps]            [Other pages]
-   giant-tcr.html    gpx-editor.html           contact.html
-   trek-madone.html  hospital-sanit...         newsletter.html
-   strava.html       allenamento...            love.html
-   bike-maint...     
+    giant-tcr.html    gpx-editor.html           contact.html
+    trek-madone.html  hospital-sanit...         love.html
+    strava.html       allenamento...
+    bike-maint...     
          │
          └── shared assets (all pages)
-               styles.css   ← global CSS (layout, responsive, animations, theming)
-               main.js      ← global JS (nav, background animation, shared UI)
-               contact.js   ← form logic (contact.html only)
-               photos/      ← media assets (favicon, images)
+                styles-v2.css   ← global CSS (layout, responsive, animations, theming)
+                main.js      ← global JS (nav, background animation, shared UI)
+                posts.js     ← blog post data (loaded by index.html and blog pages)
+                photos/      ← media assets (favicon, images, WebP variants)
 ```
 
 ---
@@ -41,9 +41,9 @@ This is a **static website** deployed on GitHub Pages. There is no server-side r
 
 | File | Role |
 |------|------|
-| `styles.css` | Single global stylesheet — layout, responsive design, animations, theming, terminal widget, cards, hero section |
+| `styles-v2.css` | Single global stylesheet — layout, responsive design, animations, theming, terminal widget, cards, hero section |
 | `main.js` | Core JS module — background gradient animation, navigation menu rendering (header/footer injected), scroll reveal, shared UI |
-| `contact.js` | Dedicated script for contact form submission and validation logic |
+| `posts.js` | Blog post data array — loaded by index.html and blog pages for dynamic post rendering |
 
 ### Page Categories
 
@@ -52,9 +52,8 @@ This is a **static website** deployed on GitHub Pages. There is no server-side r
 | Page | Description |
 |------|-------------|
 | `index.html` | Homepage. Hero section with animated terminal widget (`whoami`, `cat skills.txt`, `echo $LOCATION`). Expertise cards: Healthcare IT, Data Science, Cloud Architecture. Featured projects section. |
-| `contact.html` | Contact form, email, social links, and a personal video intro section. |
-| `newsletter.html` | Email newsletter signup page. |
-| `love.html` | Personal/creative page. |
+| `contact.html` | Contact page with email, LinkedIn, GitHub, and Strava links. |
+| `love.html` | Personal/creative page (self-contained CSS/JS). |
 | `404.html` | Custom error page — displayed by GitHub Pages on broken URLs. |
 
 #### 🚴 Cycling & Sport
@@ -111,7 +110,7 @@ Google Fonts       →  preconnect optimised (fonts.googleapis.com + fonts.gstat
 
 ## GitHub Actions (CI/CD)
 
-Workflows are located in `.github/workflows/`. GitHub Pages deployment is triggered automatically on every push to `main`. No manual deployment steps needed.
+Workflows are located in `.github/workflows/`. GitHub Pages deployment is triggered automatically on every push to `master`. No manual deployment steps needed.
 
 ---
 
@@ -129,7 +128,7 @@ Workflows are located in `.github/workflows/`. GitHub Pages deployment is trigge
 | Issue | Impact | Suggested Fix |
 |-------|--------|---------------|
 | `.vs/` directory committed | Bloats repo with Visual Studio local config | Add `.vs/` to `.gitignore` |
-| Single monolithic `styles.css` | May grow hard to maintain | Split per-section or use CSS custom properties layers |
+| Single monolithic `styles-v2.css` | May grow hard to maintain | Split per-section or use CSS custom properties layers |
 | No linting / formatting CI step | Code style inconsistency risk | Add ESLint + Prettier GitHub Action |
 | No automated tests | No regression detection | Add basic HTML validation step (e.g. `html-validate`) |
-| `organigramma.txt` in root | Unclear purpose, raw text file | Move to `docs/` or remove if outdated |
+| `organigramma.txt` in root | Unclear purpose, raw text file | Removed |

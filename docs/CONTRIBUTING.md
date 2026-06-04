@@ -17,7 +17,7 @@ Thank you for your interest in contributing to Francesco Castaldi's personal web
    git checkout -b feature/my-feature
    ```
 4. Make your changes
-5. **Push** and open a **Pull Request** targeting `main`
+5. **Push** and open a **Pull Request** targeting `master`
 
 ---
 
@@ -30,7 +30,7 @@ Thank you for your interest in contributing to Francesco Castaldi's personal web
 - Include `<meta charset="UTF-8">` and `<meta name="viewport">` on every page
 
 ### CSS
-- Add rules to `styles.css` using existing **kebab-case** naming (`.my-component`, `.my-component-title`)
+- Add rules to `styles-v2.css` using existing **kebab-case** naming (`.my-component`, `.my-component-title`)
 - Use CSS custom properties (`--var-name`) for colours and spacing where applicable
 - Keep selectors as flat as possible — avoid deep nesting
 
@@ -47,7 +47,7 @@ Thank you for your interest in contributing to Francesco Castaldi's personal web
 1. Create `my-page.html` in the **root directory**
 2. Link shared assets in `<head>`:
    ```html
-   <link rel="stylesheet" href="styles.css">
+   <link rel="stylesheet" href="styles-v2.css">
    <script src="main.js" defer></script>
    ```
 3. Add `<header id="site-header"></header>` and `<footer id="site-footer"></footer>` — `main.js` injects the nav automatically
@@ -88,7 +88,7 @@ chore: add .vs/ to .gitignore
 
 Before opening a PR, verify:
 
-- [ ] Page links `styles.css` and `main.js`
+- [ ] Page links `styles-v2.css` and `main.js`
 - [ ] `sitemap.xml` updated if a new page was added
 - [ ] `README.md` page table updated
 - [ ] `docs/ARCHITECTURE.md` updated
