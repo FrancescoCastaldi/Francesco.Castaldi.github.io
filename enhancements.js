@@ -310,34 +310,25 @@
     if (navigator.share) {
       var nativeBtn = document.createElement('button');
       nativeBtn.className = 'enh-share-btn';
-      nativeBtn.innerHTML = '\uD83D\uDCE4 Condividi';
+      nativeBtn.textContent = 'Condividi';
       nativeBtn.addEventListener('click', function () {
         navigator.share({ title: document.title, url: window.location.href }).catch(function () {});
       });
       shareWrap.appendChild(nativeBtn);
     }
-    var xBtn = document.createElement('a');
-    xBtn.className = 'enh-share-btn';
-    xBtn.href = 'https://twitter.com/intent/tweet?text=' + title + '&url=' + url;
-    xBtn.target = '_blank';
-    xBtn.rel = 'noopener';
-    xBtn.innerHTML = '\uD835\uDD4F X';
-    shareWrap.appendChild(xBtn);
     var liBtn = document.createElement('a');
     liBtn.className = 'enh-share-btn';
     liBtn.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + url;
     liBtn.target = '_blank';
     liBtn.rel = 'noopener';
-    liBtn.innerHTML = '\uD83D\uDCBC LinkedIn';
+    liBtn.textContent = 'LinkedIn';
     shareWrap.appendChild(liBtn);
-    var fbBtn = document.createElement('a');
-    fbBtn.className = 'enh-share-btn';
-    fbBtn.href = 'https://www.facebook.com/sharer/sharer.php?u=' + url;
-    fbBtn.target = '_blank';
-    fbBtn.rel = 'noopener';
-    fbBtn.innerHTML = 'fb Facebook';
-    shareWrap.appendChild(fbBtn);
-    article.parentNode.insertBefore(shareWrap, article.nextSibling);
+    var container = article.closest('.article-container');
+    if (container) {
+      container.insertBefore(shareWrap, article.nextSibling);
+    } else {
+      article.appendChild(shareWrap);
+    }
   }
 
   // ══════════════════════════════════════════════════════════
