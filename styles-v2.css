@@ -1355,6 +1355,222 @@ code {
   50% { opacity: 0; }
 }
 
+/* ================================================================
+   TERMINAL CARD (reusable, non-hero context)
+   ================================================================ */
+.terminal-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md), 0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+  overflow: hidden;
+  transition: var(--transition-base);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.terminal-card:hover {
+  border-color: var(--border-glow);
+  box-shadow: var(--shadow-glow);
+}
+
+/* ================================================================
+   TRAINING GENERATOR
+   ================================================================ */
+.tg-step {
+  padding: 0.5rem 0;
+}
+
+.tg-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+}
+
+.tg-option {
+  background: var(--bg-dark-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 1.2rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.775rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.tg-option:hover {
+  border-color: var(--accent);
+  color: var(--text);
+  background: var(--accent-soft);
+}
+
+.tg-option.selected {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+  box-shadow: 0 0 12px rgba(13, 148, 136, 0.15);
+}
+
+.tg-back {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  margin-bottom: 0.5rem;
+  display: block;
+  transition: var(--transition-fast);
+}
+
+.tg-back:hover {
+  color: var(--accent);
+}
+
+.tg-summary {
+  font-size: 0.8rem;
+  color: var(--accent-cyan);
+  margin: 0.75rem 0;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-dark-alt);
+  display: inline-block;
+}
+
+.tg-generate {
+  display: block;
+  width: 100%;
+  margin: 1rem 0;
+  padding: 0.85rem;
+  background: var(--accent);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: white;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: var(--transition-base);
+  box-shadow: 0 2px 8px rgba(13, 148, 136, 0.25);
+}
+
+.tg-generate:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(13, 148, 136, 0.3);
+}
+
+.tg-reset {
+  background: var(--bg-dark-alt);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  box-shadow: none;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.tg-reset:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--bg-dark-alt);
+  box-shadow: none;
+}
+
+.tg-plan-table {
+  margin: 0.75rem 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+}
+
+.tg-plan-row {
+  display: grid;
+  grid-template-columns: 80px 80px 65px 45px 1fr;
+  gap: 0.25rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.tg-plan-header {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+}
+
+.tg-plan-sep {
+  color: var(--text-muted);
+  font-size: 0.6rem;
+  opacity: 0.4;
+  padding: 0.15rem 0;
+}
+
+.tg-col-day {
+  color: var(--text);
+}
+
+.tg-col-type {
+  color: var(--text-secondary);
+}
+
+.tg-col-dur {
+  color: var(--text-secondary);
+}
+
+.tg-col-note {
+  color: var(--text-muted);
+  font-size: 0.65rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tg-col-zone {
+  font-weight: 600;
+}
+
+.tg-rest {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.tg-zone-1 { color: #6366f1; }
+.tg-zone-2 { color: #22c55e; }
+.tg-zone-3 { color: #eab308; }
+.tg-zone-4 { color: #f97316; }
+.tg-zone-5 { color: #ef4444; }
+
+.tg-legend {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.tg-legend strong {
+  color: var(--text-secondary);
+}
+
+@media (max-width: 600px) {
+  .tg-plan-row {
+    grid-template-columns: 65px 65px 50px 35px 1fr;
+    font-size: 0.6rem;
+  }
+  .tg-col-note {
+    font-size: 0.55rem;
+  }
+}
+
 /* Navigation slider */
 .nav-slider {
   padding: 2rem 5% 1rem;
