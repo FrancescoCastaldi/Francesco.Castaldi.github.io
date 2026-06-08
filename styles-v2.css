@@ -1864,6 +1864,123 @@ iframe[src*="strava.com"] {
 }
 
 /* ================================================================
+   PROJECT SLIDER (homepage carousel)
+   ================================================================ */
+.project-slider {
+  margin: 2rem 0;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background: var(--bg);
+  position: relative;
+}
+
+.project-slider .slideshow-frame {
+  aspect-ratio: 21 / 9;
+  min-height: 320px;
+}
+
+.project-slide-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  padding: 2.5rem 4rem;
+  background: linear-gradient(135deg, rgba(5,5,8,0.88) 30%, rgba(5,5,8,0.4) 70%, transparent);
+  pointer-events: none;
+}
+
+.project-slide-overlay > * {
+  pointer-events: auto;
+}
+
+.project-slide-content {
+  max-width: 640px;
+}
+
+.project-slide-icon {
+  font-size: 3.5rem;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+}
+
+.project-slide-content h3 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.project-slide-content p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  max-width: 520px;
+}
+
+.project-slide-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.project-slide-tags span {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+}
+
+.project-slide-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  padding-bottom: 2px;
+  transition: var(--transition-base);
+}
+
+.project-slide-link:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  gap: 0.7rem;
+}
+
+.project-slide-link .arrow {
+  transition: transform 0.25s;
+}
+
+.project-slide-link:hover .arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+  .project-slider .slideshow-frame {
+    aspect-ratio: 4 / 3;
+    min-height: 280px;
+  }
+  .project-slide-overlay {
+    padding: 1.5rem;
+  }
+  .project-slide-icon {
+    font-size: 2.5rem;
+  }
+  .project-slide-content p {
+    font-size: 0.85rem;
+  }
+}
+
+/* ================================================================
    SCROLL REVEAL
    ================================================================ */
 .reveal-on-scroll {

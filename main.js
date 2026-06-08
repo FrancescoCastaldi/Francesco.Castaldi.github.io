@@ -15,9 +15,12 @@
       {
         name: '// PROJECTS', href: '#',
         dropdown: [
-          { name: 'BIKE-TRACKER', href: 'bikes/bike-maintenance.html' },
           { name: 'HOSPITAL-SYSTEM', href: 'projects/hospital-sanitization-tracker.html' },
-          { name: 'GPX-EDITOR', href: 'fitness/gpx-editor.html' }
+          { name: 'GPX-EDITOR', href: 'fitness/gpx-editor.html' },
+          { name: 'BIKE-TRACKER', href: 'bikes/bike-maintenance.html' },
+          { name: 'SIR-MARKOV', href: 'projects/sir-markov-chain.html' },
+          { name: 'CI-CERVICAL', href: 'projects/ci-cervical-lbc.html' },
+          { name: 'SGF2-AI', href: 'projects/sgf2-ai-project.html' }
         ]
       },
       {
@@ -732,6 +735,119 @@
     });
   }
 
+  function initProjectSlider() {
+    document.querySelectorAll('.project-slider').forEach(function (container) {
+      var frame = container.querySelector('.slideshow-frame');
+      if (!frame) return;
+      var overlays = frame.querySelectorAll(':scope > .project-slide-overlay');
+      if (overlays.length < 2) return;
+
+      var total = overlays.length;
+      var current = 0;
+      var timer = null;
+      var isPaused = false;
+      var delay = Number(container.getAttribute('data-interval')) || 5000;
+
+      function show(index) {
+        if (index === current && current >= 0) return;
+        if (index < 0) index = total - 1;
+        if (index >= total) index = 0;
+        overlays.forEach(function (o, i) {
+          o.style.display = i === index ? 'flex' : 'none';
+          o.style.opacity = i === index ? '1' : '0';
+        });
+        current = index;
+        dots.forEach(function (d) { d.classList.remove('active'); });
+        if (dots[current]) dots[current].classList.add('active');
+      }
+
+      // Hide all initially, show first
+      overlays.forEach(function (o, i) {
+        o.style.display = i === 0 ? 'flex' : 'none';
+        o.style.opacity = i === 0 ? '1' : '0';
+        o.style.transition = 'opacity 0.65s cubic-bezier(0.4,0,0.2,1)';
+      });
+
+      // Arrows
+      var prevBtn = document.createElement('button');
+      prevBtn.className = 'slide-btn slide-prev';
+      prevBtn.innerHTML = '\u2039';
+      prevBtn.setAttribute('aria-label', 'Progetto precedente');
+      frame.appendChild(prevBtn);
+
+      var nextBtn = document.createElement('button');
+      nextBtn.className = 'slide-btn slide-next';
+      nextBtn.innerHTML = '\u203A';
+      nextBtn.setAttribute('aria-label', 'Progetto successivo');
+      frame.appendChild(nextBtn);
+
+      // Dots
+      var dotsWrap = container.querySelector('.slide-dots');
+      if (!dotsWrap) {
+        dotsWrap = document.createElement('div');
+        dotsWrap.className = 'slide-dots';
+        container.appendChild(dotsWrap);
+      }
+      var dots = [];
+      for (var di = 0; di < total; di++) {
+        var dot = document.createElement('button');
+        dot.className = 'slide-dot' + (di === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Vai al progetto ' + (di + 1));
+        dot.dataset.index = di;
+        dotsWrap.appendChild(dot);
+        dots.push(dot);
+      }
+
+      function next() { show(current + 1); resetAutoPlay(); }
+      function prev() { show(current - 1); resetAutoPlay(); }
+
+      prevBtn.addEventListener('click', function (e) { e.stopPropagation(); prev(); });
+      nextBtn.addEventListener('click', function (e) { e.stopPropagation(); next(); });
+
+      frame.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
+      });
+
+      dots.forEach(function (dot) {
+        dot.addEventListener('click', function () {
+          var idx = parseInt(this.dataset.index, 10);
+          if (!isNaN(idx)) { show(idx); resetAutoPlay(); }
+        });
+      });
+
+      // Touch swipe
+      var touchStartX = 0, touchStartY = 0;
+      frame.addEventListener('touchstart', function (e) {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+      }, { passive: true });
+      frame.addEventListener('touchend', function (e) {
+        var dx = touchStartX - e.changedTouches[0].screenX;
+        var dy = touchStartY - e.changedTouches[0].screenY;
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+          if (dx > 0) next(); else prev();
+        }
+      }, { passive: true });
+
+      function startAutoPlay() { stopAutoPlay(); if (!isPaused && !reduceMotion) timer = setInterval(next, delay); }
+      function stopAutoPlay() { clearInterval(timer); timer = null; }
+      function resetAutoPlay() { stopAutoPlay(); if (!isPaused) startAutoPlay(); }
+
+      container.addEventListener('mouseenter', function () { isPaused = true; stopAutoPlay(); });
+      container.addEventListener('mouseleave', function () { isPaused = false; startAutoPlay(); });
+
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) startAutoPlay(); else stopAutoPlay();
+        });
+      }, { threshold: 0.1 });
+      obs.observe(container);
+
+      startAutoPlay();
+    });
+  }
+
   function initStravaLoop() {
     var video = document.getElementById('myVideo');
     if (!video) return;
@@ -817,7 +933,10 @@
     {
       name: 'Projects', icon: '\uD83D\uDCBB', base: 'projects/',
       pages: [
-        { name: 'Sanitization Tracker', file: 'hospital-sanitization-tracker.html' }
+        { name: 'Sanitization Tracker', file: 'hospital-sanitization-tracker.html' },
+        { name: 'SIR Markov Chain', file: 'sir-markov-chain.html' },
+        { name: 'CI Cervical LBC', file: 'ci-cervical-lbc.html' },
+        { name: 'SGF2 AI Project', file: 'sgf2-ai-project.html' }
       ]
     },
     {
@@ -883,6 +1002,7 @@
 
     initSmoothScroll();
     initHomeInteractions();
+    initProjectSlider();
     initGallery();
     initStravaLoop();
     initBlogPosts();

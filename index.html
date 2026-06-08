@@ -125,10 +125,88 @@
 
     <div class="section-divider"></div>
 
-    <!-- PROJECTS -->
+    <!-- PROJECTS SLIDER -->
     <section id="projects" class="content-panel">
-      <div class="section-label">// projects.sh</div>
-      <h2 class="section-title">Progetti</h2>
+      <div class="section-label">// projects.carousel</div>
+      <h2 class="section-title">Progetti in evidenza</h2>
+      <div class="project-slider" data-slideshow="" data-interval="5000" data-shuffle="false">
+        <div class="slideshow-frame" tabindex="-1">
+          <div class="project-slide-overlay">
+            <div class="project-slide-content">
+              <span class="project-slide-icon">🏥</span>
+              <h3>Hospital Sanitization Tracker</h3>
+              <p>DApp basata su smart contract Ethereum per la tracciabilità immutabile delle attività di sanificazione ospedaliera. Certificazione su testnet Sepolia.</p>
+              <div class="project-slide-tags">
+                <span>Solidity</span><span>Hardhat</span><span>Ethers.js</span><span>Blockchain</span>
+              </div>
+              <a href="projects/hospital-sanitization-tracker.html" class="project-slide-link">
+                Scopri il progetto <span class="arrow">&rarr;</span>
+              </a>
+            </div>
+          </div>
+          <div class="project-slide-overlay">
+            <div class="project-slide-content">
+              <span class="project-slide-icon">🗺️</span>
+              <h3>GPX Editor</h3>
+              <p>Applicazione web per modificare tracce GPS con mappe interattive Leaflet, smoothing, taglio punti e profilo altimetrico in tempo reale.</p>
+              <div class="project-slide-tags">
+                <span>TypeScript</span><span>Leaflet</span><span>Vite</span><span>Chart.js</span>
+              </div>
+              <a href="fitness/gpx-editor.html" class="project-slide-link">
+                Scopri il progetto <span class="arrow">&rarr;</span>
+              </a>
+            </div>
+          </div>
+          <div class="project-slide-overlay">
+            <div class="project-slide-content">
+              <span class="project-slide-icon">🦠</span>
+              <h3>SIR Markov Chain</h3>
+              <p>Simulazione di un modello epidemiologico SIR come catena di Markov a tempo discreto. Analisi di sensitività e simulazione Monte Carlo.</p>
+              <div class="project-slide-tags">
+                <span>Python</span><span>NumPy</span><span>Matplotlib</span><span>UniBo</span>
+              </div>
+              <a href="projects/sir-markov-chain.html" class="project-slide-link">
+                Scopri il progetto <span class="arrow">&rarr;</span>
+              </a>
+            </div>
+          </div>
+          <div class="project-slide-overlay">
+            <div class="project-slide-content">
+              <span class="project-slide-icon">🔬</span>
+              <h3>CI Cervical LBC</h3>
+              <p>Confronto di metodi di deblurring e denoising su immagini di citologia cervicale: Total Variation, UNet e DiffPIR.</p>
+              <div class="project-slide-tags">
+                <span>Python</span><span>PyTorch</span><span>DiffPIR</span><span>UniBo</span>
+              </div>
+              <a href="projects/ci-cervical-lbc.html" class="project-slide-link">
+                Scopri il progetto <span class="arrow">&rarr;</span>
+              </a>
+            </div>
+          </div>
+          <div class="project-slide-overlay">
+            <div class="project-slide-content">
+              <span class="project-slide-icon">🤖</span>
+              <h3>SGF² AI Project</h3>
+              <p>Machine Learning supervisionato sul dataset Adult (UCI) per predire reddito &gt;$50K. Modelli, fairness e feature importance analysis.</p>
+              <div class="project-slide-tags">
+                <span>Python</span><span>scikit-learn</span><span>pandas</span><span>UniBo</span>
+              </div>
+              <a href="projects/sgf2-ai-project.html" class="project-slide-link">
+                Scopri il progetto <span class="arrow">&rarr;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="slide-dots"></div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- PROJECTS GRID -->
+    <section id="projects-grid" class="content-panel">
+      <div class="section-label">// projects.grid</div>
+      <h2 class="section-title">Tutti i progetti</h2>
       <div class="project-grid">
         <a href="projects/hospital-sanitization-tracker.html" class="project-card">
           <div class="project-icon">🏥</div>
@@ -169,7 +247,7 @@
             <li>Metriche live · Chilometraggio annuale · Dislivello</li>
           </ul>
         </a>
-        <a href="https://github.com/FrancescoCastaldi/sir-markov-chain" target="_blank" rel="noopener" class="project-card">
+        <a href="projects/sir-markov-chain.html" class="project-card">
           <div class="project-header">
             <span class="project-tag">Probabilità &#x2022; Università</span>
             <span class="project-arrow">&#x2192;</span>
@@ -181,7 +259,7 @@
             <li>UniBo · Modelli Probabilistici · 12/12 test</li>
           </ul>
         </a>
-        <a href="https://github.com/FrancescoCastaldi/ci-cervical-lbc" target="_blank" rel="noopener" class="project-card">
+        <a href="projects/ci-cervical-lbc.html" class="project-card">
           <div class="project-header">
             <span class="project-tag">AI &#x2022; Università</span>
             <span class="project-arrow">&#x2192;</span>
@@ -193,7 +271,7 @@
             <li>UniBo · Computational Imaging · TV + UNet</li>
           </ul>
         </a>
-        <a href="https://github.com/FrancescoCastaldi/SGF2--AI-PROJECT" target="_blank" rel="noopener" class="project-card">
+        <a href="projects/sgf2-ai-project.html" class="project-card">
           <div class="project-header">
             <span class="project-tag">ML &#x2022; Università</span>
             <span class="project-arrow">&#x2192;</span>
