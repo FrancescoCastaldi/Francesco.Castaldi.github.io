@@ -7,7 +7,7 @@ This is a **static website** deployed on GitHub Pages. There is no server-side r
 **Owner:** Francesco Castaldi — Computer Engineer & Healthcare Business Consultant  
 **Company:** Maps Group  
 **Location:** Modena, Emilia-Romagna, Italy  
-**Live URL:** https://francescocastaldi.github.io/Francesco.Castaldi.github.io/
+**Live URL:** https://francescocastaldi.it/
 
 ---
 
@@ -99,7 +99,7 @@ Open Graph         →  og:type=profile, og:locale=it_IT, og:image (favicon)
 Twitter Card       →  summary card
 
 <!-- Technical SEO -->
-Canonical URL      →  https://francescocastaldi.github.io/Francesco.Castaldi.github.io/
+Canonical URL      →  https://francescocastaldi.it/
 Google Search Console → meta verification tag
 Google Fonts       →  preconnect optimised (fonts.googleapis.com + fonts.gstatic.com)
 ```

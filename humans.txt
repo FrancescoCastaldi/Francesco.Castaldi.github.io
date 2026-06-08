@@ -4,7 +4,7 @@
 /* TEAM */
     Developer & Content: Francesco Castaldi
     Role: Ingegnere Informatico, Business Consultant
-    Contact: https://francescocastaldi.github.io/Francesco.Castaldi.github.io/personal/contact.html
+    Contact: https://francescocastaldi.it/personal/contact.html
 
 /* TECH STACK */
     HTML5, CSS3, JavaScript

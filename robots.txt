@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://francescocastaldi.github.io/Francesco.Castaldi.github.io/sitemap.xml
+Sitemap: https://francescocastaldi.it/sitemap.xml
