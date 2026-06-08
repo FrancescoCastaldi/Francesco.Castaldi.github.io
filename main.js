@@ -528,49 +528,207 @@
 
   // ── IMAGE GALLERY ────────────────────────────────────────
   function initGallery() {
-    function shuffleArray(arr) {
-      for (var i = arr.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var tmp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = tmp;
-      }
-      return arr;
-    }
-
-    document.querySelectorAll('[data-slideshow]').forEach(function (wrapper) {
-      var slideshow = wrapper.querySelector('.slideshow');
-      if (!slideshow) return;
-
-      var rawImages = wrapper.getAttribute('data-slideshow') || '';
+    document.querySelectorAll('[data-slideshow]').forEach(function (container) {
+      var rawImages = container.getAttribute('data-slideshow') || '';
       var imageList = rawImages.split(',').map(function (s) { return s.trim(); }).filter(Boolean);
       if (!imageList.length) return;
 
-      var shouldShuffle = wrapper.getAttribute('data-shuffle') !== 'false';
-      var delay = Number(wrapper.getAttribute('data-interval')) || 5000;
-      var altText = wrapper.getAttribute('data-alt') || 'Photo';
-      var images = shouldShuffle ? shuffleArray(imageList.slice()) : imageList;
-      var current = 0;
+      var altText = container.getAttribute('data-alt') || 'Gallery';
+      var delay = Number(container.getAttribute('data-interval')) || 5000;
+      var shuffle = container.getAttribute('data-shuffle') !== 'false';
 
-      function renderImage() {
-        slideshow.innerHTML = '';
+      // Shuffle if needed
+      if (shuffle) {
+        for (var si = imageList.length - 1; si > 0; si--) {
+          var sj = Math.floor(Math.random() * (si + 1));
+          var tmp = imageList[si];
+          imageList[si] = imageList[sj];
+          imageList[sj] = tmp;
+        }
+      }
+
+      var total = imageList.length;
+
+      // Remove old .slideshow child if present
+      var oldSlide = container.querySelector('.slideshow');
+      if (oldSlide) oldSlide.remove();
+
+      // Build frame
+      var frame = document.createElement('div');
+      frame.className = 'slideshow-frame';
+      frame.setAttribute('tabindex', '-1');
+      container.appendChild(frame);
+
+      // Create all img elements stacked absolutely
+      var imgs = [];
+      imageList.forEach(function (src, idx) {
         var img = document.createElement('img');
-        var src = images[current];
-        if (webpSupport) src = src.replace(/\.(jpg|jpeg|png)$/i, '.webp');
-        img.src = src;
-        img.alt = altText;
-        img.classList.add('slideshow-image');
+        img.className = 'slide-img' + (idx === 0 ? ' active' : '');
+        var finalSrc = src.trim();
+        if (webpSupport) finalSrc = finalSrc.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+        img.src = finalSrc;
+        img.alt = altText + ' ' + (idx + 1);
+        img.draggable = false;
         img.loading = 'lazy';
-        slideshow.appendChild(img);
-      }
-      renderImage();
+        frame.appendChild(img);
+        imgs.push(img);
+      });
 
-      if (images.length > 1) {
-        setInterval(function () {
-          current = (current + 1) % images.length;
-          renderImage();
-        }, delay);
+      if (total < 2) return;
+
+      // ── Controls ─────────────────────────────────────
+      var prevBtn = document.createElement('button');
+      prevBtn.className = 'slide-btn slide-prev';
+      prevBtn.innerHTML = '\u2039';
+      prevBtn.setAttribute('aria-label', 'Immagine precedente');
+      frame.appendChild(prevBtn);
+
+      var nextBtn = document.createElement('button');
+      nextBtn.className = 'slide-btn slide-next';
+      nextBtn.innerHTML = '\u203A';
+      nextBtn.setAttribute('aria-label', 'Immagine successiva');
+      frame.appendChild(nextBtn);
+
+      // ── Dots ──────────────────────────────────────────
+      var dotsWrap = document.createElement('div');
+      dotsWrap.className = 'slide-dots';
+      container.appendChild(dotsWrap);
+
+      var dots = [];
+      for (var di = 0; di < total; di++) {
+        var dot = document.createElement('button');
+        dot.className = 'slide-dot' + (di === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Vai all\'immagine ' + (di + 1));
+        dot.dataset.index = di;
+        dotsWrap.appendChild(dot);
+        dots.push(dot);
       }
+
+      // ── State ─────────────────────────────────────────
+      var current = 0;
+      var timer = null;
+      var isPaused = false;
+
+      function goTo(index) {
+        if (index === current) return;
+        if (index < 0) index = total - 1;
+        if (index >= total) index = 0;
+
+        if (reduceMotion) {
+          imgs[current].classList.remove('active');
+          imgs[index].classList.add('active');
+        } else {
+          // Preload next image before switching
+          var nextImg = new Image();
+          var nextSrc = imgs[index].getAttribute('src') || imgs[index].src;
+          nextImg.addEventListener('load', function () {
+            imgs[current].classList.remove('active');
+            imgs[index].classList.add('active');
+          });
+          nextImg.addEventListener('error', function () {
+            imgs[current].classList.remove('active');
+            imgs[index].classList.add('active');
+          });
+          nextImg.src = nextSrc;
+        }
+
+        current = index;
+        dots.forEach(function (d) { d.classList.remove('active'); });
+        dots[current].classList.add('active');
+      }
+
+      function next() { goTo(current + 1); }
+      function prev() { goTo(current - 1); }
+
+      // ── Event listeners ───────────────────────────────
+      prevBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        prev();
+        resetAutoPlay();
+      });
+
+      nextBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        next();
+        resetAutoPlay();
+      });
+
+      // Keyboard navigation
+      frame.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); resetAutoPlay(); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); next(); resetAutoPlay(); }
+      });
+
+      // Dot clicks
+      dots.forEach(function (dot) {
+        dot.addEventListener('click', function () {
+          var idx = parseInt(this.dataset.index, 10);
+          if (!isNaN(idx)) { goTo(idx); resetAutoPlay(); }
+        });
+      });
+
+      // Touch swipe
+      var touchStartX = 0;
+      var touchStartY = 0;
+      frame.addEventListener('touchstart', function (e) {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+      }, { passive: true });
+
+      frame.addEventListener('touchend', function (e) {
+        var dx = touchStartX - e.changedTouches[0].screenX;
+        var dy = touchStartY - e.changedTouches[0].screenY;
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+          if (dx > 0) { next(); resetAutoPlay(); }
+          else { prev(); resetAutoPlay(); }
+        }
+      }, { passive: true });
+
+      // ── Auto-play with pause ──────────────────────────
+      function startAutoPlay() {
+        stopAutoPlay();
+        if (!isPaused && !reduceMotion) {
+          timer = setInterval(next, delay);
+        }
+      }
+
+      function stopAutoPlay() {
+        clearInterval(timer);
+        timer = null;
+      }
+
+      function resetAutoPlay() {
+        stopAutoPlay();
+        if (!isPaused) startAutoPlay();
+      }
+
+      // Pause on hover / focus
+      container.addEventListener('mouseenter', function () {
+        isPaused = true;
+        stopAutoPlay();
+        container.classList.add('paused');
+      });
+
+      container.addEventListener('mouseleave', function () {
+        isPaused = false;
+        container.classList.remove('paused');
+        startAutoPlay();
+      });
+
+      // IntersectionObserver — pause when out of viewport
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            startAutoPlay();
+          } else {
+            stopAutoPlay();
+          }
+        });
+      }, { threshold: 0.1 });
+      obs.observe(container);
+
+      // Start
+      startAutoPlay();
     });
   }
 

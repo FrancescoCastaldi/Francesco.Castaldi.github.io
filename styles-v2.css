@@ -1670,25 +1670,142 @@ code {
 }
 
 /* ================================================================
-   SLIDESHOW & MEDIA
+   SLIDESHOW 2.0 — Tech-minimal cross-fade
    ================================================================ */
 .slideshow-container {
+  position: relative;
   margin: 2rem 0;
   border-radius: var(--radius);
-  overflow: hidden;
   border: 1px solid var(--border);
-  box-shadow: var(--shadow-sm);
-}
-
-.slideshow {
-  width: 100%;
+  overflow: hidden;
   background: var(--bg);
 }
 
-.slideshow-image {
+.slideshow-container.paused::after {
+  content: '\u23F8';
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  opacity: 0.6;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.slideshow-frame {
+  position: relative;
   width: 100%;
-  height: auto;
-  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.slide-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.slide-img.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Arrow controls */
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.55);
+  color: var(--text);
+  font-size: 1.4rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s, background 0.25s, border-color 0.25s, transform 0.25s;
+  transform: translateY(-50%) scale(0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.slideshow-container:hover .slide-btn,
+.slide-btn:focus-visible {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+.slide-btn:hover {
+  background: rgba(0, 0, 0, 0.75);
+  border-color: var(--accent);
+}
+
+.slide-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.slide-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.slide-prev { left: 0.75rem; }
+.slide-next { right: 0.75rem; }
+
+/* Dots indicator */
+.slide-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+}
+
+.slide-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--text-muted);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: border-color 0.3s, background 0.3s, transform 0.3s;
+  position: relative;
+}
+
+.slide-dot.active {
+  border-color: var(--accent);
+  background: var(--accent);
+  transform: scale(1.25);
+}
+
+.slide-dot:hover {
+  border-color: var(--accent-hover);
+  background: var(--accent-soft);
+}
+
+.slide-dot:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .glass-card {

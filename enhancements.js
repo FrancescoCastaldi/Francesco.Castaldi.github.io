@@ -189,7 +189,7 @@
     var containers = document.querySelectorAll('.article-content, .content-panel');
     if (!containers.length) return;
     var imgs = [];
-    containers.forEach(function (c) { imgs = imgs.concat(Array.from(c.querySelectorAll('img:not(.slideshow-image)'))); });
+    containers.forEach(function (c) { imgs = imgs.concat(Array.from(c.querySelectorAll('img:not(.slideshow-image):not(.slide-img)'))); });
     if (!imgs.length) return;
     var overlay = document.createElement('div');
     overlay.className = 'enh-lightbox';
