@@ -1,5 +1,13 @@
 var BLOG_POSTS = [
   {
+    title: "Allenamento in Bicicletta: 8 Ore di Resistenza",
+    excerpt: "Un piano di allenamento ciclistico strutturato in 8 ore a settimana: sessioni, tabelle, consigli nutrizionali per migliorare resistenza, forza e velocit\u00e0.",
+    href: "blog/allenamento-ciclismo-8-ore.html",
+    category: "Sport",
+    tags: ["Allenamento", "Ciclismo", "Resistenza"],
+    date: "2026-06-08"
+  },
+  {
     title: "Come Costruire un Piano di Allenamento per Granfondo",
     excerpt: "Guida completa alla periodizzazione dell'allenamento per preparare una granfondo di 200km. Zone di potenza, volumi settimanali e tapering.",
     href: "blog/piano-allenamento-granfondo.html",
