@@ -40,6 +40,70 @@
             justify-content: center;
         }
     </style>
+    <script>
+    // ── Redirect map for site restructure ──
+    (function() {
+      var path = window.location.pathname.replace(/\/$/, '') || '/';
+
+      var redirectMap = {
+        // Bikes
+        '/bikes/bike-maintenance': '/pages/bikes/bike-maintenance.html',
+        '/bikes/giant-tcr': '/pages/bikes/giant-tcr.html',
+        '/bikes/giant-tcr-maintenance': '/pages/bikes/giant-tcr-maintenance.html',
+        '/bikes/trek-madone': '/pages/bikes/trek-madone.html',
+        '/bikes/trek-madone-animazione': '/pages/bikes/trek-madone-animazione.html',
+
+        // Blog
+        '/blog/index2': '/pages/blog/index2.html',
+        '/blog/sport': '/pages/blog/sport.html',
+        '/blog/aerodinamica-casco': '/pages/blog/aerodinamica-casco.html',
+        '/blog/allenamento-ciclismo-8-ore': '/pages/blog/allenamento-ciclismo-8-ore.html',
+        '/blog/analisi-power-meter-strava': '/pages/blog/analisi-power-meter-strava.html',
+        '/blog/app-analisi-performance': '/pages/blog/app-analisi-performance.html',
+        '/blog/bike-fitting-aero': '/pages/blog/bike-fitting-aero.html',
+        '/blog/caffeina-integrazione': '/pages/blog/caffeina-integrazione.html',
+        '/blog/carburi-grassi-endurance': '/pages/blog/carburi-grassi-endurance.html',
+        '/blog/diagnosi-rumori': '/pages/blog/diagnosi-rumori.html',
+        '/blog/drafting-gruppo': '/pages/blog/drafting-gruppo.html',
+        '/blog/ftp-test-protocolli': '/pages/blog/ftp-test-protocolli.html',
+        '/blog/gps-garmin-wahoo': '/pages/blog/gps-garmin-wahoo.html',
+        '/blog/idratazione-lungo': '/pages/blog/idratazione-lungo.html',
+        '/blog/interval-training-vo2max': '/pages/blog/interval-training-vo2max.html',
+        '/blog/manutenzione-trasmissione': '/pages/blog/manutenzione-trasmissione.html',
+        '/blog/nutrizione-pre-gara': '/pages/blog/nutrizione-pre-gara.html',
+        '/blog/piano-allenamento-granfondo': '/pages/blog/piano-allenamento-granfondo.html',
+        '/blog/recupero-attivo-passivo': '/pages/blog/recupero-attivo-passivo.html',
+        '/blog/regolazione-freni-disco': '/pages/blog/regolazione-freni-disco.html',
+        '/blog/salite-piedi-seduti': '/pages/blog/salite-piedi-seduti.html',
+        '/blog/scelta-ruote-profili': '/pages/blog/scelta-ruote-profili.html',
+        '/blog/setup-tubeless': '/pages/blog/setup-tubeless.html',
+
+        // Fitness
+        '/fitness/strava': '/pages/fitness/strava.html',
+        '/fitness/gpx-editor': '/pages/fitness/gpx-editor.html',
+
+        // Projects
+        '/projects/hospital-sanitization-tracker': '/pages/projects/hospital-sanitization-tracker.html',
+        '/projects/sir-markov-chain': '/pages/projects/sir-markov-chain.html',
+        '/projects/ci-cervical-lbc': '/pages/projects/ci-cervical-lbc.html',
+        '/projects/sgf2-ai-project': '/pages/projects/sgf2-ai-project.html',
+
+        // Personal
+        '/personal/contact': '/pages/personal/contact.html',
+        '/personal/love': '/pages/personal/love.html'
+      };
+
+      // Remove trailing .html if present for lookup
+      var lookup = path;
+      if (lookup.endsWith('.html')) lookup = lookup.slice(0, -5);
+      if (lookup.endsWith('/')) lookup = lookup.slice(0, -1);
+
+      var dest = redirectMap[lookup];
+      if (dest && dest !== path) {
+        window.location.replace(dest);
+      }
+    })();
+    </script>
 </head>
 <body>
     <header id="site-header"></header>
@@ -47,7 +111,7 @@
         <div class="error-container">
             <div class="error-code">404</div>
             <h1>Pagina non trovata</h1>
-            <p class="error-message">La risorsa che stai cercando non esiste o è stata spostata.</p>
+            <p class="error-message" id="error-msg">La risorsa che stai cercando non esiste o è stata spostata.</p>
             <div class="error-links">
                 <a href="index.html" class="btn-primary">🏠 Torna alla home</a>
                 <a href="pages/personal/contact.html" class="btn-secondary">✉️ Contattami</a>
@@ -57,6 +121,6 @@
     <footer id="site-footer"></footer>
     <canvas id="bg-canvas"></canvas>
     <script src="assets/js/app.js" defer></script>
-  <script src="assets/js/enhancements.js" defer></script>
+    <script src="assets/js/enhancements.js" defer></script>
 </body>
 </html>
