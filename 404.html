@@ -93,14 +93,32 @@
         '/personal/love': '/pages/personal/love.html'
       };
 
-      // Remove trailing .html if present for lookup
+      // Remove trailing .html or / if present for lookup
       var lookup = path;
       if (lookup.endsWith('.html')) lookup = lookup.slice(0, -5);
       if (lookup.endsWith('/')) lookup = lookup.slice(0, -1);
 
+      // Check exact redirect map
       var dest = redirectMap[lookup];
       if (dest && dest !== path) {
         window.location.replace(dest);
+        return;
+      }
+
+      // Generic redirect: /photos/* → /assets/images/*
+      if (lookup.startsWith('/photos/')) {
+        dest = lookup.replace('/photos/', '/assets/images/');
+        window.location.replace(dest);
+        return;
+      }
+
+      // Generic redirect: /bikes/* → /pages/bikes/*.html
+      // (catch any bikes/ page not in the explicit map)
+      if (lookup.startsWith('/bikes/')) {
+        dest = lookup.replace('/bikes/', '/pages/bikes/');
+        if (!dest.endsWith('.html')) dest += '.html';
+        window.location.replace(dest);
+        return;
       }
     })();
     </script>
