@@ -459,6 +459,67 @@ code {
   padding: 2.5rem 5%;
 }
 
+/* ── Reading-optimized text (blog posts) ── */
+.readable {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.readable p {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  margin-bottom: 1.4rem;
+  color: var(--text-secondary);
+}
+
+.readable h2 {
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  margin: 2.2rem 0 1rem;
+  color: var(--text);
+}
+
+.readable h3 {
+  font-size: 1.1rem;
+  margin: 1.8rem 0 0.75rem;
+  color: var(--text);
+}
+
+.readable ul {
+  list-style: none;
+  margin: 1.25rem 0;
+}
+
+.readable li {
+  padding: 0.35rem 0 0.35rem 1.5rem;
+  position: relative;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--text-secondary);
+}
+
+.readable li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.readable strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .readable {
+    max-width: 100%;
+  }
+  .readable p,
+  .readable li {
+    font-size: 1rem;
+  }
+}
+
 .section-label {
   font-size: 0.60rem;
   font-weight: 600;
