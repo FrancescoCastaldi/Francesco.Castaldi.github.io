@@ -459,67 +459,6 @@ code {
   padding: 2.5rem 5%;
 }
 
-/* ── Reading-optimized text (blog posts) ── */
-.readable {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.readable p {
-  font-size: 1.05rem;
-  line-height: 1.85;
-  margin-bottom: 1.4rem;
-  color: var(--text-secondary);
-}
-
-.readable h2 {
-  font-size: clamp(1.3rem, 3vw, 1.7rem);
-  margin: 2.2rem 0 1rem;
-  color: var(--text);
-}
-
-.readable h3 {
-  font-size: 1.1rem;
-  margin: 1.8rem 0 0.75rem;
-  color: var(--text);
-}
-
-.readable ul {
-  list-style: none;
-  margin: 1.25rem 0;
-}
-
-.readable li {
-  padding: 0.35rem 0 0.35rem 1.5rem;
-  position: relative;
-  font-size: 1.05rem;
-  line-height: 1.85;
-  color: var(--text-secondary);
-}
-
-.readable li::before {
-  content: "→";
-  position: absolute;
-  left: 0;
-  color: var(--accent);
-  font-weight: 600;
-}
-
-.readable strong {
-  color: var(--text);
-  font-weight: 600;
-}
-
-@media (max-width: 768px) {
-  .readable {
-    max-width: 100%;
-  }
-  .readable p,
-  .readable li {
-    font-size: 1rem;
-  }
-}
-
 .section-label {
   font-size: 0.60rem;
   font-weight: 600;
@@ -835,9 +774,11 @@ code {
    ARTICLE / BLOG CONTENT
    ═══════════════════════════════════════════════════════════════ */
 .article-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2.5rem 5%;
+  font-size: clamp(1rem, 0.5rem + 0.75vw, 1.1rem);
+  width: min(68ch, 100% - 2.5rem);
+  margin-inline: auto;
+  padding: 2rem 0 5rem;
+  line-height: 1.8;
 }
 
 .article-header {
@@ -877,59 +818,82 @@ code {
   flex-wrap: wrap;
 }
 
-.article-content {
-  font-size: 1rem;
-  line-height: 1.85;
-  color: var(--text-secondary);
+/* ── Shared reading typography ── */
+.article-content,
+.readable {
+  color: #bcc8d4;
 }
 
-.article-content h2 {
-  font-size: 1.4rem;
+.readable {
+  max-width: 68ch;
+  margin: 0 auto;
+}
+
+.article-content p,
+.readable p {
+  margin-bottom: 1.35em;
+  line-height: 1.8;
+}
+
+.article-content h2,
+.readable h2 {
+  font-size: clamp(1.3rem, 0.65rem + 1.1vw, 1.55rem);
   font-weight: 600;
+  margin: 2.2em 0 0.7em;
   color: var(--text);
-  margin: 2rem 0 1rem;
   letter-spacing: -0.02em;
+  line-height: 1.3;
 }
 
-.article-content h3 {
-  font-size: 1.1rem;
+.article-content h3,
+.readable h3 {
+  font-size: clamp(1.05rem, 0.5rem + 0.85vw, 1.2rem);
   font-weight: 600;
+  margin: 1.8em 0 0.5em;
   color: var(--text);
-  margin: 1.75rem 0 0.75rem;
+  line-height: 1.3;
 }
 
-.article-content p {
-  margin-bottom: 1.25rem;
-}
-
-.article-content ul {
+.article-content ul,
+.readable ul {
   list-style: none;
-  margin: 1.25rem 0;
+  margin: 1.5em 0;
+  padding: 0;
 }
 
-.article-content li {
-  padding: 0.5rem 0 0.5rem 1.5rem;
+.article-content li,
+.readable li {
+  padding-left: 1.5em;
   position: relative;
-  color: var(--text-secondary);
+  margin-bottom: 0.4em;
+  line-height: 1.8;
 }
 
-.article-content li::before {
-  content: "\2192";
+.article-content li::before,
+.readable li::before {
+  content: "→";
   position: absolute;
   left: 0;
   color: var(--accent);
   font-weight: 600;
 }
 
+.article-content strong,
+.readable strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
 .article-content table {
   width: 100%;
   border-collapse: collapse;
-  margin: 1.5rem 0;
+  margin: 2em 0;
+  font-size: 0.9em;
 }
 
 .article-content th,
 .article-content td {
-  padding: 0.65rem 1rem;
+  padding: 0.7em 1em;
   border: 1px solid var(--border);
   text-align: left;
 }
@@ -938,21 +902,39 @@ code {
   background: var(--bg-elevated);
   color: var(--text);
   font-weight: 600;
-  font-size: 0.85rem;
 }
 
 .article-content td {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
+  color: inherit;
 }
 
-.article-content img {
+.article-content img,
+.readable img {
   max-width: 100%;
   height: auto;
   border-radius: var(--radius-sm);
   display: block;
-  margin: 1.25rem 0;
+  margin: 2em auto;
   border: 1px solid var(--border);
+}
+
+.article-content .info-box {
+  width: calc(100% + 3em);
+  max-width: none;
+  margin-left: -1.5em;
+  margin-right: -1.5em;
+}
+
+@media (max-width: 600px) {
+  .article-container {
+    width: 100%;
+    padding: 1.5rem 1.25rem 4rem;
+  }
+  .article-content .info-box {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 .back-link {
