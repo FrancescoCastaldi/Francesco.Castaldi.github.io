@@ -915,7 +915,7 @@
   // ── NAV SLIDER ───────────────────────────────────────────
   var CATEGORIES = [
     {
-      name: 'Bikes', icon: '\uD83D\uDEB4', base: 'bikes/',
+      name: 'Bikes', icon: '\uD83D\uDEB4', base: 'pages/bikes/',
       pages: [
         { name: 'Giant TCR', file: 'giant-tcr.html' },
         { name: 'Trek Madone', file: 'trek-madone.html' },
@@ -925,14 +925,14 @@
       ]
     },
     {
-      name: 'Fitness', icon: '\uD83D\uDCCA', base: 'fitness/',
+      name: 'Fitness', icon: '\uD83D\uDCCA', base: 'pages/fitness/',
       pages: [
         { name: 'Strava Stats', file: 'strava.html' },
         { name: 'GPX Editor', file: 'gpx-editor.html' }
       ]
     },
     {
-      name: 'Projects', icon: '\uD83D\uDCBB', base: 'projects/',
+      name: 'Projects', icon: '\uD83D\uDCBB', base: 'pages/projects/',
       pages: [
         { name: 'Sanitization Tracker', file: 'hospital-sanitization-tracker.html' },
         { name: 'SIR Markov Chain', file: 'sir-markov-chain.html' },
@@ -941,14 +941,14 @@
       ]
     },
     {
-      name: 'Blog', icon: '\uD83D\uDCDD', base: 'blog/',
+      name: 'Blog', icon: '\uD83D\uDCDD', base: 'pages/blog/',
       pages: [
         { name: 'Tutti i Post', file: 'index2.html' },
         { name: '8H Ciclismo', file: 'allenamento-ciclismo-8-ore.html' }
       ]
     },
     {
-      name: 'Personal', icon: '\uD83D\uDC64', base: 'personal/',
+      name: 'Personal', icon: '\uD83D\uDC64', base: 'pages/personal/',
       pages: [
         { name: 'Contattami', file: 'contact.html' }
       ]
