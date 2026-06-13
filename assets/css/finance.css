@@ -454,9 +454,8 @@ code {
    SECTION STYLES
    ═══════════════════════════════════════════════════════════════ */
 .content-panel {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2.5rem 5%;
+  width: 100%;
+  padding: 2.5rem 9%;
 }
 
 .section-label {
@@ -721,9 +720,8 @@ code {
    SUBPAGE STYLES
    ═══════════════════════════════════════════════════════════════ */
 .page-hero {
-  padding: 3rem 5% 1.5rem;
-  max-width: 1100px;
-  margin: 0 auto;
+  padding: 3rem 9% 1.5rem;
+  width: 100%;
 }
 
 .eyebrow {
@@ -1577,6 +1575,12 @@ code {
 }
 
 @media (max-width: 600px) {
+  .page-hero {
+    padding: 2rem 5% 1.25rem;
+  }
+  .content-panel {
+    padding: 1.5rem 5%;
+  }
   .blog-grid {
     grid-template-columns: 1fr;
   }
