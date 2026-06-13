@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+        <base href="/">
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trek Madone Gen8 SL5 – Animazione | Francesco Castaldi</title>
+    <meta name="description" content="Animazione interattiva di una Trek Madone SL5 Gen8 che sfreccia su strada. Effetto visivo tech per gli appassionati di ciclismo.">
+    <meta name="keywords" content="Trek Madone, animazione, ciclismo, canvas, JavaScript, Francesco Castaldi">
+    <meta name="author" content="Francesco Castaldi">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://francescocastaldi.it/pages/bikes/trek-madone-animazione.html">
+    <meta property="og:title" content="Trek Madone in movimento – Animazione">
+    <meta property="og:description" content="Guarda la Trek Madone SL5 Gen8 sfrecciare su strada. Un effetto visivo dinamico realizzato con Canvas.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://francescocastaldi.it/pages/bikes/trek-madone-animazione.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap"></noscript>
+    <link rel="stylesheet" href="assets/css/finance.css">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/enhancements.js" defer></script>
+    <style>
+        /* Stili aggiuntivi per la pagina animazione */
+        .canvas-container {
+            background: var(--bg-dark);
+            border-radius: 24px;
+            border: 1px solid var(--border-glow);
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(59,130,246,0.2);
+            margin: 2rem 0;
+        }
+        canvas {
+            display: block;
+            width: 100%;
+            height: auto;
+            background: #0a1a2a;
+            cursor: pointer;
+        }
+        .controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+        .speed-control {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--bg-card);
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            border: 1px solid var(--border-glow);
+        }
+        .speed-control label {
+            color: var(--text-secondary);
+            font-family: monospace;
+        }
+        input[type="range"] {
+            width: 200px;
+            background: var(--border-glow);
+            height: 3px;
+            border-radius: 3px;
+            -webkit-appearance: none;
+        }
+        input[type="range"]:focus {
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            cursor: pointer;
+        }
+        .info-text {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header id="site-header"></header>
+
+    <main class="main-content subpage-main">
+        <section class="page-hero">
+            <div>
+                <span class="eyebrow">Interactive Experience</span>
+                <h1>Trek Madone SL5 Gen8<br>in movimento</h1>
+                <p>Animazione real-time che simula la bicicletta mentre sfreccia su una strada asfaltata. Effetto visivo generato con Canvas HTML5.</p>
+                <div class="hero-meta">
+                    <span class="meta-pill">Canvas API</span>
+                    <span class="meta-pill">Animazione</span>
+                    <span class="meta-pill">Design generativo</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-panel">
+            <div class="canvas-container">
+                <canvas id="bikeCanvas" width="1000" height="400" style="width:100%; height:auto; max-width:1000px; aspect-ratio:1000/400"></canvas>
+            </div>
+            <div class="controls">
+                <div class="speed-control">
+                    <span>🚴 Velocità</span>
+                    <input type="range" id="speedSlider" min="0" max="20" step="1" value="12">
+                    <span id="speedValue">12</span>
+                </div>
+                <button id="pauseBtn" class="btn-secondary">⏸️ Pausa</button>
+                <button id="resumeBtn" class="btn-secondary" style="display:none;">▶️ Riprendi</button>
+            </div>
+            <div class="info-text">
+                * Animazione generativa – la bicicletta è disegnata con primitive Canvas. Lo sfondo scorre per simulare il movimento.
+            </div>
+        </section>
+
+        <section class="content-panel">
+            <h2>Dettagli tecnici</h2>
+            <p>Questa animazione utilizza l'API Canvas di HTML5 per disegnare una rappresentazione stilizzata della Trek Madone SL5 Gen8. La strada scorre ciclicamente e la velocità può essere regolata in tempo reale. Il codice è interamente generato in JavaScript, senza librerie esterne.</p>
+            <ul>
+                <li><strong>Canvas dinamico:</strong> ridimensionamento fluido con mantenimento delle proporzioni.</li>
+                <li><strong>Effetto prospettico:</strong> le linee della strada si muovono a diverse velocità per simulare la profondità.</li>
+                <li><strong>Dettagli della bici:</strong> telaio aerodinamico, ruote con raggi, manubrio integrato, tecnologia IsoFlow simulata.</li>
+                <li><strong>Performance:</strong> animazione ottimizzata con requestAnimationFrame.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer id="site-footer"></footer>
+    <canvas id="bg-canvas"></canvas>
+
+    <script>
+        (function() {
+            const canvas = document.getElementById('bikeCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Dimensioni fisse del canvas (coordinate logiche)
+            const CANVAS_W = 1000;
+            const CANVAS_H = 400;
+            canvas.width = CANVAS_W;
+            canvas.height = CANVAS_H;
+            
+            // Variabili animazione
+            let roadOffset = 0;
+            let animationId = null;
+            let isRunning = true;
+            let speed = 12; // pixel per frame (scorrimento strada)
+            
+            // Riferimenti UI
+            const speedSlider = document.getElementById('speedSlider');
+            const speedValue = document.getElementById('speedValue');
+            const pauseBtn = document.getElementById('pauseBtn');
+            const resumeBtn = document.getElementById('resumeBtn');
+            
+            // Disegna la bicicletta in posizione fissa (centro x = 300, y base = 330)
+            function drawBike(x, y) {
+                // x = 300, y = 330 (ruote a terra)
+                // Scala approssimativa per una bici da corsa
+                const wheelR = 28;
+                const frameColor = '#2c3e50';
+                const accentColor = '#3b82f6';
+                
+                // Ruote
+                ctx.save();
+                ctx.shadowBlur = 0;
+                ctx.beginPath();
+                ctx.arc(x - 28, y, wheelR, 0, Math.PI * 2);
+                ctx.arc(x + 28, y, wheelR, 0, Math.PI * 2);
+                ctx.fillStyle = '#111';
+                ctx.fill();
+                ctx.strokeStyle = '#ccc';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                // Raggi ruote (semplificati)
+                for (let i = 0; i < 8; i++) {
+                    const angle = (Date.now() * 0.01 * (speed/10)) + i * Math.PI/4;
+                    const r = wheelR - 4;
+                    const x1 = x - 28 + Math.cos(angle) * r;
+                    const y1 = y + Math.sin(angle) * r;
+                    const x2 = x - 28 - Math.cos(angle) * r;
+                    const y2 = y - Math.sin(angle) * r;
+                    ctx.beginPath();
+                    ctx.moveTo(x1, y1);
+                    ctx.lineTo(x2, y2);
+                    ctx.strokeStyle = '#aaa';
+                    ctx.stroke();
+                    
+                    const angle2 = (Date.now() * 0.01 * (speed/10)) + i * Math.PI/4;
+                    const x1r = x + 28 + Math.cos(angle2) * r;
+                    const y1r = y + Math.sin(angle2) * r;
+                    const x2r = x + 28 - Math.cos(angle2) * r;
+                    const y2r = y - Math.sin(angle2) * r;
+                    ctx.beginPath();
+                    ctx.moveTo(x1r, y1r);
+                    ctx.lineTo(x2r, y2r);
+                    ctx.stroke();
+                }
+                
+                // Telaio (triangolo principale)
+                ctx.beginPath();
+                ctx.moveTo(x - 20, y - 10);   // movimento centrale
+                ctx.lineTo(x - 40, y - 35);   // sella
+                ctx.lineTo(x - 10, y - 45);   // attacco sella
+                ctx.lineTo(x + 10, y - 45);   // canotto
+                ctx.lineTo(x + 35, y - 20);   // movimento centrale
+                ctx.lineTo(x + 20, y - 8);
+                ctx.fillStyle = frameColor;
+                ctx.fill();
+                ctx.strokeStyle = accentColor;
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+                
+                // Forcella
+                ctx.beginPath();
+                ctx.moveTo(x + 35, y - 20);
+                ctx.lineTo(x + 45, y - 5);
+                ctx.lineTo(x + 55, y);
+                ctx.lineTo(x + 28, y);
+                ctx.fillStyle = frameColor;
+                ctx.fill();
+                
+                // Sella
+                ctx.fillStyle = '#222';
+                ctx.fillRect(x - 42, y - 40, 20, 8);
+                // Manubrio
+                ctx.beginPath();
+                ctx.moveTo(x - 10, y - 45);
+                ctx.lineTo(x - 25, y - 55);
+                ctx.lineTo(x - 35, y - 50);
+                ctx.lineWidth = 4;
+                ctx.strokeStyle = '#555';
+                ctx.stroke();
+                // Attacco manubrio
+                ctx.fillRect(x - 15, y - 48, 8, 8);
+                
+                // Pedali (simulati)
+                ctx.fillStyle = '#777';
+                ctx.fillRect(x - 5, y - 8, 10, 4);
+                
+                // Dettaglio "IsoFlow" (simbolo)
+                ctx.font = "bold 8px monospace";
+                ctx.fillStyle = accentColor;
+                ctx.fillText("IsoFlow", x - 25, y - 55);
+                
+                // Cerchi ruote scintillanti
+                ctx.beginPath();
+                ctx.arc(x - 28, y, wheelR-2, 0, Math.PI*2);
+                ctx.strokeStyle = accentColor;
+                ctx.lineWidth = 1;
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.arc(x + 28, y, wheelR-2, 0, Math.PI*2);
+                ctx.stroke();
+            }
+            
+            // Disegna la strada in movimento
+            function drawRoad(offset) {
+                // Asfalto
+                ctx.fillStyle = '#1a2a3a';
+                ctx.fillRect(0, CANVAS_H-80, CANVAS_W, 80);
+                ctx.fillStyle = '#2a3a4a';
+                ctx.fillRect(0, CANVAS_H-75, CANVAS_W, 5);
+                
+                // Linea centrale tratteggiata
+                ctx.beginPath();
+                ctx.strokeStyle = '#f1c40f';
+                ctx.lineWidth = 4;
+                ctx.setLineDash([30, 30]);
+                for (let i = -offset; i < CANVAS_W + 60; i += 60) {
+                    ctx.beginPath();
+                    ctx.moveTo(i, CANVAS_H-40);
+                    ctx.lineTo(i+30, CANVAS_H-40);
+                    ctx.stroke();
+                }
+                ctx.setLineDash([]);
+                
+                // Linee laterali
+                ctx.strokeStyle = '#aaa';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(0, CANVAS_H-20);
+                ctx.lineTo(CANVAS_W, CANVAS_H-20);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(0, CANVAS_H-60);
+                ctx.lineTo(CANVAS_W, CANVAS_H-60);
+                ctx.stroke();
+                
+                // Effetto velocità: strisce laterali che scorrono più veloci
+                ctx.beginPath();
+                ctx.strokeStyle = '#ccc';
+                ctx.lineWidth = 2;
+                for (let i = -offset*1.5; i < CANVAS_W + 40; i += 40) {
+                    ctx.beginPath();
+                    ctx.moveTo(i, CANVAS_H-15);
+                    ctx.lineTo(i+20, CANVAS_H-15);
+                    ctx.stroke();
+                }
+            }
+            
+            // Animazione principale
+            function animate() {
+                if (!isRunning) {
+                    animationId = requestAnimationFrame(animate);
+                    return;
+                }
+                // Aggiorna offset strada in base alla velocità
+                roadOffset = (roadOffset + speed) % 60;
+                
+                // Pulisci canvas
+                ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
+                
+                // Cielo/sfondo
+                const grad = ctx.createLinearGradient(0, 0, 0, CANVAS_H);
+                grad.addColorStop(0, '#0a1a2a');
+                grad.addColorStop(1, '#1a2a3a');
+                ctx.fillStyle = grad;
+                ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
+                
+                // Disegna strada
+                drawRoad(roadOffset);
+                
+                // Disegna bicicletta (posizione fissa)
+                drawBike(300, CANVAS_H-42);
+                
+                // Testo velocità
+                ctx.font = "bold 14px 'JetBrains Mono', monospace";
+                ctx.fillStyle = "#3b82f6";
+                ctx.shadowBlur = 0;
+                ctx.fillText(`⚡ ${speed} px/frame`, CANVAS_W-100, 30);
+                
+                animationId = requestAnimationFrame(animate);
+            }
+            
+            // Controllo velocità
+            function updateSpeed() {
+                speed = parseInt(speedSlider.value);
+                speedValue.textContent = speed;
+            }
+            speedSlider.addEventListener('input', updateSpeed);
+            
+            // Pausa/Riprendi
+            pauseBtn.addEventListener('click', () => {
+                isRunning = false;
+                pauseBtn.style.display = 'none';
+                resumeBtn.style.display = 'inline-block';
+            });
+            resumeBtn.addEventListener('click', () => {
+                isRunning = true;
+                pauseBtn.style.display = 'inline-block';
+                resumeBtn.style.display = 'none';
+            });
+            
+            // Adatta canvas alla larghezza del contenitore (mantiene proporzioni)
+            function resizeCanvas() {
+                const container = canvas.parentElement;
+                const containerWidth = container.clientWidth;
+                const scale = containerWidth / CANVAS_W;
+                canvas.style.width = `${containerWidth}px`;
+                canvas.style.height = `${CANVAS_H * scale}px`;
+                // Nota: le coordinate di disegno non cambiano perché usiamo le dimensioni logiche fisse
+            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+            
+            // Avvia animazione
+            animate();
+        })();
+    </script>
+</body>
+</html>

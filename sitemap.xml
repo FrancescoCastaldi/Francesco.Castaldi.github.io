@@ -7,167 +7,182 @@
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/bikes/bike-maintenance.html</loc>
+    <loc>https://francescocastaldi.it/pages/bikes/bike-maintenance.html</loc>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/bikes/giant-tcr.html</loc>
+    <loc>https://francescocastaldi.it/pages/bikes/giant-tcr.html</loc>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/bikes/giant-tcr-maintenance.html</loc>
+    <loc>https://francescocastaldi.it/pages/bikes/giant-tcr-maintenance.html</loc>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/bikes/trek-madone.html</loc>
+    <loc>https://francescocastaldi.it/pages/bikes/trek-madone.html</loc>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/bikes/trek-madone-animazione.html</loc>
+    <loc>https://francescocastaldi.it/pages/bikes/trek-madone-animazione.html</loc>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/fitness/strava.html</loc>
+    <loc>https://francescocastaldi.it/pages/fitness/strava.html</loc>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/fitness/gpx-editor.html</loc>
+    <loc>https://francescocastaldi.it/pages/fitness/gpx-editor.html</loc>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/projects/hospital-sanitization-tracker.html</loc>
+    <loc>https://francescocastaldi.it/pages/projects/hospital-sanitization-tracker.html</loc>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/blog/index2.html</loc>
+    <loc>https://francescocastaldi.it/pages/projects/sir-markov-chain.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.it/pages/projects/ci-cervical-lbc.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.it/pages/projects/sgf2-ai-project.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.it/pages/blog/index2.html</loc>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/blog/allenamento-ciclismo-8-ore.html</loc>
+    <loc>https://francescocastaldi.it/pages/blog/sport.html</loc>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/blog/sport.html</loc>
+    <loc>https://francescocastaldi.it/pages/blog/allenamento-ciclismo-8-ore.html</loc>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/blog/aerodinamica-casco.html</loc>
+    <loc>https://francescocastaldi.it/pages/blog/piano-allenamento-granfondo.html</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.it/pages/blog/analisi-power-meter-strava.html</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.it/pages/blog/manutenzione-trasmissione.html</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://francescocastaldi.it/pages/blog/aerodinamica-casco.html</loc>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/blog/analisi-power-meter-strava.html</loc>
+    <loc>https://francescocastaldi.it/pages/blog/app-analisi-performance.html</loc>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/blog/app-analisi-performance.html</loc>
+    <loc>https://francescocastaldi.it/pages/blog/bike-fitting-aero.html</loc>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/blog/bike-fitting-aero.html</loc>
+    <loc>https://francescocastaldi.it/pages/blog/caffeina-integrazione.html</loc>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/blog/caffeina-integrazione.html</loc>
+    <loc>https://francescocastaldi.it/pages/blog/carburi-grassi-endurance.html</loc>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/blog/carburi-grassi-endurance.html</loc>
+    <loc>https://francescocastaldi.it/pages/blog/diagnosi-rumori.html</loc>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/blog/diagnosi-rumori.html</loc>
+    <loc>https://francescocastaldi.it/pages/blog/drafting-gruppo.html</loc>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/blog/drafting-gruppo.html</loc>
+    <loc>https://francescocastaldi.it/pages/blog/ftp-test-protocolli.html</loc>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/blog/ftp-test-protocolli.html</loc>
+    <loc>https://francescocastaldi.it/pages/blog/gps-garmin-wahoo.html</loc>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/blog/gps-garmin-wahoo.html</loc>
+    <loc>https://francescocastaldi.it/pages/blog/idratazione-lungo.html</loc>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/blog/idratazione-lungo.html</loc>
+    <loc>https://francescocastaldi.it/pages/blog/interval-training-vo2max.html</loc>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/blog/interval-training-vo2max.html</loc>
+    <loc>https://francescocastaldi.it/pages/blog/nutrizione-pre-gara.html</loc>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/blog/manutenzione-trasmissione.html</loc>
+    <loc>https://francescocastaldi.it/pages/blog/recupero-attivo-passivo.html</loc>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/blog/nutrizione-pre-gara.html</loc>
+    <loc>https://francescocastaldi.it/pages/blog/regolazione-freni-disco.html</loc>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/blog/piano-allenamento-granfondo.html</loc>
+    <loc>https://francescocastaldi.it/pages/blog/salite-piedi-seduti.html</loc>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/blog/recupero-attivo-passivo.html</loc>
+    <loc>https://francescocastaldi.it/pages/blog/scelta-ruote-profili.html</loc>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/blog/regolazione-freni-disco.html</loc>
+    <loc>https://francescocastaldi.it/pages/blog/setup-tubeless.html</loc>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/blog/salite-piedi-seduti.html</loc>
+    <loc>https://francescocastaldi.it/pages/personal/contact.html</loc>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://francescocastaldi.it/blog/scelta-ruote-profili.html</loc>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://francescocastaldi.it/blog/setup-tubeless.html</loc>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://francescocastaldi.it/personal/contact.html</loc>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://francescocastaldi.it/personal/love.html</loc>
+    <loc>https://francescocastaldi.it/pages/personal/love.html</loc>
     <priority>0.3</priority>
   </url>
 
