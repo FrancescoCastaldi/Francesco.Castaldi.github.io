@@ -102,67 +102,185 @@
     var header = document.getElementById('site-header');
     if (!header) return;
 
-    var nav = document.createElement('nav');
-    nav.setAttribute('aria-label', 'Main navigation');
-    nav.innerHTML = '<ul class="main-nav">' + buildNavHTML() + '</ul>';
-    header.innerHTML = '';
-    header.appendChild(nav);
-    highlightCurrentPage(nav);
+    var path = window.location.pathname;
+    var baseEl = document.querySelector('base');
+    var baseHref = baseEl ? baseEl.getAttribute('href') : '';
+    if (baseHref && path.startsWith(baseHref)) path = path.slice(baseHref.length);
+    if (path === '' || path === '/') path = 'index.html';
+    var currentFile = path.split('/').pop() || 'index.html';
 
-    // Dropdowns
-    nav.querySelectorAll('.dropdown').forEach(function (dd) {
-      var trigger = dd.querySelector('.dropbtn');
-      var content = dd.querySelector('.dropdown-content');
-      if (!trigger || !content) return;
+    // Check if this page should use the full sidebar layout
+    var hasSidebar = true; // All pages get sidebar
+    if (currentFile === 'love.html') hasSidebar = false; // Love page is standalone
 
-      var closeTimeout;
-      function open() {
-        clearTimeout(closeTimeout);
-        dd.classList.add('open');
-        trigger.setAttribute('aria-expanded', 'true');
-      }
-      function close() {
-        closeTimeout = setTimeout(function () {
-          dd.classList.remove('open');
-          trigger.setAttribute('aria-expanded', 'false');
-        }, 250);
-      }
+    if (hasSidebar) {
+      // Thin top bar with just brand and hamburger
+      header.className = 'sidebar-mode';
+      header.style.cssText = 'position:fixed;top:0;width:100%;padding:0.6rem 1rem;background:rgba(8,10,14,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:4500;display:flex;align-items:center;justify-content:space-between;';
+      header.innerHTML = '<div style="display:flex;align-items:center;gap:0.75rem;"><button id="sidebar-toggle" style="display:none;width:32px;height:32px;background:var(--bg-card);border:1px solid var(--border);border-radius:6px;color:var(--text-secondary);font-size:0.9rem;cursor:pointer;align-items:center;justify-content:center;" aria-label="Menu">☰</button><span style="font-size:0.7rem;font-weight:600;color:var(--text);letter-spacing:0.1em;text-transform:uppercase;font-family:var(--font-mono);">FRANCESCO CASTALDI</span></div><span style="font-size:0.65rem;color:var(--text-muted);font-family:var(--font-mono);">' + (currentFile === 'index.html' ? 'HOME' : currentFile.replace('.html','').toUpperCase()) + '</span>';
+    } else {
+      // Legacy header for love.html
+      var nav = document.createElement('nav');
+      nav.setAttribute('aria-label', 'Main navigation');
+      nav.innerHTML = '<ul class="main-nav">' + buildNavHTML() + '</ul>';
+      header.innerHTML = '';
+      header.appendChild(nav);
+      highlightCurrentPage(nav);
 
-      dd.addEventListener('mouseenter', open);
-      dd.addEventListener('mouseleave', close);
-      trigger.addEventListener('click', function (e) { if (window.matchMedia('(hover: none)').matches) { e.preventDefault(); dd.classList.contains('open') ? close() : open(); } });
+      nav.querySelectorAll('.dropdown').forEach(function (dd) {
+        var trigger = dd.querySelector('.dropbtn');
+        var content = dd.querySelector('.dropdown-content');
+        if (!trigger || !content) return;
 
-      trigger.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          dd.classList.contains('open') ? close() : open();
-        }
-        if (e.key === 'Escape') {
+        var closeTimeout;
+        function open() {
           clearTimeout(closeTimeout);
-          dd.classList.remove('open');
-          trigger.setAttribute('aria-expanded', 'false');
+          dd.classList.add('open');
+          trigger.setAttribute('aria-expanded', 'true');
         }
-      });
+        function close() {
+          closeTimeout = setTimeout(function () {
+            dd.classList.remove('open');
+            trigger.setAttribute('aria-expanded', 'false');
+          }, 250);
+        }
 
-      content.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('keydown', function (e) {
+        dd.addEventListener('mouseenter', open);
+        dd.addEventListener('mouseleave', close);
+        trigger.addEventListener('click', function (e) { if (window.matchMedia('(hover: none)').matches) { e.preventDefault(); dd.classList.contains('open') ? close() : open(); } });
+
+        trigger.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            dd.classList.contains('open') ? close() : open();
+          }
           if (e.key === 'Escape') {
             clearTimeout(closeTimeout);
             dd.classList.remove('open');
             trigger.setAttribute('aria-expanded', 'false');
-            trigger.focus();
+          }
+        });
+
+        content.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+              clearTimeout(closeTimeout);
+              dd.classList.remove('open');
+              trigger.setAttribute('aria-expanded', 'false');
+              trigger.focus();
+            }
+          });
+        });
+
+        document.addEventListener('click', function (e) {
+          if (!dd.contains(e.target)) {
+            clearTimeout(closeTimeout);
+            dd.classList.remove('open');
+            trigger.setAttribute('aria-expanded', 'false');
           }
         });
       });
+    }
 
-      document.addEventListener('click', function (e) {
-        if (!dd.contains(e.target)) {
-          clearTimeout(closeTimeout);
-          dd.classList.remove('open');
-          trigger.setAttribute('aria-expanded', 'false');
-        }
+    document.body.classList.toggle('has-sidebar', hasSidebar);
+  }
+
+  // ── SIDEBAR ──────────────────────────────────────────────
+  var SIDEBAR_ICONS = {
+    'Bikes': '🚴', 'Fitness': '📊', 'Projects': '💻',
+    'Blog': '📝', 'Personal': '👤'
+  };
+
+  function injectSidebar() {
+    if (!document.body.classList.contains('has-sidebar')) return;
+
+    var sidebar = document.createElement('div');
+    sidebar.id = 'sidebar';
+
+    var baseEl = document.querySelector('base');
+    var baseHref = baseEl ? baseEl.getAttribute('href') : '';
+    var path = window.location.pathname;
+    if (baseHref && path.startsWith(baseHref)) path = path.slice(baseHref.length);
+    var currentFile = path.split('/').pop() || 'index.html';
+
+    var html = '';
+
+    // Brand
+    html += '<div class="sidebar-brand">' +
+      '<div class="sidebar-brand-icon">FC</div>' +
+      '<div><div class="sidebar-brand-text">Francesco Castaldi</div><div class="sidebar-brand-sub">Computer Engineer</div></div>' +
+      '</div>';
+
+    // Home link
+    html += '<div class="sidebar-section">' +
+      '<a href="index.html" class="sidebar-link' + (currentFile === 'index.html' ? ' active' : '') + '"><span class="sidebar-link-icon">🏠</span> Home</a>' +
+      '</div>';
+
+    // Categories from CATEGORIES data
+    CATEGORIES.forEach(function (cat) {
+      var isActive = currentFile && cat.pages.some(function (p) { return p.file === currentFile; });
+      var icon = SIDEBAR_ICONS[cat.name] || '📁';
+
+      html += '<div class="sidebar-section">' +
+        '<div class="sidebar-section-title">' + icon + ' ' + cat.name.toUpperCase() + '</div>';
+
+      cat.pages.forEach(function (p) {
+        var linkActive = p.file === currentFile;
+        html += '<a href="' + cat.base + p.file + '" class="sidebar-link' + (linkActive ? ' active' : '') + '"><span class="sidebar-link-icon"></span>' + p.name + '</a>';
       });
+
+      html += '</div>';
     });
+
+    // Contact link
+    html += '<div class="sidebar-divider"></div>' +
+      '<div class="sidebar-section">' +
+      '<a href="pages/personal/contact.html" class="sidebar-link' + (currentFile === 'contact.html' ? ' active' : '') + '"><span class="sidebar-link-icon">📬</span> Contatti</a>' +
+      '</div>';
+
+    // Status bar at bottom of sidebar
+    html += '<div class="status-bar" style="margin-top:auto;">' +
+      '<span class="status-bar-item" id="sidebar-clock"><span class="status-bar-dot"></span> --:--:--</span>' +
+      '<span class="status-bar-item" style="margin-left:auto;"><span id="sidebar-uptime">0h 0m 0s</span></span>' +
+      '</div>';
+
+    // Wrap nav content in scrollable container
+    var scrollDiv = document.createElement('div');
+    scrollDiv.className = 'sidebar-scroll';
+    // split html at the status bar
+    var statusBarIdx = html.lastIndexOf('<div class="status-bar"');
+    var navHtml = html.substring(0, statusBarIdx);
+    var statusHtml = html.substring(statusBarIdx);
+    scrollDiv.innerHTML = navHtml;
+
+    sidebar.appendChild(scrollDiv);
+    // Append status bar separately (outside scroll)
+    var statusDiv = document.createElement('div');
+    statusDiv.innerHTML = statusHtml;
+    sidebar.appendChild(statusDiv.firstChild);
+
+    document.body.appendChild(sidebar);
+
+    // Overlay for mobile
+    var overlay = document.createElement('div');
+    overlay.className = 'sidebar-overlay';
+    document.body.appendChild(overlay);
+
+    // Toggle button functionality
+    var toggle = document.getElementById('sidebar-toggle');
+    if (toggle) {
+      toggle.addEventListener('click', function () {
+        sidebar.classList.toggle('open');
+        overlay.classList.toggle('open');
+      });
+      overlay.addEventListener('click', function () {
+        sidebar.classList.remove('open');
+        overlay.classList.remove('open');
+      });
+    }
+
+    // Highlight current page
+    highlightCurrentPage(sidebar);
   }
 
   function injectFooter() {
@@ -985,20 +1103,376 @@
     }
   }
 
-  // ── INIT ─────────────────────────────────────────────────
+  // ── DASHBOARD STATS ───────────────────────────────────────
+  function initDashboardStats() {
+    var hero = document.querySelector('.hero');
+    if (!hero) return;
+
+    // Count actual data
+    var projectCount = CATEGORIES.filter(function (c) { return c.name === 'Projects'; })[0];
+    var projects = projectCount ? projectCount.pages.length : 4;
+    var blogCount = typeof BLOG_POSTS !== 'undefined' ? BLOG_POSTS.length : 21;
+    var bikeCount = CATEGORIES.filter(function (c) { return c.name === 'Bikes'; })[0];
+    var bikes = bikeCount ? bikeCount.pages.length : 5;
+
+    var stats = [
+      { value: projects, label: 'Progetti', icon: '💻', color: 'var(--accent-orange)' },
+      { value: blogCount + '+', label: 'Articoli', icon: '📝', color: 'var(--accent-blue)' },
+      { value: bikes, label: 'Bici', icon: '🚴', color: 'var(--accent-orange)' },
+      { value: '100%', label: 'Passione', icon: '🔥', color: 'var(--accent-red-bright)' }
+    ];
+
+    var container = document.createElement('div');
+    container.className = 'dashboard-stats';
+    container.style.cssText = 'display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;max-width:1200px;margin:2rem auto;padding:0 5%;';
+
+    stats.forEach(function (s) {
+      var card = document.createElement('div');
+      card.style.cssText = 'background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;text-align:center;transition:all 0.3s ease;position:relative;overflow:hidden;';
+      card.innerHTML = '<div style="font-size:1.8rem;margin-bottom:0.25rem;">' + s.icon + '</div>' +
+        '<div style="font-size:1.8rem;font-weight:700;color:' + s.color + ';font-family:var(--font-mono);">' + s.value + '</div>' +
+        '<div style="font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-top:0.15rem;">' + s.label + '</div>';
+      // Glow effect on hover
+      card.addEventListener('mouseenter', function () {
+        card.style.borderColor = s.color;
+        card.style.transform = 'translateY(-3px)';
+        card.style.boxShadow = '0 0 30px ' + s.color.replace(')', ',0.1)');
+      });
+      card.addEventListener('mouseleave', function () {
+        card.style.borderColor = 'var(--border)';
+        card.style.transform = '';
+        card.style.boxShadow = '';
+      });
+      container.appendChild(card);
+    });
+
+    // Insert after hero
+    hero.parentNode.insertBefore(container, hero.nextSibling);
+  }
+
+  // ══════════════════════════════════════════════════════════
+  //  TECH FEATURES — Finance AI Engineer Applets
+  // ══════════════════════════════════════════════════════════
+
+  // 1. Live clock in sidebar
+  function initLiveClock() {
+    var el = document.getElementById('sidebar-clock');
+    if (!el) return;
+    function tick() {
+      var now = new Date();
+      var time = now.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      var date = now.toLocaleDateString('it-IT', { day: '2-digit', month: 'short', year: 'numeric' });
+      el.innerHTML = '<span class="status-bar-dot"></span> ' + time + ' &middot; ' + date;
+    }
+    tick();
+    setInterval(tick, 1000);
+  }
+
+  // 2. Toast notification system
+  function showToast(message, type, duration) {
+    type = type || 'info';
+    duration = duration || 3500;
+    var container = document.getElementById('toast-container');
+    if (!container) {
+      container = document.createElement('div');
+      container.id = 'toast-container';
+      container.className = 'toast-container';
+      document.body.appendChild(container);
+    }
+    var icons = { info: 'ℹ️', success: '✅', warning: '⚠️', error: '❌' };
+    var toast = document.createElement('div');
+    toast.className = 'toast ' + type;
+    toast.innerHTML = '<span class="toast-icon">' + (icons[type] || 'ℹ️') + '</span>' + message;
+    container.appendChild(toast);
+    requestAnimationFrame(function () { toast.classList.add('show'); });
+    setTimeout(function () {
+      toast.classList.remove('show');
+      setTimeout(function () { toast.remove(); }, 300);
+    }, duration);
+  }
+
+  // 3. Scroll-to-top FAB
+  function initScrollFab() {
+    var fab = document.createElement('button');
+    fab.className = 'fab';
+    fab.innerHTML = '↑';
+    fab.setAttribute('aria-label', 'Torna su');
+    fab.style.display = 'none';
+    document.body.appendChild(fab);
+
+    window.addEventListener('scroll', throttle(function () {
+      fab.style.display = window.scrollY > 400 ? 'flex' : 'none';
+    }, 100));
+
+    fab.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    });
+  }
+
+  // 4. Counter-up animation (intersection observer)
+  function initCounters() {
+    document.querySelectorAll('[data-count]').forEach(function (el) {
+      var target = parseInt(el.dataset.count, 10);
+      if (isNaN(target)) return;
+      var suffix = el.dataset.suffix || '';
+      var duration = parseInt(el.dataset.duration, 10) || 1500;
+      var start = parseInt(el.dataset.start, 10) || 0;
+      var current = start;
+      var increment = Math.ceil((target - start) / 30);
+      var interval;
+
+      function animate() {
+        interval = setInterval(function () {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(interval);
+          }
+          el.textContent = current + suffix;
+        }, duration / 30);
+      }
+
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            animate();
+            obs.unobserve(el);
+          }
+        });
+      }, { threshold: 0.3 });
+      obs.observe(el);
+    });
+  }
+
+  // 5. Breadcrumb generator from URL path
+  function initBreadcrumb() {
+    var container = document.getElementById('breadcrumb');
+    if (!container) return;
+    var baseEl = document.querySelector('base');
+    var baseHref = baseEl ? baseEl.getAttribute('href') : '';
+    var path = window.location.pathname;
+    if (baseHref && path.startsWith(baseHref)) path = path.slice(baseHref.length);
+    var parts = path.replace(/\.html$/, '').split('/').filter(Boolean);
+    if (!parts.length) return;
+
+    var labels = {
+      'pages': 'Pages', 'bikes': 'Bici', 'blog': 'Blog',
+      'fitness': 'Fitness', 'personal': 'Personal', 'projects': 'Progetti',
+      'index': 'Home', 'index2': 'Blog', '404': '404'
+    };
+
+    var html = '<a href="' + (baseHref || '/') + '">HOME</a>';
+    var cum = '';
+    parts.forEach(function (part, i) {
+      html += '<span class="breadcrumb-sep">›</span>';
+      cum += '/' + part;
+      var label = labels[part] || part.replace(/-/g, ' ');
+      if (i === parts.length - 1) {
+        html += '<span class="breadcrumb-current">' + label.toUpperCase() + '</span>';
+      } else {
+        html += '<a href="' + (baseHref || '') + cum + '.html">' + label.toUpperCase() + '</a>';
+      }
+    });
+    container.innerHTML = html;
+  }
+
+  // 6. Typewriter effect for elements with data-typewriter
+  function initTypewriter() {
+    document.querySelectorAll('[data-typewriter]').forEach(function (el) {
+      var text = el.getAttribute('data-typewriter') || el.textContent;
+      var speed = parseInt(el.dataset.speed, 10) || 60;
+      var delay = parseInt(el.dataset.delay, 10) || 0;
+      el.textContent = '';
+      el.style.visibility = 'visible';
+
+      setTimeout(function () {
+        var i = 0;
+        function type() {
+          if (i < text.length) {
+            el.textContent += text[i];
+            i++;
+            setTimeout(type, speed);
+          }
+        }
+        type();
+      }, delay);
+    });
+  }
+
+  // 7. Animated skill bars on scroll
+  function initSkillBars() {
+    document.querySelectorAll('.skill-bar-fill').forEach(function (bar) {
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            bar.classList.add('animate');
+            obs.unobserve(bar);
+          }
+        });
+      }, { threshold: 0.3 });
+      obs.observe(bar);
+    });
+  }
+
+  // 8. Spotlight mouse tracking on .card-spotlight
+  function initSpotlight() {
+    if (reduceMotion) return;
+    document.querySelectorAll('.card-spotlight').forEach(function (card) {
+      card.addEventListener('mousemove', throttle(function (e) {
+        var rect = card.getBoundingClientRect();
+        var x = ((e.clientX - rect.left) / rect.width) * 100;
+        var y = ((e.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty('--mouse-x', x + '%');
+        card.style.setProperty('--mouse-y', y + '%');
+      }, 30));
+    });
+  }
+
+  // 9. Accordion toggle
+  function initAccordion() {
+    document.querySelectorAll('.accordion-trigger').forEach(function (trigger) {
+      trigger.addEventListener('click', function () {
+        var item = this.closest('.accordion-item');
+        if (item) item.classList.toggle('open');
+      });
+    });
+  }
+
+  // 10. Active nav highlighting in sidebar
+  function initSidebarActive() {
+    var baseEl = document.querySelector('base');
+    var baseHref = baseEl ? baseEl.getAttribute('href') : '';
+    var path = window.location.pathname;
+    if (baseHref && path.startsWith(baseHref)) path = path.slice(baseHref.length);
+    var currentFile = path.split('/').pop() || 'index.html';
+
+    document.querySelectorAll('.sidebar-link').forEach(function (link) {
+      var href = link.getAttribute('href');
+      if (href && href.endsWith(currentFile)) {
+        link.classList.add('active');
+      }
+    });
+  }
+
+  // 11. System uptime display
+  function initUptime() {
+    var el = document.getElementById('sidebar-uptime');
+    if (!el) return;
+    var start = Date.now();
+    function formatUptime(ms) {
+      var h = Math.floor(ms / 3600000);
+      var m = Math.floor((ms % 3600000) / 60000);
+      var s = Math.floor((ms % 60000) / 1000);
+      return h + 'h ' + m + 'm ' + s + 's';
+    }
+    function tick() {
+      el.textContent = formatUptime(Date.now() - start);
+    }
+    tick();
+    setInterval(tick, 1000);
+  }
+
+  // 12. Gradient text animation toggle
+  function initGradientText() {
+    document.querySelectorAll('.text-gradient-animate').forEach(function (el) {
+      var deg = 135;
+      setInterval(function () {
+        deg = (deg + 1) % 360;
+        el.style.backgroundImage = 'linear-gradient(' + deg + 'deg, var(--accent-orange), var(--accent-blue))';
+      }, 50);
+    });
+  }
+
+  // 13. Keyboard shortcuts
+  function initKeyboardShortcuts() {
+    document.addEventListener('keydown', function (e) {
+      // Alt+H → Home
+      if (e.altKey && e.key === 'h') {
+        e.preventDefault();
+        window.location.href = (document.querySelector('base') || {}).href || '/';
+      }
+      // Alt+B → Blog
+      if (e.altKey && e.key === 'b') {
+        e.preventDefault();
+        window.location.href = 'pages/blog/index2.html';
+      }
+      // Alt+T → Scroll to top
+      if (e.altKey && e.key === 't') {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  }
+
+  // 14. Quick page info in console
+  function initConsoleGreeting() {
+    console.log('%c🧠 Francesco Castaldi — Tech Finance AI Engineer', 'font-size:1.2rem;font-weight:bold');
+    console.log('%c🔧 System: Minimal Static Portfolio', 'color:#94a3b8');
+    console.log('%c📊 Pages: 38 | Applets: 29+ | Stack: HTML5/CSS3/JS', 'color:#94a3b8');
+    console.log('%c🚀 Deploy: GitHub Pages', 'color:#3b82f6');
+  }
+
+  // 15. Status bar time
+  function initStatusBar() {
+    var el = document.getElementById('statusbar-time');
+    if (!el) return;
+    function tick() {
+      var now = new Date();
+      el.textContent = now.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
+    }
+    tick();
+    setInterval(tick, 30000);
+  }
+
+  // 16. Intersection-based reveal counters
+  function initRevealCounters() {
+    document.querySelectorAll('.stat-mini-value[data-target]').forEach(function (el) {
+      var target = parseInt(el.dataset.target, 10);
+      if (isNaN(target)) return;
+      var suffix = el.dataset.suffix || '';
+      var dur = parseInt(el.dataset.dur, 10) || 1200;
+
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          var start = 0;
+          var step = Math.ceil(target / 30);
+          var interval = setInterval(function () {
+            start += step;
+            if (start >= target) { start = target; clearInterval(interval); }
+            el.textContent = start + suffix;
+          }, dur / 30);
+          obs.unobserve(el);
+        });
+      }, { threshold: 0.3 });
+      obs.observe(el);
+    });
+  }
+
+  // ══════════════════════════════════════════════════════════
+  //  INIT
+  // ══════════════════════════════════════════════════════════
   document.addEventListener('DOMContentLoaded', function () {
     injectHeader();
+    injectSidebar();
+    initDashboardStats();
     injectFooter();
     injectNavSlider();
     initPageCounter();
     initBgAnimation();
     initTechAnimations();
+    initLiveClock();
+    initSidebarActive();
+    initUptime();
+    initStatusBar();
 
     if (!reduceMotion) {
       initCustomCursor();
       initMagneticButtons();
       initGlitchHover();
       initPreloader();
+      initSpotlight();
+      initGradientText();
     }
 
     initSmoothScroll();
@@ -1007,6 +1481,18 @@
     initGallery();
     initStravaLoop();
     initBlogPosts();
+    initBreadcrumb();
+    initTypewriter();
+    initSkillBars();
+    initAccordion();
+    initCounters();
+    initRevealCounters();
+    initScrollFab();
+    initKeyboardShortcuts();
+    initConsoleGreeting();
   });
+
+  // Expose toast globally
+  window.showToast = showToast;
 
 })();
