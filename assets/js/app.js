@@ -171,7 +171,7 @@
       footer.innerHTML =
         '<div>' +
         '<a href="https://www.linkedin.com/in/francescocastaldi" target="_blank" ' +
-        'rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;letter-spacing:0.05em;">' +
+        'rel="noopener noreferrer" style="color:var(--accent-orange);text-decoration:none;letter-spacing:0.05em;">' +
         '&#x1F517; LINKEDIN // CONNECT</a>' +
         '</div>' +
         '<div>' + SITE_CONFIG.siteName + ' // SYSTEM READY</div>' +
