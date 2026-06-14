@@ -148,26 +148,24 @@
             let animationId = null;
             let isRunning = true;
             let speed = 12;
-            let imgLoaded = false;
-            let imgError = false;
             
             const speedSlider = document.getElementById('speedSlider');
             const speedValue = document.getElementById('speedValue');
             const pauseBtn = document.getElementById('pauseBtn');
             const resumeBtn = document.getElementById('resumeBtn');
             
-            // Carica foto reale Trek Madone
-            const bikeImg = new Image();
-            bikeImg.crossOrigin = 'anonymous';
-            bikeImg.onload = function() {
-                imgLoaded = true;
-                if (!animationId) animate();
-            };
-            bikeImg.onerror = function() {
-                imgError = true;
-                if (!animationId) animate();
-            };
-            bikeImg.src = 'assets/images/trekmadone1.jpg';
+            // ─── GEOMETRIA BICI ─────────────────────────────────
+            const WR = 28;
+            const WS = 62;
+            const BBx = -10, BBy = -40;
+            const SCx = -18, SCy = -92;
+            const HTx = 36, HTy = -92;
+            const HBx = 34, HBy = -76;
+            const Hx = 48, Hy = -97;
+            const Sx = -25, Sy = -90;
+            
+            const frameColor = '#1a1a2e';
+            const accentColor = '#f97316';
             
             function resizeCanvas() {
                 const container = canvas.parentElement;
@@ -175,8 +173,8 @@
                 const scale = containerWidth / LOGIC_W;
                 canvas.width = LOGIC_W * dpr;
                 canvas.height = LOGIC_H * dpr;
-                canvas.style.width = `${containerWidth}px`;
-                canvas.style.height = `${LOGIC_H * scale}px`;
+                canvas.style.width = containerWidth + 'px';
+                canvas.style.height = (LOGIC_H * scale) + 'px';
                 ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
             }
             
@@ -191,63 +189,194 @@
                 ctx.lineWidth = 4;
                 ctx.setLineDash([30, 30]);
                 for (let i = -offset; i < LOGIC_W + 60; i += 60) {
-                    ctx.beginPath();
-                    ctx.moveTo(i, LOGIC_H-40);
-                    ctx.lineTo(i+30, LOGIC_H-40);
-                    ctx.stroke();
+                    ctx.beginPath(); ctx.moveTo(i, LOGIC_H-40); ctx.lineTo(i+30, LOGIC_H-40); ctx.stroke();
                 }
                 ctx.setLineDash([]);
                 
                 ctx.strokeStyle = '#aaa';
                 ctx.lineWidth = 2;
-                ctx.beginPath();
-                ctx.moveTo(0, LOGIC_H-20);
-                ctx.lineTo(LOGIC_W, LOGIC_H-20);
-                ctx.stroke();
-                ctx.beginPath();
-                ctx.moveTo(0, LOGIC_H-60);
-                ctx.lineTo(LOGIC_W, LOGIC_H-60);
-                ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(0, LOGIC_H-20); ctx.lineTo(LOGIC_W, LOGIC_H-20); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(0, LOGIC_H-60); ctx.lineTo(LOGIC_W, LOGIC_H-60); ctx.stroke();
                 
                 ctx.beginPath();
                 ctx.strokeStyle = '#ccc';
                 ctx.lineWidth = 2;
                 for (let i = -offset*1.5; i < LOGIC_W + 40; i += 40) {
-                    ctx.beginPath();
-                    ctx.moveTo(i, LOGIC_H-15);
-                    ctx.lineTo(i+20, LOGIC_H-15);
-                    ctx.stroke();
+                    ctx.beginPath(); ctx.moveTo(i, LOGIC_H-15); ctx.lineTo(i+20, LOGIC_H-15); ctx.stroke();
                 }
             }
             
-            function drawBikePhoto(x, y) {
-                if (!imgLoaded || imgError) {
-                    ctx.font = "bold 14px monospace";
-                    ctx.fillStyle = "#f97316";
-                    ctx.fillText("🚴 Trek Madone", x - 50, y - 30);
-                    return;
+            function drawWheel(cx, cy, angle) {
+                // Pneumatico
+                ctx.beginPath();
+                ctx.arc(cx, cy, WR, 0, Math.PI*2);
+                ctx.strokeStyle = '#1a1a1a';
+                ctx.lineWidth = 5;
+                ctx.stroke();
+                // Cerchio
+                ctx.beginPath();
+                ctx.arc(cx, cy, WR-3, 0, Math.PI*2);
+                ctx.strokeStyle = '#444';
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+                // Cerchio interno
+                ctx.beginPath();
+                ctx.arc(cx, cy, WR-8, 0, Math.PI*2);
+                ctx.strokeStyle = '#222';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                // Mozzo
+                ctx.beginPath();
+                ctx.arc(cx, cy, 3, 0, Math.PI*2);
+                ctx.fillStyle = '#888';
+                ctx.fill();
+                // 16 raggi che girano
+                for (let i = 0; i < 16; i++) {
+                    const a = angle + (i * Math.PI * 2 / 16);
+                    ctx.beginPath();
+                    ctx.moveTo(cx + Math.cos(a) * 3, cy + Math.sin(a) * 3);
+                    ctx.lineTo(cx + Math.cos(a) * (WR-5), cy + Math.sin(a) * (WR-5));
+                    ctx.strokeStyle = speed > 2 ? '#999' : '#aaa';
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
                 }
+                // Valvola
+                ctx.beginPath();
+                ctx.arc(cx + Math.cos(angle) * (WR-2), cy + Math.sin(angle) * (WR-2), 1.5, 0, Math.PI*2);
+                ctx.fillStyle = '#f97316';
+                ctx.fill();
+            }
+            
+            function drawBike(cx, cy, angle) {
+                const gnd = cy;
+                const rcx = cx - WS/2;
+                const fcx = cx + WS/2;
                 
-                const bikeHeight = 140;
-                const aspect = bikeImg.naturalWidth / bikeImg.naturalHeight;
-                const bikeWidth = bikeHeight * aspect;
-                
-                const drawX = x - bikeWidth / 2;
-                const drawY = y - bikeHeight;
-                
-                // Ombra arancione dinamica sotto la bici
                 ctx.save();
-                ctx.shadowColor = 'rgba(249, 115, 22, 0.3)';
-                ctx.shadowBlur = 20 + speed * 2;
+                ctx.shadowColor = 'rgba(249, 115, 22, ' + (0.1 + speed * 0.015) + ')';
+                ctx.shadowBlur = 15 + speed;
                 ctx.shadowOffsetY = 5;
                 
-                // Leggero tilt per effetto dinamico
-                ctx.translate(x, y);
-                const tilt = Math.sin(Date.now() * 0.001) * 0.3;
-                ctx.rotate(tilt * Math.PI / 180);
-                ctx.translate(-x, -y);
+                // Telaio
+                ctx.beginPath();
+                ctx.moveTo(rcx, gnd - WR);
+                ctx.lineTo(cx + BBx, gnd + BBy);
+                ctx.lineTo(cx + SCx, gnd + SCy);
+                ctx.lineTo(cx + HTx, gnd + HTy);
+                ctx.lineTo(cx + HBx, gnd + HBy);
+                ctx.lineTo(cx + BBx, gnd + BBy);
+                ctx.closePath();
+                ctx.fillStyle = frameColor;
+                ctx.fill();
+                ctx.strokeStyle = accentColor;
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
                 
-                ctx.drawImage(bikeImg, drawX, drawY, bikeWidth, bikeHeight);
+                // Forcellino posteriore
+                ctx.beginPath();
+                ctx.moveTo(cx + SCx, gnd + SCy);
+                ctx.lineTo(rcx, gnd - WR);
+                ctx.strokeStyle = '#444';
+                ctx.lineWidth = 2.5;
+                ctx.stroke();
+                // Forcella anteriore
+                ctx.beginPath();
+                ctx.moveTo(cx + HBx, gnd + HBy);
+                ctx.lineTo(fcx, gnd - WR);
+                ctx.strokeStyle = '#555';
+                ctx.lineWidth = 3;
+                ctx.stroke();
+                
+                // IsoFlow cutout
+                ctx.beginPath();
+                ctx.ellipse(cx + SCx + 4, gnd + SCy + 12, 6, 10, -0.2, 0, Math.PI*2);
+                ctx.fillStyle = '#0a1a2a';
+                ctx.fill();
+                ctx.strokeStyle = accentColor;
+                ctx.lineWidth = 0.5;
+                ctx.stroke();
+                
+                // Reggisella
+                ctx.beginPath();
+                ctx.moveTo(cx + BBx + 2, gnd + BBy);
+                ctx.lineTo(cx + SCx + 2, gnd + SCy);
+                ctx.strokeStyle = '#555';
+                ctx.lineWidth = 2.5;
+                ctx.stroke();
+                // Attacco manubrio
+                ctx.beginPath();
+                ctx.moveTo(cx + HTx, gnd + HTy);
+                ctx.lineTo(cx + Hx, gnd + Hy);
+                ctx.strokeStyle = '#666';
+                ctx.lineWidth = 3;
+                ctx.stroke();
+                // Manubrio
+                ctx.beginPath();
+                ctx.arc(cx + Hx, gnd + Hy, 4, 0, Math.PI*2);
+                ctx.fillStyle = '#444';
+                ctx.fill();
+                ctx.beginPath();
+                ctx.moveTo(cx + Hx + 3, gnd + Hy + 2);
+                ctx.lineTo(cx + Hx + 6, gnd + Hy + 12);
+                ctx.lineTo(cx + Hx + 2, gnd + Hy + 16);
+                ctx.strokeStyle = '#555';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                // Sella
+                ctx.beginPath();
+                ctx.moveTo(cx + Sx - 10, gnd + Sy);
+                ctx.quadraticCurveTo(cx + Sx, gnd + Sy - 8, cx + Sx + 10, gnd + Sy);
+                ctx.strokeStyle = '#333';
+                ctx.lineWidth = 4;
+                ctx.stroke();
+                
+                // Guarnitura
+                const chainAngle = angle * 2;
+                ctx.beginPath();
+                ctx.arc(cx + BBx, gnd + BBy, 7, 0, Math.PI*2);
+                ctx.strokeStyle = '#555';
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.arc(cx + BBx, gnd + BBy, 4, 0, Math.PI*2);
+                ctx.fillStyle = '#444';
+                ctx.fill();
+                // Pedivella + pedali
+                const crankLen = 8;
+                const pX = cx + BBx + Math.cos(chainAngle) * crankLen;
+                const pY = gnd + BBy + Math.sin(chainAngle) * crankLen;
+                ctx.beginPath();
+                ctx.moveTo(cx + BBx + Math.cos(chainAngle) * crankLen, gnd + BBy + Math.sin(chainAngle) * crankLen);
+                ctx.lineTo(cx + BBx - Math.cos(chainAngle) * crankLen, gnd + BBy - Math.sin(chainAngle) * crankLen);
+                ctx.strokeStyle = '#666';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                ctx.fillStyle = '#f97316';
+                ctx.fillRect(pX - 3, pY - 1.5, 6, 3);
+                // Catena
+                ctx.beginPath();
+                ctx.moveTo(rcx - WR + 8, gnd - WR + 5);
+                ctx.lineTo(cx + BBx + 5, gnd + BBy - 2);
+                ctx.strokeStyle = '#555';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(rcx - WR + 8, gnd - WR + 8);
+                ctx.lineTo(cx + BBx + 5, gnd + BBy + 2);
+                ctx.stroke();
+                
+                ctx.restore();
+                
+                // Ruote (sopra)
+                drawWheel(rcx, gnd - WR, angle);
+                drawWheel(fcx, gnd - WR, angle);
+                
+                ctx.font = "6px monospace";
+                ctx.fillStyle = accentColor;
+                ctx.save();
+                ctx.translate(cx + SCx - 5, gnd + SCy - 25);
+                ctx.rotate(-0.4);
+                ctx.fillText("IsoFlow", 0, 0);
                 ctx.restore();
             }
             
@@ -267,18 +396,12 @@
                 ctx.fillRect(0, 0, LOGIC_W, LOGIC_H);
                 
                 drawRoad(roadOffset);
-                drawBikePhoto(300, LOGIC_H-42);
+                const wheelAngle = Date.now() * 0.008 * (speed / 10);
+                drawBike(300, LOGIC_H - 10, wheelAngle);
                 
                 ctx.font = "bold 14px 'JetBrains Mono', monospace";
                 ctx.fillStyle = "#f97316";
-                ctx.shadowBlur = 0;
-                ctx.fillText(`⚡ ${speed} px/frame`, LOGIC_W-100, 30);
-                
-                if (!imgLoaded && !imgError) {
-                    ctx.font = "12px 'JetBrains Mono', monospace";
-                    ctx.fillStyle = "#94a3b8";
-                    ctx.fillText("Caricamento foto...", LOGIC_W/2 - 60, LOGIC_H/2);
-                }
+                ctx.fillText('⚡ ' + speed + ' px/frame', LOGIC_W - 100, 30);
                 
                 animationId = requestAnimationFrame(animate);
             }
@@ -289,12 +412,12 @@
             }
             speedSlider.addEventListener('input', updateSpeed);
             
-            pauseBtn.addEventListener('click', () => {
+            pauseBtn.addEventListener('click', function() {
                 isRunning = false;
                 pauseBtn.style.display = 'none';
                 resumeBtn.style.display = 'inline-block';
             });
-            resumeBtn.addEventListener('click', () => {
+            resumeBtn.addEventListener('click', function() {
                 isRunning = true;
                 pauseBtn.style.display = 'inline-block';
                 resumeBtn.style.display = 'none';
@@ -302,13 +425,7 @@
             
             window.addEventListener('resize', resizeCanvas);
             resizeCanvas();
-            if (bikeImg.complete && bikeImg.naturalWidth > 0) {
-                imgLoaded = true;
-                animate();
-            } else if (bikeImg.complete && bikeImg.naturalWidth === 0) {
-                imgError = true;
-                animate();
-            }
+            animate();
         })();
     </script>
 </body>
