@@ -137,214 +137,158 @@
     <script>
         (function() {
             const canvas = document.getElementById('bikeCanvas');
+            if (!canvas) return;
             const ctx = canvas.getContext('2d');
             
-            // Dimensioni fisse del canvas (coordinate logiche)
-            const CANVAS_W = 1000;
-            const CANVAS_H = 400;
-            canvas.width = CANVAS_W;
-            canvas.height = CANVAS_H;
+            const LOGIC_W = 1000;
+            const LOGIC_H = 400;
+            const dpr = window.devicePixelRatio || 1;
             
-            // Variabili animazione
             let roadOffset = 0;
             let animationId = null;
             let isRunning = true;
-            let speed = 12; // pixel per frame (scorrimento strada)
+            let speed = 12;
+            let imgLoaded = false;
+            let imgError = false;
             
-            // Riferimenti UI
             const speedSlider = document.getElementById('speedSlider');
             const speedValue = document.getElementById('speedValue');
             const pauseBtn = document.getElementById('pauseBtn');
             const resumeBtn = document.getElementById('resumeBtn');
             
-            // Disegna la bicicletta in posizione fissa (centro x = 300, y base = 330)
-            function drawBike(x, y) {
-                // x = 300, y = 330 (ruote a terra)
-                // Scala approssimativa per una bici da corsa
-                const wheelR = 28;
-                const frameColor = '#2c3e50';
-                const accentColor = '#3b82f6';
-                
-                // Ruote
-                ctx.save();
-                ctx.shadowBlur = 0;
-                ctx.beginPath();
-                ctx.arc(x - 28, y, wheelR, 0, Math.PI * 2);
-                ctx.arc(x + 28, y, wheelR, 0, Math.PI * 2);
-                ctx.fillStyle = '#111';
-                ctx.fill();
-                ctx.strokeStyle = '#ccc';
-                ctx.lineWidth = 2;
-                ctx.stroke();
-                // Raggi ruote (semplificati)
-                for (let i = 0; i < 8; i++) {
-                    const angle = (Date.now() * 0.01 * (speed/10)) + i * Math.PI/4;
-                    const r = wheelR - 4;
-                    const x1 = x - 28 + Math.cos(angle) * r;
-                    const y1 = y + Math.sin(angle) * r;
-                    const x2 = x - 28 - Math.cos(angle) * r;
-                    const y2 = y - Math.sin(angle) * r;
-                    ctx.beginPath();
-                    ctx.moveTo(x1, y1);
-                    ctx.lineTo(x2, y2);
-                    ctx.strokeStyle = '#aaa';
-                    ctx.stroke();
-                    
-                    const angle2 = (Date.now() * 0.01 * (speed/10)) + i * Math.PI/4;
-                    const x1r = x + 28 + Math.cos(angle2) * r;
-                    const y1r = y + Math.sin(angle2) * r;
-                    const x2r = x + 28 - Math.cos(angle2) * r;
-                    const y2r = y - Math.sin(angle2) * r;
-                    ctx.beginPath();
-                    ctx.moveTo(x1r, y1r);
-                    ctx.lineTo(x2r, y2r);
-                    ctx.stroke();
-                }
-                
-                // Telaio (triangolo principale)
-                ctx.beginPath();
-                ctx.moveTo(x - 20, y - 10);   // movimento centrale
-                ctx.lineTo(x - 40, y - 35);   // sella
-                ctx.lineTo(x - 10, y - 45);   // attacco sella
-                ctx.lineTo(x + 10, y - 45);   // canotto
-                ctx.lineTo(x + 35, y - 20);   // movimento centrale
-                ctx.lineTo(x + 20, y - 8);
-                ctx.fillStyle = frameColor;
-                ctx.fill();
-                ctx.strokeStyle = accentColor;
-                ctx.lineWidth = 1.5;
-                ctx.stroke();
-                
-                // Forcella
-                ctx.beginPath();
-                ctx.moveTo(x + 35, y - 20);
-                ctx.lineTo(x + 45, y - 5);
-                ctx.lineTo(x + 55, y);
-                ctx.lineTo(x + 28, y);
-                ctx.fillStyle = frameColor;
-                ctx.fill();
-                
-                // Sella
-                ctx.fillStyle = '#222';
-                ctx.fillRect(x - 42, y - 40, 20, 8);
-                // Manubrio
-                ctx.beginPath();
-                ctx.moveTo(x - 10, y - 45);
-                ctx.lineTo(x - 25, y - 55);
-                ctx.lineTo(x - 35, y - 50);
-                ctx.lineWidth = 4;
-                ctx.strokeStyle = '#555';
-                ctx.stroke();
-                // Attacco manubrio
-                ctx.fillRect(x - 15, y - 48, 8, 8);
-                
-                // Pedali (simulati)
-                ctx.fillStyle = '#777';
-                ctx.fillRect(x - 5, y - 8, 10, 4);
-                
-                // Dettaglio "IsoFlow" (simbolo)
-                ctx.font = "bold 8px monospace";
-                ctx.fillStyle = accentColor;
-                ctx.fillText("IsoFlow", x - 25, y - 55);
-                
-                // Cerchi ruote scintillanti
-                ctx.beginPath();
-                ctx.arc(x - 28, y, wheelR-2, 0, Math.PI*2);
-                ctx.strokeStyle = accentColor;
-                ctx.lineWidth = 1;
-                ctx.stroke();
-                ctx.beginPath();
-                ctx.arc(x + 28, y, wheelR-2, 0, Math.PI*2);
-                ctx.stroke();
+            // Carica foto reale Trek Madone
+            const bikeImg = new Image();
+            bikeImg.crossOrigin = 'anonymous';
+            bikeImg.onload = function() {
+                imgLoaded = true;
+                if (!animationId) animate();
+            };
+            bikeImg.onerror = function() {
+                imgError = true;
+                if (!animationId) animate();
+            };
+            bikeImg.src = 'assets/images/trekmadone1.jpg';
+            
+            function resizeCanvas() {
+                const container = canvas.parentElement;
+                const containerWidth = container.clientWidth;
+                const scale = containerWidth / LOGIC_W;
+                canvas.width = LOGIC_W * dpr;
+                canvas.height = LOGIC_H * dpr;
+                canvas.style.width = `${containerWidth}px`;
+                canvas.style.height = `${LOGIC_H * scale}px`;
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
             }
             
-            // Disegna la strada in movimento
             function drawRoad(offset) {
-                // Asfalto
                 ctx.fillStyle = '#1a2a3a';
-                ctx.fillRect(0, CANVAS_H-80, CANVAS_W, 80);
+                ctx.fillRect(0, LOGIC_H-80, LOGIC_W, 80);
                 ctx.fillStyle = '#2a3a4a';
-                ctx.fillRect(0, CANVAS_H-75, CANVAS_W, 5);
+                ctx.fillRect(0, LOGIC_H-75, LOGIC_W, 5);
                 
-                // Linea centrale tratteggiata
                 ctx.beginPath();
                 ctx.strokeStyle = '#f1c40f';
                 ctx.lineWidth = 4;
                 ctx.setLineDash([30, 30]);
-                for (let i = -offset; i < CANVAS_W + 60; i += 60) {
+                for (let i = -offset; i < LOGIC_W + 60; i += 60) {
                     ctx.beginPath();
-                    ctx.moveTo(i, CANVAS_H-40);
-                    ctx.lineTo(i+30, CANVAS_H-40);
+                    ctx.moveTo(i, LOGIC_H-40);
+                    ctx.lineTo(i+30, LOGIC_H-40);
                     ctx.stroke();
                 }
                 ctx.setLineDash([]);
                 
-                // Linee laterali
                 ctx.strokeStyle = '#aaa';
                 ctx.lineWidth = 2;
                 ctx.beginPath();
-                ctx.moveTo(0, CANVAS_H-20);
-                ctx.lineTo(CANVAS_W, CANVAS_H-20);
+                ctx.moveTo(0, LOGIC_H-20);
+                ctx.lineTo(LOGIC_W, LOGIC_H-20);
                 ctx.stroke();
                 ctx.beginPath();
-                ctx.moveTo(0, CANVAS_H-60);
-                ctx.lineTo(CANVAS_W, CANVAS_H-60);
+                ctx.moveTo(0, LOGIC_H-60);
+                ctx.lineTo(LOGIC_W, LOGIC_H-60);
                 ctx.stroke();
                 
-                // Effetto velocità: strisce laterali che scorrono più veloci
                 ctx.beginPath();
                 ctx.strokeStyle = '#ccc';
                 ctx.lineWidth = 2;
-                for (let i = -offset*1.5; i < CANVAS_W + 40; i += 40) {
+                for (let i = -offset*1.5; i < LOGIC_W + 40; i += 40) {
                     ctx.beginPath();
-                    ctx.moveTo(i, CANVAS_H-15);
-                    ctx.lineTo(i+20, CANVAS_H-15);
+                    ctx.moveTo(i, LOGIC_H-15);
+                    ctx.lineTo(i+20, LOGIC_H-15);
                     ctx.stroke();
                 }
             }
             
-            // Animazione principale
+            function drawBikePhoto(x, y) {
+                if (!imgLoaded || imgError) {
+                    ctx.font = "bold 14px monospace";
+                    ctx.fillStyle = "#f97316";
+                    ctx.fillText("🚴 Trek Madone", x - 50, y - 30);
+                    return;
+                }
+                
+                const bikeHeight = 140;
+                const aspect = bikeImg.naturalWidth / bikeImg.naturalHeight;
+                const bikeWidth = bikeHeight * aspect;
+                
+                const drawX = x - bikeWidth / 2;
+                const drawY = y - bikeHeight;
+                
+                // Ombra arancione dinamica sotto la bici
+                ctx.save();
+                ctx.shadowColor = 'rgba(249, 115, 22, 0.3)';
+                ctx.shadowBlur = 20 + speed * 2;
+                ctx.shadowOffsetY = 5;
+                
+                // Leggero tilt per effetto dinamico
+                ctx.translate(x, y);
+                const tilt = Math.sin(Date.now() * 0.001) * 0.3;
+                ctx.rotate(tilt * Math.PI / 180);
+                ctx.translate(-x, -y);
+                
+                ctx.drawImage(bikeImg, drawX, drawY, bikeWidth, bikeHeight);
+                ctx.restore();
+            }
+            
             function animate() {
                 if (!isRunning) {
                     animationId = requestAnimationFrame(animate);
                     return;
                 }
-                // Aggiorna offset strada in base alla velocità
                 roadOffset = (roadOffset + speed) % 60;
                 
-                // Pulisci canvas
-                ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
+                ctx.clearRect(0, 0, LOGIC_W, LOGIC_H);
                 
-                // Cielo/sfondo
-                const grad = ctx.createLinearGradient(0, 0, 0, CANVAS_H);
+                const grad = ctx.createLinearGradient(0, 0, 0, LOGIC_H);
                 grad.addColorStop(0, '#0a1a2a');
                 grad.addColorStop(1, '#1a2a3a');
                 ctx.fillStyle = grad;
-                ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
+                ctx.fillRect(0, 0, LOGIC_W, LOGIC_H);
                 
-                // Disegna strada
                 drawRoad(roadOffset);
+                drawBikePhoto(300, LOGIC_H-42);
                 
-                // Disegna bicicletta (posizione fissa)
-                drawBike(300, CANVAS_H-42);
-                
-                // Testo velocità
                 ctx.font = "bold 14px 'JetBrains Mono', monospace";
-                ctx.fillStyle = "#3b82f6";
+                ctx.fillStyle = "#f97316";
                 ctx.shadowBlur = 0;
-                ctx.fillText(`⚡ ${speed} px/frame`, CANVAS_W-100, 30);
+                ctx.fillText(`⚡ ${speed} px/frame`, LOGIC_W-100, 30);
+                
+                if (!imgLoaded && !imgError) {
+                    ctx.font = "12px 'JetBrains Mono', monospace";
+                    ctx.fillStyle = "#94a3b8";
+                    ctx.fillText("Caricamento foto...", LOGIC_W/2 - 60, LOGIC_H/2);
+                }
                 
                 animationId = requestAnimationFrame(animate);
             }
             
-            // Controllo velocità
             function updateSpeed() {
                 speed = parseInt(speedSlider.value);
                 speedValue.textContent = speed;
             }
             speedSlider.addEventListener('input', updateSpeed);
             
-            // Pausa/Riprendi
             pauseBtn.addEventListener('click', () => {
                 isRunning = false;
                 pauseBtn.style.display = 'none';
@@ -356,20 +300,15 @@
                 resumeBtn.style.display = 'none';
             });
             
-            // Adatta canvas alla larghezza del contenitore (mantiene proporzioni)
-            function resizeCanvas() {
-                const container = canvas.parentElement;
-                const containerWidth = container.clientWidth;
-                const scale = containerWidth / CANVAS_W;
-                canvas.style.width = `${containerWidth}px`;
-                canvas.style.height = `${CANVAS_H * scale}px`;
-                // Nota: le coordinate di disegno non cambiano perché usiamo le dimensioni logiche fisse
-            }
             window.addEventListener('resize', resizeCanvas);
             resizeCanvas();
-            
-            // Avvia animazione
-            animate();
+            if (bikeImg.complete && bikeImg.naturalWidth > 0) {
+                imgLoaded = true;
+                animate();
+            } else if (bikeImg.complete && bikeImg.naturalWidth === 0) {
+                imgError = true;
+                animate();
+            }
         })();
     </script>
 </body>
