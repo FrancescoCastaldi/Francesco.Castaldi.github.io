@@ -538,20 +538,44 @@
     document.body.appendChild(ring);
 
     var mx = -100, my = -100, rx = -100, ry = -100;
+    var rafId = null;
+    var isVisible = false;
 
-    document.addEventListener('mousemove', throttle(function (e) {
+    document.addEventListener('mousemove', function (e) {
       mx = e.clientX;
       my = e.clientY;
-    }, 16));
+      if (!isVisible) {
+        isVisible = true;
+        dot.style.opacity = '1';
+        ring.style.opacity = '1';
+      }
+      if (!rafId) {
+        rafId = requestAnimationFrame(animate);
+      }
+    });
+
+    document.addEventListener('mouseleave', function () {
+      isVisible = false;
+      dot.style.opacity = '0';
+      ring.style.opacity = '0';
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+    });
 
     function animate() {
-      rx += (mx - rx) * 0.12;
-      ry += (my - ry) * 0.12;
+      rx += (mx - rx) * 0.15;
+      ry += (my - ry) * 0.15;
       dot.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
       ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
-      requestAnimationFrame(animate);
+      // Only continue loop if mouse is still in viewport
+      if (isVisible) {
+        rafId = requestAnimationFrame(animate);
+      } else {
+        rafId = null;
+      }
     }
-    animate();
 
     var hoverTargets = document.querySelectorAll(
       'a,button,.btn-primary,.btn-ghost,.btn-secondary,.project-card,.skill-card,.expertise-card'
@@ -1372,15 +1396,10 @@
     setInterval(tick, 1000);
   }
 
-  // 12. Gradient text animation toggle
+  // 12. Gradient text animation toggle (CSS-driven per GPU perf)
   function initGradientText() {
-    document.querySelectorAll('.text-gradient-animate').forEach(function (el) {
-      var deg = 135;
-      setInterval(function () {
-        deg = (deg + 1) % 360;
-        el.style.backgroundImage = 'linear-gradient(' + deg + 'deg, var(--accent-orange), var(--accent-blue))';
-      }, 50);
-    });
+    // Già gestito via CSS animation: @keyframes gradient-rotate su .text-gradient-animate
+    // Questo JS serviva solo per fallback IE — rimosso per performance
   }
 
   // 13. Keyboard shortcuts
