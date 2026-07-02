@@ -26,6 +26,7 @@
 body.globe-active {
   height: 100vh;
   overflow: hidden !important;
+  position: relative;
   perspective: var(--globe-perspective);
   perspective-origin: 50% 50%;
   transform-style: flat;
@@ -54,14 +55,14 @@ body.globe-active html::-webkit-scrollbar {
    posizionati sulla superficie della sfera tramite CSS 3D.
    ═══════════════════════════════════════════════════════════════ */
 .globe-universe {
-  position: fixed;
+  position: absolute;
   top: 50%;
   left: 50%;
   width: 0;
   height: 0;
   transform-style: preserve-3d;
   will-change: transform;
-  pointer-events: none; /* I click passano ai pannelli */
+  pointer-events: none;
 }
 
 /* ═══════════════════════════════════════════════════════════════
