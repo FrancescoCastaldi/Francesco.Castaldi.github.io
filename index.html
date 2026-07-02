@@ -85,16 +85,9 @@
   <script src="pages/fitness/training-generator.js" defer></script>
 </head>
 <body>
-  <!-- 3D Scroll-Driven Elements -->
+  <!-- Scroll-Driven Elements -->
   <div id="scroll-progress"><div class="progress-track"></div></div>
   <div class="scroll-glow" id="scroll-glow"></div>
-
-  <!-- Floating 3D decorative elements -->
-  <div class="floating-3d floating-3d-1" data-depth-3d="-80" style="top:15%;left:5%;width:12px;height:12px;border-radius:50%;background:var(--accent-orange);opacity:0.15;box-shadow:0 0 20px rgba(249,115,22,0.3);"></div>
-  <div class="floating-3d floating-3d-2" data-depth-3d="-40" style="top:30%;right:8%;width:8px;height:8px;border-radius:2px;background:var(--accent-blue);opacity:0.12;transform:rotate(45deg);"></div>
-  <div class="floating-3d floating-3d-1" data-depth-3d="-120" style="top:60%;left:3%;width:6px;height:6px;border-radius:50%;background:var(--accent-orange);opacity:0.1;"></div>
-  <div class="floating-3d floating-3d-3" data-depth-3d="-60" style="top:80%;right:5%;width:10px;height:10px;border-radius:50%;border:1px solid rgba(249,115,22,0.2);background:transparent;opacity:0.15;"></div>
-  <div class="floating-3d floating-3d-2" data-depth-3d="-100" style="top:45%;left:50%;width:4px;height:4px;background:var(--accent-blue);opacity:0.08;"></div>
 
   <canvas id="bg-canvas"></canvas>
   <header id="site-header"></header>
@@ -138,7 +131,7 @@
     <div class="section-divider"></div>
 
     <!-- PROJECTS SLIDER -->
-    <section id="projects" class="content-panel parallax-section scroll-reveal-3d scroll-reveal-3d-zoom" data-depth-3d="0">
+    <section id="projects" class="content-panel scroll-reveal scroll-reveal-fade-up">
       <div class="section-label">// projects.carousel</div>
       <h2 class="section-title">Progetti in evidenza</h2>
       <div class="project-slider" data-slideshow="" data-interval="5000" data-shuffle="false">
@@ -216,12 +209,12 @@
     <div class="section-divider"></div>
 
     <!-- BLOG — rendering dinamico via posts.js + initBlogPosts() -->
-    <section id="blog" class="content-panel parallax-section scroll-reveal-3d scroll-reveal-3d-rotateX" data-depth-3d="0">
+    <section id="blog" class="content-panel scroll-reveal scroll-reveal-fade-up">
       <div class="section-label">// blog.log</div>
       <h2 class="section-title">Ultimi Post</h2>
       <div
         id="blog-posts-grid"
-        class="blog-grid stagger-3d-grid"
+        class="blog-grid stagger-grid"
         data-category="Sport"
         data-limit="4"
       ></div>
@@ -233,7 +226,7 @@
     <div class="section-divider"></div>
 
     <!-- TRAINING PLAN GENERATOR -->
-    <section id="training-generator" class="content-panel parallax-section scroll-reveal-3d scroll-reveal-3d-flip" data-depth-3d="0">
+    <section id="training-generator" class="content-panel scroll-reveal scroll-reveal-rotate">
       <div class="section-label">// training-generator.sh</div>
       <h2 class="section-title">Generatore Piani Allenamento</h2>
       <div class="terminal-card">

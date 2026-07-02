@@ -1455,44 +1455,8 @@
   }
 
   // ══════════════════════════════════════════════════════════
-  //  3D SCROLL-DRIVEN ENGINE
-  //  Ogni elemento vive in uno spazio 3D e si muove/ruota
-  //  in base alla posizione di scroll con smooth interpolation
+  //  SCROLL-DRIVEN ENHANCEMENTS
   // ══════════════════════════════════════════════════════════
-
-  // ── Utils ─────────────────────────────────────────────
-  function lerp(a, b, t) { return a + (b - a) * t; }
-  function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
-
-  // ── Scroll state (animato con rAF per smoothness) ─────
-  var scrollState = {
-    raw: 0,
-    smooth: 0,
-    velocity: 0,
-    progress: 0,        // 0..1 su tutta la pagina
-    prevRaw: 0
-  };
-
-  function initScrollTracker() {
-    var ticking = false;
-    window.addEventListener('scroll', function () {
-      scrollState.raw = window.scrollY;
-      if (!ticking) {
-        requestAnimationFrame(function () {
-          var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-          scrollState.progress = docHeight > 0 ? clamp(scrollState.raw / docHeight, 0, 1) : 0;
-          scrollState.velocity = scrollState.raw - scrollState.prevRaw;
-          scrollState.prevRaw = scrollState.raw;
-          // Smooth follow
-          scrollState.smooth = lerp(scrollState.smooth, scrollState.raw, 0.12);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }, { passive: true });
-    // Init
-    scrollState.smooth = window.scrollY;
-  }
 
   // 1. Scroll Progress Bar
   function initScrollProgress() {
@@ -1511,104 +1475,62 @@
     updateProgress();
   }
 
-  // 2. 3D Hero Parallax — multilivello con prospettiva
-  function initHeroParallax3D() {
-    if (reduceMotion) return;
-
-    var heroSection = document.querySelector('.hero');
-    if (!heroSection) return;
-
-    var heroText = heroSection.querySelector('.hero-text');
-    var heroTerminal = heroSection.querySelector('.hero-terminal');
-    var metaTags = heroSection.querySelectorAll('.hero-meta .meta-tag');
-
-    window.addEventListener('scroll', function () {
-      var scrollY = scrollState.smooth;
-      var heroHeight = heroSection.offsetHeight;
-      var progress = clamp(scrollY / (heroHeight * 0.8), 0, 1);
-
-      // Hero text: si muove in avanti (Z+) e su (Y-) con fade leggero
-      if (heroText) {
-        var ty = -progress * 25;
-        var tz = 60 - progress * 40;
-        var opacity = 1 - progress * 0.15;
-        heroText.style.transform = 'translateZ(' + tz + 'px) translateY(' + ty + 'px)';
-        heroText.style.opacity = opacity;
-      }
-
-      // Terminal: si allontana (Z-) e scende (Y+) con rotazione Y
-      if (heroTerminal) {
-        var ty2 = progress * 30;
-        var tz2 = -40 - progress * 30;
-        var rotY = -2 + progress * 4;
-        heroTerminal.style.transform = 'translateZ(' + tz2 + 'px) translateY(' + ty2 + 'px) rotateY(' + rotY + 'deg)';
-        heroTerminal.style.opacity = 0.92 - progress * 0.15;
-      }
-
-      // Meta tags: effetto profondità progressiva
-      metaTags.forEach(function (tag, i) {
-        var offset = (i + 1) * 8;
-        var tagZ = 10 - progress * 15 + offset;
-        tag.style.transform = 'translateZ(' + tagZ + 'px)';
-      });
-    }, { passive: true });
-  }
-
-  // 3. 3D Scroll Reveal — sezioni entrano con prospettiva 3D
-  function initScrollReveal3D() {
+  // 2. Scroll Reveal Animations (enhanced)
+  function initScrollReveal() {
     if (reduceMotion) {
-      document.querySelectorAll('.scroll-reveal-3d').forEach(function (el) {
+      document.querySelectorAll('.scroll-reveal').forEach(function (el) {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+      return;
+    }
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
         el.classList.add('visible');
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-      });
-      return;
-    }
-
-    var obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('visible');
-        obs.unobserve(entry.target);
-      });
-    }, {
-      threshold: 0.05,
-      rootMargin: '0px 0px -60px 0px'
-    });
-
-    document.querySelectorAll('.scroll-reveal-3d').forEach(function (el) {
-      obs.observe(el);
-    });
-  }
-
-  // 4. 3D Stagger Grid — card con profondità progressiva
-  function initStagger3D() {
-    if (reduceMotion) {
-      document.querySelectorAll('.stagger-3d-grid > *').forEach(function (el) {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-      });
-      return;
-    }
-
-    var obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('visible');
-        obs.unobserve(entry.target);
+        obs.unobserve(el);
       });
     }, {
       threshold: 0.08,
-      rootMargin: '0px 0px -80px 0px'
+      rootMargin: '0px 0px -40px 0px'
     });
 
-    document.querySelectorAll('.stagger-3d-grid').forEach(function (el) {
+    document.querySelectorAll('.scroll-reveal').forEach(function (el) {
       obs.observe(el);
     });
   }
 
-  // 5. 3D Section Divider
-  function initDivider3D() {
+  // 3. Stagger Grid Observer
+  function initStaggerObserver() {
+    if (reduceMotion) {
+      document.querySelectorAll('.stagger-grid > *').forEach(function (el) {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      });
+      return;
+    }
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var grid = entry.target;
+        grid.classList.add('visible');
+        obs.unobserve(grid);
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -60px 0px'
+    });
+
+    document.querySelectorAll('.stagger-grid').forEach(function (el) {
+      obs.observe(el);
+    });
+  }
+
+  // 4. Section Divider Animation
+  function initDividerReveal() {
     if (reduceMotion) return;
 
     var obs = new IntersectionObserver(function (entries) {
@@ -1617,105 +1539,123 @@
         entry.target.classList.add('visible');
         obs.unobserve(entry.target);
       });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.3 });
 
     document.querySelectorAll('.section-divider').forEach(function (el) {
       obs.observe(el);
     });
   }
 
-  // 6. 3D Scroll Glow — bagliore che segue il punto di scroll
-  function initScrollGlow3D() {
+  // 5. Hero Parallax — multilivello
+  function initHeroParallax() {
+    if (reduceMotion) return;
+
+    var heroSection = document.querySelector('.hero');
+    if (!heroSection) return;
+
+    var layers = heroSection.querySelectorAll('[data-parallax-speed]');
+    if (!layers.length) return;
+
+    window.addEventListener('scroll', function () {
+      var scrollY = window.scrollY;
+      var heroHeight = heroSection.offsetHeight;
+      var heroTop = heroSection.offsetTop;
+      var progress = Math.min(scrollY / heroHeight, 1);
+
+      layers.forEach(function (layer) {
+        var speed = parseFloat(layer.getAttribute('data-parallax-speed')) || 0;
+        var move = progress * speed * 100;
+        layer.style.transform = 'translateY(' + move + 'px)';
+      });
+    }, { passive: true });
+  }
+
+  // 6. Scroll Glow — bagliore che segue lo scroll
+  function initScrollGlow() {
     if (reduceMotion) return;
 
     var glow = document.getElementById('scroll-glow');
     if (!glow) return;
 
     window.addEventListener('scroll', function () {
-      var scrollY = scrollState.smooth;
+      var scrollY = window.scrollY;
       var winHeight = window.innerHeight;
-      var top = scrollY + winHeight * 0.35;
+      // Sposta il glow verso il basso seguendo lo scroll
+      var top = scrollY + winHeight * 0.4;
       glow.style.transform = 'translate(-50%, ' + top + 'px)';
-      glow.style.opacity = clamp(scrollY / 400, 0, 0.7).toString();
+      // Opacità basata sulla velocità
+      glow.style.opacity = Math.min(scrollY / 500, 0.6).toString();
     }, { passive: true });
   }
 
-  // 7. 3D Grid Parallax — muove la griglia di sfondo
-  function initGridParallax3D() {
+  // 7. Grid Overlay Parallax — muove la griglia di sfondo col scroll
+  function initGridParallax() {
+    // Crea uno style dinamico per muovere body::after con lo scroll
     var styleEl = document.createElement('style');
     styleEl.id = 'grid-parallax-style';
     document.head.appendChild(styleEl);
 
     function updateGrid() {
-      var scrollY = scrollState.smooth;
+      var scrollY = window.scrollY;
       styleEl.textContent = 'body::after { background-position: ' +
-        (scrollY * 0.15) + 'px ' + (scrollY * 0.15) + 'px !important; }';
+        (scrollY * 0.3) + 'px ' + (scrollY * 0.3) + 'px !important; }';
     }
 
     window.addEventListener('scroll', throttle(updateGrid, 50), { passive: true });
     updateGrid();
   }
 
-  // 8. 3D Floating Elements — parallax di profondità
-  function initFloating3D() {
-    if (reduceMotion) return;
+  // 8. Counter-up on scroll (animated numbers)
+  function initScrollCounters() {
+    document.querySelectorAll('[data-scroll-count]').forEach(function (el) {
+      var target = parseInt(el.getAttribute('data-scroll-count'), 10);
+      if (isNaN(target)) return;
+      var suffix = el.getAttribute('data-suffix') || '';
+      var duration = parseInt(el.getAttribute('data-duration'), 10) || 1500;
 
-    var floaters = document.querySelectorAll('.floating-3d');
-    if (!floaters.length) return;
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          var start = 0;
+          var increment = Math.ceil(target / 30);
+          var current = 0;
 
-    window.addEventListener('scroll', function () {
-      var scrollY = scrollState.smooth;
-      floaters.forEach(function (el) {
-        var depth = parseFloat(el.getAttribute('data-depth-3d')) || -50;
-        // Più è negativo (lontano), più lento si muove
-        var speed = 1 + (depth / 200);
-        var moveY = scrollY * speed * 0.05;
-        el.style.transform = 'translateY(' + moveY + 'px) translateZ(' + depth + 'px)';
-      });
-    }, { passive: true });
+          function animate() {
+            current += increment;
+            if (current >= target) { current = target; }
+            el.textContent = current + suffix;
+            if (current < target) {
+              requestAnimationFrame(function () {
+                setTimeout(animate, duration / 30);
+              });
+            }
+          }
+          animate();
+          obs.unobserve(el);
+        });
+      }, { threshold: 0.3 });
+      obs.observe(el);
+    });
   }
 
-  // 9. 3D Card Tilt continuo — basato su viewport position
-  function initCardTilt3D() {
+  // 9. Card 3D Tilt su scroll
+  function initCard3DScroll() {
     if (reduceMotion) return;
 
-    // Usa IntersectionObserver con soglie multiple per tilt continuo
-    var cards = document.querySelectorAll('.project-card, .skill-card, .expertise-card, .dashboard-card');
-    if (!cards.length) return;
-
-    // Tilt on scroll per tutte le card visibili
-    window.addEventListener('scroll', function () {
-      cards.forEach(function (card) {
-        var rect = card.getBoundingClientRect();
-        var viewCenter = window.innerHeight / 2;
-        var cardCenter = rect.top + rect.height / 2;
-        var dist = (cardCenter - viewCenter) / viewCenter;
-
-        // Solo se la card è visibile
-        if (rect.bottom < 0 || rect.top > window.innerHeight) return;
-
-        var tiltX = clamp(-dist * 6, -8, 8);
-        var tiltY = clamp((rect.left + rect.width / 2 - window.innerWidth / 2) / (window.innerWidth / 2) * 3, -5, 5);
-        card.style.transform = 'perspective(600px) rotateX(' + tiltX + 'deg) rotateY(' + tiltY + 'deg) translateZ(0)';
-      });
-    }, { passive: true });
-  }
-
-  // 10. 3D Depth Layer Parallax
-  function initDepthLayers() {
-    if (reduceMotion) return;
-
-    window.addEventListener('scroll', function () {
-      var scrollY = scrollState.smooth;
-      // Muove gli elementi con data-depth-3d
-      document.querySelectorAll('[data-depth-3d]').forEach(function (el) {
-        var depth = parseFloat(el.getAttribute('data-depth-3d')) || 0;
-        if (depth === 0) return; // Skip main sections
-        var speed = depth / 200;
-        var moveY = scrollY * speed * 0.3;
-        el.style.transform = 'translateY(' + moveY + 'px)';
-      });
-    }, { passive: true });
+    document.querySelectorAll('.card-3d-scroll').forEach(function (card) {
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var rect = entry.target.getBoundingClientRect();
+          var center = rect.top + rect.height / 2;
+          var viewCenter = window.innerHeight / 2;
+          var dist = (center - viewCenter) / viewCenter;
+          var tilt = dist * 8; // max ±8deg
+          card.style.transform = 'perspective(600px) rotateX(' + (-tilt) + 'deg) translateZ(0)';
+        });
+      }, { threshold: [0, 0.25, 0.5, 0.75, 1] });
+      obs.observe(card);
+    });
   }
 
   // ══════════════════════════════════════════════════════════
@@ -1760,18 +1700,16 @@
     initKeyboardShortcuts();
     initConsoleGreeting();
 
-    // ── 3D Scroll-Driven Engine ──
-    initScrollTracker();
+    // Scroll-Driven inizializzazioni
     initScrollProgress();
-    initScrollReveal3D();
-    initStagger3D();
-    initDivider3D();
-    initHeroParallax3D();
-    initScrollGlow3D();
-    initGridParallax3D();
-    initFloating3D();
-    initCardTilt3D();
-    initDepthLayers();
+    initScrollReveal();
+    initStaggerObserver();
+    initDividerReveal();
+    initHeroParallax();
+    initScrollGlow();
+    initGridParallax();
+    initScrollCounters();
+    initCard3DScroll();
   });
 
   // Expose toast globally
