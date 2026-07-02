@@ -77,7 +77,6 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap"></noscript>
   <link rel="stylesheet" href="assets/css/finance.css?v=2">
-  <link rel="stylesheet" href="assets/css/scroll-driven.css?v=1">
   <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
   <script src="assets/js/posts.js" defer></script>
   <script src="assets/js/app.js" defer></script>
@@ -85,18 +84,14 @@
   <script src="pages/fitness/training-generator.js" defer></script>
 </head>
 <body>
-  <!-- Scroll-Driven Elements -->
-  <div id="scroll-progress"><div class="progress-track"></div></div>
-  <div class="scroll-glow" id="scroll-glow"></div>
-
   <canvas id="bg-canvas"></canvas>
   <header id="site-header"></header>
 
   <main class="main-content">
     <!-- HERO -->
-    <section class="hero" data-parallax>
+    <section class="hero">
       <div class="hero-inner">
-        <div class="hero-text hero-layer-deep" data-parallax-speed="0.15">
+        <div class="hero-text">
           <h1 class="hero-title">Francesco<br>Castaldi</h1>
           <p class="hero-subtitle" id="hero-subtitle">Ingegnere Informatico &amp; Business Consultant.<br>Trasformo dati in valore per il settore healthcare digitale.</p>
           <div class="hero-meta">
@@ -109,7 +104,7 @@
              <a href="pages/fitness/strava.html" class="btn-secondary">Performance Strava</a>
            </div>
          </div>
-        <div class="hero-terminal hero-layer-shallow" data-parallax-speed="-0.08">
+        <div class="hero-terminal">
           <div class="terminal-header">
             <span class="t-dot red"></span>
             <span class="t-dot yellow"></span>
@@ -131,7 +126,7 @@
     <div class="section-divider"></div>
 
     <!-- PROJECTS SLIDER -->
-    <section id="projects" class="content-panel scroll-reveal scroll-reveal-fade-up">
+    <section id="projects" class="content-panel">
       <div class="section-label">// projects.carousel</div>
       <h2 class="section-title">Progetti in evidenza</h2>
       <div class="project-slider" data-slideshow="" data-interval="5000" data-shuffle="false">
@@ -209,12 +204,12 @@
     <div class="section-divider"></div>
 
     <!-- BLOG — rendering dinamico via posts.js + initBlogPosts() -->
-    <section id="blog" class="content-panel scroll-reveal scroll-reveal-fade-up">
+    <section id="blog" class="content-panel">
       <div class="section-label">// blog.log</div>
       <h2 class="section-title">Ultimi Post</h2>
       <div
         id="blog-posts-grid"
-        class="blog-grid stagger-grid"
+        class="blog-grid"
         data-category="Sport"
         data-limit="4"
       ></div>
@@ -226,7 +221,7 @@
     <div class="section-divider"></div>
 
     <!-- TRAINING PLAN GENERATOR -->
-    <section id="training-generator" class="content-panel scroll-reveal scroll-reveal-rotate">
+    <section id="training-generator" class="content-panel">
       <div class="section-label">// training-generator.sh</div>
       <h2 class="section-title">Generatore Piani Allenamento</h2>
       <div class="terminal-card">
