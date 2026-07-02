@@ -1,411 +1,446 @@
 /* ================================================================
-   SCROLL-DRIVEN.CSS v3 — True 3D Scroll Space
+   SCROLL-DRIVEN.CSS v4 — Interactive 3D Globe (Mappamondo)
    Francesco Castaldi Portfolio
-   Il viewport è una camera che si muove in uno spazio 3D.
-   Ogni sezione vive a una profondità Z specifica.
-   Lo scroll determina la posizione della camera nella scena.
+   Homepage non scrollabile: tutto il contenuto è su pannelli
+   disposti sulla superficie di una sfera 3D interattiva.
+   Il mouse trascina/ruota il globo come un mappamondo.
    ================================================================ */
 
 /* ═══════════════════════════════════════════════════════════════
-   VARIABILI 3D SCENE
+   GLOBE VARIABLES
    ═══════════════════════════════════════════════════════════════ */
 :root {
-  --scene-perspective: 2500px;
-  --scene-fov: 2500px;
-  --depth-hero: 60px;
-  --depth-projects: -80px;
-  --depth-blog: -200px;
-  --depth-training: -350px;
-  --depth-bg-far: -1200px;
-  --depth-bg-mid: -600px;
-  --depth-bg-near: -200px;
-  --elevate-1: 12px;
-  --elevate-2: 28px;
-  --elevate-3: 55px;
-  --tilt-max: 6deg;
-  --dof-blur-max: 3px;
+  --globe-perspective: 2500px;
+  --globe-radius: 520px;
+  --globe-panel-w: 520px;
+  --globe-panel-h: 320px;
+  --globe-rotation-speed: 0.08;
+  --globe-star-count: 120;
+  --globe-line-color: rgba(249, 115, 22, 0.15);
+  --globe-glow-color: rgba(249, 115, 22, 0.04);
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   3D VIEWPORT — Body e HTML come scene 3D
+   VIEWPORT — Solo per homepage con globo
    ═══════════════════════════════════════════════════════════════ */
-html {
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent-orange) transparent;
-}
-
-html::-webkit-scrollbar { width: 4px; }
-html::-webkit-scrollbar-track { background: transparent; }
-html::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--accent-orange), var(--accent-blue));
-  border-radius: 2px;
-}
-
-body {
-  perspective: var(--scene-perspective);
+body.globe-active {
+  height: 100vh;
+  overflow: hidden !important;
+  perspective: var(--globe-perspective);
   perspective-origin: 50% 50%;
-  overflow-x: clip;
   transform-style: flat;
+  background: var(--bg-primary, #030304);
+  cursor: grab;
+  margin: 0;
+  padding: 0;
+}
+
+body.globe-active:active {
+  cursor: grabbing;
+}
+
+body.globe-active html {
+  scrollbar-width: none;
+}
+
+body.globe-active html::-webkit-scrollbar {
+  display: none;
+  width: 0;
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   3D SCENE — Main container
-   È il contenitore della scena 3D. Ogni figlio diretto è un
-   layer di profondità. La camera si muove lungo Z.
+   3D GLOBE UNIVERSE — Il contenitore ruotabile
+   Centrato nel viewport. I pannelli sono figli diretti,
+   posizionati sulla superficie della sfera tramite CSS 3D.
    ═══════════════════════════════════════════════════════════════ */
-.main-content {
+.globe-universe {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
   transform-style: preserve-3d;
   will-change: transform;
-  min-height: 100vh;
+  pointer-events: none; /* I click passano ai pannelli */
 }
 
-/* Ogni sezione è un pannello 3D */
-.main-content > section,
-.main-content > .content-panel {
+/* ═══════════════════════════════════════════════════════════════
+   GLOBE PANELS — Sezioni sulla superficie sferica
+   Ogni pannello è posizionato a una data longitudine (data-angle)
+   e leggermente inclinato (data-tilt) per l'effetto sferico.
+   ═══════════════════════════════════════════════════════════════ */
+.globe-panel {
+  position: absolute;
+  width: var(--globe-panel-w);
+  height: var(--globe-panel-h);
+  left: calc(-1 * var(--globe-panel-w) / 2);
+  top: calc(-1 * var(--globe-panel-h) / 2);
   transform-style: preserve-3d;
   backface-visibility: hidden;
-  will-change: transform, opacity, filter;
+  border-radius: 16px;
+  background: rgba(8, 8, 14, 0.78);
+  border: 1px solid rgba(249, 115, 22, 0.12);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    0 0 80px rgba(249, 115, 22, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  padding: 1.5rem 2rem;
+  overflow: hidden;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  pointer-events: auto;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+/* Pannello attivo (quello più vicino) */
+.globe-panel.active {
+  border-color: rgba(249, 115, 22, 0.3);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    0 0 80px rgba(249, 115, 22, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Hover su pannello */
+.globe-panel:hover {
+  border-color: rgba(249, 115, 22, 0.25);
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   DEPTH ASSIGNMENTS — Ogni sezione a una profondità Z specifica
+   PANEL SIZES
    ═══════════════════════════════════════════════════════════════ */
-.depth-hero    { transform: translateZ(var(--depth-hero)) translateY(0); }
-.depth-projects { transform: translateZ(var(--depth-projects)) translateY(0); }
-.depth-blog    { transform: translateZ(var(--depth-blog)) translateY(0); }
-.depth-training { transform: translateZ(var(--depth-training)) translateY(0); }
-.depth-default { transform: translateZ(0) translateY(0); }
+.hero-panel {
+  --globe-panel-w: 580px;
+  --globe-panel-h: 360px;
+}
+
+.projects-panel {
+  --globe-panel-w: 560px;
+  --globe-panel-h: 380px;
+}
+
+.blog-panel {
+  --globe-panel-w: 460px;
+  --globe-panel-h: 300px;
+}
+
+.training-panel {
+  --globe-panel-w: 460px;
+  --globe-panel-h: 300px;
+}
 
 /* ═══════════════════════════════════════════════════════════════
-   BG DEPTH LAYERS — Layer di sfondo a profondità estreme
-   Vengono ingranditi (scale) per compensare la prospettiva.
+   PANEL INTERNAL LAYOUT
    ═══════════════════════════════════════════════════════════════ */
-.bg-layer {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -10;
-  will-change: transform, opacity;
-  backface-visibility: hidden;
-}
-
-.bg-layer-far {
-  transform: translateZ(var(--depth-bg-far)) scale(2.2);
-  opacity: 0.3;
-}
-
-.bg-layer-mid {
-  transform: translateZ(var(--depth-bg-mid)) scale(1.6);
-  opacity: 0.5;
-}
-
-.bg-layer-near {
-  transform: translateZ(var(--depth-bg-near)) scale(1.15);
+.globe-panel .panel-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-orange, #f97316);
+  margin-bottom: 0.4rem;
   opacity: 0.7;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   ELEVATION — Elementi che sporgono dal loro contenitore
-   ═══════════════════════════════════════════════════════════════ */
-.elevate-1 { transform: translateZ(var(--elevate-1)); }
-.elevate-2 { transform: translateZ(var(--elevate-2)); }
-.elevate-3 { transform: translateZ(var(--elevate-3)); }
+.globe-panel .panel-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text, #e4e4e7);
+  margin: 0 0 0.6rem 0;
+  line-height: 1.3;
+}
 
-.elevate-1,
-.elevate-2,
-.elevate-3 {
-  display: inline-block;
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
+.globe-panel .panel-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted, #a1a1aa);
+  margin: 0 0 0.8rem 0;
+  line-height: 1.5;
+}
+
+.globe-panel .panel-content {
+  font-size: 0.82rem;
+  color: var(--text-muted, #a1a1aa);
+  line-height: 1.6;
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   SCROLL PROGRESS — Barra 3D con glow
+   HERO PANEL — Contenuti specifici
    ═══════════════════════════════════════════════════════════════ */
-#scroll-progress {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 3px;
-  z-index: 99999;
-  pointer-events: none;
-  transform: translateZ(100px); /* Sopra tutto */
+.hero-panel .hero-name {
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent-orange, #f97316), var(--accent-blue, #3b82f6));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 0.3rem 0;
+  line-height: 1.1;
 }
 
-#scroll-progress .progress-track {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, var(--accent-orange), var(--accent-blue), #a855f7, var(--accent-orange));
-  background-size: 300% 100%;
-  animation: progressShimmer 3s linear infinite;
-  transition: width 30ms linear;
-  will-change: width;
-  box-shadow:
-    0 0 12px rgba(249, 115, 22, 0.5),
-    0 0 30px rgba(59, 130, 246, 0.25);
+.hero-panel .hero-subtitle {
+  font-size: 0.85rem;
+  color: var(--text, #e4e4e7);
+  margin: 0 0 0.6rem 0;
+  line-height: 1.5;
 }
 
-@keyframes progressShimmer {
-  0%   { background-position: 300% 0; }
-  100% { background-position: -300% 0; }
+.hero-panel .hero-tags {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.8rem;
+}
+
+.hero-panel .hero-tags .tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  background: rgba(249, 115, 22, 0.08);
+  border: 1px solid rgba(249, 115, 22, 0.15);
+  color: var(--accent-orange, #f97316);
+  letter-spacing: 0.05em;
+}
+
+.hero-panel .hero-buttons {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.hero-panel .hero-buttons .btn-primary,
+.hero-panel .hero-buttons .btn-secondary {
+  font-size: 0.75rem;
+  padding: 0.4rem 1rem;
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   HERO 3D — Primo piano, massima profondità
+   PROJECT SLIDER COMPATTO
    ═══════════════════════════════════════════════════════════════ */
-.hero {
-  perspective: 1200px;
-  min-height: 100vh;
-  overflow: visible !important;
-  transform-style: preserve-3d;
+.projects-panel .project-slider {
+  margin-top: 0.3rem;
 }
 
-.hero-inner {
-  transform-style: preserve-3d;
-}
-
-/* Titolo: sporge in avanti con elevate-3 */
-.hero-text {
-  filter: drop-shadow(0 15px 50px rgba(249, 115, 22, 0.12));
-}
-
-/* Terminal: strato intermedio */
-.hero-terminal {
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-}
-
-/* Meta tags hero */
-.hero-meta .meta-tag {
-  transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1);
-  will-change: transform;
-}
-
-.hero-meta .meta-tag:hover {
-  transform: translateZ(20px) scale(1.05);
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   3D CARD TILT — Ogni card reagisce a scroll + mouse
-   ═══════════════════════════════════════════════════════════════ */
-.project-card,
-.skill-card,
-.expertise-card,
-.dashboard-card,
-.feature-card,
-.spec-card {
-  transform-style: preserve-3d;
-  will-change: transform;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-/* Face interna della card (contenuto) */
-.project-card > *,
-.skill-card > *,
-.expertise-card > *,
-.dashboard-card > * {
-  transform: translateZ(4px);
-  backface-visibility: hidden;
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   3D SECTION DIVIDER — Allungamento prospettico
-   ═══════════════════════════════════════════════════════════════ */
-.section-divider {
-  position: relative;
+.projects-panel .slideshow-frame {
+  max-height: 220px;
   overflow: hidden;
-  transform-style: preserve-3d;
 }
 
-.section-divider::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 0%;
-  height: 100%;
-  background: linear-gradient(90deg,
-    transparent,
-    rgba(249, 115, 22, 0.12),
-    rgba(59, 130, 246, 0.12),
-    rgba(168, 85, 247, 0.12),
-    transparent
-  );
-  transition: width 1.5s cubic-bezier(0.15, 0.85, 0.35, 1);
-  pointer-events: none;
-  box-shadow: 0 0 30px rgba(249, 115, 22, 0.05);
+.projects-panel .project-slide-content h3 {
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
 }
 
-.section-divider.visible::before {
-  width: 100%;
+.projects-panel .project-slide-content p {
+  font-size: 0.75rem;
+  margin-bottom: 0.4rem;
+  line-height: 1.4;
+}
+
+.projects-panel .project-slide-tags span {
+  font-size: 0.6rem;
+  padding: 0.15rem 0.4rem;
+}
+
+.projects-panel .slide-dots {
+  margin-top: 0.3rem;
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   3D SCROLL GLOW — Bagliore cinematico che segue la camera
+   OVERRIDES per compatibilità globo
    ═══════════════════════════════════════════════════════════════ */
-#scroll-glow {
+.globe-panel .main-content {
+  min-height: 0;
+  transform: none !important;
+}
+
+.globe-panel .section-divider {
+  display: none;
+}
+
+/* Nascondi header e footer nella homepage globo */
+body.globe-active #site-header,
+body.globe-active #site-footer {
+  display: none !important;
+}
+
+/* Nascondi scroll progress e glow */
+body.globe-active #scroll-progress,
+body.globe-active #scroll-glow {
+  display: none !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CANVAS — Sfondo con wireframe globe + stelle
+   ═══════════════════════════════════════════════════════════════ */
+body.globe-active #bg-canvas {
   position: fixed;
   top: 0;
-  left: 50%;
-  width: 1000px;
-  height: 1000px;
-  transform: translate(-50%, -50%);
-  background:
-    radial-gradient(ellipse at center, rgba(249, 115, 22, 0.05) 0%, transparent 60%),
-    radial-gradient(ellipse at 30% 50%, rgba(59, 130, 246, 0.03) 0%, transparent 50%);
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
   pointer-events: none;
-  z-index: -1;
-  will-change: transform, opacity;
-  transition: transform 0.05s linear;
-  mix-blend-mode: screen;
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   PROJECT SLIDER 3D
+   NAV — Indicatore del pannello attivo
    ═══════════════════════════════════════════════════════════════ */
-.project-slider {
-  transform-style: preserve-3d;
-  perspective: 1000px;
-}
-
-.project-slide-overlay {
-  transform-style: preserve-3d;
-  backface-visibility: hidden;
-}
-
-.project-slide-content {
-  transform: translateZ(8px);
-}
-
-.project-slide-icon {
-  transform: translateZ(16px);
-  display: inline-block;
-  filter: drop-shadow(0 5px 15px rgba(249, 115, 22, 0.2));
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   TERMINAL CARD 3D
-   ═══════════════════════════════════════════════════════════════ */
-.terminal-card {
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-
-.terminal-card:hover {
-  transform: perspective(800px) rotateX(2deg) translateZ(10px);
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   DASHBOARD STATS 3D
-   ═══════════════════════════════════════════════════════════════ */
-.dashboard-stats > div {
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-
-.dashboard-stats > div:hover {
-  transform: perspective(600px) translateZ(15px) rotateX(-2deg);
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   FLOATING 3D DECORATIVE ELEMENTS
-   Particelle a diverse profondità che fluttuano.
-   ═══════════════════════════════════════════════════════════════ */
-.floating-3d {
+body.globe-active #globe-nav {
   position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.6rem;
+  z-index: 100;
+  pointer-events: auto;
+}
+
+body.globe-active #globe-nav .nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(249, 115, 22, 0.2);
+  border: 1px solid rgba(249, 115, 22, 0.15);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+}
+
+body.globe-active #globe-nav .nav-dot:hover {
+  background: rgba(249, 115, 22, 0.4);
+  transform: scale(1.3);
+}
+
+body.globe-active #globe-nav .nav-dot.active {
+  background: var(--accent-orange, #f97316);
+  box-shadow: 0 0 12px rgba(249, 115, 22, 0.4);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   DRAG HINT — Suggerimento iniziale
+   ═══════════════════════════════════════════════════════════════ */
+body.globe-active #drag-hint {
+  position: fixed;
+  bottom: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: rgba(249, 115, 22, 0.3);
+  letter-spacing: 0.1em;
+  z-index: 50;
   pointer-events: none;
-  will-change: transform;
-  transform-style: preserve-3d;
-  z-index: -5;
+  animation: hintFade 4s ease-in-out infinite;
+  opacity: 0;
 }
 
-.floating-3d-1 { animation: float3d1 6s ease-in-out infinite; }
-.floating-3d-2 { animation: float3d2 8s ease-in-out infinite; }
-.floating-3d-3 { animation: float3d3 10s ease-in-out infinite; }
-
-@keyframes float3d1 {
-  0%, 100% { transform: translateY(0) translateZ(20px); }
-  50%      { transform: translateY(-20px) translateZ(40px); }
+@keyframes hintFade {
+  0%, 100% { opacity: 0; transform: translateX(-50%) translateY(0); }
+  20% { opacity: 0.6; }
+  40% { opacity: 0.3; }
+  60% { opacity: 0.6; }
 }
 
-@keyframes float3d2 {
-  0%, 100% { transform: translateY(0) translateZ(-10px); }
-  50%      { transform: translateY(-15px) translateZ(10px); }
-}
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE — Mobile / Tablet
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  body.globe-active {
+    --globe-perspective: 1200px;
+    --globe-radius: 260px;
+    --globe-panel-w: 280px;
+    --globe-panel-h: 200px;
+  }
 
-@keyframes float3d3 {
-  0%, 100% { transform: translateY(0) rotateZ(0deg); }
-  50%      { transform: translateY(-10px) rotateZ(3deg); }
+  body.globe-active .hero-panel {
+    --globe-panel-w: 300px;
+    --globe-panel-h: 240px;
+  }
+
+  body.globe-active .projects-panel {
+    --globe-panel-w: 290px;
+    --globe-panel-h: 240px;
+  }
+
+  body.globe-active .blog-panel {
+    --globe-panel-w: 260px;
+    --globe-panel-h: 190px;
+  }
+
+  body.globe-active .training-panel {
+    --globe-panel-w: 260px;
+    --globe-panel-h: 190px;
+  }
+
+  body.globe-active .globe-panel {
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+  }
+
+  body.globe-active .hero-panel .hero-name {
+    font-size: 1.2rem;
+  }
+
+  body.globe-active .hero-panel .hero-subtitle {
+    font-size: 0.7rem;
+  }
+
+  body.globe-active .globe-panel .panel-title {
+    font-size: 0.85rem;
+  }
+
+  body.globe-active .globe-panel .panel-subtitle,
+  body.globe-active .globe-panel .panel-content {
+    font-size: 0.7rem;
+  }
+
+  body.globe-active #globe-nav {
+    bottom: 1rem;
+    gap: 0.4rem;
+  }
+
+  body.globe-active #globe-nav .nav-dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  body.globe-active #drag-hint {
+    display: none;
+  }
 }
 
 /* ═══════════════════════════════════════════════════════════════
    REDUCED MOTION
    ═══════════════════════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
-  .main-content > section,
-  .main-content > .content-panel,
-  .project-card,
-  .skill-card,
-  .expertise-card,
-  .dashboard-card,
-  .feature-card,
-  .spec-card,
-  .terminal-card,
-  .dashboard-stats > div,
-  .floating-3d,
-  .section-divider::before,
-  .bg-layer {
+  body.globe-active {
+    cursor: default;
+  }
+
+  body.globe-active:active {
+    cursor: default;
+  }
+
+  body.globe-active .globe-universe {
+    transition: none !important;
+  }
+
+  body.globe-active .globe-panel {
     transition: none !important;
     transform: none !important;
-    opacity: 1 !important;
-    animation: none !important;
-    filter: none !important;
   }
 
-  .depth-hero,
-  .depth-projects,
-  .depth-blog,
-  .depth-training,
-  .depth-default {
-    transform: none !important;
+  body.globe-active #globe-nav .nav-dot {
+    transition: none;
   }
 
-  #scroll-progress .progress-track {
-    animation: none;
-  }
-
-  #scroll-glow,
-  .bg-layer,
-  .floating-3d {
-    display: none;
-  }
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   MOBILE
-   ═══════════════════════════════════════════════════════════════ */
-@media (max-width: 768px) {
-  :root {
-    --scene-perspective: 1200px;
-    --depth-hero: 20px;
-    --depth-projects: -30px;
-    --depth-blog: -80px;
-    --depth-training: -150px;
-    --depth-bg-far: -500px;
-    --depth-bg-mid: -250px;
-    --depth-bg-near: -80px;
-    --tilt-max: 3deg;
-  }
-
-  .hero {
-    perspective: 600px;
-  }
-
-  #scroll-glow {
+  body.globe-active #drag-hint {
     display: none;
   }
 
-  .bg-layer {
+  body.globe-active #bg-canvas {
     display: none;
   }
 }

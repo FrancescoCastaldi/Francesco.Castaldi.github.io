@@ -84,80 +84,48 @@
   <script src="assets/js/enhancements.js" defer></script>
   <script src="pages/fitness/training-generator.js" defer></script>
 </head>
-<body>
-  <!-- 3D Scroll-Driven Elements -->
-  <div id="scroll-progress"><div class="progress-track"></div></div>
-  <div class="scroll-glow" id="scroll-glow"></div>
-
-  <!-- Floating 3D decorative elements -->
-  <div class="floating-3d floating-3d-1" data-depth-3d="-80" style="top:15%;left:5%;width:12px;height:12px;border-radius:50%;background:var(--accent-orange);opacity:0.15;box-shadow:0 0 20px rgba(249,115,22,0.3);"></div>
-  <div class="floating-3d floating-3d-2" data-depth-3d="-40" style="top:30%;right:8%;width:8px;height:8px;border-radius:2px;background:var(--accent-blue);opacity:0.12;transform:rotate(45deg);"></div>
-  <div class="floating-3d floating-3d-1" data-depth-3d="-120" style="top:60%;left:3%;width:6px;height:6px;border-radius:50%;background:var(--accent-orange);opacity:0.1;"></div>
-  <div class="floating-3d floating-3d-3" data-depth-3d="-60" style="top:80%;right:5%;width:10px;height:10px;border-radius:50%;border:1px solid rgba(249,115,22,0.2);background:transparent;opacity:0.15;"></div>
-  <div class="floating-3d floating-3d-2" data-depth-3d="-100" style="top:45%;left:50%;width:4px;height:4px;background:var(--accent-blue);opacity:0.08;"></div>
-
-  <!-- 3D Background Depth Layers -->
-  <div class="bg-layer bg-layer-far" data-speed="0.03"></div>
-  <div class="bg-layer bg-layer-mid" data-speed="0.08"></div>
-  <div class="bg-layer bg-layer-near" data-speed="0.15"></div>
+<body class="globe-active">
 
   <canvas id="bg-canvas"></canvas>
   <header id="site-header"></header>
 
-  <main class="main-content">
-    <!-- HERO -->
-    <section class="hero depth-hero" data-parallax>
-      <div class="hero-inner">
-        <div class="hero-text hero-layer-deep" data-parallax-speed="0.15">
-          <h1 class="hero-title">Francesco<br>Castaldi</h1>
-          <p class="hero-subtitle" id="hero-subtitle">Ingegnere Informatico &amp; Business Consultant.<br>Trasformo dati in valore per il settore healthcare digitale.</p>
-          <div class="hero-meta">
-            <span class="meta-tag">Healthcare IT</span>
-            <span class="meta-tag">Data Science</span>
-            <span class="meta-tag">Business Intelligence</span>
-          </div>
-           <div class="hero-buttons" style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-             <a href="pages/personal/contact.html" class="btn-primary">Contattami</a>
-             <a href="pages/fitness/strava.html" class="btn-secondary">Performance Strava</a>
-           </div>
-         </div>
-        <div class="hero-terminal hero-layer-shallow" data-parallax-speed="-0.08">
-          <div class="terminal-header">
-            <span class="t-dot red"></span>
-            <span class="t-dot yellow"></span>
-            <span class="t-dot green"></span>
-            <span class="t-title">~/portfolio.sh</span>
-          </div>
-          <div class="terminal-body">
-            <div class="t-line"><span class="t-prompt">$></span> <span class="t-cmd">system.info</span></div>
-            <div class="t-output">name: Francesco Castaldi</div>
-            <div class="t-line"><span class="t-prompt">$></span> <span class="t-cmd">system.location</span></div>
-            <div class="t-output">locale: Modena, Italy</div>
-            <div class="t-line"><span class="t-prompt">$></span> <span class="t-cmd">system.skills</span></div>
-            <div class="t-output">Healthcare IT · Data Science · Business Intelligence</div>
-          </div>
+  <!-- 3D Globe Universe — pannelli sulla superficie sferica -->
+  <div class="globe-universe" id="globe-universe">
+
+    <!-- HERO PANEL (frontale: 0°) -->
+    <div class="globe-panel hero-panel active" data-angle="0" data-tilt="-4" data-label="Home">
+      <div class="panel-label">// system.identity</div>
+      <div class="hero-content">
+        <h1 class="hero-name">Francesco Castaldi</h1>
+        <p class="hero-subtitle">Ingegnere Informatico &amp; Business Consultant.<br>Trasformo dati in valore per il settore healthcare digitale.</p>
+        <div class="hero-tags">
+          <span class="tag">Healthcare IT</span>
+          <span class="tag">Data Science</span>
+          <span class="tag">Business Intelligence</span>
+        </div>
+        <div class="hero-buttons">
+          <a href="pages/personal/contact.html" class="btn-primary">Contattami</a>
+          <a href="pages/fitness/strava.html" class="btn-secondary">Performance Strava</a>
         </div>
       </div>
-    </section>
+    </div>
 
-    <div class="section-divider"></div>
-
-    <!-- PROJECTS SLIDER -->
-    <section id="projects" class="content-panel parallax-section depth-projects">
-      <div class="section-label">// projects.carousel</div>
-      <h2 class="section-title">Progetti in evidenza</h2>
+    <!-- PROJECTS PANEL (destra: 72°) -->
+    <div class="globe-panel projects-panel" data-angle="72" data-tilt="3" data-label="Projects">
+      <div class="panel-label">// projects.carousel</div>
+      <h2 class="panel-title">Progetti in evidenza</h2>
       <div class="project-slider" data-slideshow="" data-interval="5000" data-shuffle="false">
         <div class="slideshow-frame" tabindex="-1">
           <div class="project-slide-overlay">
             <div class="project-slide-content">
               <span class="project-slide-icon">🏥</span>
               <h3>Hospital Sanitization Tracker</h3>
-              <p>DApp basata su smart contract Ethereum per la tracciabilità immutabile delle attività di sanificazione ospedaliera. Certificazione su testnet Sepolia.</p>
+              <p>DApp su smart contract Ethereum per tracciabilità sanificazione ospedaliera.</p>
               <div class="project-slide-tags">
-                <span>Solidity</span><span>Hardhat</span><span>Ethers.js</span><span>Blockchain</span>
+                <span>Solidity</span><span>Hardhat</span><span>Ethers.js</span>
               </div>
               <a href="pages/projects/hospital-sanitization-tracker.html" class="project-slide-link">
-                Scopri il progetto <span class="arrow">&rarr;</span>
+                Scopri <span class="arrow">&rarr;</span>
               </a>
             </div>
           </div>
@@ -165,12 +133,12 @@
             <div class="project-slide-content">
               <span class="project-slide-icon">🗺️</span>
               <h3>GPX Editor</h3>
-              <p>Applicazione web per modificare tracce GPS con mappe interattive Leaflet, smoothing, taglio punti e profilo altimetrico in tempo reale.</p>
+              <p>Web app per modificare tracce GPS con mappe interattive e profilo altimetrico.</p>
               <div class="project-slide-tags">
-                <span>TypeScript</span><span>Leaflet</span><span>Vite</span><span>Chart.js</span>
+                <span>TypeScript</span><span>Leaflet</span><span>Vite</span>
               </div>
               <a href="pages/fitness/gpx-editor.html" class="project-slide-link">
-                Scopri il progetto <span class="arrow">&rarr;</span>
+                Scopri <span class="arrow">&rarr;</span>
               </a>
             </div>
           </div>
@@ -178,12 +146,12 @@
             <div class="project-slide-content">
               <span class="project-slide-icon">🦠</span>
               <h3>SIR Markov Chain</h3>
-              <p>Simulazione di un modello epidemiologico SIR come catena di Markov a tempo discreto. Analisi di sensitività e simulazione Monte Carlo.</p>
+              <p>Simulazione epidemiologica SIR come catena di Markov a tempo discreto.</p>
               <div class="project-slide-tags">
-                <span>Python</span><span>NumPy</span><span>Matplotlib</span><span>UniBo</span>
+                <span>Python</span><span>NumPy</span><span>Matplotlib</span>
               </div>
               <a href="pages/projects/sir-markov-chain.html" class="project-slide-link">
-                Scopri il progetto <span class="arrow">&rarr;</span>
+                Scopri <span class="arrow">&rarr;</span>
               </a>
             </div>
           </div>
@@ -191,12 +159,12 @@
             <div class="project-slide-content">
               <span class="project-slide-icon">🔬</span>
               <h3>CI Cervical LBC</h3>
-              <p>Confronto di metodi di deblurring e denoising su immagini di citologia cervicale: Total Variation, UNet e DiffPIR.</p>
+              <p>Deblurring e denoising su immagini citologia cervicale: TV, UNet, DiffPIR.</p>
               <div class="project-slide-tags">
-                <span>Python</span><span>PyTorch</span><span>DiffPIR</span><span>UniBo</span>
+                <span>Python</span><span>PyTorch</span><span>DiffPIR</span>
               </div>
               <a href="pages/projects/ci-cervical-lbc.html" class="project-slide-link">
-                Scopri il progetto <span class="arrow">&rarr;</span>
+                Scopri <span class="arrow">&rarr;</span>
               </a>
             </div>
           </div>
@@ -204,58 +172,64 @@
             <div class="project-slide-content">
               <span class="project-slide-icon">🤖</span>
               <h3>SGF² AI Project</h3>
-              <p>Machine Learning supervisionato sul dataset Adult (UCI) per predire reddito &gt;$50K. Modelli, fairness e feature importance analysis.</p>
+              <p>ML supervisionato su dataset Adult (UCI) per predire reddito &gt;$50K.</p>
               <div class="project-slide-tags">
-                <span>Python</span><span>scikit-learn</span><span>pandas</span><span>UniBo</span>
+                <span>Python</span><span>scikit-learn</span><span>pandas</span>
               </div>
               <a href="pages/projects/sgf2-ai-project.html" class="project-slide-link">
-                Scopri il progetto <span class="arrow">&rarr;</span>
+                Scopri <span class="arrow">&rarr;</span>
               </a>
             </div>
           </div>
         </div>
         <div class="slide-dots"></div>
       </div>
-    </section>
+    </div>
 
-    <div class="section-divider"></div>
-
-    <!-- BLOG — rendering dinamico via posts.js + initBlogPosts() -->
-    <section id="blog" class="content-panel parallax-section depth-blog">
-      <div class="section-label">// blog.log</div>
-      <h2 class="section-title">Ultimi Post</h2>
+    <!-- BLOG PANEL (sinistra: 144°) -->
+    <div class="globe-panel blog-panel" data-angle="144" data-tilt="-3" data-label="Blog">
+      <div class="panel-label">// blog.log</div>
+      <h2 class="panel-title">Ultimi Post</h2>
       <div
         id="blog-posts-grid"
         class="blog-grid"
         data-category="Sport"
-        data-limit="4"
+        data-limit="2"
       ></div>
-      <div class="blog-cta">
-        <a href="pages/blog/index2.html" class="btn-secondary">Tutti i post Sport &rarr;</a>
+      <div class="blog-cta" style="margin-top:0.4rem;">
+        <a href="pages/blog/index2.html" class="btn-secondary" style="font-size:0.7rem;padding:0.3rem 0.8rem;">Tutti i post &rarr;</a>
       </div>
-    </section>
+    </div>
 
-    <div class="section-divider"></div>
-
-    <!-- TRAINING PLAN GENERATOR -->
-    <section id="training-generator" class="content-panel parallax-section depth-training">
-      <div class="section-label">// training-generator.sh</div>
-      <h2 class="section-title">Generatore Piani Allenamento</h2>
-      <div class="terminal-card">
-        <div class="terminal-header">
+    <!-- TRAINING PANEL (dietro: 216°) -->
+    <div class="globe-panel training-panel" data-angle="216" data-tilt="5" data-label="Training">
+      <div class="panel-label">// training-generator.sh</div>
+      <h2 class="panel-title">Generatore Piani Allenamento</h2>
+      <div class="terminal-card" style="margin-top:0.3rem;">
+        <div class="terminal-header" style="padding:0.3rem 0.6rem;font-size:0.65rem;">
           <span class="t-dot red"></span>
           <span class="t-dot yellow"></span>
           <span class="t-dot green"></span>
-          <span class="t-title">~/training-generator.sh</span>
+          <span class="t-title">~/training.sh</span>
         </div>
-        <div class="terminal-body" id="tg-body"></div>
+        <div class="terminal-body" id="tg-body" style="padding:0.5rem 0.6rem;font-size:0.7rem;"></div>
       </div>
-    </section>
+    </div>
 
-  </main>
+  </div>
+
+  <!-- Navigation dots -->
+  <div id="globe-nav">
+    <span class="nav-dot active" data-index="0"></span>
+    <span class="nav-dot" data-index="1"></span>
+    <span class="nav-dot" data-index="2"></span>
+    <span class="nav-dot" data-index="3"></span>
+  </div>
+
+  <!-- Drag hint -->
+  <div id="drag-hint">⟷ trascina per ruotare</div>
 
   <footer id="site-footer"></footer>
-
 
 </body>
 </html>
