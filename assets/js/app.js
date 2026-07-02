@@ -311,146 +311,56 @@
     if (el) el.textContent = count;
   }
 
-  // ── GLOBE CANVAS — Wireframe sphere 3D + stars ───────────
-  function initGlobeCanvas() {
-    if (reduceMotion) return;
-    if (!document.body.classList.contains('globe-active')) return;
+  // ── BACKGROUND ANIMATION (Matrix rain) ───────────────────
+  function initBgAnimation() {
     var canvas = document.getElementById('bg-canvas');
     if (!canvas || !canvas.getContext) return;
     var ctx = canvas.getContext('2d');
-
-    var W, H, cx, cy;
-    var spherePoints = [];
-    var starField = [];
-    var latSteps = 12;
-    var lonSteps = 18;
-    var sphereRadius = 200;
-    var focal = 500;
-
-    // Genera punti della sfera (griglia lat/lon)
-    function buildSphere() {
-      spherePoints = [];
-      for (var lat = 0; lat <= latSteps; lat++) {
-        var theta = (lat / latSteps) * Math.PI;
-        var row = [];
-        for (var lon = 0; lon <= lonSteps; lon++) {
-          var phi = (lon / lonSteps) * Math.PI * 2;
-          var x = sphereRadius * Math.sin(theta) * Math.cos(phi);
-          var y = sphereRadius * Math.cos(theta);
-          var z = sphereRadius * Math.sin(theta) * Math.sin(phi);
-          row.push({ x: x, y: y, z: z, lat: lat, lon: lon });
-        }
-        spherePoints.push(row);
-      }
-    }
-
-    // Genera stelle
-    function buildStars() {
-      starField = [];
-      for (var i = 0; i < 150; i++) {
-        starField.push({
-          x: (Math.random() - 0.5) * 2000,
-          y: (Math.random() - 0.5) * 2000,
-          z: Math.random() * 800 + 200,
-          size: Math.random() * 1.5 + 0.3,
-          brightness: Math.random() * 0.6 + 0.2
-        });
-      }
-    }
+    var width, height, columns, drops;
+    var fontSize = 18;
+    var chars = '01';
+    var opacity = 0.03;
+    var scrollOffset = 0;
+    var intv;
 
     function resize() {
-      W = canvas.width = window.innerWidth;
-      H = canvas.height = window.innerHeight;
-      cx = W / 2;
-      cy = H / 2;
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      columns = Math.floor(width / fontSize);
+      drops = Array(columns).fill(1);
     }
 
-    // Ruota un punto 3D intorno a X poi Y
-    function rotatePoint(p, rx, ry) {
-      var rxr = rx * Math.PI / 180;
-      var ryr = ry * Math.PI / 180;
-      // Rotate X
-      var y1 = p.y * Math.cos(rxr) - p.z * Math.sin(rxr);
-      var z1 = p.y * Math.sin(rxr) + p.z * Math.cos(rxr);
-      // Rotate Y
-      var x2 = p.x * Math.cos(ryr) + z1 * Math.sin(ryr);
-      var z2 = -p.x * Math.sin(ryr) + z1 * Math.cos(ryr);
-      return { x: x2, y: y1, z: z2 };
-    }
-
-    function project(p) {
-      var scale = focal / (focal + p.z + sphereRadius);
-      return {
-        x: cx + p.x * scale,
-        y: cy + p.y * scale,
-        scale: scale
-      };
-    }
-
-    function drawGlobe(rotX, rotY) {
-      ctx.clearRect(0, 0, W, H);
-
-      // --- Stars ---
-      for (var si = 0; si < starField.length; si++) {
-        var s = starField[si];
-        var sr = rotatePoint(s, rotX * 0.3, rotY * 0.3);
-        if (sr.z <= 0) continue;
-        var sp = project(sr);
-        ctx.beginPath();
-        ctx.arc(sp.x, sp.y, s.size * sp.scale, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(255,255,255,' + (s.brightness * sp.scale) + ')';
-        ctx.fill();
+    function draw() {
+      ctx.fillStyle = 'rgba(3,3,4,' + opacity + ')';
+      ctx.fillRect(0, 0, width, height);
+      ctx.fillStyle = '#d97706'; // Dark orange accent
+      ctx.font = fontSize + 'px "JetBrains Mono",monospace';
+      for (var i = 0; i < drops.length; i++) {
+        var text = chars.charAt(Math.floor(Math.random() * chars.length));
+        var y = drops[i] * fontSize + (scrollOffset * 0.1);
+        ctx.fillText(text, i * fontSize, y % height);
+        if (y > height && Math.random() > 0.98) drops[i] = 0;
+        drops[i] += 0.7;
       }
-
-      // --- Wireframe sphere ---
-      // Latitude lines (orizzontali)
-      ctx.strokeStyle = 'rgba(249, 115, 22, 0.12)';
-      ctx.lineWidth = 0.8;
-
-      for (var lat = 0; lat < spherePoints.length; lat++) {
-        var row = spherePoints[lat];
-        ctx.beginPath();
-        for (var lon = 0; lon < row.length; lon++) {
-          var rp = rotatePoint(row[lon], rotX, rotY);
-          if (rp.z < -sphereRadius) continue;
-          var pp = project(rp);
-          if (lon === 0) ctx.moveTo(pp.x, pp.y);
-          else ctx.lineTo(pp.x, pp.y);
-        }
-        ctx.stroke();
-      }
-
-      // Longitude lines (verticali)
-      ctx.strokeStyle = 'rgba(59, 130, 246, 0.10)';
-      for (var lon = 0; lon <= lonSteps; lon++) {
-        ctx.beginPath();
-        for (var lat = 0; lat < spherePoints.length; lat++) {
-          var rp2 = rotatePoint(spherePoints[lat][lon], rotX, rotY);
-          if (rp2.z < -sphereRadius) continue;
-          var pp2 = project(rp2);
-          if (lat === 0) ctx.moveTo(pp2.x, pp2.y);
-          else ctx.lineTo(pp2.x, pp2.y);
-        }
-        ctx.stroke();
-      }
-
-      // --- Glow al centro ---
-      var grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, 300);
-      grad.addColorStop(0, 'rgba(249, 115, 22, 0.02)');
-      grad.addColorStop(0.5, 'rgba(59, 130, 246, 0.01)');
-      grad.addColorStop(1, 'transparent');
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, W, H);
     }
 
-    buildSphere();
-    buildStars();
-    resize();
     window.addEventListener('resize', throttle(resize, 100));
+    window.addEventListener('scroll', throttle(function () { scrollOffset = window.scrollY; }, 50));
+    resize();
 
-    // Exposed per update loop
-    initGlobeCanvas.drawGlobe = drawGlobe;
-    initGlobeCanvas.resize = resize;
+    var animating = false;
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && !animating) {
+          animating = true;
+          intv = setInterval(draw, 80);
+        } else if (!e.isIntersecting && animating) {
+          animating = false;
+          clearInterval(intv);
+        }
+      });
+    }, { threshold: 0 });
+    obs.observe(canvas);
   }
 
   // ── PARTICLE BACKGROUND (fallback) ───────────────────────
@@ -1545,244 +1455,240 @@
   }
 
   // ══════════════════════════════════════════════════════════
-  //  INTERACTIVE 3D GLOBE ENGINE — Mappamondo virtuale
-  //  Il contenuto del portfolio è su pannelli posizionati
-  //  sulla superficie di una sfera 3D. Trascina per ruotare.
+  //  TRUE 3D SCROLL ENGINE — Camera-based 3D Space
+  //  Il viewport è una camera che si muove in uno spazio 3D.
+  //  Ogni elemento ha una posizione (X, Y, Z) nella scena.
+  //  Lo scroll controlla il movimento della camera lungo Z.
   // ══════════════════════════════════════════════════════════
 
   // ── Utils ─────────────────────────────────────────────
   function lerp(a, b, t) { return a + (b - a) * t; }
   function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
+  function mapRange(value, inMin, inMax, outMin, outMax) {
+    return outMin + (value - inMin) * (outMax - outMin) / (inMax - inMin);
+  }
 
-  // ── Globe State ────────────────────────────────────────
-  var GLOBE_RADIUS = 520;
-  var globeState = {
-    isDragging: false,
-    prevX: 0,
-    prevY: 0,
-    rotX: -5,         // current X rotation
-    rotY: 0,          // current Y rotation
-    targetX: -5,
-    targetY: 0,
-    autoRotate: true,
-    autoTimer: null,
-    activeIndex: 0,
-    panelAngles: [],
-    navDots: [],
-    universe: null,
-    momentumX: 0,
-    momentumY: 0
+  // ── Scroll State (aggiornato via rAF) ─────────────────
+  var scrollState = {
+    raw: 0,
+    smooth: 0,
+    velocity: 0,
+    progress: 0,
+    prevRaw: 0,
+    // Mouse 3D
+    mouseX: 0,
+    mouseY: 0,
+    mouseSmoothX: 0,
+    mouseSmoothY: 0
   };
 
-  function initGlobeScene() {
-    if (!document.querySelector('.globe-universe')) return;
-    if (reduceMotion) return;
+  function initScrollTracker() {
+    scrollState.smooth = window.scrollY;
 
-    // Calcola raggio dal CSS
-    var rootStyle = getComputedStyle(document.documentElement);
-    var radiusStr = rootStyle.getPropertyValue('--globe-radius').trim();
-    if (radiusStr) {
-      GLOBE_RADIUS = parseFloat(radiusStr);
+    window.addEventListener('scroll', function () {
+      scrollState.raw = window.scrollY;
+    }, { passive: true });
+
+    document.addEventListener('mousemove', function (e) {
+      scrollState.mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+      scrollState.mouseY = (e.clientY / window.innerHeight) * 2 - 1;
+    }, { passive: true });
+  }
+
+  // ── Central 3D update loop (rAF) ──────────────────────
+  var sceneSections = [];
+  var sceneCards = [];
+  var sceneFloaters = [];
+  var sceneBgLayers = [];
+  var progressBar = null;
+  var glowEl = null;
+  var gridStyle = null;
+
+  function init3DCamera() {
+    if (reduceMotion) {
+      // Fallback: mostra tutto normalmente
+      document.querySelectorAll('.bg-layer').forEach(function (el) { el.style.display = 'none'; });
+      return;
     }
 
-    globeState.universe = document.getElementById('globe-universe');
-    if (!globeState.universe) return;
-
-    var panels = globeState.universe.querySelectorAll('.globe-panel');
-
-    // Posiziona ogni pannello sulla superficie sferica
-    panels.forEach(function (panel, i) {
-      var angle = parseFloat(panel.getAttribute('data-angle')) || (i * 90);
-      var tilt = parseFloat(panel.getAttribute('data-tilt')) || 0;
-
-      panel.style.transform = 'rotateY(' + angle + 'deg) rotateX(' + tilt + 'deg) translateZ(' + GLOBE_RADIUS + 'px)';
-      globeState.panelAngles.push(angle);
-
-      // Click sul pannello → naviga ad esso
-      panel.addEventListener('click', function (e) {
-        // Non attivare se è un click su link
-        if (e.target.closest('a')) return;
-        navigateToPanel(i);
+    // Cache sezioni con depth
+    var sections = document.querySelectorAll('.main-content > section, .main-content > .content-panel');
+    sections.forEach(function (s) {
+      var depthClass = null;
+      s.classList.forEach(function (c) {
+        if (c.indexOf('depth-') === 0) depthClass = c;
       });
-    });
-
-    // Nav dots
-    var dots = document.querySelectorAll('#globe-nav .nav-dot');
-    dots.forEach(function (dot, i) {
-      dot.addEventListener('click', function () { navigateToPanel(i); });
-    });
-
-    // Mouse drag
-    document.addEventListener('mousedown', onGlobeMouseDown);
-    document.addEventListener('mousemove', onGlobeMouseMove);
-    document.addEventListener('mouseup', onGlobeMouseUp);
-
-    // Touch support
-    document.addEventListener('touchstart', onGlobeTouchStart, { passive: true });
-    document.addEventListener('touchmove', onGlobeTouchMove, { passive: true });
-    document.addEventListener('touchend', onGlobeTouchEnd, { passive: true });
-
-    // Auto-rotation timer: ferma auto dopo 5s di inattività trascinamento
-    resetAutoTimer();
-
-    // Inizia il loop
-    updateGlobeLoop();
-  }
-
-  function navigateToPanel(index) {
-    var panels = globeState.universe.querySelectorAll('.globe-panel');
-    if (index < 0 || index >= panels.length) return;
-
-    var targetAngle = parseFloat(panels[index].getAttribute('data-angle')) || 0;
-
-    // Calcola la rotazione Y necessaria per portare il pannello frontale
-    // Se il pannello è a angle° sulla sfera, dobbiamo ruotare il globo di -angle°
-    globeState.targetY = -targetAngle;
-    globeState.targetX = -5; // Leggera inclinazione standard
-    globeState.autoRotate = false;
-    globeState.activeIndex = index;
-
-    // Aggiorna nav dots
-    updateNavDots(index);
-
-    // Riavvio auto-rotation dopo 5s
-    resetAutoTimer();
-  }
-
-  function updateNavDots(activeIndex) {
-    document.querySelectorAll('#globe-nav .nav-dot').forEach(function (dot, i) {
-      dot.classList.toggle('active', i === activeIndex);
-    });
-  }
-
-  function resetAutoTimer() {
-    if (globeState.autoTimer) clearTimeout(globeState.autoTimer);
-    globeState.autoTimer = setTimeout(function () {
-      globeState.autoRotate = true;
-    }, 5000);
-  }
-
-  // ── Drag handlers ────────────────────────────────────
-  function onGlobeMouseDown(e) {
-    if (e.button !== 0) return;
-    globeState.isDragging = true;
-    globeState.prevX = e.clientX;
-    globeState.prevY = e.clientY;
-    globeState.momentumX = 0;
-    globeState.momentumY = 0;
-  }
-
-  function onGlobeMouseMove(e) {
-    if (!globeState.isDragging) return;
-
-    var dx = e.clientX - globeState.prevX;
-    var dy = e.clientY - globeState.prevY;
-
-    globeState.targetY += dx * 0.3;
-    globeState.targetX += dy * -0.2;
-    globeState.targetX = clamp(globeState.targetX, -40, 40);
-
-    globeState.momentumX = dy * -0.2;
-    globeState.momentumY = dx * 0.3;
-
-    globeState.prevX = e.clientX;
-    globeState.prevY = e.clientY;
-    globeState.autoRotate = false;
-    resetAutoTimer();
-  }
-
-  function onGlobeMouseUp() {
-    globeState.isDragging = false;
-  }
-
-  function onGlobeTouchStart(e) {
-    var touch = e.touches[0];
-    globeState.isDragging = true;
-    globeState.prevX = touch.clientX;
-    globeState.prevY = touch.clientY;
-    globeState.momentumX = 0;
-    globeState.momentumY = 0;
-  }
-
-  function onGlobeTouchMove(e) {
-    if (!globeState.isDragging || !e.touches.length) return;
-    var touch = e.touches[0];
-    var dx = touch.clientX - globeState.prevX;
-    var dy = touch.clientY - globeState.prevY;
-
-    globeState.targetY += dx * 0.3;
-    globeState.targetX += dy * -0.2;
-    globeState.targetX = clamp(globeState.targetX, -40, 40);
-
-    globeState.prevX = touch.clientX;
-    globeState.prevY = touch.clientY;
-    globeState.autoRotate = false;
-    resetAutoTimer();
-  }
-
-  function onGlobeTouchEnd() {
-    globeState.isDragging = false;
-  }
-
-  // ── Main update loop ──────────────────────────────────
-  function updateGlobeLoop() {
-    // Auto-rotation lenta
-    if (globeState.autoRotate && !globeState.isDragging) {
-      globeState.targetY += 0.08;
-    }
-
-    // Momentum (rilascio con inerzia)
-    if (!globeState.isDragging && !globeState.autoRotate) {
-      globeState.targetY += globeState.momentumY * 0.95;
-      globeState.targetX += globeState.momentumX * 0.95;
-      globeState.momentumX *= 0.92;
-      globeState.momentumY *= 0.92;
-      if (Math.abs(globeState.momentumX) < 0.01) globeState.momentumX = 0;
-      if (Math.abs(globeState.momentumY) < 0.01) globeState.momentumY = 0;
-    }
-
-    // Smooth lerp
-    globeState.rotX = lerp(globeState.rotX, globeState.targetX, 0.08);
-    globeState.rotY = lerp(globeState.rotY, globeState.targetY, 0.08);
-
-    // Applica rotazione al universo
-    globeState.universe.style.transform = 'rotateX(' + globeState.rotX + 'deg) rotateY(' + globeState.rotY + 'deg)';
-
-    // Aggiorna pannello attivo (quello più vicino al centro)
-    var panels = globeState.universe.querySelectorAll('.globe-panel');
-    var closestIdx = 0;
-    var closestDist = Infinity;
-
-    panels.forEach(function (p, i) {
-      var angle = globeState.panelAngles[i] || 0;
-      var dist = Math.abs(normalizeAngle(angle + globeState.rotY));
-      if (dist < closestDist) {
-        closestDist = dist;
-        closestIdx = i;
+      if (depthClass) {
+        sceneSections.push({ el: s, depthClass: depthClass });
       }
     });
 
-    if (closestIdx !== globeState.activeIndex) {
-      globeState.activeIndex = closestIdx;
-      updateNavDots(closestIdx);
-      panels.forEach(function (p, i) {
-        p.classList.toggle('active', i === closestIdx);
+    // Cache card
+    var cards = document.querySelectorAll('.project-card, .skill-card, .expertise-card, .dashboard-card, .feature-card');
+    cards.forEach(function (c) { sceneCards.push(c); });
+
+    // Cache floating elements
+    document.querySelectorAll('.floating-3d').forEach(function (f) {
+      sceneFloaters.push({
+        el: f,
+        depth: parseFloat(f.getAttribute('data-depth-3d')) || -50,
+        baseX: parseFloat(f.style.left) || 50,
+        baseY: parseFloat(f.style.top) || 50
       });
-    }
+    });
 
-    // Renderizza wireframe sul canvas
-    if (initGlobeCanvas && initGlobeCanvas.drawGlobe && typeof initGlobeCanvas.drawGlobe === 'function') {
-      initGlobeCanvas.drawGlobe(globeState.rotX * 0.6, globeState.rotY * 0.6);
-    }
+    // Cache bg layers
+    document.querySelectorAll('.bg-layer').forEach(function (b) {
+      sceneBgLayers.push({
+        el: b,
+        speed: parseFloat(b.getAttribute('data-speed')) || 0.1
+      });
+    });
 
-    requestAnimationFrame(updateGlobeLoop);
+    progressBar = document.querySelector('#scroll-progress .progress-track');
+    glowEl = document.getElementById('scroll-glow');
+
+    // Create style for grid parallax
+    gridStyle = document.createElement('style');
+    gridStyle.id = 'grid-parallax-style';
+    document.head.appendChild(gridStyle);
+
+    // Start the 3D loop
+    update3DLoop();
   }
 
-  function normalizeAngle(deg) {
-    deg = deg % 360;
-    if (deg > 180) deg -= 360;
-    if (deg < -180) deg += 360;
-    return deg;
+  // ── 3D Scene Update (chiamato da rAF) ─────────────────
+  function update3DLoop() {
+    // Smooth scroll con lerp (follow più fluido)
+    scrollState.smooth = lerp(scrollState.smooth, scrollState.raw, 0.08);
+    scrollState.velocity = scrollState.raw - scrollState.prevRaw;
+    scrollState.prevRaw = scrollState.raw;
+
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    scrollState.progress = docHeight > 0 ? clamp(scrollState.raw / docHeight, 0, 1) : 0;
+
+    // Smooth mouse
+    scrollState.mouseSmoothX = lerp(scrollState.mouseSmoothX, scrollState.mouseX, 0.06);
+    scrollState.mouseSmoothY = lerp(scrollState.mouseSmoothY, scrollState.mouseY, 0.06);
+
+    var scrollY = scrollState.smooth;
+    var vh = window.innerHeight;
+    var mouseX = scrollState.mouseSmoothX;
+    var mouseY = scrollState.mouseSmoothY;
+
+    // ── PROGRESS BAR ──
+    if (progressBar) {
+      var pct = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
+      progressBar.style.width = pct + '%';
+    }
+
+    // ── SCROLL GLOW ──
+    if (glowEl) {
+      var glowY = scrollY + vh * 0.35;
+      glowEl.style.transform = 'translate(-50%, ' + glowY + 'px)';
+      glowEl.style.opacity = clamp(scrollY / 300, 0, 0.7);
+    }
+
+    // ── GRID PARALLAX (body::after) ──
+    if (gridStyle) {
+      gridStyle.textContent = 'body::after { background-position: ' +
+        (scrollY * 0.1) + 'px ' + (scrollY * 0.1) + 'px !important; }';
+    }
+
+    // ── BG DEPTH LAYERS ──
+    sceneBgLayers.forEach(function (layer) {
+      var parallaxY = scrollY * layer.speed;
+      layer.el.style.transform = 'translateY(' + parallaxY + 'px)';
+    });
+
+    // ── SECTIONS 3D ──
+    sceneSections.forEach(function (item) {
+      var el = item.el;
+      var rect = el.getBoundingClientRect();
+      var sectionCenter = rect.top + rect.height / 2;
+      var distFromCenter = (sectionCenter - vh / 2) / (vh / 2); // -1 a 1
+
+      // Calcola profondità dalla classe CSS
+      var depth = 0;
+      if (item.depthClass === 'depth-hero') depth = 60;
+      else if (item.depthClass === 'depth-projects') depth = -80;
+      else if (item.depthClass === 'depth-blog') depth = -200;
+      else if (item.depthClass === 'depth-training') depth = -350;
+
+      // Tilt: rotateX basato sulla distanza dal centro viewport
+      // Quando la sezione è al centro -> tilt = 0
+      // Quando si allontana -> tilt aumenta
+      var tilt = -distFromCenter * 5; // max ±5deg
+
+      // Depth of Field: blur basato sulla distanza dal centro
+      var dofBlur = Math.abs(distFromCenter) * 2.5;
+      dofBlur = clamp(dofBlur, 0, 3);
+
+      // Opacity: più è lontano dal centro, più è opaco (fade)
+      var depthFade = 1 - Math.abs(distFromCenter) * 0.2;
+      depthFade = clamp(depthFade, 0.4, 1);
+
+      // Applica transform 3D
+      // NOTA: manteniamo la translateZ base + tilt + compensate per perspective
+      var scaleComp = 1 + Math.abs(depth) / 3000; // compensa perspective stretch
+      var zOffset = depth;
+
+      // Incrementa Z di un piccolo offset basato su mouse per parallax sottile
+      var mouseZOffset = mouseY * (depth / 300);
+
+      el.style.transform = 'translateZ(' + (zOffset + mouseZOffset) + 'px) rotateX(' + tilt + 'deg) scale(' + scaleComp + ')';
+      el.style.filter = 'blur(' + dofBlur + 'px)';
+      el.style.opacity = depthFade;
+    });
+
+    // ── 3D CARD TILT ──
+    sceneCards.forEach(function (card) {
+      var rect = card.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > vh) return;
+
+      var cardCenterY = rect.top + rect.height / 2;
+      var cardCenterX = rect.left + rect.width / 2;
+      var distY = (cardCenterY - vh / 2) / (vh / 2);
+      var distX = (cardCenterX - window.innerWidth / 2) / (window.innerWidth / 2);
+
+      // Tilt combinato: scroll (asse X) + mouse (asse Y)
+      var tiltX = clamp(-distY * 5, -7, 7);
+      var tiltY = clamp(distX * 3 + mouseX * 2, -5, 5);
+
+      // Leggero translateZ per profondità
+      var cardZ = 3 - Math.abs(distY) * 2;
+
+      card.style.transform = 'perspective(800px) rotateX(' + tiltX + 'deg) rotateY(' + tiltY + 'deg) translateZ(' + cardZ + 'px)';
+    });
+
+    // ── FLOATING ELEMENTS ──
+    sceneFloaters.forEach(function (f) {
+      var depth = f.depth;
+      // Più è profondo (negativo), più lento si muove
+      var parallaxSpeed = 1 + (depth / 300);
+      var moveY = scrollY * parallaxSpeed * 0.03;
+      // Leggera parallax X col mouse
+      var moveX = mouseX * (depth / 200);
+      f.el.style.transform = 'translateY(' + moveY + 'px) translateX(' + moveX + 'px) translateZ(' + depth + 'px)';
+    });
+
+    // Next frame
+    requestAnimationFrame(update3DLoop);
+  }
+
+  // ── DIVIDER REVEAL (IntersectionObserver, non rAF) ────
+  function initDividerReveal() {
+    if (reduceMotion) return;
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.section-divider').forEach(function (el) {
+      obs.observe(el);
+    });
   }
 
   // ══════════════════════════════════════════════════════════
@@ -1795,7 +1701,7 @@
     injectFooter();
     injectNavSlider();
     initPageCounter();
-    initGlobeCanvas();
+    initBgAnimation();
     initTechAnimations();
     initLiveClock();
     initSidebarActive();
@@ -1827,8 +1733,10 @@
     initKeyboardShortcuts();
     initConsoleGreeting();
 
-    // ── Interactive 3D Globe Engine ──
-    initGlobeScene();
+    // ── True 3D Camera Engine ──
+    initScrollTracker();
+    init3DCamera();
+    initDividerReveal();
   });
 
   // Expose toast globally
