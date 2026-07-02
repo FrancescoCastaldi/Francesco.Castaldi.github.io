@@ -96,12 +96,17 @@
   <div class="floating-3d floating-3d-3" data-depth-3d="-60" style="top:80%;right:5%;width:10px;height:10px;border-radius:50%;border:1px solid rgba(249,115,22,0.2);background:transparent;opacity:0.15;"></div>
   <div class="floating-3d floating-3d-2" data-depth-3d="-100" style="top:45%;left:50%;width:4px;height:4px;background:var(--accent-blue);opacity:0.08;"></div>
 
+  <!-- 3D Background Depth Layers -->
+  <div class="bg-layer bg-layer-far" data-speed="0.03"></div>
+  <div class="bg-layer bg-layer-mid" data-speed="0.08"></div>
+  <div class="bg-layer bg-layer-near" data-speed="0.15"></div>
+
   <canvas id="bg-canvas"></canvas>
   <header id="site-header"></header>
 
   <main class="main-content">
     <!-- HERO -->
-    <section class="hero" data-parallax>
+    <section class="hero depth-hero" data-parallax>
       <div class="hero-inner">
         <div class="hero-text hero-layer-deep" data-parallax-speed="0.15">
           <h1 class="hero-title">Francesco<br>Castaldi</h1>
@@ -138,7 +143,7 @@
     <div class="section-divider"></div>
 
     <!-- PROJECTS SLIDER -->
-    <section id="projects" class="content-panel parallax-section scroll-reveal-3d scroll-reveal-3d-zoom" data-depth-3d="0">
+    <section id="projects" class="content-panel parallax-section depth-projects">
       <div class="section-label">// projects.carousel</div>
       <h2 class="section-title">Progetti in evidenza</h2>
       <div class="project-slider" data-slideshow="" data-interval="5000" data-shuffle="false">
@@ -216,12 +221,12 @@
     <div class="section-divider"></div>
 
     <!-- BLOG — rendering dinamico via posts.js + initBlogPosts() -->
-    <section id="blog" class="content-panel parallax-section scroll-reveal-3d scroll-reveal-3d-rotateX" data-depth-3d="0">
+    <section id="blog" class="content-panel parallax-section depth-blog">
       <div class="section-label">// blog.log</div>
       <h2 class="section-title">Ultimi Post</h2>
       <div
         id="blog-posts-grid"
-        class="blog-grid stagger-3d-grid"
+        class="blog-grid"
         data-category="Sport"
         data-limit="4"
       ></div>
@@ -233,7 +238,7 @@
     <div class="section-divider"></div>
 
     <!-- TRAINING PLAN GENERATOR -->
-    <section id="training-generator" class="content-panel parallax-section scroll-reveal-3d scroll-reveal-3d-flip" data-depth-3d="0">
+    <section id="training-generator" class="content-panel parallax-section depth-training">
       <div class="section-label">// training-generator.sh</div>
       <h2 class="section-title">Generatore Piani Allenamento</h2>
       <div class="terminal-card">
