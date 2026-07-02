@@ -1455,230 +1455,162 @@
   }
 
   // ══════════════════════════════════════════════════════════
-  //  TRUE 3D SCROLL ENGINE — Camera-based 3D Space
-  //  Il viewport è una camera che si muove in uno spazio 3D.
-  //  Ogni elemento ha una posizione (X, Y, Z) nella scena.
-  //  Lo scroll controlla il movimento della camera lungo Z.
+  //  3D SCROLL-DRIVEN ENGINE
+  //  Ogni elemento vive in uno spazio 3D e si muove/ruota
+  //  in base alla posizione di scroll con smooth interpolation
   // ══════════════════════════════════════════════════════════
 
   // ── Utils ─────────────────────────────────────────────
   function lerp(a, b, t) { return a + (b - a) * t; }
   function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
-  function mapRange(value, inMin, inMax, outMin, outMax) {
-    return outMin + (value - inMin) * (outMax - outMin) / (inMax - inMin);
-  }
 
-  // ── Scroll State (aggiornato via rAF) ─────────────────
+  // ── Scroll state (animato con rAF per smoothness) ─────
   var scrollState = {
     raw: 0,
     smooth: 0,
     velocity: 0,
-    progress: 0,
-    prevRaw: 0,
-    // Mouse 3D
-    mouseX: 0,
-    mouseY: 0,
-    mouseSmoothX: 0,
-    mouseSmoothY: 0
+    progress: 0,        // 0..1 su tutta la pagina
+    prevRaw: 0
   };
 
   function initScrollTracker() {
-    scrollState.smooth = window.scrollY;
-
+    var ticking = false;
     window.addEventListener('scroll', function () {
       scrollState.raw = window.scrollY;
+      if (!ticking) {
+        requestAnimationFrame(function () {
+          var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          scrollState.progress = docHeight > 0 ? clamp(scrollState.raw / docHeight, 0, 1) : 0;
+          scrollState.velocity = scrollState.raw - scrollState.prevRaw;
+          scrollState.prevRaw = scrollState.raw;
+          // Smooth follow
+          scrollState.smooth = lerp(scrollState.smooth, scrollState.raw, 0.12);
+          ticking = false;
+        });
+        ticking = true;
+      }
     }, { passive: true });
+    // Init
+    scrollState.smooth = window.scrollY;
+  }
 
-    document.addEventListener('mousemove', function (e) {
-      scrollState.mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-      scrollState.mouseY = (e.clientY / window.innerHeight) * 2 - 1;
+  // 1. Scroll Progress Bar
+  function initScrollProgress() {
+    var bar = document.querySelector('#scroll-progress .progress-track');
+    if (!bar) return;
+
+    var updateProgress = function () {
+      var scrollTop = window.scrollY;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight <= 0) return;
+      var progress = (scrollTop / docHeight) * 100;
+      bar.style.width = progress + '%';
+    };
+
+    window.addEventListener('scroll', throttle(updateProgress, 30), { passive: true });
+    updateProgress();
+  }
+
+  // 2. 3D Hero Parallax — multilivello con prospettiva
+  function initHeroParallax3D() {
+    if (reduceMotion) return;
+
+    var heroSection = document.querySelector('.hero');
+    if (!heroSection) return;
+
+    var heroText = heroSection.querySelector('.hero-text');
+    var heroTerminal = heroSection.querySelector('.hero-terminal');
+    var metaTags = heroSection.querySelectorAll('.hero-meta .meta-tag');
+
+    window.addEventListener('scroll', function () {
+      var scrollY = scrollState.smooth;
+      var heroHeight = heroSection.offsetHeight;
+      var progress = clamp(scrollY / (heroHeight * 0.8), 0, 1);
+
+      // Hero text: si muove in avanti (Z+) e su (Y-) con fade leggero
+      if (heroText) {
+        var ty = -progress * 25;
+        var tz = 60 - progress * 40;
+        var opacity = 1 - progress * 0.15;
+        heroText.style.transform = 'translateZ(' + tz + 'px) translateY(' + ty + 'px)';
+        heroText.style.opacity = opacity;
+      }
+
+      // Terminal: si allontana (Z-) e scende (Y+) con rotazione Y
+      if (heroTerminal) {
+        var ty2 = progress * 30;
+        var tz2 = -40 - progress * 30;
+        var rotY = -2 + progress * 4;
+        heroTerminal.style.transform = 'translateZ(' + tz2 + 'px) translateY(' + ty2 + 'px) rotateY(' + rotY + 'deg)';
+        heroTerminal.style.opacity = 0.92 - progress * 0.15;
+      }
+
+      // Meta tags: effetto profondità progressiva
+      metaTags.forEach(function (tag, i) {
+        var offset = (i + 1) * 8;
+        var tagZ = 10 - progress * 15 + offset;
+        tag.style.transform = 'translateZ(' + tagZ + 'px)';
+      });
     }, { passive: true });
   }
 
-  // ── Central 3D update loop (rAF) ──────────────────────
-  var sceneSections = [];
-  var sceneCards = [];
-  var sceneFloaters = [];
-  var sceneBgLayers = [];
-  var progressBar = null;
-  var glowEl = null;
-  var gridStyle = null;
-
-  function init3DCamera() {
+  // 3. 3D Scroll Reveal — sezioni entrano con prospettiva 3D
+  function initScrollReveal3D() {
     if (reduceMotion) {
-      // Fallback: mostra tutto normalmente
-      document.querySelectorAll('.bg-layer').forEach(function (el) { el.style.display = 'none'; });
+      document.querySelectorAll('.scroll-reveal-3d').forEach(function (el) {
+        el.classList.add('visible');
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
       return;
     }
 
-    // Cache sezioni con depth
-    var sections = document.querySelectorAll('.main-content > section, .main-content > .content-panel');
-    sections.forEach(function (s) {
-      var depthClass = null;
-      s.classList.forEach(function (c) {
-        if (c.indexOf('depth-') === 0) depthClass = c;
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
       });
-      if (depthClass) {
-        sceneSections.push({ el: s, depthClass: depthClass });
-      }
+    }, {
+      threshold: 0.05,
+      rootMargin: '0px 0px -60px 0px'
     });
 
-    // Cache card
-    var cards = document.querySelectorAll('.project-card, .skill-card, .expertise-card, .dashboard-card, .feature-card');
-    cards.forEach(function (c) { sceneCards.push(c); });
-
-    // Cache floating elements
-    document.querySelectorAll('.floating-3d').forEach(function (f) {
-      sceneFloaters.push({
-        el: f,
-        depth: parseFloat(f.getAttribute('data-depth-3d')) || -50,
-        baseX: parseFloat(f.style.left) || 50,
-        baseY: parseFloat(f.style.top) || 50
-      });
+    document.querySelectorAll('.scroll-reveal-3d').forEach(function (el) {
+      obs.observe(el);
     });
-
-    // Cache bg layers
-    document.querySelectorAll('.bg-layer').forEach(function (b) {
-      sceneBgLayers.push({
-        el: b,
-        speed: parseFloat(b.getAttribute('data-speed')) || 0.1
-      });
-    });
-
-    progressBar = document.querySelector('#scroll-progress .progress-track');
-    glowEl = document.getElementById('scroll-glow');
-
-    // Create style for grid parallax
-    gridStyle = document.createElement('style');
-    gridStyle.id = 'grid-parallax-style';
-    document.head.appendChild(gridStyle);
-
-    // Start the 3D loop
-    update3DLoop();
   }
 
-  // ── 3D Scene Update (chiamato da rAF) ─────────────────
-  function update3DLoop() {
-    // Smooth scroll con lerp (follow più fluido)
-    scrollState.smooth = lerp(scrollState.smooth, scrollState.raw, 0.08);
-    scrollState.velocity = scrollState.raw - scrollState.prevRaw;
-    scrollState.prevRaw = scrollState.raw;
-
-    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    scrollState.progress = docHeight > 0 ? clamp(scrollState.raw / docHeight, 0, 1) : 0;
-
-    // Smooth mouse
-    scrollState.mouseSmoothX = lerp(scrollState.mouseSmoothX, scrollState.mouseX, 0.06);
-    scrollState.mouseSmoothY = lerp(scrollState.mouseSmoothY, scrollState.mouseY, 0.06);
-
-    var scrollY = scrollState.smooth;
-    var vh = window.innerHeight;
-    var mouseX = scrollState.mouseSmoothX;
-    var mouseY = scrollState.mouseSmoothY;
-
-    // ── PROGRESS BAR ──
-    if (progressBar) {
-      var pct = docHeight > 0 ? (scrollY / docHeight) * 100 : 0;
-      progressBar.style.width = pct + '%';
+  // 4. 3D Stagger Grid — card con profondità progressiva
+  function initStagger3D() {
+    if (reduceMotion) {
+      document.querySelectorAll('.stagger-3d-grid > *').forEach(function (el) {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+      return;
     }
 
-    // ── SCROLL GLOW ──
-    if (glowEl) {
-      var glowY = scrollY + vh * 0.35;
-      glowEl.style.transform = 'translate(-50%, ' + glowY + 'px)';
-      glowEl.style.opacity = clamp(scrollY / 300, 0, 0.7);
-    }
-
-    // ── GRID PARALLAX (body::after) ──
-    if (gridStyle) {
-      gridStyle.textContent = 'body::after { background-position: ' +
-        (scrollY * 0.1) + 'px ' + (scrollY * 0.1) + 'px !important; }';
-    }
-
-    // ── BG DEPTH LAYERS ──
-    sceneBgLayers.forEach(function (layer) {
-      var parallaxY = scrollY * layer.speed;
-      layer.el.style.transform = 'translateY(' + parallaxY + 'px)';
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -80px 0px'
     });
 
-    // ── SECTIONS 3D ──
-    sceneSections.forEach(function (item) {
-      var el = item.el;
-      var rect = el.getBoundingClientRect();
-      var sectionCenter = rect.top + rect.height / 2;
-      var distFromCenter = (sectionCenter - vh / 2) / (vh / 2); // -1 a 1
-
-      // Calcola profondità dalla classe CSS
-      var depth = 0;
-      if (item.depthClass === 'depth-hero') depth = 60;
-      else if (item.depthClass === 'depth-projects') depth = -80;
-      else if (item.depthClass === 'depth-blog') depth = -200;
-      else if (item.depthClass === 'depth-training') depth = -350;
-
-      // Tilt: rotateX basato sulla distanza dal centro viewport
-      // Quando la sezione è al centro -> tilt = 0
-      // Quando si allontana -> tilt aumenta
-      var tilt = -distFromCenter * 5; // max ±5deg
-
-      // Depth of Field: blur basato sulla distanza dal centro
-      var dofBlur = Math.abs(distFromCenter) * 2.5;
-      dofBlur = clamp(dofBlur, 0, 3);
-
-      // Opacity: più è lontano dal centro, più è opaco (fade)
-      var depthFade = 1 - Math.abs(distFromCenter) * 0.2;
-      depthFade = clamp(depthFade, 0.4, 1);
-
-      // Applica transform 3D
-      // NOTA: manteniamo la translateZ base + tilt + compensate per perspective
-      var scaleComp = 1 + Math.abs(depth) / 3000; // compensa perspective stretch
-      var zOffset = depth;
-
-      // Incrementa Z di un piccolo offset basato su mouse per parallax sottile
-      var mouseZOffset = mouseY * (depth / 300);
-
-      el.style.transform = 'translateZ(' + (zOffset + mouseZOffset) + 'px) rotateX(' + tilt + 'deg) scale(' + scaleComp + ')';
-      el.style.filter = 'blur(' + dofBlur + 'px)';
-      el.style.opacity = depthFade;
+    document.querySelectorAll('.stagger-3d-grid').forEach(function (el) {
+      obs.observe(el);
     });
-
-    // ── 3D CARD TILT ──
-    sceneCards.forEach(function (card) {
-      var rect = card.getBoundingClientRect();
-      if (rect.bottom < 0 || rect.top > vh) return;
-
-      var cardCenterY = rect.top + rect.height / 2;
-      var cardCenterX = rect.left + rect.width / 2;
-      var distY = (cardCenterY - vh / 2) / (vh / 2);
-      var distX = (cardCenterX - window.innerWidth / 2) / (window.innerWidth / 2);
-
-      // Tilt combinato: scroll (asse X) + mouse (asse Y)
-      var tiltX = clamp(-distY * 5, -7, 7);
-      var tiltY = clamp(distX * 3 + mouseX * 2, -5, 5);
-
-      // Leggero translateZ per profondità
-      var cardZ = 3 - Math.abs(distY) * 2;
-
-      card.style.transform = 'perspective(800px) rotateX(' + tiltX + 'deg) rotateY(' + tiltY + 'deg) translateZ(' + cardZ + 'px)';
-    });
-
-    // ── FLOATING ELEMENTS ──
-    sceneFloaters.forEach(function (f) {
-      var depth = f.depth;
-      // Più è profondo (negativo), più lento si muove
-      var parallaxSpeed = 1 + (depth / 300);
-      var moveY = scrollY * parallaxSpeed * 0.03;
-      // Leggera parallax X col mouse
-      var moveX = mouseX * (depth / 200);
-      f.el.style.transform = 'translateY(' + moveY + 'px) translateX(' + moveX + 'px) translateZ(' + depth + 'px)';
-    });
-
-    // Next frame
-    requestAnimationFrame(update3DLoop);
   }
 
-  // ── DIVIDER REVEAL (IntersectionObserver, non rAF) ────
-  function initDividerReveal() {
+  // 5. 3D Section Divider
+  function initDivider3D() {
     if (reduceMotion) return;
+
     var obs = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
@@ -1686,9 +1618,104 @@
         obs.unobserve(entry.target);
       });
     }, { threshold: 0.2 });
+
     document.querySelectorAll('.section-divider').forEach(function (el) {
       obs.observe(el);
     });
+  }
+
+  // 6. 3D Scroll Glow — bagliore che segue il punto di scroll
+  function initScrollGlow3D() {
+    if (reduceMotion) return;
+
+    var glow = document.getElementById('scroll-glow');
+    if (!glow) return;
+
+    window.addEventListener('scroll', function () {
+      var scrollY = scrollState.smooth;
+      var winHeight = window.innerHeight;
+      var top = scrollY + winHeight * 0.35;
+      glow.style.transform = 'translate(-50%, ' + top + 'px)';
+      glow.style.opacity = clamp(scrollY / 400, 0, 0.7).toString();
+    }, { passive: true });
+  }
+
+  // 7. 3D Grid Parallax — muove la griglia di sfondo
+  function initGridParallax3D() {
+    var styleEl = document.createElement('style');
+    styleEl.id = 'grid-parallax-style';
+    document.head.appendChild(styleEl);
+
+    function updateGrid() {
+      var scrollY = scrollState.smooth;
+      styleEl.textContent = 'body::after { background-position: ' +
+        (scrollY * 0.15) + 'px ' + (scrollY * 0.15) + 'px !important; }';
+    }
+
+    window.addEventListener('scroll', throttle(updateGrid, 50), { passive: true });
+    updateGrid();
+  }
+
+  // 8. 3D Floating Elements — parallax di profondità
+  function initFloating3D() {
+    if (reduceMotion) return;
+
+    var floaters = document.querySelectorAll('.floating-3d');
+    if (!floaters.length) return;
+
+    window.addEventListener('scroll', function () {
+      var scrollY = scrollState.smooth;
+      floaters.forEach(function (el) {
+        var depth = parseFloat(el.getAttribute('data-depth-3d')) || -50;
+        // Più è negativo (lontano), più lento si muove
+        var speed = 1 + (depth / 200);
+        var moveY = scrollY * speed * 0.05;
+        el.style.transform = 'translateY(' + moveY + 'px) translateZ(' + depth + 'px)';
+      });
+    }, { passive: true });
+  }
+
+  // 9. 3D Card Tilt continuo — basato su viewport position
+  function initCardTilt3D() {
+    if (reduceMotion) return;
+
+    // Usa IntersectionObserver con soglie multiple per tilt continuo
+    var cards = document.querySelectorAll('.project-card, .skill-card, .expertise-card, .dashboard-card');
+    if (!cards.length) return;
+
+    // Tilt on scroll per tutte le card visibili
+    window.addEventListener('scroll', function () {
+      cards.forEach(function (card) {
+        var rect = card.getBoundingClientRect();
+        var viewCenter = window.innerHeight / 2;
+        var cardCenter = rect.top + rect.height / 2;
+        var dist = (cardCenter - viewCenter) / viewCenter;
+
+        // Solo se la card è visibile
+        if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+
+        var tiltX = clamp(-dist * 6, -8, 8);
+        var tiltY = clamp((rect.left + rect.width / 2 - window.innerWidth / 2) / (window.innerWidth / 2) * 3, -5, 5);
+        card.style.transform = 'perspective(600px) rotateX(' + tiltX + 'deg) rotateY(' + tiltY + 'deg) translateZ(0)';
+      });
+    }, { passive: true });
+  }
+
+  // 10. 3D Depth Layer Parallax
+  function initDepthLayers() {
+    if (reduceMotion) return;
+
+    window.addEventListener('scroll', function () {
+      var scrollY = scrollState.smooth;
+      // Muove gli elementi con data-depth-3d
+      document.querySelectorAll('[data-depth-3d]').forEach(function (el) {
+        var depth = parseFloat(el.getAttribute('data-depth-3d')) || 0;
+        if (depth === 0) return; // Skip main sections
+        var speed = depth / 200;
+        var moveY = scrollY * speed * 0.3;
+        el.style.transform = 'translateY(' + moveY + 'px)';
+      });
+    }, { passive: true });
   }
 
   // ══════════════════════════════════════════════════════════
@@ -1733,10 +1760,18 @@
     initKeyboardShortcuts();
     initConsoleGreeting();
 
-    // ── True 3D Camera Engine ──
+    // ── 3D Scroll-Driven Engine ──
     initScrollTracker();
-    init3DCamera();
-    initDividerReveal();
+    initScrollProgress();
+    initScrollReveal3D();
+    initStagger3D();
+    initDivider3D();
+    initHeroParallax3D();
+    initScrollGlow3D();
+    initGridParallax3D();
+    initFloating3D();
+    initCardTilt3D();
+    initDepthLayers();
   });
 
   // Expose toast globally
