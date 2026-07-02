@@ -1796,7 +1796,6 @@
     injectNavSlider();
     initPageCounter();
     initGlobeCanvas();
-    initGlobeScene(); // Subito dopo il canvas, prima di altri init
     initTechAnimations();
     initLiveClock();
     initSidebarActive();
@@ -1827,6 +1826,9 @@
     initScrollFab();
     initKeyboardShortcuts();
     initConsoleGreeting();
+
+    // ── Interactive 3D Globe Engine ──
+    initGlobeScene();
   });
 
   // Expose toast globally
