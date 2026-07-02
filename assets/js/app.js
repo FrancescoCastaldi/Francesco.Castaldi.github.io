@@ -117,7 +117,7 @@
       // Thin top bar with just brand and hamburger
       header.className = 'sidebar-mode';
       header.style.cssText = 'position:fixed;top:0;width:100%;padding:0.6rem 1rem;background:rgba(8,10,14,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:4500;display:flex;align-items:center;justify-content:space-between;';
-      header.innerHTML = '<div style="display:flex;align-items:center;gap:0.75rem;"><button id="sidebar-toggle" style="display:none;width:32px;height:32px;background:var(--bg-card);border:1px solid var(--border);border-radius:6px;color:var(--text-secondary);font-size:0.9rem;cursor:pointer;align-items:center;justify-content:center;" aria-label="Menu">☰</button><span style="font-size:0.7rem;font-weight:600;color:var(--text);letter-spacing:0.1em;text-transform:uppercase;font-family:var(--font-mono);">FRANCESCO CASTALDI</span></div><span style="font-size:0.65rem;color:var(--text-muted);font-family:var(--font-mono);">' + (currentFile === 'index.html' ? 'HOME' : currentFile.replace('.html','').toUpperCase()) + '</span>';
+      header.innerHTML = '<div style="display:flex;align-items:center;gap:0.75rem;"><button id="sidebar-toggle" style="width:32px;height:32px;background:var(--bg-card);border:1px solid var(--border);border-radius:6px;color:var(--text-secondary);font-size:0.9rem;cursor:pointer;align-items:center;justify-content:center;" aria-label="Menu">☰</button><span style="font-size:0.7rem;font-weight:600;color:var(--text);letter-spacing:0.1em;text-transform:uppercase;font-family:var(--font-mono);">FRANCESCO CASTALDI</span></div><span style="font-size:0.65rem;color:var(--text-muted);font-family:var(--font-mono);">' + (currentFile === 'index.html' ? 'HOME' : currentFile.replace('.html','').toUpperCase()) + '</span>';
     } else {
       // Legacy header for love.html
       var nav = document.createElement('nav');
@@ -194,14 +194,19 @@
   function injectSidebar() {
     if (!document.body.classList.contains('has-sidebar')) return;
 
-    var sidebar = document.createElement('div');
-    sidebar.id = 'sidebar';
-
     var baseEl = document.querySelector('base');
     var baseHref = baseEl ? baseEl.getAttribute('href') : '';
     var path = window.location.pathname;
     if (baseHref && path.startsWith(baseHref)) path = path.slice(baseHref.length);
     var currentFile = path.split('/').pop() || 'index.html';
+
+    var sidebar = document.createElement('div');
+    sidebar.id = 'sidebar';
+
+    // Top glow accent bar
+    var topGlow = document.createElement('div');
+    topGlow.className = 'sidebar-top-glow';
+    sidebar.appendChild(topGlow);
 
     var html = '';
 
@@ -218,7 +223,6 @@
 
     // Categories from CATEGORIES data
     CATEGORIES.forEach(function (cat) {
-      var isActive = currentFile && cat.pages.some(function (p) { return p.file === currentFile; });
       var icon = SIDEBAR_ICONS[cat.name] || '📁';
 
       html += '<div class="sidebar-section">' +
@@ -226,7 +230,8 @@
 
       cat.pages.forEach(function (p) {
         var linkActive = p.file === currentFile;
-        html += '<a href="' + cat.base + p.file + '" class="sidebar-link' + (linkActive ? ' active' : '') + '"><span class="sidebar-link-icon"></span>' + p.name + '</a>';
+        // Sub-page links without dedicated icons omit the icon span for cleaner spacing
+        html += '<a href="' + cat.base + p.file + '" class="sidebar-link' + (linkActive ? ' active' : '') + '">' + p.name + '</a>';
       });
 
       html += '</div>';
@@ -1450,6 +1455,210 @@
   }
 
   // ══════════════════════════════════════════════════════════
+  //  SCROLL-DRIVEN ENHANCEMENTS
+  // ══════════════════════════════════════════════════════════
+
+  // 1. Scroll Progress Bar
+  function initScrollProgress() {
+    var bar = document.querySelector('#scroll-progress .progress-track');
+    if (!bar) return;
+
+    var updateProgress = function () {
+      var scrollTop = window.scrollY;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight <= 0) return;
+      var progress = (scrollTop / docHeight) * 100;
+      bar.style.width = progress + '%';
+    };
+
+    window.addEventListener('scroll', throttle(updateProgress, 30), { passive: true });
+    updateProgress();
+  }
+
+  // 2. Scroll Reveal Animations (enhanced)
+  function initScrollReveal() {
+    if (reduceMotion) {
+      document.querySelectorAll('.scroll-reveal').forEach(function (el) {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+      return;
+    }
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        el.classList.add('visible');
+        obs.unobserve(el);
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    document.querySelectorAll('.scroll-reveal').forEach(function (el) {
+      obs.observe(el);
+    });
+  }
+
+  // 3. Stagger Grid Observer
+  function initStaggerObserver() {
+    if (reduceMotion) {
+      document.querySelectorAll('.stagger-grid > *').forEach(function (el) {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      });
+      return;
+    }
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var grid = entry.target;
+        grid.classList.add('visible');
+        obs.unobserve(grid);
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -60px 0px'
+    });
+
+    document.querySelectorAll('.stagger-grid').forEach(function (el) {
+      obs.observe(el);
+    });
+  }
+
+  // 4. Section Divider Animation
+  function initDividerReveal() {
+    if (reduceMotion) return;
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.section-divider').forEach(function (el) {
+      obs.observe(el);
+    });
+  }
+
+  // 5. Hero Parallax — multilivello
+  function initHeroParallax() {
+    if (reduceMotion) return;
+
+    var heroSection = document.querySelector('.hero');
+    if (!heroSection) return;
+
+    var layers = heroSection.querySelectorAll('[data-parallax-speed]');
+    if (!layers.length) return;
+
+    window.addEventListener('scroll', function () {
+      var scrollY = window.scrollY;
+      var heroHeight = heroSection.offsetHeight;
+      var heroTop = heroSection.offsetTop;
+      var progress = Math.min(scrollY / heroHeight, 1);
+
+      layers.forEach(function (layer) {
+        var speed = parseFloat(layer.getAttribute('data-parallax-speed')) || 0;
+        var move = progress * speed * 100;
+        layer.style.transform = 'translateY(' + move + 'px)';
+      });
+    }, { passive: true });
+  }
+
+  // 6. Scroll Glow — bagliore che segue lo scroll
+  function initScrollGlow() {
+    if (reduceMotion) return;
+
+    var glow = document.getElementById('scroll-glow');
+    if (!glow) return;
+
+    window.addEventListener('scroll', function () {
+      var scrollY = window.scrollY;
+      var winHeight = window.innerHeight;
+      // Sposta il glow verso il basso seguendo lo scroll
+      var top = scrollY + winHeight * 0.4;
+      glow.style.transform = 'translate(-50%, ' + top + 'px)';
+      // Opacità basata sulla velocità
+      glow.style.opacity = Math.min(scrollY / 500, 0.6).toString();
+    }, { passive: true });
+  }
+
+  // 7. Grid Overlay Parallax — muove la griglia di sfondo col scroll
+  function initGridParallax() {
+    // Crea uno style dinamico per muovere body::after con lo scroll
+    var styleEl = document.createElement('style');
+    styleEl.id = 'grid-parallax-style';
+    document.head.appendChild(styleEl);
+
+    function updateGrid() {
+      var scrollY = window.scrollY;
+      styleEl.textContent = 'body::after { background-position: ' +
+        (scrollY * 0.3) + 'px ' + (scrollY * 0.3) + 'px !important; }';
+    }
+
+    window.addEventListener('scroll', throttle(updateGrid, 50), { passive: true });
+    updateGrid();
+  }
+
+  // 8. Counter-up on scroll (animated numbers)
+  function initScrollCounters() {
+    document.querySelectorAll('[data-scroll-count]').forEach(function (el) {
+      var target = parseInt(el.getAttribute('data-scroll-count'), 10);
+      if (isNaN(target)) return;
+      var suffix = el.getAttribute('data-suffix') || '';
+      var duration = parseInt(el.getAttribute('data-duration'), 10) || 1500;
+
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          var start = 0;
+          var increment = Math.ceil(target / 30);
+          var current = 0;
+
+          function animate() {
+            current += increment;
+            if (current >= target) { current = target; }
+            el.textContent = current + suffix;
+            if (current < target) {
+              requestAnimationFrame(function () {
+                setTimeout(animate, duration / 30);
+              });
+            }
+          }
+          animate();
+          obs.unobserve(el);
+        });
+      }, { threshold: 0.3 });
+      obs.observe(el);
+    });
+  }
+
+  // 9. Card 3D Tilt su scroll
+  function initCard3DScroll() {
+    if (reduceMotion) return;
+
+    document.querySelectorAll('.card-3d-scroll').forEach(function (card) {
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          var rect = entry.target.getBoundingClientRect();
+          var center = rect.top + rect.height / 2;
+          var viewCenter = window.innerHeight / 2;
+          var dist = (center - viewCenter) / viewCenter;
+          var tilt = dist * 8; // max ±8deg
+          card.style.transform = 'perspective(600px) rotateX(' + (-tilt) + 'deg) translateZ(0)';
+        });
+      }, { threshold: [0, 0.25, 0.5, 0.75, 1] });
+      obs.observe(card);
+    });
+  }
+
+  // ══════════════════════════════════════════════════════════
   //  INIT
   // ══════════════════════════════════════════════════════════
   document.addEventListener('DOMContentLoaded', function () {
@@ -1490,6 +1699,17 @@
     initScrollFab();
     initKeyboardShortcuts();
     initConsoleGreeting();
+
+    // Scroll-Driven inizializzazioni
+    initScrollProgress();
+    initScrollReveal();
+    initStaggerObserver();
+    initDividerReveal();
+    initHeroParallax();
+    initScrollGlow();
+    initGridParallax();
+    initScrollCounters();
+    initCard3DScroll();
   });
 
   // Expose toast globally
