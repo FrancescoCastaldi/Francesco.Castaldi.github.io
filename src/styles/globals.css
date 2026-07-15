@@ -54,6 +54,16 @@
   a { color: inherit; text-decoration: none; }
 }
 
+/* Hero overlay animations */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
 /* InfoPanel animations */
 @keyframes slideIn {
   from { transform: translateX(100%); opacity: 0; }
@@ -70,6 +80,17 @@
 @keyframes pulse {
   0%, 100% { opacity: 0.5; }
   50% { opacity: 1; }
+}
+
+/* Loading screen animations */
+@keyframes loadingPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes dotAppear {
+  0%, 60% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 /* Scrollbar */

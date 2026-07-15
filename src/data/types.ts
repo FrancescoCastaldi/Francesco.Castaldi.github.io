@@ -3,6 +3,7 @@ export interface ProjectNode {
   label: string;
   title: string;
   slug: string;
+  color?: string;
   description: string;
   longDescription: string;
   tags: string[];

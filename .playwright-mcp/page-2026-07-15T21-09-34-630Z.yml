@@ -1,0 +1,18 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e3]:
+    - link "⚸ FC" [ref=e4] [cursor=pointer]:
+      - /url: /
+      - generic [ref=e5]: ⚸
+      - generic [ref=e6]: FC
+    - button "Menu" [ref=e7] [cursor=pointer]: ☰
+  - main
+  - generic:
+    - link "GitHub" [ref=e9] [cursor=pointer]:
+      - /url: https://github.com/FrancescoCastaldi
+    - generic: ·
+    - link "LinkedIn" [ref=e11] [cursor=pointer]:
+      - /url: https://www.linkedin.com/in/francescocastaldi
+    - generic: ·
+    - link "Email" [ref=e13] [cursor=pointer]:
+      - /url: mailto:info@francescocastaldi.it
+  - alert [ref=e14]

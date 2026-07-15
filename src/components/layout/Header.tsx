@@ -56,7 +56,10 @@ export default function Header() {
               color: "#F59E0B",
               fontFamily: "Georgia, serif",
               fontSize: 18,
+              cursor: "default",
             }}
+            onMouseEnter={(e) => e.currentTarget.style.filter = 'drop-shadow(0 0 8px rgba(245,158,11,0.4))'}
+            onMouseLeave={(e) => e.currentTarget.style.filter = 'none'}
           >
             ⚸
           </span>
@@ -80,9 +83,8 @@ export default function Header() {
             fontFamily: "Inter, sans-serif",
             letterSpacing: "0.08em",
             textTransform: "uppercase",
-            display: "none",
           }}
-          className="md:block"
+          className="hidden md:block"
         >
           Explore the Network
         </span>
@@ -105,7 +107,18 @@ export default function Header() {
             fontSize: 14,
           }}
         >
-          {menuOpen ? "✕" : "☰"}
+          {menuOpen ? (
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <line x1="2" y1="4" x2="14" y2="4" stroke="#9BA9BB" strokeWidth="1.5" strokeLinecap="round"/>
+              <line x1="2" y1="8" x2="14" y2="8" stroke="#9BA9BB" strokeWidth="1.5" strokeLinecap="round"/>
+              <line x1="2" y1="12" x2="14" y2="12" stroke="#9BA9BB" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+          ) : (
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <line x1="3" y1="3" x2="13" y2="13" stroke="#9BA9BB" strokeWidth="1.5" strokeLinecap="round"/>
+              <line x1="13" y1="3" x2="3" y2="13" stroke="#9BA9BB" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+          )}
         </button>
       </header>
 
@@ -146,7 +159,7 @@ export default function Header() {
             { label: "All Projects", href: "#", action: () => handleNav("#") },
             { label: "Blog", href: "/blog", action: () => handleNav("/blog") },
             { label: "Contact", href: "/contact", action: () => handleNav("/contact") },
-          ].map((item) => (
+          ].map((item, index) => (
             <Link
               key={item.label}
               href={item.href}
@@ -161,6 +174,8 @@ export default function Header() {
                 textDecoration: "none",
                 transition: "color 0.2s",
                 letterSpacing: "-0.02em",
+                animation: "fadeSlideUp 0.4s ease backwards",
+                animationDelay: `${index * 80}ms`,
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "#F59E0B")}
               onMouseLeave={(e) => (e.currentTarget.style.color = "#E7EDF5")}

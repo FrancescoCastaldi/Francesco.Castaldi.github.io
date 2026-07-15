@@ -44,6 +44,37 @@ export default function Constellation() {
     gl.setClearColor("#06080C");
   }, [gl]);
 
+  // Lookup map for node labels
+  const nodeLabelMap = useMemo(() => {
+    const map = new Map<string, string>();
+    projects.forEach((p) => {
+      const title = p.title.length > 20 ? p.title.slice(0, 17) + "..." : p.title;
+      map.set(p.id, title);
+    });
+    skills.forEach((s) => {
+      map.set(s.id, s.name);
+    });
+    return map;
+  }, []);
+
+  // Find the node with the most edge connections (featured)
+  const featuredNodeId = useMemo(() => {
+    const counts = new Map<string, number>();
+    layout.edges.forEach((edge) => {
+      counts.set(edge.source, (counts.get(edge.source) || 0) + 1);
+      counts.set(edge.target, (counts.get(edge.target) || 0) + 1);
+    });
+    let maxCount = 0;
+    let featured = "";
+    counts.forEach((count, id) => {
+      if (count > maxCount) {
+        maxCount = count;
+        featured = id;
+      }
+    });
+    return featured;
+  }, [layout.edges]);
+
   return (
     <>
       <Starfield />
@@ -64,6 +95,9 @@ export default function Constellation() {
         <Node3D
           key={node.id}
           node={node}
+          label={nodeLabelMap.get(node.id) || node.id}
+          color={node.color}
+          isFeatured={node.id === featuredNodeId}
           isDimmed={
             selectedNodeId !== null &&
             selectedNodeId !== node.id &&

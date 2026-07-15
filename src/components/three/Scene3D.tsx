@@ -1,6 +1,7 @@
 "use client";
-import { Suspense } from "react";
+import { Suspense, useState, useCallback } from "react";
 import dynamic from "next/dynamic";
+import LoadingScreen from "@/components/ui/LoadingScreen";
 
 const Canvas = dynamic(
   () => import("@react-three/fiber").then((mod) => mod.Canvas),
@@ -16,13 +17,27 @@ function SceneFallback() {
 }
 
 export default function Scene3D() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isCanvasReady, setIsCanvasReady] = useState(false);
+
+  const handleCreated = useCallback(() => {
+    setIsCanvasReady(true);
+  }, []);
+
+  const handleLoaded = useCallback(() => {
+    setIsLoading(false);
+  }, []);
+
   return (
-    <div className="fixed inset-0 z-0">
+    <div className="fixed inset-0 z-0" style={{ cursor: "crosshair" }}>
+      {isLoading && <LoadingScreen onLoaded={handleLoaded} />}
+
       <Canvas
         camera={{ position: [0, 0, 12], fov: 50 }}
         gl={{ antialias: true, alpha: false }}
         dpr={[1, 2]}
         style={{ background: "#06080C" }}
+        onCreated={handleCreated}
       >
         <Suspense fallback={null}>
           <Constellation />
