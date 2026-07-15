@@ -101,6 +101,7 @@ export default function Constellation() {
           isDimmed={
             selectedNodeId !== null &&
             selectedNodeId !== node.id &&
+            node.id !== featuredNodeId && // featured never dims fully
             !layout.edges.some(
               (e) =>
                 (e.source === selectedNodeId && e.target === node.id) ||

@@ -22,7 +22,7 @@ export function computeLayout(
     position: { x: 0, y: 0, z: 0 },
     label: s.label,
     color: s.color,
-    radius: 1.0,
+    radius: 1.3,
     type: "skill" as const,
     data: s,
   }));
@@ -32,7 +32,7 @@ export function computeLayout(
     position: { x: 0, y: 0, z: 0 },
     label: p.label,
     color: "#F59E0B",
-    radius: 0.7,
+    radius: 1.1,
     type: "project" as const,
     data: p,
   }));
