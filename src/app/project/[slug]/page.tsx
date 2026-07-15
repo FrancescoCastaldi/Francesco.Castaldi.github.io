@@ -4,7 +4,7 @@ import { skills } from "@/data/skills";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
 
@@ -14,41 +14,61 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   if (!project) notFound();
 
   return (
-    <main style={pageStyles}>
-      <article style={cardStyles}>
-        {/* Breadcrumb / back link */}
-        <Link href="/"           style={backLinkStyles}>
+    <div style={{
+      position: "relative",
+      zIndex: 60,
+      minHeight: "100vh",
+      padding: "80px 5% 60px",
+      background: "rgba(6, 8, 12, 0.85)",
+      backdropFilter: "blur(16px)",
+    }}>
+      <main style={{ maxWidth: 680, margin: "0 auto" }}>
+        {/* Back link */}
+        <Link href="/" style={backLinkStyle}>
           ← Return to constellation
         </Link>
 
-        {/* Category */}
-        <span style={categoryStyles}>
+        {/* Category badge with icon */}
+        <span style={categoryBadgeStyle}>
           {project.icon} Project
         </span>
 
         {/* Title */}
-        <h1 style={titleStyles}>{project.title}</h1>
+        <h1 style={titleStyle}>{project.title}</h1>
+
+        {/* Gold accent */}
+        <div style={accentLineStyle} />
 
         {/* Description */}
-        <p style={descStyles}>{project.longDescription}</p>
+        <p style={descriptionStyle}>{project.longDescription}</p>
 
         {/* Tags */}
-        <div style={tagsWrapStyles}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 24 }}>
           {project.tags.map((tag) => (
-            <span key={tag} style={tagStyles}>{tag}</span>
+            <span key={tag} style={{
+              ...tagStyle,
+              borderColor: `${project.color}30`,
+              color: project.color || "#22D3EE",
+            }}>
+              {tag}
+            </span>
           ))}
         </div>
 
-        {/* Skills links */}
+        {/* Related Skills */}
         {project.skills.length > 0 && (
-          <div style={{ marginTop: 24, paddingTop: 20, borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-            <span style={sectionLabelStyles}>Related Skills</span>
-            <div style={skillsWrapStyles}>
+          <div style={{ marginTop: 32, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+            <span style={sectionLabelStyle}>Related Skills</span>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 12 }}>
               {project.skills.map((skillId) => {
                 const skill = skills.find((s) => s.id === skillId);
                 return skill ? (
-                  <Link key={skillId} href={`/skill/${skill.id}`} style={skillLinkStyles}>
-                    {skill.icon} {skill.name}
+                  <Link key={skillId} href={`/skill/${skill.id}`} style={{
+                    ...skillCardStyle,
+                    borderColor: `${skill.color}20`,
+                  }}>
+                    <span>{skill.icon}</span>
+                    <span>{skill.name}</span>
                   </Link>
                 ) : null;
               })}
@@ -57,113 +77,104 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         )}
 
         {/* Links */}
-        <div style={linksWrapStyles}>
-          {project.links.github && (
-            <a href={project.links.github} target="_blank" rel="noopener noreferrer" style={buttonStyles}>
+        {project.links.github && (
+          <div style={{ marginTop: 32, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+            <a href={project.links.github} target="_blank" rel="noopener noreferrer" style={buttonStyle}>
               View on GitHub →
             </a>
-          )}
-          {project.links.demo && (
-            <a href={project.links.demo} target="_blank" rel="noopener noreferrer" style={buttonStyles}>
+          </div>
+        )}
+        {project.links.demo && (
+          <div style={{ marginTop: 32, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+            <a href={project.links.demo} target="_blank" rel="noopener noreferrer" style={buttonStyle}>
               Live Demo →
             </a>
-          )}
+          </div>
+        )}
+
+        {/* Bottom nav */}
+        <div style={{ marginTop: 48, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+          <Link href="/" style={backLinkStyle}>
+            ← Return to constellation
+          </Link>
         </div>
-      </article>
-    </main>
+      </main>
+    </div>
   );
 }
 
-// --- Styles (inline, consistent with Nocturne design system) ---
-const pageStyles: React.CSSProperties = {
-  minHeight: "100vh",
-  background: "#06080C",
-  display: "flex",
-  justifyContent: "center",
-  padding: "80px 5% 60px",
-  animation: "pageFadeIn 0.35s ease-out",
-};
-
-const cardStyles: React.CSSProperties = {
-  maxWidth: 560,
-  width: "100%",
-  background: "#0C111A",
-  border: "1px solid rgba(255,255,255,0.06)",
-  borderRadius: 12,
-  padding: "32px 28px",
-};
-
-const backLinkStyles: React.CSSProperties = {
-  display: "inline-block",
+// Style definitions
+const backLinkStyle = {
   fontFamily: '"JetBrains Mono", monospace',
   fontSize: 11,
   color: "#F59E0B",
   textDecoration: "none",
+  display: "inline-flex",
+  alignItems: "center",
+  gap: 6,
   marginBottom: 24,
-  transition: "color 0.2s",
-};
+} as const;
 
-const categoryStyles: React.CSSProperties = {
+const categoryBadgeStyle = {
+  display: "inline-block",
   fontFamily: '"JetBrains Mono", monospace',
   fontSize: 10,
   color: "#F59E0B",
-  textTransform: "uppercase",
-  letterSpacing: "0.12em",
-  display: "block",
-  marginBottom: 12,
+  background: "rgba(245,158,11,0.1)",
+  padding: "4px 12px",
+  borderRadius: 4,
+  marginBottom: 16,
+  textTransform: "uppercase" as const,
+  letterSpacing: "0.08em",
 };
 
-const titleStyles: React.CSSProperties = {
+const titleStyle = {
   fontFamily: '"DM Serif Display", Georgia, serif',
-  fontSize: "clamp(24px, 4vw, 36px)",
-  color: "#E7EDF5",
+  fontSize: "clamp(28px, 4vw, 40px)" as const,
   fontWeight: 400,
-  letterSpacing: "-0.02em",
-  lineHeight: 1.15,
-  marginBottom: 20,
+  color: "#E7EDF5",
+  letterSpacing: "-0.03em",
+  lineHeight: 1.08,
+  marginBottom: 16,
 };
 
-const descStyles: React.CSSProperties = {
+const accentLineStyle = {
+  width: 40,
+  height: 2,
+  background: "#F59E0B",
+  borderRadius: 2,
+  marginBottom: 24,
+};
+
+const descriptionStyle = {
   color: "#9BA9BB",
-  fontSize: 14,
-  lineHeight: 1.7,
+  fontSize: 15,
+  lineHeight: 1.8,
   fontFamily: '"Inter", sans-serif',
   marginBottom: 24,
 };
 
-const tagsWrapStyles: React.CSSProperties = {
-  display: "flex",
-  flexWrap: "wrap",
-  gap: 8,
-  marginBottom: 8,
-};
-
-const tagStyles: React.CSSProperties = {
+const tagStyle = {
   fontSize: 10,
   fontFamily: '"JetBrains Mono", monospace',
-  color: "#22D3EE",
-  background: "rgba(34, 211, 238, 0.08)",
   padding: "4px 10px",
   borderRadius: 4,
-};
+  border: "1px solid",
+} as const;
 
-const sectionLabelStyles: React.CSSProperties = {
+const sectionLabelStyle = {
   fontSize: 10,
   fontFamily: '"JetBrains Mono", monospace',
   color: "#4B5768",
-  textTransform: "uppercase",
+  textTransform: "uppercase" as const,
   letterSpacing: "0.08em",
-  display: "block",
-  marginBottom: 10,
+  display: "block" as const,
 };
 
-const skillsWrapStyles: React.CSSProperties = {
-  display: "flex",
-  flexWrap: "wrap",
-  gap: 8,
-};
-
-const skillLinkStyles: React.CSSProperties = {
+const skillCardStyle = {
+  display: "inline-flex",
+  alignItems: "center",
+  gap: 6,
   color: "#9BA9BB",
   fontSize: 12,
   fontFamily: '"Inter", sans-serif',
@@ -171,28 +182,19 @@ const skillLinkStyles: React.CSSProperties = {
   padding: "6px 12px",
   background: "rgba(255,255,255,0.03)",
   borderRadius: 6,
-  border: "1px solid rgba(255,255,255,0.06)",
-  transition: "all 0.2s",
-};
+  border: "1px solid",
+} as const;
 
-const linksWrapStyles: React.CSSProperties = {
-  display: "flex",
-  gap: 12,
-  marginTop: 28,
-  paddingTop: 24,
-  borderTop: "1px solid rgba(255,255,255,0.06)",
-};
-
-const buttonStyles: React.CSSProperties = {
+const buttonStyle = {
   display: "inline-flex",
   alignItems: "center",
   gap: 6,
   color: "#F59E0B",
-  fontSize: 12,
+  fontSize: 13,
   fontFamily: '"Inter", sans-serif',
   textDecoration: "none",
-  border: "1px solid rgba(245, 158, 11, 0.25)",
-  padding: "8px 16px",
-  borderRadius: 6,
-  transition: "background 0.2s",
-};
+  border: "1px solid rgba(245,158,11,0.3)",
+  padding: "10px 20px",
+  borderRadius: 8,
+  fontWeight: 500,
+} as const;

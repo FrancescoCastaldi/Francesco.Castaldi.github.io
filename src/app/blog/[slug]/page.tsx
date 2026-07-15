@@ -40,18 +40,18 @@ export default async function BlogPostPage({
         zIndex: 60,
         minHeight: "100vh",
         padding: "80px 5% 60px",
-        background: "rgba(6, 8, 12, 0.92)",
+        background: "rgba(6, 8, 12, 0.85)",
         backdropFilter: "blur(16px)",
       }}
     >
-      <article style={{ maxWidth: 600, margin: "0 auto" }}>
+      <article style={{ maxWidth: 680, margin: "0 auto" }}>
+        {/* Back link */}
         <Link
           href="/blog"
-          className="back-link"
           style={{
-            color: "#4B5768",
-            fontSize: 12,
-            fontFamily: "Inter, sans-serif",
+            fontFamily: '"JetBrains Mono", monospace',
+            fontSize: 11,
+            color: "#F59E0B",
             textDecoration: "none",
             display: "inline-flex",
             alignItems: "center",
@@ -62,67 +62,83 @@ export default async function BlogPostPage({
           ← Back to blog
         </Link>
 
-        <h1
-          style={{
-            fontFamily: "DM Serif Display, Georgia, serif",
-            fontSize: "clamp(24px, 4vw, 34px)",
-            fontWeight: 400,
-            color: "#E7EDF5",
-            marginBottom: 12,
-            letterSpacing: "-0.02em",
-            lineHeight: 1.15,
-          }}
-        >
+        {/* Category badge */}
+        <span style={{
+          display: "inline-block",
+          fontFamily: '"JetBrains Mono", monospace',
+          fontSize: 10,
+          color: "#F59E0B",
+          background: "rgba(245,158,11,0.1)",
+          padding: "3px 10px",
+          borderRadius: 4,
+          marginBottom: 16,
+          textTransform: "uppercase",
+          letterSpacing: "0.08em",
+        }}>
+          {post.category}
+        </span>
+
+        {/* Title */}
+        <h1 style={{
+          fontFamily: '"DM Serif Display", Georgia, serif',
+          fontSize: "clamp(28px, 4vw, 40px)",
+          fontWeight: 400,
+          color: "#E7EDF5",
+          letterSpacing: "-0.03em",
+          lineHeight: 1.08,
+          marginBottom: 12,
+        }}>
           {post.title}
         </h1>
 
-        <div
-          style={{
-            display: "flex",
-            gap: 16,
-            fontSize: 12,
-            color: "#4B5768",
-            fontFamily: "Inter, sans-serif",
-            marginBottom: 32,
-            paddingBottom: 20,
-            borderBottom: "1px solid rgba(255,255,255,0.06)",
-          }}
-        >
+        {/* Gold accent line */}
+        <div style={{ width: 40, height: 2, background: "#F59E0B", borderRadius: 2, marginBottom: 20 }} />
+
+        {/* Metadata */}
+        <div style={{
+          display: "flex",
+          gap: 16,
+          fontSize: 12,
+          color: "#4B5768",
+          fontFamily: '"Inter", sans-serif',
+          marginBottom: 32,
+          paddingBottom: 20,
+          borderBottom: "1px solid rgba(255,255,255,0.06)",
+        }}>
           <span>{post.date}</span>
           <span>·</span>
           <span>{post.readingTime} min read</span>
         </div>
 
-        <div
-          style={{
-            color: "#9BA9BB",
-            fontSize: 14,
-            lineHeight: 1.8,
-            fontFamily: "Inter, sans-serif",
-          }}
-        >
+        {/* Content */}
+        <div style={{
+          color: "#9BA9BB",
+          fontSize: 15,
+          lineHeight: 1.8,
+          fontFamily: '"Inter", sans-serif',
+        }}>
           {post.content.split("\n\n").map((paragraph, i) => {
             if (paragraph.startsWith("## ")) {
               return (
-                <h2
-                  key={i}
-                  style={{
-                    fontFamily: "DM Serif Display, Georgia, serif",
-                    fontSize: 20,
+                <div key={i} style={{ display: "flex", gap: 12, margin: "36px 0 16px" }}>
+                  <div style={{ width: 3, background: "#F59E0B", borderRadius: 2, flexShrink: 0 }} />
+                  <h2 style={{
+                    fontFamily: '"DM Serif Display", Georgia, serif',
+                    fontSize: 22,
                     color: "#E7EDF5",
-                    margin: "32px 0 12px",
                     fontWeight: 400,
-                  }}
-                >
-                  {paragraph.replace("## ", "")}
-                </h2>
+                    margin: 0,
+                  }}>
+                    {paragraph.replace("## ", "")}
+                  </h2>
+                </div>
               );
             }
             if (paragraph.startsWith("- ")) {
               return (
                 <ul key={i} style={{ padding: "0 0 0 20px", margin: "12px 0" }}>
                   {paragraph.split("\n").map((line, j) => (
-                    <li key={j} style={{ marginBottom: 4 }}>
+                    <li key={j} style={{ marginBottom: 6 }}>
                       {line.replace("- ", "")}
                     </li>
                   ))}
@@ -130,11 +146,27 @@ export default async function BlogPostPage({
               );
             }
             return (
-              <p key={i} style={{ marginBottom: 16 }}>
+              <p key={i} style={{ marginBottom: 20 }}>
                 {paragraph}
               </p>
             );
           })}
+        </div>
+
+        {/* Bottom navigation */}
+        <div style={{
+          marginTop: 48,
+          paddingTop: 24,
+          borderTop: "1px solid rgba(255,255,255,0.06)",
+          display: "flex",
+          justifyContent: "space-between",
+        }}>
+          <Link href="/blog" style={{ color: "#F59E0B", fontSize: 12, fontFamily: '"Inter", sans-serif', textDecoration: "none" }}>
+            ← Back to blog
+          </Link>
+          <Link href="/" style={{ color: "#4B5768", fontSize: 12, fontFamily: '"Inter", sans-serif', textDecoration: "none" }}>
+            Return to constellation →
+          </Link>
         </div>
       </article>
     </div>

@@ -1,5 +1,14 @@
+.blog-card {
+  transition: border-color 0.2s, transform 0.2s, background 0.2s !important;
+}
+
 .blog-card:hover {
-  border-color: rgba(245, 158, 11, 0.25) !important;
+  background: rgba(18, 26, 38, 0.95) !important;
+  transform: translateX(4px);
+}
+
+.blog-card:hover .blog-card-arrow {
+  transform: translateX(4px);
 }
 
 .back-link:hover {
