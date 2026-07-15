@@ -2,8 +2,11 @@
 import { useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import { MeshDistortMaterial, Html } from "@react-three/drei";
+import { useRouter } from "next/navigation";
 import * as THREE from "three";
 import { useConstellationStore } from "@/store/constellation-store";
+import { projects } from "@/data/projects";
+import { skills } from "@/data/skills";
 import type { PositionedNode } from "@/data/types";
 
 interface Node3DProps {
@@ -19,9 +22,10 @@ export default function Node3D({ node, label, color, isDimmed, isFeatured = fals
   const innerGlowRef = useRef<THREE.Mesh>(null);
   const selectedRingRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
-  const { hoverNode, selectNode, selectedNodeId } = useConstellationStore();
+  const router = useRouter();
+  const { hoverNode, selectedNodeId } = useConstellationStore();
   const isSelected = selectedNodeId === node.id;
-  const scale = isSelected ? 1.6 : hovered ? 1.3 : 1;
+  const scale = isSelected ? 1.3 : hovered ? 1.15 : 1;
   const opacity = isDimmed && !isSelected && !hovered ? 0.3 : 1;
 
   useFrame((state) => {
@@ -29,8 +33,8 @@ export default function Node3D({ node, label, color, isDimmed, isFeatured = fals
     // Determine target scale
     let targetScale = scale;
     if (isFeatured && !isSelected && !hovered) {
-      // Oscillate between 1.0 and 1.25 over ~3s sine wave
-      targetScale = 1 + 0.25 * (0.5 + 0.5 * Math.sin(state.clock.elapsedTime * ((2 * Math.PI) / 3)));
+      // Oscillate between 1.0 and 1.12 over ~3s sine wave
+      targetScale = 1 + 0.12 * (0.5 + 0.5 * Math.sin(state.clock.elapsedTime * ((2 * Math.PI) / 3)));
     }
     // Smooth scale transition
     meshRef.current.scale.lerp(
@@ -59,7 +63,17 @@ export default function Node3D({ node, label, color, isDimmed, isFeatured = fals
 
   const handleClick = (e: any) => {
     e.stopPropagation();
-    selectNode(node.id);
+    if (node.type === "project") {
+      const project = projects.find((p) => p.id === node.id);
+      if (project) {
+        router.push(`/project/${project.slug}`);
+      }
+    } else {
+      const skill = skills.find((s) => s.id === node.id);
+      if (skill) {
+        router.push(`/skill/${node.id}`);
+      }
+    }
   };
 
   const handlePointerOver = (e: any) => {
@@ -105,7 +119,7 @@ export default function Node3D({ node, label, color, isDimmed, isFeatured = fals
 
       {/* Outer glow ring */}
       <mesh position={[0, -0.1, 0]}>
-        <ringGeometry args={[node.radius * 2, node.radius * 3.5, 32]} />
+        <ringGeometry args={[node.radius * 1.8, node.radius * 2.8, 32]} />
         <meshBasicMaterial
           color={color}
           transparent
@@ -121,7 +135,7 @@ export default function Node3D({ node, label, color, isDimmed, isFeatured = fals
 
       {/* Inner glow ring - closer, brighter */}
       <mesh ref={innerGlowRef} position={[0, -0.05, 0]}>
-        <ringGeometry args={[node.radius * 0.8, node.radius * 1.4, 32]} />
+        <ringGeometry args={[node.radius * 0.6, node.radius * 1.2, 32]} />
         <meshBasicMaterial
           color={color}
           transparent
@@ -138,7 +152,7 @@ export default function Node3D({ node, label, color, isDimmed, isFeatured = fals
       {/* Selected: expanding outer ring */}
       {isSelected && (
         <mesh ref={selectedRingRef} position={[0, 0, 0]}>
-          <ringGeometry args={[node.radius * 3, node.radius * 4, 32]} />
+          <ringGeometry args={[node.radius * 2.5, node.radius * 3.5, 32]} />
           <meshBasicMaterial
             color={color}
             transparent
@@ -151,7 +165,7 @@ export default function Node3D({ node, label, color, isDimmed, isFeatured = fals
 
       {/* Floating HTML label */}
       <Html
-        position={[0, -0.8, 0]}
+        position={[0, -1.5, 0]}
         center
         distanceFactor={10}
         style={{

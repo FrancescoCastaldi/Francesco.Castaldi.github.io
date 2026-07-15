@@ -71,7 +71,7 @@ export default function Edge3D({ edge, nodes }: Edge3DProps) {
           <lineBasicMaterial
             color="#22D3EE"
             transparent
-            opacity={0.15}
+            opacity={0.25}
           />
         </line>
       )}
@@ -90,7 +90,7 @@ export default function Edge3D({ edge, nodes }: Edge3DProps) {
         <lineBasicMaterial
           color={isActive ? "#22D3EE" : "#2E3847"}
           transparent
-          opacity={isActive ? 0.6 : 0.15}
+          opacity={isActive ? 0.7 : 0.25}
         />
       </line>
 
