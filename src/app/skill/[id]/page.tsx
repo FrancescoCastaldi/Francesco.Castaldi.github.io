@@ -7,8 +7,9 @@ export function generateStaticParams() {
   return skills.map((s) => ({ id: s.id }));
 }
 
-export default function SkillPage({ params }: { params: { id: string } }) {
-  const skill = skills.find((s) => s.id === params.id);
+export default async function SkillPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const skill = skills.find((s) => s.id === id);
   if (!skill) notFound();
 
   const levelMap = { beginner: 1, intermediate: 2, advanced: 2, expert: 3 };
@@ -22,8 +23,6 @@ export default function SkillPage({ params }: { params: { id: string } }) {
         <Link
           href="/"
           style={backLinkStyles}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#F59E0B")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#4B5768")}
         >
           ← Return to constellation
         </Link>
@@ -90,7 +89,7 @@ const cardStyles: React.CSSProperties = {
 const backLinkStyles: React.CSSProperties = {
   display: "inline-block",
   fontFamily: '"JetBrains Mono", monospace',
-  fontSize: 11, color: "#4B5768",
+  fontSize: 11, color: "#F59E0B",
   textDecoration: "none", marginBottom: 24,
 };
 const categoryStyles: React.CSSProperties = {

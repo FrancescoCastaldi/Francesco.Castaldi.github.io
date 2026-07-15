@@ -8,20 +8,16 @@ export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
 }
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
-  const project = projects.find((p) => p.slug === params.slug);
+export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
   if (!project) notFound();
 
   return (
     <main style={pageStyles}>
       <article style={cardStyles}>
         {/* Breadcrumb / back link */}
-        <Link
-          href="/"
-          style={backLinkStyles}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#F59E0B")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#4B5768")}
-        >
+        <Link href="/"           style={backLinkStyles}>
           ← Return to constellation
         </Link>
 
@@ -101,7 +97,7 @@ const backLinkStyles: React.CSSProperties = {
   display: "inline-block",
   fontFamily: '"JetBrains Mono", monospace',
   fontSize: 11,
-  color: "#4B5768",
+  color: "#F59E0B",
   textDecoration: "none",
   marginBottom: 24,
   transition: "color 0.2s",
