@@ -37,20 +37,18 @@ export default function HeroOverlay() {
           bottom: "15%",
         }}
       >
-        {/* Glyph */}
+        {/* Accent bar */}
         <div
           style={{
-            fontSize: "clamp(24px, 4vw, 40px)",
-            color: "#F59E0B",
-            fontFamily: "DM Serif Display, Georgia, serif",
-            lineHeight: 1,
-            marginBottom: 8,
+            width: 32,
+            height: 3,
+            background: "#F59E0B",
+            borderRadius: 2,
+            marginBottom: 16,
             animation: "fadeSlideUp 0.6s ease forwards",
             opacity: 0,
           }}
-        >
-          ⚸
-        </div>
+        />
 
         {/* Name */}
         <h1

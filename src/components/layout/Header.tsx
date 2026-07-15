@@ -53,25 +53,13 @@ export default function Header() {
         >
           <span
             style={{
-              color: "#F59E0B",
-              fontFamily: "Georgia, serif",
-              fontSize: 18,
-              cursor: "default",
-            }}
-            onMouseEnter={(e) => e.currentTarget.style.filter = 'drop-shadow(0 0 8px rgba(245,158,11,0.4))'}
-            onMouseLeave={(e) => e.currentTarget.style.filter = 'none'}
-          >
-            ⚸
-          </span>
-          <span
-            style={{
               color: "#E7EDF5",
               fontFamily: "DM Serif Display, Georgia, serif",
-              fontSize: 14,
-              letterSpacing: "0.02em",
+              fontSize: 18,
+              letterSpacing: "-0.02em",
             }}
           >
-            FC
+            Francesco<span style={{ color: "#F59E0B" }}> Castaldi</span>
           </span>
         </Link>
 
@@ -147,11 +135,11 @@ export default function Header() {
               marginBottom: 32,
             }}
           >
-            <span style={{ color: "#F59E0B", fontSize: 32, fontFamily: "Georgia, serif" }}>
-              ⚸
+            <span style={{ color: "#E7EDF5", fontSize: 28, fontFamily: "DM Serif Display, Georgia, serif", letterSpacing: "-0.03em" }}>
+              Francesco Castaldi
             </span>
-            <span style={{ color: "#4B5768", fontSize: 11, fontFamily: "Inter", letterSpacing: "0.1em" }}>
-              FRANCESCO CASTALDI
+            <span style={{ color: "#4B5768", fontSize: 10, fontFamily: "Inter", letterSpacing: "0.08em" }}>
+              COMPUTER ENGINEER &amp; BUSINESS CONSULTANT
             </span>
           </div>
 

@@ -39,18 +39,9 @@ export default function Footer() {
         <span
           style={{
             color: "#4B5768",
-            fontFamily: "Georgia, serif",
-            fontSize: 13,
-          }}
-        >
-          ⚸
-        </span>
-        <span
-          style={{
-            color: "#4B5768",
             fontFamily: "Inter, sans-serif",
             fontSize: 12,
-            letterSpacing: "0.04em",
+            letterSpacing: "0.06em",
           }}
         >
           FC

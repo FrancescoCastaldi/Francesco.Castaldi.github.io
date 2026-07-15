@@ -38,29 +38,18 @@ export default function LoadingScreen({ onLoaded }: LoadingScreenProps) {
         transition: "opacity 500ms ease",
       }}
     >
-      {/* Glyph */}
-      <div
-        style={{
-          fontSize: 40,
-          color: "#F59E0B",
-          lineHeight: 1,
-          marginBottom: 16,
-          animation: "loadingPulse 1.5s ease-in-out infinite",
-        }}
-      >
-        ⚸
-      </div>
-
-      {/* Name */}
+      {/* Logo */}
       <div
         style={{
           fontFamily: '"DM Serif Display", Georgia, serif',
-          fontSize: 20,
+          fontSize: 28,
           color: "#E7EDF5",
-          marginBottom: 8,
+          letterSpacing: "-0.03em",
+          marginBottom: 24,
+          animation: "loadingPulse 1.5s ease-in-out infinite",
         }}
       >
-        Francesco Castaldi
+        Francesco <span style={{ color: "#F59E0B" }}>Castaldi</span>
       </div>
 
       {/* Loading text with animated dots */}
