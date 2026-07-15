@@ -12,6 +12,23 @@ import type {
   PositionedNode,
 } from "@/data/types";
 
+function getSkillRadius(level: string): number {
+  switch (level) {
+    case "expert":
+      return 3.2;
+    case "advanced":
+      return 2.8;
+    case "intermediate":
+      return 2.4;
+    default:
+      return 2.8;
+  }
+}
+
+function getProjectRadius(project: ProjectNode): number {
+  return project.skills.length >= 2 ? 2.6 : 2.2;
+}
+
 export function computeLayout(
   projects: ProjectNode[],
   skills: SkillNode[],
@@ -22,7 +39,7 @@ export function computeLayout(
     position: { x: 0, y: 0, z: 0 },
     label: s.label,
     color: s.color,
-    radius: 2.8,
+    radius: getSkillRadius(s.level),
     type: "skill" as const,
     data: s,
   }));
@@ -32,7 +49,7 @@ export function computeLayout(
     position: { x: 0, y: 0, z: 0 },
     label: p.label,
     color: "#F59E0B",
-    radius: 2.2,
+    radius: getProjectRadius(p),
     type: "project" as const,
     data: p,
   }));

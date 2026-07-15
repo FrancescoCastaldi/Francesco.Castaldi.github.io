@@ -44,6 +44,10 @@ export default function Node3D({ node, label, color, isDimmed, isFeatured = fals
     // Subtle floating animation (relative to group origin)
     meshRef.current.position.y = Math.sin(state.clock.elapsedTime * 0.5 + node.id.length) * 0.15;
 
+    // Slow self-rotation
+    meshRef.current.rotation.x += 0.003;
+    meshRef.current.rotation.y += 0.005;
+
     // Featured node: pulse inner glow ring opacity
     if (isFeatured && !isSelected && !hovered && innerGlowRef.current) {
       const ringPulse = 0.15 + 0.2 * (0.5 + 0.5 * Math.sin(state.clock.elapsedTime * ((2 * Math.PI) / 3) + 1));
@@ -107,15 +111,41 @@ export default function Node3D({ node, label, color, isDimmed, isFeatured = fals
         <MeshDistortMaterial
           color={color}
           emissive={color}
-          emissiveIntensity={hovered || isSelected ? 1.4 : 0.7}
+          emissiveIntensity={hovered || isSelected ? 2.0 : 0.7}
           transparent
           opacity={opacity}
-          roughness={0.5}
-          metalness={0.3}
-          distort={hovered ? 0.15 : 0.05}
+          roughness={0.3}
+          metalness={0.6}
+          distort={hovered ? 0.2 : 0.05}
           speed={2}
         />
       </mesh>
+
+      {/* Orbit path ring */}
+      <mesh rotation={[Math.PI / 3, 0, 0]}>
+        <ringGeometry args={[node.radius * 1.6, node.radius * 1.65, 64]} />
+        <meshBasicMaterial
+          color={color}
+          transparent
+          opacity={hovered || isSelected ? 0.3 : 0.08}
+          side={THREE.DoubleSide}
+          depthWrite={false}
+        />
+      </mesh>
+
+      {/* Featured node: double orbit ring (counter-rotating) */}
+      {isFeatured && (
+        <mesh rotation={[-Math.PI / 4, Math.PI / 6, 0]}>
+          <ringGeometry args={[node.radius * 2.0, node.radius * 2.05, 64]} />
+          <meshBasicMaterial
+            color="#F59E0B"
+            transparent
+            opacity={0.15}
+            side={THREE.DoubleSide}
+            depthWrite={false}
+          />
+        </mesh>
+      )}
 
       {/* Outer glow ring */}
       <mesh position={[0, -0.1, 0]}>

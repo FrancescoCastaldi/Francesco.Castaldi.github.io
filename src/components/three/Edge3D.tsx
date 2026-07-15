@@ -13,6 +13,7 @@ interface Edge3DProps {
 export default function Edge3D({ edge, nodes }: Edge3DProps) {
   const { hoveredNodeId, selectedNodeId } = useConstellationStore();
   const flowRef = useRef<THREE.Mesh>(null);
+  const lineRef = useRef<THREE.LineBasicMaterial>(null);
 
   const sourceNode = nodes.find((n) => n.id === edge.source);
   const targetNode = nodes.find((n) => n.id === edge.target);
@@ -47,9 +48,15 @@ export default function Edge3D({ edge, nodes }: Edge3DProps) {
   }, [points]);
 
   useFrame((state) => {
-    if (!flowRef.current || !isActive || !points) return;
-    const t = (state.clock.elapsedTime * 0.5) % 1;
-    flowRef.current.position.lerpVectors(points[0], points[1], t);
+    if (isActive && flowRef.current && points) {
+      const t = (state.clock.elapsedTime * 0.5) % 1;
+      flowRef.current.position.lerpVectors(points[0], points[1], t);
+    }
+
+    if (!isActive && lineRef.current) {
+      const pulse = 0.15 + 0.1 * Math.sin(state.clock.elapsedTime * 0.5 + edge.source.length);
+      lineRef.current.opacity = pulse;
+    }
   });
 
   if (!points || !edgePositions) return null;
@@ -88,6 +95,7 @@ export default function Edge3D({ edge, nodes }: Edge3DProps) {
           />
         </bufferGeometry>
         <lineBasicMaterial
+          ref={lineRef}
           color={isActive ? "#22D3EE" : "#2E3847"}
           transparent
           opacity={isActive ? 0.7 : 0.25}

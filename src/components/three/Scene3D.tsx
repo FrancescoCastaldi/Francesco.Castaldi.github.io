@@ -33,7 +33,7 @@ export default function Scene3D() {
       {isLoading && <LoadingScreen onLoaded={handleLoaded} />}
 
       <Canvas
-        camera={{ position: [0, 2, 22], fov: 50 }}
+        camera={{ position: [0, 1, 14], fov: 45 }}
         gl={{ antialias: true, alpha: false }}
         dpr={[1, 2]}
         style={{ background: "#06080C" }}

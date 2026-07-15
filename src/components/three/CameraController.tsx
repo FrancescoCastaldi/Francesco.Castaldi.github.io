@@ -48,11 +48,13 @@ export default function CameraController({ nodes }: CameraControllerProps) {
       ref={controlsRef}
       enablePan={false}
       enableDamping
-      dampingFactor={0.1}
+      dampingFactor={0.08}
       autoRotate={autoRotate && !reducedMotion}
-      autoRotateSpeed={0.5}
-      minDistance={4}
-      maxDistance={30}
+      autoRotateSpeed={1}
+      minDistance={8}
+      maxDistance={15}
+      minPolarAngle={Math.PI / 6}
+      maxPolarAngle={Math.PI / 3}
       target={[0, 0, 0]}
     />
   );

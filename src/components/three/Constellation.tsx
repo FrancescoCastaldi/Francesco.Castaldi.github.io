@@ -1,7 +1,8 @@
 "use client";
-import { useMemo, useEffect } from "react";
+import { useRef, useMemo, useEffect } from "react";
 import dynamic from "next/dynamic";
-import { useThree } from "@react-three/fiber";
+import { useThree, useFrame } from "@react-three/fiber";
+import * as THREE from "three";
 import { projects } from "@/data/projects";
 import { skills } from "@/data/skills";
 import { useConstellationStore } from "@/store/constellation-store";
@@ -34,6 +35,7 @@ function buildEdges(): ConstellationEdge[] {
 export default function Constellation() {
   const { selectedNodeId } = useConstellationStore();
   const { gl } = useThree();
+  const groupRef = useRef<THREE.Group>(null);
 
   const layout = useMemo(() => {
     const edges = buildEdges();
@@ -43,6 +45,12 @@ export default function Constellation() {
   useEffect(() => {
     gl.setClearColor("#06080C");
   }, [gl]);
+
+  useFrame((state) => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y = state.clock.elapsedTime * 0.05;
+    }
+  });
 
   // Lookup map for node labels
   const nodeLabelMap = useMemo(() => {
@@ -85,31 +93,33 @@ export default function Constellation() {
       <pointLight position={[10, 10, 10]} intensity={0.5} color="#F59E0B" />
       <pointLight position={[-10, -10, -10]} intensity={0.3} color="#22D3EE" />
 
-      {/* Edges */}
-      {layout.edges.map((edge, i) => (
-        <Edge3D key={`edge-${i}`} edge={edge} nodes={layout.nodes} />
-      ))}
+      <group ref={groupRef}>
+        {/* Edges */}
+        {layout.edges.map((edge, i) => (
+          <Edge3D key={`edge-${i}`} edge={edge} nodes={layout.nodes} />
+        ))}
 
-      {/* Nodes */}
-      {layout.nodes.map((node) => (
-        <Node3D
-          key={node.id}
-          node={node}
-          label={nodeLabelMap.get(node.id) || node.id}
-          color={node.color}
-          isFeatured={node.id === featuredNodeId}
-          isDimmed={
-            selectedNodeId !== null &&
-            selectedNodeId !== node.id &&
-            node.id !== featuredNodeId && // featured never dims fully
-            !layout.edges.some(
-              (e) =>
-                (e.source === selectedNodeId && e.target === node.id) ||
-                (e.target === selectedNodeId && e.source === node.id)
-            )
-          }
-        />
-      ))}
+        {/* Nodes */}
+        {layout.nodes.map((node) => (
+          <Node3D
+            key={node.id}
+            node={node}
+            label={nodeLabelMap.get(node.id) || node.id}
+            color={node.color}
+            isFeatured={node.id === featuredNodeId}
+            isDimmed={
+              selectedNodeId !== null &&
+              selectedNodeId !== node.id &&
+              node.id !== featuredNodeId && // featured never dims fully
+              !layout.edges.some(
+                (e) =>
+                  (e.source === selectedNodeId && e.target === node.id) ||
+                  (e.target === selectedNodeId && e.source === node.id)
+              )
+            }
+          />
+        ))}
+      </group>
     </>
   );
 }
