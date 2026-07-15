@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --color-space-void: #06080C;
+  --color-space-surface: #0C111A;
+  --color-space-elevated: #131B27;
+  --color-star-gold: #F59E0B;
+  --color-star-gold-bright: #FBBF24;
+  --color-star-gold-soft: rgba(245, 158, 11, 0.12);
+  --color-nebula: #22D3EE;
+  --color-nebula-bright: #67E8F9;
+  --color-text-primary: #E7EDF5;
+  --color-text-body: #9BA9BB;
+  --color-text-muted: #4B5768;
+  --color-text-dim: #2E3847;
+  --color-node-healthcare: #F59E0B;
+  --color-node-data-science: #22D3EE;
+  --color-node-cloud: #A78BFA;
+  --color-node-ai: #FB7185;
+  --color-node-security: #34D399;
+  --color-node-cycling: #34D399;
+  --color-node-consulting: #E2E8F0;
+  --color-node-blockchain: #A78BFA;
+  --color-node-web-dev: #22D3EE;
+  --font-serif: "DM Serif Display", Georgia, serif;
+  --font-sans: "Inter", -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  html { 
+    background: #06080C; 
+    color: #E7EDF5; 
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: #06080C;
+  }
+  
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: #E7EDF5;
+  }
+  
+  a { color: inherit; text-decoration: none; }
+}
+
+/* InfoPanel animations */
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+@keyframes slideOut {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #2E3847; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #4B5768; }

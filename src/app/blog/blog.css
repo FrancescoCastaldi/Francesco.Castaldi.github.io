@@ -1,0 +1,12 @@
+.blog-card:hover {
+  border-color: rgba(245, 158, 11, 0.25) !important;
+}
+
+.back-link:hover {
+  color: #F59E0B !important;
+}
+
+.contact-link:hover {
+  border-color: rgba(245, 158, 11, 0.25) !important;
+  color: #F59E0B !important;
+}
