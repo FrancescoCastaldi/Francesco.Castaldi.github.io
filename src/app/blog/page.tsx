@@ -16,7 +16,7 @@ export default function BlogPage() {
         backdropFilter: "blur(16px)",
       }}
     >
-      <div style={{ maxWidth: 800, margin: "0 auto" }}>
+      <div style={{ maxWidth: 640, margin: "0 auto" }}>
         <h1
           style={{
             fontFamily: "DM Serif Display, Georgia, serif",
@@ -38,7 +38,7 @@ export default function BlogPage() {
               className="blog-card"
               style={{
                 display: "block",
-                padding: "20px 24px",
+                padding: "16px 20px",
                 background: "rgba(12, 17, 26, 0.8)",
                 border: "1px solid rgba(255,255,255,0.06)",
                 borderRadius: 12,
@@ -58,7 +58,7 @@ export default function BlogPage() {
                   <h2
                     style={{
                       fontFamily: "DM Serif Display, Georgia, serif",
-                      fontSize: 18,
+                      fontSize: 16,
                       fontWeight: 400,
                       color: "#E7EDF5",
                       marginBottom: 6,
@@ -66,10 +66,10 @@ export default function BlogPage() {
                   >
                     {post.title}
                   </h2>
-                  <p
+                    <p
                     style={{
                       color: "#9BA9BB",
-                      fontSize: 13,
+                      fontSize: 12,
                       lineHeight: 1.6,
                       fontFamily: "Inter, sans-serif",
                       margin: 0,

@@ -44,7 +44,7 @@ export default async function BlogPostPage({
         backdropFilter: "blur(16px)",
       }}
     >
-      <article style={{ maxWidth: 720, margin: "0 auto" }}>
+      <article style={{ maxWidth: 600, margin: "0 auto" }}>
         <Link
           href="/blog"
           className="back-link"

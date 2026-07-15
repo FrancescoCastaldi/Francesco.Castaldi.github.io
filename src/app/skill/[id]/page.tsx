@@ -80,11 +80,11 @@ const pageStyles: React.CSSProperties = {
   animation: "pageFadeIn 0.35s ease-out",
 };
 const cardStyles: React.CSSProperties = {
-  maxWidth: 680, width: "100%",
+  maxWidth: 560, width: "100%",
   background: "#0C111A",
   border: "1px solid rgba(255,255,255,0.06)",
   borderRadius: 12,
-  padding: "40px 36px",
+  padding: "32px 28px",
 };
 const backLinkStyles: React.CSSProperties = {
   display: "inline-block",
