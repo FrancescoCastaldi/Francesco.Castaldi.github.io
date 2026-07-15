@@ -39,6 +39,9 @@ yarn-error.log*
 # stray config
 config.json
 
+# playwright browser snapshots
+.playwright-mcp/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
