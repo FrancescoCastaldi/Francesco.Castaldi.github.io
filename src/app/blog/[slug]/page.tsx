@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { blogPosts } from "@/data/blog-posts";
 import type { Metadata } from "next";
+import Breadcrumb from "@/components/ui/Breadcrumb";
 import "../blog.css";
 
 export async function generateStaticParams() {
@@ -45,22 +46,12 @@ export default async function BlogPostPage({
       }}
     >
       <article style={{ maxWidth: 680, margin: "0 auto" }}>
-        {/* Back link */}
-        <Link
-          href="/blog"
-          style={{
-            fontFamily: '"JetBrains Mono", monospace',
-            fontSize: 11,
-            color: "#F59E0B",
-            textDecoration: "none",
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 6,
-            marginBottom: 24,
-          }}
-        >
-          ← Back to blog
-        </Link>
+        {/* Breadcrumb */}
+        <Breadcrumb items={[
+          { label: "Home", href: "/" },
+          { label: "Blog", href: "/blog" },
+          { label: post.title },
+        ]} />
 
         {/* Category badge */}
         <span style={{
@@ -165,7 +156,7 @@ export default async function BlogPostPage({
             ← Back to blog
           </Link>
           <Link href="/" style={{ color: "#4B5768", fontSize: 12, fontFamily: '"Inter", sans-serif', textDecoration: "none" }}>
-            Return to constellation →
+            Back to Home →
           </Link>
         </div>
       </article>

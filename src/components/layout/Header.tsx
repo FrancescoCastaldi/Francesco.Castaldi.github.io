@@ -2,13 +2,12 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useConstellationStore } from "@/store/constellation-store";
 
 const navItems = [
-  { label: "Projects", href: "#", desktop: true },
+  { label: "Projects", href: "/#projects", desktop: true },
   { label: "Blog", href: "/blog", desktop: true },
   { label: "Contact", href: "/contact", desktop: true },
-  { label: "Skills", href: "/skill/data-science", desktop: false },
+  { label: "Skills", href: "/#skills", desktop: false },
 ];
 
 export default function Header() {
@@ -16,7 +15,6 @@ export default function Header() {
   const [isMobile, setIsMobile] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const { clearSelection } = useConstellationStore();
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
@@ -24,11 +22,6 @@ export default function Header() {
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
-
-  const handleNav = (href: string) => {
-    setMenuOpen(false);
-    if (href === "#") clearSelection();
-  };
 
   return (
     <>
@@ -44,7 +37,9 @@ export default function Header() {
           alignItems: "center",
           justifyContent: "space-between",
           padding: "0 5%",
-          background: isHome ? "transparent" : "rgba(6, 8, 12, 0.95)",
+          background: isHome ? "rgba(6, 8, 12, 0.8)" : "rgba(6, 8, 12, 0.95)",
+          backdropFilter: isHome ? "blur(12px)" : "blur(20px)",
+          WebkitBackdropFilter: isHome ? "blur(12px)" : "blur(20px)",
           borderBottom: "1px solid rgba(255,255,255,0.04)",
           transition: "background 0.3s ease",
         }}
@@ -52,7 +47,6 @@ export default function Header() {
         {/* Logo */}
         <Link
           href="/"
-          onClick={() => clearSelection()}
           style={{
             display: "flex",
             alignItems: "center",
@@ -85,12 +79,12 @@ export default function Header() {
               .filter((n) => n.desktop)
               .map((item) => {
                 const isActive =
-                  item.href !== "#" && pathname?.startsWith(item.href);
+                  item.href !== "/#projects" && item.href !== "/#skills" && pathname?.startsWith(item.href);
                 return (
                   <Link
                     key={item.label}
                     href={item.href}
-                    onClick={() => handleNav(item.href)}
+                    onClick={() => setMenuOpen(false)}
                     style={{
                       fontFamily: '"Inter", sans-serif',
                       fontSize: 12,
@@ -195,10 +189,11 @@ export default function Header() {
               zIndex: 200,
               background: "rgba(12, 17, 26, 0.98)",
               backdropFilter: "blur(20px)",
+              WebkitBackdropFilter: "blur(20px)",
               display: "flex",
               flexDirection: "column",
               padding: "80px 32px 32px",
-              animation: "slideIn 0.3s ease",
+              transition: "transform 0.3s ease",
               boxShadow: "-8px 0 40px rgba(0,0,0,0.5)",
             }}
           >
@@ -216,7 +211,7 @@ export default function Header() {
                 cursor: "pointer",
               }}
             >
-              ✕
+              &times;
             </button>
 
             {/* Nav items */}
@@ -230,12 +225,12 @@ export default function Header() {
             >
               {navItems.map((item) => {
                 const isActive =
-                  item.href !== "#" && pathname?.startsWith(item.href);
+                  item.href !== "/#projects" && item.href !== "/#skills" && pathname?.startsWith(item.href);
                 return (
                   <Link
                     key={item.label}
                     href={item.href}
-                    onClick={() => handleNav(item.href)}
+                    onClick={() => setMenuOpen(false)}
                     style={{
                       fontFamily: '"DM Serif Display", Georgia, serif',
                       fontSize: 24,

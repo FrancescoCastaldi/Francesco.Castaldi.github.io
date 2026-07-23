@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import InfoPanel from "@/components/ui/InfoPanel";
-import Scene3D from "@/components/three/Scene3D";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://francescocastaldi.it"),
@@ -62,7 +60,6 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body>
-        <Scene3D />
         <Header />
         <main>{children}</main>
         <Footer />
