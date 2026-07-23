@@ -31,33 +31,6 @@ export interface SkillNode {
   color: string;
 }
 
-export interface ConstellationEdge {
-  source: string;
-  target: string;
-  strength: number;
-}
-
-export interface Position {
-  x: number;
-  y: number;
-  z: number;
-}
-
-export interface PositionedNode {
-  id: string;
-  position: Position;
-  label: string;
-  color: string;
-  radius: number;
-  type: "project" | "skill";
-  data: ProjectNode | SkillNode;
-}
-
-export interface ConstellationData {
-  nodes: PositionedNode[];
-  edges: ConstellationEdge[];
-}
-
 export interface BlogPost {
   title: string;
   slug: string;

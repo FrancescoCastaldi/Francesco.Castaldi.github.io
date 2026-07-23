@@ -1,5 +1,6 @@
 import "../blog/blog.css";
 import Link from "next/link";
+import Breadcrumb from "@/components/ui/Breadcrumb";
 
 export default function ContactPage() {
   return (
@@ -14,12 +15,16 @@ export default function ContactPage() {
         padding: "80px 5% 60px",
         background: "rgba(6, 8, 12, 0.85)",
         backdropFilter: "blur(16px)",
+        WebkitBackdropFilter: "blur(16px)",
       }}
     >
       <div style={{ width: "100%", maxWidth: 520 }}>
-        {/* Back link */}
+        {/* Breadcrumb */}
         <div style={{ textAlign: "center", marginBottom: 24 }}>
-          <Link href="/" style={backLinkStyle}>← Return to constellation</Link>
+          <Breadcrumb items={[
+            { label: "Home", href: "/" },
+            { label: "Contact" },
+          ]} />
         </div>
 
         <div style={{ textAlign: "center", marginBottom: 40 }}>
@@ -115,7 +120,7 @@ export default function ContactPage() {
         </div>
 
         <div style={{ textAlign: "center" }}>
-          <Link href="/" style={backLinkStyle}>← Return to constellation</Link>
+          <Link href="/" style={backLinkStyle}>← Back to Home</Link>
         </div>
       </div>
     </div>
