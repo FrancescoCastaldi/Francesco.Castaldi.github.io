@@ -8,37 +8,93 @@ export const translations = {
     },
     hero: {
       title: "Francesco Castaldi",
-      subtitle: "Computer Engineer & Business Consultant",
-      description: "Architetture Cloud, Data Science e IT Sanitario. Progetto sistemi resilienti e soluzioni data-driven per il futuro.",
-      ctaPrimary: "Scopri il mio lavoro",
+      subtitle: "Computer Engineering Student @ UniBo & Developer",
+      description: "Appassionato di Data Science, Intelligenza Artificiale e Web Development. Costruisco strumenti analitici, piattaforme web e modelli probabilistici.",
+      ctaPrimary: "Scopri i Progetti",
       ctaSecondary: "Contattami"
+    },
+    about: {
+      title: "Chi sono",
+      description: "Sono uno studente di Ingegneria Informatica all'Università di Bologna, appassionato di sfide complesse, sviluppo web, dati e design delle interfacce. Nel tempo libero mi dedico al ciclismo, cercando sempre di applicare la mia passione per i dati e l'ottimizzazione anche allo sport (GPX, performance tracking). Su GitHub trovi tutti i miei progetti, dai modelli matematici alle web app."
     },
     expertise: {
       title: "Core Expertise",
       healthcare: {
-        title: "Healthcare IT",
-        desc: "Sistemi informativi ospedalieri, HL7 FHIR, ICD-10 e conformità GDPR per la sanità digitale."
+        title: "Software Engineering",
+        desc: "Sviluppo applicazioni web e desktop moderne con React, Next.js, Python, TypeScript e Java."
       },
       dataScience: {
-        title: "Data Science",
-        desc: "Python, SQL Server, Apache Superset e Power BI per trasformare dati in decisioni strategiche."
+        title: "Data Science & AI",
+        desc: "Python, Jupyter Notebook, AI Prompt Engineering, e modelli matematico-statistici."
       },
       cloud: {
-        title: "Cloud Architecture",
-        desc: "Azure Data Factory, Delta Lake e Data Lakehouse per architetture scalabili e moderne."
+        title: "Data Visualization",
+        desc: "Creazione di dashboard interattive e plugin per Apache Superset."
       },
       ai: {
-        title: "AI Prompt Engineering",
-        desc: "Automazione e workflow basati su LLM (GPT-4, Claude) per ottimizzare i processi."
+        title: "UX/UI Design",
+        desc: "Metodologia Double Diamond, wireframing, e prototipazione iterativa orientata all'utente."
       },
       security: {
-        title: "Cybersecurity",
-        desc: "Conformità NIS2, architetture Zero Trust e gestione identità (IAM)."
+        title: "Blockchain",
+        desc: "Sviluppo di DApp e smart contracts per la tracciabilità e la sicurezza dei dati."
       },
       cycling: {
         title: "Cycling Analytics",
-        desc: "Analisi dati Strava API, GPX e tracking FTP per l'ottimizzazione delle performance sportive."
+        desc: "Strumenti per l'analisi di file GPX, statistiche di allenamento e telemetria."
       }
+    },
+    projects: {
+      title: "Portfolio Progetti",
+      items: [
+        {
+          id: "trumetrapla",
+          name: "TruMetraPla",
+          description: "Dashboard Python per monitorare la produttività nei processi metalmeccanici tramite importazione da Excel e calcolo di KPI.",
+          tech: ["Python", "Data Analysis", "Dashboard"],
+          link: "https://github.com/FrancescoCastaldi/TruMetraPla"
+        },
+        {
+          id: "superset",
+          name: "Superset Calendar Filter",
+          description: "Plugin interattivo per Apache Superset (TypeScript) per il filtraggio avanzato tramite un calendario custom.",
+          tech: ["TypeScript", "React", "Apache Superset"],
+          link: "https://github.com/FrancescoCastaldi/superset-plugin-chart-calendar-filter"
+        },
+        {
+          id: "hospital",
+          name: "Sanitization Tracker",
+          description: "DApp per il tracciamento delle attività di sanificazione ospedaliera tramite tecnologia Blockchain.",
+          tech: ["Blockchain", "JavaScript", "Smart Contracts"],
+          link: "https://github.com/FrancescoCastaldi/HospitalSanitizationTracker"
+        },
+        {
+          id: "uuxd",
+          name: "TPER Redesign (UX)",
+          description: "Progetto accademico di User Experience Design per il sito TPER, con metodologia Double Diamond e prototipazione.",
+          tech: ["UX Design", "Figma", "HTML/CSS"],
+          link: "https://github.com/FrancescoCastaldi/Esame-UUXD"
+        },
+        {
+          id: "gpx",
+          name: "GPX Power Editor",
+          description: "Editor web browser-based, offline, per modificare wattaggio e velocità delle attività ciclistiche in formato GPX.",
+          tech: ["JavaScript", "HTML5", "Cycling"],
+          link: "https://github.com/FrancescoCastaldi/gpx-editor"
+        },
+        {
+          id: "sir",
+          name: "SIR Markov Chain",
+          description: "Simulazione del modello epidemiologico SIR utilizzando le catene di Markov a tempo discreto in Python.",
+          tech: ["Python", "Probability", "LaTeX"],
+          link: "https://github.com/FrancescoCastaldi/sir-markov-chain"
+        }
+      ]
+    },
+    contact: {
+      title: "Contatti",
+      description: "Vuoi collaborare a un progetto o fare due chiacchiere su tecnologia e sport? Scrivimi o connettiti con me su LinkedIn e GitHub.",
+      email: "info@francescocastaldi.it"
     },
     footer: {
       rights: "Tutti i diritti riservati."
@@ -53,37 +109,93 @@ export const translations = {
     },
     hero: {
       title: "Francesco Castaldi",
-      subtitle: "Computer Engineer & Business Consultant",
-      description: "Cloud Architecture, Data Science, and Healthcare IT. I design resilient systems and data-driven solutions for the future.",
-      ctaPrimary: "View My Work",
+      subtitle: "Computer Engineering Student @ UniBo & Developer",
+      description: "Passionate about Data Science, AI, and Web Development. I build analytical tools, web platforms, and probabilistic models.",
+      ctaPrimary: "View Projects",
       ctaSecondary: "Get in Touch"
+    },
+    about: {
+      title: "About Me",
+      description: "I am a Computer Engineering student at the University of Bologna with a strong passion for complex challenges, web development, data, and UI/UX design. In my free time, I love cycling and constantly try to apply my passion for data and optimization to sports (GPX editors, performance tracking). On my GitHub, you can find all my projects, from mathematical models to modern web apps."
     },
     expertise: {
       title: "Core Expertise",
       healthcare: {
-        title: "Healthcare IT",
-        desc: "Hospital information systems, HL7 FHIR, ICD-10, and GDPR compliance for digital health."
+        title: "Software Engineering",
+        desc: "Developing modern web and desktop applications using React, Next.js, Python, TypeScript, and Java."
       },
       dataScience: {
-        title: "Data Science",
-        desc: "Python, SQL Server, Apache Superset, and Power BI to turn data into strategic decisions."
+        title: "Data Science & AI",
+        desc: "Python, Jupyter Notebooks, AI Prompt Engineering, and mathematical/statistical modeling."
       },
       cloud: {
-        title: "Cloud Architecture",
-        desc: "Azure Data Factory, Delta Lake, and Data Lakehouse for scalable modern architectures."
+        title: "Data Visualization",
+        desc: "Creating interactive dashboards and custom plugins for Apache Superset."
       },
       ai: {
-        title: "AI Prompt Engineering",
-        desc: "LLM-based automation and workflows (GPT-4, Claude) to optimize business processes."
+        title: "UX/UI Design",
+        desc: "Double Diamond methodology, wireframing, and user-centered iterative prototyping."
       },
       security: {
-        title: "Cybersecurity",
-        desc: "NIS2 compliance, Zero Trust architectures, and Identity Access Management (IAM)."
+        title: "Blockchain",
+        desc: "Building DApps and smart contracts for robust data traceability and security."
       },
       cycling: {
         title: "Cycling Analytics",
-        desc: "Strava API data analysis, GPX, and FTP tracking for sports performance optimization."
+        desc: "Tools for parsing GPX files, tracking training statistics, and telemetry visualization."
       }
+    },
+    projects: {
+      title: "Project Portfolio",
+      items: [
+        {
+          id: "trumetrapla",
+          name: "TruMetraPla",
+          description: "Python dashboard to monitor productivity in metalworking processes by importing Excel data and calculating KPIs.",
+          tech: ["Python", "Data Analysis", "Dashboard"],
+          link: "https://github.com/FrancescoCastaldi/TruMetraPla"
+        },
+        {
+          id: "superset",
+          name: "Superset Calendar Filter",
+          description: "Interactive TypeScript plugin for Apache Superset enabling advanced cross-filtering via a custom calendar chart.",
+          tech: ["TypeScript", "React", "Apache Superset"],
+          link: "https://github.com/FrancescoCastaldi/superset-plugin-chart-calendar-filter"
+        },
+        {
+          id: "hospital",
+          name: "Sanitization Tracker",
+          description: "DApp designed to trace hospital sanitization activities immutably using Blockchain technology.",
+          tech: ["Blockchain", "JavaScript", "Smart Contracts"],
+          link: "https://github.com/FrancescoCastaldi/HospitalSanitizationTracker"
+        },
+        {
+          id: "uuxd",
+          name: "TPER Redesign (UX)",
+          description: "Academic User Experience Design project for the TPER website, featuring Double Diamond research and prototyping.",
+          tech: ["UX Design", "Figma", "HTML/CSS"],
+          link: "https://github.com/FrancescoCastaldi/Esame-UUXD"
+        },
+        {
+          id: "gpx",
+          name: "GPX Power Editor",
+          description: "Browser-based, 100% offline GPX file editor to modify power (watts) and speed metrics of cycling activities.",
+          tech: ["JavaScript", "HTML5", "Cycling"],
+          link: "https://github.com/FrancescoCastaldi/gpx-editor"
+        },
+        {
+          id: "sir",
+          name: "SIR Markov Chain",
+          description: "Simulation of the SIR epidemiological model using discrete-time Markov chains in Python.",
+          tech: ["Python", "Probability", "LaTeX"],
+          link: "https://github.com/FrancescoCastaldi/sir-markov-chain"
+        }
+      ]
+    },
+    contact: {
+      title: "Contact",
+      description: "Want to collaborate on a project or chat about technology and sports? Drop me an email or connect with me on LinkedIn and GitHub.",
+      email: "info@francescocastaldi.it"
     },
     footer: {
       rights: "All rights reserved."
