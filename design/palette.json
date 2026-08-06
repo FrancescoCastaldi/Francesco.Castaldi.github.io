@@ -1,0 +1,38 @@
+{
+  "space-void": {
+    "value": "#06080C",
+    "role": "Background base"
+  },
+  "space-surface": {
+    "value": "#0C111A",
+    "role": "Surface and cards"
+  },
+  "space-elevated": {
+    "value": "#131B27",
+    "role": "Hover states and elevated elements"
+  },
+  "star-gold": {
+    "value": "#F59E0B",
+    "role": "Primary accent"
+  },
+  "star-gold-bright": {
+    "value": "#FBBF24",
+    "role": "Primary accent bright"
+  },
+  "nebula": {
+    "value": "#22D3EE",
+    "role": "Secondary accent"
+  },
+  "text-primary": {
+    "value": "#E7EDF5",
+    "role": "Headings and primary text"
+  },
+  "text-body": {
+    "value": "#9BA9BB",
+    "role": "Body text"
+  },
+  "text-muted": {
+    "value": "#4B5768",
+    "role": "Muted text and subtle borders"
+  }
+}
