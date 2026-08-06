@@ -1,0 +1,14 @@
+{
+  "serif": {
+    "family": "\"DM Serif Display\", Georgia, serif",
+    "role": "Headings, display text"
+  },
+  "sans": {
+    "family": "\"Inter\", -apple-system, sans-serif",
+    "role": "Body text, UI elements"
+  },
+  "mono": {
+    "family": "\"JetBrains Mono\", monospace",
+    "role": "Code, tags, utility text"
+  }
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <base href="/">
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGF² AI Project – Machine Learning per Predizione Reddito | Francesco Castaldi</title>
+    <meta name="description" content="SGF² AI Project: applicazione di tecniche di Machine Learning supervisionato al dataset Adult (UCI) per la predizione del reddito annuale. Progetto AI (Unibo).">
+    <meta name="keywords" content="machine learning, adult dataset, UCI, reddito, classification, logistic regression, random forest, SVM, fairness, Francesco Castaldi">
+    <meta name="author" content="Francesco Castaldi">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://francescocastaldi.it/pages/projects/sgf2-ai-project.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SGF² AI Project – ML per Predizione Reddito">
+    <meta property="og:description" content="Classificazione binaria sul dataset Adult UCI: preprocessing, modelli, fairness analysis e feature importance.">
+    <meta property="og:url" content="https://francescocastaldi.it/pages/projects/sgf2-ai-project.html">
+    <meta property="og:image" content="https://francescocastaldi.it/assets/images/digital_workspace.jpg">
+    <meta property="og:site_name" content="Francesco Castaldi">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SGF² AI Project">
+    <meta name="twitter:description" content="ML supervisionato sul dataset Adult: Logistic Regression, Random Forest, SVM con fairness analysis.">
+    <meta name="twitter:image" content="https://francescocastaldi.it/assets/images/digital_workspace.jpg">
+    
+    <!-- Schema.org (SoftwareApplication) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "SGF² AI Project",
+      "description": "Applicazione di Machine Learning supervisionato per la predizione del reddito annuale.",
+      "applicationCategory": "ScientificApplication",
+      "operatingSystem": "Web",
+      "url": "https://francescocastaldi.it/pages/projects/sgf2-ai-project.html",
+      "author": {
+        "@type": "Person",
+        "name": "Francesco Castaldi"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      },
+      "keywords": "machine learning, classification, fairness, python"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap"></noscript>
+    <link rel="stylesheet" href="assets/css/finance.css?v=2">
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/enhancements.js" defer></script>
+</head>
+<body>
+    <header id="site-header"></header>
+
+    <main class="main-content subpage-main">
+        <!-- HERO SECTION -->
+        <section class="page-hero">
+            <div>
+                <span class="eyebrow">Progetto Universitario</span>
+                <h1>SGF² AI Project</h1>
+                <p>Applicazione di tecniche di Machine Learning supervisionato al dataset Adult (UCI) per predire se il reddito annuo di un individuo supera i $50K.</p>
+                <div class="hero-meta">
+                    <span class="meta-pill">ML</span>
+                    <span class="meta-pill">Python</span>
+                    <span class="meta-pill">scikit-learn</span>
+                    <span class="meta-pill">UniBo</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATS -->
+        <section class="content-panel">
+            <div class="stats-grid-4">
+                <div class="skill-card text-center">
+                    <div class="skill-icon">📊</div>
+                    <h3 class="stat-highlight">32.5K</h3>
+                    <p>Record analizzati</p>
+                </div>
+                <div class="skill-card text-center">
+                    <div class="skill-icon">🎯</div>
+                    <h3 class="stat-highlight">~82%</h3>
+                    <p>Best accuracy (RF)</p>
+                </div>
+                <div class="skill-card text-center">
+                    <div class="skill-icon">⚖️</div>
+                    <h3 class="stat-highlight">3</h3>
+                    <p>Modelli confrontati</p>
+                </div>
+                <div class="skill-card text-center">
+                    <div class="skill-icon">🔍</div>
+                    <h3 class="stat-highlight">DI &lt; 0.80</h3>
+                    <p>Soglia fairness</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DESCRIZIONE -->
+        <section class="content-panel">
+            <div class="grid-2">
+                <div>
+                    <h2>Descrizione del Progetto</h2>
+                    <p><strong>SGF² AI Project</strong> applica il flusso completo di un progetto di Machine Learning: dal caricamento e preprocessing dei dati, all'addestramento e valutazione di tre modelli di classificazione binaria, fino all'analisi della fairness e dell'importanza delle feature.</p>
+                    <p>Sviluppato per il corso di <strong>Artificial Intelligence</strong> (Università di Bologna), utilizza il dataset <strong>Adult Census Income</strong> (UCI Machine Learning Repository) composto da 32.561 record con 14 attributi demografici e occupazionali.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TECNOLOGIE -->
+        <section class="content-panel">
+            <h2>Tecnologie Utilizzate</h2>
+            <div class="table-wrap">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Componente</th>
+                            <th>Tecnologia</th>
+                            <th>Versione</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Linguaggio</td><td>Python</td><td>3.x</td></tr>
+                        <tr><td>ML Framework</td><td>scikit-learn</td><td>1.3+</td></tr>
+                        <tr><td>Data Processing</td><td>pandas</td><td>2.x</td></tr>
+                        <tr><td>Notebook</td><td>Jupyter</td><td>-</td></tr>
+                        <tr><td>Plotting</td><td>matplotlib</td><td>3.x</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ARCHITETTURA -->
+        <section class="content-panel">
+            <h2>Pipeline del Progetto</h2>
+            <div class="grid-auto">
+                <div class="skill-card"><h3>📥 Caricamento e Preprocessing</h3><p>Pulizia dei dati: rimozione record con valori mancanti (2.399 rimossi), codifica delle variabili categoriche tramite Label Encoding e suddivisione 80/20 train/test.</p></div>
+                <div class="skill-card"><h3>📈 Modelli di Classificazione</h3><p>Tre modelli confrontati: Logistic Regression (~80%), Random Forest (~82%), SVM (~81%). Valutazione con accuracy, precision, recall, F1-score e matrice di confusione.</p></div>
+                <div class="skill-card"><h3>⚖️ Fairness Analysis</h3><p>Calcolo del Disparate Impact (DI) per sesso (DI ~0.30) e razza (DI ~0.60). I valori inferiori a 0.80 indicano discriminazione significativa nelle predizioni.</p></div>
+                <div class="skill-card"><h3>🔍 Feature Importance</h3><p>Analisi dell'importanza delle feature sul modello Random Forest: <code>marital-status</code>, <code>capital-gain</code>, <code>age</code> risultano i predittori più rilevanti.</p></div>
+            </div>
+        </section>
+
+        <!-- RISULTATI -->
+        <section class="content-panel">
+            <h2>Risultati</h2>
+            <div class="dashboard-card">
+                <div class="flex-between">
+                    <div><span class="text-cyan">Miglior modello:</span> <strong>Random Forest</strong></div>
+                    <div><span class="text-cyan">Accuracy:</span> <strong>~82%</strong></div>
+                    <div><span class="text-cyan">Precision:</span> <strong>~0.78</strong></div>
+                    <div><span class="text-cyan">Recall:</span> <strong>~0.82</strong></div>
+                </div>
+                <div class="dark-panel" style="margin-top:1rem;">
+                    <p style="color:var(--text-muted);font-size:0.85rem;">L'analisi della fairness evidenzia un Disparate Impact significativo legato al sesso (DI ~0.30) e alla razza (DI ~0.60), suggerendo la necessità di tecniche di debiasing. Lo studio dell'importanza delle feature mostra che lo stato civile e il guadagno di capitale sono i predittori più influenti per la stima del reddito.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- LINK -->
+        <section class="content-panel">
+            <h2>Prova il Progetto</h2>
+            <p>Il notebook completo con l'analisi esplorativa, i modelli e la fairness analysis è disponibile su GitHub.</p>
+            <p><a href="https://github.com/FrancescoCastaldi/SGF2--AI-PROJECT" target="_blank" rel="noopener" class="btn-secondary">📂 View on GitHub</a></p>
+        </section>
+    </main>
+
+    <footer id="site-footer"></footer>
+    <canvas id="bg-canvas"></canvas>
+</body>
+</html>

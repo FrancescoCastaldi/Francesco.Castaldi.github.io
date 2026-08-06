@@ -2,19 +2,21 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const navItems = [
-  { label: "Projects", href: "/#projects", desktop: true },
-  { label: "Blog", href: "/blog", desktop: true },
-  { label: "Contact", href: "/contact", desktop: true },
-  { label: "Skills", href: "/#skills", desktop: false },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const { t, language, toggleLanguage } = useLanguage();
+
+  const navItems = [
+    { label: t.nav.about, href: "/#about", desktop: true },
+    { label: t.nav.expertise, href: "/#expertise", desktop: true },
+    { label: t.nav.projects, href: "/#projects", desktop: true },
+    { label: t.nav.contact, href: "/#contact", desktop: true },
+  ];
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
@@ -78,8 +80,7 @@ export default function Header() {
             {navItems
               .filter((n) => n.desktop)
               .map((item) => {
-                const isActive =
-                  item.href !== "/#projects" && item.href !== "/#skills" && pathname?.startsWith(item.href);
+                const isActive = pathname?.startsWith(item.href) && item.href !== "/";
                 return (
                   <Link
                     key={item.label}
@@ -121,58 +122,68 @@ export default function Header() {
                   </Link>
                 );
               })}
+              
+            {/* Language Toggle */}
+            <button 
+              onClick={toggleLanguage}
+              style={{
+                background: "transparent",
+                border: "1px solid rgba(255,255,255,0.1)",
+                color: "#E7EDF5",
+                borderRadius: "4px",
+                padding: "2px 6px",
+                fontSize: "10px",
+                cursor: "pointer",
+                fontFamily: '"JetBrains Mono", monospace'
+              }}
+            >
+              {language.toUpperCase()}
+            </button>
           </nav>
         )}
 
-        {/* Mobile Hamburger */}
+        {/* Mobile Hamburger & Lang */}
         {isMobile && (
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Menu"
-            style={{
-              background: "none",
-              border: "1px solid rgba(255,255,255,0.06)",
-              borderRadius: 6,
-              color: "#9BA9BB",
-              width: 36,
-              height: 36,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-              fontSize: 14,
-            }}
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <line
-                x1="2"
-                y1="4"
-                x2="14"
-                y2="4"
-                stroke="#9BA9BB"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-              <line
-                x1="2"
-                y1="8"
-                x2="14"
-                y2="8"
-                stroke="#9BA9BB"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-              <line
-                x1="2"
-                y1="12"
-                x2="14"
-                y2="12"
-                stroke="#9BA9BB"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-            </svg>
-          </button>
+          <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+            <button 
+              onClick={toggleLanguage}
+              style={{
+                background: "transparent",
+                border: "1px solid rgba(255,255,255,0.1)",
+                color: "#E7EDF5",
+                borderRadius: "4px",
+                padding: "2px 6px",
+                fontSize: "10px",
+                cursor: "pointer",
+                fontFamily: '"JetBrains Mono", monospace'
+              }}
+            >
+              {language.toUpperCase()}
+            </button>
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Menu"
+              style={{
+                background: "none",
+                border: "1px solid rgba(255,255,255,0.06)",
+                borderRadius: 6,
+                color: "#9BA9BB",
+                width: 36,
+                height: 36,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                cursor: "pointer",
+                fontSize: 14,
+              }}
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <line x1="2" y1="4" x2="14" y2="4" stroke="#9BA9BB" strokeWidth="1.5" strokeLinecap="round" />
+                <line x1="2" y1="8" x2="14" y2="8" stroke="#9BA9BB" strokeWidth="1.5" strokeLinecap="round" />
+                <line x1="2" y1="12" x2="14" y2="12" stroke="#9BA9BB" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+            </button>
+          </div>
         )}
       </header>
 
@@ -224,8 +235,7 @@ export default function Header() {
               }}
             >
               {navItems.map((item) => {
-                const isActive =
-                  item.href !== "/#projects" && item.href !== "/#skills" && pathname?.startsWith(item.href);
+                const isActive = pathname?.startsWith(item.href) && item.href !== "/";
                 return (
                   <Link
                     key={item.label}
@@ -246,53 +256,14 @@ export default function Header() {
                 );
               })}
             </div>
-
+            
             {/* Social links */}
             <div style={{ marginTop: "auto", display: "flex", gap: 20 }}>
-              <a
-                href="https://github.com/FrancescoCastaldi"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  color: "#4B5768",
-                  fontSize: 12,
-                  fontFamily: '"Inter", sans-serif',
-                  textDecoration: "none",
-                  letterSpacing: "0.05em",
-                }}
-              >
-                GitHub
-              </a>
-              <a
-                href="https://www.linkedin.com/in/francescocastaldi"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  color: "#4B5768",
-                  fontSize: 12,
-                  fontFamily: '"Inter", sans-serif',
-                  textDecoration: "none",
-                  letterSpacing: "0.05em",
-                }}
-              >
-                LinkedIn
-              </a>
-              <a
-                href="mailto:info@francescocastaldi.it"
-                style={{
-                  color: "#4B5768",
-                  fontSize: 12,
-                  fontFamily: '"Inter", sans-serif',
-                  textDecoration: "none",
-                  letterSpacing: "0.05em",
-                }}
-              >
-                Email
-              </a>
+              <a href="https://github.com/FrancescoCastaldi" target="_blank" rel="noopener noreferrer" style={{ color: "#4B5768", fontSize: 12, fontFamily: '"Inter", sans-serif', textDecoration: "none", letterSpacing: "0.05em" }}>GitHub</a>
+              <a href="https://www.linkedin.com/in/francescocastaldi" target="_blank" rel="noopener noreferrer" style={{ color: "#4B5768", fontSize: 12, fontFamily: '"Inter", sans-serif', textDecoration: "none", letterSpacing: "0.05em" }}>LinkedIn</a>
             </div>
           </div>
 
-          {/* Backdrop for mobile menu */}
           <div
             onClick={() => setMenuOpen(false)}
             style={{

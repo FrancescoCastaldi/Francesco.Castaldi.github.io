@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://francescocastaldi.it"),
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
       "Healthcare IT, Data Science, and Business Intelligence consulting.",
     images: [
       {
-        url: "/images/cycling_scene.jpg",
+        url: "/assets/img/og/og-image.png",
         width: 1200,
         height: 630,
       },
@@ -60,9 +61,11 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <LanguageProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );
