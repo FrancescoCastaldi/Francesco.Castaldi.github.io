@@ -146,9 +146,10 @@ export default async function BlogPostPage({
             if (paragraph.startsWith("> [!")) {
               const isWarning = paragraph.startsWith("> [!WARNING]");
               const isTip = paragraph.startsWith("> [!TIP]");
-              const color = isWarning ? "var(--color-star-gold)" : (isTip ? "var(--color-nebula)" : "var(--color-text-primary)");
-              const bgColor = isWarning ? "rgba(245,158,11,0.05)" : (isTip ? "rgba(34,211,238,0.05)" : "rgba(231,237,245,0.05)");
-              const cleanText = paragraph.replace(/> \[!(WARNING|TIP|NOTE)\]\n> /g, "");
+              const isImportant = paragraph.startsWith("> [!IMPORTANT]");
+              const color = isWarning ? "var(--color-star-gold)" : (isTip ? "var(--color-nebula)" : (isImportant ? "#9333ea" : "var(--color-text-primary)"));
+              const bgColor = isWarning ? "rgba(245,158,11,0.05)" : (isTip ? "rgba(34,211,238,0.05)" : (isImportant ? "rgba(147,51,234,0.05)" : "rgba(231,237,245,0.05)"));
+              const cleanText = paragraph.replace(/> \[!(WARNING|TIP|NOTE|IMPORTANT)\]\n> /g, "").replace(/\n> /g, " ");
               return (
                 <div key={i} style={{
                   margin: "24px 0",
@@ -159,12 +160,48 @@ export default async function BlogPostPage({
                   color: "var(--color-text-primary)",
                 }}>
                   <strong style={{ color, display: "block", marginBottom: 8, fontSize: 13, textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: 'var(--font-mono)' }}>
-                    {isWarning ? "Attenzione" : (isTip ? "Consiglio Pratico" : "Nota")}
+                    {isWarning ? "Attenzione" : (isTip ? "Consiglio Pratico" : (isImportant ? "Importante" : "Nota"))}
                   </strong>
                   {renderInline(cleanText)}
                 </div>
               );
             }
+
+            if (paragraph.startsWith("|") && paragraph.includes("|---|")) {
+              const rows = paragraph.split("\n").filter(r => r.trim().startsWith("|"));
+              if (rows.length > 2) {
+                const headers = rows[0].split("|").slice(1, -1).map(s => s.trim());
+                const bodyRows = rows.slice(2).map(r => r.split("|").slice(1, -1).map(s => s.trim()));
+                
+                return (
+                  <div key={i} style={{ overflowX: "auto", margin: "24px 0" }}>
+                    <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14 }}>
+                      <thead>
+                        <tr style={{ background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+                          {headers.map((h, idx) => (
+                            <th key={idx} style={{ padding: "12px 16px", textAlign: "left", color: "var(--color-text-primary)", fontWeight: 500 }}>
+                              {renderInline(h)}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {bodyRows.map((row, rowIdx) => (
+                          <tr key={rowIdx} style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                            {row.map((cell, cellIdx) => (
+                              <td key={cellIdx} style={{ padding: "12px 16px", color: "var(--color-text-body)" }}>
+                                {renderInline(cell)}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                );
+              }
+            }
+
             if (paragraph.startsWith("\`\`\`")) {
               const codeContent = paragraph.replace(/```\w*\n/g, "").replace(/\n```/g, "").replace(/```/g, "");
               return (

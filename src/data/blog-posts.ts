@@ -9,241 +9,330 @@ export const blogPosts: BlogPost[] = [
       "Guida completa passo-passo per la sostituzione degli altoparlanti anteriori originali con il kit Focal 165 IC.",
     content: `## Introduzione e Materiale Necessario
 
-Sostituire gli altoparlanti di serie sulla Toyota Yaris (serie XP210) è uno dei miglioramenti audio più efficaci. Il kit coassiale **Focal 165 IC** offre una qualità sonora enormemente superiore rispetto ai coni in carta originali, migliorando soprattutto la chiarezza sulle alte frequenze e la precisione dei medi.
+Sostituire gli altoparlanti di serie sulla Toyota Yaris (serie XP210) è uno dei miglioramenti audio più impattanti che tu possa fare. Il kit coassiale **Focal 165 IC** offre una qualità sonora che distrugge letteralmente i vecchi coni in carta originali, regalando alti cristallini e medi precisissimi.
 
 > [!WARNING]
-> I pannelli porta della Yaris XP210 sono fissati con clip in plastica molto fragili. Operare sempre a temperature miti o usare un phon da carrozziere per scaldare leggermente la plastica ed evitare rotture.
+> I pannelli porta della Yaris XP210 sono fissati con clip in plastica estremamente fragili. Lavora sempre a temperature miti o usa un phon da carrozziere per scaldare la plastica. Se tiri a freddo, si spaccheranno.
 
 ## Specifiche a Confronto
 
-Ecco un rapido confronto tecnico tra le casse originali e il nuovo kit:
+Ecco perché il salto di qualità è così netto:
 
-\`\`\`yaml
-# Specifiche OEM Toyota Yaris vs Focal 165 IC
-Impedenza:
-  OEM: 4 Ohm
-  Focal: 4 Ohm
-Materiale Cono:
-  OEM: Carta trattata
-  Focal: Polyglass
-Sensibilità:
-  OEM: ~86 dB
-  Focal: 92.6 dB
-Tweeter:
-  OEM: Assente (o separato)
-  Focal: Alluminio a cupola invertita
-\`\`\`
+| Specifiche | OEM Toyota Yaris | Focal 165 IC |
+|---|---|---|
+| **Impedenza** | 4 Ohm | 4 Ohm |
+| **Materiale Cono** | Carta trattata | Polyglass |
+| **Sensibilità** | ~86 dB | 92.6 dB (Volume molto più alto a parità di radio) |
+| **Tweeter** | Assente o incassato | Alluminio a cupola invertita (Dettaglio estremo) |
+
+[INSERISCI QUI FOTO DEL CONFRONTO TRA CASSA ORIGINALE E FOCAL]
 
 ## Step 1: Smontaggio del Pannello Porta
 
-1. Individuare la vite nascosta dietro la maniglia interna (coperta da un piccolo sportellino di plastica).
-2. Rimuovere la vite all'interno della tasca del bracciolo.
-3. Partendo dall'angolo inferiore destro, usare uno strumento in plastica (trim removal tool) per sganciare la prima clip.
-4. Tirare verso l'esterno con forza decisa ma controllata lungo tutto il perimetro.
-5. Sganciare i cavi dei comandi alzacristalli e la cordina della maniglia.
-
-## Step 2: Rimozione e Cablaggio
+1. Cerca la vite nascosta dietro la maniglia interna (c'è uno sportellino di plastica minuscolo).
+2. Togli la vite sul fondo della tasca del bracciolo.
+3. Parti dall'angolo in basso a destra e usa un *trim removal tool* in plastica per fare leva e far saltare la prima clip.
+4. Tira con forza decisa lungo il perimetro.
+5. Scollega i connettori degli alzacristalli.
 
 > [!TIP]
-> Gli altoparlanti originali sono rivettati. Sarà necessario un trapano con punta da 4mm o 5mm per distruggere la testa dei rivetti e rimuovere il vecchio cestello.
+> Gli altoparlanti originali Toyota sono rivettati alla lamiera, non avvitati! Preparati con un trapano e una punta da 4 o 5mm per distruggere la testa dei rivetti e rimuovere il cestello originale.
 
-Una volta rimosso lo speaker originale, preparate il cablaggio. Per non tagliare i cavi originali dell'auto, vi consigliamo di acquistare un cavo adattatore specifico per Toyota.
+## Step 2: Installazione Adattatore e Cablaggio
 
-## Step 3: Installazione Adattatore e Focal 165 IC
+La Yaris richiede **obbligatoriamente** degli anelli adattatori in plastica o MDF, poiché il foro sulla portiera non è uno standard da 165mm.
 
-La Yaris richiede degli **anelli adattatori** in plastica o MDF perché l'alloggiamento originale non è un perfetto cerchio da 165mm standard.
+- Fissa l'adattatore alla lamiera usando bulloni passanti e dadi autobloccanti.
+- Metti del nastro insonorizzante tra lamiera e adattatore per annullare le vibrazioni.
+- Avvita saldamente il woofer Focal 165 IC all'anello.
 
-- Fissate l'adattatore alla lamiera usando bulloni e dadi autobloccanti (o nuovi rivetti se preferite).
-- Consigliamo di applicare del nastro insonorizzante tra la lamiera e l'adattatore.
-- Collegate il cavo speaker all'altoparlante Focal.
-- Avvitate saldamente il woofer Focal 165 IC all'anello adattatore.
+[INSERISCI QUI FOTO DEL FOCAL INSTALLATO NELLA PORTIERA]
 
-## Test e Conclusione
+## Test Finale
 
-Prima di rimontare il pannello, accendete lo stereo e testate il suono. Controllate la polarità: se i bassi risultano "vuoti", potreste aver invertito positivo e negativo su un lato (fase inversa).
-Una volta confermato il corretto funzionamento, rimettere il pannello seguendo gli step inversi. Il miglioramento della chiarezza vocale sarà evidente fin dal primo ascolto.`,
+Prima di rimontare tutto, accendi la radio. Controlla la polarità: se i bassi ti sembrano "vuoti" o inesistenti, potresti aver invertito positivo e negativo su un lato. Una volta verificato, goditi il tuo nuovo palcoscenico sonoro!`,
     tags: ["Audio", "Focal", "Toyota", "Tutorial"],
     readingTime: 6,
     published: true,
     category: "Veicoli",
   },
   {
-    title: "Blockchain in Healthcare: Beyond the Hype",
+    title: "Blockchain in Healthcare: Oltre l'Hype",
     slug: "blockchain-healthcare-beyond-hype",
     date: "2025-11-15",
     excerpt:
-      "Exploring practical applications of blockchain for healthcare compliance tracking and why Ethereum testnets are a viable starting point.",
-    content: `## The State of Blockchain in Healthcare
+      "Applicazioni pratiche della blockchain per il tracciamento della compliance ospedaliera e perché le testnet di Ethereum sono il punto di partenza perfetto.",
+    content: `## Lo Stato della Blockchain in Sanità
 
-Blockchain technology has been promised as a revolutionary force in healthcare for years, yet widespread adoption remains elusive. While cryptocurrency markets dominate headlines, the underlying distributed ledger technology offers genuine value for specific healthcare use cases — particularly around compliance, audit trails, and supply chain integrity.
+Per anni ci hanno venduto la Blockchain come la panacea di tutti i mali in sanità, eppure l'adozione stenta a decollare. Tolte di mezzo le criptovalute e la speculazione finanziaria, la tecnologia a registro distribuito ha un potenziale enorme per un caso d'uso specifico: **la compliance e gli audit trail**.
 
-## Why Compliance Tracking Works
+> [!IMPORTANT]
+> L'obiettivo in sanità non è la "decentralizzazione" anarchica, ma la certezza crittografica assoluta. Nessuno deve poter alterare un registro delle sanificazioni.
 
-Healthcare facilities operate under strict regulatory frameworks that require immutable record-keeping. Traditional databases can be altered, whether accidentally or intentionally. Smart contracts on Ethereum provide a transparent, tamper-resistant layer for logging sanitization activities, equipment maintenance, and protocol adherence.
+[INSERISCI QUI FOTO DI UN OSPEDALE O DI UN MEDICO CON TABLET]
 
-The key advantage is not decentralization for its own sake, but cryptographic certainty. Once a sanitization record is written to the Sepolia testnet, it cannot be modified retroactively. This creates an audit trail that satisfies regulatory requirements while reducing administrative overhead.
+## Perché il Tracciamento della Compliance Funziona
 
-## Practical Considerations
+Le strutture sanitarie operano in ecosistemi dove un registro manomesso può costare vite (o cause legali milionarie). I database relazionali classici (SQL) possono essere alterati da qualsiasi admin. 
 
-Current limitations include transaction costs (even on testnets), integration complexity with existing hospital management systems, and the learning curve for healthcare IT staff. However, for facilities that already use digital tracking systems, adding a blockchain verification layer can be implemented incrementally.
+Gli **Smart Contract su Ethereum** offrono invece un livello di logging trasparente e anti-manomissione per:
+- Sanificazioni delle sale operatorie.
+- Manutenzione dei macchinari salvavita (es. ventilatori).
+- Adesione ai rigidi protocolli di sicurezza.
 
-Hybrid approaches — where sensitive patient data remains off-chain and only hashes or references are stored on-chain — offer the best balance of transparency and privacy.`,
+| Paradigma | Sicurezza | Alterabilità Dati | Costi di Setup |
+|---|---|---|---|
+| **Database SQL (Classico)** | Alta (se ben configurato) | Alterabile dall'admin | Bassi |
+| **Blockchain (Smart Contract)** | Assoluta (Crittografica) | **Immutabile** | Medi/Alti |
+
+## Considerazioni Pratiche
+
+Ovviamente ci sono dei limiti strutturali. I costi delle transazioni (gas fees) possono pesare. 
+Tuttavia, l'approccio ibrido vince su tutto: i dati clinici sensibili del paziente (GDPR) rimangono rigorosamente *off-chain* nei server ospedalieri, mentre sulla blockchain finisce unicamente l'hash crittografico che ne certifica l'autenticità e l'ora esatta di creazione.
+
+> [!NOTE]
+> Utilizzare reti di test (Testnet) come Sepolia permette alle cliniche di simulare questi audit trail a costo zero, testando le architetture senza rischiare capitali in gas fees reali.`,
     tags: ["Blockchain", "Healthcare IT", "Smart Contracts"],
     readingTime: 4,
     published: true,
     category: "Technology",
   },
   {
-    title: "Building a GPX Editor with TypeScript and Leaflet",
+    title: "Creare un GPX Editor in TypeScript e Leaflet",
     slug: "building-gpx-editor-typescript-leaflet",
     date: "2025-09-20",
     excerpt:
-      "A deep dive into building a browser-based GPS track editor with route smoothing, elevation profiles, and zero backend dependencies.",
-    content: `## Why a Browser-Based GPX Editor?
+      "Un'analisi tecnica sulla costruzione di un editor di tracce GPS lato client, con smoothing e profili altimetrici, senza alcun backend.",
+    content: `## Perché un Editor GPX nel Browser?
 
-Cyclists and outdoor enthusiasts accumulate GPX files from GPS devices and phone apps, but editing these tracks typically required desktop software. Modern browser APIs and mapping libraries make it possible to build a fully functional GPX editor that runs entirely client-side.
+Ciclisti e runner accumulano gigabyte di file GPX dai propri Garmin o Wahoo. Spesso questi file contengono sbalzi di velocità o errori nei dati di potenza. Fino a ieri, per pulire queste tracce, dovevi scaricare pesanti software desktop. 
+La sfida? Creare un editor 100% web-based. Zero backend. Zero upload su server lenti.
 
-## Core Features
+[INSERISCI QUI FOTO DELLO SCHERMO DEL GPX EDITOR IN AZIONE]
 
-The editor supports three essential workflows: loading existing GPX files, modifying waypoints, and exporting clean tracks. The Douglas-Peucker algorithm handles route simplification by removing redundant points while preserving overall shape — critical for reducing file size without losing meaningful route data.
+## Core Features e Architettura
 
-Elevation profiles are rendered using Chart.js, giving immediate visual feedback on terrain difficulty. Users can trim start and end points, useful for removing the drive to the trailhead from a ride recording.
+Tutta la magia avviene sul client. Il tuo file GPX non lascia mai il tuo computer.
 
-## Technical Decisions
+1. **Lettura e Parsing**: Lettura istantanea dell'XML.
+2. **Smoothing (Douglas-Peucker)**: Un algoritmo essenziale che semplifica la traccia eliminando i punti GPS ridondanti, salvando la forma del percorso ma abbattendo il peso del file.
+3. **Profilo Altimetrico**: Renderizzato a 60fps usando Chart.js, offre feedback visivo immediato sulla pendenza.
 
-Leaflet was chosen over Mapbox GL for its smaller bundle size and permissive BSD license. TypeScript provides type safety across the coordinate manipulation logic, which is where most bugs surface in geospatial applications. Vite enables fast development iteration with instant hot module replacement.`,
+> [!IMPORTANT]
+> Mantenere tutto sul client significa Privacy Totale per gli utenti. Nessuno vuole che le coordinate di casa propria finiscano su un server sconosciuto.
+
+## Scelte Tecnologiche
+
+Per costruire l'applicativo, serviva uno stack snello e type-safe.
+
+| Tecnologia | Ruolo | Motivazione |
+|---|---|---|
+| **TypeScript** | Core Logic | Per manipolare coordinate e XML serve tipizzazione forte, altrimenti i bug geospatial sono infiniti. |
+| **Leaflet** | Rendering Mappe | Molto più leggero di Mapbox GL e con licenza permissiva (BSD). |
+| **Chart.js** | Altimetria | API semplice, Canvas performante per dataset da migliaia di punti. |
+| **Vite** | Bundler | HMR istantaneo, essenziale per iterare velocemente sulle UI. |
+
+Il risultato finale è uno strumento professionale, fluido e sicuro, accessibile da qualsiasi browser moderno.`,
     tags: ["TypeScript", "Leaflet", "Vite", "Cycling"],
     readingTime: 5,
     published: true,
     category: "Development",
   },
   {
-    title: "SIR Epidemiological Models as Markov Chains",
+    title: "Modelli Epidemiologici SIR come Catene di Markov",
     slug: "sir-markov-chains-epidemiology",
     date: "2025-06-10",
     excerpt:
-      "Implementing discrete-time Markov chain simulations of the SIR model with sensitivity analysis and Monte Carlo methods for outbreak prediction.",
-    content: `## From Differential Equations to Discrete Steps
+      "Simulazioni discrete (Markov) del modello SIR, con sensitivity analysis e metodi Monte Carlo per la previsione delle epidemie.",
+    content: `## Dalle Equazioni Differenziali ai Passi Discreti
 
-The classic SIR model uses differential equations to describe how a population moves between Susceptible, Infected, and Recovered states. While elegant mathematically, this continuous formulation can be less intuitive for modeling real-world outbreaks where interventions happen at discrete time points.
+Il classico modello epidemiologico SIR (Suscettibili, Infetti, Rimossi) fa un uso massiccio di equazioni differenziali continue. Matematicamente elegante, certo, ma molto poco intuitivo quando devi spiegare ai decisori politici l'impatto di un lockdown che inizia in un giorno specifico.
 
-## Markov Chain Formulation
+La realtà procede a step discreti, non su curve perfettamente lisce.
 
-By treating the SIR model as a discrete-time Markov chain, each time step represents a fixed interval (typically one day), and transition probabilities govern movement between compartments. This approach naturally accommodates time-varying parameters — for example, reducing the contact rate when social distancing measures are introduced.
+[INSERISCI QUI FOTO DI UN GRAFICO DI SIMULAZIONE EPIDEMIOLOGICA]
 
-Monte Carlo simulation then generates distributions of possible outcomes rather than a single deterministic trajectory, providing a range of estimates for peak infection rates, outbreak duration, and total cases.
+## L'Approccio Markoviano
 
-## Sensitivity Analysis
+Trattando il modello SIR come una **Catena di Markov a tempo discreto**, ogni singolo "tick" temporale corrisponde a un giorno esatto. 
+Le probabilità di transizione decidono quanti individui passano da uno stato all'altro. Questo permette di inserire variazioni brutali e improvvise ai parametri: ad esempio, il giorno 15 il tasso di contatto (R0) crolla perché le scuole chiudono.
 
-Parameter uncertainty is a known challenge in epidemiological modeling. Running thousands of simulations while varying R₀, recovery rates, and intervention timing reveals which parameters most influence outcomes. This helps public health officials prioritize data collection efforts on the most impactful variables.`,
+> [!TIP]
+> Usare le Catene di Markov semplifica enormemente la stesura del codice in Python. Si passa dai solutori differenziali complessi a semplici iterazioni matriciali.
+
+## Analisi Monte Carlo e Incertezza
+
+Le pandemie sono incerte per definizione. Usare la simulazione Monte Carlo permette di generare migliaia di scenari probabilistici invece di una singola (e spesso errata) previsione deterministica.
+
+| Parametro | Impatto sul Modello Markoviano |
+|---|---|
+| **R₀ (Tasso base di riproduzione)** | Definisce la pendenza iniziale della curva degli infetti. |
+| **Tasso di Recupero** | Determina la velocità di svuotamento del compartimento 'Infetti'. |
+| **Interventi Esterni (Lockdown)** | Modifica dinamicamente le matrici di transizione in run-time. |
+
+Grazie a questa Analisi di Sensibilità, i sistemi sanitari possono capire matematicamente se ha senso chiudere i voli o semplicemente imporre l'uso di mascherine, analizzando le distribuzioni di probabilità finali.`,
     tags: ["Python", "Data Science", "Epidemiology", "Simulation"],
     readingTime: 6,
     published: true,
     category: "Data Science",
   },
   {
-    title: "Comparing Image Restoration Methods for Cytology",
+    title: "Restauro Immagini in Citologia: Un Confronto",
     slug: "comparing-image-restoration-cytology",
     date: "2025-03-05",
     excerpt:
-      "A comparative study of Total Variation, UNet, and DiffPIR for deblurring and denoising cervical liquid-based cytology images.",
-    content: `## The Clinical Problem
+      "Studio comparativo tra Total Variation, UNet e DiffPIR per il deblurring e denoising di immagini citologiche (LBC).",
+    content: `## Il Problema Clinico
 
-Cervical cytology screening depends on image quality. Blur and noise in liquid-based cytology (LBC) preparations can obscure cellular details, leading to diagnostic uncertainty or missed abnormalities. Computational image restoration offers a path to improving image quality without repeat sampling.
+Lo screening preventivo in citologia (come il Pap test) dipende al 100% dalla qualità delle immagini al microscopio. Rumore digitale e sfocature nelle preparazioni a base liquida (LBC) possono nascondere dettagli cellulari microscopici, causando ritardi diagnostici o clamorosi falsi negativi. 
+Il restauro computazionale delle immagini è l'unica via per salvare i campioni senza doverli ri-prelevare dalle pazienti.
 
-## Three Approaches
+[INSERISCI QUI FOTO COMPARATIVA DI CELLULE PRIMA E DOPO IL RESTAURO]
 
-Total Variation (TV) regularization is a classical optimization-based method that reduces noise while preserving edges. It is computationally efficient and requires no training data, making it practical for clinical deployment.
+## Tre Approcci sul Ring
 
-UNet architectures represent the deep learning approach — trained on pairs of degraded and clean images, they learn to restore quality end-to-end. Performance depends heavily on the quantity and quality of training data.
+Ho messo a confronto tre diverse metodologie, dal calcolo classico all'intelligenza artificiale generativa:
 
-DiffPIR applies diffusion-based reconstruction, treating restoration as a reverse diffusion process guided by the degraded image. It produces visually impressive results but requires significantly more compute.
+1. **Total Variation (TV)**: Metodo classico di ottimizzazione matematica. Pulisce il rumore senza sfocare i bordi. Zero AI, molto veloce e predicibile.
+2. **UNet**: Architettura Deep Learning supervisionata. Addestrata su migliaia di coppie di immagini sporche/pulite, impara a restaurare i pixel end-to-end.
+3. **DiffPIR**: State-of-the-art. Sfrutta modelli a diffusione inversa. Il restauro è guidato da una rete che ricrea letteralmente il dettaglio mancante partendo dal rumore.
 
-## Results
+> [!WARNING]
+> DiffPIR inventa i dettagli o li restaura? In ambito medico le "allucinazioni" dei modelli a diffusione sono un problema critico. Se la rete disegna un nucleo anomalo che non esiste, la diagnosi è compromessa.
 
-UNet achieved the best quantitative metrics (PSNR and SSIM), while DiffPIR produced results preferred by pathologists in qualitative review. TV regularization, while lower in absolute performance, offers the advantage of predictable behavior without training data dependencies.`,
+## I Risultati
+
+I risultati hanno evidenziato un trade-off brutale tra percezione umana e metriche matematiche.
+
+| Metodo | Metriche (PSNR/SSIM) | Percezione Patologi | Rischio Allucinazioni |
+|---|---|---|---|
+| **Total Variation** | Basse | Sufficiente (Bordi artificiali) | **Nullo** |
+| **UNet** | **Altissime** | Molto Buona | Basso |
+| **DiffPIR** | Medie | **Eccellente (Dettaglio estremo)** | Alto |
+
+La UNet rimane il compromesso migliore per l'integrazione clinica: ottimi punteggi matematici e risultati visivamente affidabili, senza richiedere l'immensa potenza di calcolo (e il rischio allucinazioni) del modello a diffusione.`,
     tags: ["Python", "PyTorch", "Computer Vision", "Healthcare"],
     readingTime: 7,
     published: true,
     category: "Research",
   },
   {
-    title: "UX Redesign of a Public Transport Website",
+    title: "UX Redesign: Il Sito del Trasporto Pubblico (TPER)",
     slug: "ux-redesign-public-transport",
     date: "2024-12-01",
     excerpt:
-      "Applying the Double Diamond methodology to redesign the TPER public transport website, achieving a 35-point SUS improvement.",
-    content: `## The Starting Point
+      "L'applicazione della metodologia Double Diamond per rivoluzionare la UX di TPER, ottenendo un incremento di 35 punti nel punteggio SUS.",
+    content: `## Il Punto di Partenza (Disastroso)
 
-The existing TPER public transport website had a System Usability Scale (SUS) score of 37.5 out of 100 — well below the average of 68. Task completion rates hovered around 40% for key user journeys like route planning and ticket purchase. Something needed to change.
+Cosa succede quando un servizio vitale come il trasporto pubblico ha un sito inutilizzabile? Frustrazione, ritardi e chiamate infinite al call center.
+Il sito originale di TPER aveva un System Usability Scale (SUS) di 37.5 su 100. La sufficienza mondiale è a 68. 
+Tassi di completamento dei task (es. cercare un percorso o comprare un biglietto) bloccati al 40%. Un disastro.
 
-## The Process
+[INSERISCI QUI FOTO BEFORE/AFTER DEL DESIGN DEL SITO]
 
-The Double Diamond methodology structures UX work into four phases: Discover, Define, Develop, and Deliver.
+## Il Metodo: Double Diamond
 
-In the Discover phase, user research including interviews and contextual inquiry revealed that the main pain points were confusing navigation, inconsistent terminology, and poor mobile responsiveness. Journey mapping visualized the gaps between user expectations and the current experience.
+Non bastava "cambiare i colori". Ho applicato il processo strutturato **Double Diamond**: *Discover, Define, Develop, Deliver*.
 
-The Define phase synthesized research into clear problem statements and prioritized the highest-impact improvements. A persona representing the typical commuter served as a reference throughout design decisions.
+1. **Discover**: Le interviste sul campo e il Journey Mapping hanno fatto emergere verità spietate. Navigazione incomprensibile, gergo tecnico burocratico e un'esperienza mobile praticamente inesistente.
+2. **Define**: Ho sintetizzato il caos in chiari *problem statements*, creando personas rappresentative del pendolare medio e del turista confuso.
+3. **Develop**: Dal wireframing in bassa fedeltà a test iterativi veloci con utenti reali.
+4. **Deliver**: Prototipi ad alta fedeltà fusi in un Design System pulito e scalabile.
 
-During Develop, wireframes evolved into interactive prototypes tested with users in iterative rounds. Each round identified specific issues and informed refinements.
+> [!IMPORTANT]
+> Un design bellissimo non serve a nulla se non converte. L'obiettivo primario era far sì che l'utente trovasse l'orario del bus in meno di tre click.
 
-The Deliver phase produced high-fidelity prototypes backed by a design system for consistent implementation.
+## I Risultati sul Campo
 
-## Results
+I numeri parlano chiaro e giustificano l'investimento in UX Design:
 
-After the redesign, SUS scores improved from 37.5 to 72.5, and task completion rates rose from approximately 40% to over 90% for core workflows.`,
+| Metrica | Prima del Redesign | Dopo il Redesign |
+|---|---|---|
+| **System Usability Scale (SUS)** | 37.5 (Insufficienza Grave) | **72.5 (Buono/Ottimo)** |
+| **Task Completion Rate** | ~40% | **>90%** |
+| **Time on Task** | Alto (Frustrazione) | Molto Basso (Flusso rapido) |
+
+L'approccio human-centered ha trasformato un labirinto burocratico in un hub digitale moderno ed efficiente.`,
     tags: ["UX Design", "Usability", "Research", "Public Transport"],
     readingTime: 5,
     published: true,
     category: "Design",
   },
   {
-    title: "Machine Learning Fairness on the Adult Census Dataset",
+    title: "Machine Learning e Fairness: Adult Census Dataset",
     slug: "ml-fairness-adult-census",
     date: "2024-09-15",
     excerpt:
-      "Building an ML pipeline to predict income brackets while evaluating fairness metrics across demographic groups using SHAP analysis.",
-    content: `## Beyond Accuracy
+      "Costruzione di una pipeline ML per predire il reddito, valutando le metriche di equità (Fairness) tramite l'analisi SHAP.",
+    content: `## Oltre la Semplice Accuratezza
 
-Machine learning models are increasingly used in high-stakes decisions, yet standard accuracy metrics can mask systematic biases against demographic groups. The UCI Adult census dataset provides a testbed for exploring these issues in a controlled setting.
+I modelli di Machine Learning stanno decidendo chi ottiene un mutuo, chi viene assunto e chi finisce in prigione. Eppure, la maggior parte dei Data Scientist guarda solo l'Accuracy (Accuratezza). 
+Un modello accurato al 90% può nascondere bias sistematici devastanti contro minoranze etniche o di genere. 
 
-## The Pipeline
+Ho utilizzato l'UCI Adult Census Dataset per dimostrare quanto questo problema sia radicato.
 
-The project compares three classifiers — Logistic Regression, Random Forest, and XGBoost — on the task of predicting whether income exceeds $50K/year. Beyond raw performance, the analysis evaluates fairness using demographic parity and equal opportunity metrics.
+[INSERISCI QUI GRAFICO A BARRE SUL BIAS NEL MACHINE LEARNING]
 
-Feature engineering includes encoding categorical variables and creating interaction terms. Cross-validation ensures performance estimates generalize beyond the test set.
+## La Pipeline di Test
 
-## Findings
+Ho messo in competizione tre algoritmi pesi massimi: **Logistic Regression**, **Random Forest** e **XGBoost**, incaricandoli di predire se un individuo guadagna più di 50.000$ all'anno.
+Ma oltre all'F1-Score, ho aggiunto il calcolo della *Demographic Parity* e dell'*Equal Opportunity*.
 
-All models achieved acceptable accuracy, but fairness metrics revealed significant disparities. SHAP (SHapley Additive exPlanations) analysis identified which features most influenced predictions, helping distinguish legitimate predictive factors from proxy variables that could encode bias.
+> [!NOTE]
+> Il feature engineering ha incluso l'encoding rigoroso delle variabili categoriche e la gestione attenta dei valori mancanti, essenziale per non avvelenare i calcoli di SHAP successivi.
 
-The key takeaway: fairness evaluation should be a standard part of any ML pipeline, not an afterthought. Techniques like threshold adjustment and reweighting can mitigate disparities without substantially reducing accuracy.`,
+## I Risultati: Cosa "Pensa" Davvero il Modello
+
+Tutti i modelli hanno raggiunto precisioni altissime. Ma guardando le metriche di fairness, il quadro era spaventoso. 
+
+| Algoritmo | Accuracy | Demographic Parity Gap | Equal Opportunity Gap |
+|---|---|---|---|
+| **Logistic Regression** | 82% | Alto | Moderato |
+| **Random Forest** | 85% | Molto Alto (Discriminatorio) | Molto Alto |
+| **XGBoost** | **87%** | Estremo | Estremo |
+
+Più il modello è potente (XGBoost), più "impara" a sfruttare spietatamente le correlazioni storiche di disuguaglianza presenti nei dati.
+
+L'analisi **SHAP** ha svelato la black box: variabili come il genere (Gender) influenzavano pesantemente la predizione finale, agendo come *proxy variables* occulte. 
+Conclusione? La fairness va ingegnerizzata a monte (es. re-weighting), non è un optional.`,
     tags: ["Python", "Machine Learning", "Fairness", "Data Science"],
     readingTime: 6,
     published: true,
     category: "Data Science",
   },
   {
-    title: "Building Custom Visualization Plugins for Apache Superset",
+    title: "Sviluppare Plugin di Visualizzazione per Apache Superset",
     slug: "custom-visualization-plugins-superset",
     date: "2024-06-20",
     excerpt:
-      "A technical guide to creating custom chart plugins for Apache Superset 6.1.0, with a calendar heatmap as a working example.",
-    content: `## Why Build Custom Plugins?
+      "Una guida ingegneristica per creare chart personalizzati in Apache Superset 6.1.0, prendendo come esempio una Calendar Heatmap interattiva.",
+    content: `## Perché Sporcarsi le Mani con i Plugin Custom?
 
-Apache Superset ships with a rich set of visualization types, but real-world dashboards often require specialized charts. Custom plugins allow teams to extend Superset with visualizations tailored to their specific data and workflows.
+Apache Superset è una piattaforma di BI fenomenale, ma i suoi grafici nativi a volte non bastano. Le dashboard aziendali complesse richiedono visualizzazioni studiate su misura. 
+La soluzione? Creare plugin React custom per iniettare grafici proprietari direttamente nel cuore di Superset.
 
-## Architecture
+[INSERISCI QUI FOTO DELLA CALENDAR HEATMAP IN SUPERSET]
 
-Superset plugins are React components that follow a defined interface. Each plugin receives query results as props and is responsible for rendering a visualization. The build system uses TypeScript and Webpack, with Emotion for styling.
+## Architettura e Integrazione
 
-The calendar heatmap plugin maps metrics to color intensity on a calendar grid, where each cell represents a day. Clicking a date or date range triggers Superset's native cross-filter API, filtering other dashboard components to the selected period.
+I plugin in Superset non sono widget iframe isolati. Sono componenti React di prima classe integrati via Webpack e TypeScript, che ricevono i dati dal query engine nativo (Flask/SQLAlchemy).
 
-## Key Technical Details
+Ho sviluppato una **Calendar Heatmap** (simile ai commit di GitHub) per mappare l'intensità di un flusso di eventi giorno per giorno.
 
-Cross-filter compatibility is the most nuanced aspect of plugin development. The plugin must emit the correct filter formatting for Superset's query engine. Type definitions from the Superset codebase help ensure compatibility.
+> [!TIP]
+> Il segreto per un plugin di successo in Superset è il supporto ai **Cross-Filter**. Cliccando su un giorno della Heatmap, l'intera dashboard deve filtrarsi magicamente su quella data.
 
-The plugin registers with Superset's plugin registry and then becomes available in the chart type dropdown, just like native visualizations.`,
+## Dettagli Tecnici
+
+Costruire un plugin richiede di rispettare interfacce molto rigide.
+
+| Componente Plugin | Responsabilità |
+|---|---|
+| \`ControlPanel\` | Costruisce l'interfaccia UI laterale per far scegliere colonne e metriche all'utente. |
+| \`BuildQuery\` | Traduce la configurazione UI in query formattate per il backend Python di Superset. |
+| \`TransformProps\` | Adatta il JSON grezzo del database nei props digeribili dal componente React. |
+
+Registrando il plugin nel registry centrale, la nuova Chart appare nel dropdown nativo, indistinguibile dalle feature originali di Superset. Un lavoro sporco di configurazione Webpack, ma dal valore architetturale inestimabile.`,
     tags: ["Superset", "TypeScript", "React", "Data Visualization"],
     readingTime: 5,
     published: true,
