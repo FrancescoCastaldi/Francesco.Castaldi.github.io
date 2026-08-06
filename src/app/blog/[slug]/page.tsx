@@ -41,7 +41,7 @@ export default async function BlogPostPage({
         zIndex: 60,
         minHeight: "100vh",
         padding: "80px 5% 60px",
-        background: "rgba(6, 8, 12, 0.85)",
+        background: "rgba(10, 10, 10, 0.85)",
         backdropFilter: "blur(16px)",
       }}
     >
@@ -56,9 +56,9 @@ export default async function BlogPostPage({
         {/* Category badge */}
         <span style={{
           display: "inline-block",
-          fontFamily: '"JetBrains Mono", monospace',
+          fontFamily: 'var(--font-mono)',
           fontSize: 10,
-          color: "#F59E0B",
+          color: "var(--color-star-gold)",
           background: "rgba(245,158,11,0.1)",
           padding: "3px 10px",
           borderRadius: 4,
@@ -71,10 +71,10 @@ export default async function BlogPostPage({
 
         {/* Title */}
         <h1 style={{
-          fontFamily: '"DM Serif Display", Georgia, serif',
+          fontFamily: 'var(--font-serif)',
           fontSize: "clamp(28px, 4vw, 40px)",
           fontWeight: 400,
-          color: "#E7EDF5",
+          color: "var(--color-text-primary)",
           letterSpacing: "-0.03em",
           lineHeight: 1.08,
           marginBottom: 12,
@@ -83,15 +83,15 @@ export default async function BlogPostPage({
         </h1>
 
         {/* Gold accent line */}
-        <div style={{ width: 40, height: 2, background: "#F59E0B", borderRadius: 2, marginBottom: 20 }} />
+        <div style={{ width: 40, height: 2, background: "var(--color-star-gold)", borderRadius: 2, marginBottom: 20 }} />
 
         {/* Metadata */}
         <div style={{
           display: "flex",
           gap: 16,
           fontSize: 12,
-          color: "#4B5768",
-          fontFamily: '"Inter", sans-serif',
+          color: "var(--color-text-muted)",
+          fontFamily: 'var(--font-sans)',
           marginBottom: 32,
           paddingBottom: 20,
           borderBottom: "1px solid rgba(255,255,255,0.06)",
@@ -103,20 +103,20 @@ export default async function BlogPostPage({
 
         {/* Content */}
         <div style={{
-          color: "#9BA9BB",
+          color: "var(--color-text-body)",
           fontSize: 15,
           lineHeight: 1.8,
-          fontFamily: '"Inter", sans-serif',
+          fontFamily: 'var(--font-sans)',
         }}>
           {post.content.split("\n\n").map((paragraph, i) => {
             if (paragraph.startsWith("## ")) {
               return (
                 <div key={i} style={{ display: "flex", gap: 12, margin: "36px 0 16px" }}>
-                  <div style={{ width: 3, background: "#F59E0B", borderRadius: 2, flexShrink: 0 }} />
+                  <div style={{ width: 3, background: "var(--color-star-gold)", borderRadius: 2, flexShrink: 0 }} />
                   <h2 style={{
-                    fontFamily: '"DM Serif Display", Georgia, serif',
+                    fontFamily: 'var(--font-serif)',
                     fontSize: 22,
-                    color: "#E7EDF5",
+                    color: "var(--color-text-primary)",
                     fontWeight: 400,
                     margin: 0,
                   }}>
@@ -152,10 +152,10 @@ export default async function BlogPostPage({
           display: "flex",
           justifyContent: "space-between",
         }}>
-          <Link href="/blog" style={{ color: "#F59E0B", fontSize: 12, fontFamily: '"Inter", sans-serif', textDecoration: "none" }}>
+          <Link href="/blog" style={{ color: "var(--color-star-gold)", fontSize: 12, fontFamily: 'var(--font-sans)', textDecoration: "none" }}>
             ← Back to blog
           </Link>
-          <Link href="/" style={{ color: "#4B5768", fontSize: 12, fontFamily: '"Inter", sans-serif', textDecoration: "none" }}>
+          <Link href="/" style={{ color: "var(--color-text-muted)", fontSize: 12, fontFamily: 'var(--font-sans)', textDecoration: "none" }}>
             Back to Home →
           </Link>
         </div>

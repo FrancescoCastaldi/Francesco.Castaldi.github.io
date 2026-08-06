@@ -12,7 +12,7 @@ export const skills: SkillNode[] = [
       "Design and implementation of digital solutions for healthcare environments, including compliance tracking and patient data management systems.",
     relatedProjects: ["hosp-san-tracker", "tpertutti-ux"],
     icon: "🏥",
-    color: "#F59E0B",
+    color: "var(--color-star-gold)",
   },
   {
     id: "blockchain",
@@ -51,7 +51,7 @@ export const skills: SkillNode[] = [
       "Building modern web applications with TypeScript, React, and associated tooling including Vite, Leaflet, and Chart.js.",
     relatedProjects: ["gpx-editor", "superset-calendar"],
     icon: "🌐",
-    color: "#22D3EE",
+    color: "var(--color-nebula)",
   },
   {
     id: "data-science",
@@ -64,7 +64,7 @@ export const skills: SkillNode[] = [
       "Statistical modeling, data analysis pipelines, and visualization using Python ecosystem (NumPy, pandas, scikit-learn, Matplotlib).",
     relatedProjects: ["sir-markov", "ci-cervical", "sgf2-ai", "superset-calendar"],
     icon: "📊",
-    color: "#22D3EE",
+    color: "var(--color-nebula)",
   },
   {
     id: "ai-ml",

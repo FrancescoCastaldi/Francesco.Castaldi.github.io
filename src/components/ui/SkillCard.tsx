@@ -25,7 +25,7 @@ export default function SkillCard({ skill }: SkillCardProps) {
         flexDirection: "column",
         gap: 14,
         padding: 24,
-        background: "#0C111A",
+        background: "var(--color-space-surface)",
         borderRadius: 12,
         border: "1px solid rgba(255,255,255,0.04)",
         textDecoration: "none",
@@ -68,10 +68,10 @@ export default function SkillCard({ skill }: SkillCardProps) {
 
       {/* Name */}
       <h3 style={{
-        fontFamily: '"DM Serif Display", Georgia, serif',
+        fontFamily: 'var(--font-serif)',
         fontSize: 18,
         fontWeight: 400,
-        color: "#E7EDF5",
+        color: "var(--color-text-primary)",
         letterSpacing: "-0.02em",
         lineHeight: 1.2,
         margin: 0,
@@ -83,7 +83,7 @@ export default function SkillCard({ skill }: SkillCardProps) {
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
         {/* Area badge */}
         <span style={{
-          fontFamily: '"JetBrains Mono", monospace',
+          fontFamily: 'var(--font-mono)',
           fontSize: 10,
           color: skill.color,
           background: `${skill.color}0D`,
@@ -115,9 +115,9 @@ export default function SkillCard({ skill }: SkillCardProps) {
 
       {/* Description */}
       <p style={{
-        fontFamily: '"Inter", sans-serif',
+        fontFamily: 'var(--font-sans)',
         fontSize: 12,
-        color: "#9BA9BB",
+        color: "var(--color-text-body)",
         lineHeight: 1.6,
         margin: 0,
         flex: 1,
@@ -130,9 +130,9 @@ export default function SkillCard({ skill }: SkillCardProps) {
         display: "flex",
         alignItems: "center",
         gap: 6,
-        fontFamily: '"JetBrains Mono", monospace',
+        fontFamily: 'var(--font-mono)',
         fontSize: 11,
-        color: "#4B5768",
+        color: "var(--color-text-muted)",
         marginTop: "auto",
         transition: "color 0.2s",
       }}>

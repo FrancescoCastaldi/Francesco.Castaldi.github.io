@@ -25,7 +25,7 @@ export default async function SkillPage({ params }: { params: Promise<{ id: stri
       zIndex: 60,
       minHeight: "100vh",
       padding: "80px 5% 60px",
-      background: "rgba(6, 8, 12, 0.85)",
+      background: "rgba(10, 10, 10, 0.85)",
       backdropFilter: "blur(16px)",
       WebkitBackdropFilter: "blur(16px)",
     }}>
@@ -40,9 +40,9 @@ export default async function SkillPage({ params }: { params: Promise<{ id: stri
         {/* Category badge */}
         <span style={{
           display: "inline-block",
-          fontFamily: '"JetBrains Mono", monospace',
+          fontFamily: 'var(--font-mono)',
           fontSize: 10,
-          color: "#F59E0B",
+          color: "var(--color-star-gold)",
           background: "rgba(245,158,11,0.1)",
           padding: "4px 12px",
           borderRadius: 4,
@@ -63,17 +63,17 @@ export default async function SkillPage({ params }: { params: Promise<{ id: stri
           }}>{skill.icon}</span>
           <div>
             <h1 style={{
-              fontFamily: '"DM Serif Display", Georgia, serif',
+              fontFamily: 'var(--font-serif)',
               fontSize: "clamp(28px, 4vw, 40px)",
               fontWeight: 400,
-              color: "#E7EDF5",
+              color: "var(--color-text-primary)",
               letterSpacing: "-0.03em",
               lineHeight: 1.08,
             }}>{skill.name}</h1>
             <div style={{
               width: 40,
               height: 2,
-              background: "#F59E0B",
+              background: "var(--color-star-gold)",
               borderRadius: 2,
               marginTop: 14,
             }} />
@@ -84,8 +84,8 @@ export default async function SkillPage({ params }: { params: Promise<{ id: stri
         <div style={{ marginBottom: 28 }}>
           <span style={{
             fontSize: 10,
-            fontFamily: '"JetBrains Mono", monospace',
-            color: "#4B5768",
+            fontFamily: 'var(--font-mono)',
+            color: "var(--color-text-muted)",
             textTransform: "uppercase",
             letterSpacing: "0.08em",
             display: "block",
@@ -96,13 +96,13 @@ export default async function SkillPage({ params }: { params: Promise<{ id: stri
                 flex: 1,
                 height: 4,
                 borderRadius: 2,
-                background: seg <= proficiency ? "#F59E0B" : "rgba(255,255,255,0.06)",
+                background: seg <= proficiency ? "var(--color-star-gold)" : "rgba(255,255,255,0.06)",
               }} />
             ))}
           </div>
           <span style={{
             fontSize: 10,
-            fontFamily: '"Inter", sans-serif',
+            fontFamily: 'var(--font-sans)',
             color: "#6B7A8D",
             marginTop: 6,
             display: "block",
@@ -114,10 +114,10 @@ export default async function SkillPage({ params }: { params: Promise<{ id: stri
 
         {/* Description */}
         <p style={{
-          color: "#9BA9BB",
+          color: "var(--color-text-body)",
           fontSize: 15,
           lineHeight: 1.8,
-          fontFamily: '"Inter", sans-serif',
+          fontFamily: 'var(--font-sans)',
           marginBottom: 24,
         }}>{skill.description}</p>
 
@@ -126,8 +126,8 @@ export default async function SkillPage({ params }: { params: Promise<{ id: stri
           <div style={{ marginTop: 32, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.06)" }}>
             <span style={{
               fontSize: 10,
-              fontFamily: '"JetBrains Mono", monospace',
-              color: "#4B5768",
+              fontFamily: 'var(--font-mono)',
+              color: "var(--color-text-muted)",
               textTransform: "uppercase",
               letterSpacing: "0.08em",
               display: "block",
@@ -150,12 +150,12 @@ export default async function SkillPage({ params }: { params: Promise<{ id: stri
                 }}>
                   <span style={{ fontSize: 16 }}>{p.icon}</span>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ color: "#E7EDF5", fontSize: 13, marginBottom: 2 }}>{p.title}</div>
-                    <div style={{ color: "#4B5768", fontSize: 10, fontFamily: '"JetBrains Mono", monospace' }}>
+                    <div style={{ color: "var(--color-text-primary)", fontSize: 13, marginBottom: 2 }}>{p.title}</div>
+                    <div style={{ color: "var(--color-text-muted)", fontSize: 10, fontFamily: 'var(--font-mono)' }}>
                       {p.tags.slice(0, 3).join(" \u00B7 ")}
                     </div>
                   </div>
-                  <span style={{ color: "#F59E0B", fontSize: 12 }}>
+                  <span style={{ color: "var(--color-star-gold)", fontSize: 12 }}>
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                       <path d="M2 6H10M10 6L7 3M10 6L7 9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
@@ -169,9 +169,9 @@ export default async function SkillPage({ params }: { params: Promise<{ id: stri
         {/* Bottom nav */}
         <div style={{ marginTop: 48, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.06)" }}>
           <InteractiveLink href="/#skills" style={{
-            fontFamily: '"JetBrains Mono", monospace',
+            fontFamily: 'var(--font-mono)',
             fontSize: 11,
-            color: "#F59E0B",
+            color: "var(--color-star-gold)",
             textDecoration: "none",
             display: "inline-flex",
             alignItems: "center",

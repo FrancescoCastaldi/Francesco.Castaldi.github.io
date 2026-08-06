@@ -21,7 +21,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       zIndex: 60,
       minHeight: "100vh",
       padding: "80px 5% 60px",
-      background: "rgba(6, 8, 12, 0.85)",
+      background: "rgba(10, 10, 10, 0.85)",
       backdropFilter: "blur(16px)",
       WebkitBackdropFilter: "blur(16px)",
     }}>
@@ -36,9 +36,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         {/* Category badge with icon */}
         <span style={{
           display: "inline-block",
-          fontFamily: '"JetBrains Mono", monospace',
+          fontFamily: 'var(--font-mono)',
           fontSize: 10,
-          color: "#F59E0B",
+          color: "var(--color-star-gold)",
           background: "rgba(245,158,11,0.1)",
           padding: "4px 12px",
           borderRadius: 4,
@@ -52,10 +52,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
         {/* Title */}
         <h1 style={{
-          fontFamily: '"DM Serif Display", Georgia, serif',
+          fontFamily: 'var(--font-serif)',
           fontSize: "clamp(28px, 4vw, 40px)",
           fontWeight: 400,
-          color: "#E7EDF5",
+          color: "var(--color-text-primary)",
           letterSpacing: "-0.03em",
           lineHeight: 1.08,
           marginBottom: 16,
@@ -65,17 +65,17 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <div style={{
           width: 40,
           height: 2,
-          background: "#F59E0B",
+          background: "var(--color-star-gold)",
           borderRadius: 2,
           marginBottom: 24,
         }} />
 
         {/* Description */}
         <p style={{
-          color: "#9BA9BB",
+          color: "var(--color-text-body)",
           fontSize: 15,
           lineHeight: 1.8,
-          fontFamily: '"Inter", sans-serif',
+          fontFamily: 'var(--font-sans)',
           marginBottom: 24,
         }}>{project.longDescription}</p>
 
@@ -84,11 +84,11 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           {project.tags.map((tag) => (
             <span key={tag} style={{
               fontSize: 10,
-              fontFamily: '"JetBrains Mono", monospace',
+              fontFamily: 'var(--font-mono)',
               padding: "4px 10px",
               borderRadius: 4,
               border: `1px solid ${project.color}30`,
-              color: project.color || "#22D3EE",
+              color: project.color || "var(--color-nebula)",
             }}>
               {tag}
             </span>
@@ -100,8 +100,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <div style={{ marginTop: 32, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.06)" }}>
             <span style={{
               fontSize: 10,
-              fontFamily: '"JetBrains Mono", monospace',
-              color: "#4B5768",
+              fontFamily: 'var(--font-mono)',
+              color: "var(--color-text-muted)",
               textTransform: "uppercase",
               letterSpacing: "0.08em",
               display: "block",
@@ -114,9 +114,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                     display: "inline-flex",
                     alignItems: "center",
                     gap: 6,
-                    color: "#9BA9BB",
+                    color: "var(--color-text-body)",
                     fontSize: 12,
-                    fontFamily: '"Inter", sans-serif',
+                    fontFamily: 'var(--font-sans)',
                     textDecoration: "none",
                     padding: "6px 12px",
                     background: "rgba(255,255,255,0.03)",
@@ -125,7 +125,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                   }}
                   hoverStyle={{
                     borderColor: `${skill.color}50`,
-                    color: "#E7EDF5",
+                    color: "var(--color-text-primary)",
                     background: "rgba(255,255,255,0.06)",
                   }}>
                     <span>{skill.icon}</span>
@@ -144,9 +144,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               display: "inline-flex",
               alignItems: "center",
               gap: 6,
-              color: "#F59E0B",
+              color: "var(--color-star-gold)",
               fontSize: 13,
-              fontFamily: '"Inter", sans-serif',
+              fontFamily: 'var(--font-sans)',
               textDecoration: "none",
               border: "1px solid rgba(245,158,11,0.3)",
               padding: "10px 20px",
@@ -169,9 +169,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               display: "inline-flex",
               alignItems: "center",
               gap: 6,
-              color: "#22D3EE",
+              color: "var(--color-nebula)",
               fontSize: 13,
-              fontFamily: '"Inter", sans-serif',
+              fontFamily: 'var(--font-sans)',
               textDecoration: "none",
               border: "1px solid rgba(34,211,238,0.3)",
               padding: "10px 20px",
@@ -192,9 +192,9 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         {/* Bottom nav */}
         <div style={{ marginTop: 48, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.06)" }}>
           <InteractiveLink href="/#projects" style={{
-            fontFamily: '"JetBrains Mono", monospace',
+            fontFamily: 'var(--font-mono)',
             fontSize: 11,
-            color: "#F59E0B",
+            color: "var(--color-star-gold)",
             textDecoration: "none",
             display: "inline-flex",
             alignItems: "center",

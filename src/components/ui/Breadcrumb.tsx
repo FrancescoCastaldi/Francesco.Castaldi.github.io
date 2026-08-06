@@ -11,9 +11,9 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
       display: "flex",
       alignItems: "center",
       gap: 8,
-      fontFamily: '"JetBrains Mono", monospace',
+      fontFamily: 'var(--font-mono)',
       fontSize: 11,
-      color: "#4B5768",
+      color: "var(--color-text-muted)",
       letterSpacing: "0.04em",
     }}>
       {items.map((item, i) => (
@@ -25,17 +25,17 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
             <Link
               href={item.href}
               style={{
-                color: "#F59E0B",
+                color: "var(--color-star-gold)",
                 textDecoration: "none",
                 transition: "color 0.2s",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "#FBBF24")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#F59E0B")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-star-gold)")}
             >
               {item.label}
             </Link>
           ) : (
-            <span style={{ color: "#9BA9BB" }}>{item.label}</span>
+            <span style={{ color: "var(--color-text-body)" }}>{item.label}</span>
           )}
         </span>
       ))}

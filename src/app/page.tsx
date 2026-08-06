@@ -6,8 +6,8 @@ export default function Home() {
   const { t } = useLanguage();
 
   const expertiseItems = [
-    { id: "healthcare", data: t.expertise.healthcare, color: "#F59E0B" },
-    { id: "dataScience", data: t.expertise.dataScience, color: "#22D3EE" },
+    { id: "healthcare", data: t.expertise.healthcare, color: "var(--color-star-gold)" },
+    { id: "dataScience", data: t.expertise.dataScience, color: "var(--color-nebula)" },
     { id: "cloud", data: t.expertise.cloud, color: "#A78BFA" },
     { id: "ai", data: t.expertise.ai, color: "#FB7185" },
     { id: "security", data: t.expertise.security, color: "#34D399" },
@@ -32,7 +32,7 @@ export default function Home() {
       >
         <span
           style={{
-            fontFamily: '"JetBrains Mono", monospace',
+            fontFamily: 'var(--font-mono)',
             fontSize: 11,
             color: "#A78BFA",
             textTransform: "uppercase",
@@ -45,10 +45,10 @@ export default function Home() {
         </span>
         <h2
           style={{
-            fontFamily: '"DM Serif Display", Georgia, serif',
+            fontFamily: 'var(--font-serif)',
             fontSize: "clamp(28px, 4vw, 42px)",
             fontWeight: 400,
-            color: "#E7EDF5",
+            color: "var(--color-text-primary)",
             letterSpacing: "-0.03em",
             lineHeight: 1.15,
             marginBottom: 24,
@@ -58,9 +58,9 @@ export default function Home() {
         </h2>
         <p
           style={{
-            fontFamily: '"Inter", sans-serif',
+            fontFamily: 'var(--font-sans)',
             fontSize: 16,
-            color: "#9BA9BB",
+            color: "var(--color-text-body)",
             lineHeight: 1.8,
             maxWidth: 800,
             margin: "0 auto"
@@ -83,9 +83,9 @@ export default function Home() {
         <div style={{ textAlign: "center", marginBottom: 56 }}>
           <span
             style={{
-              fontFamily: '"JetBrains Mono", monospace',
+              fontFamily: 'var(--font-mono)',
               fontSize: 11,
-              color: "#22D3EE",
+              color: "var(--color-nebula)",
               textTransform: "uppercase",
               letterSpacing: "0.15em",
               display: "block",
@@ -96,10 +96,10 @@ export default function Home() {
           </span>
           <h2
             style={{
-              fontFamily: '"DM Serif Display", Georgia, serif',
+              fontFamily: 'var(--font-serif)',
               fontSize: "clamp(28px, 4vw, 42px)",
               fontWeight: 400,
-              color: "#E7EDF5",
+              color: "var(--color-text-primary)",
               letterSpacing: "-0.03em",
               lineHeight: 1.15,
               marginBottom: 16,
@@ -121,7 +121,7 @@ export default function Home() {
             <div
               key={item.id}
               style={{
-                background: "#0C111A",
+                background: "var(--color-space-surface)",
                 border: "1px solid rgba(255,255,255,0.04)",
                 borderRadius: 12,
                 padding: 24,
@@ -130,12 +130,12 @@ export default function Home() {
                 transition: "all 0.3s ease",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#131B27";
+                e.currentTarget.style.background = "var(--color-space-elevated)";
                 e.currentTarget.style.borderColor = item.color;
                 e.currentTarget.style.transform = "translateY(-4px)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = "#0C111A";
+                e.currentTarget.style.background = "var(--color-space-surface)";
                 e.currentTarget.style.borderColor = "rgba(255,255,255,0.04)";
                 e.currentTarget.style.transform = "translateY(0)";
               }}
@@ -143,7 +143,7 @@ export default function Home() {
               <h3 
                 style={{ 
                   color: item.color, 
-                  fontFamily: '"JetBrains Mono", monospace',
+                  fontFamily: 'var(--font-mono)',
                   fontSize: 14,
                   marginBottom: 12
                 }}
@@ -152,9 +152,9 @@ export default function Home() {
               </h3>
               <p
                 style={{
-                  fontFamily: '"Inter", sans-serif',
+                  fontFamily: 'var(--font-sans)',
                   fontSize: 15,
-                  color: "#9BA9BB",
+                  color: "var(--color-text-body)",
                   lineHeight: 1.6,
                 }}
               >
@@ -178,9 +178,9 @@ export default function Home() {
         <div style={{ textAlign: "center", marginBottom: 56 }}>
           <span
             style={{
-              fontFamily: '"JetBrains Mono", monospace',
+              fontFamily: 'var(--font-mono)',
               fontSize: 11,
-              color: "#F59E0B",
+              color: "var(--color-star-gold)",
               textTransform: "uppercase",
               letterSpacing: "0.15em",
               display: "block",
@@ -191,10 +191,10 @@ export default function Home() {
           </span>
           <h2
             style={{
-              fontFamily: '"DM Serif Display", Georgia, serif',
+              fontFamily: 'var(--font-serif)',
               fontSize: "clamp(28px, 4vw, 42px)",
               fontWeight: 400,
-              color: "#E7EDF5",
+              color: "var(--color-text-primary)",
               letterSpacing: "-0.03em",
               lineHeight: 1.15,
               marginBottom: 16,
@@ -242,8 +242,8 @@ export default function Home() {
             >
               <h3 
                 style={{ 
-                  color: "#E7EDF5", 
-                  fontFamily: '"DM Serif Display", Georgia, serif',
+                  color: "var(--color-text-primary)", 
+                  fontFamily: 'var(--font-serif)',
                   fontSize: 22,
                   marginBottom: 12
                 }}
@@ -252,9 +252,9 @@ export default function Home() {
               </h3>
               <p
                 style={{
-                  fontFamily: '"Inter", sans-serif',
+                  fontFamily: 'var(--font-sans)',
                   fontSize: 14,
-                  color: "#9BA9BB",
+                  color: "var(--color-text-body)",
                   lineHeight: 1.6,
                   marginBottom: 20
                 }}
@@ -266,9 +266,9 @@ export default function Home() {
                   <span
                     key={tech}
                     style={{
-                      fontFamily: '"JetBrains Mono", monospace',
+                      fontFamily: 'var(--font-mono)',
                       fontSize: 11,
-                      color: "#F59E0B",
+                      color: "var(--color-star-gold)",
                       background: "rgba(245, 158, 11, 0.1)",
                       padding: "4px 10px",
                       borderRadius: 20,
@@ -296,7 +296,7 @@ export default function Home() {
       >
         <span
           style={{
-            fontFamily: '"JetBrains Mono", monospace',
+            fontFamily: 'var(--font-mono)',
             fontSize: 11,
             color: "#34D399",
             textTransform: "uppercase",
@@ -309,10 +309,10 @@ export default function Home() {
         </span>
         <h2
           style={{
-            fontFamily: '"DM Serif Display", Georgia, serif',
+            fontFamily: 'var(--font-serif)',
             fontSize: "clamp(28px, 4vw, 42px)",
             fontWeight: 400,
-            color: "#E7EDF5",
+            color: "var(--color-text-primary)",
             letterSpacing: "-0.03em",
             lineHeight: 1.15,
             marginBottom: 24,
@@ -322,9 +322,9 @@ export default function Home() {
         </h2>
         <p
           style={{
-            fontFamily: '"Inter", sans-serif',
+            fontFamily: 'var(--font-sans)',
             fontSize: 16,
-            color: "#9BA9BB",
+            color: "var(--color-text-body)",
             lineHeight: 1.8,
             marginBottom: 40
           }}
@@ -336,10 +336,10 @@ export default function Home() {
           <a
             href={`mailto:${t.contact.email}`}
             style={{
-              fontFamily: '"Inter", sans-serif',
+              fontFamily: 'var(--font-sans)',
               fontSize: 14,
               fontWeight: 500,
-              color: "#06080C",
+              color: "var(--color-space-void)",
               background: "#34D399",
               padding: "12px 32px",
               borderRadius: 8,
@@ -356,7 +356,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              fontFamily: '"Inter", sans-serif',
+              fontFamily: 'var(--font-sans)',
               fontSize: 14,
               fontWeight: 500,
               color: "#34D399",

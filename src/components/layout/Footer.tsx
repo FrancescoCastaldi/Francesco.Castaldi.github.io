@@ -42,7 +42,7 @@ export default function Footer() {
       >
         <span
           style={{
-            color: "#4B5768",
+            color: "var(--color-text-muted)",
             fontFamily: "Inter, sans-serif",
             fontSize: 12,
             letterSpacing: "0.06em",
@@ -65,7 +65,7 @@ export default function Footer() {
           target="_blank"
           rel="noopener noreferrer"
           style={linkStyle}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#F59E0B")}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-star-gold)")}
           onMouseLeave={(e) => (e.currentTarget.style.color = "#6B7A8D")}
         >
           <svg width="12" height="12" viewBox="0 0 16 16" fill="#6B7A8D">
@@ -74,14 +74,14 @@ export default function Footer() {
           GitHub
         </a>
 
-        <span style={{ color: "#4B5768", fontSize: 12, userSelect: "none" }}>·</span>
+        <span style={{ color: "var(--color-text-muted)", fontSize: 12, userSelect: "none" }}>·</span>
 
         <a
           href="https://www.linkedin.com/in/francescocastaldi"
           target="_blank"
           rel="noopener noreferrer"
           style={linkStyle}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#F59E0B")}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-star-gold)")}
           onMouseLeave={(e) => (e.currentTarget.style.color = "#6B7A8D")}
         >
           <svg width="12" height="12" viewBox="0 0 16 16" fill="#6B7A8D">
@@ -90,12 +90,12 @@ export default function Footer() {
           LinkedIn
         </a>
 
-        <span style={{ color: "#4B5768", fontSize: 12, userSelect: "none" }}>·</span>
+        <span style={{ color: "var(--color-text-muted)", fontSize: 12, userSelect: "none" }}>·</span>
 
         <a
           href="mailto:info@francescocastaldi.it"
           style={linkStyle}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#F59E0B")}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-star-gold)")}
           onMouseLeave={(e) => (e.currentTarget.style.color = "#6B7A8D")}
         >
           <svg width="12" height="12" viewBox="0 0 16 16" fill="#6B7A8D">
@@ -108,7 +108,7 @@ export default function Footer() {
       {/* Right column — Copyright */}
       <span
         style={{
-          color: "#4B5768",
+          color: "var(--color-text-muted)",
           fontSize: 11,
           fontFamily: "Inter, sans-serif",
         }}

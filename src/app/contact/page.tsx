@@ -13,7 +13,7 @@ export default function ContactPage() {
         alignItems: "center",
         justifyContent: "center",
         padding: "80px 5% 60px",
-        background: "rgba(6, 8, 12, 0.85)",
+        background: "rgba(10, 10, 10, 0.85)",
         backdropFilter: "blur(16px)",
         WebkitBackdropFilter: "blur(16px)",
       }}
@@ -31,10 +31,10 @@ export default function ContactPage() {
           <span style={categoryBadgeStyle}>Contact</span>
           <h1
             style={{
-              fontFamily: '"DM Serif Display", Georgia, serif',
+              fontFamily: 'var(--font-serif)',
               fontSize: "clamp(28px, 5vw, 40px)" as const,
               fontWeight: 400,
-              color: "#E7EDF5",
+              color: "var(--color-text-primary)",
               marginBottom: 16,
               letterSpacing: "-0.02em",
             }}
@@ -44,10 +44,10 @@ export default function ContactPage() {
           <div style={accentLineStyle} />
           <p
             style={{
-              color: "#9BA9BB",
+              color: "var(--color-text-body)",
               fontSize: 15,
               lineHeight: 1.8,
-              fontFamily: '"Inter", sans-serif',
+              fontFamily: 'var(--font-sans)',
               maxWidth: 420,
               margin: "0 auto",
             }}
@@ -96,20 +96,20 @@ export default function ContactPage() {
                 border: "1px solid rgba(255,255,255,0.06)",
                 borderRadius: 8,
                 textDecoration: "none",
-                color: "#9BA9BB",
+                color: "var(--color-text-body)",
                 fontSize: 14,
-                fontFamily: '"Inter", sans-serif',
+                fontFamily: 'var(--font-sans)',
                 transition: "border-color 0.2s, color 0.2s",
                 background: "rgba(255,255,255,0.02)",
               }}
             >
               <span
                 style={{
-                  color: "#4B5768",
+                  color: "var(--color-text-muted)",
                   fontSize: 11,
                   textTransform: "uppercase",
                   letterSpacing: "0.08em",
-                  fontFamily: '"JetBrains Mono", monospace',
+                  fontFamily: 'var(--font-mono)',
                 }}
               >
                 {item.label}
@@ -128,9 +128,9 @@ export default function ContactPage() {
 }
 
 const backLinkStyle = {
-  fontFamily: '"JetBrains Mono", monospace',
+  fontFamily: 'var(--font-mono)',
   fontSize: 11,
-  color: "#F59E0B",
+  color: "var(--color-star-gold)",
   textDecoration: "none",
   display: "inline-flex",
   alignItems: "center",
@@ -139,9 +139,9 @@ const backLinkStyle = {
 
 const categoryBadgeStyle = {
   display: "inline-block",
-  fontFamily: '"JetBrains Mono", monospace',
+  fontFamily: 'var(--font-mono)',
   fontSize: 10,
-  color: "#F59E0B",
+  color: "var(--color-star-gold)",
   background: "rgba(245,158,11,0.1)",
   padding: "4px 12px",
   borderRadius: 4,
@@ -153,7 +153,7 @@ const categoryBadgeStyle = {
 const accentLineStyle = {
   width: 40,
   height: 2,
-  background: "#F59E0B",
+  background: "var(--color-star-gold)",
   borderRadius: 2,
   margin: "0 auto 20px",
 };

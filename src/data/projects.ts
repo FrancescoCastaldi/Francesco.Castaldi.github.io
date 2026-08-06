@@ -12,7 +12,7 @@ export const projects: ProjectNode[] = [
       "Full-stack blockchain DApp that records hospital sanitization operations as immutable transactions on the Ethereum Sepolia testnet. Built with Solidity smart contracts, Hardhat for testing and deployment, and Ethers.js for frontend integration. Ensures compliance traceability for healthcare facility hygiene protocols.",
     tags: ["Solidity", "Hardhat", "Ethers.js", "Blockchain"],
     skills: ["healthcare-it", "blockchain"],
-    color: "#F59E0B",
+    color: "var(--color-star-gold)",
     links: {
       github: "https://github.com/FrancescoCastaldi/hospital-sanitization-tracker",
     },
@@ -46,7 +46,7 @@ export const projects: ProjectNode[] = [
       "Simulation of an SIR epidemiological model as a discrete-time Markov chain with sensitivity analysis and Monte Carlo simulation.",
     longDescription:
       "Academic project implementing the SIR (Susceptible-Infected-Recovered) epidemiological model using discrete-time Markov chains. Includes parameter sensitivity analysis, Monte Carlo simulations for outbreak prediction, and visualization of epidemic curves under different R₀ scenarios. Developed for the University of Bologna.",
-    color: "#22D3EE",
+    color: "var(--color-nebula)",
     tags: ["Python", "NumPy", "Matplotlib", "University"],
     skills: ["data-science", "ai-ml"],
     links: {},
@@ -114,7 +114,7 @@ export const projects: ProjectNode[] = [
       "Interactive calendar heatmap chart plugin for Apache Superset 6.1.0. Click dates to cross-filter dashboards.",
     longDescription:
       "Custom visualization plugin for Apache Superset that renders a calendar heatmap. Users can click individual dates or date ranges to cross-filter other dashboard components. Built with TypeScript and Emotion for styling. The plugin integrates with Superset's native cross-filter API and supports both metric and time-series data sources.",
-    color: "#22D3EE",
+    color: "var(--color-nebula)",
     tags: ["Superset", "TypeScript", "React", "Cross-Filter"],
     skills: ["data-science", "cloud-arch"],
     links: {},

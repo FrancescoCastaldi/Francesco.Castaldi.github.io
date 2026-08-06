@@ -129,12 +129,12 @@ export default function Header() {
               style={{
                 background: "transparent",
                 border: "1px solid rgba(255,255,255,0.1)",
-                color: "#E7EDF5",
+                color: "var(--color-text-primary)",
                 borderRadius: "4px",
                 padding: "2px 6px",
                 fontSize: "10px",
                 cursor: "pointer",
-                fontFamily: '"JetBrains Mono", monospace'
+                fontFamily: 'var(--font-mono)'
               }}
             >
               {language.toUpperCase()}
@@ -150,12 +150,12 @@ export default function Header() {
               style={{
                 background: "transparent",
                 border: "1px solid rgba(255,255,255,0.1)",
-                color: "#E7EDF5",
+                color: "var(--color-text-primary)",
                 borderRadius: "4px",
                 padding: "2px 6px",
                 fontSize: "10px",
                 cursor: "pointer",
-                fontFamily: '"JetBrains Mono", monospace'
+                fontFamily: 'var(--font-mono)'
               }}
             >
               {language.toUpperCase()}
@@ -167,7 +167,7 @@ export default function Header() {
                 background: "none",
                 border: "1px solid rgba(255,255,255,0.06)",
                 borderRadius: 6,
-                color: "#9BA9BB",
+                color: "var(--color-text-body)",
                 width: 36,
                 height: 36,
                 display: "flex",
@@ -178,9 +178,9 @@ export default function Header() {
               }}
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <line x1="2" y1="4" x2="14" y2="4" stroke="#9BA9BB" strokeWidth="1.5" strokeLinecap="round" />
-                <line x1="2" y1="8" x2="14" y2="8" stroke="#9BA9BB" strokeWidth="1.5" strokeLinecap="round" />
-                <line x1="2" y1="12" x2="14" y2="12" stroke="#9BA9BB" strokeWidth="1.5" strokeLinecap="round" />
+                <line x1="2" y1="4" x2="14" y2="4" stroke="var(--color-text-body)" strokeWidth="1.5" strokeLinecap="round" />
+                <line x1="2" y1="8" x2="14" y2="8" stroke="var(--color-text-body)" strokeWidth="1.5" strokeLinecap="round" />
+                <line x1="2" y1="12" x2="14" y2="12" stroke="var(--color-text-body)" strokeWidth="1.5" strokeLinecap="round" />
               </svg>
             </button>
           </div>
@@ -217,7 +217,7 @@ export default function Header() {
                 right: 16,
                 background: "none",
                 border: "none",
-                color: "#9BA9BB",
+                color: "var(--color-text-body)",
                 fontSize: 20,
                 cursor: "pointer",
               }}
@@ -242,9 +242,9 @@ export default function Header() {
                     href={item.href}
                     onClick={() => setMenuOpen(false)}
                     style={{
-                      fontFamily: '"DM Serif Display", Georgia, serif',
+                      fontFamily: 'var(--font-serif)',
                       fontSize: 24,
-                      color: isActive ? "#F59E0B" : "#E7EDF5",
+                      color: isActive ? "var(--color-star-gold)" : "var(--color-text-primary)",
                       textDecoration: "none",
                       padding: "12px 0",
                       borderBottom: "1px solid rgba(255,255,255,0.04)",
@@ -259,8 +259,8 @@ export default function Header() {
             
             {/* Social links */}
             <div style={{ marginTop: "auto", display: "flex", gap: 20 }}>
-              <a href="https://github.com/FrancescoCastaldi" target="_blank" rel="noopener noreferrer" style={{ color: "#4B5768", fontSize: 12, fontFamily: '"Inter", sans-serif', textDecoration: "none", letterSpacing: "0.05em" }}>GitHub</a>
-              <a href="https://www.linkedin.com/in/francescocastaldi" target="_blank" rel="noopener noreferrer" style={{ color: "#4B5768", fontSize: 12, fontFamily: '"Inter", sans-serif', textDecoration: "none", letterSpacing: "0.05em" }}>LinkedIn</a>
+              <a href="https://github.com/FrancescoCastaldi" target="_blank" rel="noopener noreferrer" style={{ color: "var(--color-text-muted)", fontSize: 12, fontFamily: 'var(--font-sans)', textDecoration: "none", letterSpacing: "0.05em" }}>GitHub</a>
+              <a href="https://www.linkedin.com/in/francescocastaldi" target="_blank" rel="noopener noreferrer" style={{ color: "var(--color-text-muted)", fontSize: 12, fontFamily: 'var(--font-sans)', textDecoration: "none", letterSpacing: "0.05em" }}>LinkedIn</a>
             </div>
           </div>
 

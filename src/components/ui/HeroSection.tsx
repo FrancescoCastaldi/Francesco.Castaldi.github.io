@@ -42,9 +42,9 @@ export default function HeroSection() {
           <h1
             className="hero-entrance"
             style={{
-              fontFamily: '"DM Serif Display", Georgia, serif',
+              fontFamily: 'var(--font-serif)',
               fontSize: "clamp(42px, 7vw, 80px)",
-              color: "#E7EDF5",
+              color: "var(--color-text-primary)",
               fontWeight: 400,
               letterSpacing: "-0.03em",
               lineHeight: 1.08,
@@ -53,7 +53,7 @@ export default function HeroSection() {
           >
             Francesco<br />
             <span style={{
-              color: "#F59E0B",
+              color: "var(--color-star-gold)",
               textDecoration: "underline",
               textDecorationColor: "rgba(245, 158, 11, 0.3)",
               textUnderlineOffset: "0.15em",
@@ -67,9 +67,9 @@ export default function HeroSection() {
           <p
             className="hero-entrance"
             style={{
-              fontFamily: '"JetBrains Mono", monospace',
+              fontFamily: 'var(--font-mono)',
               fontSize: 13,
-              color: "#22D3EE",
+              color: "var(--color-nebula)",
               letterSpacing: "0.12em",
               textTransform: "uppercase",
               marginTop: 20,
@@ -83,10 +83,10 @@ export default function HeroSection() {
           <p
             className="hero-entrance"
             style={{
-              fontFamily: '"DM Serif Display", Georgia, serif',
+              fontFamily: 'var(--font-serif)',
               fontStyle: "italic",
               fontSize: "clamp(16px, 2vw, 22px)",
-              color: "#9BA9BB",
+              color: "var(--color-text-body)",
               margin: 0,
               maxWidth: 520,
               lineHeight: 1.4,
@@ -108,11 +108,11 @@ export default function HeroSection() {
             <a
               href="#expertise"
               style={{
-                fontFamily: '"Inter", sans-serif',
+                fontFamily: 'var(--font-sans)',
                 fontSize: 13,
                 fontWeight: 500,
-                color: "#06080C",
-                background: "#F59E0B",
+                color: "var(--color-space-void)",
+                background: "var(--color-star-gold)",
                 padding: "10px 24px",
                 borderRadius: 8,
                 textDecoration: "none",
@@ -121,17 +121,17 @@ export default function HeroSection() {
                 cursor: "pointer",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.background = "#FBBF24")}
-              onMouseLeave={(e) => (e.currentTarget.style.background = "#F59E0B")}
+              onMouseLeave={(e) => (e.currentTarget.style.background = "var(--color-star-gold)")}
             >
               {t.hero.ctaPrimary}
             </a>
             <a
               href="#contact"
               style={{
-                fontFamily: '"Inter", sans-serif',
+                fontFamily: 'var(--font-sans)',
                 fontSize: 13,
                 fontWeight: 500,
-                color: "#22D3EE",
+                color: "var(--color-nebula)",
                 background: "transparent",
                 padding: "10px 24px",
                 borderRadius: 8,
@@ -139,7 +139,7 @@ export default function HeroSection() {
                 transition: "all 0.2s",
                 border: "1px solid rgba(34, 211, 238, 0.3)",
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(34, 211, 238, 0.1)"; e.currentTarget.style.borderColor = "#22D3EE"; }}
+              onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(34, 211, 238, 0.1)"; e.currentTarget.style.borderColor = "var(--color-nebula)"; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "rgba(34, 211, 238, 0.3)"; }}
             >
               {t.hero.ctaSecondary}

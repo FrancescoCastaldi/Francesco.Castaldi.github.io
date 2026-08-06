@@ -88,11 +88,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           <span
             key={tag}
             style={{
-              fontFamily: '"JetBrains Mono", monospace',
+              fontFamily: 'var(--font-mono)',
               fontSize: 10,
-              color: project.color || "#22D3EE",
-              background: `${project.color || "#22D3EE"}0D`,
-              border: `1px solid ${project.color || "#22D3EE"}20`,
+              color: project.color || "var(--color-nebula)",
+              background: `${project.color || "var(--color-nebula)"}0D`,
+              border: `1px solid ${project.color || "var(--color-nebula)"}20`,
               padding: "3px 8px",
               borderRadius: 4,
               letterSpacing: "0.03em",
