@@ -1,38 +1,38 @@
 {
   "space-void": {
-    "value": "#06080C",
-    "role": "Background base"
+    "value": "#0A0A0A",
+    "role": "Background base (Rich Black)"
   },
   "space-surface": {
-    "value": "#0C111A",
-    "role": "Surface and cards"
+    "value": "#171717",
+    "role": "Surface and cards (Deep Gray)"
   },
   "space-elevated": {
-    "value": "#131B27",
+    "value": "#262626",
     "role": "Hover states and elevated elements"
   },
   "star-gold": {
-    "value": "#F59E0B",
-    "role": "Primary accent"
+    "value": "#3B82F6",
+    "role": "Primary accent (Electric Blue)"
   },
   "star-gold-bright": {
-    "value": "#FBBF24",
+    "value": "#60A5FA",
     "role": "Primary accent bright"
   },
   "nebula": {
-    "value": "#22D3EE",
+    "value": "#93C5FD",
     "role": "Secondary accent"
   },
   "text-primary": {
-    "value": "#E7EDF5",
+    "value": "#F4F4F5",
     "role": "Headings and primary text"
   },
   "text-body": {
-    "value": "#9BA9BB",
+    "value": "#A1A1AA",
     "role": "Body text"
   },
   "text-muted": {
-    "value": "#4B5768",
+    "value": "#71717A",
     "role": "Muted text and subtle borders"
   }
 }

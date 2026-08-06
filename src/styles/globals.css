@@ -1,28 +1,28 @@
 @import "tailwindcss";
 
 @theme {
-  --color-space-void: #06080C;
-  --color-space-surface: #0C111A;
-  --color-space-elevated: #131B27;
-  --color-star-gold: #F59E0B;
-  --color-star-gold-bright: #FBBF24;
-  --color-star-gold-soft: rgba(245, 158, 11, 0.12);
-  --color-nebula: #22D3EE;
-  --color-nebula-bright: #67E8F9;
-  --color-text-primary: #E7EDF5;
-  --color-text-body: #9BA9BB;
-  --color-text-muted: #4B5768;
-  --color-text-dim: #2E3847;
-  --color-node-healthcare: #F59E0B;
-  --color-node-data-science: #22D3EE;
+  --color-space-void: #0A0A0A;
+  --color-space-surface: #171717;
+  --color-space-elevated: #262626;
+  --color-star-gold: #3B82F6;
+  --color-star-gold-bright: #60A5FA;
+  --color-star-gold-soft: rgba(59, 130, 246, 0.12);
+  --color-nebula: #93C5FD;
+  --color-nebula-bright: #BFDBFE;
+  --color-text-primary: #F4F4F5;
+  --color-text-body: #A1A1AA;
+  --color-text-muted: #71717A;
+  --color-text-dim: #3F3F46;
+  --color-node-healthcare: #3B82F6;
+  --color-node-data-science: #93C5FD;
   --color-node-cloud: #A78BFA;
   --color-node-ai: #FB7185;
   --color-node-security: #34D399;
   --color-node-cycling: #34D399;
   --color-node-consulting: #E2E8F0;
   --color-node-blockchain: #A78BFA;
-  --color-node-web-dev: #22D3EE;
-  --font-serif: "DM Serif Display", Georgia, serif;
+  --color-node-web-dev: #93C5FD;
+  --font-serif: "Outfit", sans-serif;
   --font-sans: "Inter", -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
@@ -31,8 +31,8 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   
   html { 
-    background: #06080C; 
-    color: #E7EDF5; 
+    background: #0A0A0A; 
+    color: #F4F4F5; 
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
@@ -41,15 +41,15 @@
   body {
     min-height: 100vh;
     overflow-x: hidden;
-    background: #06080C;
+    background: #0A0A0A;
   }
   
   h1, h2, h3, h4 {
     font-family: var(--font-serif);
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: -0.02em;
     line-height: 1.15;
-    color: #E7EDF5;
+    color: #F4F4F5;
   }
   
   a { color: inherit; text-decoration: none; }

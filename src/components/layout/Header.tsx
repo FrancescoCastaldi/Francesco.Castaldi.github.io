@@ -39,7 +39,7 @@ export default function Header() {
           alignItems: "center",
           justifyContent: "space-between",
           padding: "0 5%",
-          background: isHome ? "rgba(6, 8, 12, 0.8)" : "rgba(6, 8, 12, 0.95)",
+          background: isHome ? "rgba(10, 10, 10, 0.8)" : "rgba(10, 10, 10, 0.95)",
           backdropFilter: isHome ? "blur(12px)" : "blur(20px)",
           WebkitBackdropFilter: isHome ? "blur(12px)" : "blur(20px)",
           borderBottom: "1px solid rgba(255,255,255,0.04)",
@@ -58,13 +58,13 @@ export default function Header() {
         >
           <span
             style={{
-              color: "#E7EDF5",
-              fontFamily: '"DM Serif Display", Georgia, serif',
+              color: "var(--color-text-primary)",
+              fontFamily: "var(--font-serif)",
               fontSize: 16,
               letterSpacing: "-0.02em",
             }}
           >
-            Francesco <span style={{ color: "#F59E0B" }}>Castaldi</span>
+            Francesco <span style={{ color: "var(--color-star-gold)" }}>Castaldi</span>
           </span>
         </Link>
 
@@ -87,10 +87,10 @@ export default function Header() {
                     href={item.href}
                     onClick={() => setMenuOpen(false)}
                     style={{
-                      fontFamily: '"Inter", sans-serif',
+                      fontFamily: "var(--font-sans)",
                       fontSize: 12,
                       fontWeight: 500,
-                      color: isActive ? "#F59E0B" : "#9BA9BB",
+                      color: isActive ? "var(--color-star-gold)" : "var(--color-text-body)",
                       textDecoration: "none",
                       letterSpacing: "0.06em",
                       textTransform: "uppercase",
@@ -98,10 +98,10 @@ export default function Header() {
                       position: "relative",
                     }}
                     onMouseEnter={(e) => {
-                      if (!isActive) e.currentTarget.style.color = "#F59E0B";
+                      if (!isActive) e.currentTarget.style.color = "var(--color-star-gold)";
                     }}
                     onMouseLeave={(e) => {
-                      if (!isActive) e.currentTarget.style.color = "#9BA9BB";
+                      if (!isActive) e.currentTarget.style.color = "var(--color-text-body)";
                     }}
                   >
                     {item.label}
@@ -115,7 +115,7 @@ export default function Header() {
                           width: 4,
                           height: 4,
                           borderRadius: "50%",
-                          background: "#F59E0B",
+                          background: "var(--color-star-gold)",
                         }}
                       />
                     )}
