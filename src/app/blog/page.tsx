@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { blogPosts } from "@/data/blog-posts";
 import "./blog.css";
@@ -9,10 +12,18 @@ const categoryColors: Record<string, string> = {
   "Data Science": "#A78BFA",
   "Research": "#FB7185",
   "Design": "#34D399",
+  "Veicoli": "#38BDF8",
 };
 
 export default function BlogPage() {
-  const posts = blogPosts.filter((p) => p.published);
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+
+  const publishedPosts = blogPosts.filter((p) => p.published);
+  const categories = ["All", ...Array.from(new Set(publishedPosts.map(p => p.category)))];
+
+  const filteredPosts = selectedCategory === "All"
+    ? publishedPosts
+    : publishedPosts.filter(p => p.category === selectedCategory);
 
   return (
     <div
@@ -27,32 +38,70 @@ export default function BlogPage() {
     >
       <div style={{ maxWidth: 680, margin: "0 auto" }}>
         {/* Page header */}
-        <span
-          style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: 11,
-            color: "var(--color-star-gold)",
-            textTransform: "uppercase",
-            letterSpacing: "0.12em",
-            display: "block",
-            marginBottom: 8,
-          }}
-        >
-          Writing &amp; Research
-        </span>
-        <h1
-          style={{
-            fontFamily: 'var(--font-serif)',
-            fontSize: "clamp(32px, 5vw, 48px)",
-            fontWeight: 400,
-            color: "var(--color-text-primary)",
-            letterSpacing: "-0.03em",
-            marginBottom: 8,
-            lineHeight: 1.1,
-          }}
-        >
-          Blog
-        </h1>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 8 }}>
+          <div>
+            <span
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: 11,
+                color: "var(--color-star-gold)",
+                textTransform: "uppercase",
+                letterSpacing: "0.12em",
+                display: "block",
+                marginBottom: 8,
+              }}
+            >
+              Writing &amp; Research
+            </span>
+            <h1
+              style={{
+                fontFamily: 'var(--font-serif)',
+                fontSize: "clamp(32px, 5vw, 48px)",
+                fontWeight: 400,
+                color: "var(--color-text-primary)",
+                letterSpacing: "-0.03em",
+                margin: 0,
+                lineHeight: 1.1,
+              }}
+            >
+              Blog
+            </h1>
+          </div>
+          
+          {/* Category Dropdown Filter */}
+          <div style={{ paddingBottom: 6 }}>
+            <select
+              title="Filtra per Categoria"
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              style={{
+                background: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(255,255,255,0.1)",
+                color: "var(--color-text-primary)",
+                padding: "8px 12px",
+                borderRadius: 6,
+                fontFamily: 'var(--font-sans)',
+                fontSize: 13,
+                outline: "none",
+                cursor: "pointer",
+                appearance: "none",
+                WebkitAppearance: "none",
+                MozAppearance: "none",
+                backgroundImage: "url('data:image/svg+xml;utf8,<svg fill=\"%23ffffff\" height=\"20\" viewBox=\"0 0 24 24\" width=\"20\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M7 10l5 5 5-5z\"/></svg>')",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "right 8px center",
+                paddingRight: 32,
+              }}
+            >
+              {categories.map(cat => (
+                <option key={cat} value={cat} style={{ background: "#0a0a0a" }}>
+                  {cat === "All" ? "Tutte le Categorie" : cat}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+        
         <div
           style={{
             width: 40,
@@ -65,7 +114,7 @@ export default function BlogPage() {
 
         {/* Posts */}
         <div style={{ display: "grid", gap: 20 }}>
-          {posts.map((post) => {
+          {filteredPosts.map((post) => {
             const catColor = categoryColors[post.category] || "var(--color-star-gold)";
             return (
               <Link
