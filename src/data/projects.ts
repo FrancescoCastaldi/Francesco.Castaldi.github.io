@@ -17,7 +17,6 @@ Le aziende metalmeccaniche generano una quantità spaventosa di dati, spesso int
 > [!IMPORTANT]
 > L'obiettivo era trasformare fogli di calcolo caotici in insight operativi in tempo reale, senza costringere l'azienda a cambiare il proprio CRM o le proprie abitudini.
 
-[INSERISCI QUI FOTO DELLA DASHBOARD TRUMETRAPLA]
 
 ## Architettura e Scelte Tecnologiche
 
@@ -59,7 +58,6 @@ Nel mondo post-pandemico, verificare l'avvenuta sanificazione degli ambienti osp
 > [!IMPORTANT]
 > Questo progetto sfrutta la tecnologia Blockchain per garantire l'immutabilità assoluta. Una volta registrato un evento di sanificazione, nessuno potrà mai più cancellarlo o modificarlo. Nessun admin database ha questo potere.
 
-[INSERISCI QUI FOTO DELLA DAPP COLLEGATA A METAMASK]
 
 ## Architettura DApp
 
@@ -98,7 +96,6 @@ Il sistema ha dimostrato come il meccanismo di consenso decentralizzato sia appl
 Ciclisti e runner si trovano spesso con tracce GPS rovinate da picchi di velocità impossibili (glitch del segnale) o errori dei misuratori di potenza. Correggere questi errori prima di caricare l'allenamento su Strava richiedeva pesanti software desktop.
 La mia soluzione: uno strumento web-based, veloce e 100% offline.
 
-[INSERISCI QUI FOTO DELLA MAPPA LEAFLET E DEL PROFILO ALTIMETRICO]
 
 ## Funzionalità Principali
 
@@ -143,7 +140,6 @@ Ho puntato sulla leggerezza estrema.
 Il modello SIR classico utilizza eleganti equazioni differenziali. Funziona bene sulle grandi popolazioni, ma fallisce quando i numeri sono piccoli e subentra il caos del caso.
 Questo progetto accademico affronta il problema simulando la propagazione di un virus come una **Catena di Markov a tempo discreto**.
 
-[INSERISCI QUI FOTO DELLA SIMULAZIONE CON GRAFICI MATPLOTLIB]
 
 ## Come Funziona
 
@@ -187,7 +183,6 @@ Essendo un calcolo intensivo su matrici, Python era la scelta obbligata.
 L'accuratezza di uno screening per il tumore al collo dell'utero dipende interamente dalla qualità visiva del campione (LBC). Quando l'immagine al microscopio è sfocata o rumorosa, la diagnosi è a rischio.
 La soluzione non è scartare il campione, ma restaurare l'immagine algoritmicamente.
 
-[INSERISCI QUI FOTO COMPARATIVA TRA MODELLI DI RESTAURO]
 
 ## Il Ring dei Modelli AI
 
@@ -275,7 +270,6 @@ La conclusione dello studio è che ogni deployment di ML deve obbligatoriamente 
 Il sito dei trasporti pubblici dell'Emilia-Romagna (TPER) soffriva di una malattia comune nel settore pubblico: era stato progettato per chi lo gestiva, non per chi lo usava.
 Il punteggio iniziale di Usabilità (SUS) era un catastrofico **37.5 su 100**. Le persone non riuscivano a trovare gli orari. 
 
-[INSERISCI QUI FOTO BEFORE/AFTER DEI WIREFRAME O DEL PROTOTIPO]
 
 ## La Cura: Metodologia Double Diamond
 
@@ -321,7 +315,6 @@ Superset è uno degli strumenti di Business Intelligence open-source più potent
 
 Serve un **Custom Plugin**.
 
-[INSERISCI QUI FOTO DELLA CALENDAR HEATMAP NEL PANNELLO DI SUPERSET]
 
 ## Componenti del Plugin
 

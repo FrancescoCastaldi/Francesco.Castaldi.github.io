@@ -25,7 +25,6 @@ Ecco perché il salto di qualità è così netto:
 | **Sensibilità** | ~86 dB | 92.6 dB (Volume molto più alto a parità di radio) |
 | **Tweeter** | Assente o incassato | Alluminio a cupola invertita (Dettaglio estremo) |
 
-[INSERISCI QUI FOTO DEL CONFRONTO TRA CASSA ORIGINALE E FOCAL]
 
 ## Step 1: Smontaggio del Pannello Porta
 
@@ -46,7 +45,6 @@ La Yaris richiede **obbligatoriamente** degli anelli adattatori in plastica o MD
 - Metti del nastro insonorizzante tra lamiera e adattatore per annullare le vibrazioni.
 - Avvita saldamente il woofer Focal 165 IC all'anello.
 
-[INSERISCI QUI FOTO DEL FOCAL INSTALLATO NELLA PORTIERA]
 
 ## Test Finale
 
@@ -69,7 +67,6 @@ Per anni ci hanno venduto la Blockchain come la panacea di tutti i mali in sanit
 > [!IMPORTANT]
 > L'obiettivo in sanità non è la "decentralizzazione" anarchica, ma la certezza crittografica assoluta. Nessuno deve poter alterare un registro delle sanificazioni.
 
-[INSERISCI QUI FOTO DI UN OSPEDALE O DI UN MEDICO CON TABLET]
 
 ## Perché il Tracciamento della Compliance Funziona
 
@@ -108,7 +105,6 @@ Tuttavia, l'approccio ibrido vince su tutto: i dati clinici sensibili del pazien
 Ciclisti e runner accumulano gigabyte di file GPX dai propri Garmin o Wahoo. Spesso questi file contengono sbalzi di velocità o errori nei dati di potenza. Fino a ieri, per pulire queste tracce, dovevi scaricare pesanti software desktop. 
 La sfida? Creare un editor 100% web-based. Zero backend. Zero upload su server lenti.
 
-[INSERISCI QUI FOTO DELLO SCHERMO DEL GPX EDITOR IN AZIONE]
 
 ## Core Features e Architettura
 
@@ -150,7 +146,6 @@ Il classico modello epidemiologico SIR (Suscettibili, Infetti, Rimossi) fa un us
 
 La realtà procede a step discreti, non su curve perfettamente lisce.
 
-[INSERISCI QUI FOTO DI UN GRAFICO DI SIMULAZIONE EPIDEMIOLOGICA]
 
 ## L'Approccio Markoviano
 
@@ -187,7 +182,6 @@ Grazie a questa Analisi di Sensibilità, i sistemi sanitari possono capire matem
 Lo screening preventivo in citologia (come il Pap test) dipende al 100% dalla qualità delle immagini al microscopio. Rumore digitale e sfocature nelle preparazioni a base liquida (LBC) possono nascondere dettagli cellulari microscopici, causando ritardi diagnostici o clamorosi falsi negativi. 
 Il restauro computazionale delle immagini è l'unica via per salvare i campioni senza doverli ri-prelevare dalle pazienti.
 
-[INSERISCI QUI FOTO COMPARATIVA DI CELLULE PRIMA E DOPO IL RESTAURO]
 
 ## Tre Approcci sul Ring
 
@@ -228,7 +222,6 @@ Cosa succede quando un servizio vitale come il trasporto pubblico ha un sito inu
 Il sito originale di TPER aveva un System Usability Scale (SUS) di 37.5 su 100. La sufficienza mondiale è a 68. 
 Tassi di completamento dei task (es. cercare un percorso o comprare un biglietto) bloccati al 40%. Un disastro.
 
-[INSERISCI QUI FOTO BEFORE/AFTER DEL DESIGN DEL SITO]
 
 ## Il Metodo: Double Diamond
 
@@ -311,7 +304,6 @@ Conclusione? La fairness va ingegnerizzata a monte (es. re-weighting), non è un
 Apache Superset è una piattaforma di BI fenomenale, ma i suoi grafici nativi a volte non bastano. Le dashboard aziendali complesse richiedono visualizzazioni studiate su misura. 
 La soluzione? Creare plugin React custom per iniettare grafici proprietari direttamente nel cuore di Superset.
 
-[INSERISCI QUI FOTO DELLA CALENDAR HEATMAP IN SUPERSET]
 
 ## Architettura e Integrazione
 

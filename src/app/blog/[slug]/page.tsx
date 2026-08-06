@@ -46,10 +46,10 @@ export default async function BlogPostPage({
       }}
     >
       <article style={{ maxWidth: 680, margin: "0 auto" }}>
-        {/* Breadcrumb */}
         <Breadcrumb items={[
           { label: "Home", href: "/" },
           { label: "Blog", href: "/blog" },
+          { label: post.category },
           { label: post.title },
         ]} />
 
