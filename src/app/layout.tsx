@@ -7,27 +7,30 @@ import { LanguageProvider } from "@/context/LanguageContext";
 export const metadata: Metadata = {
   metadataBase: new URL("https://francescocastaldi.it"),
   title: {
-    default: "Francesco Castaldi — Computer Engineer & Business Consultant",
+    default: "Francesco Castaldi — Computer Engineering Student & Developer",
     template: "%s — Francesco Castaldi",
   },
   description:
-    "Healthcare IT, Data Science, and Business Intelligence consulting. Personal portfolio and projects by Francesco Castaldi.",
+    "Computer Engineering student at University of Bologna. Data Science, AI, Web Development, and Cycling Analytics. Portfolio and projects.",
   keywords: [
     "Francesco Castaldi",
-    "Computer Engineer",
-    "Business Consultant",
-    "Healthcare IT",
+    "Computer Engineering",
+    "University of Bologna",
     "Data Science",
-    "Modena",
+    "AI",
+    "Web Development",
+    "React",
+    "Next.js",
+    "Python",
   ],
   authors: [{ name: "Francesco Castaldi" }],
   openGraph: {
     type: "profile",
     locale: "en_US",
     siteName: "Francesco Castaldi",
-    title: "Francesco Castaldi — Computer Engineer & Business Consultant",
+    title: "Francesco Castaldi — Computer Engineering Student & Developer",
     description:
-      "Healthcare IT, Data Science, and Business Intelligence consulting.",
+      "Data Science, AI, Web Development, and Cycling Analytics. Portfolio and projects.",
     images: [
       {
         url: "/assets/img/og/og-image.png",
@@ -39,7 +42,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     title: "Francesco Castaldi",
-    description: "Computer Engineer & Business Consultant",
+    description: "Computer Engineering Student & Developer",
   },
   robots: "index, follow",
 };
