@@ -1,0 +1,108 @@
+import type { SkillNode } from "./types";
+
+export const skills: SkillNode[] = [
+  {
+    id: "healthcare-it",
+    label: "Healthcare IT",
+    name: "Healthcare Information Technology",
+    type: "skill",
+    area: "healthcare",
+    level: "advanced",
+    description:
+      "Design and implementation of digital solutions for healthcare environments, including compliance tracking and patient data management systems.",
+    relatedProjects: ["hosp-san-tracker", "tpertutti-ux"],
+    icon: "🏥",
+    color: "#F59E0B",
+  },
+  {
+    id: "blockchain",
+    label: "Blockchain",
+    name: "Blockchain Development",
+    type: "skill",
+    area: "cloud",
+    level: "advanced",
+    description:
+      "Smart contract development with Solidity, deployment on Ethereum testnets, and integration with frontend applications via Ethers.js.",
+    relatedProjects: ["hosp-san-tracker"],
+    icon: "⛓️",
+    color: "#A78BFA",
+  },
+  {
+    id: "cycling-analytics",
+    label: "Cycling Analytics",
+    name: "Cycling Data Analytics",
+    type: "skill",
+    area: "cycling",
+    level: "intermediate",
+    description:
+      "GPS track processing, elevation profile analysis, and route optimization for cycling and outdoor activities.",
+    relatedProjects: ["gpx-editor"],
+    icon: "🚴",
+    color: "#34D399",
+  },
+  {
+    id: "web-dev",
+    label: "Web Development",
+    name: "Full-Stack Web Development",
+    type: "skill",
+    area: "data-science",
+    level: "expert",
+    description:
+      "Building modern web applications with TypeScript, React, and associated tooling including Vite, Leaflet, and Chart.js.",
+    relatedProjects: ["gpx-editor", "superset-calendar"],
+    icon: "🌐",
+    color: "#22D3EE",
+  },
+  {
+    id: "data-science",
+    label: "Data Science",
+    name: "Data Science & Analytics",
+    type: "skill",
+    area: "data-science",
+    level: "expert",
+    description:
+      "Statistical modeling, data analysis pipelines, and visualization using Python ecosystem (NumPy, pandas, scikit-learn, Matplotlib).",
+    relatedProjects: ["sir-markov", "ci-cervical", "sgf2-ai", "superset-calendar"],
+    icon: "📊",
+    color: "#22D3EE",
+  },
+  {
+    id: "ai-ml",
+    label: "AI / ML",
+    name: "Artificial Intelligence & Machine Learning",
+    type: "skill",
+    area: "ai",
+    level: "advanced",
+    description:
+      "Deep learning with PyTorch, image restoration techniques, classification models, and fairness-aware machine learning pipelines.",
+    relatedProjects: ["sir-markov", "ci-cervical", "sgf2-ai"],
+    icon: "🧠",
+    color: "#FB7185",
+  },
+  {
+    id: "consulting",
+    label: "Consulting",
+    name: "UX & Technology Consulting",
+    type: "skill",
+    area: "consulting",
+    level: "advanced",
+    description:
+      "User experience research, Double Diamond design methodology, usability testing, and stakeholder communication for digital transformation projects.",
+    relatedProjects: ["tpertutti-ux"],
+    icon: "💼",
+    color: "#E2E8F0",
+  },
+  {
+    id: "cloud-arch",
+    label: "Cloud Architecture",
+    name: "Cloud Architecture & DevOps",
+    type: "skill",
+    area: "cloud",
+    level: "intermediate",
+    description:
+      "Cloud infrastructure design, CI/CD pipelines, and deployment of data visualization platforms such as Apache Superset.",
+    relatedProjects: ["superset-calendar"],
+    icon: "☁️",
+    color: "#A78BFA",
+  },
+];
