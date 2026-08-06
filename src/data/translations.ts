@@ -49,6 +49,7 @@ export const translations = {
       items: [
         {
           id: "trumetrapla",
+          slug: "trumetrapla",
           name: "TruMetraPla",
           description: "Dashboard Python per monitorare la produttività nei processi metalmeccanici tramite importazione da Excel e calcolo di KPI.",
           tech: ["Python", "Data Analysis", "Dashboard"],
@@ -56,6 +57,7 @@ export const translations = {
         },
         {
           id: "superset",
+          slug: "superset-calendar-filter",
           name: "Superset Calendar Filter",
           description: "Plugin interattivo per Apache Superset (TypeScript) per il filtraggio avanzato tramite un calendario custom.",
           tech: ["TypeScript", "React", "Apache Superset"],
@@ -63,6 +65,7 @@ export const translations = {
         },
         {
           id: "hospital",
+          slug: "hospital-sanitization-tracker",
           name: "Sanitization Tracker",
           description: "DApp per il tracciamento delle attività di sanificazione ospedaliera tramite tecnologia Blockchain.",
           tech: ["Blockchain", "JavaScript", "Smart Contracts"],
@@ -70,6 +73,7 @@ export const translations = {
         },
         {
           id: "uuxd",
+          slug: "tpertutti-ux-redesign",
           name: "TPER Redesign (UX)",
           description: "Progetto accademico di User Experience Design per il sito TPER, con metodologia Double Diamond e prototipazione.",
           tech: ["UX Design", "Figma", "HTML/CSS"],
@@ -77,6 +81,7 @@ export const translations = {
         },
         {
           id: "gpx",
+          slug: "gpx-editor",
           name: "GPX Power Editor",
           description: "Editor web browser-based, offline, per modificare wattaggio e velocità delle attività ciclistiche in formato GPX.",
           tech: ["JavaScript", "HTML5", "Cycling"],
@@ -84,6 +89,7 @@ export const translations = {
         },
         {
           id: "sir",
+          slug: "sir-markov-chain",
           name: "SIR Markov Chain",
           description: "Simulazione del modello epidemiologico SIR utilizzando le catene di Markov a tempo discreto in Python.",
           tech: ["Python", "Probability", "LaTeX"],
@@ -150,6 +156,7 @@ export const translations = {
       items: [
         {
           id: "trumetrapla",
+          slug: "trumetrapla",
           name: "TruMetraPla",
           description: "Python dashboard to monitor productivity in metalworking processes by importing Excel data and calculating KPIs.",
           tech: ["Python", "Data Analysis", "Dashboard"],
@@ -157,6 +164,7 @@ export const translations = {
         },
         {
           id: "superset",
+          slug: "superset-calendar-filter",
           name: "Superset Calendar Filter",
           description: "Interactive TypeScript plugin for Apache Superset enabling advanced cross-filtering via a custom calendar chart.",
           tech: ["TypeScript", "React", "Apache Superset"],
@@ -164,6 +172,7 @@ export const translations = {
         },
         {
           id: "hospital",
+          slug: "hospital-sanitization-tracker",
           name: "Sanitization Tracker",
           description: "DApp designed to trace hospital sanitization activities immutably using Blockchain technology.",
           tech: ["Blockchain", "JavaScript", "Smart Contracts"],
@@ -171,6 +180,7 @@ export const translations = {
         },
         {
           id: "uuxd",
+          slug: "tpertutti-ux-redesign",
           name: "TPER Redesign (UX)",
           description: "Academic User Experience Design project for the TPER website, featuring Double Diamond research and prototyping.",
           tech: ["UX Design", "Figma", "HTML/CSS"],
@@ -178,6 +188,7 @@ export const translations = {
         },
         {
           id: "gpx",
+          slug: "gpx-editor",
           name: "GPX Power Editor",
           description: "Browser-based, 100% offline GPX file editor to modify power (watts) and speed metrics of cycling activities.",
           tech: ["JavaScript", "HTML5", "Cycling"],
@@ -185,6 +196,7 @@ export const translations = {
         },
         {
           id: "sir",
+          slug: "sir-markov-chain",
           name: "SIR Markov Chain",
           description: "Simulation of the SIR epidemiological model using discrete-time Markov chains in Python.",
           tech: ["Python", "Probability", "LaTeX"],

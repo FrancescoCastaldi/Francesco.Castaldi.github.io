@@ -1,6 +1,7 @@
 "use client";
 import HeroSection from "@/components/ui/HeroSection";
 import { useLanguage } from "@/context/LanguageContext";
+import Link from "next/link";
 
 export default function Home() {
   const { t } = useLanguage();
@@ -213,10 +214,8 @@ export default function Home() {
           }}
         >
           {t.projects.items.map((project, i) => (
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href={`/project/${project.slug}`}
               key={project.id}
               style={{
                 display: "block",
@@ -278,7 +277,7 @@ export default function Home() {
                   </span>
                 ))}
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </section>

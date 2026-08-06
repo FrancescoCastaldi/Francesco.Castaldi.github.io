@@ -2,6 +2,25 @@ import type { ProjectNode } from "./types";
 
 export const projects: ProjectNode[] = [
   {
+    id: "trumetrapla",
+    label: "TruMetraPla",
+    title: "TruMetraPla",
+    slug: "trumetrapla",
+    description:
+      "Python dashboard to monitor productivity in metalworking processes by importing Excel data and calculating KPIs.",
+    longDescription:
+      "Interactive data dashboard built in Python (Streamlit/Pandas) designed to monitor and optimize productivity in manufacturing and metalworking processes. It imports raw production data from Excel files, cleans it, and automatically calculates key performance indicators (KPIs) through rich data visualizations.",
+    tags: ["Python", "Data Analysis", "Dashboard", "Pandas"],
+    skills: ["data-science", "healthcare-it"],
+    color: "var(--color-star-gold)",
+    links: {
+      github: "https://github.com/FrancescoCastaldi/TruMetraPla",
+    },
+    image: "images/digital_workspace.jpg",
+    featured: true,
+    icon: "🏭",
+  },
+  {
     id: "hosp-san-tracker",
     label: "Hospital Sanitization",
     title: "Hospital Sanitization Tracker",
