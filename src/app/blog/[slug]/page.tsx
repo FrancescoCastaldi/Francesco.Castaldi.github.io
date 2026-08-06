@@ -109,6 +109,13 @@ export default async function BlogPostPage({
           fontFamily: 'var(--font-sans)',
         }}>
           {post.content.split("\n\n").map((paragraph, i) => {
+            const renderInline = (text: string) => {
+              let html = text
+                .replace(/\*\*(.*?)\*\*/g, '<strong style="color: var(--color-text-primary); font-weight: 600;">$1</strong>')
+                .replace(/`(.*?)`/g, '<code style="font-family: var(--font-mono); background: var(--color-space-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: var(--color-nebula);">$1</code>');
+              return <span dangerouslySetInnerHTML={{ __html: html }} />;
+            };
+
             if (paragraph.startsWith("## ")) {
               return (
                 <div key={i} style={{ display: "flex", gap: 12, margin: "36px 0 16px" }}>
@@ -120,7 +127,7 @@ export default async function BlogPostPage({
                     fontWeight: 400,
                     margin: 0,
                   }}>
-                    {paragraph.replace("## ", "")}
+                    {renderInline(paragraph.replace("## ", ""))}
                   </h2>
                 </div>
               );
@@ -130,15 +137,56 @@ export default async function BlogPostPage({
                 <ul key={i} style={{ padding: "0 0 0 20px", margin: "12px 0" }}>
                   {paragraph.split("\n").map((line, j) => (
                     <li key={j} style={{ marginBottom: 6 }}>
-                      {line.replace("- ", "")}
+                      {renderInline(line.replace("- ", ""))}
                     </li>
                   ))}
                 </ul>
               );
             }
+            if (paragraph.startsWith("> [!")) {
+              const isWarning = paragraph.startsWith("> [!WARNING]");
+              const isTip = paragraph.startsWith("> [!TIP]");
+              const color = isWarning ? "var(--color-star-gold)" : (isTip ? "var(--color-nebula)" : "var(--color-text-primary)");
+              const bgColor = isWarning ? "rgba(245,158,11,0.05)" : (isTip ? "rgba(34,211,238,0.05)" : "rgba(231,237,245,0.05)");
+              const cleanText = paragraph.replace(/> \[!(WARNING|TIP|NOTE)\]\n> /g, "");
+              return (
+                <div key={i} style={{
+                  margin: "24px 0",
+                  padding: "16px 20px",
+                  background: bgColor,
+                  borderLeft: `3px solid ${color}`,
+                  borderRadius: "0 8px 8px 0",
+                  color: "var(--color-text-primary)",
+                }}>
+                  <strong style={{ color, display: "block", marginBottom: 8, fontSize: 13, textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: 'var(--font-mono)' }}>
+                    {isWarning ? "Attenzione" : (isTip ? "Consiglio Pratico" : "Nota")}
+                  </strong>
+                  {renderInline(cleanText)}
+                </div>
+              );
+            }
+            if (paragraph.startsWith("\`\`\`")) {
+              const codeContent = paragraph.replace(/```\w*\n/g, "").replace(/\n```/g, "").replace(/```/g, "");
+              return (
+                <pre key={i} style={{
+                  background: "var(--color-space-void)",
+                  padding: "20px",
+                  borderRadius: 8,
+                  border: "1px solid rgba(255,255,255,0.05)",
+                  overflowX: "auto",
+                  margin: "24px 0",
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: 13,
+                  color: "var(--color-text-body)",
+                  lineHeight: 1.6,
+                }}>
+                  <code>{codeContent}</code>
+                </pre>
+              );
+            }
             return (
               <p key={i} style={{ marginBottom: 20 }}>
-                {paragraph}
+                {renderInline(paragraph)}
               </p>
             );
           })}

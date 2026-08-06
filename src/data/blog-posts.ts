@@ -2,6 +2,72 @@ import type { BlogPost } from "./types";
 
 export const blogPosts: BlogPost[] = [
   {
+    title: "Installazione Focal 165 IC su Toyota Yaris XP210",
+    slug: "focal-165-ic-toyota-yaris-xp210",
+    date: "2026-08-06",
+    excerpt:
+      "Guida completa passo-passo per la sostituzione degli altoparlanti anteriori originali con il kit Focal 165 IC.",
+    content: `## Introduzione e Materiale Necessario
+
+Sostituire gli altoparlanti di serie sulla Toyota Yaris (serie XP210) è uno dei miglioramenti audio più efficaci. Il kit coassiale **Focal 165 IC** offre una qualità sonora enormemente superiore rispetto ai coni in carta originali, migliorando soprattutto la chiarezza sulle alte frequenze e la precisione dei medi.
+
+> [!WARNING]
+> I pannelli porta della Yaris XP210 sono fissati con clip in plastica molto fragili. Operare sempre a temperature miti o usare un phon da carrozziere per scaldare leggermente la plastica ed evitare rotture.
+
+## Specifiche a Confronto
+
+Ecco un rapido confronto tecnico tra le casse originali e il nuovo kit:
+
+\`\`\`yaml
+# Specifiche OEM Toyota Yaris vs Focal 165 IC
+Impedenza:
+  OEM: 4 Ohm
+  Focal: 4 Ohm
+Materiale Cono:
+  OEM: Carta trattata
+  Focal: Polyglass
+Sensibilità:
+  OEM: ~86 dB
+  Focal: 92.6 dB
+Tweeter:
+  OEM: Assente (o separato)
+  Focal: Alluminio a cupola invertita
+\`\`\`
+
+## Step 1: Smontaggio del Pannello Porta
+
+1. Individuare la vite nascosta dietro la maniglia interna (coperta da un piccolo sportellino di plastica).
+2. Rimuovere la vite all'interno della tasca del bracciolo.
+3. Partendo dall'angolo inferiore destro, usare uno strumento in plastica (trim removal tool) per sganciare la prima clip.
+4. Tirare verso l'esterno con forza decisa ma controllata lungo tutto il perimetro.
+5. Sganciare i cavi dei comandi alzacristalli e la cordina della maniglia.
+
+## Step 2: Rimozione e Cablaggio
+
+> [!TIP]
+> Gli altoparlanti originali sono rivettati. Sarà necessario un trapano con punta da 4mm o 5mm per distruggere la testa dei rivetti e rimuovere il vecchio cestello.
+
+Una volta rimosso lo speaker originale, preparate il cablaggio. Per non tagliare i cavi originali dell'auto, vi consigliamo di acquistare un cavo adattatore specifico per Toyota.
+
+## Step 3: Installazione Adattatore e Focal 165 IC
+
+La Yaris richiede degli **anelli adattatori** in plastica o MDF perché l'alloggiamento originale non è un perfetto cerchio da 165mm standard.
+
+- Fissate l'adattatore alla lamiera usando bulloni e dadi autobloccanti (o nuovi rivetti se preferite).
+- Consigliamo di applicare del nastro insonorizzante tra la lamiera e l'adattatore.
+- Collegate il cavo speaker all'altoparlante Focal.
+- Avvitate saldamente il woofer Focal 165 IC all'anello adattatore.
+
+## Test e Conclusione
+
+Prima di rimontare il pannello, accendete lo stereo e testate il suono. Controllate la polarità: se i bassi risultano "vuoti", potreste aver invertito positivo e negativo su un lato (fase inversa).
+Una volta confermato il corretto funzionamento, rimettere il pannello seguendo gli step inversi. Il miglioramento della chiarezza vocale sarà evidente fin dal primo ascolto.`,
+    tags: ["Audio", "Focal", "Toyota", "Tutorial"],
+    readingTime: 6,
+    published: true,
+    category: "Veicoli",
+  },
+  {
     title: "Blockchain in Healthcare: Beyond the Hype",
     slug: "blockchain-healthcare-beyond-hype",
     date: "2025-11-15",
