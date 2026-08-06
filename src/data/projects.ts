@@ -11,24 +11,23 @@ export const projects: ProjectNode[] = [
     longDescription:
       "Interactive data dashboard built in Python (Streamlit/Pandas) designed to monitor and optimize productivity in manufacturing and metalworking processes. It imports raw production data from Excel files, cleans it, and automatically calculates key performance indicators (KPIs) through rich data visualizations.",
     content: `
-## Overview
-TruMetraPla is a desktop and CLI tool designed to monitor and optimize productivity in manufacturing and metalworking processes. It imports raw production data from Excel files, cleans it, and automatically calculates key performance indicators (KPIs) through rich data visualizations.
+## The Challenge
+Manufacturing processes generate massive amounts of data trapped in disconnected Excel spreadsheets. Finding bottlenecks is often like looking for a needle in a haystack.
 
-## Key Features
-- **Smart import**: Automatic recognition of Excel columns (Italian/English).
-- **Modern dashboard**: Graphical interface with a minimal tech theme and dynamic filters.
-- **Real-time KPIs**: Pieces produced, hours worked, average productivity per employee/process.
-- **Interactive charts**: Pie charts for quick analysis.
-- **Cross-platform**: Windows executable + Linux package.
-- **Full CLI**: Command-line reports with advanced options.
+> [!IMPORTANT]
+> The primary objective was to transform chaotic spreadsheets into actionable insights in real-time, without forcing the company to abandon their existing CRM or change their operational habits.
 
-> [!NOTE]
-> The system supports unmapped extra columns (they are preserved in the data but not used for KPIs).
+## Architecture & Choices
+To guarantee maximum retro-compatibility on older Windows factory machines while maintaining high data-processing speeds, I structured the application as a standalone executable.
 
-## Architecture & Technology
-The tool is built entirely in Python (3.11+) and is structured to be used both as a CLI application and a desktop GUI. 
-It uses \`pandas\` and \`openpyxl\` for efficient data manipulation and \`tkinter\` / \`ttkbootstrap\` for the graphical interface.
-The project is organized in a modular structure (\`cli.py\`, \`data_loader.py\`, \`gui.py\`, \`metrics.py\`) and is distributed via PyInstaller as standalone executables for Windows and Linux.
+| Component | Technology | Rationale |
+|---|---|---|
+| **Data Engine** | Pandas (Python) | Capable of ingesting and aggregating thousands of rows in milliseconds. |
+| **Interface** | Tkinter / ttkbootstrap | Native deployment on dated Windows machines without heavy web overhead. |
+| **Distribution** | PyInstaller | Zero-dependency deployment; operators don't need to install Python. |
+
+## Outcomes
+The dashboard replaced manual, hours-long Excel manipulation with a **1-click import process**. Operators can now instantly track average productivity, identifying process bottlenecks visually through real-time pie charts and dynamic tables.
 
 `,
     tags: ["Python", "Data Analysis", "Dashboard", "Pandas"],
@@ -51,23 +50,23 @@ The project is organized in a modular structure (\`cli.py\`, \`data_loader.py\`,
     longDescription:
       "Full-stack blockchain DApp that records hospital sanitization operations as immutable transactions on the Ethereum Sepolia testnet. Built with Solidity smart contracts, Hardhat for testing and deployment, and Ethers.js for frontend integration. Ensures compliance traceability for healthcare facility hygiene protocols.",
     content: `
-## Overview
-DApp for tracing sanitization activities in hospitals using blockchain technology - Project for Blockchain and Cryptocurrencies course.
-Hospital Sanitization Tracker is a decentralized application designed to record, verify, and monitor the sanitization of hospital environments (rooms, operating theaters, equipment) in an immutable and transparent way.
-
-## Key Features
-- **Immutable Records**: Every sanitization activity is permanently recorded on the blockchain.
-- **Role-Based Access**: Distinct roles for Cleaners (who log activities) and Auditors (who verify them).
-- **Transparency**: Patients and hospital management can cryptographically verify when an area was last sanitized.
-- **Smart Contracts**: Core logic is governed by Ethereum Smart Contracts.
+## The Challenge
+In a post-pandemic world, verifying the sanitization of hospital environments (operating theaters, intensive care units) is critical. Paper logs are easily lost or retroactively altered, compromising accountability.
 
 > [!IMPORTANT]
-> The use of blockchain ensures that sanitization logs cannot be retroactively altered, increasing accountability in healthcare facilities.
+> This project leverages Blockchain technology to guarantee immutability: once a sanitization event is logged, it can never be deleted or manipulated.
 
-## Architecture & Technology
-The backend is powered by **Solidity** smart contracts deployed on a test network (Ganache/Sepolia).
-The frontend is a **React** application that interacts with the blockchain using **Web3.js** / **Ethers.js** and MetaMask for wallet authentication.
-The project demonstrates applied cryptography and decentralized consensus mechanisms in a real-world healthcare scenario.
+## Architecture & Choices
+This DApp (Decentralized Application) was designed with strict Role-Based Access Control to separate the concerns of Cleaners and Auditors.
+
+| Component | Technology | Rationale |
+|---|---|---|
+| **Smart Contracts** | Solidity | Deployed on Sepolia testnet to govern access control and immutable logging. |
+| **Frontend** | React & Web3.js | Provides a clean, accessible interface for hospital staff via MetaMask. |
+| **Storage** | Ethereum Blockchain | Cryptographic verification of timestamps and actor identities. |
+
+## Outcomes
+The system successfully demonstrated how decentralized consensus mechanisms can be applied to healthcare. It provides a transparent, cryptographically secure audit trail that hospital management—and potentially patients—can trust implicitly.
 
 `,
     tags: ["Solidity", "Hardhat", "Ethers.js", "Blockchain"],

@@ -165,6 +165,42 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 );
               }
 
+              if (paragraph.startsWith("|") && paragraph.includes("|---|")) {
+                const rows = paragraph.split("\n").filter(r => r.trim().startsWith("|"));
+                if (rows.length > 2) {
+                  const headers = rows[0].split("|").slice(1, -1).map(s => s.trim());
+                  const bodyRows = rows.slice(2).map(r => r.split("|").slice(1, -1).map(s => s.trim()));
+                  
+                  return (
+                    <div key={i} style={{ overflowX: "auto", margin: "24px 0" }}>
+                      <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14 }}>
+                        <thead>
+                          <tr style={{ background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+                            {headers.map((h, idx) => (
+                              <th key={idx} style={{ padding: "12px 16px", textAlign: "left", color: "var(--color-text-primary)", fontWeight: 500 }}>
+                                {renderInline(h)}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {bodyRows.map((row, rowIdx) => (
+                            <tr key={rowIdx} style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                              {row.map((cell, cellIdx) => (
+                                <td key={cellIdx} style={{ padding: "12px 16px", color: "var(--color-text-body)" }}>
+                                  {renderInline(cell)}
+                                </td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  );
+                }
+              }
+
+
               if (!paragraph.trim()) return null;
 
               return (
