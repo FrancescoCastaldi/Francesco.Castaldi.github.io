@@ -95,17 +95,100 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           ))}
         </div>
 
+        {/* Content (Rich Markdown) */}
+        {project.content && (
+          <div style={{
+            color: "var(--color-text-body)",
+            fontSize: 15,
+            lineHeight: 1.8,
+            fontFamily: 'var(--font-sans)',
+            marginTop: 32,
+            borderTop: "1px solid rgba(255,255,255,0.06)",
+            paddingTop: 24,
+          }}>
+            {project.content.split("\n\n").map((paragraph, i) => {
+              const renderInline = (text: string) => {
+                let html = text
+                  .replace(/\*\*(.*?)\*\*/g, '<strong style="color: var(--color-text-primary); font-weight: 600;">$1</strong>')
+                  .replace(/`(.*?)`/g, '<code style="font-family: var(--font-mono); background: var(--color-space-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: var(--color-nebula);">$1</code>');
+                return <span dangerouslySetInnerHTML={{ __html: html }} />;
+              };
+
+              if (paragraph.startsWith("## ")) {
+                return (
+                  <div key={i} style={{ display: "flex", gap: 12, margin: "36px 0 16px" }}>
+                    <div style={{ width: 3, background: "var(--color-star-gold)", borderRadius: 2, flexShrink: 0 }} />
+                    <h2 style={{
+                      fontFamily: 'var(--font-serif)',
+                      fontSize: 22,
+                      color: "var(--color-text-primary)",
+                      fontWeight: 400,
+                      margin: 0,
+                    }}>
+                      {renderInline(paragraph.replace("## ", ""))}
+                    </h2>
+                  </div>
+                );
+              }
+              if (paragraph.startsWith("- ")) {
+                return (
+                  <ul key={i} style={{ padding: "0 0 0 20px", margin: "12px 0" }}>
+                    {paragraph.split("\n").map((line, j) => {
+                      if (!line.trim()) return null;
+                      return (
+                        <li key={j} style={{ marginBottom: 6 }}>
+                          {renderInline(line.replace("- ", ""))}
+                        </li>
+                      );
+                    })}
+                  </ul>
+                );
+              }
+              if (paragraph.startsWith("> [!")) {
+                const isWarning = paragraph.startsWith("> [!WARNING]");
+                const isTip = paragraph.startsWith("> [!TIP]");
+                const isImportant = paragraph.startsWith("> [!IMPORTANT]");
+                const color = isWarning ? "var(--color-star-gold)" : (isTip ? "var(--color-nebula)" : (isImportant ? "#9333ea" : "var(--color-text-primary)"));
+                const bgColor = isWarning ? "rgba(245,158,11,0.05)" : (isTip ? "rgba(34,211,238,0.05)" : (isImportant ? "rgba(147,51,234,0.05)" : "rgba(231,237,245,0.05)"));
+                const cleanText = paragraph.replace(/> \[!(WARNING|TIP|NOTE|IMPORTANT)\]\n> /g, "").replace(/\n> /g, " ");
+                return (
+                  <div key={i} style={{
+                    margin: "24px 0",
+                    padding: "16px 20px",
+                    background: bgColor,
+                    borderLeft: `3px solid ${color}`,
+                    borderRadius: "0 8px 8px 0",
+                    color: "var(--color-text-primary)",
+                  }}>
+                    {renderInline(cleanText)}
+                  </div>
+                );
+              }
+
+              if (!paragraph.trim()) return null;
+
+              return (
+                <p key={i} style={{ marginBottom: 16 }}>
+                  {renderInline(paragraph.replace(/\n/g, " "))}
+                </p>
+              );
+            })}
+          </div>
+        )}
+
         {/* Related Skills */}
         {project.skills.length > 0 && (
           <div style={{ marginTop: 32, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-            <span style={{
-              fontSize: 10,
+            <h3 style={{
+              fontSize: 12,
               fontFamily: 'var(--font-mono)',
               color: "var(--color-text-muted)",
               textTransform: "uppercase",
-              letterSpacing: "0.08em",
-              display: "block",
-            }}>Related Skills</span>
+              letterSpacing: "0.1em",
+              marginBottom: 16,
+            }}>
+              Related Skills
+            </h3>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 12 }}>
               {project.skills.map((skillId) => {
                 const skill = skills.find((s) => s.id === skillId);

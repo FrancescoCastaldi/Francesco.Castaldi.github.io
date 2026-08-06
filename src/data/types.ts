@@ -6,6 +6,7 @@ export interface ProjectNode {
   color?: string;
   description: string;
   longDescription: string;
+  content?: string;
   tags: string[];
   skills: string[];
   links: {
