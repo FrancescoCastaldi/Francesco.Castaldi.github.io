@@ -118,7 +118,10 @@ export default async function BlogPostPage({
           lineHeight: 1.8,
           fontFamily: 'var(--font-sans)',
         }}>
-          {post.content.split("\n\n").map((paragraph, i) => {
+          {post.content.split("\n\n").map((rawParagraph, i) => {
+            const paragraph = rawParagraph.trim();
+            if (!paragraph) return null;
+            
             const renderInline = (text: string) => {
               let html = text
                 .replace(/\*\*(.*?)\*\*/g, '<strong style="color: var(--color-text-primary); font-weight: 600;">$1</strong>')

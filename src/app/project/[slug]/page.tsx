@@ -106,7 +106,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             borderTop: "1px solid rgba(255,255,255,0.06)",
             paddingTop: 24,
           }}>
-            {project.content.split("\n\n").map((paragraph, i) => {
+            {project.content.split("\n\n").map((rawParagraph, i) => {
+              const paragraph = rawParagraph.trim();
+              if (!paragraph) return null;
+              
               const renderInline = (text: string) => {
                 let html = text
                   .replace(/\*\*(.*?)\*\*/g, '<strong style="color: var(--color-text-primary); font-weight: 600;">$1</strong>')
@@ -231,8 +234,6 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 );
               }
 
-
-              if (!paragraph.trim()) return null;
 
               return (
                 <p key={i} style={{ marginBottom: 16 }}>
