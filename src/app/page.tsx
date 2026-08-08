@@ -10,7 +10,7 @@ export default function Home() {
 
   useEffect(() => {
     // Fallback for browsers that don't support scroll-driven animations
-    if (typeof window !== "undefined" && !CSS.supports("animation-timeline: view()")) {
+    if (typeof window !== "undefined" && !CSS.supports("(animation-timeline: view()) and (animation-range: entry)")) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -143,7 +143,6 @@ export default function Home() {
           {expertiseItems.map((item, i) => (
             <div
               key={item.id}
-              className="scroll-reveal"
               style={{
                 background: "var(--color-space-surface)",
                 border: "1px solid rgba(255,255,255,0.04)",
@@ -238,7 +237,6 @@ export default function Home() {
             <Link
               href={`/project/${project.slug}`}
               key={project.id}
-              className="scroll-reveal"
               style={{
                 display: "block",
                 textDecoration: "none",
@@ -354,7 +352,6 @@ export default function Home() {
             <Link
               href={`/blog/${post.slug}`}
               key={post.slug}
-              className="scroll-reveal"
               style={{
                 display: "flex",
                 flexDirection: "column",
