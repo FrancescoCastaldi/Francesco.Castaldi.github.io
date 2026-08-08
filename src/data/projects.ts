@@ -10,7 +10,9 @@ export const projects: ProjectNode[] = [
       "Dashboard Python per monitorare la produttività nei processi metalmeccanici. Calcolo automatico dei KPI da Excel.",
     longDescription:
       "Dashboard dati interattiva scritta in Python (Streamlit/Pandas) per ottimizzare la produttività nei processi di produzione metalmeccanica. Importa i dati grezzi dai file Excel, li pulisce e calcola i KPI attraverso visualizzazioni dati ricche e interattive.",
-    content: `## La Sfida della Fabbrica
+    content: `![TruMetraPla](/assets/projects/trumetrapla/images/cover.png)
+
+## La Sfida della Fabbrica
 
 Le aziende metalmeccaniche generano una quantità spaventosa di dati, spesso intrappolati in fogli Excel disconnessi. Trovare i colli di bottiglia della produzione è come cercare un ago in un pagliaio, e costa ore di lavoro manuale ogni settimana.
 
@@ -27,6 +29,16 @@ Per garantire la massima retro-compatibilità sui vecchi PC industriali con Wind
 | **Motore Dati** | Pandas (Python) | Capace di ingerire e aggregare migliaia di righe in millisecondi. |
 | **Interfaccia Grafica** | Tkinter / ttkbootstrap | Deploy nativo su vecchie macchine Windows senza l'overhead di un browser web. |
 | **Distribuzione** | PyInstaller | L'operatore non deve installare Python. Doppio clic e parte. |
+
+*Tabella 1: Scelte Architetturali di TruMetraPla*
+
+```python
+# Esempio: Aggregazione KPI su Pandas
+import pandas as pd
+
+def calculate_kpi(df):
+    return df.groupby("macchinario")["pezzi_prodotti"].mean()
+```
 
 ## Il Risultato sul Campo
 
@@ -51,7 +63,9 @@ Ora gli operatori monitorano la produttività media istantaneamente, individuand
       "DApp basata su Smart Contract Ethereum (Sepolia) per il tracciamento immutabile delle attività di sanificazione ospedaliera.",
     longDescription:
       "Full-stack blockchain DApp che registra le operazioni di sanificazione ospedaliera come transazioni immutabili sulla testnet Sepolia di Ethereum. Costruita con Solidity, Hardhat ed Ethers.js per garantire la compliance igienica.",
-    content: `## La Sfida della Compliance
+    content: `![Hospital Sanitization Tracker](/assets/projects/hospital-sanitization-tracker/images/cover.png)
+
+## La Sfida della Compliance
 
 Nel mondo post-pandemico, verificare l'avvenuta sanificazione degli ambienti ospedalieri (sale operatorie, terapie intensive) è una questione di vita o di morte. I registri cartacei si perdono o possono essere alterati a posteriori per coprire mancanze.
 
@@ -68,6 +82,17 @@ Questa Decentralized Application (DApp) utilizza un rigoroso sistema di Controll
 | **Smart Contracts** | Solidity | Deploy su testnet Sepolia. Gestiscono la logica di accesso e il salvataggio immutabile dei log. |
 | **Frontend** | React & Web3.js | Interfaccia pulita per permettere allo staff di interagire tramite MetaMask. |
 | **Storage Layer** | Blockchain Ethereum | Verifica crittografica dei timestamp e delle firme degli operatori. |
+
+*Tabella 1: Livelli architetturali della DApp*
+
+```solidity
+// Emissione di un evento di sanificazione su chain
+event SanitizationLogged(
+    address indexed operator,
+    string roomId,
+    uint256 timestamp
+);
+```
 
 ## Risultati
 
@@ -91,7 +116,9 @@ Il sistema ha dimostrato come il meccanismo di consenso decentralizzato sia appl
       "Web app per modificare tracce GPS offline: smoothing, taglio punti e profili altimetrici generati in tempo reale.",
     longDescription:
       "Un editor GPS browser-based per ciclisti. Permette di modificare i file GPX per sistemare sbalzi di potenza (watts) o glitch di velocità prima di caricarli su Strava. Tutto gira client-side.",
-    content: `## Perché un Editor GPX nel Browser?
+    content: `![GPX Editor Web App](/assets/projects/gpx-editor/images/cover.png)
+
+## Perché un Editor GPX nel Browser?
 
 Ciclisti e runner si trovano spesso con tracce GPS rovinate da picchi di velocità impossibili (glitch del segnale) o errori dei misuratori di potenza. Correggere questi errori prima di caricare l'allenamento su Strava richiedeva pesanti software desktop.
 La mia soluzione: uno strumento web-based, veloce e 100% offline.
@@ -117,7 +144,18 @@ Ho puntato sulla leggerezza estrema.
 |---|---|---|
 | **TypeScript** | Core | Prevenzione dei bug nella manipolazione delle coordinate. |
 | **Leaflet** | Rendering Mappa | Leggera, open-source e velocissima nel disegnare polilinee complesse. |
-| **Chart.js** | Altimetria | Ideale per visualizzare l'elevazione in relazione alla distanza. |`,
+| **Chart.js** | Altimetria | Ideale per visualizzare l'elevazione in relazione alla distanza. |
+
+*Tabella 1: Stack tecnologico lato Client*
+
+```typescript
+// Parsing puro lato client, senza backend
+const fileReader = new FileReader();
+fileReader.onload = (e) => {
+  const gpxData = parseGPX(e.target.result);
+  renderMap(gpxData);
+};
+````,
     color: "#34D399",
     tags: ["TypeScript", "Leaflet", "Vite", "Chart.js"],
     skills: ["cycling-analytics", "web-dev"],
@@ -135,7 +173,11 @@ Ho puntato sulla leggerezza estrema.
       "Simulazione stocastica (Catene di Markov a tempo discreto) del modello SIR epidemiologico, con analisi Monte Carlo.",
     longDescription:
       "Progetto accademico (UniBo) per la simulazione della diffusione epidemica. Sostituisce le equazioni differenziali classiche con matrici di transizione markoviane per catturare le fluttuazioni casuali nei piccoli gruppi.",
-    content: `## Modelli Epidemiologici: Determinismo vs Stocasticità
+    content: `![SIR Markov Chain](/assets/projects/sir-markov-chain/images/cover.png)
+
+> **Key Takeaways:** L'approccio Markoviano permette di inserire eventi stocastici discreti, simulando lockdown e riaperture con molta più aderenza alla realtà rispetto ai modelli continui.
+
+## Modelli Epidemiologici: Determinismo vs Stocasticità
 
 Il modello SIR classico utilizza eleganti equazioni differenziali. Funziona bene sulle grandi popolazioni, ma fallisce quando i numeri sono piccoli e subentra il caos del caso.
 Questo progetto accademico affronta il problema simulando la propagazione di un virus come una **Catena di Markov a tempo discreto**.
@@ -160,7 +202,9 @@ Essendo un calcolo intensivo su matrici, Python era la scelta obbligata.
 |---|---|
 | **Python** | Motore logico. |
 | **NumPy** | Operazioni vettorializzate ultra-veloci sulle matrici di transizione. |
-| **Matplotlib** | Plotting delle curve epidemiche e delle distribuzioni Monte Carlo. |`,
+| **Matplotlib** | Plotting delle curve epidemiche e delle distribuzioni Monte Carlo. |
+
+*Tabella 1: Strumenti scientifici in Python*`,
     color: "var(--color-nebula)",
     tags: ["Python", "NumPy", "Matplotlib", "University"],
     skills: ["data-science", "ai-ml"],
@@ -178,7 +222,11 @@ Essendo un calcolo intensivo su matrici, Python era la scelta obbligata.
       "Confronto tra Total Variation, UNet e DiffPIR per il restauro di immagini citologiche cervicali (LBC).",
     longDescription:
       "Progetto di ricerca per ripulire il rumore e la sfocatura dai vetrini dei Pap test. Valuta l'impatto dei modelli a diffusione generativa contro il classico deblurring matematico per evitare 'allucinazioni' mediche.",
-    content: `## Il Problema Clinico: Il Rumore nei Pap Test
+    content: `![Cervical LBC Deblurring](/assets/projects/ci-cervical-lbc/images/cover.png)
+
+**Abstract:** Valutazione tecnica di metodi matematici (Total Variation) vs Deep Learning (UNet, DiffPIR) per il restauro di immagini citologiche LBC.
+
+## Il Problema Clinico: Il Rumore nei Pap Test
 
 L'accuratezza di uno screening per il tumore al collo dell'utero dipende interamente dalla qualità visiva del campione (LBC). Quando l'immagine al microscopio è sfocata o rumorosa, la diagnosi è a rischio.
 La soluzione non è scartare il campione, ma restaurare l'immagine algoritmicamente.
@@ -197,6 +245,8 @@ Ho implementato e messo in competizione tre approcci storicamente opposti:
 | **Total Variation** | 100% Affidabile (Nessuna allucinazione) | Pulizia sommaria |
 | **UNet** | Altissimo punteggio PSNR | Richiede enormi dataset di training |
 | **DiffPIR** | Dettaglio finale mozzafiato | **Rischio di inventare falsi tumori (Allucinazioni)** |
+
+*Tabella 1: Trade-off tra metodi di Restauro*
 
 > [!IMPORTANT]
 > L'estetica non deve mai battere l'affidabilità clinica. La UNet si è confermata il miglior compromesso tra capacità di pulizia e assenza di allucinazioni generative pericolose per il paziente.`,
@@ -217,12 +267,16 @@ Ho implementato e messo in competizione tre approcci storicamente opposti:
       "Machine Learning sul dataset UCI Adult: predizione del reddito e indagine approfondita sulle metriche di Fairness.",
     longDescription:
       "Pipeline ML completa che smaschera i bias algoritmici. Non basta un'Accuracy del 90%: tramite Demographic Parity e analisi SHAP, il progetto dimostra come i modelli discriminino attivamente genere ed etnia.",
-    content: `## Il Lato Oscuro dell'Accuracy
+    content: `![SGF² AI Fairness Analysis](/assets/projects/sgf2-ai-project/images/cover.png)
+
+**Abstract:** Un modello di classificazione ad alta accuracy può nascondere bias etnici o di genere. Questo progetto analizza le metriche di Fairness sul dataset Adult Census e svela le dinamiche interne usando valori SHAP.
+
+## Il Lato Oscuro dell'Accuracy
 
 Se un modello predittivo raggiunge l'87% di Accuratezza, è pronto per la produzione, giusto? **Sbagliato.**
 Questo progetto smonta il mito dell'Accuracy analizzando il celebre dataset *UCI Adult* (predizione del reddito). Ho costruito una pipeline di Machine Learning completa solo per dimostrare un punto: i modelli potenti imparano a discriminare in modo potentissimo.
 
-[INSERISCI QUI GRAFICO A CASCATA SHAP O ROC CURVE]
+![SHAP Waterfall Analysis](/assets/projects/sgf2-ai-project/images/cover.png)
 
 ## Gli Sfidanti
 
@@ -247,6 +301,8 @@ I modelli ensemble sono "Scatole Nere". Per aprirle, ho utilizzato l'analisi **S
 | **Random Forest** | Buona | Alto | Possibile, ma complessa |
 | **XGBoost** | **Eccellente** | **Critico (Proxy variabili sul genere)** | Forti interazioni non lineari svelate |
 
+*Tabella 1: Confronto Modelli ML su Accurancy vs Fairness*
+
 La conclusione dello studio è che ogni deployment di ML deve obbligatoriamente includere un passo di Fairness Auditing e debiasing a monte, altrimenti stiamo solo automatizzando le disuguaglianze del passato.`,
     color: "#FB7185",
     tags: ["Python", "scikit-learn", "pandas", "University"],
@@ -265,7 +321,11 @@ La conclusione dello studio è che ogni deployment di ML deve obbligatoriamente 
       "Redesign completo (Double Diamond) per il sito dei trasporti TPER. SUS passato da 37.5 a 72.5.",
     longDescription:
       "Un progetto di ricerca UX end-to-end. Dalle interviste sul campo al prototipo interattivo, ridisegnando l'intera esperienza di acquisto biglietti e ricerca orari per TPER, abbattendo la frustrazione degli utenti.",
-    content: `## Il Problema Originale
+    content: `![TperTutti UX Redesign Mockup](/assets/projects/tpertutti-ux-redesign/images/cover.png)
+
+**Abstract:** Dall'incubo burocratico a un checkout in 3 click. Appplicazione pratica della metodologia Double Diamond per un progetto di UX Research e UI Design.
+
+## Il Problema Originale
 
 Il sito dei trasporti pubblici dell'Emilia-Romagna (TPER) soffriva di una malattia comune nel settore pubblico: era stato progettato per chi lo gestiva, non per chi lo usava.
 Il punteggio iniziale di Usabilità (SUS) era un catastrofico **37.5 su 100**. Le persone non riuscivano a trovare gli orari. 
@@ -291,7 +351,9 @@ Alla fine del percorso, i nuovi test di usabilità hanno restituito numeri inequ
 |---|---|---|---|
 | **Punteggio SUS** | 37.5 / 100 | **72.5 / 100** | +93% |
 | **Completamento Task** | ~40% | **>90%** | Drastico |
-| **Tempo di Acquisto** | > 3 minuti | **< 45 secondi** | Salto quantico |`,
+| **Tempo di Acquisto** | > 3 minuti | **< 45 secondi** | Salto quantico |
+
+*Tabella 1: KPI pre e post redesign*`,
     color: "#E2E8F0",
     tags: ["UX Design", "Double Diamond", "Usability", "University"],
     skills: ["healthcare-it", "consulting"],
@@ -309,7 +371,11 @@ Alla fine del percorso, i nuovi test di usabilità hanno restituito numeri inequ
       "Plugin React per Apache Superset: una Calendar Heatmap interattiva per l'esplorazione temporale delle dashboard.",
     longDescription:
       "Sviluppo di un custom chart plugin per Apache Superset (BI Tool). Permette agli analisti di evidenziare pattern temporali (stile GitHub contributions) e filtrare dinamicamente l'intera dashboard cliccando su giorni o range di date.",
-    content: `## Espandere Apache Superset
+    content: `![Superset Calendar Filter](/assets/projects/superset-calendar-filter/images/cover.png)
+
+**Abstract:** Creazione di un plugin React custom per Apache Superset che supporta Cross-Filtering bidirezionale per evidenziare pattern temporali.
+
+## Espandere Apache Superset
 
 Superset è uno degli strumenti di Business Intelligence open-source più potenti al mondo, ma i suoi grafici standard hanno dei limiti. Quando un'azienda ha bisogno di visualizzare la densità di eventi giornalieri (pensate alla griglia dei commit di GitHub), un semplice grafico a barre non basta. 
 
@@ -327,6 +393,17 @@ La complessità principale risiede nell'architettura dei dati:
 | **ControlPanel** | Aggiunge il menu a tendina sulla sinistra di Superset per far selezionare metriche e colonne di date all'utente. |
 | **BuildQuery** | Genera il JSON che ordina al backend di eseguire aggregazioni SQL (GROUP BY date). |
 | **React Component** | Usa \`Emotion\` per lo styling e renderizza la griglia vettoriale. |
+
+*Tabella 1: Architettura standard di un Plugin Superset*
+
+```typescript
+import { Behavior, getChartMetadataRegistry } from "@superset-ui/core";
+// Il plugin supporta l'emissione di eventi Cross-Filter
+export const metadata = new ChartMetadata({
+  name: "Calendar Heatmap",
+  behaviors: [Behavior.INTERACTIVE_CHART],
+});
+```
 
 > [!IMPORTANT]
 > Il vero valore aggiunto di questo plugin è l'integrazione con il **Native Cross-Filtering** di Superset. Se clicchi su un quadratino rosso della Heatmap (es. 15 Agosto), *tutti* gli altri grafici della dashboard si filtrano istantaneamente su quella specifica data.

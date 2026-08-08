@@ -22,6 +22,16 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      images: [
+        {
+          url: `/assets/blog/${post.slug}/images/cover.png`,
+          alt: post.title,
+        },
+      ],
+    },
   };
 }
 

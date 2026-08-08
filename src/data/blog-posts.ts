@@ -7,7 +7,9 @@ export const blogPosts: BlogPost[] = [
     date: "2026-08-06",
     excerpt:
       "Guida completa passo-passo per la sostituzione degli altoparlanti anteriori originali con il kit Focal 165 IC.",
-    content: `## Introduzione e Materiale Necessario
+    content: `![Focal 165 IC speaker upgrade](/assets/blog/focal-165-ic-toyota-yaris-xp210/images/cover.png)
+
+## Introduzione e Materiale Necessario
 
 Sostituire gli altoparlanti di serie sulla Toyota Yaris (serie XP210) è uno dei miglioramenti audio più impattanti che tu possa fare. Il kit coassiale **Focal 165 IC** offre una qualità sonora che distrugge letteralmente i vecchi coni in carta originali, regalando alti cristallini e medi precisissimi.
 
@@ -24,6 +26,8 @@ Ecco perché il salto di qualità è così netto:
 | **Materiale Cono** | Carta trattata | Polyglass |
 | **Sensibilità** | ~86 dB | 92.6 dB (Volume molto più alto a parità di radio) |
 | **Tweeter** | Assente o incassato | Alluminio a cupola invertita (Dettaglio estremo) |
+
+*Tabella 1: Confronto specifiche tecniche*
 
 
 ## Step 1: Smontaggio del Pannello Porta
@@ -60,7 +64,9 @@ Prima di rimontare tutto, accendi la radio. Controlla la polarità: se i bassi t
     date: "2025-11-15",
     excerpt:
       "Applicazioni pratiche della blockchain per il tracciamento della compliance ospedaliera e perché le testnet di Ethereum sono il punto di partenza perfetto.",
-    content: `## Lo Stato della Blockchain in Sanità
+    content: `![Blockchain diagram in healthcare](/assets/blog/blockchain-healthcare-beyond-hype/images/cover.png)
+
+## Lo Stato della Blockchain in Sanità
 
 Per anni ci hanno venduto la Blockchain come la panacea di tutti i mali in sanità, eppure l'adozione stenta a decollare. Tolte di mezzo le criptovalute e la speculazione finanziaria, la tecnologia a registro distribuito ha un potenziale enorme per un caso d'uso specifico: **la compliance e gli audit trail**.
 
@@ -82,13 +88,17 @@ Gli **Smart Contract su Ethereum** offrono invece un livello di logging traspare
 | **Database SQL (Classico)** | Alta (se ben configurato) | Alterabile dall'admin | Bassi |
 | **Blockchain (Smart Contract)** | Assoluta (Crittografica) | **Immutabile** | Medi/Alti |
 
+*Tabella 1: Confronto tra Database SQL e Blockchain*
+
 ## Considerazioni Pratiche
 
 Ovviamente ci sono dei limiti strutturali. I costi delle transazioni (gas fees) possono pesare. 
 Tuttavia, l'approccio ibrido vince su tutto: i dati clinici sensibili del paziente (GDPR) rimangono rigorosamente *off-chain* nei server ospedalieri, mentre sulla blockchain finisce unicamente l'hash crittografico che ne certifica l'autenticità e l'ora esatta di creazione.
 
 > [!NOTE]
-> Utilizzare reti di test (Testnet) come Sepolia permette alle cliniche di simulare questi audit trail a costo zero, testando le architetture senza rischiare capitali in gas fees reali.`,
+> Utilizzare reti di test (Testnet) come Sepolia permette alle cliniche di simulare questi audit trail a costo zero, testando le architetture senza rischiare capitali in gas fees reali.
+
+Per approfondire lo sviluppo di Smart Contract, consulta la [Documentazione Ufficiale Ethereum](https://ethereum.org/en/developers/docs/smart-contracts/).`,
     tags: ["Blockchain", "Healthcare IT", "Smart Contracts"],
     readingTime: 4,
     published: true,
@@ -100,10 +110,17 @@ Tuttavia, l'approccio ibrido vince su tutto: i dati clinici sensibili del pazien
     date: "2025-09-20",
     excerpt:
       "Un'analisi tecnica sulla costruzione di un editor di tracce GPS lato client, con smoothing e profili altimetrici, senza alcun backend.",
-    content: `## Perché un Editor GPX nel Browser?
+    content: `![Architettura del GPX Editor](/assets/blog/building-gpx-editor-typescript-leaflet/images/diagram.png)
+
+## Perché un Editor GPX nel Browser?
 
 Ciclisti e runner accumulano gigabyte di file GPX dai propri Garmin o Wahoo. Spesso questi file contengono sbalzi di velocità o errori nei dati di potenza. Fino a ieri, per pulire queste tracce, dovevi scaricare pesanti software desktop. 
 La sfida? Creare un editor 100% web-based. Zero backend. Zero upload su server lenti.
+
+**Cosa costruiremo:**
+- Parsing client-side dei file GPX
+- Algoritmo di smoothing per ripulire i dati
+- Profilo altimetrico interattivo con Chart.js
 
 
 ## Core Features e Architettura
@@ -128,9 +145,19 @@ Per costruire l'applicativo, serviva uno stack snello e type-safe.
 | **Chart.js** | Altimetria | API semplice, Canvas performante per dataset da migliaia di punti. |
 | **Vite** | Bundler | HMR istantaneo, essenziale per iterare velocemente sulle UI. |
 
+*Tabella 1: Stack Tecnologico per il GPX Editor*
+
+```typescript
+// Esempio di parsing GPX semplificato
+import { DOMParser } from "xmldom";
+const doc = new DOMParser().parseFromString(gpxString, "text/xml");
+const trkpts = doc.getElementsByTagName("trkpt");
+console.log(`Trovati ${trkpts.length} punti nella traccia`);
+```
+
 Il risultato finale è uno strumento professionale, fluido e sicuro, accessibile da qualsiasi browser moderno.`,
     tags: ["TypeScript", "Leaflet", "Vite", "Cycling"],
-    readingTime: 5,
+    readingTime: 3,
     published: true,
     category: "Development",
   },
@@ -140,7 +167,11 @@ Il risultato finale è uno strumento professionale, fluido e sicuro, accessibile
     date: "2025-06-10",
     excerpt:
       "Simulazioni discrete (Markov) del modello SIR, con sensitivity analysis e metodi Monte Carlo per la previsione delle epidemie.",
-    content: `## Dalle Equazioni Differenziali ai Passi Discreti
+    content: `> **Key takeaways:** Modelli discreti (Markov) permettono variazioni real-time dei parametri come il lockdown, al contrario delle equazioni differenziali classiche. Inoltre, i metodi Monte Carlo aiutano a quantificare l'incertezza sistemica.
+
+![Markov transition matrix](/assets/blog/sir-markov-chains-epidemiology/images/matrix.png)
+
+## Dalle Equazioni Differenziali ai Passi Discreti
 
 Il classico modello epidemiologico SIR (Suscettibili, Infetti, Rimossi) fa un uso massiccio di equazioni differenziali continue. Matematicamente elegante, certo, ma molto poco intuitivo quando devi spiegare ai decisori politici l'impatto di un lockdown che inizia in un giorno specifico.
 
@@ -165,9 +196,21 @@ Le pandemie sono incerte per definizione. Usare la simulazione Monte Carlo perme
 | **Tasso di Recupero** | Determina la velocità di svuotamento del compartimento 'Infetti'. |
 | **Interventi Esterni (Lockdown)** | Modifica dinamicamente le matrici di transizione in run-time. |
 
+*Tabella 1: Parametri e Impatto sul Modello Markoviano*
+
+```python
+# Esempio di matrice di transizione Markoviana
+import numpy as np
+
+# Stati: S, I, R
+P = np.array([[0.95, 0.05, 0.00],
+              [0.00, 0.90, 0.10],
+              [0.00, 0.00, 1.00]])
+```
+
 Grazie a questa Analisi di Sensibilità, i sistemi sanitari possono capire matematicamente se ha senso chiudere i voli o semplicemente imporre l'uso di mascherine, analizzando le distribuzioni di probabilità finali.`,
     tags: ["Python", "Data Science", "Epidemiology", "Simulation"],
-    readingTime: 6,
+    readingTime: 4,
     published: true,
     category: "Data Science",
   },
@@ -204,6 +247,8 @@ I risultati hanno evidenziato un trade-off brutale tra percezione umana e metric
 | **UNet** | **Altissime** | Molto Buona | Basso |
 | **DiffPIR** | Medie | **Eccellente (Dettaglio estremo)** | Alto |
 
+*Tabella 1: Confronto risultati tra i metodi di restauro*
+
 La UNet rimane il compromesso migliore per l'integrazione clinica: ottimi punteggi matematici e risultati visivamente affidabili, senza richiedere l'immensa potenza di calcolo (e il rischio allucinazioni) del modello a diffusione.`,
     tags: ["Python", "PyTorch", "Computer Vision", "Healthcare"],
     readingTime: 7,
@@ -216,7 +261,11 @@ La UNet rimane il compromesso migliore per l'integrazione clinica: ottimi punteg
     date: "2024-12-01",
     excerpt:
       "L'applicazione della metodologia Double Diamond per rivoluzionare la UX di TPER, ottenendo un incremento di 35 punti nel punteggio SUS.",
-    content: `## Il Punto di Partenza (Disastroso)
+    content: `![Screenshot redesign TPER](/assets/blog/ux-redesign-public-transport/images/carousel-1.png)
+
+**Brief di Progetto:** Riprogettazione dell'esperienza utente del portale di trasporto locale (TPER), con l'obiettivo primario di semplificare la ricerca orari e l'acquisto biglietti da mobile, applicando la metodologia Double Diamond.
+
+## Il Punto di Partenza (Disastroso)
 
 Cosa succede quando un servizio vitale come il trasporto pubblico ha un sito inutilizzabile? Frustrazione, ritardi e chiamate infinite al call center.
 Il sito originale di TPER aveva un System Usability Scale (SUS) di 37.5 su 100. La sufficienza mondiale è a 68. 
@@ -245,9 +294,13 @@ I numeri parlano chiaro e giustificano l'investimento in UX Design:
 | **Task Completion Rate** | ~40% | **>90%** |
 | **Time on Task** | Alto (Frustrazione) | Molto Basso (Flusso rapido) |
 
+*Tabella 1: Confronto KPI pre e post redesign*
+
+Visualizza il [Prototipo interattivo su Figma](https://figma.com/).
+
 L'approccio human-centered ha trasformato un labirinto burocratico in un hub digitale moderno ed efficiente.`,
     tags: ["UX Design", "Usability", "Research", "Public Transport"],
-    readingTime: 5,
+    readingTime: 3,
     published: true,
     category: "Design",
   },
@@ -257,14 +310,16 @@ L'approccio human-centered ha trasformato un labirinto burocratico in un hub dig
     date: "2024-09-15",
     excerpt:
       "Costruzione di una pipeline ML per predire il reddito, valutando le metriche di equità (Fairness) tramite l'analisi SHAP.",
-    content: `## Oltre la Semplice Accuratezza
+    content: `**Sommario:** Un modello di Machine Learning accurato non è necessariamente giusto. L'Accuracy può nascondere bias discriminatori se i dati storici sono sbilanciati. Utilizzando il dataset Adult Census, analizziamo metriche di fairness (Demographic Parity) su Random Forest e XGBoost, svelando le "proxy variables" con SHAP.
+
+## Oltre la Semplice Accuratezza
 
 I modelli di Machine Learning stanno decidendo chi ottiene un mutuo, chi viene assunto e chi finisce in prigione. Eppure, la maggior parte dei Data Scientist guarda solo l'Accuracy (Accuratezza). 
 Un modello accurato al 90% può nascondere bias sistematici devastanti contro minoranze etniche o di genere. 
 
 Ho utilizzato l'UCI Adult Census Dataset per dimostrare quanto questo problema sia radicato.
 
-[INSERISCI QUI GRAFICO A BARRE SUL BIAS NEL MACHINE LEARNING]
+![Bias analysis chart](/assets/blog/ml-fairness-adult-census/images/bias_chart.png)
 
 ## La Pipeline di Test
 
@@ -284,12 +339,18 @@ Tutti i modelli hanno raggiunto precisioni altissime. Ma guardando le metriche d
 | **Random Forest** | 85% | Molto Alto (Discriminatorio) | Molto Alto |
 | **XGBoost** | **87%** | Estremo | Estremo |
 
+*Tabella 1: Risultati e Metriche di Fairness*
+
 Più il modello è potente (XGBoost), più "impara" a sfruttare spietatamente le correlazioni storiche di disuguaglianza presenti nei dati.
 
 L'analisi **SHAP** ha svelato la black box: variabili come il genere (Gender) influenzavano pesantemente la predizione finale, agendo come *proxy variables* occulte. 
-Conclusione? La fairness va ingegnerizzata a monte (es. re-weighting), non è un optional.`,
+Conclusione? La fairness va ingegnerizzata a monte (es. re-weighting), non è un optional.
+
+### Approfondimenti
+- [UCI Adult Census Dataset](https://archive.ics.uci.edu/dataset/2/adult)
+- [SHAP (SHapley Additive exPlanations)](https://shap.readthedocs.io/)`,
     tags: ["Python", "Machine Learning", "Fairness", "Data Science"],
-    readingTime: 6,
+    readingTime: 4,
     published: true,
     category: "Data Science",
   },
@@ -299,7 +360,11 @@ Conclusione? La fairness va ingegnerizzata a monte (es. re-weighting), non è un
     date: "2024-06-20",
     excerpt:
       "Una guida ingegneristica per creare chart personalizzati in Apache Superset 6.1.0, prendendo come esempio una Calendar Heatmap interattiva.",
-    content: `## Perché Sporcarsi le Mani con i Plugin Custom?
+    content: `**Abstract**: Guida passo-passo per estendere Apache Superset (v6.1.0) con visualizzazioni React personalizzate, sfruttando l'architettura a plugin e i cross-filter nativi.
+
+![Custom Calendar Heatmap in Superset](/assets/blog/custom-visualization-plugins-superset/images/heatmap.png)
+
+## Perché Sporcarsi le Mani con i Plugin Custom?
 
 Apache Superset è una piattaforma di BI fenomenale, ma i suoi grafici nativi a volte non bastano. Le dashboard aziendali complesse richiedono visualizzazioni studiate su misura. 
 La soluzione? Creare plugin React custom per iniettare grafici proprietari direttamente nel cuore di Superset.
@@ -326,7 +391,7 @@ Costruire un plugin richiede di rispettare interfacce molto rigide.
 
 Registrando il plugin nel registry centrale, la nuova Chart appare nel dropdown nativo, indistinguibile dalle feature originali di Superset. Un lavoro sporco di configurazione Webpack, ma dal valore architetturale inestimabile.`,
     tags: ["Superset", "TypeScript", "React", "Data Visualization"],
-    readingTime: 5,
+    readingTime: 3,
     published: true,
     category: "Development",
   },
