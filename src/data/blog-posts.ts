@@ -147,13 +147,13 @@ Per costruire l'applicativo, serviva uno stack snello e type-safe.
 
 *Tabella 1: Stack Tecnologico per il GPX Editor*
 
-```typescript
+\`\`\`typescript
 // Esempio di parsing GPX semplificato
 import { DOMParser } from "xmldom";
 const doc = new DOMParser().parseFromString(gpxString, "text/xml");
 const trkpts = doc.getElementsByTagName("trkpt");
-console.log(`Trovati ${trkpts.length} punti nella traccia`);
-```
+console.log(\`Trovati \${trkpts.length} punti nella traccia\`);
+\`\`\`
 
 Il risultato finale è uno strumento professionale, fluido e sicuro, accessibile da qualsiasi browser moderno.`,
     tags: ["TypeScript", "Leaflet", "Vite", "Cycling"],
@@ -198,7 +198,7 @@ Le pandemie sono incerte per definizione. Usare la simulazione Monte Carlo perme
 
 *Tabella 1: Parametri e Impatto sul Modello Markoviano*
 
-```python
+\`\`\`python
 # Esempio di matrice di transizione Markoviana
 import numpy as np
 
@@ -206,7 +206,7 @@ import numpy as np
 P = np.array([[0.95, 0.05, 0.00],
               [0.00, 0.90, 0.10],
               [0.00, 0.00, 1.00]])
-```
+\`\`\`
 
 Grazie a questa Analisi di Sensibilità, i sistemi sanitari possono capire matematicamente se ha senso chiudere i voli o semplicemente imporre l'uso di mascherine, analizzando le distribuzioni di probabilità finali.`,
     tags: ["Python", "Data Science", "Epidemiology", "Simulation"],

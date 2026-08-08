@@ -32,13 +32,13 @@ Per garantire la massima retro-compatibilità sui vecchi PC industriali con Wind
 
 *Tabella 1: Scelte Architetturali di TruMetraPla*
 
-```python
+\`\`\`python
 # Esempio: Aggregazione KPI su Pandas
 import pandas as pd
 
 def calculate_kpi(df):
     return df.groupby("macchinario")["pezzi_prodotti"].mean()
-```
+\`\`\`
 
 ## Il Risultato sul Campo
 
@@ -85,14 +85,14 @@ Questa Decentralized Application (DApp) utilizza un rigoroso sistema di Controll
 
 *Tabella 1: Livelli architetturali della DApp*
 
-```solidity
+\`\`\`solidity
 // Emissione di un evento di sanificazione su chain
 event SanitizationLogged(
     address indexed operator,
     string roomId,
     uint256 timestamp
 );
-```
+\`\`\`
 
 ## Risultati
 
@@ -148,14 +148,14 @@ Ho puntato sulla leggerezza estrema.
 
 *Tabella 1: Stack tecnologico lato Client*
 
-```typescript
+\`\`\`typescript
 // Parsing puro lato client, senza backend
 const fileReader = new FileReader();
 fileReader.onload = (e) => {
   const gpxData = parseGPX(e.target.result);
   renderMap(gpxData);
 };
-````,
+\`\`\``,
     color: "#34D399",
     tags: ["TypeScript", "Leaflet", "Vite", "Chart.js"],
     skills: ["cycling-analytics", "web-dev"],
@@ -396,14 +396,14 @@ La complessità principale risiede nell'architettura dei dati:
 
 *Tabella 1: Architettura standard di un Plugin Superset*
 
-```typescript
+\`\`\`typescript
 import { Behavior, getChartMetadataRegistry } from "@superset-ui/core";
 // Il plugin supporta l'emissione di eventi Cross-Filter
 export const metadata = new ChartMetadata({
   name: "Calendar Heatmap",
   behaviors: [Behavior.INTERACTIVE_CHART],
 });
-```
+\`\`\`
 
 > [!IMPORTANT]
 > Il vero valore aggiunto di questo plugin è l'integrazione con il **Native Cross-Filtering** di Superset. Se clicchi su un quadratino rosso della Heatmap (es. 15 Agosto), *tutti* gli altri grafici della dashboard si filtrano istantaneamente su quella specifica data.
