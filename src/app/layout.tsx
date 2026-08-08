@@ -3,8 +3,6 @@ import "@/styles/globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { LanguageProvider } from "@/context/LanguageContext";
-import { ViewTransition } from "react";
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://francescocastaldi.it"),
   title: {
@@ -68,7 +66,7 @@ export default function RootLayout({
       <body>
         <LanguageProvider>
           <Header />
-          <main><ViewTransition name="page">{children}</ViewTransition></main>
+          <main>{children}</main>
           <Footer />
         </LanguageProvider>
       </body>

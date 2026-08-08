@@ -5,9 +5,6 @@ const nextConfig: NextConfig = {
   images: { unoptimized: true },
   reactStrictMode: false,
   typescript: { ignoreBuildErrors: true },
-  experimental: {
-    viewTransition: true,
-  },
 };
 
 export default nextConfig;
