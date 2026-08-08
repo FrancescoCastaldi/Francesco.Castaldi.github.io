@@ -4,6 +4,7 @@ export const translations = {
       about: "Chi sono",
       expertise: "Competenze",
       projects: "Progetti",
+      blog: "Blog",
       contact: "Contatti"
     },
     hero: {
@@ -97,6 +98,11 @@ export const translations = {
         }
       ]
     },
+    blog: {
+      title: "Blog & Articoli",
+      viewAll: "Vedi tutti gli articoli",
+      readMore: "Leggi di più"
+    },
     contact: {
       title: "Contatti",
       description: "Vuoi collaborare a un progetto o fare due chiacchiere su tecnologia e sport? Scrivimi o connettiti con me su LinkedIn e GitHub.",
@@ -111,6 +117,7 @@ export const translations = {
       about: "About",
       expertise: "Expertise",
       projects: "Projects",
+      blog: "Blog",
       contact: "Contact"
     },
     hero: {
@@ -203,6 +210,11 @@ export const translations = {
           link: "https://github.com/FrancescoCastaldi/sir-markov-chain"
         }
       ]
+    },
+    blog: {
+      title: "Blog & Articles",
+      viewAll: "View all articles",
+      readMore: "Read more"
     },
     contact: {
       title: "Contact",

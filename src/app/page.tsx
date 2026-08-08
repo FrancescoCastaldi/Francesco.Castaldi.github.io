@@ -2,9 +2,10 @@
 import HeroSection from "@/components/ui/HeroSection";
 import { useLanguage } from "@/context/LanguageContext";
 import Link from "next/link";
+import { blogPosts } from "@/data/blog-posts";
 
 export default function Home() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const expertiseItems = [
     { id: "healthcare", data: t.expertise.healthcare, color: "var(--color-star-gold)" },
@@ -279,6 +280,158 @@ export default function Home() {
               </div>
             </Link>
           ))}
+        </div>
+      </section>
+
+      {/* Blog Section */}
+      <section
+        id="blog"
+        className="section-entrance"
+        style={{
+          padding: "60px 5% 80px",
+          maxWidth: 1400,
+          margin: "0 auto",
+        }}
+      >
+        <div style={{ textAlign: "center", marginBottom: 56 }}>
+          <span
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: 11,
+              color: "#38BDF8",
+              textTransform: "uppercase",
+              letterSpacing: "0.15em",
+              display: "block",
+              marginBottom: 12,
+            }}
+          >
+            {t.nav.blog}
+          </span>
+          <h2
+            style={{
+              fontFamily: 'var(--font-serif)',
+              fontSize: "clamp(28px, 4vw, 42px)",
+              fontWeight: 400,
+              color: "var(--color-text-primary)",
+              letterSpacing: "-0.03em",
+              lineHeight: 1.15,
+              marginBottom: 16,
+            }}
+          >
+            {t.blog.title}
+          </h2>
+          <div className="section-divider" style={{ background: "linear-gradient(90deg, transparent, #38BDF8, transparent)" }} />
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
+            gap: 24,
+            marginBottom: 48,
+          }}
+        >
+          {blogPosts.slice(0, 3).map((post, i) => (
+            <Link
+              href={`/blog/${post.slug}`}
+              key={post.slug}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                textDecoration: "none",
+                background: "linear-gradient(180deg, #131B27 0%, #0C111A 100%)",
+                border: "1px solid rgba(255,255,255,0.06)",
+                borderRadius: 16,
+                padding: 28,
+                animation: "sectionFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both",
+                animationDelay: `${0.1 + i * 0.08}s`,
+                transition: "all 0.3s ease",
+                height: "100%",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "rgba(56, 189, 248, 0.4)";
+                e.currentTarget.style.transform = "translateY(-6px)";
+                e.currentTarget.style.boxShadow = "0 12px 24px rgba(0,0,0,0.3)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)";
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
+            >
+              <div style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: 12,
+                color: "var(--color-text-muted)",
+                marginBottom: 12
+              }}>
+                {new Date(post.date).toLocaleDateString(language === 'it' ? 'it-IT' : 'en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </div>
+              <h3 
+                style={{ 
+                  color: "var(--color-text-primary)", 
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: 22,
+                  marginBottom: 12,
+                  lineHeight: 1.3
+                }}
+              >
+                {post.title}
+              </h3>
+              <p
+                style={{
+                  fontFamily: 'var(--font-sans)',
+                  fontSize: 14,
+                  color: "var(--color-text-body)",
+                  lineHeight: 1.6,
+                  marginBottom: 20,
+                  flex: 1
+                }}
+              >
+                {post.excerpt}
+              </p>
+              <div style={{
+                fontFamily: 'var(--font-sans)',
+                fontSize: 14,
+                color: "#38BDF8",
+                fontWeight: 500,
+                display: "flex",
+                alignItems: "center",
+                gap: 6
+              }}>
+                {t.blog.readMore} <span style={{ fontSize: 16 }}>→</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+        
+        <div style={{ textAlign: "center" }}>
+          <Link
+            href="/blog"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontFamily: 'var(--font-sans)',
+              fontSize: 14,
+              fontWeight: 500,
+              color: "#38BDF8",
+              background: "transparent",
+              border: "1px solid rgba(56, 189, 248, 0.3)",
+              padding: "12px 32px",
+              borderRadius: 8,
+              textDecoration: "none",
+              transition: "all 0.2s",
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(56, 189, 248, 0.1)"; e.currentTarget.style.borderColor = "#38BDF8"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "rgba(56, 189, 248, 0.3)"; }}
+          >
+            {t.blog.viewAll}
+          </Link>
         </div>
       </section>
 

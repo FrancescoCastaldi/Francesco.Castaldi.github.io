@@ -15,6 +15,7 @@ export default function Header() {
     { label: t.nav.about, href: "/#about", desktop: true },
     { label: t.nav.expertise, href: "/#expertise", desktop: true },
     { label: t.nav.projects, href: "/#projects", desktop: true },
+    { label: t.nav.blog, href: "/blog", desktop: true },
     { label: t.nav.contact, href: "/#contact", desktop: true },
   ];
 
