@@ -3,9 +3,30 @@ import HeroSection from "@/components/ui/HeroSection";
 import { useLanguage } from "@/context/LanguageContext";
 import Link from "next/link";
 import { blogPosts } from "@/data/blog-posts";
+import { useEffect } from "react";
 
 export default function Home() {
   const { t, language } = useLanguage();
+
+  useEffect(() => {
+    // Fallback for browsers that don't support scroll-driven animations
+    if (typeof window !== "undefined" && !CSS.supports("animation-timeline: view()")) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: "0px 0px -10% 0px", threshold: 0.1 });
+
+      document.querySelectorAll(".scroll-reveal").forEach((el) => {
+        observer.observe(el);
+      });
+
+      return () => observer.disconnect();
+    }
+  }, []);
 
   const expertiseItems = [
     { id: "healthcare", data: t.expertise.healthcare, color: "var(--color-star-gold)" },
@@ -24,7 +45,7 @@ export default function Home() {
       {/* About Section */}
       <section
         id="about"
-        className="section-entrance"
+        className="scroll-reveal"
         style={{
           padding: "80px 5% 40px",
           maxWidth: 1000,
@@ -75,7 +96,7 @@ export default function Home() {
       {/* Expertise Section */}
       <section
         id="expertise"
-        className="section-entrance"
+        className="scroll-reveal"
         style={{
           padding: "80px 5% 60px",
           maxWidth: 1400,
@@ -122,14 +143,13 @@ export default function Home() {
           {expertiseItems.map((item, i) => (
             <div
               key={item.id}
+              className="scroll-reveal"
               style={{
                 background: "var(--color-space-surface)",
                 border: "1px solid rgba(255,255,255,0.04)",
                 borderRadius: 12,
                 padding: 24,
-                animation: "sectionFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both",
-                animationDelay: `${0.1 + i * 0.08}s`,
-                transition: "all 0.3s ease",
+                transition: "transform 0.4s var(--spring-easing), border-color 0.4s var(--spring-easing), background 0.4s var(--spring-easing)",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = "var(--color-space-elevated)";
@@ -170,7 +190,7 @@ export default function Home() {
       {/* Projects Section */}
       <section
         id="projects"
-        className="section-entrance"
+        className="scroll-reveal"
         style={{
           padding: "60px 5% 80px",
           maxWidth: 1400,
@@ -218,6 +238,7 @@ export default function Home() {
             <Link
               href={`/project/${project.slug}`}
               key={project.id}
+              className="scroll-reveal"
               style={{
                 display: "block",
                 textDecoration: "none",
@@ -225,9 +246,7 @@ export default function Home() {
                 border: "1px solid rgba(255,255,255,0.06)",
                 borderRadius: 16,
                 padding: 28,
-                animation: "sectionFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both",
-                animationDelay: `${0.1 + i * 0.08}s`,
-                transition: "all 0.3s ease",
+                transition: "transform 0.4s var(--spring-easing), border-color 0.4s var(--spring-easing), box-shadow 0.4s var(--spring-easing)",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = "rgba(245, 158, 11, 0.4)";
@@ -286,7 +305,7 @@ export default function Home() {
       {/* Blog Section */}
       <section
         id="blog"
-        className="section-entrance"
+        className="scroll-reveal"
         style={{
           padding: "60px 5% 80px",
           maxWidth: 1400,
@@ -335,6 +354,7 @@ export default function Home() {
             <Link
               href={`/blog/${post.slug}`}
               key={post.slug}
+              className="scroll-reveal"
               style={{
                 display: "flex",
                 flexDirection: "column",
@@ -343,9 +363,7 @@ export default function Home() {
                 border: "1px solid rgba(255,255,255,0.06)",
                 borderRadius: 16,
                 padding: 28,
-                animation: "sectionFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both",
-                animationDelay: `${0.1 + i * 0.08}s`,
-                transition: "all 0.3s ease",
+                transition: "transform 0.4s var(--spring-easing), border-color 0.4s var(--spring-easing), box-shadow 0.4s var(--spring-easing)",
                 height: "100%",
               }}
               onMouseEnter={(e) => {
@@ -438,7 +456,7 @@ export default function Home() {
       {/* Contact Section */}
       <section
         id="contact"
-        className="section-entrance"
+        className="scroll-reveal"
         style={{
           padding: "80px 5% 100px",
           maxWidth: 800,
