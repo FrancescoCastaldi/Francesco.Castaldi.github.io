@@ -200,6 +200,37 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 }
               }
 
+              if (paragraph.startsWith("![")) {
+                const match = paragraph.match(/^!\[(.*?)\]\((.*?)\)/);
+                if (match) {
+                  return (
+                    <div key={i} style={{ margin: "32px 0", borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.06)" }}>
+                      <img src={match[2]} alt={match[1]} style={{ width: "100%", height: "auto", display: "block" }} />
+                    </div>
+                  );
+                }
+              }
+
+              if (paragraph.startsWith("\`\`\`")) {
+                const codeContent = paragraph.replace(/```\w*\n/g, "").replace(/\n```/g, "").replace(/```/g, "");
+                return (
+                  <pre key={i} style={{
+                    background: "var(--color-space-void)",
+                    padding: "20px",
+                    borderRadius: 8,
+                    border: "1px solid rgba(255,255,255,0.05)",
+                    overflowX: "auto",
+                    margin: "24px 0",
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: 13,
+                    color: "var(--color-text-body)",
+                    lineHeight: 1.6,
+                  }}>
+                    <code>{codeContent}</code>
+                  </pre>
+                );
+              }
+
 
               if (!paragraph.trim()) return null;
 

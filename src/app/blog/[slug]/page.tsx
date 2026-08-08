@@ -212,6 +212,17 @@ export default async function BlogPostPage({
               }
             }
 
+            if (paragraph.startsWith("![")) {
+              const match = paragraph.match(/^!\[(.*?)\]\((.*?)\)/);
+              if (match) {
+                return (
+                  <div key={i} style={{ margin: "32px 0", borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.06)" }}>
+                    <img src={match[2]} alt={match[1]} style={{ width: "100%", height: "auto", display: "block" }} />
+                  </div>
+                );
+              }
+            }
+
             if (paragraph.startsWith("\`\`\`")) {
               const codeContent = paragraph.replace(/```\w*\n/g, "").replace(/\n```/g, "").replace(/```/g, "");
               return (
