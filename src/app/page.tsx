@@ -145,17 +145,15 @@ export default function Home() {
                 border: "1px solid rgba(255,255,255,0.04)",
                 borderRadius: 12,
                 padding: 24,
-                transition: "transform 0.4s var(--spring-easing), border-color 0.4s var(--spring-easing), background 0.4s var(--spring-easing)",
+                transition: "border-color 0.4s var(--spring-easing), background 0.4s var(--spring-easing)",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = "var(--color-space-elevated)";
-                e.currentTarget.style.borderColor = item.color;
-                e.currentTarget.style.transform = "translateY(-4px)";
+                e.currentTarget.style.borderColor = "var(--color-accent-primary)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = "var(--color-space-surface)";
                 e.currentTarget.style.borderColor = "rgba(255,255,255,0.04)";
-                e.currentTarget.style.transform = "translateY(0)";
               }}
             >
               <h3 
@@ -241,7 +239,7 @@ export default function Home() {
                 border: "1px solid rgba(255,255,255,0.06)",
                 borderRadius: 16,
                 padding: 28,
-                transition: "transform 0.4s var(--spring-easing), border-color 0.4s var(--spring-easing), box-shadow 0.4s var(--spring-easing)",
+                transition: "border-color 0.4s var(--spring-easing), box-shadow 0.4s var(--spring-easing)",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = "var(--color-accent-primary)";
@@ -250,7 +248,6 @@ export default function Home() {
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)";
-                e.currentTarget.style.transform = "translateY(0)";
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
@@ -357,7 +354,7 @@ export default function Home() {
                 border: "1px solid rgba(255,255,255,0.06)",
                 borderRadius: 16,
                 padding: 28,
-                transition: "transform 0.4s var(--spring-easing), border-color 0.4s var(--spring-easing), box-shadow 0.4s var(--spring-easing)",
+                transition: "border-color 0.4s var(--spring-easing), box-shadow 0.4s var(--spring-easing)",
                 height: "100%",
               }}
               onMouseEnter={(e) => {
@@ -367,7 +364,6 @@ export default function Home() {
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)";
-                e.currentTarget.style.transform = "translateY(0)";
                 e.currentTarget.style.boxShadow = "none";
               }}
             >

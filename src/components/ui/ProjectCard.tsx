@@ -20,19 +20,17 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         borderRadius: 12,
         border: "1px solid rgba(255,255,255,0.04)",
         textDecoration: "none",
-        transition: "border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
+        transition: "border-color 0.3s ease, box-shadow 0.3s ease",
         position: "relative",
         overflow: "hidden",
       }}
       onMouseEnter={(e) => {
         e.currentTarget.style.borderColor = `${project.color}40`;
         e.currentTarget.style.boxShadow = `0 0 30px ${project.color}10`;
-        e.currentTarget.style.transform = "translateY(-2px)";
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.borderColor = "rgba(255,255,255,0.04)";
         e.currentTarget.style.boxShadow = "none";
-        e.currentTarget.style.transform = "translateY(0)";
       }}
     >
       {/* Top accent line */}
