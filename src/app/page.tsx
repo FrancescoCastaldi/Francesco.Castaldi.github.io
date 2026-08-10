@@ -9,8 +9,7 @@ export default function Home() {
   const { t, language } = useLanguage();
 
   useEffect(() => {
-    // Fallback for browsers that don't support scroll-driven animations
-    if (typeof window !== "undefined" && !CSS.supports("(animation-timeline: view()) and (animation-range: entry)")) {
+    if (typeof window !== "undefined") {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {

@@ -195,19 +195,7 @@
   transform: translateY(0) scale(1);
 }
 
-/* Modern Browsers: Scroll-Driven Animations */
-@media (prefers-reduced-motion: no-preference) {
-  @supports ((animation-timeline: view()) and (animation-range: entry)) {
-    .scroll-reveal {
-      /* Reset opacity and transform so animation can take over */
-      opacity: 1;
-      transform: none;
-      animation: scrollRevealFade auto both;
-      animation-timeline: view();
-      animation-range: entry 5% cover 25%;
-    }
-  }
-}
+
 
 /* ============================================
    Card Hover Effects
