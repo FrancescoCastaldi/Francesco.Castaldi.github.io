@@ -216,7 +216,7 @@ export default async function BlogPostPage({
               if (match) {
                 return (
                   <div key={i} style={{ margin: "40px 0", border: "1px solid var(--color-accent-secondary)", padding: 8 }}>
-                    <img src={match[2]} alt={match[1]} style={{ width: "100%", height: "auto", display: "block", filter: "grayscale(100%)" }} />
+                    <img src={match[2]} alt={match[1]} style={{ width: "100%", height: "auto", display: "block" }} />
                     <div style={{ marginTop: 8, fontFamily: 'var(--font-mono)', fontSize: 10, color: "var(--color-accent-secondary)", textTransform: "uppercase", textAlign: "center" }}>
                       FIG: {match[1]}
                     </div>
