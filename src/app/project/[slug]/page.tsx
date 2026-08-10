@@ -38,8 +38,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           display: "inline-block",
           fontFamily: 'var(--font-mono)',
           fontSize: 10,
-          color: "var(--color-star-gold)",
-          background: "rgba(245,158,11,0.1)",
+          color: "var(--color-accent-primary)",
+          background: "var(--color-accent-soft)",
           padding: "4px 12px",
           borderRadius: 4,
           marginTop: 24,
@@ -65,7 +65,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <div style={{
           width: 40,
           height: 2,
-          background: "var(--color-star-gold)",
+          background: "var(--color-accent-primary)",
           borderRadius: 2,
           marginBottom: 24,
         }} />
@@ -113,14 +113,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               const renderInline = (text: string) => {
                 let html = text
                   .replace(/\*\*(.*?)\*\*/g, '<strong style="color: var(--color-text-primary); font-weight: 600;">$1</strong>')
-                  .replace(/`(.*?)`/g, '<code style="font-family: var(--font-mono); background: var(--color-space-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: var(--color-nebula);">$1</code>');
+                  .replace(/`(.*?)`/g, '<code style="font-family: var(--font-mono); background: var(--color-space-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: var(--color-accent-secondary);">$1</code>');
                 return <span dangerouslySetInnerHTML={{ __html: html }} />;
               };
 
               if (paragraph.startsWith("## ")) {
                 return (
                   <div key={i} style={{ display: "flex", gap: 12, margin: "36px 0 16px" }}>
-                    <div style={{ width: 3, background: "var(--color-star-gold)", borderRadius: 2, flexShrink: 0 }} />
+                    <div style={{ width: 3, background: "var(--color-accent-primary)", borderRadius: 2, flexShrink: 0 }} />
                     <h2 style={{
                       fontFamily: 'var(--font-serif)',
                       fontSize: 22,
@@ -151,8 +151,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                 const isWarning = paragraph.startsWith("> [!WARNING]");
                 const isTip = paragraph.startsWith("> [!TIP]");
                 const isImportant = paragraph.startsWith("> [!IMPORTANT]");
-                const color = isWarning ? "var(--color-star-gold)" : (isTip ? "var(--color-nebula)" : (isImportant ? "#9333ea" : "var(--color-text-primary)"));
-                const bgColor = isWarning ? "rgba(245,158,11,0.05)" : (isTip ? "rgba(34,211,238,0.05)" : (isImportant ? "rgba(147,51,234,0.05)" : "rgba(231,237,245,0.05)"));
+                const color = isWarning ? "var(--color-accent-primary)" : (isTip ? "var(--color-accent-secondary)" : (isImportant ? "#9333ea" : "var(--color-text-primary)"));
+                const bgColor = isWarning ? "var(--color-accent-soft)" : (isTip ? "var(--color-accent-soft)" : (isImportant ? "rgba(147,51,234,0.05)" : "rgba(231,237,245,0.05)"));
                 const cleanText = paragraph.replace(/> \[!(WARNING|TIP|NOTE|IMPORTANT)\]\n> /g, "").replace(/\n> /g, " ");
                 return (
                   <div key={i} style={{
@@ -295,17 +295,17 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               display: "inline-flex",
               alignItems: "center",
               gap: 6,
-              color: "var(--color-star-gold)",
+              color: "var(--color-accent-primary)",
               fontSize: 13,
               fontFamily: 'var(--font-sans)',
               textDecoration: "none",
-              border: "1px solid rgba(245,158,11,0.3)",
+              border: "1px solid var(--color-accent-secondary)",
               padding: "10px 20px",
               borderRadius: 8,
               fontWeight: 500,
             }}
             hoverStyle={{
-              background: "rgba(245,158,11,0.1)",
+              background: "var(--color-accent-soft)",
             }}>
               View on GitHub
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -320,17 +320,17 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               display: "inline-flex",
               alignItems: "center",
               gap: 6,
-              color: "var(--color-nebula)",
+              color: "var(--color-accent-secondary)",
               fontSize: 13,
               fontFamily: 'var(--font-sans)',
               textDecoration: "none",
-              border: "1px solid rgba(34,211,238,0.3)",
+              border: "1px solid var(--color-accent-secondary)",
               padding: "10px 20px",
               borderRadius: 8,
               fontWeight: 500,
             }}
             hoverStyle={{
-              background: "rgba(34,211,238,0.1)",
+              background: "var(--color-accent-soft)",
             }}>
               Live Demo
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -345,14 +345,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           <InteractiveLink href="/#projects" style={{
             fontFamily: 'var(--font-mono)',
             fontSize: 11,
-            color: "var(--color-star-gold)",
+            color: "var(--color-accent-primary)",
             textDecoration: "none",
             display: "inline-flex",
             alignItems: "center",
             gap: 6,
           }}
           hoverStyle={{
-            color: "#FBBF24",
+            color: "var(--color-accent-secondary)",
           }}>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
               <path d="M10 6H2M2 6L5 3M2 6L5 9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>

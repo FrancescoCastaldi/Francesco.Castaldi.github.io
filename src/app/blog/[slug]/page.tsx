@@ -68,8 +68,8 @@ export default async function BlogPostPage({
           display: "inline-block",
           fontFamily: 'var(--font-mono)',
           fontSize: 10,
-          color: "var(--color-star-gold)",
-          background: "rgba(245,158,11,0.1)",
+          color: "var(--color-accent-primary)",
+          background: "var(--color-accent-soft)",
           padding: "3px 10px",
           borderRadius: 4,
           marginBottom: 16,
@@ -93,7 +93,7 @@ export default async function BlogPostPage({
         </h1>
 
         {/* Gold accent line */}
-        <div style={{ width: 40, height: 2, background: "var(--color-star-gold)", borderRadius: 2, marginBottom: 20 }} />
+        <div style={{ width: 40, height: 2, background: "var(--color-accent-primary)", borderRadius: 2, marginBottom: 20 }} />
 
         {/* Metadata */}
         <div style={{
@@ -125,14 +125,14 @@ export default async function BlogPostPage({
             const renderInline = (text: string) => {
               let html = text
                 .replace(/\*\*(.*?)\*\*/g, '<strong style="color: var(--color-text-primary); font-weight: 600;">$1</strong>')
-                .replace(/`(.*?)`/g, '<code style="font-family: var(--font-mono); background: var(--color-space-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: var(--color-nebula);">$1</code>');
+                .replace(/`(.*?)`/g, '<code style="font-family: var(--font-mono); background: var(--color-space-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: var(--color-accent-secondary);">$1</code>');
               return <span dangerouslySetInnerHTML={{ __html: html }} />;
             };
 
             if (paragraph.startsWith("## ")) {
               return (
                 <div key={i} style={{ display: "flex", gap: 12, margin: "36px 0 16px" }}>
-                  <div style={{ width: 3, background: "var(--color-star-gold)", borderRadius: 2, flexShrink: 0 }} />
+                  <div style={{ width: 3, background: "var(--color-accent-primary)", borderRadius: 2, flexShrink: 0 }} />
                   <h2 style={{
                     fontFamily: 'var(--font-serif)',
                     fontSize: 22,
@@ -160,8 +160,8 @@ export default async function BlogPostPage({
               const isWarning = paragraph.startsWith("> [!WARNING]");
               const isTip = paragraph.startsWith("> [!TIP]");
               const isImportant = paragraph.startsWith("> [!IMPORTANT]");
-              const color = isWarning ? "var(--color-star-gold)" : (isTip ? "var(--color-nebula)" : (isImportant ? "#9333ea" : "var(--color-text-primary)"));
-              const bgColor = isWarning ? "rgba(245,158,11,0.05)" : (isTip ? "rgba(34,211,238,0.05)" : (isImportant ? "rgba(147,51,234,0.05)" : "rgba(231,237,245,0.05)"));
+              const color = isWarning ? "var(--color-accent-primary)" : (isTip ? "var(--color-accent-secondary)" : (isImportant ? "#9333ea" : "var(--color-text-primary)"));
+              const bgColor = isWarning ? "var(--color-accent-soft)" : (isTip ? "var(--color-accent-soft)" : (isImportant ? "rgba(147,51,234,0.05)" : "rgba(231,237,245,0.05)"));
               const cleanText = paragraph.replace(/> \[!(WARNING|TIP|NOTE|IMPORTANT)\]\n> /g, "").replace(/\n> /g, " ");
               return (
                 <div key={i} style={{
@@ -261,7 +261,7 @@ export default async function BlogPostPage({
           display: "flex",
           justifyContent: "space-between",
         }}>
-          <Link href="/blog" style={{ color: "var(--color-star-gold)", fontSize: 12, fontFamily: 'var(--font-sans)', textDecoration: "none" }}>
+          <Link href="/blog" style={{ color: "var(--color-accent-primary)", fontSize: 12, fontFamily: 'var(--font-sans)', textDecoration: "none" }}>
             ← Back to blog
           </Link>
           <Link href="/" style={{ color: "var(--color-text-muted)", fontSize: 12, fontFamily: 'var(--font-sans)', textDecoration: "none" }}>

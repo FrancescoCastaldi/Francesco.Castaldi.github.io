@@ -28,10 +28,10 @@ export default function Home() {
   const expertiseItems = [
     { id: "healthcare", data: { title: "Healthcare Systems", desc: "Integration of software and biomedical systems with a focus on compliance and patient privacy." }, color: "var(--color-star-gold)" },
     { id: "dataScience", data: { title: "Data Science", desc: "Machine Learning models, predictive analytics, and large-scale data visualization." }, color: "var(--color-nebula)" },
-    { id: "cloud", data: { title: "Cloud Computing", desc: "Scalable architectures on GCP and AWS. Microservices and containerization." }, color: "#A78BFA" },
-    { id: "ai", data: { title: "Artificial Intelligence", desc: "LLMs, RAG architectures, and computer vision applied to real-world problems." }, color: "#FB7185" },
-    { id: "security", data: { title: "Cybersecurity", desc: "System hardening, threat modeling, and secure software development lifecycles." }, color: "#34D399" },
-    { id: "cycling", data: { title: "Sports Analytics", desc: "Biomechanical and performance data analysis for competitive cycling." }, color: "#E2E8F0" },
+    { id: "cloud", data: { title: "Cloud Computing", desc: "Scalable architectures on GCP and AWS. Microservices and containerization." }, color: "var(--color-node-cloud)" },
+    { id: "ai", data: { title: "Artificial Intelligence", desc: "LLMs, RAG architectures, and computer vision applied to real-world problems." }, color: "var(--color-node-ai)" },
+    { id: "security", data: { title: "Cybersecurity", desc: "System hardening, threat modeling, and secure software development lifecycles." }, color: "var(--color-node-security)" },
+    { id: "cycling", data: { title: "Sports Analytics", desc: "Biomechanical and performance data analysis for competitive cycling." }, color: "var(--color-node-cycling)" },
   ];
 
   return (
@@ -54,7 +54,7 @@ export default function Home() {
           style={{
             fontFamily: 'var(--font-mono)',
             fontSize: 11,
-            color: "#A78BFA",
+            color: "var(--color-accent-secondary)",
             textTransform: "uppercase",
             letterSpacing: "0.15em",
             display: "block",
@@ -127,7 +127,7 @@ export default function Home() {
           >
             Core Competencies
           </h2>
-          <div className="section-divider" style={{ background: "linear-gradient(90deg, transparent, #22D3EE, transparent)" }} />
+          <div className="section-divider" style={{ background: "linear-gradient(90deg, transparent, var(--color-accent-secondary), transparent)" }} />
         </div>
 
         <div
@@ -198,7 +198,7 @@ export default function Home() {
             style={{
               fontFamily: 'var(--font-mono)',
               fontSize: 11,
-              color: "var(--color-star-gold)",
+              color: "var(--color-accent-primary)",
               textTransform: "uppercase",
               letterSpacing: "0.15em",
               display: "block",
@@ -220,7 +220,7 @@ export default function Home() {
           >
             Selected Work
           </h2>
-          <div className="section-divider" style={{ background: "linear-gradient(90deg, transparent, #F59E0B, transparent)" }} />
+          <div className="section-divider" style={{ background: "linear-gradient(90deg, transparent, var(--color-accent-primary), transparent)" }} />
         </div>
 
         <div
@@ -244,7 +244,7 @@ export default function Home() {
                 transition: "transform 0.4s var(--spring-easing), border-color 0.4s var(--spring-easing), box-shadow 0.4s var(--spring-easing)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "rgba(245, 158, 11, 0.4)";
+                e.currentTarget.style.borderColor = "var(--color-accent-primary)";
                 e.currentTarget.style.transform = "translateY(-6px)";
                 e.currentTarget.style.boxShadow = "0 12px 24px rgba(0,0,0,0.3)";
               }}
@@ -282,8 +282,8 @@ export default function Home() {
                     style={{
                       fontFamily: 'var(--font-mono)',
                       fontSize: 11,
-                      color: "var(--color-star-gold)",
-                      background: "rgba(245, 158, 11, 0.1)",
+                      color: "var(--color-accent-primary)",
+                      background: "var(--color-accent-soft)",
                       padding: "4px 10px",
                       borderRadius: 20,
                     }}
@@ -312,7 +312,7 @@ export default function Home() {
             style={{
               fontFamily: 'var(--font-mono)',
               fontSize: 11,
-              color: "#38BDF8",
+              color: "var(--color-accent-primary)",
               textTransform: "uppercase",
               letterSpacing: "0.15em",
               display: "block",
@@ -334,7 +334,7 @@ export default function Home() {
           >
             Latest Articles
           </h2>
-          <div className="section-divider" style={{ background: "linear-gradient(90deg, transparent, #38BDF8, transparent)" }} />
+          <div className="section-divider" style={{ background: "linear-gradient(90deg, transparent, var(--color-accent-primary), transparent)" }} />
         </div>
 
         <div
@@ -361,7 +361,7 @@ export default function Home() {
                 height: "100%",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "rgba(56, 189, 248, 0.4)";
+                e.currentTarget.style.borderColor = "var(--color-accent-primary)";
                 e.currentTarget.style.transform = "translateY(-6px)";
                 e.currentTarget.style.boxShadow = "0 12px 24px rgba(0,0,0,0.3)";
               }}
@@ -409,7 +409,7 @@ export default function Home() {
               <div style={{
                 fontFamily: 'var(--font-sans)',
                 fontSize: 14,
-                color: "#38BDF8",
+                color: "var(--color-accent-primary)",
                 fontWeight: 500,
                 display: "flex",
                 alignItems: "center",
@@ -431,16 +431,16 @@ export default function Home() {
               fontFamily: 'var(--font-sans)',
               fontSize: 14,
               fontWeight: 500,
-              color: "#38BDF8",
+              color: "var(--color-accent-primary)",
               background: "transparent",
-              border: "1px solid rgba(56, 189, 248, 0.3)",
+              border: "1px solid var(--color-accent-secondary)",
               padding: "12px 32px",
               borderRadius: 8,
               textDecoration: "none",
               transition: "all 0.2s",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(56, 189, 248, 0.1)"; e.currentTarget.style.borderColor = "#38BDF8"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "rgba(56, 189, 248, 0.3)"; }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = "var(--color-accent-soft)"; e.currentTarget.style.borderColor = "var(--color-accent-primary)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "var(--color-accent-secondary)"; }}
           >
             View all articles
           </Link>
@@ -462,7 +462,7 @@ export default function Home() {
           style={{
             fontFamily: 'var(--font-mono)',
             fontSize: 11,
-            color: "#34D399",
+            color: "var(--color-accent-primary)",
             textTransform: "uppercase",
             letterSpacing: "0.15em",
             display: "block",
@@ -504,14 +504,14 @@ export default function Home() {
               fontSize: 14,
               fontWeight: 500,
               color: "var(--color-space-void)",
-              background: "#34D399",
+              background: "var(--color-accent-primary)",
               padding: "12px 32px",
               borderRadius: 8,
               textDecoration: "none",
               transition: "background 0.2s",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "#10B981")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "#34D399")}
+            onMouseEnter={(e) => (e.currentTarget.style.background = "var(--color-accent-secondary)")}
+            onMouseLeave={(e) => (e.currentTarget.style.background = "var(--color-accent-primary)")}
           >
             Email Me
           </a>
@@ -523,16 +523,16 @@ export default function Home() {
               fontFamily: 'var(--font-sans)',
               fontSize: 14,
               fontWeight: 500,
-              color: "#34D399",
+              color: "var(--color-accent-primary)",
               background: "transparent",
-              border: "1px solid rgba(52, 211, 153, 0.3)",
+              border: "1px solid var(--color-accent-secondary)",
               padding: "12px 32px",
               borderRadius: 8,
               textDecoration: "none",
               transition: "all 0.2s",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(52, 211, 153, 0.1)"; e.currentTarget.style.borderColor = "#34D399"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "rgba(52, 211, 153, 0.3)"; }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = "var(--color-accent-soft)"; e.currentTarget.style.borderColor = "var(--color-accent-primary)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "var(--color-accent-secondary)"; }}
           >
             LinkedIn
           </a>
