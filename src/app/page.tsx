@@ -1,13 +1,11 @@
 "use client";
-import HeroSection from "@/components/ui/HeroSection";
-import { useLanguage } from "@/context/LanguageContext";
+import { useEffect } from "react";
 import Link from "next/link";
 import { blogPosts } from "@/data/blog-posts";
-import { useEffect } from "react";
+import { projects } from "@/data/projects";
+import HeroSection from "@/components/ui/HeroSection";
 
 export default function Home() {
-  const { t, language } = useLanguage();
-
   useEffect(() => {
     if (typeof window !== "undefined") {
       const observer = new IntersectionObserver((entries) => {
@@ -28,12 +26,12 @@ export default function Home() {
   }, []);
 
   const expertiseItems = [
-    { id: "healthcare", data: t.expertise.healthcare, color: "var(--color-star-gold)" },
-    { id: "dataScience", data: t.expertise.dataScience, color: "var(--color-nebula)" },
-    { id: "cloud", data: t.expertise.cloud, color: "#A78BFA" },
-    { id: "ai", data: t.expertise.ai, color: "#FB7185" },
-    { id: "security", data: t.expertise.security, color: "#34D399" },
-    { id: "cycling", data: t.expertise.cycling, color: "#E2E8F0" },
+    { id: "healthcare", data: { title: "Healthcare Systems", desc: "Integration of software and biomedical systems with a focus on compliance and patient privacy." }, color: "var(--color-star-gold)" },
+    { id: "dataScience", data: { title: "Data Science", desc: "Machine Learning models, predictive analytics, and large-scale data visualization." }, color: "var(--color-nebula)" },
+    { id: "cloud", data: { title: "Cloud Computing", desc: "Scalable architectures on GCP and AWS. Microservices and containerization." }, color: "#A78BFA" },
+    { id: "ai", data: { title: "Artificial Intelligence", desc: "LLMs, RAG architectures, and computer vision applied to real-world problems." }, color: "#FB7185" },
+    { id: "security", data: { title: "Cybersecurity", desc: "System hardening, threat modeling, and secure software development lifecycles." }, color: "#34D399" },
+    { id: "cycling", data: { title: "Sports Analytics", desc: "Biomechanical and performance data analysis for competitive cycling." }, color: "#E2E8F0" },
   ];
 
   return (
@@ -63,7 +61,7 @@ export default function Home() {
             marginBottom: 12,
           }}
         >
-          {t.nav.about}
+          About
         </span>
         <h2
           style={{
@@ -76,7 +74,7 @@ export default function Home() {
             marginBottom: 24,
           }}
         >
-          {t.about.title}
+          Bridging the gap between software engineering and human-centric design.
         </h2>
         <p
           style={{
@@ -88,7 +86,7 @@ export default function Home() {
             margin: "0 auto"
           }}
         >
-          {t.about.description}
+          I am a Computer Engineering student at the University of Bologna with a passion for building scalable systems and analyzing complex data. My focus lies at the intersection of Artificial Intelligence, Data Science, and robust Web Development. Whether it's training machine learning models or crafting elegant user interfaces, I believe in technology that empowers people.
         </p>
       </section>
 
@@ -114,7 +112,7 @@ export default function Home() {
               marginBottom: 12,
             }}
           >
-            {t.nav.expertise}
+            Expertise
           </span>
           <h2
             style={{
@@ -127,7 +125,7 @@ export default function Home() {
               marginBottom: 16,
             }}
           >
-            {t.expertise.title}
+            Core Competencies
           </h2>
           <div className="section-divider" style={{ background: "linear-gradient(90deg, transparent, #22D3EE, transparent)" }} />
         </div>
@@ -207,7 +205,7 @@ export default function Home() {
               marginBottom: 12,
             }}
           >
-            {t.nav.projects}
+            Projects
           </span>
           <h2
             style={{
@@ -220,7 +218,7 @@ export default function Home() {
               marginBottom: 16,
             }}
           >
-            {t.projects.title}
+            Selected Work
           </h2>
           <div className="section-divider" style={{ background: "linear-gradient(90deg, transparent, #F59E0B, transparent)" }} />
         </div>
@@ -232,7 +230,7 @@ export default function Home() {
             gap: 24,
           }}
         >
-          {t.projects.items.map((project, i) => (
+          {projects.filter(p => p.featured).map((project, i) => (
             <Link
               href={`/project/${project.slug}`}
               key={project.id}
@@ -264,7 +262,7 @@ export default function Home() {
                   marginBottom: 12
                 }}
               >
-                {project.name}
+                {project.title}
               </h3>
               <p
                 style={{
@@ -278,7 +276,7 @@ export default function Home() {
                 {project.description}
               </p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                {project.tech.map(tech => (
+                {project.tags.map(tech => (
                   <span
                     key={tech}
                     style={{
@@ -321,7 +319,7 @@ export default function Home() {
               marginBottom: 12,
             }}
           >
-            {t.nav.blog}
+            Blog
           </span>
           <h2
             style={{
@@ -334,7 +332,7 @@ export default function Home() {
               marginBottom: 16,
             }}
           >
-            {t.blog.title}
+            Latest Articles
           </h2>
           <div className="section-divider" style={{ background: "linear-gradient(90deg, transparent, #38BDF8, transparent)" }} />
         </div>
@@ -379,7 +377,7 @@ export default function Home() {
                 color: "var(--color-text-muted)",
                 marginBottom: 12
               }}>
-                {new Date(post.date).toLocaleDateString(language === 'it' ? 'it-IT' : 'en-US', {
+                {new Date(post.date).toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'long',
                   day: 'numeric'
@@ -417,7 +415,7 @@ export default function Home() {
                 alignItems: "center",
                 gap: 6
               }}>
-                {t.blog.readMore} <span style={{ fontSize: 16 }}>→</span>
+                Read article <span style={{ fontSize: 16 }}>→</span>
               </div>
             </Link>
           ))}
@@ -444,7 +442,7 @@ export default function Home() {
             onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(56, 189, 248, 0.1)"; e.currentTarget.style.borderColor = "#38BDF8"; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "rgba(56, 189, 248, 0.3)"; }}
           >
-            {t.blog.viewAll}
+            View all articles
           </Link>
         </div>
       </section>
@@ -471,7 +469,7 @@ export default function Home() {
             marginBottom: 12,
           }}
         >
-          {t.nav.contact}
+          Contact
         </span>
         <h2
           style={{
@@ -484,7 +482,7 @@ export default function Home() {
             marginBottom: 24,
           }}
         >
-          {t.contact.title}
+          Let's build something together.
         </h2>
         <p
           style={{
@@ -495,12 +493,12 @@ export default function Home() {
             marginBottom: 40
           }}
         >
-          {t.contact.description}
+          I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
         </p>
         
         <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
           <a
-            href={`mailto:${t.contact.email}`}
+            href={`mailto:info@francescocastaldi.it`}
             style={{
               fontFamily: 'var(--font-sans)',
               fontSize: 14,

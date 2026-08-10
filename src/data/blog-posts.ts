@@ -2,351 +2,344 @@ import type { BlogPost } from "./types";
 
 export const blogPosts: BlogPost[] = [
   {
-    title: "Installazione Focal 165 IC su Toyota Yaris XP210",
+    title: "Installing Focal 165 IC on Toyota Yaris XP210",
     slug: "focal-165-ic-toyota-yaris-xp210",
     date: "2026-08-06",
-    excerpt:
-      "Guida completa passo-passo per la sostituzione degli altoparlanti anteriori originali con il kit Focal 165 IC.",
+    excerpt: "Complete step-by-step guide to replacing the original front speakers with the Focal 165 IC kit.",
     content: `![Focal 165 IC speaker upgrade](/assets/blog/focal-165-ic-toyota-yaris-xp210/images/cover.png)
 
-## Introduzione e Materiale Necessario
+## Introduction and Required Materials
 
-Sostituire gli altoparlanti di serie sulla Toyota Yaris (serie XP210) è uno dei miglioramenti audio più impattanti che tu possa fare. Il kit coassiale **Focal 165 IC** offre una qualità sonora che distrugge letteralmente i vecchi coni in carta originali, regalando alti cristallini e medi precisissimi.
+Replacing the stock speakers on the Toyota Yaris (XP210 series) is one of the most impactful audio upgrades you can make. The **Focal 165 IC** coaxial kit offers sound quality that literally destroys the old original paper cones, delivering crystal-clear highs and extremely precise mids.
 
 > [!WARNING]
-> I pannelli porta della Yaris XP210 sono fissati con clip in plastica estremamente fragili. Lavora sempre a temperature miti o usa un phon da carrozziere per scaldare la plastica. Se tiri a freddo, si spaccheranno.
+> The door panels of the Yaris XP210 are secured with extremely fragile plastic clips. Always work in mild temperatures or use a heat gun to warm the plastic. If you pull while they are cold, they will break.
 
-## Specifiche a Confronto
+## Specifications Comparison
 
-Ecco perché il salto di qualità è così netto:
+Here is why the leap in quality is so sharp:
 
-| Specifiche | OEM Toyota Yaris | Focal 165 IC |
+| Specifications | OEM Toyota Yaris | Focal 165 IC |
 |---|---|---|
-| **Impedenza** | 4 Ohm | 4 Ohm |
-| **Materiale Cono** | Carta trattata | Polyglass |
-| **Sensibilità** | ~86 dB | 92.6 dB (Volume molto più alto a parità di radio) |
-| **Tweeter** | Assente o incassato | Alluminio a cupola invertita (Dettaglio estremo) |
+| **Impedance** | 4 Ohm | 4 Ohm |
+| **Cone Material** | Treated paper | Polyglass |
+| **Sensitivity** | ~86 dB | 92.6 dB (Much higher volume at the same radio power) |
+| **Tweeter** | Absent or recessed | Inverted dome aluminum (Extreme detail) |
 
-*Tabella 1: Confronto specifiche tecniche*
+*Table 1: Technical specifications comparison*
 
 
-## Step 1: Smontaggio del Pannello Porta
+## Step 1: Door Panel Disassembly
 
-1. Cerca la vite nascosta dietro la maniglia interna (c'è uno sportellino di plastica minuscolo).
-2. Togli la vite sul fondo della tasca del bracciolo.
-3. Parti dall'angolo in basso a destra e usa un *trim removal tool* in plastica per fare leva e far saltare la prima clip.
-4. Tira con forza decisa lungo il perimetro.
-5. Scollega i connettori degli alzacristalli.
+1. Look for the hidden screw behind the inner door handle (there is a tiny plastic cover).
+2. Remove the screw at the bottom of the armrest pocket.
+3. Start from the bottom right corner and use a plastic *trim removal tool* to pry and pop the first clip.
+4. Pull firmly along the perimeter.
+5. Disconnect the power window connectors.
 
 > [!TIP]
-> Gli altoparlanti originali Toyota sono rivettati alla lamiera, non avvitati! Preparati con un trapano e una punta da 4 o 5mm per distruggere la testa dei rivetti e rimuovere il cestello originale.
+> Original Toyota speakers are riveted to the sheet metal, not screwed! Be prepared with a drill and a 4 or 5mm bit to destroy the rivet heads and remove the original basket.
 
-## Step 2: Installazione Adattatore e Cablaggio
+## Step 2: Adapter Installation and Wiring
 
-La Yaris richiede **obbligatoriamente** degli anelli adattatori in plastica o MDF, poiché il foro sulla portiera non è uno standard da 165mm.
+The Yaris **strictly requires** plastic or MDF adapter rings, as the hole on the door is not a standard 165mm.
 
-- Fissa l'adattatore alla lamiera usando bulloni passanti e dadi autobloccanti.
-- Metti del nastro insonorizzante tra lamiera e adattatore per annullare le vibrazioni.
-- Avvita saldamente il woofer Focal 165 IC all'anello.
+- Secure the adapter to the sheet metal using through bolts and self-locking nuts.
+- Put sound-deadening tape between the sheet metal and the adapter to cancel vibrations.
+- Screw the Focal 165 IC woofer firmly to the ring.
 
 
-## Test Finale
+## Final Test
 
-Prima di rimontare tutto, accendi la radio. Controlla la polarità: se i bassi ti sembrano "vuoti" o inesistenti, potresti aver invertito positivo e negativo su un lato. Una volta verificato, goditi il tuo nuovo palcoscenico sonoro!`,
+Before reassembling everything, turn on the radio. Check the polarity: if the bass seems "empty" or non-existent, you might have reversed positive and negative on one side. Once verified, enjoy your new soundstage!`,
     tags: ["Audio", "Focal", "Toyota", "Tutorial"],
     readingTime: 6,
     published: true,
-    category: "Veicoli",
+    category: "Vehicles",
   },
   {
-    title: "Blockchain in Healthcare: Oltre l'Hype",
+    title: "Blockchain in Healthcare: Beyond the Hype",
     slug: "blockchain-healthcare-beyond-hype",
     date: "2025-11-15",
-    excerpt:
-      "Applicazioni pratiche della blockchain per il tracciamento della compliance ospedaliera e perché le testnet di Ethereum sono il punto di partenza perfetto.",
+    excerpt: "Practical applications of blockchain for tracking hospital compliance and why Ethereum testnets are the perfect starting point.",
     content: `![Blockchain diagram in healthcare](/assets/blog/blockchain-healthcare-beyond-hype/images/cover.png)
 
-## Lo Stato della Blockchain in Sanità
+## The State of Blockchain in Healthcare
 
-Per anni ci hanno venduto la Blockchain come la panacea di tutti i mali in sanità, eppure l'adozione stenta a decollare. Tolte di mezzo le criptovalute e la speculazione finanziaria, la tecnologia a registro distribuito ha un potenziale enorme per un caso d'uso specifico: **la compliance e gli audit trail**.
+For years, Blockchain has been sold to us as the panacea for all evils in healthcare, yet adoption struggles to take off. Stripping away cryptocurrencies and financial speculation, distributed ledger technology has enormous potential for a specific use case: **compliance and audit trails**.
 
 > [!IMPORTANT]
-> L'obiettivo in sanità non è la "decentralizzazione" anarchica, ma la certezza crittografica assoluta. Nessuno deve poter alterare un registro delle sanificazioni.
+> The goal in healthcare is not anarchic "decentralization", but absolute cryptographic certainty. No one must be able to alter a sanitization log.
 
 
-## Perché il Tracciamento della Compliance Funziona
+## Why Compliance Tracking Works
 
-Le strutture sanitarie operano in ecosistemi dove un registro manomesso può costare vite (o cause legali milionarie). I database relazionali classici (SQL) possono essere alterati da qualsiasi admin. 
+Healthcare facilities operate in ecosystems where a tampered log can cost lives (or multi-million dollar lawsuits). Classic relational databases (SQL) can be altered by any admin. 
 
-Gli **Smart Contract su Ethereum** offrono invece un livello di logging trasparente e anti-manomissione per:
-- Sanificazioni delle sale operatorie.
-- Manutenzione dei macchinari salvavita (es. ventilatori).
-- Adesione ai rigidi protocolli di sicurezza.
+**Smart Contracts on Ethereum**, on the other hand, offer a transparent and tamper-proof logging layer for:
+- Operating room sanitizations.
+- Maintenance of life-saving machinery (e.g., ventilators).
+- Adherence to strict security protocols.
 
-| Paradigma | Sicurezza | Alterabilità Dati | Costi di Setup |
+| Paradigm | Security | Data Alterability | Setup Costs |
 |---|---|---|---|
-| **Database SQL (Classico)** | Alta (se ben configurato) | Alterabile dall'admin | Bassi |
-| **Blockchain (Smart Contract)** | Assoluta (Crittografica) | **Immutabile** | Medi/Alti |
+| **SQL Database (Classic)** | High (if well configured) | Alterable by admin | Low |
+| **Blockchain (Smart Contract)** | Absolute (Cryptographic) | **Immutable** | Medium/High |
 
-*Tabella 1: Confronto tra Database SQL e Blockchain*
+*Table 1: Comparison between SQL Database and Blockchain*
 
-## Considerazioni Pratiche
+## Practical Considerations
 
-Ovviamente ci sono dei limiti strutturali. I costi delle transazioni (gas fees) possono pesare. 
-Tuttavia, l'approccio ibrido vince su tutto: i dati clinici sensibili del paziente (GDPR) rimangono rigorosamente *off-chain* nei server ospedalieri, mentre sulla blockchain finisce unicamente l'hash crittografico che ne certifica l'autenticità e l'ora esatta di creazione.
+Obviously, there are structural limitations. Transaction costs (gas fees) can be a burden. 
+However, the hybrid approach wins overall: sensitive clinical patient data (GDPR) remains strictly *off-chain* on hospital servers, while only the cryptographic hash certifying its authenticity and exact creation time ends up on the blockchain.
 
 > [!NOTE]
-> Utilizzare reti di test (Testnet) come Sepolia permette alle cliniche di simulare questi audit trail a costo zero, testando le architetture senza rischiare capitali in gas fees reali.
+> Using test networks (Testnets) like Sepolia allows clinics to simulate these audit trails at zero cost, testing architectures without risking capital in real gas fees.
 
-Per approfondire lo sviluppo di Smart Contract, consulta la [Documentazione Ufficiale Ethereum](https://ethereum.org/en/developers/docs/smart-contracts/).`,
+To learn more about Smart Contract development, refer to the [Official Ethereum Documentation](https://ethereum.org/en/developers/docs/smart-contracts/).`,
     tags: ["Blockchain", "Healthcare IT", "Smart Contracts"],
     readingTime: 4,
     published: true,
     category: "Technology",
   },
   {
-    title: "Creare un GPX Editor in TypeScript e Leaflet",
+    title: "Building a GPX Editor in TypeScript and Leaflet",
     slug: "building-gpx-editor-typescript-leaflet",
     date: "2025-09-20",
-    excerpt:
-      "Un'analisi tecnica sulla costruzione di un editor di tracce GPS lato client, con smoothing e profili altimetrici, senza alcun backend.",
-    content: `![Architettura del GPX Editor](/assets/blog/building-gpx-editor-typescript-leaflet/images/diagram.png)
+    excerpt: "A technical analysis on building a client-side GPS track editor, with smoothing and elevation profiles, without any backend.",
+    content: `![Architecture of the GPX Editor](/assets/blog/building-gpx-editor-typescript-leaflet/images/diagram.png)
 
-## Perché un Editor GPX nel Browser?
+## Why a GPX Editor in the Browser?
 
-Ciclisti e runner accumulano gigabyte di file GPX dai propri Garmin o Wahoo. Spesso questi file contengono sbalzi di velocità o errori nei dati di potenza. Fino a ieri, per pulire queste tracce, dovevi scaricare pesanti software desktop. 
-La sfida? Creare un editor 100% web-based. Zero backend. Zero upload su server lenti.
+Cyclists and runners accumulate gigabytes of GPX files from their Garmin or Wahoo devices. Often, these files contain speed spikes or power data errors. Until yesterday, to clean these tracks, you had to download heavy desktop software. 
+The challenge? Creating a 100% web-based editor. Zero backend. Zero uploads to slow servers.
 
-**Cosa costruiremo:**
-- Parsing client-side dei file GPX
-- Algoritmo di smoothing per ripulire i dati
-- Profilo altimetrico interattivo con Chart.js
+**What we will build:**
+- Client-side parsing of GPX files
+- Smoothing algorithm to clean data
+- Interactive elevation profile with Chart.js
 
 
-## Core Features e Architettura
+## Core Features and Architecture
 
-Tutta la magia avviene sul client. Il tuo file GPX non lascia mai il tuo computer.
+All the magic happens on the client. Your GPX file never leaves your computer.
 
-1. **Lettura e Parsing**: Lettura istantanea dell'XML.
-2. **Smoothing (Douglas-Peucker)**: Un algoritmo essenziale che semplifica la traccia eliminando i punti GPS ridondanti, salvando la forma del percorso ma abbattendo il peso del file.
-3. **Profilo Altimetrico**: Renderizzato a 60fps usando Chart.js, offre feedback visivo immediato sulla pendenza.
+1. **Reading and Parsing**: Instant reading of the XML.
+2. **Smoothing (Douglas-Peucker)**: An essential algorithm that simplifies the track by eliminating redundant GPS points, saving the path shape while drastically reducing file size.
+3. **Elevation Profile**: Rendered at 60fps using Chart.js, offering immediate visual feedback on the slope.
 
 > [!IMPORTANT]
-> Mantenere tutto sul client significa Privacy Totale per gli utenti. Nessuno vuole che le coordinate di casa propria finiscano su un server sconosciuto.
+> Keeping everything on the client means Total Privacy for users. No one wants their home coordinates to end up on an unknown server.
 
-## Scelte Tecnologiche
+## Technological Choices
 
-Per costruire l'applicativo, serviva uno stack snello e type-safe.
+To build the application, a lean and type-safe stack was needed.
 
-| Tecnologia | Ruolo | Motivazione |
+| Technology | Role | Motivation |
 |---|---|---|
-| **TypeScript** | Core Logic | Per manipolare coordinate e XML serve tipizzazione forte, altrimenti i bug geospatial sono infiniti. |
-| **Leaflet** | Rendering Mappe | Molto più leggero di Mapbox GL e con licenza permissiva (BSD). |
-| **Chart.js** | Altimetria | API semplice, Canvas performante per dataset da migliaia di punti. |
-| **Vite** | Bundler | HMR istantaneo, essenziale per iterare velocemente sulle UI. |
+| **TypeScript** | Core Logic | To manipulate coordinates and XML you need strong typing, otherwise geospatial bugs are endless. |
+| **Leaflet** | Map Rendering | Much lighter than Mapbox GL and with a permissive license (BSD). |
+| **Chart.js** | Elevation | Simple API, performant Canvas for datasets of thousands of points. |
+| **Vite** | Bundler | Instant HMR, essential for iterating UI quickly. |
 
-*Tabella 1: Stack Tecnologico per il GPX Editor*
+*Table 1: Tech Stack for the GPX Editor*
 
 \`\`\`typescript
-// Esempio di parsing GPX semplificato
+// Simplified GPX parsing example
 import { DOMParser } from "xmldom";
 const doc = new DOMParser().parseFromString(gpxString, "text/xml");
 const trkpts = doc.getElementsByTagName("trkpt");
-console.log(\`Trovati \${trkpts.length} punti nella traccia\`);
+console.log(\`Found \${trkpts.length} points in the track\`);
 \`\`\`
 
-Il risultato finale è uno strumento professionale, fluido e sicuro, accessibile da qualsiasi browser moderno.`,
+The final result is a professional, fluid, and secure tool, accessible from any modern browser.`,
     tags: ["TypeScript", "Leaflet", "Vite", "Cycling"],
     readingTime: 3,
     published: true,
     category: "Development",
   },
   {
-    title: "Modelli Epidemiologici SIR come Catene di Markov",
+    title: "SIR Epidemiological Models as Markov Chains",
     slug: "sir-markov-chains-epidemiology",
     date: "2025-06-10",
-    excerpt:
-      "Simulazioni discrete (Markov) del modello SIR, con sensitivity analysis e metodi Monte Carlo per la previsione delle epidemie.",
-    content: `> **Key takeaways:** Modelli discreti (Markov) permettono variazioni real-time dei parametri come il lockdown, al contrario delle equazioni differenziali classiche. Inoltre, i metodi Monte Carlo aiutano a quantificare l'incertezza sistemica.
+    excerpt: "Discrete simulations (Markov) of the SIR model, with sensitivity analysis and Monte Carlo methods for epidemic prediction.",
+    content: `> **Key takeaways:** Discrete models (Markov) allow real-time variations of parameters like lockdowns, unlike classic differential equations. Furthermore, Monte Carlo methods help quantify systemic uncertainty.
 
 ![Markov transition matrix](/assets/blog/sir-markov-chains-epidemiology/images/matrix.png)
 
-## Dalle Equazioni Differenziali ai Passi Discreti
+## From Differential Equations to Discrete Steps
 
-Il classico modello epidemiologico SIR (Suscettibili, Infetti, Rimossi) fa un uso massiccio di equazioni differenziali continue. Matematicamente elegante, certo, ma molto poco intuitivo quando devi spiegare ai decisori politici l'impatto di un lockdown che inizia in un giorno specifico.
+The classic SIR epidemiological model (Susceptible, Infected, Removed) makes massive use of continuous differential equations. Mathematically elegant, sure, but very unintuitive when you have to explain to policymakers the impact of a lockdown starting on a specific day.
 
-La realtà procede a step discreti, non su curve perfettamente lisce.
+Reality proceeds in discrete steps, not on perfectly smooth curves.
 
 
-## L'Approccio Markoviano
+## The Markovian Approach
 
-Trattando il modello SIR come una **Catena di Markov a tempo discreto**, ogni singolo "tick" temporale corrisponde a un giorno esatto. 
-Le probabilità di transizione decidono quanti individui passano da uno stato all'altro. Questo permette di inserire variazioni brutali e improvvise ai parametri: ad esempio, il giorno 15 il tasso di contatto (R0) crolla perché le scuole chiudono.
+Treating the SIR model as a **Discrete-time Markov Chain**, every single time "tick" corresponds to an exact day. 
+Transition probabilities decide how many individuals move from one state to another. This allows inserting brutal and sudden variations to the parameters: for example, on day 15 the contact rate (R0) plummets because schools close.
 
 > [!TIP]
-> Usare le Catene di Markov semplifica enormemente la stesura del codice in Python. Si passa dai solutori differenziali complessi a semplici iterazioni matriciali.
+> Using Markov Chains greatly simplifies writing code in Python. You switch from complex differential solvers to simple matrix iterations.
 
-## Analisi Monte Carlo e Incertezza
+## Monte Carlo Analysis and Uncertainty
 
-Le pandemie sono incerte per definizione. Usare la simulazione Monte Carlo permette di generare migliaia di scenari probabilistici invece di una singola (e spesso errata) previsione deterministica.
+Pandemics are uncertain by definition. Using Monte Carlo simulation allows generating thousands of probabilistic scenarios instead of a single (and often wrong) deterministic prediction.
 
-| Parametro | Impatto sul Modello Markoviano |
+| Parameter | Impact on Markovian Model |
 |---|---|
-| **R₀ (Tasso base di riproduzione)** | Definisce la pendenza iniziale della curva degli infetti. |
-| **Tasso di Recupero** | Determina la velocità di svuotamento del compartimento 'Infetti'. |
-| **Interventi Esterni (Lockdown)** | Modifica dinamicamente le matrici di transizione in run-time. |
+| **R₀ (Basic Reproduction Rate)** | Defines the initial slope of the infected curve. |
+| **Recovery Rate** | Determines the emptying speed of the 'Infected' compartment. |
+| **External Interventions (Lockdown)** | Dynamically modifies transition matrices at run-time. |
 
-*Tabella 1: Parametri e Impatto sul Modello Markoviano*
+*Table 1: Parameters and Impact on the Markovian Model*
 
 \`\`\`python
-# Esempio di matrice di transizione Markoviana
+# Example of a Markovian transition matrix
 import numpy as np
 
-# Stati: S, I, R
+# States: S, I, R
 P = np.array([[0.95, 0.05, 0.00],
               [0.00, 0.90, 0.10],
               [0.00, 0.00, 1.00]])
 \`\`\`
 
-Grazie a questa Analisi di Sensibilità, i sistemi sanitari possono capire matematicamente se ha senso chiudere i voli o semplicemente imporre l'uso di mascherine, analizzando le distribuzioni di probabilità finali.`,
+Thanks to this Sensitivity Analysis, healthcare systems can mathematically understand if it makes sense to close flights or simply mandate mask usage, by analyzing the final probability distributions.`,
     tags: ["Python", "Data Science", "Epidemiology", "Simulation"],
     readingTime: 4,
     published: true,
     category: "Data Science",
   },
   {
-    title: "Restauro Immagini in Citologia: Un Confronto",
+    title: "Image Restoration in Cytology: A Comparison",
     slug: "comparing-image-restoration-cytology",
     date: "2025-03-05",
-    excerpt:
-      "Studio comparativo tra Total Variation, UNet e DiffPIR per il deblurring e denoising di immagini citologiche (LBC).",
-    content: `## Il Problema Clinico
+    excerpt: "Comparative study between Total Variation, UNet, and DiffPIR for deblurring and denoising of cytological images (LBC).",
+    content: `## The Clinical Problem
 
-Lo screening preventivo in citologia (come il Pap test) dipende al 100% dalla qualità delle immagini al microscopio. Rumore digitale e sfocature nelle preparazioni a base liquida (LBC) possono nascondere dettagli cellulari microscopici, causando ritardi diagnostici o clamorosi falsi negativi. 
-Il restauro computazionale delle immagini è l'unica via per salvare i campioni senza doverli ri-prelevare dalle pazienti.
+Preventive screening in cytology (like the Pap smear) relies 100% on the quality of microscope images. Digital noise and blurriness in liquid-based preparations (LBC) can hide microscopic cellular details, causing diagnostic delays or glaring false negatives. 
+Computational image restoration is the only way to save samples without having to re-swab patients.
 
 
-## Tre Approcci sul Ring
+## Three Approaches in the Ring
 
-Ho messo a confronto tre diverse metodologie, dal calcolo classico all'intelligenza artificiale generativa:
+I compared three different methodologies, from classic computing to generative artificial intelligence:
 
-1. **Total Variation (TV)**: Metodo classico di ottimizzazione matematica. Pulisce il rumore senza sfocare i bordi. Zero AI, molto veloce e predicibile.
-2. **UNet**: Architettura Deep Learning supervisionata. Addestrata su migliaia di coppie di immagini sporche/pulite, impara a restaurare i pixel end-to-end.
-3. **DiffPIR**: State-of-the-art. Sfrutta modelli a diffusione inversa. Il restauro è guidato da una rete che ricrea letteralmente il dettaglio mancante partendo dal rumore.
+1. **Total Variation (TV)**: Classic mathematical optimization method. Cleans up noise without blurring edges. Zero AI, very fast and predictable.
+2. **UNet**: Supervised Deep Learning architecture. Trained on thousands of dirty/clean image pairs, it learns to restore pixels end-to-end.
+3. **DiffPIR**: State-of-the-art. Leverages reverse diffusion models. The restoration is guided by a network that literally recreates the missing detail starting from noise.
 
 > [!WARNING]
-> DiffPIR inventa i dettagli o li restaura? In ambito medico le "allucinazioni" dei modelli a diffusione sono un problema critico. Se la rete disegna un nucleo anomalo che non esiste, la diagnosi è compromessa.
+> Does DiffPIR invent details or restore them? In the medical field, the "hallucinations" of diffusion models are a critical problem. If the network draws an anomalous nucleus that does not exist, the diagnosis is compromised.
 
-## I Risultati
+## Results
 
-I risultati hanno evidenziato un trade-off brutale tra percezione umana e metriche matematiche.
+The results highlighted a brutal trade-off between human perception and mathematical metrics.
 
-| Metodo | Metriche (PSNR/SSIM) | Percezione Patologi | Rischio Allucinazioni |
+| Method | Metrics (PSNR/SSIM) | Pathologist Perception | Hallucination Risk |
 |---|---|---|---|
-| **Total Variation** | Basse | Sufficiente (Bordi artificiali) | **Nullo** |
-| **UNet** | **Altissime** | Molto Buona | Basso |
-| **DiffPIR** | Medie | **Eccellente (Dettaglio estremo)** | Alto |
+| **Total Variation** | Low | Sufficient (Artificial edges) | **None** |
+| **UNet** | **Very High** | Very Good | Low |
+| **DiffPIR** | Medium | **Excellent (Extreme detail)** | High |
 
-*Tabella 1: Confronto risultati tra i metodi di restauro*
+*Table 1: Results comparison between restoration methods*
 
-La UNet rimane il compromesso migliore per l'integrazione clinica: ottimi punteggi matematici e risultati visivamente affidabili, senza richiedere l'immensa potenza di calcolo (e il rischio allucinazioni) del modello a diffusione.`,
+UNet remains the best compromise for clinical integration: excellent mathematical scores and visually reliable results, without requiring the immense computing power (and hallucination risk) of the diffusion model.`,
     tags: ["Python", "PyTorch", "Computer Vision", "Healthcare"],
     readingTime: 7,
     published: true,
     category: "Research",
   },
   {
-    title: "UX Redesign: Il Sito del Trasporto Pubblico (TPER)",
+    title: "UX Redesign: The Public Transport Website (TPER)",
     slug: "ux-redesign-public-transport",
     date: "2024-12-01",
-    excerpt:
-      "L'applicazione della metodologia Double Diamond per rivoluzionare la UX di TPER, ottenendo un incremento di 35 punti nel punteggio SUS.",
+    excerpt: "Applying the Double Diamond methodology to revolutionize TPER's UX, achieving a 35-point increase in the SUS score.",
     content: `![Screenshot redesign TPER](/assets/blog/ux-redesign-public-transport/images/carousel-1.png)
 
-**Brief di Progetto:** Riprogettazione dell'esperienza utente del portale di trasporto locale (TPER), con l'obiettivo primario di semplificare la ricerca orari e l'acquisto biglietti da mobile, applicando la metodologia Double Diamond.
+**Project Brief:** Redesigning the user experience of the local transport portal (TPER), with the primary goal of simplifying timetable search and ticket purchasing from mobile, applying the Double Diamond methodology.
 
-## Il Punto di Partenza (Disastroso)
+## The Starting Point (Disastrous)
 
-Cosa succede quando un servizio vitale come il trasporto pubblico ha un sito inutilizzabile? Frustrazione, ritardi e chiamate infinite al call center.
-Il sito originale di TPER aveva un System Usability Scale (SUS) di 37.5 su 100. La sufficienza mondiale è a 68. 
-Tassi di completamento dei task (es. cercare un percorso o comprare un biglietto) bloccati al 40%. Un disastro.
+What happens when a vital service like public transport has an unusable website? Frustration, delays, and endless calls to the call center.
+The original TPER website had a System Usability Scale (SUS) of 37.5 out of 100. Global passing grade is 68. 
+Task completion rates (e.g., finding a route or buying a ticket) stuck at 40%. A disaster.
 
 
-## Il Metodo: Double Diamond
+## The Method: Double Diamond
 
-Non bastava "cambiare i colori". Ho applicato il processo strutturato **Double Diamond**: *Discover, Define, Develop, Deliver*.
+"Changing the colors" was not enough. I applied the structured **Double Diamond** process: *Discover, Define, Develop, Deliver*.
 
-1. **Discover**: Le interviste sul campo e il Journey Mapping hanno fatto emergere verità spietate. Navigazione incomprensibile, gergo tecnico burocratico e un'esperienza mobile praticamente inesistente.
-2. **Define**: Ho sintetizzato il caos in chiari *problem statements*, creando personas rappresentative del pendolare medio e del turista confuso.
-3. **Develop**: Dal wireframing in bassa fedeltà a test iterativi veloci con utenti reali.
-4. **Deliver**: Prototipi ad alta fedeltà fusi in un Design System pulito e scalabile.
+1. **Discover**: Field interviews and Journey Mapping revealed ruthless truths. Incomprehensible navigation, bureaucratic technical jargon, and a virtually non-existent mobile experience.
+2. **Define**: I synthesized the chaos into clear *problem statements*, creating personas representative of the average commuter and confused tourist.
+3. **Develop**: From low-fidelity wireframing to fast iterative testing with real users.
+4. **Deliver**: High-fidelity prototypes merged into a clean and scalable Design System.
 
 > [!IMPORTANT]
-> Un design bellissimo non serve a nulla se non converte. L'obiettivo primario era far sì che l'utente trovasse l'orario del bus in meno di tre click.
+> A beautiful design is useless if it doesn't convert. The primary goal was to ensure the user found the bus schedule in less than three clicks.
 
-## I Risultati sul Campo
+## Field Results
 
-I numeri parlano chiaro e giustificano l'investimento in UX Design:
+The numbers speak for themselves and justify the investment in UX Design:
 
-| Metrica | Prima del Redesign | Dopo il Redesign |
+| Metric | Before Redesign | After Redesign |
 |---|---|---|
-| **System Usability Scale (SUS)** | 37.5 (Insufficienza Grave) | **72.5 (Buono/Ottimo)** |
+| **System Usability Scale (SUS)** | 37.5 (Severe Failure) | **72.5 (Good/Excellent)** |
 | **Task Completion Rate** | ~40% | **>90%** |
-| **Time on Task** | Alto (Frustrazione) | Molto Basso (Flusso rapido) |
+| **Time on Task** | High (Frustration) | Very Low (Fast flow) |
 
-*Tabella 1: Confronto KPI pre e post redesign*
+*Table 1: KPI comparison pre and post redesign*
 
-Visualizza il [Prototipo interattivo su Figma](https://figma.com/).
+View the [Interactive Prototype on Figma](https://figma.com/).
 
-L'approccio human-centered ha trasformato un labirinto burocratico in un hub digitale moderno ed efficiente.`,
+The human-centered approach transformed a bureaucratic labyrinth into a modern and efficient digital hub.`,
     tags: ["UX Design", "Usability", "Research", "Public Transport"],
     readingTime: 3,
     published: true,
     category: "Design",
   },
   {
-    title: "Machine Learning e Fairness: Adult Census Dataset",
+    title: "Machine Learning and Fairness: Adult Census Dataset",
     slug: "ml-fairness-adult-census",
     date: "2024-09-15",
-    excerpt:
-      "Costruzione di una pipeline ML per predire il reddito, valutando le metriche di equità (Fairness) tramite l'analisi SHAP.",
-    content: `**Sommario:** Un modello di Machine Learning accurato non è necessariamente giusto. L'Accuracy può nascondere bias discriminatori se i dati storici sono sbilanciati. Utilizzando il dataset Adult Census, analizziamo metriche di fairness (Demographic Parity) su Random Forest e XGBoost, svelando le "proxy variables" con SHAP.
+    excerpt: "Building an ML pipeline to predict income, evaluating equity metrics (Fairness) through SHAP analysis.",
+    content: `**Summary:** An accurate Machine Learning model is not necessarily fair. Accuracy can hide discriminatory bias if historical data is unbalanced. Using the Adult Census dataset, we analyze fairness metrics (Demographic Parity) on Random Forest and XGBoost, revealing "proxy variables" with SHAP.
 
-## Oltre la Semplice Accuratezza
+## Beyond Simple Accuracy
 
-I modelli di Machine Learning stanno decidendo chi ottiene un mutuo, chi viene assunto e chi finisce in prigione. Eppure, la maggior parte dei Data Scientist guarda solo l'Accuracy (Accuratezza). 
-Un modello accurato al 90% può nascondere bias sistematici devastanti contro minoranze etniche o di genere. 
+Machine Learning models are deciding who gets a mortgage, who gets hired, and who ends up in prison. Yet, most Data Scientists only look at Accuracy. 
+A 90% accurate model can hide devastating systemic bias against ethnic or gender minorities. 
 
-Ho utilizzato l'UCI Adult Census Dataset per dimostrare quanto questo problema sia radicato.
+I used the UCI Adult Census Dataset to demonstrate how deep-rooted this problem is.
 
 ![Bias analysis chart](/assets/blog/ml-fairness-adult-census/images/bias_chart.png)
 
-## La Pipeline di Test
+## The Test Pipeline
 
-Ho messo in competizione tre algoritmi pesi massimi: **Logistic Regression**, **Random Forest** e **XGBoost**, incaricandoli di predire se un individuo guadagna più di 50.000$ all'anno.
-Ma oltre all'F1-Score, ho aggiunto il calcolo della *Demographic Parity* e dell'*Equal Opportunity*.
+I pitted three heavyweight algorithms against each other: **Logistic Regression**, **Random Forest**, and **XGBoost**, tasking them with predicting whether an individual earns more than $50,000 a year.
+But besides the F1-Score, I added the calculation of *Demographic Parity* and *Equal Opportunity*.
 
 > [!NOTE]
-> Il feature engineering ha incluso l'encoding rigoroso delle variabili categoriche e la gestione attenta dei valori mancanti, essenziale per non avvelenare i calcoli di SHAP successivi.
+> Feature engineering included rigorous encoding of categorical variables and careful handling of missing values, essential so as not to poison subsequent SHAP calculations.
 
-## I Risultati: Cosa "Pensa" Davvero il Modello
+## Results: What the Model Really "Thinks"
 
-Tutti i modelli hanno raggiunto precisioni altissime. Ma guardando le metriche di fairness, il quadro era spaventoso. 
+All models achieved very high accuracy. But looking at the fairness metrics, the picture was scary. 
 
-| Algoritmo | Accuracy | Demographic Parity Gap | Equal Opportunity Gap |
+| Algorithm | Accuracy | Demographic Parity Gap | Equal Opportunity Gap |
 |---|---|---|---|
-| **Logistic Regression** | 82% | Alto | Moderato |
-| **Random Forest** | 85% | Molto Alto (Discriminatorio) | Molto Alto |
-| **XGBoost** | **87%** | Estremo | Estremo |
+| **Logistic Regression** | 82% | High | Moderate |
+| **Random Forest** | 85% | Very High (Discriminatory) | Very High |
+| **XGBoost** | **87%** | Extreme | Extreme |
 
-*Tabella 1: Risultati e Metriche di Fairness*
+*Table 1: Results and Fairness Metrics*
 
-Più il modello è potente (XGBoost), più "impara" a sfruttare spietatamente le correlazioni storiche di disuguaglianza presenti nei dati.
+The more powerful the model (XGBoost), the more it "learns" to ruthlessly exploit historical correlations of inequality present in the data.
 
-L'analisi **SHAP** ha svelato la black box: variabili come il genere (Gender) influenzavano pesantemente la predizione finale, agendo come *proxy variables* occulte. 
-Conclusione? La fairness va ingegnerizzata a monte (es. re-weighting), non è un optional.
+**SHAP** analysis revealed the black box: variables like Gender heavily influenced the final prediction, acting as hidden *proxy variables*. 
+Conclusion? Fairness must be engineered upstream (e.g., re-weighting), it is not optional.
 
-### Approfondimenti
+### Insights
 - [UCI Adult Census Dataset](https://archive.ics.uci.edu/dataset/2/adult)
 - [SHAP (SHapley Additive exPlanations)](https://shap.readthedocs.io/)`,
     tags: ["Python", "Machine Learning", "Fairness", "Data Science"],
@@ -355,552 +348,544 @@ Conclusione? La fairness va ingegnerizzata a monte (es. re-weighting), non è un
     category: "Data Science",
   },
   {
-    title: "Sviluppare Plugin di Visualizzazione per Apache Superset",
+    title: "Developing Visualization Plugins for Apache Superset",
     slug: "custom-visualization-plugins-superset",
     date: "2024-06-20",
-    excerpt:
-      "Una guida ingegneristica per creare chart personalizzati in Apache Superset 6.1.0, prendendo come esempio una Calendar Heatmap interattiva.",
-    content: `**Abstract**: Guida passo-passo per estendere Apache Superset (v6.1.0) con visualizzazioni React personalizzate, sfruttando l'architettura a plugin e i cross-filter nativi.
+    excerpt: "An engineering guide to creating custom charts in Apache Superset 6.1.0, using an interactive Calendar Heatmap as an example.",
+    content: `**Abstract**: Step-by-step guide to extending Apache Superset (v6.1.0) with custom React visualizations, leveraging the plugin architecture and native cross-filters.
 
 ![Custom Calendar Heatmap in Superset](/assets/blog/custom-visualization-plugins-superset/images/heatmap.png)
 
-## Perché Sporcarsi le Mani con i Plugin Custom?
+## Why Get Your Hands Dirty with Custom Plugins?
 
-Apache Superset è una piattaforma di BI fenomenale, ma i suoi grafici nativi a volte non bastano. Le dashboard aziendali complesse richiedono visualizzazioni studiate su misura. 
-La soluzione? Creare plugin React custom per iniettare grafici proprietari direttamente nel cuore di Superset.
+Apache Superset is a phenomenal BI platform, but its native charts are sometimes not enough. Complex corporate dashboards require tailored visualizations. 
+The solution? Create custom React plugins to inject proprietary charts directly into the heart of Superset.
 
 
-## Architettura e Integrazione
+## Architecture and Integration
 
-I plugin in Superset non sono widget iframe isolati. Sono componenti React di prima classe integrati via Webpack e TypeScript, che ricevono i dati dal query engine nativo (Flask/SQLAlchemy).
+Plugins in Superset are not isolated iframe widgets. They are first-class React components integrated via Webpack and TypeScript, receiving data from the native query engine (Flask/SQLAlchemy).
 
-Ho sviluppato una **Calendar Heatmap** (simile ai commit di GitHub) per mappare l'intensità di un flusso di eventi giorno per giorno.
+I developed a **Calendar Heatmap** (similar to GitHub commits) to map the intensity of an event flow day by day.
 
 > [!TIP]
-> Il segreto per un plugin di successo in Superset è il supporto ai **Cross-Filter**. Cliccando su un giorno della Heatmap, l'intera dashboard deve filtrarsi magicamente su quella data.
+> The secret to a successful plugin in Superset is support for **Cross-Filters**. Clicking on a day on the Heatmap, the entire dashboard must magically filter on that date.
 
-## Dettagli Tecnici
+## Technical Details
 
-Costruire un plugin richiede di rispettare interfacce molto rigide.
+Building a plugin requires adhering to very strict interfaces.
 
-| Componente Plugin | Responsabilità |
+| Plugin Component | Responsibility |
 |---|---|
-| \`ControlPanel\` | Costruisce l'interfaccia UI laterale per far scegliere colonne e metriche all'utente. |
-| \`BuildQuery\` | Traduce la configurazione UI in query formattate per il backend Python di Superset. |
-| \`TransformProps\` | Adatta il JSON grezzo del database nei props digeribili dal componente React. |
+| \`ControlPanel\` | Builds the side UI interface to let the user choose columns and metrics. |
+| \`BuildQuery\` | Translates the UI configuration into formatted queries for Superset's Python backend. |
+| \`TransformProps\` | Adapts the raw database JSON into props digestible by the React component. |
 
-Registrando il plugin nel registry centrale, la nuova Chart appare nel dropdown nativo, indistinguibile dalle feature originali di Superset. Un lavoro sporco di configurazione Webpack, ma dal valore architetturale inestimabile.`,
+By registering the plugin in the central registry, the new Chart appears in the native dropdown, indistinguishable from Superset's original features. A dirty Webpack configuration job, but of invaluable architectural value.`,
     tags: ["Superset", "TypeScript", "React", "Data Visualization"],
     readingTime: 3,
     published: true,
     category: "Development",
   },
   {
-    title: "I Dati del Power Meter: Guida Definitiva a FTP, NP e TSS",
+    title: "Power Meter Data: Ultimate Guide to FTP, NP and TSS",
     slug: "power-meter-data-ftp-np-tss-guide",
     date: "2026-08-10",
-    excerpt: "Come leggere e interpretare i dati del tuo misuratore di potenza per strutturare un allenamento scientifico e misurabile.",
+    excerpt: "How to read and interpret your power meter data to structure scientific and measurable training.",
     content: `![Power Meter Data Analysis](/assets/blog/power-meter-data-ftp-np-tss-guide/images/cover.png)
 
-## Oltre la Frequenza Cardiaca
+## Beyond Heart Rate
 
-Per decenni i ciclisti si sono affidati al cardiofrequenzimetro. Ma il cuore mente: risente del caldo, dello stress, della caffeina e del sonno. La potenza espressa sui pedali, misurata in Watt, è invece un dato oggettivo e inconfutabile. 
+For decades, cyclists relied on heart rate monitors. But the heart lies: it is affected by heat, stress, caffeine, and sleep. Power on the pedals, measured in Watts, is an objective and undeniable data point. 
 
-Misurare la potenza è inutile se non si sanno leggere le tre metriche fondamentali.
+Measuring power is useless if you don't know how to read the three fundamental metrics.
 
 > [!IMPORTANT]
-> Prima di usare queste metriche, devi eseguire un test FTP (Functional Threshold Power), tipicamente un test massimale di 20 minuti, per calcolare i tuoi Watt di soglia.
+> Before using these metrics, you must perform an FTP (Functional Threshold Power) test, typically a 20-minute maximal test, to calculate your threshold Watts.
 
-## Le Tre Metriche Chiave
+## The Three Key Metrics
 
-| Metrica | Acronimo | Significato | Utilizzo Pratico |
+| Metric | Acronym | Meaning | Practical Use |
 |---|---|---|---|
-| **Functional Threshold Power** | FTP | La potenza massima sostenibile per circa 1 ora. | Parametro di base per calcolare le zone di allenamento (Z1-Z7). |
-| **Normalized Power** | NP | Stima della potenza che avresti mantenuto se lo sforzo fosse stato perfettamente costante. | Valuta il reale costo metabolico di gare con molti scatti (es. criterium). |
-| **Training Stress Score** | TSS | Punteggio che quantifica il carico di lavoro totale della seduta. | Un TSS di 100 equivale a 1 ora corsa a tutta alla tua FTP. Serve per programmare i recuperi. |
+| **Functional Threshold Power** | FTP | The maximum sustainable power for about 1 hour. | Baseline parameter to calculate training zones (Z1-Z7). |
+| **Normalized Power** | NP | Estimate of the power you would have maintained if the effort were perfectly steady. | Evaluates the real metabolic cost of races with many sprints (e.g., criteriums). |
+| **Training Stress Score** | TSS | Score quantifying the total workload of the session. | A TSS of 100 is equivalent to 1 hour riding all-out at your FTP. Used to program recovery. |
 
-## Come Evitare l'Overtraining
+## How to Avoid Overtraining
 
-Molti amatori guardano solo la media dei Watt (Average Power). Questo è un errore fatale su percorsi collinari. Usa sempre la *Normalized Power* per capire quanto ti sei stancato realmente. Se il tuo TSS settimanale supera i 700 senza un'adeguata base, stai entrando in zona overtraining.
+Many amateurs only look at Average Power. This is a fatal mistake on hilly routes. Always use *Normalized Power* to understand how tired you really are. If your weekly TSS exceeds 700 without an adequate base, you are entering the overtraining zone.
 `,
-    tags: ["Training","Power Meter","Data Analysis","Cycling"],
+    tags: ["Training", "Power Meter", "Data Analysis", "Cycling"],
     readingTime: 5,
     published: true,
     category: "Cycling",
   },
   {
-    title: "Copertoncini vs Tubeless: Il Test Definitivo (Pro e Contro)",
+    title: "Clinchers vs Tubeless: The Ultimate Test (Pros and Cons)",
     slug: "clincher-vs-tubeless-road-cycling-test",
     date: "2026-08-09",
-    excerpt: "Analisi tecnica sui sistemi di pneumatici per bici da corsa: la comodità dei copertoncini o la resistenza alle forature del tubeless?",
+    excerpt: "Technical analysis of tire systems for road bikes: the convenience of clinchers or the puncture resistance of tubeless?",
     content: `![Clincher vs Tubeless](/assets/blog/clincher-vs-tubeless-road-cycling-test/images/cover.png)
 
-## La Fine della Camera d'Aria?
+## The End of the Inner Tube?
 
-Il mondo del ciclismo su strada sta lentamente abbandonando la camera d'aria a favore dei sistemi Tubeless, ereditati dalla MTB. Ma per l'amatore medio, il gioco vale la candela?
+The road cycling world is slowly abandoning the inner tube in favor of Tubeless systems, inherited from MTB. But for the average amateur, is the juice worth the squeeze?
 
-## Tabella Comparativa
+## Comparison Table
 
-Abbiamo testato entrambi i sistemi su 5000 km di strade miste. Ecco il verdetto tecnico:
+We tested both systems over 5000 km of mixed roads. Here is the technical verdict:
 
-| Caratteristica | Copertoncino + Camera in Butile | Tubeless + Sigillante |
+| Feature | Clincher + Butyl Tube | Tubeless + Sealant |
 |---|---|---|
-| **Resistenza al Rotolamento** | Buona | **Eccellente** (Meno attrito interno) |
-| **Pressione di Esercizio** | Alta (7-8 bar) | Bassa (5-6 bar) = **Comfort Superiore** |
-| **Resistenza alle Forature** | Bassa (Rischio pizzicature) | **Altissima** (Il liquido sigilla i fori < 3mm) |
-| **Manutenzione e Installazione** | **Facilissima** | Complessa (Serve spesso un compressore) |
+| **Rolling Resistance** | Good | **Excellent** (Less internal friction) |
+| **Operating Pressure** | High (7-8 bar) | Low (5-6 bar) = **Superior Comfort** |
+| **Puncture Resistance** | Low (Risk of pinch flats) | **Very High** (The liquid seals holes < 3mm) |
+| **Maintenance and Installation** | **Very Easy** | Complex (Often requires a compressor) |
 
 > [!WARNING]
-> Il liquido sigillante nel Tubeless tende a seccarsi. Va rabboccato o controllato ogni 3-4 mesi, specialmente nei mesi estivi molto caldi.
+> The sealant liquid in Tubeless tires tends to dry out. It must be topped up or checked every 3-4 months, especially in very hot summer months.
 
-## Quale Scegliere?
+## Which to Choose?
 
-Se fai gare, granfondo o giri epici lontano da casa, il **Tubeless** ti salva la vita, chiudendo le micro-forature in corsa senza farti scendere di sella. 
-Se usi la bici saltuariamente e vuoi zero sbattimenti di manutenzione meccanica, il vecchio **copertoncino** con una buona camera d'aria in lattice o TPU rimane la scelta più pragmatica.
+If you race, ride Gran Fondos, or epic tours far from home, **Tubeless** saves your life, closing micro-punctures on the fly without making you dismount. 
+If you use the bike occasionally and want zero mechanical maintenance hassle, the old **clincher** with a good latex or TPU inner tube remains the most pragmatic choice.
 `,
-    tags: ["Gear","Tires","Mechanics","Cycling"],
+    tags: ["Gear", "Tires", "Mechanics", "Cycling"],
     readingTime: 4,
     published: true,
     category: "Cycling",
   },
   {
-    title: "L'Impatto dell'Aerodinamica nel Ciclismo Amatoriale",
+    title: "The Impact of Aerodynamics in Amateur Cycling",
     slug: "aerodynamics-impact-amateur-cycling",
     date: "2026-08-08",
-    excerpt: "Conta davvero comprare una bici aero se viaggi a 28 km/h? Analizziamo i dati fisici della resistenza dell'aria.",
+    excerpt: "Does it really matter to buy an aero bike if you travel at 28 km/h? Let's analyze the physical data of air resistance.",
     content: `![Aerodynamic Cycling Position](/assets/blog/aerodynamics-impact-amateur-cycling/images/cover.png)
 
-## Il Muro dell'Aria
+## The Wall of Air
 
-Oltre i 15 km/h, la forza predominante che un ciclista deve sconfiggere non è la gravità o l'attrito meccanico, ma la resistenza aerodinamica (drag). Molti amatori spendono migliaia di euro in telai profilati, ma dimenticano che la bicicletta rappresenta solo una frazione del problema.
+Beyond 15 km/h, the predominant force a cyclist must defeat is not gravity or mechanical friction, but aerodynamic resistance (drag). Many amateurs spend thousands of euros on aero frames, but forget that the bicycle is only a fraction of the problem.
 
-## Chi genera la Resistenza?
+## Who Generates the Resistance?
 
-| Componente | Percentuale di Resistenza Aerodinamica Totale (Drag) |
+| Component | Percentage of Total Aerodynamic Resistance (Drag) |
 |---|---|
-| **Corpo del Ciclista** | **~80%** |
-| Telaio della Bicicletta | ~8% |
-| Ruote | ~8% |
-| Casco e Abbigliamento | ~4% |
+| **Cyclist's Body** | **~80%** |
+| Bicycle Frame | ~8% |
+| Wheels | ~8% |
+| Helmet and Clothing | ~4% |
 
 > [!TIP]
-> Spendere 3000€ per un telaio "Aero" fa risparmiare meno Watt di quanto faccia abbassare il busto, piegare i gomiti a 90 gradi e indossare una maglietta aderente.
+> Spending 3000€ on an "Aero" frame saves fewer Watts than lowering your torso, bending your elbows to 90 degrees, and wearing a tight jersey.
 
-## Conta a basse velocità?
+## Does it matter at low speeds?
 
-C'è un falso mito secondo cui l'aerodinamica conta solo se sei un pro che viaggia a 45 km/h. La realtà fisica (l'equazione della forza di trascinamento) dice che la potenza richiesta per vincere l'aria aumenta con il *cubo* della velocità.
-Tuttavia, anche a **28 km/h**, l'80% della tua fatica serve a spostare l'aria. Un ciclista più lento passerà *più tempo* sul percorso esposto al vento, quindi il risparmio temporale totale (in minuti) con un setup aero è spesso **maggiore** per l'amatore che per il professionista!
+There is a false myth that aerodynamics only matters if you are a pro traveling at 45 km/h. Physical reality (the drag equation) says that the power required to overcome air increases with the *cube* of speed.
+However, even at **28 km/h**, 80% of your effort is used to move air. A slower cyclist will spend *more time* on the course exposed to the wind, so the total time savings (in minutes) with an aero setup is often **greater** for the amateur than for the professional!
 `,
-    tags: ["Aerodynamics","Physics","Gear","Cycling"],
+    tags: ["Aerodynamics", "Physics", "Gear", "Cycling"],
     readingTime: 6,
     published: true,
     category: "Cycling",
   },
   {
-    title: "Analisi dei Dati Strava: Dalla Dashboard a Python",
+    title: "Strava Data Analysis: From Dashboard to Python",
     slug: "strava-data-analysis-python-pandas",
     date: "2026-08-07",
-    excerpt: "Come esportare l'archivio GDPR di Strava e utilizzare Pandas per creare insight personalizzati sul tuo allenamento.",
+    excerpt: "How to export your Strava GDPR archive and use Pandas to create custom insights on your training.",
     content: `![Strava Data Analysis Python](/assets/blog/strava-data-analysis-python-pandas/images/cover.png)
 
-## Liberare i Propri Dati
+## Freeing Your Data
 
-Strava offre una dashboard eccezionale, ma se vuoi fare un'analisi profonda e non standard (es. correlare i tuoi PR sulle salite con le ore di sonno o con la temperatura esterna), hai bisogno di esportare i tuoi dati e analizzarli con Python.
+Strava offers a great dashboard, but if you want to do a deep and non-standard analysis (e.g., correlating your PRs on climbs with hours of sleep or outside temperature), you need to export your data and analyze it with Python.
 
-## Esportazione dell'Archivio
+## Exporting the Archive
 
-Vai su *Impostazioni -> Il mio account -> Inizia (Scarica o elimina il tuo account)* e richiedi il pacchetto dati completo. Dopo qualche ora riceverai uno ZIP contenente il file \`activities.csv\`.
+Go to *Settings -> My Account -> Get Started (Download or delete your account)* and request the full data package. After a few hours, you will receive a ZIP containing the \`activities.csv\` file.
 
 > [!NOTE]
-> Il file \`activities.csv\` contiene centinaia di colonne, tra cui velocità massima, dislivello cumulato (Elevation Gain), Suffer Score e dati meteorologici base.
+> The \`activities.csv\` file contains hundreds of columns, including max speed, cumulative elevation gain, Suffer Score, and basic weather data.
 
-## Pulizia Dati con Pandas
+## Data Cleaning with Pandas
 
-L'importazione in Pandas richiede la conversione delle distanze e dei tempi, che Strava salva spesso in metri e secondi:
+Importing into Pandas requires converting distances and times, which Strava often saves in meters and seconds:
 
 \`\`\`python
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Caricamento del dataset
+# Load dataset
 df = pd.read_csv('activities.csv')
 
-# Filtriamo solo le uscite in bici da corsa (Ride)
+# Filter only road bike rides
 rides = df[df['Activity Type'] == 'Ride'].copy()
 
-# Conversioni (Metri -> Km)
+# Conversions (Meters -> Km)
 rides['Distance_km'] = rides['Distance'] / 1000
 rides['Elevation_Gain_m'] = rides['Elevation Gain']
 
-# Calcolo VAM (Velocità Ascensionale Media) approssimata
+# Calculate approximate VAM (Average Ascent Speed)
 rides['VAM'] = rides['Elevation_Gain_m'] / (rides['Moving Time'] / 3600)
 \`\`\`
 
-Grazie a questi pochi script puoi creare delle Heatmap personalizzate o capire statisticamente in quale mese dell'anno raggiungi il tuo picco di forma (es. calcolando la VAM media mensile).
+With these few scripts, you can create custom Heatmaps or statistically understand in which month of the year you reach your peak form (e.g., calculating the average monthly VAM).
 `,
-    tags: ["Strava","Python","Data Science","Cycling"],
+    tags: ["Strava", "Python", "Data Science", "Cycling"],
     readingTime: 5,
     published: true,
     category: "Cycling",
   },
   {
-    title: "Garmin vs Wahoo: Come Scegliere il Primo Ciclocomputer GPS",
+    title: "Garmin vs Wahoo: How to Choose Your First GPS Bike Computer",
     slug: "garmin-vs-wahoo-first-gps-bike-computer",
     date: "2026-08-06",
-    excerpt: "Confronto diretto tra i due giganti dell'ecosistema GPS per biciclette: feature, affidabilità e user experience.",
+    excerpt: "Direct comparison between the two giants of the bike GPS ecosystem: features, reliability, and user experience.",
     content: `![Garmin Edge and Wahoo Elemnt](/assets/blog/garmin-vs-wahoo-first-gps-bike-computer/images/cover.png)
 
-## Il Centro di Comando
+## The Command Center
 
-Sostituire il vecchio contachilometri a calamita con un GPS moderno è il primo passo per prendere sul serio il ciclismo. Garmin (serie Edge) e Wahoo (serie ELEMNT) dominano il mercato, ma hanno due filosofie diametralmente opposte.
+Replacing the old magnet odometer with a modern GPS is the first step to taking cycling seriously. Garmin (Edge series) and Wahoo (ELEMNT series) dominate the market, but have two diametrically opposed philosophies.
 
-## Approcci a Confronto
+## Approaches Compared
 
-| Feature | Garmin (es. Edge 540/840) | Wahoo (es. ELEMNT Bolt v2) |
+| Feature | Garmin (e.g., Edge 540/840) | Wahoo (e.g., ELEMNT Bolt v2) |
 |---|---|---|
-| **Configurazione** | Dispositivo-centrica (fai tutto dallo schermo) | App-centrica (imposti tutto dallo smartphone) |
-| **Mappe e Navigazione** | Molto dettagliate, ricalcolo superbo | Minimali, contrasto elevato, perfette per seguire la traccia |
-| **Ecosistema Dati** | Garmin Connect (un universo di dati e metriche) | Molto snello, orientato al sync diretto con Strava/TrainingPeaks |
-| **Pulsanti vs Touch** | Touchscreen eccellente sui modelli superiori | Solo pulsanti fisici (infallibili con i guanti invernali) |
+| **Configuration** | Device-centric (do everything from the screen) | App-centric (set everything from smartphone) |
+| **Maps and Navigation** | Very detailed, superb recalculation | Minimalist, high contrast, perfect for following the track |
+| **Data Ecosystem** | Garmin Connect (a universe of data and metrics) | Very lean, oriented to direct sync with Strava/TrainingPeaks |
+| **Buttons vs Touch** | Excellent touchscreen on higher models | Physical buttons only (foolproof with winter gloves) |
 
 > [!TIP]
-> Se sei un nerd dei dati che adora perdersi nei grafici di Firstbeat (VO2Max, Recovery Time, ecc.), **Garmin** è la scelta obbligata.
+> If you are a data nerd who loves getting lost in Firstbeat charts (VO2Max, Recovery Time, etc.), **Garmin** is the mandatory choice.
 
-## Il Verdetto
+## The Verdict
 
-Scegli **Wahoo** se vuoi un dispositivo "set-and-forget": lo accendi, carichi la rotta, pedali, non si blocca mai e lo schermo è leggibile sotto il sole a picco senza distrazioni.
-Scegli **Garmin** se ti piace esplorare, fare variazioni di percorso al volo usando le funzioni POI (Punti di Interesse) sul display, o se hai già uno smartwatch Garmin per sincronizzare l'intero carico di allenamento (Body Battery).
+Choose **Wahoo** if you want a "set-and-forget" device: you turn it on, load the route, pedal, it never crashes, and the screen is readable in glaring sun without distractions.
+Choose **Garmin** if you like exploring, making route changes on the fly using POI (Points of Interest) on the display, or if you already have a Garmin smartwatch to sync your entire training load (Body Battery).
 `,
-    tags: ["GPS","Gear","Tech","Cycling"],
+    tags: ["GPS", "Gear", "Tech", "Cycling"],
     readingTime: 4,
     published: true,
     category: "Cycling",
   },
   {
-    title: "Sostituzione Catena: Usura, Misurazione e Falsi Miti",
+    title: "Chain Replacement: Wear, Measurement and False Myths",
     slug: "bicycle-chain-wear-replacement-guide",
     date: "2026-08-05",
-    excerpt: "Tutto quello che devi sapere sull'usura della catena, quando sostituirla e perché l'allungamento distrugge la tua trasmissione.",
+    excerpt: "Everything you need to know about chain wear, when to replace it, and why elongation destroys your drivetrain.",
     content: `![Bicycle Chain Measurement](/assets/blog/bicycle-chain-wear-replacement-guide/images/cover.png)
 
-## Il Killer Silenzioso della Trasmissione
+## The Silent Killer of the Drivetrain
 
-La catena della bicicletta non si "allunga" perché il metallo si deforma sotto la potenza delle tue gambe. Si allunga perché i minuscoli rullini interni si consumano a causa dell'attrito e dello sporco, aumentando la distanza tra una maglia e l'altra.
+The bicycle chain does not "stretch" because the metal deforms under the power of your legs. It stretches because the tiny inner rollers wear out due to friction and dirt, increasing the distance between links.
 
-Se continui a pedalare con una catena usurata oltre il limite, i rullini sfasati inizieranno a limare i denti della cassetta pignoni e delle corone anteriori per adattarsi alla nuova lunghezza.
+If you keep pedaling with a chain worn past its limit, the misaligned rollers will start grinding the teeth of your cassette and chainrings to match the new length.
 
 > [!WARNING]
-> Cambiare una catena costa 30€. Cambiare una cassetta e due corone usurate costa più di 250€. Non ignorare l'usura della catena!
+> Changing a chain costs 30€. Changing a worn cassette and two chainrings costs over 250€. Do not ignore chain wear!
 
-## Come Misurare l'Usura
+## How to Measure Wear
 
-L'unico strumento davvero affidabile è il **calibro per catena** (chain checker). Inseriscilo tra le maglie:
+The only truly reliable tool is the **chain checker**. Insert it between the links:
 
-| Tolleranza (Allungamento) | Azione Consigliata |
+| Tolerance (Elongation) | Recommended Action |
 |---|---|
-| **< 0.5%** | Tutto perfetto, continua a pedalare e lubrificare. |
-| **0.5% - 0.75%** | Sostituisci la catena immediatamente. La cassetta è ancora salva. |
-| **> 0.75%** | Troppo tardi. Se metti una catena nuova ora, salterà sui vecchi pignoni. Devi cambiare anche la cassetta. |
+| **< 0.5%** | Perfect, keep riding and lubricating. |
+| **0.5% - 0.75%** | Replace the chain immediately. The cassette is still safe. |
+| **> 0.75%** | Too late. If you put a new chain on now, it will skip on the old cogs. You must change the cassette too. |
 
-Evita i falsi miti: non lavare mai la catena con sgrassatori aggressivi (come il WD-40 standard o la benzina) lasciandoli a mollo per ore, perché rimuovono il grasso di fabbrica all'interno dei rullini, accorciando drasticamente la vita della catena. Usa sgrassatori specifici biodegradabili e ri-lubrifica sempre.
+Avoid false myths: never wash the chain with aggressive degreasers (like standard WD-40 or gasoline) soaking them for hours, because they remove the factory grease inside the rollers, drastically shortening chain life. Use specific biodegradable degreasers and always re-lubricate.
 `,
-    tags: ["Mechanics","Maintenance","Gear","Cycling"],
+    tags: ["Mechanics", "Maintenance", "Gear", "Cycling"],
     readingTime: 4,
     published: true,
     category: "Cycling",
   },
   {
-    title: "Bike Fitting: Perché i Millimetri Fanno la Differenza in Sella",
+    title: "Bike Fitting: Why Millimeters Make the Difference in the Saddle",
     slug: "bike-fitting-importance-millimeters",
     date: "2026-08-04",
-    excerpt: "Sella troppo alta o tacchette mal posizionate? Scopri come un posizionamento biomeccanico previene infortuni e aumenta i Watt.",
+    excerpt: "Saddle too high or cleats misplaced? Discover how a biomechanical fit prevents injuries and increases Watts.",
     content: `![Bike Fitting Process](/assets/blog/bike-fitting-importance-millimeters/images/cover.png)
 
-## La Macchina Perfetta, il Motore Umano
+## The Perfect Machine, the Human Engine
 
-La bicicletta è una macchina simmetrica. Il corpo umano non lo è quasi mai. Abbiamo una gamba impercettibilmente più lunga dell'altra, bacini ruotati e flessibilità asimmetrica. Il **Bike Fitting** è la scienza che adatta la macchina al corpo, e non viceversa.
+The bicycle is a symmetrical machine. The human body almost never is. We have one leg imperceptibly longer than the other, rotated pelvises, and asymmetrical flexibility. **Bike Fitting** is the science of adapting the machine to the body, not vice versa.
 
-Molti ciclisti si concentrano sul ridurre il peso della bici, ignorando che una sella troppo alta di 5 millimetri disperde più energia di quanta ne faccia risparmiare un telaio in carbonio ultraleggero, oltre a causare tendiniti al ginocchio.
+Many cyclists focus on reducing the weight of the bike, ignoring that a saddle 5 millimeters too high wastes more energy than an ultra-light carbon frame saves, besides causing knee tendinitis.
 
-## I 3 Punti di Contatto
+## The 3 Points of Contact
 
-Il fitting si concentra sui tre punti di interfaccia tra uomo e macchina:
+Fitting focuses on the three interface points between man and machine:
 
-| Punto di Contatto | Regolazione Cruciale | Problema Tipico se Errato |
+| Contact Point | Crucial Adjustment | Typical Problem if Incorrect |
 |---|---|---|
-| **Sella** | Altezza, arretramento, inclinazione | Dolore lombare, formicolio genitale, tendinite rotulea |
-| **Manubrio** | Reach (distanza), Drop (dislivello) | Dolore cervicale, formicolio alle mani |
-| **Pedali / Tacchette** | Posizione antero-posteriore, rotazione, float | Infiammazione bandelletta ileotibiale, dolore ai piedi |
+| **Saddle** | Height, setback, tilt | Lower back pain, genital numbness, patellar tendinitis |
+| **Handlebar** | Reach, Drop | Neck pain, hand numbness |
+| **Pedals / Cleats** | Fore-aft position, rotation, float | Iliotibial band syndrome, foot pain |
 
 > [!TIP]
-> Se soffri di intorpidimento alle mani o ai piedi dopo 2 ore di sella, non comprare guanti più spessi o scarpe più larghe. Fai un bike fitting biomeccanico professionale.
+> If you suffer from numbness in your hands or feet after 2 hours in the saddle, don't buy thicker gloves or wider shoes. Get a professional biomechanical bike fitting.
 
-Il fitting moderno utilizza telecamere ad alta frequenza (motion capture 3D) per misurare gli angoli articolari dinamici sotto sforzo. È il miglior investimento (circa 150-200€) che un ciclista possa fare per il proprio comfort e le proprie prestazioni.
+Modern fitting uses high-frequency cameras (3D motion capture) to measure dynamic joint angles under strain. It is the best investment (around 150-200€) a cyclist can make for their own comfort and performance.
 `,
-    tags: ["Biomechanics","Health","Performance","Cycling"],
+    tags: ["Biomechanics", "Health", "Performance", "Cycling"],
     readingTime: 5,
     published: true,
     category: "Cycling",
   },
   {
-    title: "Allenamento Polarizzato (80/20): La Scienza per le Granfondo",
+    title: "Polarized Training (80/20): The Science for Gran Fondos",
     slug: "polarized-training-80-20-cycling-science",
     date: "2026-08-03",
-    excerpt: "Perché allenarsi sempre a media intensità ti rende lento. Scopri l'approccio polarizzato usato dai professionisti.",
+    excerpt: "Why training at medium intensity all the time makes you slow. Discover the polarized approach used by pros.",
     content: `![Polarized Training Zones](/assets/blog/polarized-training-80-20-cycling-science/images/cover.png)
 
-## Il Buco Nero dell'Intensità
+## The Black Hole of Intensity
 
-L'amatore tipico esce in bici e fa sempre la stessa cosa: pedala "abbastanza forte". In gergo, questo significa passare l'80% del tempo in Zona 3 (Tempo/Sweet Spot). Ti senti stanco a fine giro, ma fisiologicamente sei in un "buco nero": troppo intenso per sviluppare la base aerobica e bruciare i grassi, troppo blando per stimolare il VO2Max.
+The typical amateur goes out for a ride and always does the same thing: pedals "pretty hard". In jargon, this means spending 80% of the time in Zone 3 (Tempo/Sweet Spot). You feel tired at the end of the ride, but physiologically you are in a "black hole": too intense to develop aerobic base and burn fat, too mild to stimulate VO2Max.
 
-Il risultato? Un plateau prestazionale eterno.
+The result? An eternal performance plateau.
 
-## L'Approccio Polarizzato (Stephen Seiler)
+## The Polarized Approach (Stephen Seiler)
 
-La ricerca fisiologica ha dimostrato che i professionisti dell'endurance si allenano in modo **Polarizzato**:
+Physiological research has shown that endurance pros train in a **Polarized** way:
 
-| Intensità | Percentuale di Tempo | Obiettivo Fisiologico |
+| Intensity | Time Percentage | Physiological Goal |
 |---|---|---|
-| **Bassa (Z1-Z2)** | **80%** | Aumento mitocondri, capillarizzazione, fat oxidation |
-| **Media (Z3-Z4)** | **0-5%** | (Zona da evitare in allenamento base, usata solo vicino alle gare) |
-| **Altissima (Z5+)** | **15-20%** | Aumento VO2Max, tolleranza al lattato |
+| **Low (Z1-Z2)** | **80%** | Mitochondrial increase, capillarization, fat oxidation |
+| **Medium (Z3-Z4)** | **0-5%** | (Zone to avoid in base training, used only near races) |
+| **Very High (Z5+)** | **15-20%** | VO2Max increase, lactate tolerance |
 
 > [!IMPORTANT]
-> "Go slow to go fast". L'80% del tuo volume settimanale deve essere così facile da permetterti di respirare col naso o parlare fluidamente. 
+> "Go slow to go fast". 80% of your weekly volume must be so easy that you can breathe through your nose or speak fluently. 
 
-Se fai 10 ore a settimana, 8 ore devono essere passaggiate aerobiche. Le restanti 2 ore devono essere ripetute così devastanti da farti venire la nausea. Questa separazione netta permette al corpo di recuperare durante i giorni facili e di assorbire lo stress estremo nei giorni duri.
+If you do 10 hours a week, 8 hours must be aerobic walks. The remaining 2 hours must be intervals so devastating they make you nauseous. This sharp separation allows the body to recover during easy days and absorb extreme stress on hard days.
 `,
-    tags: ["Training","Science","Endurance","Cycling"],
+    tags: ["Training", "Science", "Endurance", "Cycling"],
     readingTime: 6,
     published: true,
     category: "Cycling",
   },
   {
-    title: "Nutrizione in Sella: Strategie Anti-Crisi di Fame (Bonking)",
+    title: "Nutrition in the Saddle: Anti-Bonking Strategies",
     slug: "cycling-nutrition-anti-bonking-strategies",
     date: "2026-08-02",
-    excerpt: "La biochimica della crisi di fame e calcoli matematici per l'assunzione di carboidrati durante i lunghi in bicicletta.",
+    excerpt: "The biochemistry of hitting the wall and mathematical calculations for carbohydrate intake during long bike rides.",
     content: `![Cycling Nutrition Bars and Gels](/assets/blog/cycling-nutrition-anti-bonking-strategies/images/cover.png)
 
-## Cos'è davvero la Crisi di Fame?
+## What Really is the Bonk?
 
-In inglese lo chiamano *Bonking*, in italiano "crisi di fame" o "cotta". Non è semplice stanchezza: è l'esaurimento totale delle scorte di glicogeno (zuccheri) nei muscoli e nel fegato. Quando finisci il glicogeno, il corpo è costretto a bruciare solo grassi, un processo biochimico lentissimo. Il risultato? Un crollo verticale di potenza. Non riesci più a superare i 15 km/h.
+In Italian they call it "crisi di fame", in English "bonking" or "hitting the wall". It's not simple fatigue: it's the total depletion of glycogen (sugar) stores in muscles and liver. When you run out of glycogen, the body is forced to burn only fat, a very slow biochemical process. The result? A vertical drop in power. You can't exceed 15 km/h anymore.
 
-## La Matematica dei Carboidrati
+## The Math of Carbohydrates
 
-Il tuo corpo può immagazzinare solo circa 2000 kcal sotto forma di glicogeno (sufficienti per 90-120 minuti ad alta intensità). Se la tua uscita dura di più, devi inserire carburante **durante** lo sforzo.
+Your body can only store about 2000 kcal in the form of glycogen (enough for 90-120 minutes at high intensity). If your ride lasts longer, you must fuel **during** the effort.
 
-| Durata Uscita | Fabbisogno di Carboidrati | Fonti Consigliate |
+| Ride Duration | Carbohydrate Requirement | Recommended Sources |
 |---|---|---|
-| **< 1 ora** | Nessuno (solo acqua) | - |
-| **1 - 2 ore** | 30g all'ora | Borraccia con maltodestrine o mezza barretta |
-| **2 - 4 ore** | 60g all'ora | 1 Gel + Mezza borraccia isotonica ogni ora |
-| **> 4 ore (Gara)** | 90-120g all'ora | Mix Glucosio:Fruttosio (rapporto 1:0.8) |
+| **< 1 hour** | None (water only) | - |
+| **1 - 2 hours** | 30g per hour | Bottle with maltodextrin or half a bar |
+| **2 - 4 hours** | 60g per hour | 1 Gel + Half isotonic bottle per hour |
+| **> 4 hours (Race)** | 90-120g per hour | Glucose:Fructose Mix (1:0.8 ratio) |
 
 > [!TIP]
-> Il corpo umano fatica ad assorbire più di 60g di glucosio all'ora a causa della saturazione dei trasportatori intestinali (SGLT1). Per arrivare a 90g+, i professionisti usano mix specifici che includono il fruttosio (che usa un altro trasportatore, GLUT5).
+> The human body struggles to absorb more than 60g of glucose per hour due to the saturation of intestinal transporters (SGLT1). To reach 90g+, pros use specific mixes that include fructose (which uses another transporter, GLUT5).
 
-Allenati a mangiare. Il tuo intestino va "allenato" a digerire 90g di zuccheri all'ora esattamente come alleni le gambe. Non provare nuove barrette o gel il giorno della gara!
+Train to eat. Your gut must be "trained" to digest 90g of sugar per hour just as you train your legs. Don't try new bars or gels on race day!
 `,
-    tags: ["Nutrition","Endurance","Health","Cycling"],
+    tags: ["Nutrition", "Endurance", "Health", "Cycling"],
     readingTime: 4,
     published: true,
     category: "Cycling",
   },
   {
-    title: "La Pressione degli Pneumatici: Scorrevolezza vs Comfort",
+    title: "Tire Pressure: Rolling Resistance vs Comfort",
     slug: "cycling-tire-pressure-rolling-resistance-comfort",
     date: "2026-08-01",
-    excerpt: "Perché gonfiare i copertoncini a 8 bar ti rende più lento. La nuova scienza della pressione degli pneumatici nel ciclismo.",
+    excerpt: "Why inflating clinchers to 8 bar makes you slower. The new science of tire pressure in cycling.",
     content: `![Bicycle Tire Pressure Gauge](/assets/blog/cycling-tire-pressure-rolling-resistance-comfort/images/cover.png)
 
-## Il Mito degli 8 Bar (120 PSI)
+## The Myth of 8 Bar (120 PSI)
 
-Per decenni i ciclisti hanno pompato i loro sottilissimi pneumatici da 23mm a pressioni spaventose, convinti che "più è duro, più è scorrevole". Su un velodromo di legno perfettamente liscio, la fisica conferma questa teoria. 
+For decades, cyclists pumped their ultra-thin 23mm tires to frightening pressures, convinced that "the harder, the faster". On a perfectly smooth wooden velodrome, physics confirms this theory. 
 
-Ma le strade del mondo reale sono piene di crepe, asfalto ruvido e buche.
+But real-world roads are full of cracks, rough asphalt, and potholes.
 
-## Le Perdite per Impedenza
+## Impedance Losses
 
-Quando uno pneumatico è gonfiato a 8 bar, è un sasso. Ogni volta che colpisce una piccola imperfezione dell'asfalto, la bicicletta (e il tuo corpo) vengono spinti verso l'alto. Questo micro-rimbalzo disperde l'energia in avanti trasformandola in energia verticale. In fisica, questa si chiama *impedenza*.
+When a tire is inflated to 8 bar, it's a rock. Every time it hits a small asphalt imperfection, the bicycle (and your body) are pushed upwards. This micro-bounce dissipates forward energy by transforming it into vertical energy. In physics, this is called *impedance*.
 
-Se invece la pressione è più bassa (es. 5.5 bar su un copertone da 28mm), lo pneumatico si deforma, assorbendo l'ostacolo. La bici continua ad avanzare in linea retta senza rimbalzare.
+If the pressure is lower instead (e.g., 5.5 bar on a 28mm tire), the tire deforms, absorbing the obstacle. The bike continues to move forward in a straight line without bouncing.
 
-| Pressione / Sezione | Superficie | Efficienza (Resistenza al Rotolamento) | Comfort |
+| Pressure / Width | Surface | Efficiency (Rolling Resistance) | Comfort |
 |---|---|---|---|
-| **23mm a 8.0 Bar** | Pista liscia | Eccellente | Terribile |
-| **23mm a 8.0 Bar** | Asfalto ruvido | **Pessima (Alte perdite per impedenza)** | Terribile |
-| **28mm a 5.5 Bar** | Asfalto ruvido | **Eccellente (Assorbe le vibrazioni)** | Superiore |
+| **23mm at 8.0 Bar** | Smooth track | Excellent | Terrible |
+| **23mm at 8.0 Bar** | Rough asphalt | **Terrible (High impedance losses)** | Terrible |
+| **28mm at 5.5 Bar** | Rough asphalt | **Excellent (Absorbs vibrations)** | Superior |
 
 > [!NOTE]
-> Per trovare la pressione perfetta, devi calcolarla basandoti sul peso totale (ciclista + bici) e sulla larghezza interna del cerchio. Strumenti online come il *SRAM Tire Pressure Calculator* usano algoritmi empirici per darti il numero magico.
+> To find the perfect pressure, you must calculate it based on total weight (cyclist + bike) and internal rim width. Online tools like the *SRAM Tire Pressure Calculator* use empirical algorithms to give you the magic number.
 
-Abbraccia il comfort: pneumatici più larghi a pressioni più basse sono matematicamente più veloci nel mondo reale.
+Embrace comfort: wider tires at lower pressures are mathematically faster in the real world.
 `,
-    tags: ["Physics","Tires","Mechanics","Cycling"],
+    tags: ["Physics", "Tires", "Mechanics", "Cycling"],
     readingTime: 5,
     published: true,
     category: "Cycling",
   },
   {
-    title: "Gravel vs Bici da Corsa: Analisi delle Geometrie",
+    title: "Gravel vs Road Bike: Geometry Analysis",
     slug: "gravel-vs-road-bike-geometry-analysis",
     date: "2026-07-30",
-    excerpt: "Non sono solo copertoni più larghi. Scopriamo come trail, reach e interasse cambiano radicalmente il comportamento della bicicletta.",
+    excerpt: "It's not just wider tires. Let's find out how trail, reach, and wheelbase radically change the bike's handling.",
     content: `![Gravel and Road Bike Comparison](/assets/blog/gravel-vs-road-bike-geometry-analysis/images/cover.png)
 
-## L'Illusione del "Fanno la Stessa Cosa"
+## The "They Do the Same Thing" Illusion
 
-A prima vista, una bici gravel assomiglia a una bici da corsa con ruote tassellate. Molti pensano che montando gomme da 30mm su una gravel si ottenga una bici da strada pura. Ma la realtà ingegneristica è molto diversa, ed è tutta nascosta nei numeri del telaio.
+At first glance, a gravel bike looks like a road bike with knobby tires. Many think that mounting 30mm tires on a gravel bike gets you a pure road bike. But the engineering reality is very different, and it's all hidden in the frame numbers.
 
-## I Numeri che Contano
+## The Numbers That Matter
 
-| Misura | Bici da Corsa (Road) | Bici Gravel | Effetto Pratico |
+| Measurement | Road Bike | Gravel Bike | Practical Effect |
 |---|---|---|---|
-| **Interasse (Wheelbase)** | Corto (~990mm) | Lungo (~1030mm) | La gravel è molto più stabile in discesa e sullo sterrato, ma meno reattiva negli scatti. |
-| **Angolo Sterzo** | Chiuso (73-74°) | Aperto (70-71°) | Uno sterzo aperto rende la gravel meno nervosa e più prevedibile sugli ostacoli. |
-| **Movimento Centrale** | Alto | Basso (maggiore Drop) | Un baricentro più basso aumenta la stabilità in curva. |
+| **Wheelbase** | Short (~990mm) | Long (~1030mm) | Gravel is much more stable downhill and off-road, but less responsive in sprints. |
+| **Head Angle** | Steep (73-74°) | Slack (70-71°) | A slack steering angle makes the gravel less twitchy and more predictable over obstacles. |
+| **Bottom Bracket** | High | Low (More Drop) | A lower center of gravity increases cornering stability. |
 
 > [!NOTE]
-> Il **Trail** (la distanza tra il punto di contatto della ruota e l'asse di sterzo) è il vero segreto. Un trail elevato su una gravel impedisce alla ruota di "chiudersi" improvvisamente su fango o ghiaia.
+> **Trail** (the distance between the wheel contact patch and the steering axis) is the real secret. High trail on a gravel bike prevents the wheel from suddenly "tucking" in mud or gravel.
 
-Se cerchi l'adrenalina dello sprint ai 50 km/h o rilanci nervosi in salita, la bici da strada rimane imbattibile. Se cerchi avventura, comfort e la possibilità di perderti per boschi senza rischiare la vita a ogni curva, le geometrie rilassate della gravel sono perfette.
+If you are looking for the adrenaline of a 50 km/h sprint or twitchy accelerations on climbs, the road bike remains unbeatable. If you seek adventure, comfort, and the ability to get lost in the woods without risking your life at every turn, the relaxed geometry of a gravel bike is perfect.
 `,
-    tags: ["Gravel","Geometry","Tech","Cycling"],
+    tags: ["Gravel", "Geometry", "Tech", "Cycling"],
     readingTime: 4,
     published: true,
     category: "Cycling",
   },
   {
-    title: "Cuscinetti Ceramici (Oversized): Vantaggio Reale o Puro Marketing?",
+    title: "Ceramic Bearings (Oversized): Real Advantage or Pure Marketing?",
     slug: "ceramic-bearings-oversized-pulley-wheels-marketing",
     date: "2026-07-29",
-    excerpt: "Spendere 500€ per una gabbia del cambio maggiorata fa guadagnare watt o solo like su Instagram? L'analisi meccanica.",
+    excerpt: "Does spending 500€ for an oversized derailleur cage save watts or just get Instagram likes? Mechanical analysis.",
     content: `![Ceramic Oversized Pulley Wheels](/assets/blog/ceramic-bearings-oversized-pulley-wheels-marketing/images/cover.png)
 
-## L'Era dei Marginal Gains
+## The Era of Marginal Gains
 
-Da quando il Team Sky ha introdotto il concetto di *Marginal Gains* (guadagni marginali), l'industria ciclistica ha iniziato a vendere aggiornamenti costosissimi per risparmiare frazioni di Watt. Uno dei più popolari (e appariscenti) è il sistema OSPW (Oversized Pulley Wheel System) con cuscinetti ceramici.
+Since Team Sky introduced the concept of *Marginal Gains*, the cycling industry started selling very expensive upgrades to save fractions of a Watt. One of the most popular (and flashy) is the OSPW (Oversized Pulley Wheel System) with ceramic bearings.
 
-## La Fisica dietro alle Pulegge Giganti
+## The Physics Behind Giant Pulleys
 
-L'idea teorica è solida: una puleggia più grande costringe la catena a curvarsi di meno. Minore curvatura = minore attrito tra le maglie = Watt risparmiati. Inoltre, i cuscinetti in ceramica sferica ruotano con meno resistenza rispetto a quelli in acciaio.
+The theoretical idea is solid: a larger pulley forces the chain to bend less. Less bending = less friction between links = Watts saved. Furthermore, spherical ceramic bearings rotate with less resistance than steel ones.
 
-Ma quanti Watt stiamo salvando?
+But how many Watts are we saving?
 
-| Componente | Risparmio Stimato (a 250W) | Costo Medio | Rapporto Euro/Watt |
+| Component | Estimated Savings (at 250W) | Average Cost | Euro/Watt Ratio |
 |---|---|---|---|
-| **Catena Pulita e Lubrificata (Cera)** | ~3 - 5 Watt | 20€ | **4€ / Watt** (Miglior investimento) |
-| **Pulegge Oversized + Ceramica** | ~1 - 2 Watt | 300€ - 500€ | **250€ / Watt** (Pessimo investimento) |
+| **Clean and Lubricated Chain (Wax)** | ~3 - 5 Watts | 20€ | **4€ / Watt** (Best investment) |
+| **Oversized Pulleys + Ceramic** | ~1 - 2 Watts | 300€ - 500€ | **250€ / Watt** (Terrible investment) |
 
 > [!WARNING]
-> I cuscinetti in ceramica richiedono *molta* più manutenzione di quelli in acciaio. Se si sporcano e non vengono puliti/ingrassati frequentemente, l'attrito supera rapidamente quello dei componenti standard.
+> Ceramic bearings require *much* more maintenance than steel ones. If they get dirty and are not cleaned/greased frequently, the friction quickly exceeds that of standard components.
 
-Lascia l'OSPW ai professionisti sponsorizzati. Pulisci la catena e impara a lubrificarla con cera a caldo (hot melt wax): risparmierai più energia, con una spesa irrisoria.
+Leave OSPW to sponsored pros. Clean your chain and learn to hot-wax it. It's the cheapest way to buy speed.
 `,
-    tags: ["Mechanics","Gear","Tech","Cycling"],
-    readingTime: 5,
+    tags: ["Gear", "Mechanics", "Tech", "Cycling"],
+    readingTime: 3,
     published: true,
     category: "Cycling",
   },
   {
-    title: "Preparazione Invernale: Rulli e Piattaforme Virtuali vs Allenamento Outdoor",
+    title: "Indoor Trainer vs Outdoor: Surviving Winter",
     slug: "indoor-trainer-zwift-vs-outdoor-winter-training",
     date: "2026-07-28",
-    excerpt: "Come strutturare la preparazione invernale sfruttando l'efficienza degli smart trainer senza perdere la tecnica di guida.",
-    content: `![Cyclist on an Indoor Smart Trainer](/assets/blog/indoor-trainer-zwift-vs-outdoor-winter-training/images/cover.png)
+    excerpt: "Smart trainers and virtual platforms like Zwift have revolutionized winter training. When to stay indoors and when to go out.",
+    content: `![Indoor Smart Trainer Zwift](/assets/blog/indoor-trainer-zwift-vs-outdoor-winter-training/images/cover.png)
 
-## La Rivoluzione Indoor
+## The End of the "Base" Myth
 
-Dieci anni fa, allenarsi sui rulli significava fissare un muro bianco in garage mentre la gomma posteriore fischiava rumorosamente. Oggi, con gli smart trainer direct-drive e piattaforme come Zwift o Rouvy, l'allenamento invernale è diventato un e-sport.
+In the past, cyclists would dress up like Eskimos and pedal for 5 hours at 20 km/h in freezing January to "build the base". Today, thanks to Smart Trainers (direct drive smart rollers) and platforms like Zwift or TrainerRoad, winter is the time when you actually get faster.
 
-Ma allenarsi solo al chiuso nasconde dei rischi.
+## Indoor Quality vs Outdoor Quantity
 
-## Indoor vs Outdoor: I Pro e I Contro
+Indoor training is extremely dense. 1 hour on the trainer equals about 1 hour and 15 minutes outdoors, because you never stop pedaling: no traffic lights, no descents, no freewheeling.
 
-| Parametro | Smart Trainer (Indoor) | Uscita su Strada (Outdoor) |
+| Type of Workout | Indoor (Trainer) | Outdoor |
 |---|---|---|
-| **Efficienza del Tempo** | Massima (1 ora = 1 ora di pedalata continua) | Bassa (Stop ai semafori, traffico, discese) |
-| **Specificità dell'Intervallo (ERG)** | Perfetta (Il rullo forza i Watt esatti) | Difficile (Variabilità del terreno e vento) |
-| **Tecnica di Guida e Core** | Inesistente (Bici bloccata staticamente) | Fondamentale |
-
-> [!IMPORTANT]
-> La modalità ERG degli smart trainer è un'arma a doppio taglio. Ti impedisce di mollare durante le ripetute dure, ma ti disabitua a gestire le tue energie e a "sentire" il ritmo, che è vitale in gara.
-
-Il mix perfetto? Esegui gli allenamenti HIIT (High Intensity Interval Training) di 60-90 minuti sui rulli durante la settimana lavorativa, dove il tempo scarseggia. Nel weekend, esci all'aperto (coperto bene) per un lungo lento (Z2) per mantenere viva la propriocezione, la tecnica in discesa e la muscolatura stabilizzatrice.
-`,
-    tags: ["Training","Zwift","Endurance","Cycling"],
-    readingTime: 5,
-    published: true,
-    category: "Cycling",
-  },
-  {
-    title: "Le Regole Non Scritte del Gruppo: Sicurezza e Bon Ton in Bici",
-    slug: "group-cycling-unwritten-rules-safety",
-    date: "2026-07-27",
-    excerpt: "Come pedalare a 40 km/h a 10 centimetri da un'altra ruota senza causare incidenti e senza farsi odiare.",
-    content: `![Group of Cyclists Riding Together](/assets/blog/group-cycling-unwritten-rules-safety/images/cover.png)
-
-## L'Arte della Scia
-
-Pedalare nel "gruppetto" è una delle gioie del ciclismo, ma può trasformarsi rapidamente in un incubo pericoloso se i partecipanti non conoscono le regole non scritte. A 40 km/h, un piccolo scarto o una frenata improvvisa per evitare una buca possono abbattere l'intera fila.
-
-## I 3 Comandamenti del Gruppo
-
-1. **Mantieni una linea prevedibile**
-   Non scartare improvvisamente e non guardare indietro girando le spalle. Il tuo corpo tende a seguire lo sguardo: se ti giri a destra, la bici sbanderà a destra.
-2. **Segnala TUTTO**
-   Chi è in testa è gli "occhi" del gruppo. Se c'è una buca, del vetro o un'auto parcheggiata, *devi* indicarlo con la mano e chiamarlo a voce. 
-3. **Non fare "mezza ruota" (Half-Wheeling)**
-   L'infrazione più odiata. Se sei in testa in doppia fila, il tuo manubrio deve essere perfettamente allineato con quello del tuo compagno. Se stai mezzo metro avanti costringendolo ad accelerare, stai rovinando il ritmo a tutto il gruppo.
-
-| Gesto / Chiamata | Significato |
-|---|---|
-| Mano che punta verso il basso | Attenzione a una buca o ostacolo su quel lato |
-| Braccio dietro la schiena (mano aperta) | Spostarsi verso il centro, ostacolo/auto a destra |
-| Mano che ondeggia verso l'alto e il basso | Rallentare / Frenata imminente |
+| **VO2Max Intervals (Short/Hard)** | **Perfect** (Total control, no traffic) | Dangerous (You need long, uninterrupted roads) |
+| **Sweet Spot (20-30 min)** | Excellent | Good (Requires a steady climb) |
+| **Endurance / Z2 (> 3 hours)** | Mentally devastating | **Ideal** (Fresh air, changing scenery) |
 
 > [!TIP]
-> Quando sei a ruota, non guardare *solo* la ruota posteriore di chi ti precede. Guarda oltre le sue spalle. Ti permetterà di anticipare le frenate e le curve.
+> Heat is your worst enemy indoors. Without the wind from riding outside, your core temperature rises rapidly, degrading performance and increasing heart rate. Buy a very powerful industrial fan!
 
-Il rispetto in gruppo si guadagna con la regolarità, non con scatti brucianti sui cavalcavia per poi farsi aspettare.
+A hybrid approach is the modern winner: use the smart trainer on weekdays for surgical 60-90 minute intervals, and save the long endurance ride for Sunday morning with your friends outdoors.
 `,
-    tags: ["Safety","Culture","Guide","Cycling"],
+    tags: ["Indoor Training", "Zwift", "Fitness", "Cycling"],
     readingTime: 4,
     published: true,
     category: "Cycling",
   },
   {
-    title: "Biomeccanica della Pedalata: Massimizzare l'Efficienza (Fase di Spinta e Richiamo)",
+    title: "Pedal Stroke Biomechanics: Push vs Pull",
     slug: "pedal-stroke-biomechanics-efficiency",
-    date: "2026-07-26",
-    excerpt: "Analisi vettoriale della pedalata: è davvero necessario 'tirare su' il pedale? Miti e verità scientifiche.",
-    content: `![Vector Analysis of a Pedal Stroke](/assets/blog/pedal-stroke-biomechanics-efficiency/images/cover.png)
+    date: "2026-07-27",
+    excerpt: "Should you pull up on the pedals? The scientific truth about the perfect pedal stroke and pedaling efficiency.",
+    content: `![Pedal Stroke Biomechanics](/assets/blog/pedal-stroke-biomechanics-efficiency/images/cover.png)
 
-## Il Cerchio Imperfetto
+## The Myth of the Circular Pedal Stroke
 
-Fin da bambini ci viene detto che la pedalata perfetta con i pedali a sgancio rapido dovrebbe essere "rotonda": spingere verso il basso e tirare verso l'alto con la stessa forza. I fisiologi e i bio-meccanici hanno recentemente distrutto questo mito.
+Generations of cyclists have been taught the concept of "circular pedaling": pushing down with power, scraping mud off the shoe at the bottom, and pulling up forcefully on the upstroke.
 
-I test EMG (Elettromiografia) sui muscoli dei professionisti mostrano una realtà completamente diversa.
+Biomechanical science and power meters with advanced pedaling dynamics have completely dismantled this myth.
 
-## La Verità sulla Fase di Richiamo
+## What Elite Cyclists Actually Do
 
-Nessun essere umano è in grado di "tirare" il pedale verso l'alto producendo una forza propulsiva significativa a 90 RPM (pedalate al minuto). 
+Studies on World Tour professionals show that the best riders in the world **do not pull up** on the pedal.
 
-| Fase della Pedalata | Azione Muscolare Principale | Obiettivo Reale |
-|---|---|---|
-| **Fase di Spinta (Ore 1 - Ore 5)** | Glutei e Quadricipiti | **Generare il 95% della potenza totale.** |
-| **Punto Morto Inferiore (Ore 6)** | Polpacci (Flessione plantare) | Transizione fluida, evitare lo stallo. |
-| **Fase di Richiamo (Ore 7 - Ore 11)** | Flessori dell'anca e Ischiocrurali | **Non tirare.** Semplicemente *scaricare* il peso della gamba per non far faticare la gamba opposta che sta spingendo! |
+- **The Downstroke (12 to 5 o'clock):** This is where 95% of the power is generated. The gluteus maximus and quadriceps deliver massive force.
+- **The Upstroke (6 to 12 o'clock):** The goal here is not to generate power to pull the pedal up, but simply to *unweight* the leg. If you leave the dead weight of your leg on the rising pedal, your other pushing leg will have to lift it, wasting Watts.
 
 > [!WARNING]
-> Cercare attivamente di "tirare su" i pedali in modo aggressivo riduce l'efficienza meccanica (consumi più ossigeno) e sovraccarica i flessori dell'anca, causando fastidiosi dolori inguinali.
+> Actively pulling up on the pedal using the hip flexors (psoas) is extremely metabolically inefficient and is a fast track to tendinitis.
 
-La pedalata dei campioni non è "rotonda", ma è estremamente potente nella fase discendente. L'unica situazione in cui tirare il pedale ha senso è durante uno sprint massimale in piedi sui pedali o su uno strappo al 20% affrontato a bassissima cadenza, dove ogni vettore di forza è necessario per non fermarsi.
+Focus on a powerful, fluid push downward, and simply "lift" the returning foot out of the way. Pedaling efficiently means reducing negative resistance, not creating unnatural positive power on the upstroke.
 `,
-    tags: ["Biomechanics","Science","Training","Cycling"],
-    readingTime: 6,
+    tags: ["Biomechanics", "Science", "Training", "Cycling"],
+    readingTime: 4,
     published: true,
     category: "Cycling",
   },
+  {
+    title: "Group Cycling: Unwritten Rules and Safety",
+    slug: "group-cycling-unwritten-rules-safety",
+    date: "2026-07-26",
+    excerpt: "How to ride safely in a peloton. Echelons, pacelines, and the gestures you absolutely must know.",
+    content: `![Group Cycling Peloton](/assets/blog/group-cycling-unwritten-rules-safety/images/cover.png)
+
+## The Art of the Peloton
+
+Riding in a group is what makes cycling a team sport even for amateurs. You save up to 40% of energy by drafting, but it requires extreme trust and a specific code of conduct. If you brake suddenly without warning, you cause a massive pile-up.
+
+## Essential Gestures and Calls
+
+When you are at the front of the group, you are the eyes for the 20 people behind you who can only see your rear wheel.
+
+| Gesture | Meaning | Action to Take |
+|---|---|---|
+| **Pointing down (Right or Left)** | Pothole, glass, or obstacle on that side | Point it out to the rider behind you and steer smoothly |
+| **Hand waving behind back** | Obstacle on the side, move over | Move in the direction indicated |
+| **Raised hand** | Stopping or slowing down | Stop pedaling, be ready to brake |
+| **Flicking the elbow** | I'm done pulling, coming through | The front rider moves aside, the next rider takes the wind |
+
+> [!IMPORTANT]
+> Never "half-wheel". Do not ride slightly ahead of the person next to you in a double paceline. It forces the pace up continuously and breaks the harmony of the group.
+
+Keep your eyes up. Don't stare at the rear derailleur of the rider in front of you; look at their shoulders or through them to anticipate the flow of the group. Safety is always a collective responsibility.
+`,
+    tags: ["Safety", "Culture", "Skills", "Cycling"],
+    readingTime: 3,
+    published: true,
+    category: "Cycling",
+  }
 ];

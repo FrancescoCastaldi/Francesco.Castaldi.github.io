@@ -2,21 +2,18 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useLanguage } from "@/context/LanguageContext";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const { t, language, toggleLanguage } = useLanguage();
-
   const navItems = [
-    { label: t.nav.about, href: "/#about", desktop: true },
-    { label: t.nav.expertise, href: "/#expertise", desktop: true },
-    { label: t.nav.projects, href: "/#projects", desktop: true },
-    { label: t.nav.blog, href: "/blog", desktop: true },
-    { label: t.nav.contact, href: "/#contact", desktop: true },
+    { label: "About", href: "/#about", desktop: true },
+    { label: "Expertise", href: "/#expertise", desktop: true },
+    { label: "Projects", href: "/#projects", desktop: true },
+    { label: "Blog", href: "/blog", desktop: true },
+    { label: "Contact", href: "/#contact", desktop: true },
   ];
 
   useEffect(() => {
@@ -124,43 +121,14 @@ export default function Header() {
                 );
               })}
               
-            {/* Language Toggle */}
-            <button 
-              onClick={toggleLanguage}
-              style={{
-                background: "transparent",
-                border: "1px solid rgba(255,255,255,0.1)",
-                color: "var(--color-text-primary)",
-                borderRadius: "4px",
-                padding: "2px 6px",
-                fontSize: "10px",
-                cursor: "pointer",
-                fontFamily: 'var(--font-mono)'
-              }}
-            >
-              {language.toUpperCase()}
-            </button>
+
           </nav>
         )}
 
         {/* Mobile Hamburger & Lang */}
         {isMobile && (
           <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-            <button 
-              onClick={toggleLanguage}
-              style={{
-                background: "transparent",
-                border: "1px solid rgba(255,255,255,0.1)",
-                color: "var(--color-text-primary)",
-                borderRadius: "4px",
-                padding: "2px 6px",
-                fontSize: "10px",
-                cursor: "pointer",
-                fontFamily: 'var(--font-mono)'
-              }}
-            >
-              {language.toUpperCase()}
-            </button>
+
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Menu"

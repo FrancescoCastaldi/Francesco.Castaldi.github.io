@@ -1,9 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useLanguage } from "@/context/LanguageContext";
-
 export default function HeroSection() {
-  const { t } = useLanguage();
 
   return (
     <div
@@ -76,7 +73,7 @@ export default function HeroSection() {
               marginBottom: 8,
             }}
           >
-            {t.hero.subtitle}
+            Software Engineer & Data Scientist
           </p>
 
           {/* Tagline */}
@@ -92,7 +89,7 @@ export default function HeroSection() {
               lineHeight: 1.4,
             }}
           >
-            {t.hero.description}
+            Building intelligent systems at the intersection of robust backend engineering and machine learning.
           </p>
 
           {/* CTA Buttons */}
@@ -123,7 +120,7 @@ export default function HeroSection() {
               onMouseEnter={(e) => (e.currentTarget.style.background = "#FBBF24")}
               onMouseLeave={(e) => (e.currentTarget.style.background = "var(--color-star-gold)")}
             >
-              {t.hero.ctaPrimary}
+              View My Work
             </a>
             <a
               href="#contact"
@@ -142,7 +139,7 @@ export default function HeroSection() {
               onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(34, 211, 238, 0.1)"; e.currentTarget.style.borderColor = "var(--color-nebula)"; }}
               onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "rgba(34, 211, 238, 0.3)"; }}
             >
-              {t.hero.ctaSecondary}
+              Get In Touch
             </a>
           </div>
         </div>

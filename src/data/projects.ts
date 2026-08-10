@@ -7,43 +7,43 @@ export const projects: ProjectNode[] = [
     title: "TruMetraPla",
     slug: "trumetrapla",
     description:
-      "Dashboard Python per monitorare la produttività nei processi metalmeccanici. Calcolo automatico dei KPI da Excel.",
+      "Python dashboard to monitor productivity in metalworking processes. Automatic calculation of KPIs from Excel.",
     longDescription:
-      "Dashboard dati interattiva scritta in Python (Streamlit/Pandas) per ottimizzare la produttività nei processi di produzione metalmeccanica. Importa i dati grezzi dai file Excel, li pulisce e calcola i KPI attraverso visualizzazioni dati ricche e interattive.",
+      "Interactive data dashboard written in Python (Streamlit/Pandas) to optimize productivity in metalworking production processes. It imports raw data from Excel files, cleans it, and calculates KPIs through rich and interactive data visualizations.",
     content: `![TruMetraPla](/assets/projects/trumetrapla/images/cover.png)
 
-## La Sfida della Fabbrica
+## The Factory Challenge
 
-Le aziende metalmeccaniche generano una quantità spaventosa di dati, spesso intrappolati in fogli Excel disconnessi. Trovare i colli di bottiglia della produzione è come cercare un ago in un pagliaio, e costa ore di lavoro manuale ogni settimana.
+Metalworking companies generate a frightening amount of data, often trapped in disconnected Excel spreadsheets. Finding production bottlenecks is like looking for a needle in a haystack, and it costs hours of manual work every week.
 
 > [!IMPORTANT]
-> L'obiettivo era trasformare fogli di calcolo caotici in insight operativi in tempo reale, senza costringere l'azienda a cambiare il proprio CRM o le proprie abitudini.
+> The goal was to transform chaotic spreadsheets into real-time operational insights, without forcing the company to change its CRM or its habits.
 
 
-## Architettura e Scelte Tecnologiche
+## Architecture and Technological Choices
 
-Per garantire la massima retro-compatibilità sui vecchi PC industriali con Windows, ho strutturato l'applicazione come un eseguibile standalone che non richiede installazione.
+To ensure maximum backward compatibility on old industrial PCs running Windows, I structured the application as a standalone executable that requires no installation.
 
-| Componente | Tecnologia | Motivazione |
+| Component | Technology | Motivation |
 |---|---|---|
-| **Motore Dati** | Pandas (Python) | Capace di ingerire e aggregare migliaia di righe in millisecondi. |
-| **Interfaccia Grafica** | Tkinter / ttkbootstrap | Deploy nativo su vecchie macchine Windows senza l'overhead di un browser web. |
-| **Distribuzione** | PyInstaller | L'operatore non deve installare Python. Doppio clic e parte. |
+| **Data Engine** | Pandas (Python) | Capable of ingesting and aggregating thousands of rows in milliseconds. |
+| **Graphical Interface** | Tkinter / ttkbootstrap | Native deployment on old Windows machines without the overhead of a web browser. |
+| **Distribution** | PyInstaller | The operator does not have to install Python. Double click and it starts. |
 
-*Tabella 1: Scelte Architetturali di TruMetraPla*
+*Table 1: Architectural Choices of TruMetraPla*
 
 \`\`\`python
-# Esempio: Aggregazione KPI su Pandas
+# Example: KPI Aggregation on Pandas
 import pandas as pd
 
 def calculate_kpi(df):
-    return df.groupby("macchinario")["pezzi_prodotti"].mean()
+    return df.groupby("machinery")["produced_pieces"].mean()
 \`\`\`
 
-## Il Risultato sul Campo
+## The Result on the Field
 
-La dashboard ha sostituito ore di manipolazione manuale in Excel con un processo di importazione a **singolo click**. 
-Ora gli operatori monitorano la produttività media istantaneamente, individuando i cali di efficienza tramite grafici a torta e tabelle dinamiche.`,
+The dashboard replaced hours of manual manipulation in Excel with a **single click** import process. 
+Now operators monitor average productivity instantly, identifying efficiency drops via pie charts and dynamic tables.`,
     tags: ["Python", "Data Analysis", "Dashboard", "Pandas"],
     skills: ["data-science", "healthcare-it"],
     color: "var(--color-star-gold)",
@@ -60,33 +60,33 @@ Ora gli operatori monitorano la produttività media istantaneamente, individuand
     title: "Hospital Sanitization Tracker",
     slug: "hospital-sanitization-tracker",
     description:
-      "DApp basata su Smart Contract Ethereum (Sepolia) per il tracciamento immutabile delle attività di sanificazione ospedaliera.",
+      "Ethereum Smart Contract (Sepolia) based DApp for immutable tracking of hospital sanitization activities.",
     longDescription:
-      "Full-stack blockchain DApp che registra le operazioni di sanificazione ospedaliera come transazioni immutabili sulla testnet Sepolia di Ethereum. Costruita con Solidity, Hardhat ed Ethers.js per garantire la compliance igienica.",
+      "Full-stack blockchain DApp that logs hospital sanitization operations as immutable transactions on the Ethereum Sepolia testnet. Built with Solidity, Hardhat, and Ethers.js to ensure hygiene compliance.",
     content: `![Hospital Sanitization Tracker](/assets/projects/hospital-sanitization-tracker/images/cover.png)
 
-## La Sfida della Compliance
+## The Compliance Challenge
 
-Nel mondo post-pandemico, verificare l'avvenuta sanificazione degli ambienti ospedalieri (sale operatorie, terapie intensive) è una questione di vita o di morte. I registri cartacei si perdono o possono essere alterati a posteriori per coprire mancanze.
+In the post-pandemic world, verifying the completion of hospital environment sanitization (operating rooms, intensive care) is a matter of life or death. Paper logs get lost or can be altered retrospectively to cover up shortcomings.
 
 > [!IMPORTANT]
-> Questo progetto sfrutta la tecnologia Blockchain per garantire l'immutabilità assoluta. Una volta registrato un evento di sanificazione, nessuno potrà mai più cancellarlo o modificarlo. Nessun admin database ha questo potere.
+> This project leverages Blockchain technology to guarantee absolute immutability. Once a sanitization event is logged, no one will ever be able to delete or modify it again. No database admin has this power.
 
 
-## Architettura DApp
+## DApp Architecture
 
-Questa Decentralized Application (DApp) utilizza un rigoroso sistema di Controllo degli Accessi Basato sui Ruoli (RBAC) per separare le responsabilità degli Operatori da quelle degli Ispettori (Auditor).
+This Decentralized Application (DApp) uses a strict Role-Based Access Control (RBAC) system to separate the responsibilities of Operators from those of Inspectors (Auditors).
 
-| Modulo | Stack Tecnologico | Ruolo Architetturale |
+| Module | Tech Stack | Architectural Role |
 |---|---|---|
-| **Smart Contracts** | Solidity | Deploy su testnet Sepolia. Gestiscono la logica di accesso e il salvataggio immutabile dei log. |
-| **Frontend** | React & Web3.js | Interfaccia pulita per permettere allo staff di interagire tramite MetaMask. |
-| **Storage Layer** | Blockchain Ethereum | Verifica crittografica dei timestamp e delle firme degli operatori. |
+| **Smart Contracts** | Solidity | Deployed on Sepolia testnet. Handle access logic and immutable log saving. |
+| **Frontend** | React & Web3.js | Clean interface to allow staff to interact via MetaMask. |
+| **Storage Layer** | Ethereum Blockchain | Cryptographic verification of timestamps and operator signatures. |
 
-*Tabella 1: Livelli architetturali della DApp*
+*Table 1: DApp Architectural Layers*
 
 \`\`\`solidity
-// Emissione di un evento di sanificazione su chain
+// Emitting a sanitization event on-chain
 event SanitizationLogged(
     address indexed operator,
     string roomId,
@@ -94,9 +94,9 @@ event SanitizationLogged(
 );
 \`\`\`
 
-## Risultati
+## Results
 
-Il sistema ha dimostrato come il meccanismo di consenso decentralizzato sia applicabile alla sanità pubblica. Fornisce un *audit trail* trasparente e sicuro su cui il management ospedaliero può fare affidamento senza esitazioni.`,
+The system demonstrated how decentralized consensus mechanisms can be applied to public health. It provides a transparent and secure *audit trail* that hospital management can rely on without hesitation.`,
     tags: ["Solidity", "Hardhat", "Ethers.js", "Blockchain"],
     skills: ["healthcare-it", "blockchain"],
     color: "var(--color-star-gold)",
@@ -113,43 +113,43 @@ Il sistema ha dimostrato come il meccanismo di consenso decentralizzato sia appl
     title: "GPX Editor",
     slug: "gpx-editor",
     description:
-      "Web app per modificare tracce GPS offline: smoothing, taglio punti e profili altimetrici generati in tempo reale.",
+      "Web app to edit offline GPS tracks: smoothing, point cutting, and real-time generated elevation profiles.",
     longDescription:
-      "Un editor GPS browser-based per ciclisti. Permette di modificare i file GPX per sistemare sbalzi di potenza (watts) o glitch di velocità prima di caricarli su Strava. Tutto gira client-side.",
+      "A browser-based GPS editor for cyclists. It allows you to edit GPX files to fix power spikes (watts) or speed glitches before uploading them to Strava. Everything runs client-side.",
     content: `![GPX Editor Web App](/assets/projects/gpx-editor/images/cover.png)
 
-## Perché un Editor GPX nel Browser?
+## Why a GPX Editor in the Browser?
 
-Ciclisti e runner si trovano spesso con tracce GPS rovinate da picchi di velocità impossibili (glitch del segnale) o errori dei misuratori di potenza. Correggere questi errori prima di caricare l'allenamento su Strava richiedeva pesanti software desktop.
-La mia soluzione: uno strumento web-based, veloce e 100% offline.
+Cyclists and runners often find themselves with GPS tracks ruined by impossible speed spikes (signal glitches) or power meter errors. Correcting these errors before uploading the workout to Strava used to require heavy desktop software.
+My solution: a web-based, fast, and 100% offline tool.
 
 
-## Funzionalità Principali
+## Main Features
 
-Tutta la computazione avviene nel tuo browser. Zero server. Massima Privacy.
+All computation happens in your browser. Zero servers. Maximum Privacy.
 
-1. **Processing Client-Side**: Niente upload. L'algoritmo legge il file locale.
-2. **Correzione Potenza (Watts)**: Scala, taglia o abbassa i dati di potenza su specifici segmenti.
-3. **Correzione Velocità**: Appiattisce i picchi anomali dovuti alla perdita di segnale.
-4. **Esportazione Pura**: Genera un file \`.gpx\` pulito e pronto per l'upload su Garmin Connect.
+1. **Client-Side Processing**: No uploads. The algorithm reads the local file.
+2. **Power (Watts) Correction**: Scales, cuts, or lowers power data on specific segments.
+3. **Speed Correction**: Flattens anomalous spikes due to signal loss.
+4. **Pure Export**: Generates a clean \`.gpx\` file ready to upload to Garmin Connect.
 
 > [!TIP]
-> Poiché tutto gira nel browser tramite DOMParser, puoi caricare un file GPX da 50MB (un'uscita in bici lunghissima) e il processing sarà istantaneo, senza tempi morti di caricamento.
+> Because everything runs in the browser via DOMParser, you can load a 50MB GPX file (a very long bike ride) and the processing will be instantaneous, with no loading downtime.
 
-## Stack Tecnologico
+## Tech Stack
 
-Ho puntato sulla leggerezza estrema.
+I aimed for extreme lightness.
 
-| Libreria | Utilizzo | Motivazione |
+| Library | Usage | Motivation |
 |---|---|---|
-| **TypeScript** | Core | Prevenzione dei bug nella manipolazione delle coordinate. |
-| **Leaflet** | Rendering Mappa | Leggera, open-source e velocissima nel disegnare polilinee complesse. |
-| **Chart.js** | Altimetria | Ideale per visualizzare l'elevazione in relazione alla distanza. |
+| **TypeScript** | Core | Bug prevention in coordinate manipulation. |
+| **Leaflet** | Map Rendering | Lightweight, open-source, and incredibly fast at drawing complex polylines. |
+| **Chart.js** | Elevation | Ideal for visualizing elevation in relation to distance. |
 
-*Tabella 1: Stack tecnologico lato Client*
+*Table 1: Client-side Tech Stack*
 
 \`\`\`typescript
-// Parsing puro lato client, senza backend
+// Pure client-side parsing, no backend
 const fileReader = new FileReader();
 fileReader.onload = (e) => {
   const gpxData = parseGPX(e.target.result);
@@ -170,41 +170,41 @@ fileReader.onload = (e) => {
     title: "SIR Markov Chain",
     slug: "sir-markov-chain",
     description:
-      "Simulazione stocastica (Catene di Markov a tempo discreto) del modello SIR epidemiologico, con analisi Monte Carlo.",
+      "Stochastic simulation (Discrete-time Markov Chains) of the SIR epidemiological model, with Monte Carlo analysis.",
     longDescription:
-      "Progetto accademico (UniBo) per la simulazione della diffusione epidemica. Sostituisce le equazioni differenziali classiche con matrici di transizione markoviane per catturare le fluttuazioni casuali nei piccoli gruppi.",
+      "Academic project (UniBo) for simulating epidemic spread. Replaces classic differential equations with Markovian transition matrices to capture random fluctuations in small groups.",
     content: `![SIR Markov Chain](/assets/projects/sir-markov-chain/images/cover.png)
 
-> **Key Takeaways:** L'approccio Markoviano permette di inserire eventi stocastici discreti, simulando lockdown e riaperture con molta più aderenza alla realtà rispetto ai modelli continui.
+> **Key Takeaways:** The Markovian approach allows inserting discrete stochastic events, simulating lockdowns and reopenings much more closely to reality than continuous models.
 
-## Modelli Epidemiologici: Determinismo vs Stocasticità
+## Epidemiological Models: Determinism vs Stochasticity
 
-Il modello SIR classico utilizza eleganti equazioni differenziali. Funziona bene sulle grandi popolazioni, ma fallisce quando i numeri sono piccoli e subentra il caos del caso.
-Questo progetto accademico affronta il problema simulando la propagazione di un virus come una **Catena di Markov a tempo discreto**.
+The classic SIR model uses elegant differential equations. It works well on large populations but fails when numbers are small and the chaos of chance takes over.
+This academic project tackles the problem by simulating the spread of a virus as a **Discrete-time Markov Chain**.
 
 
-## Come Funziona
+## How It Works
 
-A differenza del modello continuo, qui il tempo avanza per "scatti" (es. giorni).
+Unlike the continuous model, here time advances in "steps" (e.g., days).
 
-- Ogni individuo ha una probabilità matematica esatta di infettarsi o guarire nel giorno T+1.
-- Queste probabilità compongono enormi **Matrici di Transizione**.
-- Modificando in corsa la matrice, possiamo simulare interventi improvvisi (es. un lockdown).
+- Every individual has an exact mathematical probability of becoming infected or recovering on day T+1.
+- These probabilities make up huge **Transition Matrices**.
+- By modifying the matrix on the fly, we can simulate sudden interventions (e.g., a lockdown).
 
 > [!WARNING]
-> La singola simulazione stocastica non ha valore predittivo. Per questo il sistema utilizza simulazioni **Monte Carlo**: lancia il modello migliaia di volte e calcola la distribuzione di probabilità finale, fornendo un "range" di sicurezza.
+> A single stochastic simulation has no predictive value. This is why the system uses **Monte Carlo** simulations: it runs the model thousands of times and calculates the final probability distribution, providing a safety "range".
 
-## Tecnologie
+## Technologies
 
-Essendo un calcolo intensivo su matrici, Python era la scelta obbligata.
+Being a computation-intensive task on matrices, Python was the obvious choice.
 
-| Tool | Scopo |
+| Tool | Purpose |
 |---|---|
-| **Python** | Motore logico. |
-| **NumPy** | Operazioni vettorializzate ultra-veloci sulle matrici di transizione. |
-| **Matplotlib** | Plotting delle curve epidemiche e delle distribuzioni Monte Carlo. |
+| **Python** | Logic engine. |
+| **NumPy** | Ultra-fast vectorized operations on transition matrices. |
+| **Matplotlib** | Plotting epidemic curves and Monte Carlo distributions. |
 
-*Tabella 1: Strumenti scientifici in Python*`,
+*Table 1: Scientific tools in Python*`,
     color: "var(--color-nebula)",
     tags: ["Python", "NumPy", "Matplotlib", "University"],
     skills: ["data-science", "ai-ml"],
@@ -219,37 +219,37 @@ Essendo un calcolo intensivo su matrici, Python era la scelta obbligata.
     title: "CI Cervical LBC",
     slug: "ci-cervical-lbc",
     description:
-      "Confronto tra Total Variation, UNet e DiffPIR per il restauro di immagini citologiche cervicali (LBC).",
+      "Comparison between Total Variation, UNet, and DiffPIR for the restoration of cervical cytology images (LBC).",
     longDescription:
-      "Progetto di ricerca per ripulire il rumore e la sfocatura dai vetrini dei Pap test. Valuta l'impatto dei modelli a diffusione generativa contro il classico deblurring matematico per evitare 'allucinazioni' mediche.",
+      "Research project to clean up noise and blur from Pap smear slides. Evaluates the impact of generative diffusion models against classic mathematical deblurring to avoid medical 'hallucinations'.",
     content: `![Cervical LBC Deblurring](/assets/projects/ci-cervical-lbc/images/cover.png)
 
-**Abstract:** Valutazione tecnica di metodi matematici (Total Variation) vs Deep Learning (UNet, DiffPIR) per il restauro di immagini citologiche LBC.
+**Abstract:** Technical evaluation of mathematical methods (Total Variation) vs Deep Learning (UNet, DiffPIR) for the restoration of LBC cytology images.
 
-## Il Problema Clinico: Il Rumore nei Pap Test
+## The Clinical Problem: Noise in Pap Smears
 
-L'accuratezza di uno screening per il tumore al collo dell'utero dipende interamente dalla qualità visiva del campione (LBC). Quando l'immagine al microscopio è sfocata o rumorosa, la diagnosi è a rischio.
-La soluzione non è scartare il campione, ma restaurare l'immagine algoritmicamente.
+The accuracy of a cervical cancer screening relies entirely on the visual quality of the sample (LBC). When the microscope image is blurred or noisy, the diagnosis is at risk.
+The solution is not to discard the sample, but to restore the image algorithmically.
 
 
-## Il Ring dei Modelli AI
+## The AI Models Ring
 
-Ho implementato e messo in competizione tre approcci storicamente opposti:
+I implemented and pitted three historically opposed approaches against each other:
 
-1. **Total Variation (TV)**: Pura matematica classica. Riduce il rumore salvando i bordi taglienti. Nessun modello AI, nessuna GPU richiesta.
-2. **UNet**: La regina del Deep Learning per la segmentazione medica. Viene addestrata a pulire le immagini pixel per pixel.
-3. **DiffPIR**: Stato dell'arte dell'IA Generativa (Modelli a Diffusione). Crea l'immagine dal puro rumore gaussiano, guidata dal campione degradato.
+1. **Total Variation (TV)**: Pure classic math. Reduces noise while preserving sharp edges. No AI model, no GPU required.
+2. **UNet**: The queen of Deep Learning for medical segmentation. It is trained to clean images pixel by pixel.
+3. **DiffPIR**: State-of-the-art Generative AI (Diffusion Models). Creates the image from pure Gaussian noise, guided by the degraded sample.
 
-| Algoritmo | Pro | Contro |
+| Algorithm | Pros | Cons |
 |---|---|---|
-| **Total Variation** | 100% Affidabile (Nessuna allucinazione) | Pulizia sommaria |
-| **UNet** | Altissimo punteggio PSNR | Richiede enormi dataset di training |
-| **DiffPIR** | Dettaglio finale mozzafiato | **Rischio di inventare falsi tumori (Allucinazioni)** |
+| **Total Variation** | 100% Reliable (No hallucinations) | Rough cleaning |
+| **UNet** | Very high PSNR score | Requires huge training datasets |
+| **DiffPIR** | Breathtaking final detail | **Risk of inventing fake tumors (Hallucinations)** |
 
-*Tabella 1: Trade-off tra metodi di Restauro*
+*Table 1: Trade-off between Restoration methods*
 
 > [!IMPORTANT]
-> L'estetica non deve mai battere l'affidabilità clinica. La UNet si è confermata il miglior compromesso tra capacità di pulizia e assenza di allucinazioni generative pericolose per il paziente.`,
+> Aesthetics must never beat clinical reliability. UNet confirmed itself as the best compromise between cleaning ability and absence of dangerous generative hallucinations for the patient.`,
     color: "#FB7185",
     tags: ["Python", "PyTorch", "DiffPIR", "University"],
     skills: ["data-science", "ai-ml"],
@@ -264,46 +264,46 @@ Ho implementato e messo in competizione tre approcci storicamente opposti:
     title: "SGF² AI Project",
     slug: "sgf2-ai-project",
     description:
-      "Machine Learning sul dataset UCI Adult: predizione del reddito e indagine approfondita sulle metriche di Fairness.",
+      "Machine Learning on the UCI Adult dataset: income prediction and in-depth investigation of Fairness metrics.",
     longDescription:
-      "Pipeline ML completa che smaschera i bias algoritmici. Non basta un'Accuracy del 90%: tramite Demographic Parity e analisi SHAP, il progetto dimostra come i modelli discriminino attivamente genere ed etnia.",
+      "Complete ML pipeline that exposes algorithmic biases. A 90% Accuracy is not enough: through Demographic Parity and SHAP analysis, the project demonstrates how models actively discriminate by gender and ethnicity.",
     content: `![SGF² AI Fairness Analysis](/assets/projects/sgf2-ai-project/images/cover.png)
 
-**Abstract:** Un modello di classificazione ad alta accuracy può nascondere bias etnici o di genere. Questo progetto analizza le metriche di Fairness sul dataset Adult Census e svela le dinamiche interne usando valori SHAP.
+**Abstract:** A high-accuracy classification model can hide ethnic or gender biases. This project analyzes Fairness metrics on the Adult Census dataset and reveals the internal dynamics using SHAP values.
 
-## Il Lato Oscuro dell'Accuracy
+## The Dark Side of Accuracy
 
-Se un modello predittivo raggiunge l'87% di Accuratezza, è pronto per la produzione, giusto? **Sbagliato.**
-Questo progetto smonta il mito dell'Accuracy analizzando il celebre dataset *UCI Adult* (predizione del reddito). Ho costruito una pipeline di Machine Learning completa solo per dimostrare un punto: i modelli potenti imparano a discriminare in modo potentissimo.
+If a predictive model reaches 87% Accuracy, it's ready for production, right? **Wrong.**
+This project debunks the myth of Accuracy by analyzing the famous *UCI Adult* dataset (income prediction). I built a complete Machine Learning pipeline just to prove a point: powerful models learn to discriminate in a very powerful way.
 
 ![SHAP Waterfall Analysis](/assets/projects/sgf2-ai-project/images/cover.png)
 
-## Gli Sfidanti
+## The Challengers
 
-Ho messo a confronto tre architetture, dalla più semplice alla più complessa:
+I compared three architectures, from the simplest to the most complex:
 
 - Logistic Regression
 - Random Forest
-- XGBoost (Il campione in carica per dati tabulari)
+- XGBoost (The reigning champion for tabular data)
 
-Tutti e tre hanno superato brillantemente i test di precisione standard (ROC-AUC, F1-Score).
+All three brilliantly passed standard precision tests (ROC-AUC, F1-Score).
 
 > [!WARNING]
-> Quando ho introdotto le metriche di *Fairness* (Demographic Parity ed Equal Opportunity Gap), il quadro si è fatto cupo. Il modello XGBoost, quello più accurato, era anche quello che discriminava di più in base al sesso.
+> When I introduced *Fairness* metrics (Demographic Parity and Equal Opportunity Gap), the picture grew grim. The XGBoost model, the most accurate one, was also the one that discriminated the most based on sex.
 
-## Capire il "Perché" con SHAP
+## Understanding the "Why" with SHAP
 
-I modelli ensemble sono "Scatole Nere". Per aprirle, ho utilizzato l'analisi **SHAP**.
+Ensemble models are "Black Boxes". To open them, I used **SHAP** analysis.
 
-| Algoritmo | Accuracy Reale | Livello di Bias Rilevato | Spiegabilità (SHAP) |
+| Algorithm | Real Accuracy | Detected Bias Level | Explainability (SHAP) |
 |---|---|---|---|
-| **Log Regression** | Discreta | Basso | I pesi lineari sono trasparenti |
-| **Random Forest** | Buona | Alto | Possibile, ma complessa |
-| **XGBoost** | **Eccellente** | **Critico (Proxy variabili sul genere)** | Forti interazioni non lineari svelate |
+| **Log Regression** | Fair | Low | Linear weights are transparent |
+| **Random Forest** | Good | High | Possible, but complex |
+| **XGBoost** | **Excellent** | **Critical (Proxy variables on gender)** | Strong non-linear interactions revealed |
 
-*Tabella 1: Confronto Modelli ML su Accurancy vs Fairness*
+*Table 1: ML Models Comparison on Accuracy vs Fairness*
 
-La conclusione dello studio è che ogni deployment di ML deve obbligatoriamente includere un passo di Fairness Auditing e debiasing a monte, altrimenti stiamo solo automatizzando le disuguaglianze del passato.`,
+The study's conclusion is that every ML deployment must necessarily include a Fairness Auditing and upstream debiasing step, otherwise we are just automating the inequalities of the past.`,
     color: "#FB7185",
     tags: ["Python", "scikit-learn", "pandas", "University"],
     skills: ["data-science", "ai-ml"],
@@ -318,42 +318,42 @@ La conclusione dello studio è che ogni deployment di ML deve obbligatoriamente 
     title: "TperTutti — UX Redesign",
     slug: "tpertutti-ux-redesign",
     description:
-      "Redesign completo (Double Diamond) per il sito dei trasporti TPER. SUS passato da 37.5 a 72.5.",
+      "Complete redesign (Double Diamond) for the TPER public transport website. SUS score improved from 37.5 to 72.5.",
     longDescription:
-      "Un progetto di ricerca UX end-to-end. Dalle interviste sul campo al prototipo interattivo, ridisegnando l'intera esperienza di acquisto biglietti e ricerca orari per TPER, abbattendo la frustrazione degli utenti.",
+      "An end-to-end UX research project. From field interviews to interactive prototypes, redesigning the entire ticket purchasing and timetable search experience for TPER, bringing down user frustration.",
     content: `![TperTutti UX Redesign Mockup](/assets/projects/tpertutti-ux-redesign/images/cover.png)
 
-**Abstract:** Dall'incubo burocratico a un checkout in 3 click. Appplicazione pratica della metodologia Double Diamond per un progetto di UX Research e UI Design.
+**Abstract:** From bureaucratic nightmare to a 3-click checkout. Practical application of the Double Diamond methodology for a UX Research and UI Design project.
 
-## Il Problema Originale
+## The Original Problem
 
-Il sito dei trasporti pubblici dell'Emilia-Romagna (TPER) soffriva di una malattia comune nel settore pubblico: era stato progettato per chi lo gestiva, non per chi lo usava.
-Il punteggio iniziale di Usabilità (SUS) era un catastrofico **37.5 su 100**. Le persone non riuscivano a trovare gli orari. 
+The Emilia-Romagna public transport website (TPER) suffered from a common disease in the public sector: it was designed for those who managed it, not for those who used it.
+The initial Usability Score (SUS) was a catastrophic **37.5 out of 100**. People couldn't find timetables. 
 
 
-## La Cura: Metodologia Double Diamond
+## The Cure: Double Diamond Methodology
 
-Il design non è arte, è risoluzione di problemi. Ho guidato il redesign seguendo il framework *Double Diamond*:
+Design is not art, it is problem solving. I led the redesign following the *Double Diamond* framework:
 
-1. **Discover**: Ricerca esplorativa. 15 interviste contestuali con pendolari e turisti. Ho mappato il loro "Customer Journey" scoprendo picchi di frustrazione insostenibili nel checkout.
-2. **Define**: Definizione chiara di *Personas* e formulazione dei problemi chiave. (Es: "Come possiamo rendere l'acquisto del biglietto rapido da smartphone?")
-3. **Develop**: Sketching rapido, wireframe a bassa fedeltà e test A/B continui con l'utenza per scartare le idee peggiori in fretta.
-4. **Deliver**: Design System finale e prototipo interattivo ad alta fedeltà.
+1. **Discover**: Exploratory research. 15 contextual interviews with commuters and tourists. I mapped their "Customer Journey", discovering unbearable peaks of frustration during checkout.
+2. **Define**: Clear definition of *Personas* and formulation of key problems. (E.g.: "How can we make purchasing a ticket quick from a smartphone?")
+3. **Develop**: Rapid sketching, low-fidelity wireframes, and continuous A/B testing with users to quickly discard the worst ideas.
+4. **Deliver**: Final Design System and high-fidelity interactive prototype.
 
 > [!TIP]
-> In UX, si sbaglia presto per imparare in fretta. Tre cicli di iterazione sui wireframe grezzi valgono molto più di settimane passate ad abbellire un design sbagliato su Figma.
+> In UX, you fail early to learn fast. Three iteration cycles on raw wireframes are worth much more than weeks spent beautifying a wrong design on Figma.
 
-## I Numeri del Successo
+## The Numbers of Success
 
-Alla fine del percorso, i nuovi test di usabilità hanno restituito numeri inequivocabili:
+At the end of the journey, the new usability tests returned unequivocal numbers:
 
-| Metrica di Successo | Vecchio Sito (Baseline) | Nuovo Design | Incremento |
+| Success Metric | Old Site (Baseline) | New Design | Improvement |
 |---|---|---|---|
-| **Punteggio SUS** | 37.5 / 100 | **72.5 / 100** | +93% |
-| **Completamento Task** | ~40% | **>90%** | Drastico |
-| **Tempo di Acquisto** | > 3 minuti | **< 45 secondi** | Salto quantico |
+| **SUS Score** | 37.5 / 100 | **72.5 / 100** | +93% |
+| **Task Completion** | ~40% | **>90%** | Drastic |
+| **Purchase Time** | > 3 minutes | **< 45 seconds** | Quantum leap |
 
-*Tabella 1: KPI pre e post redesign*`,
+*Table 1: Pre and Post redesign KPIs*`,
     color: "#E2E8F0",
     tags: ["UX Design", "Double Diamond", "Usability", "University"],
     skills: ["healthcare-it", "consulting"],
@@ -368,37 +368,37 @@ Alla fine del percorso, i nuovi test di usabilità hanno restituito numeri inequ
     title: "Superset Calendar Filter",
     slug: "superset-calendar-filter",
     description:
-      "Plugin React per Apache Superset: una Calendar Heatmap interattiva per l'esplorazione temporale delle dashboard.",
+      "React plugin for Apache Superset: an interactive Calendar Heatmap for temporal exploration of dashboards.",
     longDescription:
-      "Sviluppo di un custom chart plugin per Apache Superset (BI Tool). Permette agli analisti di evidenziare pattern temporali (stile GitHub contributions) e filtrare dinamicamente l'intera dashboard cliccando su giorni o range di date.",
+      "Development of a custom chart plugin for Apache Superset (BI Tool). It allows analysts to highlight temporal patterns (GitHub contributions style) and dynamically filter the entire dashboard by clicking on days or date ranges.",
     content: `![Superset Calendar Filter](/assets/projects/superset-calendar-filter/images/cover.png)
 
-**Abstract:** Creazione di un plugin React custom per Apache Superset che supporta Cross-Filtering bidirezionale per evidenziare pattern temporali.
+**Abstract:** Creation of a custom React plugin for Apache Superset that supports bidirectional Cross-Filtering to highlight temporal patterns.
 
-## Espandere Apache Superset
+## Expanding Apache Superset
 
-Superset è uno degli strumenti di Business Intelligence open-source più potenti al mondo, ma i suoi grafici standard hanno dei limiti. Quando un'azienda ha bisogno di visualizzare la densità di eventi giornalieri (pensate alla griglia dei commit di GitHub), un semplice grafico a barre non basta. 
+Superset is one of the most powerful open-source Business Intelligence tools in the world, but its standard charts have limitations. When a company needs to visualize the density of daily events (think of the GitHub commit grid), a simple bar chart is not enough. 
 
-Serve un **Custom Plugin**.
+You need a **Custom Plugin**.
 
 
-## Componenti del Plugin
+## Plugin Components
 
-I plugin di Superset sono vere e proprie applicazioni React impacchettate tramite Webpack che dialogano con il motore backend Python (Flask) di Superset.
+Superset plugins are real React applications packaged via Webpack that dialogue with the Superset Python backend engine (Flask).
 
-La complessità principale risiede nell'architettura dei dati:
+The main complexity lies in the data architecture:
 
-| Modulo Plugin | Che cosa fa? |
+| Plugin Module | What does it do? |
 |---|---|
-| **ControlPanel** | Aggiunge il menu a tendina sulla sinistra di Superset per far selezionare metriche e colonne di date all'utente. |
-| **BuildQuery** | Genera il JSON che ordina al backend di eseguire aggregazioni SQL (GROUP BY date). |
-| **React Component** | Usa \`Emotion\` per lo styling e renderizza la griglia vettoriale. |
+| **ControlPanel** | Adds the dropdown menu on the left of Superset to let the user select metrics and date columns. |
+| **BuildQuery** | Generates the JSON that instructs the backend to perform SQL aggregations (GROUP BY date). |
+| **React Component** | Uses \`Emotion\` for styling and renders the vector grid. |
 
-*Tabella 1: Architettura standard di un Plugin Superset*
+*Table 1: Standard architecture of a Superset Plugin*
 
 \`\`\`typescript
 import { Behavior, getChartMetadataRegistry } from "@superset-ui/core";
-// Il plugin supporta l'emissione di eventi Cross-Filter
+// The plugin supports the emission of Cross-Filter events
 export const metadata = new ChartMetadata({
   name: "Calendar Heatmap",
   behaviors: [Behavior.INTERACTIVE_CHART],
@@ -406,9 +406,9 @@ export const metadata = new ChartMetadata({
 \`\`\`
 
 > [!IMPORTANT]
-> Il vero valore aggiunto di questo plugin è l'integrazione con il **Native Cross-Filtering** di Superset. Se clicchi su un quadratino rosso della Heatmap (es. 15 Agosto), *tutti* gli altri grafici della dashboard si filtrano istantaneamente su quella specifica data.
+> The real added value of this plugin is the integration with Superset's **Native Cross-Filtering**. If you click on a small red square on the Heatmap (e.g., August 15th), *all* the other charts on the dashboard are instantly filtered to that specific date.
 
-Il risultato è un'esplorazione dei dati estremamente fluida e organica, scritta interamente in **TypeScript** per garantire solidità.`,
+The result is extremely fluid and organic data exploration, written entirely in **TypeScript** to ensure solidity.`,
     color: "var(--color-nebula)",
     tags: ["Superset", "TypeScript", "React", "Cross-Filter"],
     skills: ["data-science", "cloud-arch"],

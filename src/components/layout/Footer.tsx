@@ -1,9 +1,5 @@
 "use client";
-import { useLanguage } from "@/context/LanguageContext";
-
 export default function Footer() {
-  const { t } = useLanguage();
-  
   const linkStyle: React.CSSProperties = {
     color: "#6B7A8D",
     textDecoration: "none",
@@ -113,7 +109,7 @@ export default function Footer() {
           fontFamily: "Inter, sans-serif",
         }}
       >
-        © 2026 {t.footer.rights}
+        © 2026 All rights reserved.
       </span>
     </div>
   );
