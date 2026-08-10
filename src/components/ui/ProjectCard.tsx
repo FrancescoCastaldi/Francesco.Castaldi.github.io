@@ -15,54 +15,39 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         display: "flex",
         flexDirection: "column",
         gap: 16,
-        padding: 24,
-        background: "var(--color-space-surface)",
-        borderRadius: 12,
-        border: "1px solid rgba(255,255,255,0.04)",
+        padding: 32,
+        background: "var(--color-space-void)",
+        border: "1px solid var(--color-space-surface)",
         textDecoration: "none",
-        transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+        transition: "background 0.2s, border-color 0.2s",
         position: "relative",
-        overflow: "hidden",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = `${project.color}40`;
-        e.currentTarget.style.boxShadow = `0 0 30px ${project.color}10`;
+        e.currentTarget.style.background = "var(--color-space-elevated)";
+        e.currentTarget.style.borderColor = "var(--color-accent-secondary)";
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = "rgba(255,255,255,0.04)";
-        e.currentTarget.style.boxShadow = "none";
+        e.currentTarget.style.background = "var(--color-space-void)";
+        e.currentTarget.style.borderColor = "var(--color-space-surface)";
       }}
     >
-      {/* Top accent line */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          height: 2,
-          background: `linear-gradient(90deg, ${project.color}, transparent)`,
-          opacity: 0.6,
-        }}
-      />
-
       {/* Icon */}
       <div style={{
-        fontSize: 28,
+        fontSize: 24,
         lineHeight: 1,
-        filter: "grayscale(0.15)",
+        filter: "grayscale(100%)",
       }}>
         {project.icon}
       </div>
 
       {/* Title */}
       <h3 style={{
-        fontFamily: "var(--font-serif)",
-        fontSize: 20,
-        fontWeight: 500,
+        fontFamily: "var(--font-sans)",
+        fontSize: 18,
+        fontWeight: 700,
+        textTransform: "uppercase",
         color: "var(--color-text-primary)",
         letterSpacing: "-0.02em",
-        lineHeight: 1.2,
         margin: 0,
       }}>
         {project.title}
@@ -71,7 +56,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       {/* Description */}
       <p style={{
         fontFamily: "var(--font-sans)",
-        fontSize: 13,
+        fontSize: 14,
         color: "var(--color-text-body)",
         lineHeight: 1.6,
         margin: 0,
@@ -88,11 +73,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             style={{
               fontFamily: 'var(--font-mono)',
               fontSize: 10,
-              color: project.color || "var(--color-nebula)",
-              background: `${project.color || "var(--color-nebula)"}0D`,
-              border: `1px solid ${project.color || "var(--color-nebula)"}20`,
-              padding: "3px 8px",
-              borderRadius: 4,
+              textTransform: "uppercase",
+              color: "var(--color-text-muted)",
+              border: "1px solid var(--color-space-surface)",
+              padding: "4px 8px",
               letterSpacing: "0.03em",
             }}
           >
@@ -105,16 +89,17 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       <div style={{
         display: "flex",
         alignItems: "center",
-        gap: 6,
+        gap: 8,
         fontFamily: "var(--font-mono)",
         fontSize: 11,
-        color: "var(--color-text-muted)",
+        textTransform: "uppercase",
+        color: "var(--color-accent-secondary)",
         marginTop: "auto",
         transition: "color 0.2s",
       }}>
-        View project
+        [ View Project ]
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-          <path d="M2 6H10M10 6L7 3M10 6L7 9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M2 6H10M10 6L7 3M10 6L7 9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="square" strokeLinejoin="miter"/>
         </svg>
       </div>
     </Link>

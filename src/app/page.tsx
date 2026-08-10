@@ -26,12 +26,12 @@ export default function Home() {
   }, []);
 
   const expertiseItems = [
-    { id: "healthcare", data: { title: "Healthcare Systems", desc: "Integration of software and biomedical systems with a focus on compliance and patient privacy." }, color: "var(--color-star-gold)" },
-    { id: "dataScience", data: { title: "Data Science", desc: "Machine Learning models, predictive analytics, and large-scale data visualization." }, color: "var(--color-nebula)" },
-    { id: "cloud", data: { title: "Cloud Computing", desc: "Scalable architectures on GCP and AWS. Microservices and containerization." }, color: "var(--color-node-cloud)" },
-    { id: "ai", data: { title: "Artificial Intelligence", desc: "LLMs, RAG architectures, and computer vision applied to real-world problems." }, color: "var(--color-node-ai)" },
-    { id: "security", data: { title: "Cybersecurity", desc: "System hardening, threat modeling, and secure software development lifecycles." }, color: "var(--color-node-security)" },
-    { id: "cycling", data: { title: "Sports Analytics", desc: "Biomechanical and performance data analysis for competitive cycling." }, color: "var(--color-node-cycling)" },
+    { id: "healthcare", data: { title: "Healthcare Systems", desc: "Integration of software and biomedical systems with a focus on compliance and patient privacy." }, color: "var(--color-accent-primary)" },
+    { id: "dataScience", data: { title: "Data Science", desc: "Machine Learning models, predictive analytics, and large-scale data visualization." }, color: "var(--color-text-body)" },
+    { id: "cloud", data: { title: "Cloud Computing", desc: "Scalable architectures on GCP and AWS. Microservices and containerization." }, color: "var(--color-accent-primary)" },
+    { id: "ai", data: { title: "Artificial Intelligence", desc: "LLMs, RAG architectures, and computer vision applied to real-world problems." }, color: "var(--color-text-body)" },
+    { id: "security", data: { title: "Cybersecurity", desc: "System hardening, threat modeling, and secure software development lifecycles." }, color: "var(--color-accent-primary)" },
+    { id: "cycling", data: { title: "Sports Analytics", desc: "Biomechanical and performance data analysis for competitive cycling." }, color: "var(--color-text-body)" },
   ];
 
   return (
@@ -47,31 +47,33 @@ export default function Home() {
           padding: "80px 5% 40px",
           maxWidth: 1000,
           margin: "0 auto",
-          textAlign: "center"
+          textAlign: "center",
+          borderBottom: "1px solid var(--color-space-surface)",
         }}
       >
         <span
           style={{
             fontFamily: 'var(--font-mono)',
-            fontSize: 11,
+            fontSize: 12,
             color: "var(--color-accent-secondary)",
             textTransform: "uppercase",
             letterSpacing: "0.15em",
             display: "block",
-            marginBottom: 12,
+            marginBottom: 16,
           }}
         >
-          About
+          [ 01_About ]
         </span>
         <h2
           style={{
-            fontFamily: 'var(--font-serif)',
+            fontFamily: 'var(--font-sans)',
             fontSize: "clamp(28px, 4vw, 42px)",
-            fontWeight: 400,
+            fontWeight: 600,
             color: "var(--color-text-primary)",
-            letterSpacing: "-0.03em",
+            letterSpacing: "-0.04em",
             lineHeight: 1.15,
             marginBottom: 24,
+            textTransform: "uppercase",
           }}
         >
           Bridging the gap between software engineering and human-centric design.
@@ -98,70 +100,72 @@ export default function Home() {
           padding: "80px 5% 60px",
           maxWidth: 1400,
           margin: "0 auto",
+          borderBottom: "1px solid var(--color-space-surface)",
         }}
       >
         <div style={{ textAlign: "center", marginBottom: 56 }}>
           <span
             style={{
               fontFamily: 'var(--font-mono)',
-              fontSize: 11,
-              color: "var(--color-nebula)",
+              fontSize: 12,
+              color: "var(--color-accent-secondary)",
               textTransform: "uppercase",
               letterSpacing: "0.15em",
               display: "block",
               marginBottom: 12,
             }}
           >
-            Expertise
+            [ 02_Expertise ]
           </span>
           <h2
             style={{
-              fontFamily: 'var(--font-serif)',
+              fontFamily: 'var(--font-sans)',
               fontSize: "clamp(28px, 4vw, 42px)",
-              fontWeight: 400,
+              fontWeight: 600,
               color: "var(--color-text-primary)",
-              letterSpacing: "-0.03em",
+              letterSpacing: "-0.04em",
               lineHeight: 1.15,
               marginBottom: 16,
+              textTransform: "uppercase",
             }}
           >
             Core Competencies
           </h2>
-          <div className="section-divider" style={{ background: "linear-gradient(90deg, transparent, var(--color-accent-secondary), transparent)" }} />
+          <div className="section-divider" />
         </div>
 
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
-            gap: 24,
+            gap: 2,
+            background: "var(--color-space-surface)",
+            border: "1px solid var(--color-space-surface)",
           }}
         >
           {expertiseItems.map((item, i) => (
             <div
               key={item.id}
               style={{
-                background: "var(--color-space-surface)",
-                border: "1px solid rgba(255,255,255,0.04)",
-                borderRadius: 12,
-                padding: 24,
-                transition: "border-color 0.4s var(--spring-easing), background 0.4s var(--spring-easing)",
+                background: "var(--color-space-void)",
+                padding: 32,
+                transition: "background 0.2s",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = "var(--color-space-elevated)";
-                e.currentTarget.style.borderColor = "var(--color-accent-primary)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = "var(--color-space-surface)";
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.04)";
+                e.currentTarget.style.background = "var(--color-space-void)";
               }}
             >
               <h3 
                 style={{ 
                   color: item.color, 
                   fontFamily: 'var(--font-mono)',
+                  textTransform: "uppercase",
                   fontSize: 14,
-                  marginBottom: 12
+                  marginBottom: 16,
+                  letterSpacing: "0.05em",
                 }}
               >
                 {item.data.title}
@@ -186,46 +190,50 @@ export default function Home() {
         id="projects"
         className="scroll-reveal"
         style={{
-          padding: "60px 5% 80px",
+          padding: "80px 5% 80px",
           maxWidth: 1400,
           margin: "0 auto",
+          borderBottom: "1px solid var(--color-space-surface)",
         }}
       >
         <div style={{ textAlign: "center", marginBottom: 56 }}>
           <span
             style={{
               fontFamily: 'var(--font-mono)',
-              fontSize: 11,
-              color: "var(--color-accent-primary)",
+              fontSize: 12,
+              color: "var(--color-accent-secondary)",
               textTransform: "uppercase",
               letterSpacing: "0.15em",
               display: "block",
               marginBottom: 12,
             }}
           >
-            Projects
+            [ 03_Projects ]
           </span>
           <h2
             style={{
-              fontFamily: 'var(--font-serif)',
+              fontFamily: 'var(--font-sans)',
               fontSize: "clamp(28px, 4vw, 42px)",
-              fontWeight: 400,
+              fontWeight: 600,
               color: "var(--color-text-primary)",
-              letterSpacing: "-0.03em",
+              letterSpacing: "-0.04em",
               lineHeight: 1.15,
               marginBottom: 16,
+              textTransform: "uppercase",
             }}
           >
             Selected Work
           </h2>
-          <div className="section-divider" style={{ background: "linear-gradient(90deg, transparent, var(--color-accent-primary), transparent)" }} />
+          <div className="section-divider" />
         </div>
 
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
-            gap: 24,
+            gap: 2,
+            background: "var(--color-space-surface)",
+            border: "1px solid var(--color-space-surface)",
           }}
         >
           {projects.filter(p => p.featured).map((project, i) => (
@@ -235,27 +243,24 @@ export default function Home() {
               style={{
                 display: "block",
                 textDecoration: "none",
-                background: "linear-gradient(180deg, #131B27 0%, #0C111A 100%)",
-                border: "1px solid rgba(255,255,255,0.06)",
-                borderRadius: 16,
-                padding: 28,
-                transition: "border-color 0.4s var(--spring-easing), box-shadow 0.4s var(--spring-easing)",
+                background: "var(--color-space-void)",
+                padding: 32,
+                transition: "background 0.2s",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "var(--color-accent-primary)";
-                e.currentTarget.style.transform = "translateY(-6px)";
-                e.currentTarget.style.boxShadow = "0 12px 24px rgba(0,0,0,0.3)";
+                e.currentTarget.style.background = "var(--color-space-elevated)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)";
-                e.currentTarget.style.boxShadow = "none";
+                e.currentTarget.style.background = "var(--color-space-void)";
               }}
             >
               <h3 
                 style={{ 
                   color: "var(--color-text-primary)", 
-                  fontFamily: 'var(--font-serif)',
-                  fontSize: 22,
+                  fontFamily: 'var(--font-sans)',
+                  textTransform: "uppercase",
+                  fontWeight: 700,
+                  fontSize: 20,
                   marginBottom: 12
                 }}
               >
@@ -267,7 +272,7 @@ export default function Home() {
                   fontSize: 14,
                   color: "var(--color-text-body)",
                   lineHeight: 1.6,
-                  marginBottom: 20
+                  marginBottom: 24
                 }}
               >
                 {project.description}
@@ -278,11 +283,11 @@ export default function Home() {
                     key={tech}
                     style={{
                       fontFamily: 'var(--font-mono)',
-                      fontSize: 11,
-                      color: "var(--color-accent-primary)",
-                      background: "var(--color-accent-soft)",
-                      padding: "4px 10px",
-                      borderRadius: 20,
+                      fontSize: 10,
+                      textTransform: "uppercase",
+                      color: "var(--color-text-muted)",
+                      border: "1px solid var(--color-accent-secondary)",
+                      padding: "4px 8px",
                     }}
                   >
                     {tech}
@@ -299,46 +304,50 @@ export default function Home() {
         id="blog"
         className="scroll-reveal"
         style={{
-          padding: "60px 5% 80px",
+          padding: "80px 5% 80px",
           maxWidth: 1400,
           margin: "0 auto",
+          borderBottom: "1px solid var(--color-space-surface)",
         }}
       >
         <div style={{ textAlign: "center", marginBottom: 56 }}>
           <span
             style={{
               fontFamily: 'var(--font-mono)',
-              fontSize: 11,
-              color: "var(--color-accent-primary)",
+              fontSize: 12,
+              color: "var(--color-accent-secondary)",
               textTransform: "uppercase",
               letterSpacing: "0.15em",
               display: "block",
               marginBottom: 12,
             }}
           >
-            Blog
+            [ 04_Blog ]
           </span>
           <h2
             style={{
-              fontFamily: 'var(--font-serif)',
+              fontFamily: 'var(--font-sans)',
               fontSize: "clamp(28px, 4vw, 42px)",
-              fontWeight: 400,
+              fontWeight: 600,
               color: "var(--color-text-primary)",
-              letterSpacing: "-0.03em",
+              letterSpacing: "-0.04em",
               lineHeight: 1.15,
               marginBottom: 16,
+              textTransform: "uppercase",
             }}
           >
             Latest Articles
           </h2>
-          <div className="section-divider" style={{ background: "linear-gradient(90deg, transparent, var(--color-accent-primary), transparent)" }} />
+          <div className="section-divider" />
         </div>
 
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
-            gap: 24,
+            gap: 2,
+            background: "var(--color-space-surface)",
+            border: "1px solid var(--color-space-surface)",
             marginBottom: 48,
           }}
         >
@@ -350,28 +359,26 @@ export default function Home() {
                 display: "flex",
                 flexDirection: "column",
                 textDecoration: "none",
-                background: "linear-gradient(180deg, #131B27 0%, #0C111A 100%)",
-                border: "1px solid rgba(255,255,255,0.06)",
-                borderRadius: 16,
-                padding: 28,
-                transition: "border-color 0.4s var(--spring-easing), box-shadow 0.4s var(--spring-easing)",
+                background: "var(--color-space-void)",
+                padding: 32,
+                transition: "background 0.2s",
                 height: "100%",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "var(--color-accent-primary)";
-                e.currentTarget.style.transform = "translateY(-6px)";
-                e.currentTarget.style.boxShadow = "0 12px 24px rgba(0,0,0,0.3)";
+                e.currentTarget.style.background = "var(--color-space-elevated)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)";
-                e.currentTarget.style.boxShadow = "none";
+                e.currentTarget.style.background = "var(--color-space-void)";
               }}
             >
               <div style={{
                 fontFamily: 'var(--font-mono)',
-                fontSize: 12,
-                color: "var(--color-text-muted)",
-                marginBottom: 12
+                fontSize: 11,
+                textTransform: "uppercase",
+                color: "var(--color-accent-secondary)",
+                marginBottom: 16,
+                borderBottom: "1px solid var(--color-space-surface)",
+                paddingBottom: 8,
               }}>
                 {new Date(post.date).toLocaleDateString('en-US', {
                   year: 'numeric',
@@ -382,9 +389,11 @@ export default function Home() {
               <h3 
                 style={{ 
                   color: "var(--color-text-primary)", 
-                  fontFamily: 'var(--font-serif)',
-                  fontSize: 22,
-                  marginBottom: 12,
+                  fontFamily: 'var(--font-sans)',
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  fontSize: 20,
+                  marginBottom: 16,
                   lineHeight: 1.3
                 }}
               >
@@ -396,22 +405,23 @@ export default function Home() {
                   fontSize: 14,
                   color: "var(--color-text-body)",
                   lineHeight: 1.6,
-                  marginBottom: 20,
+                  marginBottom: 24,
                   flex: 1
                 }}
               >
                 {post.excerpt}
               </p>
               <div style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: 14,
+                fontFamily: 'var(--font-mono)',
+                textTransform: "uppercase",
+                fontSize: 12,
                 color: "var(--color-accent-primary)",
-                fontWeight: 500,
+                fontWeight: 600,
                 display: "flex",
                 alignItems: "center",
-                gap: 6
+                gap: 8
               }}>
-                Read article <span style={{ fontSize: 16 }}>→</span>
+                [ Read Article ]
               </div>
             </Link>
           ))}
@@ -424,21 +434,21 @@ export default function Home() {
               display: "inline-flex",
               alignItems: "center",
               justifyContent: "center",
-              fontFamily: 'var(--font-sans)',
-              fontSize: 14,
-              fontWeight: 500,
+              fontFamily: 'var(--font-mono)',
+              textTransform: "uppercase",
+              fontSize: 12,
+              fontWeight: 600,
               color: "var(--color-accent-primary)",
               background: "transparent",
               border: "1px solid var(--color-accent-secondary)",
               padding: "12px 32px",
-              borderRadius: 8,
               textDecoration: "none",
               transition: "all 0.2s",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = "var(--color-accent-soft)"; e.currentTarget.style.borderColor = "var(--color-accent-primary)"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "var(--color-accent-secondary)"; }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = "var(--color-accent-primary)"; e.currentTarget.style.color = "var(--color-space-void)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "var(--color-accent-primary)"; }}
           >
-            View all articles
+            [ View All Articles ]
           </Link>
         </div>
       </section>
@@ -457,25 +467,26 @@ export default function Home() {
         <span
           style={{
             fontFamily: 'var(--font-mono)',
-            fontSize: 11,
-            color: "var(--color-accent-primary)",
+            fontSize: 12,
+            color: "var(--color-accent-secondary)",
             textTransform: "uppercase",
             letterSpacing: "0.15em",
             display: "block",
-            marginBottom: 12,
+            marginBottom: 16,
           }}
         >
-          Contact
+          [ 05_Contact ]
         </span>
         <h2
           style={{
-            fontFamily: 'var(--font-serif)',
+            fontFamily: 'var(--font-sans)',
             fontSize: "clamp(28px, 4vw, 42px)",
-            fontWeight: 400,
+            fontWeight: 600,
             color: "var(--color-text-primary)",
-            letterSpacing: "-0.03em",
+            letterSpacing: "-0.04em",
             lineHeight: 1.15,
             marginBottom: 24,
+            textTransform: "uppercase",
           }}
         >
           Let's build something together.
@@ -486,7 +497,7 @@ export default function Home() {
             fontSize: 16,
             color: "var(--color-text-body)",
             lineHeight: 1.8,
-            marginBottom: 40
+            marginBottom: 48
           }}
         >
           I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
@@ -496,41 +507,48 @@ export default function Home() {
           <a
             href={`mailto:info@francescocastaldi.it`}
             style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: 14,
-              fontWeight: 500,
+              fontFamily: 'var(--font-mono)',
+              textTransform: "uppercase",
+              fontSize: 12,
+              fontWeight: 600,
               color: "var(--color-space-void)",
               background: "var(--color-accent-primary)",
               padding: "12px 32px",
-              borderRadius: 8,
+              border: "1px solid var(--color-accent-primary)",
               textDecoration: "none",
-              transition: "background 0.2s",
+              transition: "background 0.2s, color 0.2s",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "var(--color-accent-secondary)")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "var(--color-accent-primary)")}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "var(--color-space-void)";
+              e.currentTarget.style.color = "var(--color-accent-primary)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "var(--color-accent-primary)";
+              e.currentTarget.style.color = "var(--color-space-void)";
+            }}
           >
-            Email Me
+            [ Email Me ]
           </a>
           <a
             href="https://www.linkedin.com/in/francescocastaldi"
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: 14,
-              fontWeight: 500,
+              fontFamily: 'var(--font-mono)',
+              textTransform: "uppercase",
+              fontSize: 12,
+              fontWeight: 600,
               color: "var(--color-accent-primary)",
               background: "transparent",
               border: "1px solid var(--color-accent-secondary)",
               padding: "12px 32px",
-              borderRadius: 8,
               textDecoration: "none",
               transition: "all 0.2s",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = "var(--color-accent-soft)"; e.currentTarget.style.borderColor = "var(--color-accent-primary)"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "var(--color-accent-secondary)"; }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = "var(--color-accent-primary)"; e.currentTarget.style.color = "var(--color-space-void)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "var(--color-accent-primary)"; }}
           >
-            LinkedIn
+            [ LinkedIn ]
           </a>
         </div>
       </section>

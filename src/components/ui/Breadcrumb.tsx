@@ -12,27 +12,28 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
       alignItems: "center",
       gap: 8,
       fontFamily: 'var(--font-mono)',
-      fontSize: 11,
+      fontSize: 10,
       color: "var(--color-text-muted)",
-      letterSpacing: "0.04em",
+      letterSpacing: "0.08em",
+      textTransform: "uppercase",
     }}>
       {items.map((item, i) => (
         <span key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
           {i > 0 && (
-            <span style={{ color: "#2E3847", userSelect: "none" }}>/</span>
+            <span style={{ color: "var(--color-space-surface)", userSelect: "none" }}>/</span>
           )}
           {item.href ? (
             <Link
               href={item.href}
               style={{
-                color: "var(--color-star-gold)",
+                color: "var(--color-accent-secondary)",
                 textDecoration: "none",
                 transition: "color 0.2s",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#FBBF24")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-star-gold)")}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-accent-primary)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-accent-secondary)")}
             >
-              {item.label}
+              [ {item.label} ]
             </Link>
           ) : (
             <span style={{ color: "var(--color-text-body)" }}>{item.label}</span>

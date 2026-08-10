@@ -1,33 +1,33 @@
 @import "tailwindcss";
 
 @theme {
-  --color-space-void: #0F172A;
-  --color-space-surface: #1E293B;
-  --color-space-elevated: #334155;
-  --color-accent-primary: #CBD5E1;
-  --color-accent-secondary: #94A3B8;
-  --color-accent-soft: rgba(203, 213, 225, 0.12);
-  --color-text-primary: #F8FAFC;
-  --color-text-body: #94A3B8;
-  --color-text-muted: #64748B;
-  --color-text-dim: #475569;
-  --color-node-healthcare: #CBD5E1;
-  --color-node-data-science: #94A3B8;
-  --color-node-cloud: #CBD5E1;
-  --color-node-ai: #94A3B8;
-  --color-node-security: #CBD5E1;
-  --color-node-cycling: #94A3B8;
-  --color-node-consulting: #CBD5E1;
-  --color-node-blockchain: #94A3B8;
-  --color-node-web-dev: #CBD5E1;
-  --font-serif: "Outfit", sans-serif;
+  --color-space-void: #000000;
+  --color-space-surface: #0a0a0a;
+  --color-space-elevated: #1a1a1a;
+  --color-accent-primary: #ffffff;
+  --color-accent-secondary: #444444;
+  --color-accent-soft: #111111;
+  --color-text-primary: #ffffff;
+  --color-text-body: #a0a0a0;
+  --color-text-muted: #666666;
+  --color-text-dim: #333333;
+  --color-node-healthcare: #ffffff;
+  --color-node-data-science: #a0a0a0;
+  --color-node-cloud: #ffffff;
+  --color-node-ai: #a0a0a0;
+  --color-node-security: #ffffff;
+  --color-node-cycling: #a0a0a0;
+  --color-node-consulting: #ffffff;
+  --color-node-blockchain: #a0a0a0;
+  --color-node-web-dev: #ffffff;
+  --font-serif: "Inter", -apple-system, sans-serif;
   --font-sans: "Inter", -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
 
 @layer base {
   :root {
-    --spring-easing: linear(0, 0.016 0.5%, 0.06 1%, 0.226 2%, 1.116 5.4%, 1.375 6.6%, 1.527 7.7%, 1.565 8.2%, 1.585 8.8%, 1.581 9.3%, 1.559 9.8%, 1.458 10.9%, 0.937 14.3%, 0.784 15.5%, 0.693 16.6%, 0.67 17.1%, 0.657 17.7%, 0.671 18.7%, 0.729 19.8%, 1.042 23.3%, 1.13 24.5%, 1.182 25.6%, 1.201 26.7%, 1.192 27.7%, 1.156 28.8%, 0.977 32.2%, 0.925 33.4%, 0.894 34.5%, 0.882 35.6%, 0.887 36.6%, 0.907 37.7%, 1.045 42.4%, 1.069 44.5%, 1.059 46.3%, 0.979 50.9%, 0.96 53.4%, 0.966 55.3%, 1.013 59.9%, 1.024 62.3%, 0.986 71.2%, 1.008 79.9%, 0.995 88.9%, 1);
+    --spring-easing: cubic-bezier(0.16, 1, 0.3, 1);
   }
   
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -47,9 +47,9 @@
   }
   
   h1, h2, h3, h4 {
-    font-family: var(--font-serif);
-    font-weight: 500;
-    letter-spacing: -0.02em;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.03em;
     line-height: 1.15;
     color: var(--color-text-primary);
   }
@@ -60,21 +60,13 @@
 /* ============================================
    Hero Section Animations
    ============================================ */
-
-/* Staggered entrance for hero elements */
 @keyframes heroFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .hero-entrance {
-  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: heroFadeUp 0.6s var(--spring-easing) both;
 }
 
 .hero-entrance:nth-child(1) { animation-delay: 0.1s; }
@@ -83,84 +75,18 @@
 .hero-entrance:nth-child(4) { animation-delay: 0.4s; }
 .hero-entrance:nth-child(5) { animation-delay: 0.5s; }
 
-/* Hero animated background - subtle gradient mesh */
+/* Remove old complex hero backgrounds, keep minimal solid */
 .hero-bg {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: 
-    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(203, 213, 225, 0.04) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 80% 60%, rgba(148, 163, 184, 0.03) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 80% at 50% 100%, rgba(15, 23, 42, 0.8) 0%, transparent 60%);
-  animation: heroBgShift 12s ease-in-out infinite alternate;
-}
-
-@keyframes heroBgShift {
-  0% {
-    background: 
-      radial-gradient(ellipse 80% 50% at 20% 40%, rgba(203, 213, 225, 0.04) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 40% at 80% 60%, rgba(148, 163, 184, 0.03) 0%, transparent 50%),
-      radial-gradient(ellipse 50% 80% at 50% 100%, rgba(15, 23, 42, 0.8) 0%, transparent 60%);
-  }
-  50% {
-    background: 
-      radial-gradient(ellipse 70% 60% at 30% 50%, rgba(203, 213, 225, 0.03) 0%, transparent 55%),
-      radial-gradient(ellipse 80% 30% at 70% 40%, rgba(148, 163, 184, 0.04) 0%, transparent 55%),
-      radial-gradient(ellipse 50% 80% at 50% 100%, rgba(15, 23, 42, 0.8) 0%, transparent 60%);
-  }
-  100% {
-    background: 
-      radial-gradient(ellipse 60% 40% at 40% 30%, rgba(203, 213, 225, 0.05) 0%, transparent 50%),
-      radial-gradient(ellipse 50% 50% at 60% 70%, rgba(148, 163, 184, 0.02) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 80% at 50% 100%, rgba(15, 23, 42, 0.8) 0%, transparent 60%);
-  }
-}
-
-/* Floating particles */
-.hero-bg::before,
-.hero-bg::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.15;
-  animation: floatParticle 20s ease-in-out infinite;
-}
-
-.hero-bg::before {
-  width: 4px;
-  height: 4px;
-  background: var(--color-accent-primary);
-  top: 30%;
-  left: 15%;
-  animation-delay: 0s;
-}
-
-.hero-bg::after {
-  width: 3px;
-  height: 3px;
-  background: var(--color-accent-secondary);
-  top: 60%;
-  right: 20%;
-  animation-delay: -7s;
-}
-
-@keyframes floatParticle {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.15;
-  }
-  25% {
-    transform: translate(30px, -20px) scale(1.5);
-    opacity: 0.3;
-  }
-  50% {
-    transform: translate(-10px, -40px) scale(1);
-    opacity: 0.1;
-  }
-  75% {
-    transform: translate(20px, 10px) scale(1.3);
-    opacity: 0.25;
-  }
+  background: var(--color-space-void);
+  /* Minimal grid lines */
+  background-image: 
+    linear-gradient(var(--color-space-surface) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-space-surface) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.5;
 }
 
 /* ============================================
@@ -168,48 +94,28 @@
    ============================================ */
 
 @keyframes scrollRevealFade {
-  from {
-    opacity: 0;
-    transform: translateY(40px) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Base class for elements that should animate in */
 .scroll-reveal {
   opacity: 0;
-  /* Will be overridden by animation or JS fallback */
-  transform: translateY(40px) scale(0.96);
-  transition: opacity 0.8s var(--spring-easing), transform 0.8s var(--spring-easing);
+  transform: translateY(20px);
+  transition: opacity 0.6s var(--spring-easing), transform 0.6s var(--spring-easing);
   will-change: opacity, transform;
 }
 
-/* When element becomes visible (via JS fallback) */
 .scroll-reveal.is-visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-
-
-/* ============================================
-   Card Hover Effects
-   ============================================ */
-
-.project-card,
-.skill-card {
-  will-change: transform, border-color, box-shadow;
+  transform: translateY(0);
 }
 
 /* ============================================
    Page transition animation
    ============================================ */
 @keyframes pageFadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes fadeSlideUp {
@@ -220,17 +126,17 @@
 /* ============================================
    Scrollbar
    ============================================ */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #2E3847; border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: #4B5768; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-space-void); }
+::-webkit-scrollbar-thumb { background: var(--color-accent-secondary); border-radius: 0px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent-primary); }
 
 /* ============================================
    Section divider
    ============================================ */
 .section-divider {
-  width: 60px;
+  width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-accent-primary), transparent);
-  margin: 0 auto;
+  background: var(--color-space-surface);
+  margin: 0;
 }

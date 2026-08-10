@@ -50,12 +50,11 @@ export default async function BlogPostPage({
         position: "relative",
         zIndex: 60,
         minHeight: "100vh",
-        padding: "80px 5% 60px",
-        background: "rgba(10, 10, 10, 0.85)",
-        backdropFilter: "blur(16px)",
+        padding: "120px 5% 60px",
+        background: "var(--color-space-void)",
       }}
     >
-      <article style={{ maxWidth: 680, margin: "0 auto" }}>
+      <article style={{ maxWidth: 800, margin: "0 auto" }}>
         <Breadcrumb items={[
           { label: "Home", href: "/" },
           { label: "Blog", href: "/blog" },
@@ -68,11 +67,11 @@ export default async function BlogPostPage({
           display: "inline-block",
           fontFamily: 'var(--font-mono)',
           fontSize: 10,
-          color: "var(--color-accent-primary)",
-          background: "var(--color-accent-soft)",
-          padding: "3px 10px",
-          borderRadius: 4,
+          color: "var(--color-accent-secondary)",
+          border: "1px solid var(--color-accent-secondary)",
+          padding: "4px 8px",
           marginBottom: 16,
+          marginTop: 16,
           textTransform: "uppercase",
           letterSpacing: "0.08em",
         }}>
@@ -81,34 +80,33 @@ export default async function BlogPostPage({
 
         {/* Title */}
         <h1 style={{
-          fontFamily: 'var(--font-serif)',
-          fontSize: "clamp(28px, 4vw, 40px)",
-          fontWeight: 400,
+          fontFamily: 'var(--font-sans)',
+          fontSize: "clamp(28px, 4vw, 48px)",
+          fontWeight: 700,
+          textTransform: "uppercase",
           color: "var(--color-text-primary)",
-          letterSpacing: "-0.03em",
+          letterSpacing: "-0.04em",
           lineHeight: 1.08,
-          marginBottom: 12,
+          marginBottom: 24,
         }}>
           {post.title}
         </h1>
-
-        {/* Gold accent line */}
-        <div style={{ width: 40, height: 2, background: "var(--color-accent-primary)", borderRadius: 2, marginBottom: 20 }} />
 
         {/* Metadata */}
         <div style={{
           display: "flex",
           gap: 16,
-          fontSize: 12,
-          color: "var(--color-text-muted)",
-          fontFamily: 'var(--font-sans)',
-          marginBottom: 32,
-          paddingBottom: 20,
-          borderBottom: "1px solid rgba(255,255,255,0.06)",
+          fontSize: 11,
+          textTransform: "uppercase",
+          color: "var(--color-accent-secondary)",
+          fontFamily: 'var(--font-mono)',
+          marginBottom: 48,
+          paddingBottom: 24,
+          borderBottom: "1px solid var(--color-space-surface)",
         }}>
           <span>{post.date}</span>
-          <span>·</span>
-          <span>{post.readingTime} min read</span>
+          <span>|</span>
+          <span>{post.readingTime} MIN READ</span>
         </div>
 
         {/* Content */}
@@ -125,19 +123,20 @@ export default async function BlogPostPage({
             const renderInline = (text: string) => {
               let html = text
                 .replace(/\*\*(.*?)\*\*/g, '<strong style="color: var(--color-text-primary); font-weight: 600;">$1</strong>')
-                .replace(/`(.*?)`/g, '<code style="font-family: var(--font-mono); background: var(--color-space-surface); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; color: var(--color-accent-secondary);">$1</code>');
+                .replace(/`(.*?)`/g, '<code style="font-family: var(--font-mono); background: var(--color-space-surface); padding: 2px 6px; border-radius: 0; font-size: 0.9em; color: var(--color-text-primary); border: 1px solid var(--color-accent-secondary)">$1</code>');
               return <span dangerouslySetInnerHTML={{ __html: html }} />;
             };
 
             if (paragraph.startsWith("## ")) {
               return (
-                <div key={i} style={{ display: "flex", gap: 12, margin: "36px 0 16px" }}>
-                  <div style={{ width: 3, background: "var(--color-accent-primary)", borderRadius: 2, flexShrink: 0 }} />
+                <div key={i} style={{ display: "flex", gap: 16, margin: "48px 0 24px", borderBottom: "1px solid var(--color-space-surface)", paddingBottom: 16 }}>
+                  <div style={{ width: 4, background: "var(--color-accent-primary)", flexShrink: 0 }} />
                   <h2 style={{
-                    fontFamily: 'var(--font-serif)',
-                    fontSize: 22,
+                    fontFamily: 'var(--font-sans)',
+                    fontSize: 24,
+                    textTransform: "uppercase",
                     color: "var(--color-text-primary)",
-                    fontWeight: 400,
+                    fontWeight: 700,
                     margin: 0,
                   }}>
                     {renderInline(paragraph.replace("## ", ""))}
@@ -147,9 +146,9 @@ export default async function BlogPostPage({
             }
             if (paragraph.startsWith("- ")) {
               return (
-                <ul key={i} style={{ padding: "0 0 0 20px", margin: "12px 0" }}>
+                <ul key={i} style={{ padding: "0 0 0 24px", margin: "16px 0", listStyleType: "square" }}>
                   {paragraph.split("\n").map((line, j) => (
-                    <li key={j} style={{ marginBottom: 6 }}>
+                    <li key={j} style={{ marginBottom: 8 }}>
                       {renderInline(line.replace("- ", ""))}
                     </li>
                   ))}
@@ -160,20 +159,17 @@ export default async function BlogPostPage({
               const isWarning = paragraph.startsWith("> [!WARNING]");
               const isTip = paragraph.startsWith("> [!TIP]");
               const isImportant = paragraph.startsWith("> [!IMPORTANT]");
-              const color = isWarning ? "var(--color-accent-primary)" : (isTip ? "var(--color-accent-secondary)" : (isImportant ? "#9333ea" : "var(--color-text-primary)"));
-              const bgColor = isWarning ? "var(--color-accent-soft)" : (isTip ? "var(--color-accent-soft)" : (isImportant ? "rgba(147,51,234,0.05)" : "rgba(231,237,245,0.05)"));
               const cleanText = paragraph.replace(/> \[!(WARNING|TIP|NOTE|IMPORTANT)\]\n> /g, "").replace(/\n> /g, " ");
               return (
                 <div key={i} style={{
-                  margin: "24px 0",
-                  padding: "16px 20px",
-                  background: bgColor,
-                  borderLeft: `3px solid ${color}`,
-                  borderRadius: "0 8px 8px 0",
+                  margin: "32px 0",
+                  padding: "24px",
+                  background: "var(--color-space-surface)",
+                  border: "1px solid var(--color-accent-secondary)",
                   color: "var(--color-text-primary)",
                 }}>
-                  <strong style={{ color, display: "block", marginBottom: 8, fontSize: 13, textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: 'var(--font-mono)' }}>
-                    {isWarning ? "Attenzione" : (isTip ? "Consiglio Pratico" : (isImportant ? "Importante" : "Nota"))}
+                  <strong style={{ color: "var(--color-accent-primary)", display: "block", marginBottom: 12, fontSize: 12, textTransform: "uppercase", letterSpacing: "0.05em", fontFamily: 'var(--font-mono)' }}>
+                    [ {isWarning ? "WARNING" : (isTip ? "TIP" : (isImportant ? "IMPORTANT" : "NOTE"))} ]
                   </strong>
                   {renderInline(cleanText)}
                 </div>
@@ -187,12 +183,12 @@ export default async function BlogPostPage({
                 const bodyRows = rows.slice(2).map(r => r.split("|").slice(1, -1).map(s => s.trim()));
                 
                 return (
-                  <div key={i} style={{ overflowX: "auto", margin: "24px 0" }}>
+                  <div key={i} style={{ overflowX: "auto", margin: "32px 0", border: "1px solid var(--color-space-surface)" }}>
                     <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14 }}>
                       <thead>
-                        <tr style={{ background: "rgba(255,255,255,0.03)", borderBottom: "1px solid rgba(255,255,255,0.1)" }}>
+                        <tr style={{ background: "var(--color-space-surface)", borderBottom: "1px solid var(--color-accent-secondary)" }}>
                           {headers.map((h, idx) => (
-                            <th key={idx} style={{ padding: "12px 16px", textAlign: "left", color: "var(--color-text-primary)", fontWeight: 500 }}>
+                            <th key={idx} style={{ padding: "16px", textAlign: "left", color: "var(--color-text-primary)", fontWeight: 600, fontFamily: 'var(--font-mono)', textTransform: "uppercase", fontSize: 12 }}>
                               {renderInline(h)}
                             </th>
                           ))}
@@ -200,9 +196,9 @@ export default async function BlogPostPage({
                       </thead>
                       <tbody>
                         {bodyRows.map((row, rowIdx) => (
-                          <tr key={rowIdx} style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                          <tr key={rowIdx} style={{ borderBottom: "1px solid var(--color-space-surface)" }}>
                             {row.map((cell, cellIdx) => (
-                              <td key={cellIdx} style={{ padding: "12px 16px", color: "var(--color-text-body)" }}>
+                              <td key={cellIdx} style={{ padding: "16px", color: "var(--color-text-body)" }}>
                                 {renderInline(cell)}
                               </td>
                             ))}
@@ -219,8 +215,11 @@ export default async function BlogPostPage({
               const match = paragraph.match(/^!\[(.*?)\]\((.*?)\)/);
               if (match) {
                 return (
-                  <div key={i} style={{ margin: "32px 0", borderRadius: 8, overflow: "hidden", border: "1px solid rgba(255,255,255,0.06)" }}>
-                    <img src={match[2]} alt={match[1]} style={{ width: "100%", height: "auto", display: "block" }} />
+                  <div key={i} style={{ margin: "40px 0", border: "1px solid var(--color-accent-secondary)", padding: 8 }}>
+                    <img src={match[2]} alt={match[1]} style={{ width: "100%", height: "auto", display: "block", filter: "grayscale(100%)" }} />
+                    <div style={{ marginTop: 8, fontFamily: 'var(--font-mono)', fontSize: 10, color: "var(--color-accent-secondary)", textTransform: "uppercase", textAlign: "center" }}>
+                      FIG: {match[1]}
+                    </div>
                   </div>
                 );
               }
@@ -230,12 +229,11 @@ export default async function BlogPostPage({
               const codeContent = paragraph.replace(/```\w*\n/g, "").replace(/\n```/g, "").replace(/```/g, "");
               return (
                 <pre key={i} style={{
-                  background: "var(--color-space-void)",
-                  padding: "20px",
-                  borderRadius: 8,
-                  border: "1px solid rgba(255,255,255,0.05)",
+                  background: "var(--color-space-surface)",
+                  padding: "24px",
+                  border: "1px solid var(--color-accent-secondary)",
                   overflowX: "auto",
-                  margin: "24px 0",
+                  margin: "32px 0",
                   fontFamily: 'var(--font-mono)',
                   fontSize: 13,
                   color: "var(--color-text-body)",
@@ -246,7 +244,7 @@ export default async function BlogPostPage({
               );
             }
             return (
-              <p key={i} style={{ marginBottom: 20 }}>
+              <p key={i} style={{ marginBottom: 24 }}>
                 {renderInline(paragraph)}
               </p>
             );
@@ -255,17 +253,17 @@ export default async function BlogPostPage({
 
         {/* Bottom navigation */}
         <div style={{
-          marginTop: 48,
-          paddingTop: 24,
-          borderTop: "1px solid rgba(255,255,255,0.06)",
+          marginTop: 64,
+          paddingTop: 32,
+          borderTop: "1px solid var(--color-space-surface)",
           display: "flex",
           justifyContent: "space-between",
         }}>
-          <Link href="/blog" style={{ color: "var(--color-accent-primary)", fontSize: 12, fontFamily: 'var(--font-sans)', textDecoration: "none" }}>
-            ← Back to blog
+          <Link href="/blog" style={{ color: "var(--color-text-primary)", fontSize: 12, fontFamily: 'var(--font-mono)', textTransform: "uppercase", textDecoration: "none" }}>
+            [ ← Back to Blog ]
           </Link>
-          <Link href="/" style={{ color: "var(--color-text-muted)", fontSize: 12, fontFamily: 'var(--font-sans)', textDecoration: "none" }}>
-            Back to Home →
+          <Link href="/" style={{ color: "var(--color-accent-secondary)", fontSize: 12, fontFamily: 'var(--font-mono)', textTransform: "uppercase", textDecoration: "none" }}>
+            [ Back to Home → ]
           </Link>
         </div>
       </article>

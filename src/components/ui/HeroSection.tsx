@@ -12,6 +12,7 @@ export default function HeroSection() {
         minHeight: "100vh",
         padding: "120px 5% 80px",
         overflow: "hidden",
+        borderBottom: "1px solid var(--color-space-surface)",
       }}
     >
       {/* Subtle animated background */}
@@ -39,22 +40,19 @@ export default function HeroSection() {
           <h1
             className="hero-entrance"
             style={{
-              fontFamily: 'var(--font-serif)',
+              fontFamily: 'var(--font-sans)',
               fontSize: "clamp(42px, 7vw, 80px)",
               color: "var(--color-text-primary)",
-              fontWeight: 400,
-              letterSpacing: "-0.03em",
+              fontWeight: 700,
+              letterSpacing: "-0.04em",
               lineHeight: 1.08,
               margin: 0,
+              textTransform: "uppercase",
             }}
           >
             Francesco<br />
             <span style={{
               color: "var(--color-accent-primary)",
-              textDecoration: "underline",
-              textDecorationColor: "var(--color-accent-secondary)",
-              textUnderlineOffset: "0.15em",
-              textDecorationThickness: 2,
             }}>
               Castaldi
             </span>
@@ -69,8 +67,10 @@ export default function HeroSection() {
               color: "var(--color-accent-secondary)",
               letterSpacing: "0.12em",
               textTransform: "uppercase",
-              marginTop: 20,
-              marginBottom: 8,
+              marginTop: 24,
+              marginBottom: 16,
+              borderLeft: "2px solid var(--color-accent-secondary)",
+              paddingLeft: "12px",
             }}
           >
             Software Engineer & Data Scientist
@@ -80,13 +80,13 @@ export default function HeroSection() {
           <p
             className="hero-entrance"
             style={{
-              fontFamily: 'var(--font-serif)',
-              fontStyle: "italic",
-              fontSize: "clamp(16px, 2vw, 22px)",
+              fontFamily: 'var(--font-sans)',
+              fontSize: "clamp(16px, 2vw, 20px)",
               color: "var(--color-text-body)",
               margin: 0,
               maxWidth: 520,
-              lineHeight: 1.4,
+              lineHeight: 1.5,
+              fontWeight: 400,
             }}
           >
             Building intelligent systems at the intersection of robust backend engineering and machine learning.
@@ -97,49 +97,63 @@ export default function HeroSection() {
             className="hero-entrance"
             style={{
               display: "flex",
-              gap: 14,
-              marginTop: 32,
+              gap: 16,
+              marginTop: 40,
               flexWrap: "wrap",
             }}
           >
             <a
               href="#expertise"
               style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: 13,
-                fontWeight: 500,
+                fontFamily: 'var(--font-mono)',
+                textTransform: "uppercase",
+                fontSize: 12,
+                fontWeight: 600,
+                letterSpacing: "0.05em",
                 color: "var(--color-space-void)",
                 background: "var(--color-accent-primary)",
-                padding: "10px 24px",
-                borderRadius: 8,
+                padding: "12px 24px",
                 textDecoration: "none",
-                transition: "background 0.2s",
-                border: "none",
+                transition: "background 0.2s, color 0.2s",
+                border: "1px solid var(--color-accent-primary)",
                 cursor: "pointer",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = "var(--color-accent-secondary)")}
-              onMouseLeave={(e) => (e.currentTarget.style.background = "var(--color-accent-primary)")}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "var(--color-space-void)";
+                e.currentTarget.style.color = "var(--color-accent-primary)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "var(--color-accent-primary)";
+                e.currentTarget.style.color = "var(--color-space-void)";
+              }}
             >
-              View My Work
+              [ View My Work ]
             </a>
             <a
               href="#contact"
               style={{
-                fontFamily: 'var(--font-sans)',
-                fontSize: 13,
-                fontWeight: 500,
+                fontFamily: 'var(--font-mono)',
+                textTransform: "uppercase",
+                fontSize: 12,
+                fontWeight: 600,
+                letterSpacing: "0.05em",
                 color: "var(--color-accent-secondary)",
                 background: "transparent",
-                padding: "10px 24px",
-                borderRadius: 8,
+                padding: "12px 24px",
                 textDecoration: "none",
                 transition: "all 0.2s",
                 border: "1px solid var(--color-accent-secondary)",
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = "var(--color-accent-soft)"; e.currentTarget.style.borderColor = "var(--color-accent-secondary)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "var(--color-accent-secondary)"; }}
+              onMouseEnter={(e) => { 
+                e.currentTarget.style.background = "var(--color-accent-secondary)"; 
+                e.currentTarget.style.color = "var(--color-space-void)"; 
+              }}
+              onMouseLeave={(e) => { 
+                e.currentTarget.style.background = "transparent"; 
+                e.currentTarget.style.color = "var(--color-accent-secondary)"; 
+              }}
             >
-              Get In Touch
+              [ Get In Touch ]
             </a>
           </div>
         </div>
@@ -160,11 +174,10 @@ export default function HeroSection() {
             style={{
               maxWidth: "100%",
               height: "auto",
-              borderRadius: "16px",
-              boxShadow: "0 24px 48px -12px rgba(203, 213, 225, 0.1), 0 0 24px rgba(203, 213, 225, 0.05)",
-              border: "1px solid rgba(255, 255, 255, 0.05)",
-              opacity: 0.9,
-              mixBlendMode: "lighten"
+              borderRadius: "0",
+              border: "1px solid var(--color-accent-secondary)",
+              opacity: 0.8,
+              filter: "grayscale(100%) contrast(120%)",
             }}
           />
         </div>

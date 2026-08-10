@@ -1,37 +1,41 @@
 {
-  "name": "Slate Grey Minimalist",
+  "name": "Minimal Tech Monochrome",
   "colors": {
     "space-void": {
-      "hex": "#0F172A",
-      "role": "Deepest background (app root)"
+      "hex": "#000000",
+      "role": "Pure black background"
     },
     "space-surface": {
-      "hex": "#1E293B",
-      "role": "Elevated background (cards, sections)"
+      "hex": "#0a0a0a",
+      "role": "Slightly elevated dark surface"
     },
     "space-elevated": {
-      "hex": "#334155",
-      "role": "Hover states for cards, raised elements"
+      "hex": "#1a1a1a",
+      "role": "Hover states and raised elements"
     },
     "accent-primary": {
-      "hex": "#CBD5E1",
-      "role": "Main accent color (replacing blue/gold) for important highlights, badges, primary CTA"
+      "hex": "#ffffff",
+      "role": "Pure white for sharp borders, primary CTA, active states"
     },
     "accent-secondary": {
-      "hex": "#94A3B8",
-      "role": "Secondary accent for subtle outlines, secondary links, and icons"
+      "hex": "#444444",
+      "role": "Secondary outlines, inactive elements"
+    },
+    "accent-soft": {
+      "hex": "#111111",
+      "role": "Soft dark fill for badges or subtle highlights"
     },
     "text-primary": {
-      "hex": "#F8FAFC",
+      "hex": "#ffffff",
       "role": "Headings, primary text"
     },
     "text-body": {
-      "hex": "#94A3B8",
+      "hex": "#a0a0a0",
       "role": "Paragraphs, standard reading text"
     },
     "text-muted": {
-      "hex": "#64748B",
-      "role": "Meta text, breadcrumbs, footers"
+      "hex": "#666666",
+      "role": "Meta text, breadcrumbs, footers, inactive text"
     }
   }
 }

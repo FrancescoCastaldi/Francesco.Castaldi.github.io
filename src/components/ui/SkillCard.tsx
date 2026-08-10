@@ -23,55 +23,40 @@ export default function SkillCard({ skill }: SkillCardProps) {
       style={{
         display: "flex",
         flexDirection: "column",
-        gap: 14,
-        padding: 24,
-        background: "var(--color-space-surface)",
-        borderRadius: 12,
-        border: "1px solid rgba(255,255,255,0.04)",
+        gap: 16,
+        padding: 32,
+        background: "var(--color-space-void)",
+        border: "1px solid var(--color-space-surface)",
         textDecoration: "none",
-        transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+        transition: "background 0.2s, border-color 0.2s",
         position: "relative",
-        overflow: "hidden",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = `${skill.color}40`;
-        e.currentTarget.style.boxShadow = `0 0 30px ${skill.color}10`;
+        e.currentTarget.style.background = "var(--color-space-elevated)";
+        e.currentTarget.style.borderColor = "var(--color-accent-secondary)";
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = "rgba(255,255,255,0.04)";
-        e.currentTarget.style.boxShadow = "none";
+        e.currentTarget.style.background = "var(--color-space-void)";
+        e.currentTarget.style.borderColor = "var(--color-space-surface)";
       }}
     >
-      {/* Top accent line */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          height: 2,
-          background: `linear-gradient(90deg, ${skill.color}, transparent)`,
-          opacity: 0.6,
-        }}
-      />
-
       {/* Icon */}
       <div style={{
-        fontSize: 28,
+        fontSize: 24,
         lineHeight: 1,
-        filter: "grayscale(0.15)",
+        filter: "grayscale(100%)",
       }}>
         {skill.icon}
       </div>
 
       {/* Name */}
       <h3 style={{
-        fontFamily: 'var(--font-serif)',
+        fontFamily: 'var(--font-sans)',
         fontSize: 18,
-        fontWeight: 400,
+        fontWeight: 700,
+        textTransform: "uppercase",
         color: "var(--color-text-primary)",
         letterSpacing: "-0.02em",
-        lineHeight: 1.2,
         margin: 0,
       }}>
         {skill.name}
@@ -83,28 +68,24 @@ export default function SkillCard({ skill }: SkillCardProps) {
         <span style={{
           fontFamily: 'var(--font-mono)',
           fontSize: 10,
-          color: skill.color,
-          background: `${skill.color}0D`,
-          border: `1px solid ${skill.color}20`,
-          padding: "3px 8px",
-          borderRadius: 4,
+          color: "var(--color-text-muted)",
+          border: "1px solid var(--color-space-surface)",
+          padding: "4px 8px",
           textTransform: "uppercase",
           letterSpacing: "0.06em",
         }}>
           {skill.area.replace("-", " ")}
         </span>
 
-        {/* Proficiency dots */}
-        <div style={{ display: "flex", gap: 4 }}>
+        {/* Proficiency blocks */}
+        <div style={{ display: "flex", gap: 2 }}>
           {[1, 2, 3].map((seg) => (
             <div
               key={seg}
               style={{
                 width: 8,
                 height: 8,
-                borderRadius: "50%",
-                background: seg <= proficiency ? skill.color : "rgba(255,255,255,0.06)",
-                transition: "background 0.3s",
+                background: seg <= proficiency ? "var(--color-accent-secondary)" : "var(--color-space-surface)",
               }}
             />
           ))}
@@ -114,7 +95,7 @@ export default function SkillCard({ skill }: SkillCardProps) {
       {/* Description */}
       <p style={{
         fontFamily: 'var(--font-sans)',
-        fontSize: 12,
+        fontSize: 14,
         color: "var(--color-text-body)",
         lineHeight: 1.6,
         margin: 0,
@@ -127,16 +108,17 @@ export default function SkillCard({ skill }: SkillCardProps) {
       <div style={{
         display: "flex",
         alignItems: "center",
-        gap: 6,
+        gap: 8,
         fontFamily: 'var(--font-mono)',
         fontSize: 11,
-        color: "var(--color-text-muted)",
+        textTransform: "uppercase",
+        color: "var(--color-accent-secondary)",
         marginTop: "auto",
         transition: "color 0.2s",
       }}>
-        Explore skill
+        [ Explore Skill ]
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-          <path d="M2 6H10M10 6L7 3M10 6L7 9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M2 6H10M10 6L7 3M10 6L7 9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="square" strokeLinejoin="miter"/>
         </svg>
       </div>
     </Link>

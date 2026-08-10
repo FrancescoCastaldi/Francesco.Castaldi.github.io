@@ -7,7 +7,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const pathname = usePathname();
-  const isHome = pathname === "/";
+  
   const navItems = [
     { label: "About", href: "/#about", desktop: true },
     { label: "Expertise", href: "/#expertise", desktop: true },
@@ -37,11 +37,8 @@ export default function Header() {
           alignItems: "center",
           justifyContent: "space-between",
           padding: "0 5%",
-          background: isHome ? "rgba(10, 10, 10, 0.8)" : "rgba(10, 10, 10, 0.95)",
-          backdropFilter: isHome ? "blur(12px)" : "blur(20px)",
-          WebkitBackdropFilter: isHome ? "blur(12px)" : "blur(20px)",
-          borderBottom: "1px solid rgba(255,255,255,0.04)",
-          transition: "background 0.3s ease",
+          background: "var(--color-space-void)",
+          borderBottom: "1px solid var(--color-space-surface)",
         }}
       >
         {/* Logo */}
@@ -57,12 +54,14 @@ export default function Header() {
           <span
             style={{
               color: "var(--color-text-primary)",
-              fontFamily: "var(--font-serif)",
+              fontFamily: "var(--font-sans)",
+              fontWeight: 700,
               fontSize: 16,
-              letterSpacing: "-0.02em",
+              textTransform: "uppercase",
+              letterSpacing: "0.05em",
             }}
           >
-            Francesco <span style={{ color: "var(--color-star-gold)" }}>Castaldi</span>
+            F. <span style={{ color: "var(--color-accent-secondary)" }}>CASTALDI</span>
           </span>
         </Link>
 
@@ -85,10 +84,10 @@ export default function Header() {
                     href={item.href}
                     onClick={() => setMenuOpen(false)}
                     style={{
-                      fontFamily: "var(--font-sans)",
+                      fontFamily: "var(--font-mono)",
                       fontSize: 12,
-                      fontWeight: 500,
-                      color: isActive ? "var(--color-star-gold)" : "var(--color-text-body)",
+                      fontWeight: 600,
+                      color: isActive ? "var(--color-accent-secondary)" : "var(--color-text-body)",
                       textDecoration: "none",
                       letterSpacing: "0.06em",
                       textTransform: "uppercase",
@@ -96,46 +95,28 @@ export default function Header() {
                       position: "relative",
                     }}
                     onMouseEnter={(e) => {
-                      if (!isActive) e.currentTarget.style.color = "var(--color-star-gold)";
+                      if (!isActive) e.currentTarget.style.color = "var(--color-accent-secondary)";
                     }}
                     onMouseLeave={(e) => {
                       if (!isActive) e.currentTarget.style.color = "var(--color-text-body)";
                     }}
                   >
-                    {item.label}
-                    {isActive && (
-                      <span
-                        style={{
-                          position: "absolute",
-                          bottom: -6,
-                          left: "50%",
-                          transform: "translateX(-50%)",
-                          width: 4,
-                          height: 4,
-                          borderRadius: "50%",
-                          background: "var(--color-star-gold)",
-                        }}
-                      />
-                    )}
+                    [ {item.label} ]
                   </Link>
                 );
               })}
-              
-
           </nav>
         )}
 
-        {/* Mobile Hamburger & Lang */}
+        {/* Mobile Hamburger */}
         {isMobile && (
           <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Menu"
               style={{
                 background: "none",
-                border: "1px solid rgba(255,255,255,0.06)",
-                borderRadius: 6,
+                border: "1px solid var(--color-space-surface)",
                 color: "var(--color-text-body)",
                 width: 36,
                 height: 36,
@@ -147,9 +128,9 @@ export default function Header() {
               }}
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <line x1="2" y1="4" x2="14" y2="4" stroke="var(--color-text-body)" strokeWidth="1.5" strokeLinecap="round" />
-                <line x1="2" y1="8" x2="14" y2="8" stroke="var(--color-text-body)" strokeWidth="1.5" strokeLinecap="round" />
-                <line x1="2" y1="12" x2="14" y2="12" stroke="var(--color-text-body)" strokeWidth="1.5" strokeLinecap="round" />
+                <line x1="2" y1="4" x2="14" y2="4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
+                <line x1="2" y1="8" x2="14" y2="8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
+                <line x1="2" y1="12" x2="14" y2="12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
               </svg>
             </button>
           </div>
@@ -167,14 +148,12 @@ export default function Header() {
               width: 300,
               height: "100vh",
               zIndex: 200,
-              background: "rgba(12, 17, 26, 0.98)",
-              backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(20px)",
+              background: "var(--color-space-void)",
+              borderLeft: "1px solid var(--color-space-surface)",
               display: "flex",
               flexDirection: "column",
               padding: "80px 32px 32px",
               transition: "transform 0.3s ease",
-              boxShadow: "-8px 0 40px rgba(0,0,0,0.5)",
             }}
           >
             {/* Close */}
@@ -185,7 +164,12 @@ export default function Header() {
                 top: 16,
                 right: 16,
                 background: "none",
-                border: "none",
+                border: "1px solid var(--color-space-surface)",
+                width: 36,
+                height: 36,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 color: "var(--color-text-body)",
                 fontSize: 20,
                 cursor: "pointer",
@@ -211,13 +195,14 @@ export default function Header() {
                     href={item.href}
                     onClick={() => setMenuOpen(false)}
                     style={{
-                      fontFamily: 'var(--font-serif)',
+                      fontFamily: 'var(--font-sans)',
+                      fontWeight: 700,
                       fontSize: 24,
-                      color: isActive ? "var(--color-star-gold)" : "var(--color-text-primary)",
+                      textTransform: "uppercase",
+                      color: isActive ? "var(--color-accent-secondary)" : "var(--color-text-primary)",
                       textDecoration: "none",
-                      padding: "12px 0",
-                      borderBottom: "1px solid rgba(255,255,255,0.04)",
-                      transition: "color 0.2s",
+                      padding: "16px 0",
+                      borderBottom: "1px solid var(--color-space-surface)",
                     }}
                   >
                     {item.label}
@@ -228,8 +213,8 @@ export default function Header() {
             
             {/* Social links */}
             <div style={{ marginTop: "auto", display: "flex", gap: 20 }}>
-              <a href="https://github.com/FrancescoCastaldi" target="_blank" rel="noopener noreferrer" style={{ color: "var(--color-text-muted)", fontSize: 12, fontFamily: 'var(--font-sans)', textDecoration: "none", letterSpacing: "0.05em" }}>GitHub</a>
-              <a href="https://www.linkedin.com/in/francescocastaldi" target="_blank" rel="noopener noreferrer" style={{ color: "var(--color-text-muted)", fontSize: 12, fontFamily: 'var(--font-sans)', textDecoration: "none", letterSpacing: "0.05em" }}>LinkedIn</a>
+              <a href="https://github.com/FrancescoCastaldi" target="_blank" rel="noopener noreferrer" style={{ color: "var(--color-text-muted)", fontSize: 12, fontFamily: 'var(--font-mono)', textTransform: "uppercase", textDecoration: "none", letterSpacing: "0.05em" }}>GitHub</a>
+              <a href="https://www.linkedin.com/in/francescocastaldi" target="_blank" rel="noopener noreferrer" style={{ color: "var(--color-text-muted)", fontSize: 12, fontFamily: 'var(--font-mono)', textTransform: "uppercase", textDecoration: "none", letterSpacing: "0.05em" }}>LinkedIn</a>
             </div>
           </div>
 
@@ -239,7 +224,7 @@ export default function Header() {
               position: "fixed",
               inset: 0,
               zIndex: 199,
-              background: "rgba(0,0,0,0.5)",
+              background: "rgba(0,0,0,0.8)",
             }}
           />
         </>
