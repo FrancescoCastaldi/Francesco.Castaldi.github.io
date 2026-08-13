@@ -47,10 +47,21 @@ export default function Header() {
           style={{
             display: "flex",
             alignItems: "center",
-            gap: 8,
+            gap: 10,
             textDecoration: "none",
           }}
         >
+          <img 
+            src="/assets/img/brand/logo.png" 
+            alt="Francesco Castaldi Brand Emblem" 
+            style={{ 
+              width: 28, 
+              height: 28, 
+              borderRadius: 4, 
+              objectFit: "cover", 
+              border: "1px solid rgba(56, 189, 248, 0.4)" 
+            }}
+          />
           <span
             style={{
               color: "var(--color-text-primary)",
