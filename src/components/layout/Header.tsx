@@ -59,7 +59,7 @@ export default function Header() {
               height: 28, 
               borderRadius: 4, 
               objectFit: "cover", 
-              border: "1px solid rgba(56, 189, 248, 0.4)" 
+              border: "1px solid rgba(249, 115, 22, 0.4)" 
             }}
           />
           <span

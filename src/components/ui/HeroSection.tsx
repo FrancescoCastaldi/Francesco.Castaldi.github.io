@@ -13,7 +13,7 @@ export default function HeroSection() {
         padding: "130px 5% 70px",
         overflow: "hidden",
         borderBottom: "1px solid var(--color-space-surface)",
-        background: "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(56, 189, 248, 0.12), transparent 70%)",
+        background: "radial-gradient(ellipse 80% 50% at 50% -20%, rgba(249, 115, 22, 0.12), transparent 70%)",
       }}
     >
       {/* Subtle grid pattern background */}
@@ -45,8 +45,8 @@ export default function HeroSection() {
               alignItems: "center",
               gap: 8,
               padding: "6px 14px",
-              background: "rgba(15, 23, 42, 0.8)",
-              border: "1px solid rgba(56, 189, 248, 0.3)",
+              background: "rgba(22, 27, 34, 0.9)",
+              border: "1px solid rgba(249, 115, 22, 0.35)",
               marginBottom: 24,
             }}
           >
@@ -55,8 +55,8 @@ export default function HeroSection() {
                 width: 8,
                 height: 8,
                 borderRadius: "50%",
-                background: "#22c55e",
-                boxShadow: "0 0 10px #22c55e",
+                background: "#86efac",
+                boxShadow: "0 0 10px #86efac",
                 display: "inline-block",
               }}
             />
@@ -64,9 +64,10 @@ export default function HeroSection() {
               style={{
                 fontFamily: "var(--font-mono)",
                 fontSize: 11,
-                color: "var(--color-accent-primary)",
+                color: "#f97316",
                 textTransform: "uppercase",
                 letterSpacing: "0.12em",
+                fontWeight: 700,
               }}
             >
               AUTOMOTIVE & SOFTWARE TECH HUB — MY25 ONLINE
@@ -90,7 +91,7 @@ export default function HeroSection() {
             Francesco<br />
             <span
               style={{
-                background: "linear-gradient(90deg, #38bdf8 0%, #f59e0b 100%)",
+                background: "linear-gradient(90deg, #f97316 0%, #86efac 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -104,12 +105,12 @@ export default function HeroSection() {
             style={{
               fontFamily: "var(--font-mono)",
               fontSize: 13,
-              color: "var(--color-accent-secondary)",
+              color: "#86efac",
               letterSpacing: "0.12em",
               textTransform: "uppercase",
               marginTop: 20,
               marginBottom: 16,
-              borderLeft: "3px solid var(--color-accent-amber)",
+              borderLeft: "3px solid #f97316",
               paddingLeft: "14px",
             }}
           >
@@ -140,15 +141,15 @@ export default function HeroSection() {
               gap: 12,
               marginTop: 32,
               padding: 16,
-              background: "rgba(17, 24, 39, 0.6)",
-              border: "1px solid #1e293b",
+              background: "rgba(22, 27, 34, 0.8)",
+              border: "1px solid #30363d",
             }}
           >
             <div>
               <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--color-text-muted)", textTransform: "uppercase" }}>
                 PRIMARY HEV
               </span>
-              <span style={{ fontFamily: "var(--font-mono)", fontSize: 15, fontWeight: 700, color: "var(--color-accent-amber)" }}>
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: 15, fontWeight: 700, color: "#f97316" }}>
                 Yaris MK4 1.5L
               </span>
             </div>
@@ -156,7 +157,7 @@ export default function HeroSection() {
               <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--color-text-muted)", textTransform: "uppercase" }}>
                 EFFICIENCY
               </span>
-              <span style={{ fontFamily: "var(--font-mono)", fontSize: 15, fontWeight: 700, color: "var(--color-accent-primary)" }}>
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: 15, fontWeight: 700, color: "#86efac" }}>
                 3.8 L/100km
               </span>
             </div>
@@ -188,24 +189,24 @@ export default function HeroSection() {
                 fontSize: 12,
                 fontWeight: 700,
                 letterSpacing: "0.08em",
-                color: "#090d16",
-                background: "var(--color-accent-primary)",
+                color: "#0e1117",
+                background: "#f97316",
                 padding: "14px 28px",
                 textDecoration: "none",
                 transition: "all 0.2s ease",
-                border: "1px solid var(--color-accent-primary)",
+                border: "1px solid #f97316",
                 cursor: "pointer",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#090d16";
-                e.currentTarget.style.color = "var(--color-accent-primary)";
+                e.currentTarget.style.background = "#0e1117";
+                e.currentTarget.style.color = "#f97316";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = "var(--color-accent-primary)";
-                e.currentTarget.style.color = "#090d16";
+                e.currentTarget.style.background = "#f97316";
+                e.currentTarget.style.color = "#0e1117";
               }}
             >
-              [ Automotive Garage & Guides ]
+              [ EXPLORE GARAGE ]
             </a>
             <a
               href="#blog"

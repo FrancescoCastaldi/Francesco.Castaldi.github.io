@@ -1,41 +1,41 @@
 {
-  "name": "Minimal Tech Monochrome",
+  "name": "High-Contrast Charcoal, Orange & Mint",
   "colors": {
     "space-void": {
-      "hex": "#000000",
-      "role": "Pure black background"
+      "hex": "#0e1117",
+      "role": "Deep charcoal void background"
     },
     "space-surface": {
-      "hex": "#0a0a0a",
-      "role": "Slightly elevated dark surface"
+      "hex": "#161b22",
+      "role": "Dark slate card surface"
     },
     "space-elevated": {
-      "hex": "#1a1a1a",
-      "role": "Hover states and raised elements"
+      "hex": "#21262d",
+      "role": "Elevated hover state"
     },
-    "accent-primary": {
-      "hex": "#ffffff",
-      "role": "Pure white for sharp borders, primary CTA, active states"
+    "accent-orange": {
+      "hex": "#f97316",
+      "role": "Warm electric orange for primary CTA, active badges, highlights"
     },
-    "accent-secondary": {
-      "hex": "#444444",
-      "role": "Secondary outlines, inactive elements"
+    "accent-mint": {
+      "hex": "#86efac",
+      "role": "Soft mint light green for telemetry indicators, success states, subcategory pills"
     },
-    "accent-soft": {
-      "hex": "#111111",
-      "role": "Soft dark fill for badges or subtle highlights"
+    "accent-border": {
+      "hex": "#30363d",
+      "role": "Clean 1px slate structural borders"
     },
     "text-primary": {
-      "hex": "#ffffff",
-      "role": "Headings, primary text"
+      "hex": "#f8fafc",
+      "role": "Pure crisp slate white headings"
     },
     "text-body": {
-      "hex": "#a0a0a0",
-      "role": "Paragraphs, standard reading text"
+      "hex": "#cbd5e1",
+      "role": "High-legibility reading body text"
     },
     "text-muted": {
-      "hex": "#666666",
-      "role": "Meta text, breadcrumbs, footers, inactive text"
+      "hex": "#8b949e",
+      "role": "Muted metadata, timestamps, and captions"
     }
   }
 }
