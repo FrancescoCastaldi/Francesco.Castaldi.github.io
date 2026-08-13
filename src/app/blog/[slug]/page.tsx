@@ -19,15 +19,24 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = blogPosts.find((p) => p.slug === slug);
   if (!post) return {};
+  const pageUrl = `https://francescocastaldi.it/blog/${post.slug}`;
+
   return {
-    title: post.title,
+    title: `${post.title} | Francesco Castaldi`,
     description: post.excerpt,
+    alternates: {
+      canonical: pageUrl,
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,
+      url: pageUrl,
+      type: "article",
+      publishedTime: post.date,
+      authors: ["Francesco Castaldi"],
       images: [
         {
-          url: `/assets/blog/${post.slug}/images/cover.png`,
+          url: `https://francescocastaldi.it/assets/blog/${post.slug}/images/cover.png`,
           alt: post.title,
         },
       ],
@@ -44,6 +53,29 @@ export default async function BlogPostPage({
   const post = blogPosts.find((p) => p.slug === slug);
   if (!post || !post.published) notFound();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.excerpt,
+    "datePublished": post.date,
+    "author": {
+      "@type": "Person",
+      "name": "Francesco Castaldi",
+      "url": "https://francescocastaldi.it"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Francesco Castaldi",
+      "url": "https://francescocastaldi.it"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://francescocastaldi.it/blog/${post.slug}`
+    },
+    "image": `https://francescocastaldi.it/assets/blog/${post.slug}/images/cover.png`
+  };
+
   return (
     <div
       style={{
@@ -54,6 +86,10 @@ export default async function BlogPostPage({
         background: "#0e1117",
       }}
     >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <article style={{ maxWidth: 860, margin: "0 auto" }}>
         
         {/* Breadcrumb Navigation */}
