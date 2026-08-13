@@ -260,6 +260,7 @@ export default function HeroSection() {
             <img 
               src="/assets/img/hero/hero-bg.png" 
               alt="Automotive Tech Network Visualization" 
+              fetchPriority="high"
               style={{
                 width: "100%",
                 height: "auto",
