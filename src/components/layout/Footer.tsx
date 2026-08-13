@@ -38,6 +38,11 @@ export default function Footer() {
           gap: 6,
         }}
       >
+        <img 
+          src="/assets/img/brand/logo.png" 
+          alt="FC Emblem" 
+          style={{ width: 18, height: 18, borderRadius: 3, objectFit: "cover", border: "1px solid rgba(56, 189, 248, 0.3)" }}
+        />
         <span
           style={{
             color: "var(--color-text-muted)",
