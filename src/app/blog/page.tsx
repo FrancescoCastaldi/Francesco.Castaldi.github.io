@@ -152,6 +152,11 @@ export default function BlogPage() {
                   <span style={{ border: "1px solid var(--color-accent-secondary)", color: "var(--color-text-muted)", padding: "4px 8px", fontSize: 10, fontFamily: 'var(--font-mono)', textTransform: "uppercase" }}>
                     {post.category}
                   </span>
+                  {post.subcategory && (
+                    <span style={{ border: "1px solid var(--color-space-surface)", background: "var(--color-space-elevated)", color: "var(--color-text-primary)", padding: "4px 8px", fontSize: 10, fontFamily: 'var(--font-mono)', textTransform: "uppercase" }}>
+                      {post.subcategory}
+                    </span>
+                  )}
                 </div>
               </Link>
             );

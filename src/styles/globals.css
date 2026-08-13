@@ -1,25 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-  --color-space-void: #000000;
-  --color-space-surface: #0a0a0a;
-  --color-space-elevated: #1a1a1a;
-  --color-accent-primary: #ffffff;
-  --color-accent-secondary: #444444;
-  --color-accent-soft: #111111;
-  --color-text-primary: #ffffff;
-  --color-text-body: #a0a0a0;
-  --color-text-muted: #666666;
-  --color-text-dim: #333333;
-  --color-node-healthcare: #ffffff;
-  --color-node-data-science: #a0a0a0;
-  --color-node-cloud: #ffffff;
-  --color-node-ai: #a0a0a0;
-  --color-node-security: #ffffff;
-  --color-node-cycling: #a0a0a0;
-  --color-node-consulting: #ffffff;
-  --color-node-blockchain: #a0a0a0;
-  --color-node-web-dev: #ffffff;
+  --color-space-void: #090d16;
+  --color-space-surface: #111827;
+  --color-space-elevated: #1f2937;
+  --color-accent-primary: #38bdf8;
+  --color-accent-amber: #f59e0b;
+  --color-accent-secondary: #94a3b8;
+  --color-accent-soft: #0f172a;
+  --color-text-primary: #f8fafc;
+  --color-text-body: #cbd5e1;
+  --color-text-muted: #64748b;
+  --color-text-dim: #334155;
+  --color-node-healthcare: #f59e0b;
+  --color-node-data-science: #38bdf8;
+  --color-node-cloud: #a78bfa;
+  --color-node-ai: #818cf8;
+  --color-node-security: #34d399;
+  --color-node-cycling: #f43f5e;
+  --color-node-automotive: #f59e0b;
   --font-serif: "Inter", -apple-system, sans-serif;
   --font-sans: "Inter", -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
@@ -28,6 +27,8 @@
 @layer base {
   :root {
     --spring-easing: cubic-bezier(0.16, 1, 0.3, 1);
+    --border-metallic: 1px solid #1e293b;
+    --border-metallic-glow: 1px solid #38bdf840;
   }
   
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -48,7 +49,7 @@
   
   h1, h2, h3, h4 {
     font-family: var(--font-sans);
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.15;
     color: var(--color-text-primary);

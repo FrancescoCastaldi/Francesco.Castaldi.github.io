@@ -59,24 +59,40 @@ export default async function BlogPostPage({
           { label: "Home", href: "/" },
           { label: "Blog", href: "/blog" },
           { label: post.category },
+          ...(post.subcategory ? [{ label: post.subcategory }] : []),
           { label: post.title },
         ]} />
 
-        {/* Category badge */}
-        <span style={{
-          display: "inline-block",
-          fontFamily: 'var(--font-mono)',
-          fontSize: 10,
-          color: "var(--color-accent-secondary)",
-          border: "1px solid var(--color-accent-secondary)",
-          padding: "4px 8px",
-          marginBottom: 16,
-          marginTop: 16,
-          textTransform: "uppercase",
-          letterSpacing: "0.08em",
-        }}>
-          {post.category}
-        </span>
+        {/* Category & Subcategory badges */}
+        <div style={{ display: "flex", gap: 8, marginTop: 16, marginBottom: 16, flexWrap: "wrap" }}>
+          <span style={{
+            display: "inline-block",
+            fontFamily: 'var(--font-mono)',
+            fontSize: 10,
+            color: "var(--color-accent-secondary)",
+            border: "1px solid var(--color-accent-secondary)",
+            padding: "4px 8px",
+            textTransform: "uppercase",
+            letterSpacing: "0.08em",
+          }}>
+            {post.category}
+          </span>
+          {post.subcategory && (
+            <span style={{
+              display: "inline-block",
+              fontFamily: 'var(--font-mono)',
+              fontSize: 10,
+              color: "var(--color-text-primary)",
+              border: "1px solid var(--color-space-surface)",
+              background: "var(--color-space-elevated)",
+              padding: "4px 8px",
+              textTransform: "uppercase",
+              letterSpacing: "0.08em",
+            }}>
+              {post.subcategory}
+            </span>
+          )}
+        </div>
 
         {/* Title */}
         <h1 style={{

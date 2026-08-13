@@ -43,4 +43,6 @@ export interface BlogPost {
   readingTime: number;
   published: boolean;
   category: string;
+  subcategory?: string;
 }
+

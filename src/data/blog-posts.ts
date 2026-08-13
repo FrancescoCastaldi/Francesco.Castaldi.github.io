@@ -2,6 +2,85 @@ import type { BlogPost } from "./types";
 
 export const blogPosts: BlogPost[] = [
   {
+    title: "Toyota Yaris MK4 HEV Trend MY25: Specs, Tech & Efficiency",
+    slug: "toyota-yaris-mk4-hev-trend-my25-review",
+    date: "2026-08-13",
+    excerpt: "A deep dive into the Toyota Yaris MK4 HEV Trend MY25, analyzing its 1.5L Dynamic Force hybrid powertrain, Toyota Safety Sense 3, and real-world 3.8 L/100km fuel economy.",
+    content: `![Toyota Yaris MK4 HEV Trend MY25 cinematic photo](/assets/blog/toyota-yaris-mk4-hev-trend-my25-review/images/cover.png)
+
+## Introduction: The Benchmark for Urban Hybrid Mobility
+
+The **Toyota Yaris MK4 (XP210 series)** has long established itself as the undisputed king of B-segment full hybrids. With the arrival of the **Model Year 2025 (MY25)**, Toyota has refined its popular hatchback, making the **Trend** trim level the absolute sweet spot in the lineup.
+
+Positioned between the entry-level Active and the top-tier Lounge / GR SPORT variants, the **MY25 Trend trim** delivers premium digital instrumentation, upgraded infotainment, bi-LED illumination, and enhanced active safety suites without ballooning the price tag.
+
+> [!NOTE]
+> Unlike mild hybrids or plug-in hybrids that require wall charging, Toyota's Full Hybrid (HEV) system operates autonomously through self-charging regenerative braking and internal combustion engine power split via a planetary gearset.
+
+---
+
+## Powertrain Architecture: 1.5L Dynamic Force & e-CVT
+
+Under the hood lies Toyota's fifth-generation hybrid architecture centered around the **1.5-liter M15A-FXE 3-cylinder Dynamic Force** petrol engine. Built on an Atkinson cycle, this powertrain achieves an extraordinary **40% thermal efficiency**—a figure typically reserved for motorsport engineering.
+
+The combustion engine is paired with two electric motor-generators (MG1 and MG2) integrated within an electronically controlled planetary gear transaxle (**e-CVT**):
+- **MG1 (Generator)**: Charges the lithium-ion traction battery and acts as the starter motor.
+- **MG2 (Traction Motor)**: Drives the front wheels directly and reclaims kinetic energy during deceleration.
+
+| Feature / Metric | OEM Specification (Yaris Hybrid 116) |
+|---|---|
+| **Engine Type** | 1.5L 3-Cylinder Atkinson Cycle (M15A-FXE) |
+| **Combined System Power** | 116 HP (85 kW) |
+| **Combined System Torque** | 141 Nm |
+| **Transmission** | Power Split Device (e-CVT) |
+| **Battery Type** | High-density Lithium-Ion (4.3 Ah) |
+| **0 - 100 km/h Acceleration** | 9.7 seconds |
+| **WLTP Fuel Economy** | 3.8 - 4.0 L/100 km (~70.6 MPG) |
+| **WLTP CO2 Emissions** | 87 - 92 g/km |
+
+*Table 1: Technical specifications of the Toyota Yaris MK4 HEV Trend MY25 powertrain*
+
+---
+
+## What Sets the MY25 Trend Trim Apart?
+
+The **MY25 update** focuses heavily on interior digital technology, noise insulation (NVH), and active driver assistance:
+
+1. **Toyota Smart Connect 10.5" HD Screen**: Replaces the older 8" unit with a ultra-responsive capacitive glass touch display, cloud navigation, and wireless Apple CarPlay / Android Auto.
+2. **7" Digital Cluster**: Offers customized instrument views displaying real-world EV usage percentages, energy flow diagrams, and adaptive cruise status.
+3. **Trend Exterior Package**: Machined 16" dark alloy wheels, full bi-LED projector headlights with LED daytime running lights, dark-tinted privacy glass, and gloss black trim highlights.
+4. **Enhanced Toyota Safety Sense 3 (TSS3)**: Features an upgraded radar sensor and camera with extended range for Pre-Collision System (PCS), Lane Trace Assist (LTA), and Proactive Driving Assist (PDA).
+
+> [!IMPORTANT]
+> The e-CVT transaxle is NOT a belt-and-pulley CVT. It utilizes fixed planetary gears that never slip or wear down like conventional CVT belts, guaranteeing exceptional mechanical reliability over hundreds of thousands of kilometers.
+
+---
+
+## Real-World Driving Dynamics & Maximizing EV Mode
+
+Driving the Yaris Trend MY25 in urban environments reveals why Toyota's hybrid setup remains unmatched. In city traffic, the vehicle can operate in **zero-emission EV mode for up to 80% of the trip time**.
+
+### Hyper-Miling Tips for Daily Commutes
+
+1. **Pulse & Glide Technique**: Accelerate smoothly up to your target speed using both the engine and electric motor, then release the throttle briefly to force the engine off before gently reapplying throttle to maintain speed in pure EV mode.
+2. **Predictive Braking**: Apply light, continuous brake pressure early when approaching traffic lights to maximize energy harvesting via MG2 before the mechanical friction brakes engage.
+3. **Use 'B' Mode Strategically**: Shift to 'B' (Engine Brake) mode on steep downhill mountain descents to prevent overheating the friction pads while controlling downhill momentum.
+
+> [!TIP]
+> Keep the hybrid battery air intake vent (located under the right rear passenger seat) free from dust and seat covers. Proper cooling airflow ensures maximum battery discharge efficiency during hot summer months.
+
+---
+
+## Final Verdict
+
+The **Toyota Yaris MK4 HEV Trend MY25** balances compact dimensions, sharp driving dynamics on the TNGA-B platform, and unbeatable real-world fuel economy. For urban commuters looking for cutting-edge digital infotainment and low total cost of ownership without plug-in constraints, the MY25 Trend represents the smartest purchase in the modern B-segment hybrid market.`,
+    tags: ["Toyota", "Yaris", "Hybrid", "Automotive", "MY25"],
+    readingTime: 5,
+    published: true,
+    category: "Automotive",
+    subcategory: "Toyota Yaris MK4 HEV",
+  },
+  {
     title: "Installing Focal 165 IC on Toyota Yaris XP210",
     slug: "focal-165-ic-toyota-yaris-xp210",
     date: "2026-08-06",
@@ -55,7 +134,8 @@ Before reassembling everything, turn on the radio. Check the polarity: if the ba
     tags: ["Audio", "Focal", "Toyota", "Tutorial"],
     readingTime: 6,
     published: true,
-    category: "Vehicles",
+    category: "Automotive",
+    subcategory: "Toyota Yaris MK4 HEV",
   },
   {
     title: "Blockchain in Healthcare: Beyond the Hype",
