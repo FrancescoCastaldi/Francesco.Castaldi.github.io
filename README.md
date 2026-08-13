@@ -1,5 +1,7 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/FrancescoCastaldi/Francesco.Castaldi.github.io/master/public/assets/img/brand/logo.png" alt="Francesco Castaldi Brand Logo" width="220" style="border-radius: 12px; margin-bottom: 16px;" />
+  <a href="https://francescocastaldi.it" target="_blank">
+    <img src="./public/assets/img/brand/logo.png" alt="Francesco Castaldi Brand Emblem" width="240" style="border-radius: 12px; margin-bottom: 16px;" />
+  </a>
   <h1>Francesco Castaldi — Automotive & Tech Forum Hub</h1>
   <p><b>Modern Ultra-Clean Portfolio, Technical Build Logs, and Full Hybrid (HEV) Systems Engineering</b></p>
 
