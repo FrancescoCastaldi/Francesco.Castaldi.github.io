@@ -1,21 +1,52 @@
 .blog-card {
-  transition: border-color 0.2s, transform 0.2s, background 0.2s !important;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease !important;
+  border: 1px solid #30363d !important;
+  background: #161b22 !important;
 }
 
 .blog-card:hover {
-  background: rgba(18, 26, 38, 0.95) !important;
-  transform: translateX(4px);
+  background: #1c2128 !important;
+  border-color: #f97316 !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 12px 30px rgba(249, 115, 22, 0.12) !important;
+}
+
+.blog-card:hover .blog-card-title {
+  color: #f97316 !important;
 }
 
 .blog-card:hover .blog-card-arrow {
-  transform: translateX(4px);
+  transform: translateX(6px) !important;
+  color: #f97316 !important;
 }
 
-.back-link:hover {
-  color: #F59E0B !important;
+.featured-blog-card {
+  border: 1px solid rgba(249, 115, 22, 0.4) !important;
+  background: radial-gradient(ellipse at top left, rgba(249, 115, 22, 0.08), rgba(22, 27, 34, 0.95)) !important;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease !important;
 }
 
-.contact-link:hover {
-  border-color: rgba(245, 158, 11, 0.25) !important;
-  color: #F59E0B !important;
+.featured-blog-card:hover {
+  border-color: #f97316 !important;
+  box-shadow: 0 16px 40px rgba(249, 115, 22, 0.18) !important;
+}
+
+.category-tab {
+  transition: all 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+}
+
+.category-tab:hover {
+  border-color: #f97316 !important;
+  color: #f97316 !important;
+}
+
+.search-input {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: #f97316 !important;
+  box-shadow: 0 0 15px rgba(249, 115, 22, 0.2) !important;
 }
