@@ -70,7 +70,7 @@ export default function HeroSection() {
                 fontWeight: 700,
               }}
             >
-              AUTOMOTIVE & SOFTWARE TECH HUB — MY25 ONLINE
+              OPEN SOURCE & AUTOMOTIVE SYSTEMS ENGINEER
             </span>
           </div>
 
@@ -91,7 +91,7 @@ export default function HeroSection() {
             Francesco<br />
             <span
               style={{
-                background: "linear-gradient(90deg, #f97316 0%, #86efac 100%)",
+                background: "linear-gradient(90deg, #f97316 0%, #38bdf8 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -105,7 +105,7 @@ export default function HeroSection() {
             style={{
               fontFamily: "var(--font-mono)",
               fontSize: 13,
-              color: "#86efac",
+              color: "#38bdf8",
               letterSpacing: "0.12em",
               textTransform: "uppercase",
               marginTop: 20,
@@ -114,7 +114,7 @@ export default function HeroSection() {
               paddingLeft: "14px",
             }}
           >
-            Computer Engineer & Automotive Systems Enthusiast
+            Computer Engineer, Open Source Contributor & Systems Dev
           </p>
 
           <p
@@ -129,15 +129,15 @@ export default function HeroSection() {
               fontWeight: 400,
             }}
           >
-            Building high-performance software, analyzing telematics data, and documenting hybrid powertrains, audio engineering, and cloud architectures.
+            Upstream contributor to enterprise open source platforms (Evidence, Apache Superset, Docker CLI). Building high-performance data systems, 3D WebGL engines, radar nowcasting models, and automotive telematics.
           </p>
 
-          {/* Automotive Telemetry Gauge Metrics Bar */}
+          {/* Telemetry Gauge Metrics Bar */}
           <div
             className="hero-entrance"
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
               gap: 12,
               marginTop: 32,
               padding: 16,
@@ -147,18 +147,26 @@ export default function HeroSection() {
           >
             <div>
               <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--color-text-muted)", textTransform: "uppercase" }}>
-                PRIMARY HEV
+                OPEN SOURCE
               </span>
-              <span style={{ fontFamily: "var(--font-mono)", fontSize: 15, fontWeight: 700, color: "#f97316" }}>
-                Yaris MK4 1.5L
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: 15, fontWeight: 700, color: "#38bdf8" }}>
+                Upstream Contrib
               </span>
             </div>
             <div>
               <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--color-text-muted)", textTransform: "uppercase" }}>
-                EFFICIENCY
+                GARAGE BUILDS
+              </span>
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: 15, fontWeight: 700, color: "#f97316" }}>
+                15+ Projects
+              </span>
+            </div>
+            <div>
+              <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--color-text-muted)", textTransform: "uppercase" }}>
+                PRIMARY HEV
               </span>
               <span style={{ fontFamily: "var(--font-mono)", fontSize: 15, fontWeight: 700, color: "#86efac" }}>
-                3.8 L/100km
+                Yaris MK4 1.5L
               </span>
             </div>
             <div>
@@ -182,7 +190,7 @@ export default function HeroSection() {
             }}
           >
             <a
-              href="#automotive-hub"
+              href="#open-source"
               style={{
                 fontFamily: "var(--font-mono)",
                 textTransform: "uppercase",
@@ -190,26 +198,26 @@ export default function HeroSection() {
                 fontWeight: 700,
                 letterSpacing: "0.08em",
                 color: "#0e1117",
-                background: "#f97316",
+                background: "#38bdf8",
                 padding: "14px 28px",
                 textDecoration: "none",
                 transition: "all 0.2s ease",
-                border: "1px solid #f97316",
+                border: "1px solid #38bdf8",
                 cursor: "pointer",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = "#0e1117";
-                e.currentTarget.style.color = "#f97316";
+                e.currentTarget.style.color = "#38bdf8";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = "#f97316";
+                e.currentTarget.style.background = "#38bdf8";
                 e.currentTarget.style.color = "#0e1117";
               }}
             >
-              [ EXPLORE GARAGE ]
+              [ Open Source Work ]
             </a>
             <a
-              href="#blog"
+              href="#projects"
               style={{
                 fontFamily: "var(--font-mono)",
                 textTransform: "uppercase",
@@ -232,7 +240,7 @@ export default function HeroSection() {
                 e.currentTarget.style.color = "var(--color-text-primary)";
               }}
             >
-              [ Forum Threads ]
+              [ Engineering Garage ]
             </a>
           </div>
         </div>

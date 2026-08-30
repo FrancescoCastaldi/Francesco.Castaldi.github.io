@@ -8,14 +8,17 @@ import HeroSection from "@/components/ui/HeroSection";
 export default function Home() {
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { rootMargin: "0px 0px -10% 0px", threshold: 0.1 });
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { rootMargin: "0px 0px -10% 0px", threshold: 0.1 }
+      );
 
       document.querySelectorAll(".scroll-reveal").forEach((el) => {
         observer.observe(el);
@@ -25,23 +28,277 @@ export default function Home() {
     }
   }, []);
 
-  const forumBoards = [
-    { id: "automotive", code: "BOARD_01", title: "Automotive & Hybrid HEV", desc: "Toyota Yaris MK4 HEV powertrain analysis, e-CVT telematics, Focal audio upgrades, and hybrid hyper-miling.", color: "var(--color-accent-amber)", tag: "AUTOMOTIVE" },
-    { id: "healthcare", code: "BOARD_02", title: "Healthcare IT & Compliance", desc: "Medical device software integration, hospital compliance audit trails, and privacy-first architectures.", color: "var(--color-node-healthcare)", tag: "HEALTHCARE" },
-    { id: "dataScience", code: "BOARD_03", title: "Data Science & AI", desc: "Machine Learning models, predictive analytics, RAG architectures, and statistical visualization.", color: "var(--color-accent-primary)", tag: "DATA_SCIENCE" },
-    { id: "cloud", code: "BOARD_04", title: "Cloud & Systems", desc: "Scalable GCP/AWS cloud infrastructure, Docker microservices, CI/CD pipelines, and static export SSG.", color: "#a78bfa", tag: "CLOUD_DEVOPS" },
-    { id: "security", code: "BOARD_05", title: "Cybersecurity & Systems", desc: "System hardening, threat modeling, secure software development lifecycles, and audit logging.", color: "#34d399", tag: "SECURITY" },
-    { id: "cycling", code: "BOARD_06", title: "Sports Analytics & Cycling", desc: "Biomechanical performance data analysis, Strava Python pipelines, power meter telemetry, and aerodynamics.", color: "#f43f5e", tag: "SPORTS_TECH" },
-  ];
+  const openSourceProjects = projects.filter((p) => p.skills.includes("open-source"));
+  const featuredBuilds = projects.filter((p) => !p.skills.includes("open-source") && p.featured);
+  const automotivePosts = blogPosts.filter((p) => p.category === "Automotive" || p.tags.includes("Toyota"));
 
-  const automotivePosts = blogPosts.filter(p => p.category === "Automotive" || p.tags.includes("Toyota"));
+  const forumBoards = [
+    { id: "openSource", code: "BOARD_00", title: "Open Source & Upstream", desc: "Upstream engineering on Evidence, Apache Superset, Docker CLI, Kanister (CNCF), and DuckDB ecosystems.", color: "#38bdf8", tag: "OPEN_SOURCE" },
+    { id: "automotive", code: "BOARD_01", title: "Automotive & Hybrid HEV", desc: "Toyota Yaris MK4 HEV powertrain analysis, e-CVT telematics, Focal audio upgrades, and hybrid hyper-miling.", color: "var(--color-accent-amber)", tag: "AUTOMOTIVE" },
+    { id: "dataScience", code: "BOARD_02", title: "Data Science & Radar Nowcasting", desc: "Dual-polarization radar storm nowcasting, BI as code, ML fairness auditing, and statistical simulation.", color: "var(--color-accent-primary)", tag: "DATA_SCIENCE" },
+    { id: "cloud", code: "BOARD_03", title: "Cloud Native & Kubernetes", desc: "Kubernetes operators, air-gapped Helm chart infrastructure, Docker CLI plugins, and CI/CD pipelines.", color: "#a78bfa", tag: "CLOUD_DEVOPS" },
+    { id: "web3d", code: "BOARD_04", title: "3D WebGL & Interactive Graphics", desc: "Three.js shader pipelines, dynamic planar texture projection, and real-time client-side CAD/apparel rendering.", color: "#06b6d4", tag: "WEBGL_3D" },
+    { id: "cycling", code: "BOARD_05", title: "Cycling Telematics & Wear Analytics", desc: "Predictive drivetrain friction models, Strava/Garmin FIT telemetry parsing, and biomechanical analytics.", color: "#f43f5e", tag: "SPORTS_TECH" },
+  ];
 
   return (
     <div style={{ animation: "pageFadeIn 0.6s ease both", paddingBottom: 60, background: "var(--color-space-void)" }}>
       {/* Hero Section */}
       <HeroSection />
 
-      {/* Featured Automotive Hub Showcase */}
+      {/* --- OPEN SOURCE CONTRIBUTIONS SECTION --- */}
+      <section
+        id="open-source"
+        className="scroll-reveal"
+        style={{
+          padding: "80px 5% 70px",
+          maxWidth: 1400,
+          margin: "0 auto",
+          borderBottom: "1px solid #1e293b",
+        }}
+      >
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 36, flexWrap: "wrap", gap: 16 }}>
+          <div>
+            <span
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: 11,
+                color: "#38bdf8",
+                textTransform: "uppercase",
+                letterSpacing: "0.15em",
+                display: "block",
+                marginBottom: 8,
+              }}
+            >
+              [ UPSTREAM_CONTRIBUTIONS // OPEN_SOURCE_ECOSYSTEM ]
+            </span>
+            <h2
+              style={{
+                fontFamily: "var(--font-sans)",
+                fontSize: "clamp(26px, 3.5vw, 40px)",
+                fontWeight: 800,
+                color: "var(--color-text-primary)",
+                letterSpacing: "-0.03em",
+                margin: 0,
+                textTransform: "uppercase",
+              }}
+            >
+              Open Source Contributions & Upstream PRs
+            </h2>
+          </div>
+
+          <a
+            href="https://github.com/FrancescoCastaldi"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: 11,
+              textTransform: "uppercase",
+              color: "#38bdf8",
+              border: "1px solid rgba(56, 189, 248, 0.3)",
+              padding: "8px 16px",
+              background: "rgba(15, 23, 42, 0.6)",
+              textDecoration: "none",
+              transition: "all 0.2s",
+            }}
+          >
+            [ GitHub Profile @FrancescoCastaldi → ]
+          </a>
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(360px, 1fr))",
+            gap: 20,
+          }}
+        >
+          {openSourceProjects.map((project) => (
+            <Link
+              key={project.id}
+              href={`/project/${project.slug}`}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                background: "#111827",
+                border: "1px solid #1e293b",
+                padding: 24,
+                textDecoration: "none",
+                transition: "all 0.2s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = project.color || "#38bdf8";
+                e.currentTarget.style.transform = "translateY(-2px)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "#1e293b";
+                e.currentTarget.style.transform = "translateY(0)";
+              }}
+            >
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: project.color || "#38bdf8", fontWeight: 700 }}>
+                  [{project.label}]
+                </span>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: 9, padding: "2px 8px", background: "rgba(56, 189, 248, 0.12)", color: "#38bdf8", border: "1px solid rgba(56, 189, 248, 0.3)", textTransform: "uppercase" }}>
+                  UPSTREAM
+                </span>
+              </div>
+
+              <h3 style={{ fontFamily: "var(--font-sans)", fontSize: 18, fontWeight: 700, color: "#f8fafc", marginBottom: 12, lineHeight: 1.35, textTransform: "uppercase" }}>
+                {project.title}
+              </h3>
+
+              <p style={{ fontFamily: "var(--font-sans)", fontSize: 14, color: "var(--color-text-body)", lineHeight: 1.6, marginBottom: 20, flex: 1 }}>
+                {project.description}
+              </p>
+
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap", borderTop: "1px solid #1f2937", paddingTop: 14 }}>
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    style={{
+                      fontSize: 10,
+                      fontFamily: "var(--font-mono)",
+                      padding: "3px 8px",
+                      background: "#1f2937",
+                      color: "var(--color-text-muted)",
+                      border: "1px solid #374151",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* --- FEATURED SOFTWARE & HARDWARE BUILDS --- */}
+      <section
+        id="projects"
+        className="scroll-reveal"
+        style={{
+          padding: "80px 5% 80px",
+          maxWidth: 1400,
+          margin: "0 auto",
+          borderBottom: "1px solid #1e293b",
+        }}
+      >
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <span
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: 11,
+              color: "var(--color-accent-amber)",
+              textTransform: "uppercase",
+              letterSpacing: "0.15em",
+              display: "block",
+              marginBottom: 8,
+            }}
+          >
+            [ ENGINEERING_GARAGE // FEATURED_BUILDS ]
+          </span>
+          <h2
+            style={{
+              fontFamily: "var(--font-sans)",
+              fontSize: "clamp(26px, 3.5vw, 40px)",
+              fontWeight: 800,
+              color: "var(--color-text-primary)",
+              letterSpacing: "-0.03em",
+              margin: 0,
+              textTransform: "uppercase",
+            }}
+          >
+            Software, 3D Graphics & Engineering Projects
+          </h2>
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
+            gap: 20,
+          }}
+        >
+          {featuredBuilds.map((project) => (
+            <Link
+              href={`/project/${project.slug}`}
+              key={project.id}
+              style={{
+                display: "block",
+                textDecoration: "none",
+                background: "#111827",
+                border: "1px solid #1e293b",
+                padding: 28,
+                transition: "all 0.2s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = project.color || "var(--color-accent-primary)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "#1e293b";
+                e.currentTarget.style.transform = "translateY(0)";
+              }}
+            >
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--color-accent-primary)", textTransform: "uppercase" }}>
+                  [ {project.icon} {project.slug} ]
+                </span>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: 9, padding: "2px 6px", background: "rgba(34, 197, 94, 0.15)", color: "#22c55e", border: "1px solid rgba(34, 197, 94, 0.3)" }}>
+                  DEPLOYED
+                </span>
+              </div>
+              <h3
+                style={{
+                  color: "#f8fafc",
+                  fontFamily: "var(--font-sans)",
+                  textTransform: "uppercase",
+                  fontWeight: 700,
+                  fontSize: 19,
+                  marginBottom: 12,
+                }}
+              >
+                {project.title}
+              </h3>
+              <p
+                style={{
+                  fontFamily: "var(--font-sans)",
+                  fontSize: 14,
+                  color: "var(--color-text-body)",
+                  lineHeight: 1.6,
+                  marginBottom: 20,
+                }}
+              >
+                {project.description}
+              </p>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                {project.tags.map((tech) => (
+                  <span
+                    key={tech}
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 10,
+                      textTransform: "uppercase",
+                      color: "var(--color-accent-secondary)",
+                      border: "1px solid #1e293b",
+                      background: "#1f2937",
+                      padding: "4px 8px",
+                    }}
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* --- AUTOMOTIVE HUB SHOWCASE --- */}
       <section
         id="automotive-hub"
         className="scroll-reveal"
@@ -99,7 +356,6 @@ export default function Home() {
           </Link>
         </div>
 
-        {/* Featured Automotive Cards */}
         <div
           style={{
             display: "grid",
@@ -155,7 +411,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Forum Sub-Boards / Expertise Section */}
+      {/* --- FORUM SUB-BOARDS / EXPERTISE SECTION --- */}
       <section
         id="expertise"
         className="scroll-reveal"
@@ -226,9 +482,9 @@ export default function Home() {
                   {board.tag}
                 </span>
               </div>
-              <h3 
-                style={{ 
-                  color: "#f8fafc", 
+              <h3
+                style={{
+                  color: "#f8fafc",
                   fontFamily: "var(--font-sans)",
                   textTransform: "uppercase",
                   fontSize: 17,
@@ -255,129 +511,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Projects Section / Garage */}
-      <section
-        id="projects"
-        className="scroll-reveal"
-        style={{
-          padding: "80px 5% 80px",
-          maxWidth: 1400,
-          margin: "0 auto",
-          borderBottom: "1px solid #1e293b",
-        }}
-      >
-        <div style={{ textAlign: "center", marginBottom: 48 }}>
-          <span
-            style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 11,
-              color: "var(--color-accent-amber)",
-              textTransform: "uppercase",
-              letterSpacing: "0.15em",
-              display: "block",
-              marginBottom: 8,
-            }}
-          >
-            [ ENGINEERING_GARAGE // FEATURED_BUILDS ]
-          </span>
-          <h2
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: "clamp(26px, 3.5vw, 40px)",
-              fontWeight: 800,
-              color: "var(--color-text-primary)",
-              letterSpacing: "-0.03em",
-              margin: 0,
-              textTransform: "uppercase",
-            }}
-          >
-            Software & Hardware Garage Projects
-          </h2>
-        </div>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))",
-            gap: 20,
-          }}
-        >
-          {projects.filter(p => p.featured).map((project) => (
-            <Link
-              href={`/project/${project.slug}`}
-              key={project.id}
-              style={{
-                display: "block",
-                textDecoration: "none",
-                background: "#111827",
-                border: "1px solid #1e293b",
-                padding: 28,
-                transition: "all 0.2s ease",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "var(--color-accent-primary)";
-                e.currentTarget.style.transform = "translateY(-2px)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "#1e293b";
-                e.currentTarget.style.transform = "translateY(0)";
-              }}
-            >
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--color-accent-primary)", textTransform: "uppercase" }}>
-                  [ BUILD_LOG // {project.slug} ]
-                </span>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: 9, padding: "2px 6px", background: "rgba(34, 197, 94, 0.15)", color: "#22c55e", border: "1px solid rgba(34, 197, 94, 0.3)" }}>
-                  DEPLOYED
-                </span>
-              </div>
-              <h3 
-                style={{ 
-                  color: "#f8fafc", 
-                  fontFamily: "var(--font-sans)",
-                  textTransform: "uppercase",
-                  fontWeight: 700,
-                  fontSize: 19,
-                  marginBottom: 12
-                }}
-              >
-                {project.title}
-              </h3>
-              <p
-                style={{
-                  fontFamily: "var(--font-sans)",
-                  fontSize: 14,
-                  color: "var(--color-text-body)",
-                  lineHeight: 1.6,
-                  marginBottom: 20
-                }}
-              >
-                {project.description}
-              </p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                {project.tags.map(tech => (
-                  <span
-                    key={tech}
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: 10,
-                      textTransform: "uppercase",
-                      color: "var(--color-accent-secondary)",
-                      border: "1px solid #1e293b",
-                      background: "#1f2937",
-                      padding: "4px 8px",
-                    }}
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* Latest Forum Threads / Blog Section */}
+      {/* --- LATEST FORUM THREADS / BLOG SECTION --- */}
       <section
         id="blog"
         className="scroll-reveal"
@@ -448,35 +582,37 @@ export default function Home() {
                 e.currentTarget.style.transform = "translateY(0)";
               }}
             >
-              <div style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 10,
-                textTransform: "uppercase",
-                color: "var(--color-accent-primary)",
-                marginBottom: 14,
-                borderBottom: "1px solid #1f2937",
-                paddingBottom: 8,
-                display: "flex",
-                justifyContent: "space-between",
-              }}>
+              <div
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 10,
+                  textTransform: "uppercase",
+                  color: "var(--color-accent-primary)",
+                  marginBottom: 14,
+                  borderBottom: "1px solid #1f2937",
+                  paddingBottom: 8,
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
                 <span>
-                  {new Date(post.date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'short',
-                    day: 'numeric'
+                  {new Date(post.date).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
                   })}
                 </span>
                 <span>{post.readingTime} MIN READ</span>
               </div>
-              <h3 
-                style={{ 
-                  color: "#f8fafc", 
+              <h3
+                style={{
+                  color: "#f8fafc",
                   fontFamily: "var(--font-sans)",
                   fontWeight: 700,
                   textTransform: "uppercase",
                   fontSize: 18,
                   marginBottom: 12,
-                  lineHeight: 1.35
+                  lineHeight: 1.35,
                 }}
               >
                 {post.title}
@@ -488,7 +624,7 @@ export default function Home() {
                   color: "var(--color-text-body)",
                   lineHeight: 1.6,
                   marginBottom: 20,
-                  flex: 1
+                  flex: 1,
                 }}
               >
                 {post.excerpt}
@@ -506,7 +642,7 @@ export default function Home() {
             </Link>
           ))}
         </div>
-        
+
         <div style={{ textAlign: "center" }}>
           <Link
             href="/blog"
@@ -525,15 +661,21 @@ export default function Home() {
               textDecoration: "none",
               transition: "all 0.2s ease",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = "var(--color-accent-primary)"; e.currentTarget.style.color = "#090d16"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = "#111827"; e.currentTarget.style.color = "var(--color-accent-primary)"; }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "var(--color-accent-primary)";
+              e.currentTarget.style.color = "#090d16";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "#111827";
+              e.currentTarget.style.color = "var(--color-accent-primary)";
+            }}
           >
             [ Open Full Forum Index → ]
           </Link>
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* --- CONTACT SECTION --- */}
       <section
         id="contact"
         className="scroll-reveal"
@@ -541,7 +683,7 @@ export default function Home() {
           padding: "80px 5% 100px",
           maxWidth: 800,
           margin: "0 auto",
-          textAlign: "center"
+          textAlign: "center",
         }}
       >
         <span
@@ -577,12 +719,12 @@ export default function Home() {
             fontSize: 16,
             color: "var(--color-text-body)",
             lineHeight: 1.7,
-            marginBottom: 40
+            marginBottom: 40,
           }}
         >
-          Open for technical discussions, automotive engineering exchanges, data science projects, or software collaboration.
+          Open for upstream open source collaboration, automotive engineering exchanges, data science systems, or full-stack software development.
         </p>
-        
+
         <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
           <a
             href="mailto:info@francescocastaldi.it"
@@ -625,8 +767,14 @@ export default function Home() {
               textDecoration: "none",
               transition: "all 0.2s ease",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = "var(--color-accent-amber)"; e.currentTarget.style.color = "#090d16"; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = "#111827"; e.currentTarget.style.color = "var(--color-accent-amber)"; }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "var(--color-accent-amber)";
+              e.currentTarget.style.color = "#090d16";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "#111827";
+              e.currentTarget.style.color = "var(--color-accent-amber)";
+            }}
           >
             [ LinkedIn Profile ]
           </a>
@@ -635,3 +783,4 @@ export default function Home() {
     </div>
   );
 }
+

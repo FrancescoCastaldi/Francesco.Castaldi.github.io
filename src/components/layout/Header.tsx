@@ -9,9 +9,10 @@ export default function Header() {
   const pathname = usePathname();
   
   const navItems = [
-    { label: "About", href: "/#about", desktop: true },
-    { label: "Expertise", href: "/#expertise", desktop: true },
+    { label: "Open Source", href: "/#open-source", desktop: true },
     { label: "Projects", href: "/#projects", desktop: true },
+    { label: "Garage Logs", href: "/#automotive-hub", desktop: true },
+    { label: "Boards", href: "/#expertise", desktop: true },
     { label: "Blog", href: "/blog", desktop: true },
     { label: "Contact", href: "/#contact", desktop: true },
   ];
