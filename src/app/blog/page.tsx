@@ -69,11 +69,11 @@ export default function BlogPage() {
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
             <span
               style={{
-                width: 8,
-                height: 8,
+                width: 7,
+                height: 7,
                 borderRadius: "50%",
-                background: "#86efac",
-                boxShadow: "0 0 8px #86efac",
+                background: "#cbd5e1",
+                boxShadow: "0 0 8px rgba(203, 213, 225, 0.8)",
                 display: "inline-block",
               }}
             />
@@ -81,13 +81,13 @@ export default function BlogPage() {
               style={{
                 fontFamily: "var(--font-mono)",
                 fontSize: 11,
-                color: "#86efac",
+                color: "#94a3b8",
                 textTransform: "uppercase",
                 letterSpacing: "0.15em",
-                fontWeight: 700,
+                fontWeight: 600,
               }}
             >
-              KNOWLEDGE & TELEMETRY HUB — 04_INDEX
+              TECHNICAL ARTICLES & TELEMETRY INDEX
             </span>
           </div>
 
@@ -96,21 +96,21 @@ export default function BlogPage() {
               fontFamily: "var(--font-sans)",
               fontSize: "clamp(34px, 5vw, 64px)",
               fontWeight: 800,
-              color: "var(--color-text-primary)",
+              color: "#f8fafc",
               letterSpacing: "-0.04em",
               margin: 0,
               lineHeight: 1.05,
               textTransform: "uppercase",
             }}
           >
-            Engineering <span style={{ color: "#f97316" }}>Guides & Articles</span>
+            Engineering <span style={{ color: "#94a3b8" }}>Guides & Articles</span>
           </h1>
 
           <p
             style={{
               fontFamily: "var(--font-sans)",
               fontSize: 16,
-              color: "var(--color-text-body)",
+              color: "#94a3b8",
               marginTop: 14,
               maxWidth: 680,
               lineHeight: 1.6,
@@ -127,34 +127,34 @@ export default function BlogPage() {
             gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
             gap: 16,
             padding: "16px 20px",
-            background: "#161b22",
-            border: "1px solid #30363d",
+            background: "#131519",
+            border: "1px solid #262a33",
             marginBottom: 36,
           }}
         >
           <div>
-            <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--color-text-muted)", textTransform: "uppercase" }}>
+            <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 10, color: "#64748b", textTransform: "uppercase" }}>
               PUBLISHED ARTICLES
             </span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: 18, fontWeight: 700, color: "#f97316" }}>
-              {publishedPosts.length} THREADS
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 16, fontWeight: 700, color: "#f8fafc" }}>
+              {publishedPosts.length} ARTICLES
             </span>
           </div>
 
           <div>
-            <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--color-text-muted)", textTransform: "uppercase" }}>
-              TOP CATEGORY
+            <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 10, color: "#64748b", textTransform: "uppercase" }}>
+              PRIMARY FOCUS
             </span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: 18, fontWeight: 700, color: "#86efac" }}>
-              AUTOMOTIVE HEV
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 16, fontWeight: 700, color: "#cbd5e1" }}>
+              AUTOMOTIVE HEV & SYSTEMS
             </span>
           </div>
 
           <div>
-            <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--color-text-muted)", textTransform: "uppercase" }}>
+            <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 10, color: "#64748b", textTransform: "uppercase" }}>
               TOTAL READ TIME
             </span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: 18, fontWeight: 700, color: "#f8fafc" }}>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 16, fontWeight: 700, color: "#f8fafc" }}>
               ~{totalReadingTime} MINS
             </span>
           </div>
@@ -171,7 +171,7 @@ export default function BlogPage() {
                 marginBottom: 12,
                 fontFamily: "var(--font-mono)",
                 fontSize: 11,
-                color: "#f97316",
+                color: "#94a3b8",
                 textTransform: "uppercase",
                 letterSpacing: "0.1em",
                 fontWeight: 700,
@@ -187,23 +187,23 @@ export default function BlogPage() {
                 display: "grid",
                 gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
                 gap: 28,
-                padding: "32px",
+                padding: "28px",
                 textDecoration: "none",
               }}
             >
               {/* Image Thumbnail */}
-              <div style={{ position: "relative", width: "100%", height: 260, overflow: "hidden", border: "1px solid #30363d", background: "#0e1117" }}>
+              <div style={{ position: "relative", width: "100%", height: 260, overflow: "hidden", border: "1px solid #262a33", background: "#0b0c0e" }}>
                 <img
                   src="/assets/blog/toyota-yaris-mk4-hev-trend-my25-review/images/cover.png"
                   alt={featuredPost.title}
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />
                 <div style={{ position: "absolute", top: 12, left: 12, display: "flex", gap: 6 }}>
-                  <span style={{ background: "#f97316", color: "#0e1117", padding: "4px 8px", fontSize: 10, fontFamily: "var(--font-mono)", fontWeight: 700, textTransform: "uppercase" }}>
+                  <span style={{ background: "#e2e8f0", color: "#0b0c0e", padding: "4px 8px", fontSize: 10, fontFamily: "var(--font-mono)", fontWeight: 700, textTransform: "uppercase" }}>
                     {featuredPost.category}
                   </span>
                   {featuredPost.subcategory && (
-                    <span style={{ background: "#86efac", color: "#0e1117", padding: "4px 8px", fontSize: 10, fontFamily: "var(--font-mono)", fontWeight: 700, textTransform: "uppercase" }}>
+                    <span style={{ background: "#1a1d23", color: "#cbd5e1", border: "1px solid #262a33", padding: "4px 8px", fontSize: 10, fontFamily: "var(--font-mono)", fontWeight: 700, textTransform: "uppercase" }}>
                       {featuredPost.subcategory}
                     </span>
                   )}
@@ -212,22 +212,22 @@ export default function BlogPage() {
 
               {/* Text Info */}
               <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                <div style={{ display: "flex", gap: 16, marginBottom: 12, fontSize: 11, color: "var(--color-text-muted)", fontFamily: "var(--font-mono)", textTransform: "uppercase" }}>
+                <div style={{ display: "flex", gap: 16, marginBottom: 12, fontSize: 11, color: "#64748b", fontFamily: "var(--font-mono)", textTransform: "uppercase" }}>
                   <span>{new Date(featuredPost.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                  <span>•</span>
+                  <span>&bull;</span>
                   <span>{featuredPost.readingTime} MIN READ</span>
                 </div>
 
-                <h2 style={{ fontFamily: "var(--font-sans)", fontSize: 26, fontWeight: 800, color: "#f8fafc", marginBottom: 14, lineHeight: 1.2, letterSpacing: "-0.02em" }}>
+                <h2 style={{ fontFamily: "var(--font-sans)", fontSize: 24, fontWeight: 800, color: "#f8fafc", marginBottom: 14, lineHeight: 1.25, letterSpacing: "-0.02em", textTransform: "uppercase" }}>
                   {featuredPost.title}
                 </h2>
 
-                <p style={{ color: "var(--color-text-body)", fontSize: 15, lineHeight: 1.6, margin: 0, marginBottom: 20 }}>
+                <p style={{ color: "#94a3b8", fontSize: 14, lineHeight: 1.6, margin: 0, marginBottom: 20 }}>
                   {featuredPost.excerpt}
                 </p>
 
-                <div style={{ marginTop: "auto", display: "inline-flex", alignItems: "center", gap: 8, color: "#f97316", fontFamily: "var(--font-mono)", fontSize: 12, fontWeight: 700, textTransform: "uppercase" }}>
-                  <span>[ READ TECHNICAL GUIDE → ]</span>
+                <div style={{ marginTop: "auto", display: "inline-flex", alignItems: "center", gap: 8, color: "#f8fafc", fontFamily: "var(--font-mono)", fontSize: 11, fontWeight: 700, textTransform: "uppercase" }}>
+                  <span>[ READ TECHNICAL GUIDE &rarr; ]</span>
                 </div>
               </div>
             </Link>
@@ -248,9 +248,9 @@ export default function BlogPage() {
                     onClick={() => setSelectedCategory(cat)}
                     className="category-tab"
                     style={{
-                      background: isActive ? "#f97316" : "#161b22",
-                      color: isActive ? "#0e1117" : "var(--color-text-body)",
-                      border: `1px solid ${isActive ? "#f97316" : "#30363d"}`,
+                      background: isActive ? "#e2e8f0" : "#131519",
+                      color: isActive ? "#0b0c0e" : "#94a3b8",
+                      border: `1px solid ${isActive ? "#e2e8f0" : "#262a33"}`,
                       padding: "8px 16px",
                       fontFamily: "var(--font-mono)",
                       fontSize: 11,
@@ -260,7 +260,7 @@ export default function BlogPage() {
                       cursor: "pointer",
                     }}
                   >
-                    {cat === "All" ? "ALL THREADS" : cat}
+                    {cat === "All" ? "ALL ARTICLES" : cat}
                   </button>
                 );
               })}
@@ -276,8 +276,8 @@ export default function BlogPage() {
                 className="search-input"
                 style={{
                   width: "100%",
-                  background: "#161b22",
-                  border: "1px solid #30363d",
+                  background: "#131519",
+                  border: "1px solid #262a33",
                   color: "#f8fafc",
                   padding: "10px 16px",
                   fontSize: 12,
@@ -325,35 +325,35 @@ export default function BlogPage() {
                   {post.excerpt}
                 </p>
 
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "auto", paddingTop: 14, borderTop: "1px solid #21262d" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "auto", paddingTop: 14, borderTop: "1px solid #1e222b" }}>
                   <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                    <span style={{ border: "1px solid #f97316", color: "#f97316", padding: "3px 7px", fontSize: 9, fontFamily: "var(--font-mono)", fontWeight: 700, textTransform: "uppercase" }}>
+                    <span style={{ border: "1px solid #262a33", background: "#1a1d23", color: "#cbd5e1", padding: "3px 7px", fontSize: 9, fontFamily: "var(--font-mono)", fontWeight: 700, textTransform: "uppercase" }}>
                       {post.category}
                     </span>
                     {post.subcategory && (
-                      <span style={{ border: "1px solid #86efac", color: "#86efac", padding: "3px 7px", fontSize: 9, fontFamily: "var(--font-mono)", fontWeight: 700, textTransform: "uppercase" }}>
+                      <span style={{ border: "1px solid #262a33", background: "#1a1d23", color: "#64748b", padding: "3px 7px", fontSize: 9, fontFamily: "var(--font-mono)", fontWeight: 700, textTransform: "uppercase" }}>
                         {post.subcategory}
                       </span>
                     )}
                   </div>
 
-                  <span className="blog-card-arrow" style={{ color: "var(--color-text-muted)", fontSize: 14, fontFamily: "var(--font-mono)", transition: "transform 0.2s, color 0.2s" }}>
-                    [→]
+                  <span className="blog-card-arrow" style={{ color: "#64748b", fontSize: 13, fontFamily: "var(--font-mono)", transition: "transform 0.2s, color 0.2s" }}>
+                    [&rarr;]
                   </span>
                 </div>
               </Link>
             ))}
           </div>
         ) : (
-          <div style={{ padding: "60px 20px", textAlign: "center", background: "#161b22", border: "1px solid #30363d" }}>
-            <p style={{ fontFamily: "var(--font-mono)", fontSize: 14, color: "var(--color-text-muted)", marginBottom: 16 }}>
+          <div style={{ padding: "60px 20px", textAlign: "center", background: "#131519", border: "1px solid #262a33" }}>
+            <p style={{ fontFamily: "var(--font-mono)", fontSize: 13, color: "#64748b", marginBottom: 16 }}>
               NO ARTICLES FOUND MATCHING YOUR SEARCH QUERY.
             </p>
             <button
               onClick={() => { setSelectedCategory("All"); setSearchQuery(""); }}
               style={{
-                background: "#f97316",
-                color: "#0e1117",
+                background: "#e2e8f0",
+                color: "#0b0c0e",
                 border: "none",
                 padding: "10px 20px",
                 fontFamily: "var(--font-mono)",

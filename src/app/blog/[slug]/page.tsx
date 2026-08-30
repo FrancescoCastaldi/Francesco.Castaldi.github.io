@@ -83,14 +83,14 @@ export default async function BlogPostPage({
         zIndex: 60,
         minHeight: "100vh",
         padding: "120px 5% 80px",
-        background: "#0e1117",
+        background: "#0b0c0e",
       }}
     >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <article style={{ maxWidth: 860, margin: "0 auto" }}>
+      <article style={{ maxWidth: 840, margin: "0 auto" }}>
         
         {/* Breadcrumb Navigation */}
         <Breadcrumb items={[
@@ -102,18 +102,18 @@ export default async function BlogPostPage({
         ]} />
 
         {/* Category & Subcategory Badges */}
-        <div style={{ display: "flex", gap: 10, marginTop: 20, marginBottom: 20, flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: 8, marginTop: 20, marginBottom: 18, flexWrap: "wrap" }}>
           <span style={{
             display: "inline-block",
             fontFamily: "var(--font-mono)",
-            fontSize: 11,
+            fontSize: 10,
             fontWeight: 700,
-            color: "#f97316",
-            border: "1px solid #f97316",
+            color: "#cbd5e1",
+            border: "1px solid #262a33",
+            background: "#131519",
             padding: "4px 10px",
             textTransform: "uppercase",
             letterSpacing: "0.08em",
-            background: "rgba(249, 115, 22, 0.08)",
           }}>
             {post.category}
           </span>
@@ -122,11 +122,11 @@ export default async function BlogPostPage({
             <span style={{
               display: "inline-block",
               fontFamily: "var(--font-mono)",
-              fontSize: 11,
+              fontSize: 10,
               fontWeight: 700,
-              color: "#86efac",
-              border: "1px solid #86efac",
-              background: "rgba(134, 239, 172, 0.08)",
+              color: "#64748b",
+              border: "1px solid #262a33",
+              background: "#131519",
               padding: "4px 10px",
               textTransform: "uppercase",
               letterSpacing: "0.08em",
@@ -139,12 +139,13 @@ export default async function BlogPostPage({
         {/* Article Title */}
         <h1 style={{
           fontFamily: "var(--font-sans)",
-          fontSize: "clamp(30px, 4.5vw, 52px)",
+          fontSize: "clamp(28px, 4.5vw, 46px)",
           fontWeight: 800,
           color: "#f8fafc",
           letterSpacing: "-0.03em",
           lineHeight: 1.1,
           marginBottom: 20,
+          textTransform: "uppercase",
         }}>
           {post.title}
         </h1>
@@ -152,29 +153,29 @@ export default async function BlogPostPage({
         {/* Metadata Telemetry Bar */}
         <div style={{
           display: "flex",
-          gap: 20,
-          fontSize: 12,
+          gap: 16,
+          fontSize: 11,
           textTransform: "uppercase",
-          color: "var(--color-text-muted)",
+          color: "#64748b",
           fontFamily: "var(--font-mono)",
-          marginBottom: 44,
-          paddingBottom: 20,
-          borderBottom: "1px solid #30363d",
+          marginBottom: 40,
+          paddingBottom: 18,
+          borderBottom: "1px solid #1e222b",
           alignItems: "center",
           flexWrap: "wrap",
         }}>
-          <span>PUBLISHED: {post.date}</span>
-          <span style={{ color: "#30363d" }}>|</span>
-          <span style={{ color: "#86efac" }}>READ TIME: {post.readingTime} MINS</span>
-          <span style={{ color: "#30363d" }}>|</span>
-          <span style={{ color: "#f97316" }}>AUTHOR: FRANCESCO CASTALDI</span>
+          <span>DATE: {post.date}</span>
+          <span style={{ color: "#262a33" }}>|</span>
+          <span style={{ color: "#cbd5e1" }}>READ TIME: {post.readingTime} MINS</span>
+          <span style={{ color: "#262a33" }}>|</span>
+          <span style={{ color: "#94a3b8" }}>AUTHOR: FRANCESCO CASTALDI</span>
         </div>
 
         {/* Article Markdown Body */}
         <div style={{
-          color: "#cbd5e1",
+          color: "#94a3b8",
           fontSize: 16,
-          lineHeight: 1.8,
+          lineHeight: 1.75,
           fontFamily: "var(--font-sans)",
         }}>
           {post.content.split("\n\n").map((rawParagraph, i) => {
@@ -184,21 +185,20 @@ export default async function BlogPostPage({
             const renderInline = (text: string) => {
               let html = text
                 .replace(/\*\*(.*?)\*\*/g, '<strong style="color: #f8fafc; font-weight: 700;">$1</strong>')
-                .replace(/`(.*?)`/g, '<code style="font-family: var(--font-mono); background: #161b22; padding: 3px 8px; border-radius: 2px; font-size: 0.88em; color: #86efac; border: 1px solid #30363d">$1</code>');
+                .replace(/`(.*?)`/g, '<code style="font-family: var(--font-mono); background: #131519; padding: 2px 6px; font-size: 0.88em; color: #f8fafc; border: 1px solid #262a33">$1</code>');
               return <span dangerouslySetInnerHTML={{ __html: html }} />;
             };
 
             // H2 Section Headers
             if (paragraph.startsWith("## ")) {
               return (
-                <div key={i} style={{ display: "flex", gap: 14, margin: "52px 0 24px", borderBottom: "1px solid #30363d", paddingBottom: 16, alignItems: "center" }}>
-                  <div style={{ width: 4, height: 28, background: "#f97316", flexShrink: 0 }} />
+                <div key={i} style={{ margin: "44px 0 20px", borderBottom: "1px solid #1e222b", paddingBottom: 14 }}>
                   <h2 style={{
                     fontFamily: "var(--font-sans)",
-                    fontSize: "clamp(20px, 3vw, 26px)",
+                    fontSize: "clamp(20px, 2.5vw, 24px)",
                     textTransform: "uppercase",
                     color: "#f8fafc",
-                    fontWeight: 800,
+                    fontWeight: 700,
                     margin: 0,
                     letterSpacing: "-0.02em",
                   }}>
@@ -211,9 +211,9 @@ export default async function BlogPostPage({
             // Bullet Lists
             if (paragraph.startsWith("- ")) {
               return (
-                <ul key={i} style={{ padding: "0 0 0 24px", margin: "20px 0", listStyleType: "square" }}>
+                <ul key={i} style={{ padding: "0 0 0 20px", margin: "16px 0", listStyleType: "square" }}>
                   {paragraph.split("\n").map((line, j) => (
-                    <li key={j} style={{ marginBottom: 10, color: "#cbd5e1" }}>
+                    <li key={j} style={{ marginBottom: 8, color: "#94a3b8" }}>
                       {renderInline(line.replace("- ", ""))}
                     </li>
                   ))}
@@ -227,23 +227,19 @@ export default async function BlogPostPage({
               const isTip = paragraph.startsWith("> [!TIP]");
               const isImportant = paragraph.startsWith("> [!IMPORTANT]");
               const cleanText = paragraph.replace(/> \[!(WARNING|TIP|NOTE|IMPORTANT)\]\n> /g, "").replace(/\n> /g, " ");
-              const borderColor = isWarning ? "#f43f5e" : (isTip ? "#86efac" : "#f97316");
 
               return (
                 <div key={i} style={{
-                  margin: "36px 0",
-                  padding: "24px",
-                  background: "#161b22",
-                  borderLeft: `4px solid ${borderColor}`,
-                  borderTop: "1px solid #30363d",
-                  borderRight: "1px solid #30363d",
-                  borderBottom: "1px solid #30363d",
-                  color: "#f8fafc",
+                  margin: "28px 0",
+                  padding: "20px 24px",
+                  background: "#131519",
+                  border: "1px solid #262a33",
+                  color: "#94a3b8",
                 }}>
-                  <strong style={{ color: borderColor, display: "block", marginBottom: 10, fontSize: 11, textTransform: "uppercase", letterSpacing: "0.08em", fontFamily: "var(--font-mono)", fontWeight: 700 }}>
+                  <strong style={{ color: "#f8fafc", display: "block", marginBottom: 8, fontSize: 11, textTransform: "uppercase", letterSpacing: "0.08em", fontFamily: "var(--font-mono)", fontWeight: 700 }}>
                     [ {isWarning ? "WARNING" : (isTip ? "TIP" : (isImportant ? "IMPORTANT" : "NOTE"))} ]
                   </strong>
-                  <div style={{ fontSize: 15, lineHeight: 1.6, color: "#cbd5e1" }}>
+                  <div style={{ fontSize: 14, lineHeight: 1.6, color: "#94a3b8" }}>
                     {renderInline(cleanText)}
                   </div>
                 </div>
@@ -258,12 +254,12 @@ export default async function BlogPostPage({
                 const bodyRows = rows.slice(2).map(r => r.split("|").slice(1, -1).map(s => s.trim()));
                 
                 return (
-                  <div key={i} style={{ overflowX: "auto", margin: "36px 0", border: "1px solid #30363d", background: "#161b22" }}>
-                    <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14 }}>
+                  <div key={i} style={{ overflowX: "auto", margin: "28px 0", border: "1px solid #262a33", background: "#131519" }}>
+                    <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
                       <thead>
-                        <tr style={{ background: "#21262d", borderBottom: "2px solid #f97316" }}>
+                        <tr style={{ background: "#131519", borderBottom: "1px solid #262a33" }}>
                           {headers.map((h, idx) => (
-                            <th key={idx} style={{ padding: "14px 18px", textAlign: "left", color: "#f8fafc", fontWeight: 700, fontFamily: "var(--font-mono)", textTransform: "uppercase", fontSize: 11, letterSpacing: "0.05em" }}>
+                            <th key={idx} style={{ padding: "12px 16px", textAlign: "left", color: "#f8fafc", fontWeight: 700, fontFamily: "var(--font-mono)", textTransform: "uppercase", fontSize: 11, letterSpacing: "0.05em" }}>
                               {renderInline(h)}
                             </th>
                           ))}
@@ -271,9 +267,9 @@ export default async function BlogPostPage({
                       </thead>
                       <tbody>
                         {bodyRows.map((row, rowIdx) => (
-                          <tr key={rowIdx} style={{ borderBottom: "1px solid #30363d" }}>
+                          <tr key={rowIdx} style={{ borderBottom: "1px solid #1a1d23" }}>
                             {row.map((cell, cellIdx) => (
-                              <td key={cellIdx} style={{ padding: "14px 18px", color: "#cbd5e1" }}>
+                              <td key={cellIdx} style={{ padding: "12px 16px", color: "#94a3b8" }}>
                                 {renderInline(cell)}
                               </td>
                             ))}
@@ -291,10 +287,10 @@ export default async function BlogPostPage({
               const match = paragraph.match(/^!\[(.*?)\]\((.*?)\)/);
               if (match) {
                 return (
-                  <div key={i} style={{ margin: "44px 0", border: "1px solid #30363d", background: "#161b22", padding: 12 }}>
-                    <img src={match[2]} alt={match[1]} style={{ width: "100%", height: "auto", display: "block", border: "1px solid #21262d" }} />
-                    <div style={{ marginTop: 10, fontFamily: "var(--font-mono)", fontSize: 11, color: "#86efac", textTransform: "uppercase", textAlign: "center", fontWeight: 700 }}>
-                      FIGURE: {match[1]}
+                  <div key={i} style={{ margin: "36px 0", border: "1px solid #262a33", background: "#131519", padding: 8 }}>
+                    <img src={match[2]} alt={match[1]} style={{ width: "100%", height: "auto", display: "block" }} />
+                    <div style={{ marginTop: 8, fontFamily: "var(--font-mono)", fontSize: 10, color: "#64748b", textTransform: "uppercase", textAlign: "center" }}>
+                      FIG: {match[1]}
                     </div>
                   </div>
                 );
@@ -302,17 +298,17 @@ export default async function BlogPostPage({
             }
 
             // Code Blocks
-            if (paragraph.startsWith("\`\`\`")) {
+            if (paragraph.startsWith("```")) {
               const codeContent = paragraph.replace(/```\w*\n/g, "").replace(/\n```/g, "").replace(/```/g, "");
               return (
                 <pre key={i} style={{
-                  background: "#161b22",
-                  padding: "24px",
-                  border: "1px solid #30363d",
+                  background: "#131519",
+                  padding: "20px",
+                  border: "1px solid #262a33",
                   overflowX: "auto",
-                  margin: "36px 0",
+                  margin: "28px 0",
                   fontFamily: "var(--font-mono)",
-                  fontSize: 13,
+                  fontSize: 12,
                   color: "#cbd5e1",
                   lineHeight: 1.6,
                 }}>
@@ -323,18 +319,18 @@ export default async function BlogPostPage({
 
             // Standard Paragraph
             return (
-              <p key={i} style={{ marginBottom: 24 }}>
+              <p key={i} style={{ marginBottom: 20 }}>
                 {renderInline(paragraph)}
               </p>
             );
           })}
         </div>
 
-        {/* Bottom Navigation & Share Bar */}
+        {/* Bottom Navigation */}
         <div style={{
-          marginTop: 72,
-          paddingTop: 36,
-          borderTop: "1px solid #30363d",
+          marginTop: 64,
+          paddingTop: 28,
+          borderTop: "1px solid #1e222b",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
@@ -344,10 +340,10 @@ export default async function BlogPostPage({
           <Link
             href="/blog"
             style={{
-              color: "#0e1117",
-              background: "#f97316",
-              padding: "12px 24px",
-              fontSize: 12,
+              color: "#0b0c0e",
+              background: "#e2e8f0",
+              padding: "10px 22px",
+              fontSize: 11,
               fontFamily: "var(--font-mono)",
               fontWeight: 700,
               textTransform: "uppercase",
@@ -355,24 +351,25 @@ export default async function BlogPostPage({
               transition: "opacity 0.2s",
             }}
           >
-            [ ← BACK TO ALL ARTICLES ]
+            [ &larr; Back to Articles ]
           </Link>
 
           <Link
             href="/"
             style={{
-              color: "#86efac",
-              border: "1px solid #86efac",
-              padding: "12px 24px",
-              fontSize: 12,
+              color: "#cbd5e1",
+              border: "1px solid #262a33",
+              background: "#131519",
+              padding: "10px 22px",
+              fontSize: 11,
               fontFamily: "var(--font-mono)",
               fontWeight: 700,
               textTransform: "uppercase",
               textDecoration: "none",
-              transition: "opacity 0.2s",
+              transition: "border-color 0.2s",
             }}
           >
-            [ BACK TO HOME → ]
+            [ Back to Home &rarr; ]
           </Link>
         </div>
 

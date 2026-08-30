@@ -1,41 +1,41 @@
 {
-  "name": "High-Contrast Charcoal, Orange & Mint",
+  "name": "Pure Titanium & Gunmetal Minimal-Tech",
   "colors": {
     "space-void": {
-      "hex": "#0e1117",
-      "role": "Deep charcoal void background"
+      "hex": "#0b0c0e",
+      "role": "Deep matte carbon & titanium base background"
     },
     "space-surface": {
-      "hex": "#161b22",
-      "role": "Dark slate card surface"
+      "hex": "#131519",
+      "role": "Matte gunmetal container and card surface"
     },
     "space-elevated": {
-      "hex": "#21262d",
-      "role": "Elevated hover state"
+      "hex": "#1a1d23",
+      "role": "Elevated titanium card tag and hover layer"
     },
-    "accent-orange": {
-      "hex": "#f97316",
-      "role": "Warm electric orange for primary CTA, active badges, highlights"
+    "border-titanium": {
+      "hex": "#262a33",
+      "role": "Hairline 1px titanium structural borders"
     },
-    "accent-mint": {
-      "hex": "#86efac",
-      "role": "Soft mint light green for telemetry indicators, success states, subcategory pills"
+    "border-hover": {
+      "hex": "#475164",
+      "role": "Brushed steel highlight on interactive hover"
     },
-    "accent-border": {
-      "hex": "#30363d",
-      "role": "Clean 1px slate structural borders"
+    "accent-platinum": {
+      "hex": "#e2e8f0",
+      "role": "Brushed platinum for primary CTA buttons and active pills"
     },
     "text-primary": {
       "hex": "#f8fafc",
-      "role": "Pure crisp slate white headings"
+      "role": "Crisp titanium white headings"
     },
     "text-body": {
-      "hex": "#cbd5e1",
-      "role": "High-legibility reading body text"
+      "hex": "#94a3b8",
+      "role": "Cool metallic slate body copy"
     },
     "text-muted": {
-      "hex": "#8b949e",
-      "role": "Muted metadata, timestamps, and captions"
+      "hex": "#64748b",
+      "role": "Deep gunmetal metadata and technical spec labels"
     }
   }
 }

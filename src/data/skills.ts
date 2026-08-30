@@ -12,7 +12,7 @@ export const skills: SkillNode[] = [
       "Active upstream contributor to enterprise open source platforms including Evidence, Apache Superset, Docker CLI, Kanister, and Duckle.",
     relatedProjects: ["evidence-bi-as-code", "apache-superset-contributions", "docker-cli-contributions", "kanister-kubernetes-operator", "duckle-workspace-orchestration"],
     icon: "🌐",
-    color: "#38BDF8",
+    color: "#cbd5e1",
   },
   {
     id: "automotive-eng",
@@ -25,7 +25,7 @@ export const skills: SkillNode[] = [
       "Dynamic engine kinematics, hybrid powertrain telematics, fatigue analysis (Goodman-Smith), CAD modeling, and real-world fuel economy optimization.",
     relatedProjects: ["toyota-m15a-connecting-rod", "benzatracker"],
     icon: "🏎️",
-    color: "#F97316",
+    color: "#94a3b8",
   },
   {
     id: "data-science",
@@ -38,7 +38,7 @@ export const skills: SkillNode[] = [
       "Statistical modeling, data pipelines, BI as code, and visualization using Python (NumPy, pandas, Matplotlib), DuckDB, and Apache Superset.",
     relatedProjects: ["evidence-bi-as-code", "apache-superset-contributions", "duckle-workspace-orchestration", "hailcast-ml-radar-nowcasting", "velometric", "trumetrapla", "sir-markov", "ci-cervical", "sgf2-ai"],
     icon: "📊",
-    color: "var(--color-nebula)",
+    color: "#a8b3cf",
   },
   {
     id: "ai-ml",
@@ -51,7 +51,7 @@ export const skills: SkillNode[] = [
       "Deep learning with PyTorch, convective storm nowcasting, optical flow tracking, image deblurring (UNet/DiffPIR), and algorithmic fairness auditing.",
     relatedProjects: ["hailcast-ml-radar-nowcasting", "ci-cervical", "sgf2-ai", "sir-markov"],
     icon: "🧠",
-    color: "#FB7185",
+    color: "#94a3b8",
   },
   {
     id: "web-dev",
@@ -64,7 +64,7 @@ export const skills: SkillNode[] = [
       "Building high-performance interactive web apps with TypeScript, React, Next.js, Three.js/WebGL, Svelte, Vite, Leaflet, and Tailwind CSS.",
     relatedProjects: ["mini-jersey-studio", "evidence-bi-as-code", "gpx-editor", "superset-calendar"],
     icon: "💻",
-    color: "var(--color-nebula)",
+    color: "#cbd5e1",
   },
   {
     id: "cloud-arch",
@@ -77,7 +77,7 @@ export const skills: SkillNode[] = [
       "Kubernetes operators, Helm chart infrastructure, Docker CLI tooling, CI/CD workflows, air-gapped deployments, and static web architectures.",
     relatedProjects: ["kanister-kubernetes-operator", "docker-cli-contributions", "duckle-workspace-orchestration", "superset-calendar"],
     icon: "☁️",
-    color: "#A78BFA",
+    color: "#8590a2",
   },
   {
     id: "cycling-analytics",
@@ -90,7 +90,7 @@ export const skills: SkillNode[] = [
       "Predictive component wear modeling, Strava/Garmin FIT telemetry parsing, drivetrain friction analysis, and 3D cycling apparel customization.",
     relatedProjects: ["velometric", "mini-jersey-studio", "gpx-editor"],
     icon: "🚴",
-    color: "#34D399",
+    color: "#94a3b8",
   },
   {
     id: "reverse-eng",
@@ -103,7 +103,7 @@ export const skills: SkillNode[] = [
       "Network packet sniffing, SNMP OID extraction, wireless firmware telemetry bypass, and hardware diagnostic reverse engineering.",
     relatedProjects: ["epson-air-resuscitator"],
     icon: "🔌",
-    color: "#EC4899",
+    color: "#a8b3cf",
   },
   {
     id: "healthcare-it",
@@ -116,7 +116,7 @@ export const skills: SkillNode[] = [
       "Design and implementation of digital solutions for healthcare environments, compliance audit trails, and privacy-first hospital systems.",
     relatedProjects: ["hosp-san-tracker", "tpertutti-ux"],
     icon: "🏥",
-    color: "var(--color-star-gold)",
+    color: "#8590a2",
   },
   {
     id: "blockchain",
@@ -129,7 +129,7 @@ export const skills: SkillNode[] = [
       "Smart contract development with Solidity, deployment on Ethereum testnets, and integration with frontend applications via Ethers.js.",
     relatedProjects: ["hosp-san-tracker"],
     icon: "⛓️",
-    color: "#A78BFA",
+    color: "#64748b",
   },
   {
     id: "consulting",
@@ -142,6 +142,6 @@ export const skills: SkillNode[] = [
       "User experience research, Double Diamond design methodology, usability testing, and stakeholder communication for digital transformation.",
     relatedProjects: ["tpertutti-ux"],
     icon: "💼",
-    color: "#E2E8F0",
+    color: "#e2e8f0",
   },
 ];

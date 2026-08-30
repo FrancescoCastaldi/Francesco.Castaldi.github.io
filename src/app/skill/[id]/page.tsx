@@ -24,59 +24,47 @@ export default async function SkillPage({ params }: { params: Promise<{ id: stri
       position: "relative",
       zIndex: 60,
       minHeight: "100vh",
-      padding: "80px 5% 60px",
-      background: "rgba(10, 10, 10, 0.85)",
-      backdropFilter: "blur(16px)",
-      WebkitBackdropFilter: "blur(16px)",
+      padding: "120px 5% 70px",
+      background: "#0b0c0e",
     }}>
-      <main style={{ maxWidth: 680, margin: "0 auto" }}>
+      <main style={{ maxWidth: 720, margin: "0 auto" }}>
         {/* Breadcrumb */}
         <Breadcrumb items={[
           { label: "Home", href: "/" },
-          { label: "Skills", href: "/#skills" },
+          { label: "Skills", href: "/#expertise" },
           { label: skill.name },
         ]} />
 
         {/* Category badge */}
-        <span style={{
-          display: "inline-block",
-          fontFamily: 'var(--font-mono)',
-          fontSize: 10,
-          color: "var(--color-star-gold)",
-          background: "rgba(245,158,11,0.1)",
-          padding: "4px 12px",
-          borderRadius: 4,
-          marginTop: 24,
-          marginBottom: 16,
-          textTransform: "uppercase",
-          letterSpacing: "0.08em",
-        }}>
-          {skill.area.replace("-", " ")}
-        </span>
+        <div style={{ marginTop: 24, marginBottom: 16 }}>
+          <span style={{
+            display: "inline-block",
+            fontFamily: 'var(--font-mono)',
+            fontSize: 10,
+            color: "#cbd5e1",
+            background: "#131519",
+            border: "1px solid #262a33",
+            padding: "4px 10px",
+            textTransform: "uppercase",
+            letterSpacing: "0.08em",
+            fontWeight: 700,
+          }}>
+            [ DISCIPLINE // {skill.area.replace("-", " ")} ]
+          </span>
+        </div>
 
         {/* Header with large icon and title */}
         <div style={{ display: "flex", alignItems: "flex-start", gap: 16, marginBottom: 16 }}>
-          <span style={{
-            fontSize: "clamp(40px, 6vw, 56px)",
-            lineHeight: 1,
-            filter: "grayscale(0.2)",
-          }}>{skill.icon}</span>
           <div>
             <h1 style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: "clamp(28px, 4vw, 40px)",
-              fontWeight: 400,
-              color: "var(--color-text-primary)",
+              fontFamily: 'var(--font-sans)',
+              fontSize: "clamp(26px, 4vw, 38px)",
+              fontWeight: 800,
+              color: "#f8fafc",
               letterSpacing: "-0.03em",
-              lineHeight: 1.08,
+              lineHeight: 1.1,
+              textTransform: "uppercase",
             }}>{skill.name}</h1>
-            <div style={{
-              width: 40,
-              height: 2,
-              background: "var(--color-star-gold)",
-              borderRadius: 2,
-              marginTop: 14,
-            }} />
           </div>
         </div>
 
@@ -85,80 +73,65 @@ export default async function SkillPage({ params }: { params: Promise<{ id: stri
           <span style={{
             fontSize: 10,
             fontFamily: 'var(--font-mono)',
-            color: "var(--color-text-muted)",
+            color: "#64748b",
             textTransform: "uppercase",
             letterSpacing: "0.08em",
             display: "block",
-          }}>Proficiency</span>
-          <div style={{ display: "flex", gap: 6, marginTop: 10 }}>
+          }}>PROFICIENCY LEVEL &bull; {skill.level}</span>
+          <div style={{ display: "flex", gap: 6, marginTop: 8 }}>
             {[1, 2, 3].map((seg) => (
               <div key={seg} style={{
                 flex: 1,
-                height: 4,
-                borderRadius: 2,
-                background: seg <= proficiency ? "var(--color-star-gold)" : "rgba(255,255,255,0.06)",
+                height: 3,
+                background: seg <= proficiency ? "#e2e8f0" : "#1a1d23",
               }} />
             ))}
           </div>
-          <span style={{
-            fontSize: 10,
-            fontFamily: 'var(--font-sans)',
-            color: "#6B7A8D",
-            marginTop: 6,
-            display: "block",
-            textTransform: "capitalize",
-          }}>
-            {skill.level}
-          </span>
         </div>
 
         {/* Description */}
         <p style={{
-          color: "var(--color-text-body)",
+          color: "#94a3b8",
           fontSize: 15,
-          lineHeight: 1.8,
+          lineHeight: 1.75,
           fontFamily: 'var(--font-sans)',
-          marginBottom: 24,
+          marginBottom: 28,
         }}>{skill.description}</p>
 
         {/* Related projects */}
         {relatedProjects.length > 0 && (
-          <div style={{ marginTop: 32, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+          <div style={{ marginTop: 36, paddingTop: 24, borderTop: "1px solid #1e222b" }}>
             <span style={{
-              fontSize: 10,
+              fontSize: 11,
               fontFamily: 'var(--font-mono)',
-              color: "var(--color-text-muted)",
+              color: "#64748b",
               textTransform: "uppercase",
               letterSpacing: "0.08em",
               display: "block",
-            }}>Related Projects</span>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 12 }}>
+              marginBottom: 14,
+            }}>[ Related Systems & Builds ]</span>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {relatedProjects.map((p) => (
                 <InteractiveLink key={p.id} href={`/project/${p.slug}`} style={{
                   display: "flex",
                   alignItems: "center",
-                  gap: 12,
+                  justifyContent: "space-between",
                   textDecoration: "none",
-                  padding: "12px 14px",
-                  background: "rgba(255,255,255,0.03)",
-                  borderRadius: 8,
-                  border: `1px solid ${p.color}20`,
+                  padding: "14px 18px",
+                  background: "#131519",
+                  border: `1px solid #262a33`,
                 }}
                 hoverStyle={{
-                  borderColor: `${p.color}50`,
-                  background: "rgba(255,255,255,0.05)",
+                  borderColor: `#475164`,
                 }}>
-                  <span style={{ fontSize: 16 }}>{p.icon}</span>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ color: "var(--color-text-primary)", fontSize: 13, marginBottom: 2 }}>{p.title}</div>
-                    <div style={{ color: "var(--color-text-muted)", fontSize: 10, fontFamily: 'var(--font-mono)' }}>
-                      {p.tags.slice(0, 3).join(" \u00B7 ")}
+                    <div style={{ color: "#f8fafc", fontSize: 14, fontWeight: 700, textTransform: "uppercase", marginBottom: 2 }}>{p.title}</div>
+                    <div style={{ color: "#64748b", fontSize: 10, fontFamily: 'var(--font-mono)', textTransform: "uppercase" }}>
+                      {p.tags.slice(0, 4).join(" \u00B7 ")}
                     </div>
                   </div>
-                  <span style={{ color: "var(--color-star-gold)", fontSize: 12 }}>
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                      <path d="M2 6H10M10 6L7 3M10 6L7 9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                  <span style={{ color: "#cbd5e1", fontSize: 12, fontFamily: "var(--font-mono)" }}>
+                    [&rarr;]
                   </span>
                 </InteractiveLink>
               ))}
@@ -167,23 +140,21 @@ export default async function SkillPage({ params }: { params: Promise<{ id: stri
         )}
 
         {/* Bottom nav */}
-        <div style={{ marginTop: 48, paddingTop: 24, borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-          <InteractiveLink href="/#skills" style={{
+        <div style={{ marginTop: 48, paddingTop: 24, borderTop: "1px solid #1e222b" }}>
+          <InteractiveLink href="/#expertise" style={{
             fontFamily: 'var(--font-mono)',
             fontSize: 11,
-            color: "var(--color-star-gold)",
+            color: "#94a3b8",
             textDecoration: "none",
             display: "inline-flex",
             alignItems: "center",
             gap: 6,
+            textTransform: "uppercase",
           }}
           hoverStyle={{
-            color: "#FBBF24",
+            color: "#f8fafc",
           }}>
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M10 6H2M2 6L5 3M2 6L5 9" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            Back to Skills
+            [ &larr; Back to Competencies ]
           </InteractiveLink>
         </div>
       </main>

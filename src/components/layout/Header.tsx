@@ -38,8 +38,10 @@ export default function Header() {
           alignItems: "center",
           justifyContent: "space-between",
           padding: "0 5%",
-          background: "var(--color-space-void)",
-          borderBottom: "1px solid var(--color-space-surface)",
+          background: "rgba(11, 12, 14, 0.85)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          borderBottom: "1px solid #1e222b",
         }}
       >
         {/* Logo */}
@@ -52,28 +54,34 @@ export default function Header() {
             textDecoration: "none",
           }}
         >
-          <img 
-            src="/assets/img/brand/logo.png" 
-            alt="Francesco Castaldi Brand Emblem" 
-            style={{ 
-              width: 28, 
-              height: 28, 
-              borderRadius: 4, 
-              objectFit: "cover", 
-              border: "1px solid rgba(249, 115, 22, 0.4)" 
-            }}
-          />
-          <span
+          <div
             style={{
-              color: "var(--color-text-primary)",
-              fontFamily: "var(--font-sans)",
-              fontWeight: 700,
-              fontSize: 16,
-              textTransform: "uppercase",
-              letterSpacing: "0.05em",
+              width: 24,
+              height: 24,
+              background: "#161920",
+              border: "1px solid #333a48",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontFamily: "var(--font-mono)",
+              fontSize: 10,
+              fontWeight: 800,
+              color: "#e2e8f0",
             }}
           >
-            F. <span style={{ color: "var(--color-accent-secondary)" }}>CASTALDI</span>
+            FC
+          </div>
+          <span
+            style={{
+              color: "#f8fafc",
+              fontFamily: "var(--font-sans)",
+              fontWeight: 700,
+              fontSize: 14,
+              textTransform: "uppercase",
+              letterSpacing: "0.08em",
+            }}
+          >
+            Francesco <span style={{ color: "#94a3b8" }}>Castaldi</span>
           </span>
         </Link>
 
@@ -97,20 +105,20 @@ export default function Header() {
                     onClick={() => setMenuOpen(false)}
                     style={{
                       fontFamily: "var(--font-mono)",
-                      fontSize: 12,
+                      fontSize: 11,
                       fontWeight: 600,
-                      color: isActive ? "var(--color-accent-secondary)" : "var(--color-text-body)",
+                      color: isActive ? "#f8fafc" : "#94a3b8",
                       textDecoration: "none",
                       letterSpacing: "0.06em",
                       textTransform: "uppercase",
-                      transition: "color 0.2s",
+                      transition: "color 0.2s ease",
                       position: "relative",
                     }}
                     onMouseEnter={(e) => {
-                      if (!isActive) e.currentTarget.style.color = "var(--color-accent-secondary)";
+                      if (!isActive) e.currentTarget.style.color = "#f8fafc";
                     }}
                     onMouseLeave={(e) => {
-                      if (!isActive) e.currentTarget.style.color = "var(--color-text-body)";
+                      if (!isActive) e.currentTarget.style.color = "#94a3b8";
                     }}
                   >
                     [ {item.label} ]
@@ -127,9 +135,9 @@ export default function Header() {
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Menu"
               style={{
-                background: "none",
-                border: "1px solid var(--color-space-surface)",
-                color: "var(--color-text-body)",
+                background: "#131519",
+                border: "1px solid #262a33",
+                color: "#cbd5e1",
                 width: 36,
                 height: 36,
                 display: "flex",

@@ -12,13 +12,11 @@ export default function ContactPage() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        padding: "80px 5% 60px",
-        background: "rgba(10, 10, 10, 0.85)",
-        backdropFilter: "blur(16px)",
-        WebkitBackdropFilter: "blur(16px)",
+        padding: "120px 5% 70px",
+        background: "#0b0c0e",
       }}
     >
-      <div style={{ width: "100%", maxWidth: 520 }}>
+      <div style={{ width: "100%", maxWidth: 560 }}>
         {/* Breadcrumb */}
         <div style={{ textAlign: "center", marginBottom: 24 }}>
           <Breadcrumb items={[
@@ -28,32 +26,31 @@ export default function ContactPage() {
         </div>
 
         <div style={{ textAlign: "center", marginBottom: 40 }}>
-          <span style={categoryBadgeStyle}>Contact</span>
+          <span style={categoryBadgeStyle}>[ DIRECT_COMMUNICATION ]</span>
           <h1
             style={{
-              fontFamily: 'var(--font-serif)',
-              fontSize: "clamp(28px, 5vw, 40px)" as const,
-              fontWeight: 400,
-              color: "var(--color-text-primary)",
+              fontFamily: 'var(--font-sans)',
+              fontSize: "clamp(28px, 4vw, 40px)",
+              fontWeight: 800,
+              color: "#f8fafc",
               marginBottom: 16,
-              letterSpacing: "-0.02em",
+              letterSpacing: "-0.03em",
+              textTransform: "uppercase",
             }}
           >
-            Get in touch
+            Get In Touch
           </h1>
-          <div style={accentLineStyle} />
           <p
             style={{
-              color: "var(--color-text-body)",
+              color: "#94a3b8",
               fontSize: 15,
-              lineHeight: 1.8,
+              lineHeight: 1.7,
               fontFamily: 'var(--font-sans)',
-              maxWidth: 420,
+              maxWidth: 440,
               margin: "0 auto",
             }}
           >
-            Feel free to reach out. I&apos;m based in Modena, Italy, and always
-            happy to connect.
+            Available for upstream open-source contributions, automotive systems engineering, data pipelines, and technical consulting.
           </p>
         </div>
 
@@ -92,35 +89,35 @@ export default function ContactPage() {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                padding: "14px 18px",
-                border: "1px solid rgba(255,255,255,0.06)",
-                borderRadius: 8,
+                padding: "16px 20px",
+                border: "1px solid #262a33",
                 textDecoration: "none",
-                color: "var(--color-text-body)",
-                fontSize: 14,
+                color: "#cbd5e1",
+                fontSize: 13,
                 fontFamily: 'var(--font-sans)',
-                transition: "border-color 0.2s, color 0.2s",
-                background: "rgba(255,255,255,0.02)",
+                transition: "border-color 0.2s, color 0.2s, background 0.2s",
+                background: "#131519",
               }}
             >
               <span
                 style={{
-                  color: "var(--color-text-muted)",
-                  fontSize: 11,
+                  color: "#64748b",
+                  fontSize: 10,
                   textTransform: "uppercase",
-                  letterSpacing: "0.08em",
+                  letterSpacing: "0.1em",
                   fontFamily: 'var(--font-mono)',
+                  fontWeight: 700,
                 }}
               >
-                {item.label}
+                [{item.label}]
               </span>
-              <span>{item.value}</span>
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: 13, color: "#f8fafc" }}>{item.value}</span>
             </a>
           ))}
         </div>
 
         <div style={{ textAlign: "center" }}>
-          <Link href="/" style={backLinkStyle}>← Back to Home</Link>
+          <Link href="/" style={backLinkStyle}>[ &larr; Back to Home ]</Link>
         </div>
       </div>
     </div>
@@ -130,30 +127,25 @@ export default function ContactPage() {
 const backLinkStyle = {
   fontFamily: 'var(--font-mono)',
   fontSize: 11,
-  color: "var(--color-star-gold)",
+  color: "#94a3b8",
   textDecoration: "none",
+  textTransform: "uppercase" as const,
   display: "inline-flex",
   alignItems: "center",
   gap: 6,
-} as const;
+};
 
 const categoryBadgeStyle = {
   display: "inline-block",
   fontFamily: 'var(--font-mono)',
   fontSize: 10,
-  color: "var(--color-star-gold)",
-  background: "rgba(245,158,11,0.1)",
-  padding: "4px 12px",
-  borderRadius: 4,
+  color: "#cbd5e1",
+  background: "#131519",
+  border: "1px solid #262a33",
+  padding: "4px 10px",
   marginBottom: 16,
   textTransform: "uppercase" as const,
-  letterSpacing: "0.08em",
+  letterSpacing: "0.1em",
+  fontWeight: 700,
 };
 
-const accentLineStyle = {
-  width: 40,
-  height: 2,
-  background: "var(--color-star-gold)",
-  borderRadius: 2,
-  margin: "0 auto 20px",
-};

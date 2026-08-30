@@ -1,24 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-space-void: #0e1117;
-  --color-space-surface: #161b22;
-  --color-space-elevated: #21262d;
-  --color-accent-primary: #f97316;
-  --color-accent-amber: #f97316;
-  --color-accent-secondary: #86efac;
-  --color-accent-soft: #1c2128;
+  --color-space-void: #0b0c0e;
+  --color-space-surface: #131519;
+  --color-space-elevated: #1a1d23;
+  --color-space-border: #262a33;
+  --color-space-border-hover: #3f4756;
+  --color-accent-primary: #e2e8f0;
+  --color-accent-amber: #94a3b8;
+  --color-accent-secondary: #94a3b8;
+  --color-accent-titanium: #8590a2;
+  --color-accent-soft: #161920;
   --color-text-primary: #f8fafc;
-  --color-text-body: #cbd5e1;
-  --color-text-muted: #8b949e;
-  --color-text-dim: #30363d;
-  --color-node-healthcare: #f97316;
-  --color-node-data-science: #86efac;
-  --color-node-cloud: #a78bfa;
-  --color-node-ai: #818cf8;
-  --color-node-security: #4ade80;
-  --color-node-cycling: #f43f5e;
-  --color-node-automotive: #f97316;
+  --color-text-body: #94a3b8;
+  --color-text-muted: #64748b;
+  --color-text-dim: #334155;
   --font-serif: "Inter", -apple-system, sans-serif;
   --font-sans: "Inter", -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
@@ -27,8 +23,9 @@
 @layer base {
   :root {
     --spring-easing: cubic-bezier(0.16, 1, 0.3, 1);
-    --border-metallic: 1px solid #30363d;
-    --border-metallic-glow: 1px solid rgba(249, 115, 22, 0.35);
+    --border-metallic: 1px solid #262a33;
+    --border-metallic-glow: 1px solid rgba(226, 232, 240, 0.25);
+    --border-titanium: 1px solid rgba(133, 144, 162, 0.2);
   }
   
   * { margin: 0; padding: 0; box-sizing: border-box; }

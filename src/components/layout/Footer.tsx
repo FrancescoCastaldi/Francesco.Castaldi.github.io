@@ -25,8 +25,9 @@ export default function Footer() {
         alignItems: "center",
         justifyContent: "space-between",
         padding: "0 5%",
-        background: "var(--color-space-void)",
-        borderTop: "1px solid var(--color-space-surface)",
+        background: "rgba(11, 12, 14, 0.9)",
+        backdropFilter: "blur(8px)",
+        borderTop: "1px solid #1e222b",
         pointerEvents: "auto",
       }}
     >
@@ -35,24 +36,20 @@ export default function Footer() {
         style={{
           display: "flex",
           alignItems: "center",
-          gap: 6,
+          gap: 8,
         }}
       >
-        <img 
-          src="/assets/img/brand/logo.png" 
-          alt="FC Emblem" 
-          style={{ width: 18, height: 18, borderRadius: 3, objectFit: "cover", border: "1px solid rgba(56, 189, 248, 0.3)" }}
-        />
         <span
           style={{
-            color: "var(--color-text-muted)",
+            color: "#cbd5e1",
             fontFamily: "var(--font-mono)",
             fontSize: 10,
             textTransform: "uppercase",
             letterSpacing: "0.1em",
+            fontWeight: 700,
           }}
         >
-          [ F.C. ]
+          [ FC.SYS // ENG ]
         </span>
       </div>
 
@@ -69,31 +66,31 @@ export default function Footer() {
           target="_blank"
           rel="noopener noreferrer"
           style={linkStyle}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-accent-secondary)")}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#f8fafc")}
           onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-muted)")}
         >
           GitHub
         </a>
 
-        <span style={{ color: "var(--color-space-surface)", fontSize: 10, userSelect: "none" }}>|</span>
+        <span style={{ color: "#262a33", fontSize: 10, userSelect: "none" }}>|</span>
 
         <a
           href="https://www.linkedin.com/in/francescocastaldi"
           target="_blank"
           rel="noopener noreferrer"
           style={linkStyle}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-accent-secondary)")}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#f8fafc")}
           onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-muted)")}
         >
           LinkedIn
         </a>
 
-        <span style={{ color: "var(--color-space-surface)", fontSize: 10, userSelect: "none" }}>|</span>
+        <span style={{ color: "#262a33", fontSize: 10, userSelect: "none" }}>|</span>
 
         <a
           href="mailto:info@francescocastaldi.it"
           style={linkStyle}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-accent-secondary)")}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#f8fafc")}
           onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-muted)")}
         >
           Email
@@ -103,13 +100,13 @@ export default function Footer() {
       {/* Right column — Copyright */}
       <span
         style={{
-          color: "var(--color-text-muted)",
+          color: "#64748b",
           fontSize: 10,
           fontFamily: "var(--font-mono)",
           textTransform: "uppercase",
         }}
       >
-        © 2026
+        FRANCESCO CASTALDI &copy; 2026
       </span>
     </div>
   );
