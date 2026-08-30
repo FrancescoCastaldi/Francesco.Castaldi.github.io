@@ -173,53 +173,6 @@ export default function HeroSection() {
             Designing resilient software architectures, contributing to upstream enterprise open-source tools (Evidence, Apache Superset, Docker CLI), and engineering high-precision data & mechanical systems.
           </p>
 
-          {/* Telemetry Numbers Matrix */}
-          <div
-            className="hero-entrance"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(110px, 1fr))",
-              gap: 12,
-              marginTop: 32,
-              padding: "16px 20px",
-              background: "#131519",
-              border: "1px solid #262a33",
-            }}
-          >
-            <div>
-              <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 10, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-                WORK TRACK
-              </span>
-              <span style={{ fontFamily: "var(--font-mono)", fontSize: 15, fontWeight: 700, color: "#f8fafc" }}>
-                11 Systems
-              </span>
-            </div>
-            <div>
-              <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 10, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-                GARAGE / HOBBY
-              </span>
-              <span style={{ fontFamily: "var(--font-mono)", fontSize: 15, fontWeight: 700, color: "#cbd5e1" }}>
-                8 Maker Labs
-              </span>
-            </div>
-            <div>
-              <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 10, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-                HYBRID HEV
-              </span>
-              <span style={{ fontFamily: "var(--font-mono)", fontSize: 15, fontWeight: 700, color: "#cbd5e1" }}>
-                Yaris MK4 1.5L
-              </span>
-            </div>
-            <div>
-              <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 10, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-                PUBLICATIONS
-              </span>
-              <span style={{ fontFamily: "var(--font-mono)", fontSize: 15, fontWeight: 700, color: "#f8fafc" }}>
-                25+ Articles
-              </span>
-            </div>
-          </div>
-
           {/* Action CTAs */}
           <div
             className="hero-entrance"
