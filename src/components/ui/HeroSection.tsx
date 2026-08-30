@@ -188,18 +188,18 @@ export default function HeroSection() {
           >
             <div>
               <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 10, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-                UPSTREAM
+                WORK TRACK
               </span>
               <span style={{ fontFamily: "var(--font-mono)", fontSize: 15, fontWeight: 700, color: "#f8fafc" }}>
-                Open Source
+                11 Systems
               </span>
             </div>
             <div>
               <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 10, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-                PROJECTS
+                GARAGE / HOBBY
               </span>
-              <span style={{ fontFamily: "var(--font-mono)", fontSize: 15, fontWeight: 700, color: "#f8fafc" }}>
-                15+ Builds
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: 15, fontWeight: 700, color: "#cbd5e1" }}>
+                8 Maker Labs
               </span>
             </div>
             <div>
@@ -212,10 +212,10 @@ export default function HeroSection() {
             </div>
             <div>
               <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 10, color: "#64748b", textTransform: "uppercase", letterSpacing: "0.08em" }}>
-                ARTICLES
+                PUBLICATIONS
               </span>
               <span style={{ fontFamily: "var(--font-mono)", fontSize: 15, fontWeight: 700, color: "#f8fafc" }}>
-                25+ Guides
+                25+ Articles
               </span>
             </div>
           </div>
@@ -231,7 +231,7 @@ export default function HeroSection() {
             }}
           >
             <a
-              href="#open-source"
+              href="#work-portfolio"
               style={{
                 fontFamily: "var(--font-mono)",
                 textTransform: "uppercase",
@@ -254,10 +254,10 @@ export default function HeroSection() {
                 e.currentTarget.style.color = "#0b0c0e";
               }}
             >
-              [ View Open Source Work ]
+              [ 💼 Work Portfolio ]
             </a>
             <a
-              href="#projects"
+              href="#garage-labs"
               style={{
                 fontFamily: "var(--font-mono)",
                 textTransform: "uppercase",
@@ -280,7 +280,7 @@ export default function HeroSection() {
                 e.currentTarget.style.color = "#cbd5e1";
               }}
             >
-              [ Explore Systems & Builds ]
+              [ 🛠️ Garage & Hobbies ]
             </a>
           </div>
         </div>

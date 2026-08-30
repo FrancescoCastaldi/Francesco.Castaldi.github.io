@@ -28,8 +28,8 @@ export default function Home() {
     }
   }, []);
 
-  const openSourceProjects = projects.filter((p) => p.skills.includes("open-source"));
-  const featuredBuilds = projects.filter((p) => !p.skills.includes("open-source") && p.featured);
+  const workProjects = projects.filter((p) => p.track === "work");
+  const hobbyProjects = projects.filter((p) => p.track === "hobby");
   const automotivePosts = blogPosts.filter((p) => p.category === "Automotive" || p.tags.includes("Toyota"));
 
   const engineeringBoards = [
@@ -46,9 +46,9 @@ export default function Home() {
       {/* Hero Section */}
       <HeroSection />
 
-      {/* --- OPEN SOURCE CONTRIBUTIONS SECTION --- */}
+      {/* --- TRACK 01: PROFESSIONAL & WORK PORTFOLIO --- */}
       <section
-        id="open-source"
+        id="work-portfolio"
         className="scroll-reveal"
         style={{
           padding: "90px 5% 70px",
@@ -70,7 +70,7 @@ export default function Home() {
                 marginBottom: 8,
               }}
             >
-              [ 01 // UPSTREAM_CONTRIBUTIONS ]
+              [ 01 // WORK_AND_UPSTREAM_PORTFOLIO ]
             </span>
             <h2
               style={{
@@ -83,8 +83,11 @@ export default function Home() {
                 textTransform: "uppercase",
               }}
             >
-              Open Source Contributions & Upstream PRs
+              Professional Portfolio & Upstream Engineering
             </h2>
+            <p style={{ fontFamily: "var(--font-sans)", fontSize: 14, color: "#64748b", margin: "8px 0 0", maxWidth: 700 }}>
+              Enterprise open-source systems, production data pipelines, corporate UX architecture, and academic/clinical research.
+            </p>
           </div>
 
           <a
@@ -122,7 +125,7 @@ export default function Home() {
             gap: 20,
           }}
         >
-          {openSourceProjects.map((project) => (
+          {workProjects.map((project) => (
             <Link
               key={project.id}
               href={`/project/${project.slug}`}
@@ -148,8 +151,8 @@ export default function Home() {
                 <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "#cbd5e1", fontWeight: 700 }}>
                   [{project.label}]
                 </span>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: 9, padding: "2px 8px", background: "#1a1d23", color: "#94a3b8", border: "1px solid #262a33", textTransform: "uppercase" }}>
-                  UPSTREAM
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: 9, padding: "2px 8px", background: "#1a1d23", color: "#cbd5e1", border: "1px solid #262a33", textTransform: "uppercase", fontWeight: 700 }}>
+                  PRO // WORK
                 </span>
               </div>
 
@@ -184,9 +187,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* --- FEATURED SYSTEMS & GRAPHICS BUILDS --- */}
+      {/* --- TRACK 02: GARAGE LABS & HOBBY BUILDS --- */}
       <section
-        id="projects"
+        id="garage-labs"
         className="scroll-reveal"
         style={{
           padding: "90px 5% 80px",
@@ -195,7 +198,7 @@ export default function Home() {
           borderBottom: "1px solid #1e222b",
         }}
       >
-        <div style={{ textAlign: "center", marginBottom: 48 }}>
+        <div style={{ marginBottom: 40 }}>
           <span
             style={{
               fontFamily: "var(--font-mono)",
@@ -207,7 +210,7 @@ export default function Home() {
               marginBottom: 8,
             }}
           >
-            [ 02 // SYSTEMS_AND_BUILDS ]
+            [ 02 // GARAGE_LABS_AND_HOBBIES ]
           </span>
           <h2
             style={{
@@ -220,8 +223,11 @@ export default function Home() {
               textTransform: "uppercase",
             }}
           >
-            Software, 3D Graphics & Engineering Projects
+            Garage Labs, Automotive & Maker Hobbies
           </h2>
+          <p style={{ fontFamily: "var(--font-sans)", fontSize: 14, color: "#64748b", margin: "8px 0 0", maxWidth: 700 }}>
+            Personal technical experiments, automotive powertrain kinematics, 3D WebGL apparel customizers, cycling telemetry, and hardware reverse engineering.
+          </p>
         </div>
 
         <div
@@ -231,12 +237,13 @@ export default function Home() {
             gap: 20,
           }}
         >
-          {featuredBuilds.map((project) => (
+          {hobbyProjects.map((project) => (
             <Link
               href={`/project/${project.slug}`}
               key={project.id}
               style={{
-                display: "block",
+                display: "flex",
+                flexDirection: "column",
                 textDecoration: "none",
                 background: "#131519",
                 border: "1px solid #262a33",
@@ -253,11 +260,11 @@ export default function Home() {
               }}
             >
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "#cbd5e1", textTransform: "uppercase" }}>
-                  [ {project.slug} ]
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "#cbd5e1", textTransform: "uppercase", fontWeight: 700 }}>
+                  [ {project.label} ]
                 </span>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: 9, padding: "2px 6px", background: "#1a1d23", color: "#cbd5e1", border: "1px solid #262a33" }}>
-                  DEPLOYED
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: 9, padding: "2px 6px", background: "#1a1d23", color: "#94a3b8", border: "1px solid #262a33", textTransform: "uppercase" }}>
+                  GARAGE LAB
                 </span>
               </div>
               <h3
@@ -268,6 +275,7 @@ export default function Home() {
                   fontWeight: 700,
                   fontSize: 18,
                   marginBottom: 12,
+                  lineHeight: 1.35,
                 }}
               >
                 {project.title}
@@ -279,11 +287,12 @@ export default function Home() {
                   color: "#94a3b8",
                   lineHeight: 1.6,
                   marginBottom: 20,
+                  flex: 1,
                 }}
               >
                 {project.description}
               </p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 6, borderTop: "1px solid #1e222b", paddingTop: 14 }}>
                 {project.tags.map((tech) => (
                   <span
                     key={tech}

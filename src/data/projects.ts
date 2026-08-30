@@ -1,12 +1,13 @@
 import type { ProjectNode } from "./types";
 
 export const projects: ProjectNode[] = [
-  // --- OPEN SOURCE CONTRIBUTIONS ---
+  // --- WORK & UPSTREAM OPEN SOURCE ---
   {
     id: "evidence-bi-as-code",
     label: "Evidence (BI as Code)",
     title: "Evidence — BI as Code (Open Source Contribution)",
     slug: "evidence-bi-as-code",
+    track: "work",
     description:
       "Architected global multi-language system, language switcher, full Italian localization, MetricCard, and FilterPresets for Evidence BI.",
     longDescription:
@@ -63,6 +64,7 @@ export const t = derived(currentLocale, ($locale) => (key: string) => {
     label: "Apache Superset",
     title: "Apache Superset — Enterprise Localization & Specs",
     slug: "apache-superset-contributions",
+    track: "work",
     description:
       "Led full Italian translation overhaul, database engine specs metadata enrichment, and SQLGlot optimizer hints preservation.",
     longDescription:
@@ -111,6 +113,7 @@ def extract_hints_and_transform(sql_query: str, dialect: str) -> str:
     label: "Docker CLI",
     title: "Docker CLI — Shell Completion & Plugin Discovery",
     slug: "docker-cli-contributions",
+    track: "work",
     description:
       "Maintained and fixed shell completion routines for Docker CLI plugins under Zsh, ensuring stable automated plugin discovery.",
     longDescription:
@@ -143,6 +146,7 @@ The official [Docker CLI](https://github.com/docker/cli) is executed millions of
     label: "Kanister (CNCF)",
     title: "Kanister — Kubernetes Application Data Management",
     slug: "kanister-kubernetes-operator",
+    track: "work",
     description:
       "Enhanced Kanister operator Helm chart infrastructure by introducing imagePullSecrets support for air-gapped clusters.",
     longDescription:
@@ -175,6 +179,7 @@ The official [Docker CLI](https://github.com/docker/cli) is executed millions of
     label: "Duckle Orchestration",
     title: "Duckle — Workspace Orchestration & Template Engine",
     slug: "duckle-workspace-orchestration",
+    track: "work",
     description:
       "Engineered dynamic time offset handling in template evaluation and implemented inline config rollups with crash recovery.",
     longDescription:
@@ -197,12 +202,13 @@ The official [Docker CLI](https://github.com/docker/cli) is executed millions of
     icon: "🦆",
   },
 
-  // --- FEATURED HARDWARE & SOFTWARE PROJECTS ---
+  // --- GARAGE LABS & HOBBY PROJECTS ---
   {
     id: "mini-jersey-studio",
     label: "Mini Jersey Studio",
     title: "Mini Jersey Studio — 3D WebGL Customizer",
     slug: "mini-jersey-studio",
+    track: "hobby",
     description:
       "Interactive 3D WebGL apparel customizer with dynamic planar texture projection, custom GLB import, and Tech Pack export.",
     longDescription:
@@ -243,6 +249,7 @@ Mini Jersey Studio is a browser-based 3D design studio for cycling kits and spor
     label: "HailCast-ML",
     title: "HailCast-ML — Radar Nowcasting & Hail Detection",
     slug: "hailcast-ml-radar-nowcasting",
+    track: "hobby",
     description:
       "Real-time hail tracking & convective nowcasting platform using open-source radar networks, optical flow, and deep learning.",
     longDescription:
@@ -275,6 +282,7 @@ Severe convective storms and hailstorms cause millions in damage within minutes.
     label: "Toyota M15A Connecting Rod",
     title: "Toyota M15A Connecting Rod — Kinematics & FEA",
     slug: "toyota-m15a-connecting-rod",
+    track: "hobby",
     description:
       "Kinematic, dynamic inertia, fatigue (Goodman-Smith), and FEA simulation of the connecting rod for Toyota Yaris Mk4 1.5L.",
     longDescription:
@@ -308,6 +316,7 @@ The Toyota M15A-FXE (Dynamic Force 1.5L 3-cylinder) powers the Toyota Yaris Mk4 
     label: "VeloMetric",
     title: "VeloMetric — Road Cycling Wear Telemetry",
     slug: "velometric",
+    track: "hobby",
     description:
       "Predictive component wear and tear analytics platform for performance road cycling based on ride power and weather telemetry.",
     longDescription:
@@ -334,6 +343,7 @@ Drivetrain wear, cassette erosion, and tire compound degradation are directly co
     label: "Epson Air Resuscitator",
     title: "Epson Air Resuscitator — Wireless EEPROM Resetter",
     slug: "epson-air-resuscitator",
+    track: "hobby",
     description:
       "Wireless EEPROM Waste Ink Pad counter resetter and telemetry suite for Epson printers via reverse-engineered SNMP packets.",
     longDescription:
@@ -362,6 +372,7 @@ Commercial reset utilities charge steep subscription keys for a 5-second serial 
     label: "TruMetraPla",
     title: "TruMetraPla — Industrial Productivity Dashboard",
     slug: "trumetrapla",
+    track: "work",
     description:
       "Python dashboard to monitor productivity in metalworking processes. Automatic calculation of KPIs from raw Excel sheets.",
     longDescription:
@@ -412,6 +423,7 @@ The dashboard replaced hours of manual manipulation in Excel with a **single cli
     label: "TperTutti UX",
     title: "TperTutti — Public Transport UX Redesign",
     slug: "tpertutti-ux-redesign",
+    track: "work",
     description:
       "Complete redesign (Double Diamond) for the TPER public transport website. SUS score improved from 37.5 to 72.5.",
     longDescription:
@@ -452,6 +464,7 @@ Design is not art, it is problem solving. I led the redesign following the *Doub
     label: "SIR Markov Chain",
     title: "SIR Markov Chain — Stochastic Epidemic Simulation",
     slug: "sir-markov-chain",
+    track: "hobby",
     description:
       "Discrete-time Markov Chain simulation of the SIR epidemiological model with Monte Carlo trajectory analysis.",
     longDescription:
@@ -481,6 +494,7 @@ The classic SIR model uses differential equations that work well on large popula
     label: "Hospital Sanitization",
     title: "Hospital Sanitization Tracker — Blockchain DApp",
     slug: "hospital-sanitization-tracker",
+    track: "work",
     description:
       "Ethereum Smart Contract (Sepolia) based DApp for immutable tracking of hospital sanitization activities.",
     longDescription:
@@ -513,6 +527,7 @@ event SanitizationLogged(
     label: "GPX Editor",
     title: "GPX Editor — Client-Side GPS Track Editor",
     slug: "gpx-editor",
+    track: "hobby",
     description:
       "Web app to edit offline GPS tracks: smoothing, point cutting, and real-time generated elevation profiles.",
     longDescription:
@@ -540,6 +555,7 @@ Cyclists often have GPS tracks with anomalous power spikes or speed errors due t
     label: "BenzaTracker",
     title: "BenzaTracker — Vehicle Refuel Telematics",
     slug: "benzatracker",
+    track: "hobby",
     description:
       "Fuel refuels tracking, consumption statistics, spending KPIs, and automated PDF report export.",
     longDescription:
@@ -567,6 +583,7 @@ BenzaTracker is a complete fuel telemetry tracking suite. It allows drivers to l
     label: "CI Cervical LBC",
     title: "CI Cervical LBC — Deblurring & Image Restoration",
     slug: "ci-cervical-lbc",
+    track: "work",
     description:
       "Comparison between Total Variation, UNet, and DiffPIR for the restoration of cervical cytology images (LBC).",
     longDescription:
@@ -590,6 +607,7 @@ Evaluates mathematical methods (Total Variation) vs Deep Learning (UNet, DiffPIR
     label: "SGF² AI",
     title: "SGF² AI — Algorithmic Fairness & SHAP Auditing",
     slug: "sgf2-ai-project",
+    track: "work",
     description:
       "Machine Learning on the UCI Adult dataset: income prediction and in-depth investigation of Fairness metrics.",
     longDescription:
@@ -613,6 +631,7 @@ Predictive models can reach high accuracy while quietly learning historical demo
     label: "Superset Calendar",
     title: "Superset Calendar Filter — Custom React Plugin",
     slug: "superset-calendar-filter",
+    track: "work",
     description:
       "React plugin for Apache Superset: an interactive Calendar Heatmap for temporal exploration and cross-filtering.",
     longDescription:

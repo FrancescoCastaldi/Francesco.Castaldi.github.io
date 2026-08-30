@@ -15,6 +15,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   const project = projects.find((p) => p.slug === slug);
   if (!project) notFound();
 
+  const isWork = project.track === "work";
+
   return (
     <div style={{
       position: "relative",
@@ -23,29 +25,42 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       padding: "120px 5% 70px",
       background: "#0b0c0e",
     }}>
-      <main style={{ maxWidth: 840, margin: "0 auto" }}>
+      <main style={{ maxWidth: 780, margin: "0 auto" }}>
         {/* Breadcrumb */}
         <Breadcrumb items={[
           { label: "Home", href: "/" },
-          { label: "Projects", href: "/#projects" },
+          { label: isWork ? "Work Portfolio" : "Garage Labs", href: isWork ? "/#work-portfolio" : "/#garage-labs" },
           { label: project.title },
         ]} />
 
         {/* Category badge */}
-        <div style={{ marginTop: 24, marginBottom: 16 }}>
+        <div style={{ marginTop: 24, marginBottom: 16, display: "flex", gap: 8, alignItems: "center" }}>
           <span style={{
             display: "inline-block",
             fontFamily: 'var(--font-mono)',
             fontSize: 10,
-            color: "#cbd5e1",
-            background: "#131519",
-            border: "1px solid #262a33",
+            color: isWork ? "#f8fafc" : "#cbd5e1",
+            background: isWork ? "#1e222b" : "#131519",
+            border: "1px solid #333a48",
             padding: "4px 10px",
             textTransform: "uppercase",
             letterSpacing: "0.08em",
             fontWeight: 700,
           }}>
-            [ PROJECT // {project.slug} ]
+            [ TRACK // {isWork ? "PROFESSIONAL & WORK PORTFOLIO" : "GARAGE LAB & HOBBY"} ]
+          </span>
+          <span style={{
+            display: "inline-block",
+            fontFamily: 'var(--font-mono)',
+            fontSize: 10,
+            color: "#64748b",
+            background: "#131519",
+            border: "1px solid #262a33",
+            padding: "4px 10px",
+            textTransform: "uppercase",
+            letterSpacing: "0.08em",
+          }}>
+            ID: {project.slug}
           </span>
         </div>
 
@@ -327,7 +342,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
         {/* Bottom nav */}
         <div style={{ marginTop: 56, paddingTop: 28, borderTop: "1px solid #1e222b" }}>
-          <InteractiveLink href="/#projects" style={{
+          <InteractiveLink href={isWork ? "/#work-portfolio" : "/#garage-labs"} style={{
             fontFamily: 'var(--font-mono)',
             fontSize: 11,
             textTransform: "uppercase",
@@ -340,7 +355,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
           hoverStyle={{
             color: "#f8fafc",
           }}>
-            [ &larr; Back to Systems & Builds ]
+            [ &larr; Back to {isWork ? "Work Portfolio" : "Garage & Hobbies"} ]
           </InteractiveLink>
         </div>
       </main>
