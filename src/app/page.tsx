@@ -33,16 +33,16 @@ export default function Home() {
   const automotivePosts = blogPosts.filter((p) => p.category === "Automotive" || p.tags.includes("Toyota"));
 
   const engineeringBoards = [
-    { id: "openSource", code: "ENG_01", title: "Open Source & Upstream", desc: "Upstream engineering on Evidence BI (Svelte), Apache Superset AST optimizers, Docker CLI plugins, and DuckDB pipelines.", tag: "UPSTREAM" },
-    { id: "automotive", code: "ENG_02", title: "Automotive & Powertrain HEV", desc: "Dynamic Force M15A engine kinematics, Goodman-Smith fatigue modeling, CAN telemetry, and hybrid hyper-miling.", tag: "AUTOMOTIVE" },
-    { id: "radar", code: "ENG_03", title: "Radar Nowcasting & ML", desc: "Dual-polarization Doppler radar storm cell tracking, optical flow velocity fields, and convective hail prediction models.", tag: "RADAR_AI" },
-    { id: "cloud", code: "ENG_04", title: "Cloud Native & Systems", desc: "Kubernetes operators, air-gapped Helm chart infrastructure, Docker CLI extensions, and secure deployment architectures.", tag: "CLOUD_DEVOPS" },
-    { id: "web3d", code: "ENG_05", title: "3D WebGL & Graphic Pipelines", desc: "Three.js shader pipelines, dynamic planar texture projection on non-planar meshes, and automated Tech Pack export.", tag: "WEBGL_3D" },
-    { id: "cycling", code: "ENG_06", title: "Cycling Telematics & Wear Analytics", desc: "Drivetrain friction decay models, Strava/Garmin FIT telemetry parsing, and predictive maintenance algorithms.", tag: "TELEMETRY" },
+    { id: "openSource", code: "I.", title: "Open Source & Upstream", desc: "Upstream engineering on Evidence BI (Svelte), Apache Superset AST optimizers, Docker CLI plugins, and DuckDB pipelines.", tag: "UPSTREAM" },
+    { id: "automotive", code: "II.", title: "Automotive & Powertrain HEV", desc: "Dynamic Force M15A engine kinematics, Goodman-Smith fatigue modeling, CAN telemetry, and hybrid hyper-miling.", tag: "AUTOMOTIVE" },
+    { id: "radar", code: "III.", title: "Radar Nowcasting & ML", desc: "Dual-polarization Doppler radar storm cell tracking, optical flow velocity fields, and convective hail prediction models.", tag: "RADAR_AI" },
+    { id: "cloud", code: "IV.", title: "Cloud Native & Systems", desc: "Kubernetes operators, air-gapped Helm chart infrastructure, Docker CLI extensions, and secure deployment architectures.", tag: "CLOUD_DEVOPS" },
+    { id: "web3d", code: "V.", title: "3D WebGL & Graphic Pipelines", desc: "Three.js shader pipelines, dynamic planar texture projection on non-planar meshes, and automated Tech Pack export.", tag: "WEBGL_3D" },
+    { id: "cycling", code: "VI.", title: "Cycling Telematics & Wear Analytics", desc: "Drivetrain friction decay models, Strava/Garmin FIT telemetry parsing, and predictive maintenance algorithms.", tag: "TELEMETRY" },
   ];
 
   return (
-    <div style={{ animation: "pageFadeIn 0.6s ease both", paddingBottom: 80, background: "#0b0c0e" }}>
+    <div style={{ animation: "pageFadeIn 0.6s ease both", paddingBottom: 80, background: "#121110" }}>
       {/* Hero Section */}
       <HeroSection />
 
@@ -54,38 +54,38 @@ export default function Home() {
           padding: "90px 5% 70px",
           maxWidth: 1400,
           margin: "0 auto",
-          borderBottom: "1px solid #1e222b",
+          borderBottom: "1px solid rgba(197, 160, 89, 0.18)",
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 40, flexWrap: "wrap", gap: 16 }}>
           <div>
             <span
               style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 11,
-                color: "#94a3b8",
+                fontFamily: "var(--font-serif)",
+                fontSize: 13,
+                color: "#C5A059",
                 textTransform: "uppercase",
-                letterSpacing: "0.15em",
+                letterSpacing: "0.14em",
                 display: "block",
                 marginBottom: 8,
+                fontWeight: 600,
               }}
             >
-              [ 01 // WORK_AND_UPSTREAM_PORTFOLIO ]
+              I. Selected Engineering & Upstream Works
             </span>
             <h2
               style={{
-                fontFamily: "var(--font-sans)",
-                fontSize: "clamp(26px, 3.2vw, 38px)",
-                fontWeight: 800,
-                color: "#f8fafc",
-                letterSpacing: "-0.03em",
+                fontFamily: "var(--font-serif)",
+                fontSize: "clamp(28px, 3.2vw, 42px)",
+                fontWeight: 600,
+                color: "#FAF6EE",
+                letterSpacing: "-0.01em",
                 margin: 0,
-                textTransform: "uppercase",
               }}
             >
               Professional Portfolio & Upstream Engineering
             </h2>
-            <p style={{ fontFamily: "var(--font-sans)", fontSize: 14, color: "#64748b", margin: "8px 0 0", maxWidth: 700 }}>
+            <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: "#E8E3D6", margin: "8px 0 0", maxWidth: 700, opacity: 0.88, lineHeight: 1.65 }}>
               Enterprise open-source systems, production data pipelines, corporate UX architecture, and academic/clinical research.
             </p>
           </div>
@@ -95,26 +95,31 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 11,
+              fontFamily: "var(--font-serif)",
+              fontSize: 12,
               textTransform: "uppercase",
-              color: "#cbd5e1",
-              border: "1px solid #262a33",
-              padding: "8px 16px",
-              background: "#131519",
+              letterSpacing: "0.08em",
+              fontWeight: 600,
+              color: "#FAF6EE",
+              border: "1px solid rgba(197, 160, 89, 0.35)",
+              padding: "10px 20px",
+              background: "rgba(197, 160, 89, 0.12)",
+              borderRadius: 4,
               textDecoration: "none",
-              transition: "all 0.2s ease",
+              transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "#94a3b8";
-              e.currentTarget.style.color = "#f8fafc";
+              e.currentTarget.style.borderColor = "#C5A059";
+              e.currentTarget.style.background = "#15261E";
+              e.currentTarget.style.color = "#C5A059";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "#262a33";
-              e.currentTarget.style.color = "#cbd5e1";
+              e.currentTarget.style.borderColor = "rgba(197, 160, 89, 0.35)";
+              e.currentTarget.style.background = "rgba(197, 160, 89, 0.12)";
+              e.currentTarget.style.color = "#FAF6EE";
             }}
           >
-            [ GitHub @FrancescoCastaldi &rarr; ]
+            GitHub Repository Archive &rarr;
           </a>
         </div>
 
@@ -132,50 +137,57 @@ export default function Home() {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                background: "#131519",
-                border: "1px solid #262a33",
-                padding: 26,
+                background: "#15261E",
+                border: "1px solid rgba(197, 160, 89, 0.22)",
+                borderRadius: 6,
+                padding: 28,
                 textDecoration: "none",
-                transition: "all 0.2s ease",
+                transition: "background 0.7s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.7s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "#475164";
-                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.background = "#1B2E24";
+                e.currentTarget.style.borderColor = "rgba(197, 160, 89, 0.45)";
+                e.currentTarget.style.boxShadow = "0 18px 36px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(197, 160, 89, 0.2)";
+                e.currentTarget.style.transform = "translateY(-3px)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "#262a33";
+                e.currentTarget.style.background = "#15261E";
+                e.currentTarget.style.borderColor = "rgba(197, 160, 89, 0.22)";
+                e.currentTarget.style.boxShadow = "none";
                 e.currentTarget.style.transform = "translateY(0)";
               }}
             >
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "#cbd5e1", fontWeight: 700 }}>
-                  [{project.label}]
+                <span style={{ fontFamily: "var(--font-serif)", fontSize: 12, color: "#C5A059", fontWeight: 600, letterSpacing: "0.06em" }}>
+                  FOLIO — {project.label}
                 </span>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: 9, padding: "2px 8px", background: "#1a1d23", color: "#cbd5e1", border: "1px solid #262a33", textTransform: "uppercase", fontWeight: 700 }}>
-                  PRO // WORK
+                <span style={{ fontFamily: "var(--font-serif)", fontSize: 11, padding: "2px 8px", background: "#1B2E24", color: "#FAF6EE", border: "1px solid rgba(197, 160, 89, 0.25)", borderRadius: 3, textTransform: "uppercase", fontWeight: 600, letterSpacing: "0.04em" }}>
+                  UPSTREAM WORK
                 </span>
               </div>
 
-              <h3 style={{ fontFamily: "var(--font-sans)", fontSize: 18, fontWeight: 700, color: "#f8fafc", marginBottom: 12, lineHeight: 1.35, textTransform: "uppercase" }}>
+              <h3 style={{ fontFamily: "var(--font-serif)", fontSize: 20, fontWeight: 600, color: "#FAF6EE", marginBottom: 12, lineHeight: 1.35 }}>
                 {project.title}
               </h3>
 
-              <p style={{ fontFamily: "var(--font-sans)", fontSize: 14, color: "#94a3b8", lineHeight: 1.6, marginBottom: 20, flex: 1 }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "#E8E3D6", lineHeight: 1.65, marginBottom: 20, flex: 1, opacity: 0.9 }}>
                 {project.description}
               </p>
 
-              <div style={{ display: "flex", gap: 6, flexWrap: "wrap", borderTop: "1px solid #1e222b", paddingTop: 14 }}>
+              <div style={{ display: "flex", gap: 6, flexWrap: "wrap", borderTop: "1px solid rgba(197, 160, 89, 0.14)", paddingTop: 14 }}>
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
                     style={{
-                      fontSize: 10,
-                      fontFamily: "var(--font-mono)",
-                      padding: "3px 7px",
-                      background: "#1a1d23",
-                      color: "#64748b",
-                      border: "1px solid #262a33",
+                      fontSize: 11,
+                      fontFamily: "var(--font-serif)",
+                      padding: "3px 8px",
+                      background: "rgba(197, 160, 89, 0.08)",
+                      color: "#C5A059",
+                      border: "1px solid rgba(197, 160, 89, 0.22)",
+                      borderRadius: 3,
                       textTransform: "uppercase",
+                      letterSpacing: "0.04em",
                     }}
                   >
                     {tag}
@@ -195,37 +207,37 @@ export default function Home() {
           padding: "90px 5% 80px",
           maxWidth: 1400,
           margin: "0 auto",
-          borderBottom: "1px solid #1e222b",
+          borderBottom: "1px solid rgba(197, 160, 89, 0.18)",
         }}
       >
         <div style={{ marginBottom: 40 }}>
           <span
             style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 11,
-              color: "#94a3b8",
+              fontFamily: "var(--font-serif)",
+              fontSize: 13,
+              color: "#C5A059",
               textTransform: "uppercase",
-              letterSpacing: "0.15em",
+              letterSpacing: "0.14em",
               display: "block",
               marginBottom: 8,
+              fontWeight: 600,
             }}
           >
-            [ 02 // GARAGE_LABS_AND_HOBBIES ]
+            II. Experimental Labs & Automotive Workshop
           </span>
           <h2
             style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: "clamp(26px, 3.2vw, 38px)",
-              fontWeight: 800,
-              color: "#f8fafc",
-              letterSpacing: "-0.03em",
+              fontFamily: "var(--font-serif)",
+              fontSize: "clamp(28px, 3.2vw, 42px)",
+              fontWeight: 600,
+              color: "#FAF6EE",
+              letterSpacing: "-0.01em",
               margin: 0,
-              textTransform: "uppercase",
             }}
           >
-            Garage Labs, Automotive & Maker Hobbies
+            Garage Labs, Automotive & Maker Workshop
           </h2>
-          <p style={{ fontFamily: "var(--font-sans)", fontSize: 14, color: "#64748b", margin: "8px 0 0", maxWidth: 700 }}>
+          <p style={{ fontFamily: "var(--font-body)", fontSize: 15, color: "#E8E3D6", margin: "8px 0 0", maxWidth: 700, opacity: 0.88, lineHeight: 1.65 }}>
             Personal technical experiments, automotive powertrain kinematics, 3D WebGL apparel customizers, cycling telemetry, and hardware reverse engineering.
           </p>
         </div>
@@ -245,35 +257,39 @@ export default function Home() {
                 display: "flex",
                 flexDirection: "column",
                 textDecoration: "none",
-                background: "#131519",
-                border: "1px solid #262a33",
-                padding: 26,
-                transition: "all 0.2s ease",
+                background: "#15261E",
+                border: "1px solid rgba(197, 160, 89, 0.22)",
+                borderRadius: 6,
+                padding: 28,
+                transition: "background 0.7s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.7s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "#475164";
-                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.background = "#1B2E24";
+                e.currentTarget.style.borderColor = "rgba(197, 160, 89, 0.45)";
+                e.currentTarget.style.boxShadow = "0 18px 36px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(197, 160, 89, 0.2)";
+                e.currentTarget.style.transform = "translateY(-3px)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "#262a33";
+                e.currentTarget.style.background = "#15261E";
+                e.currentTarget.style.borderColor = "rgba(197, 160, 89, 0.22)";
+                e.currentTarget.style.boxShadow = "none";
                 e.currentTarget.style.transform = "translateY(0)";
               }}
             >
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "#cbd5e1", textTransform: "uppercase", fontWeight: 700 }}>
-                  [ {project.label} ]
+                <span style={{ fontFamily: "var(--font-serif)", fontSize: 12, color: "#C5A059", letterSpacing: "0.06em", fontWeight: 600 }}>
+                  FOLIO — {project.label}
                 </span>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: 9, padding: "2px 6px", background: "#1a1d23", color: "#94a3b8", border: "1px solid #262a33", textTransform: "uppercase" }}>
-                  GARAGE LAB
+                <span style={{ fontFamily: "var(--font-serif)", fontSize: 11, padding: "2px 8px", background: "#1B2E24", color: "#FAF6EE", border: "1px solid rgba(197, 160, 89, 0.25)", borderRadius: 3, textTransform: "uppercase", fontWeight: 600 }}>
+                  WORKSHOP
                 </span>
               </div>
               <h3
                 style={{
-                  color: "#f8fafc",
-                  fontFamily: "var(--font-sans)",
-                  textTransform: "uppercase",
-                  fontWeight: 700,
-                  fontSize: 18,
+                  color: "#FAF6EE",
+                  fontFamily: "var(--font-serif)",
+                  fontWeight: 600,
+                  fontSize: 20,
                   marginBottom: 12,
                   lineHeight: 1.35,
                 }}
@@ -282,28 +298,31 @@ export default function Home() {
               </h3>
               <p
                 style={{
-                  fontFamily: "var(--font-sans)",
+                  fontFamily: "var(--font-body)",
                   fontSize: 14,
-                  color: "#94a3b8",
-                  lineHeight: 1.6,
+                  color: "#E8E3D6",
+                  lineHeight: 1.65,
                   marginBottom: 20,
                   flex: 1,
+                  opacity: 0.9,
                 }}
               >
                 {project.description}
               </p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6, borderTop: "1px solid #1e222b", paddingTop: 14 }}>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 6, borderTop: "1px solid rgba(197, 160, 89, 0.14)", paddingTop: 14 }}>
                 {project.tags.map((tech) => (
                   <span
                     key={tech}
                     style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: 10,
+                      fontFamily: "var(--font-serif)",
+                      fontSize: 11,
                       textTransform: "uppercase",
-                      color: "#64748b",
-                      border: "1px solid #262a33",
-                      background: "#1a1d23",
-                      padding: "3px 7px",
+                      color: "#C5A059",
+                      border: "1px solid rgba(197, 160, 89, 0.22)",
+                      background: "rgba(197, 160, 89, 0.08)",
+                      borderRadius: 3,
+                      padding: "3px 8px",
+                      letterSpacing: "0.04em",
                     }}
                   >
                     {tech}
@@ -323,33 +342,33 @@ export default function Home() {
           padding: "90px 5% 70px",
           maxWidth: 1400,
           margin: "0 auto",
-          borderBottom: "1px solid #1e222b",
+          borderBottom: "1px solid rgba(197, 160, 89, 0.18)",
         }}
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 36, flexWrap: "wrap", gap: 16 }}>
           <div>
             <span
               style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 11,
-                color: "#94a3b8",
+                fontFamily: "var(--font-serif)",
+                fontSize: 13,
+                color: "#C5A059",
                 textTransform: "uppercase",
-                letterSpacing: "0.15em",
+                letterSpacing: "0.14em",
                 display: "block",
                 marginBottom: 8,
+                fontWeight: 600,
               }}
             >
-              [ 03 // AUTOMOTIVE_KINEMATICS ]
+              III. Automotive Kinematics & Track Systems
             </span>
             <h2
               style={{
-                fontFamily: "var(--font-sans)",
-                fontSize: "clamp(26px, 3.2vw, 38px)",
-                fontWeight: 800,
-                color: "#f8fafc",
-                letterSpacing: "-0.03em",
+                fontFamily: "var(--font-serif)",
+                fontSize: "clamp(28px, 3.2vw, 42px)",
+                fontWeight: 600,
+                color: "#FAF6EE",
+                letterSpacing: "-0.01em",
                 margin: 0,
-                textTransform: "uppercase",
               }}
             >
               Automotive Engineering & HEV Telematics
@@ -359,25 +378,31 @@ export default function Home() {
           <Link
             href="/blog"
             style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 11,
+              fontFamily: "var(--font-serif)",
+              fontSize: 12,
               textTransform: "uppercase",
-              color: "#cbd5e1",
-              border: "1px solid #262a33",
-              padding: "8px 16px",
-              background: "#131519",
-              transition: "all 0.2s ease",
+              letterSpacing: "0.08em",
+              fontWeight: 600,
+              color: "#FAF6EE",
+              border: "1px solid rgba(197, 160, 89, 0.35)",
+              padding: "10px 20px",
+              background: "rgba(197, 160, 89, 0.12)",
+              borderRadius: 4,
+              textDecoration: "none",
+              transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "#94a3b8";
-              e.currentTarget.style.color = "#f8fafc";
+              e.currentTarget.style.borderColor = "#C5A059";
+              e.currentTarget.style.background = "#15261E";
+              e.currentTarget.style.color = "#C5A059";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "#262a33";
-              e.currentTarget.style.color = "#cbd5e1";
+              e.currentTarget.style.borderColor = "rgba(197, 160, 89, 0.35)";
+              e.currentTarget.style.background = "rgba(197, 160, 89, 0.12)";
+              e.currentTarget.style.color = "#FAF6EE";
             }}
           >
-            [ View All Technical Logs &rarr; ]
+            View Full Archival Index &rarr;
           </Link>
         </div>
 
@@ -395,38 +420,43 @@ export default function Home() {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                background: "#131519",
-                border: "1px solid #262a33",
-                padding: 24,
+                background: "#15261E",
+                border: "1px solid rgba(197, 160, 89, 0.22)",
+                borderRadius: 6,
+                padding: 26,
                 textDecoration: "none",
-                transition: "all 0.2s ease",
+                transition: "background 0.7s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.7s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
                 position: "relative",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "#475164";
-                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.background = "#1B2E24";
+                e.currentTarget.style.borderColor = "rgba(197, 160, 89, 0.45)";
+                e.currentTarget.style.boxShadow = "0 18px 36px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(197, 160, 89, 0.2)";
+                e.currentTarget.style.transform = "translateY(-3px)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "#262a33";
+                e.currentTarget.style.background = "#15261E";
+                e.currentTarget.style.borderColor = "rgba(197, 160, 89, 0.22)";
+                e.currentTarget.style.boxShadow = "none";
                 e.currentTarget.style.transform = "translateY(0)";
               }}
             >
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, fontSize: 10, fontFamily: "var(--font-mono)", color: "#cbd5e1", textTransform: "uppercase" }}>
-                <span>[ {post.subcategory || post.category} ]</span>
-                <span style={{ color: "#64748b" }}>{post.readingTime} MIN READ</span>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, fontSize: 11, fontFamily: "var(--font-serif)", color: "#C5A059", textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 600 }}>
+                <span>{post.subcategory || post.category}</span>
+                <span style={{ color: "#9E978E" }}>{post.readingTime} MIN READ</span>
               </div>
-              <h3 style={{ fontFamily: "var(--font-sans)", fontSize: 18, fontWeight: 700, color: "#f8fafc", marginBottom: 12, lineHeight: 1.35, textTransform: "uppercase" }}>
+              <h3 style={{ fontFamily: "var(--font-serif)", fontSize: 20, fontWeight: 600, color: "#FAF6EE", marginBottom: 12, lineHeight: 1.35 }}>
                 {post.title}
               </h3>
-              <p style={{ fontFamily: "var(--font-sans)", fontSize: 14, color: "#94a3b8", lineHeight: 1.6, marginBottom: 20, flex: 1 }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "#E8E3D6", lineHeight: 1.65, marginBottom: 20, flex: 1, opacity: 0.9 }}>
                 {post.excerpt}
               </p>
-              <div style={{ display: "flex", gap: 6, flexWrap: "wrap", borderTop: "1px solid #1e222b", paddingTop: 14 }}>
-                <span style={{ fontSize: 10, fontFamily: "var(--font-mono)", padding: "3px 7px", background: "#1a1d23", color: "#cbd5e1", border: "1px solid #262a33", textTransform: "uppercase" }}>
+              <div style={{ display: "flex", gap: 6, flexWrap: "wrap", borderTop: "1px solid rgba(197, 160, 89, 0.14)", paddingTop: 14 }}>
+                <span style={{ fontSize: 11, fontFamily: "var(--font-serif)", padding: "3px 8px", background: "rgba(197, 160, 89, 0.08)", color: "#C5A059", border: "1px solid rgba(197, 160, 89, 0.22)", borderRadius: 3, textTransform: "uppercase", letterSpacing: "0.04em" }}>
                   {post.category}
                 </span>
                 {post.subcategory && (
-                  <span style={{ fontSize: 10, fontFamily: "var(--font-mono)", padding: "3px 7px", background: "#1a1d23", color: "#64748b", border: "1px solid #262a33", textTransform: "uppercase" }}>
+                  <span style={{ fontSize: 11, fontFamily: "var(--font-serif)", padding: "3px 8px", background: "rgba(197, 160, 89, 0.08)", color: "#C5A059", border: "1px solid rgba(197, 160, 89, 0.22)", borderRadius: 3, textTransform: "uppercase", letterSpacing: "0.04em" }}>
                     {post.subcategory}
                   </span>
                 )}
@@ -444,32 +474,32 @@ export default function Home() {
           padding: "90px 5% 70px",
           maxWidth: 1400,
           margin: "0 auto",
-          borderBottom: "1px solid #1e222b",
+          borderBottom: "1px solid rgba(197, 160, 89, 0.18)",
         }}
       >
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <span
             style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 11,
-              color: "#94a3b8",
+              fontFamily: "var(--font-serif)",
+              fontSize: 13,
+              color: "#C5A059",
               textTransform: "uppercase",
-              letterSpacing: "0.15em",
+              letterSpacing: "0.14em",
               display: "block",
               marginBottom: 8,
+              fontWeight: 600,
             }}
           >
-            [ 04 // TECHNICAL_DISCIPLINES ]
+            IV. Curated Engineering Disciplines
           </span>
           <h2
             style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: "clamp(26px, 3.2vw, 38px)",
-              fontWeight: 800,
-              color: "#f8fafc",
-              letterSpacing: "-0.03em",
+              fontFamily: "var(--font-serif)",
+              fontSize: "clamp(28px, 3.2vw, 42px)",
+              fontWeight: 600,
+              color: "#FAF6EE",
+              letterSpacing: "-0.01em",
               margin: 0,
-              textTransform: "uppercase",
             }}
           >
             Core Competencies & Engineering Focus
@@ -487,46 +517,51 @@ export default function Home() {
             <div
               key={board.id}
               style={{
-                background: "#131519",
-                border: "1px solid #262a33",
+                background: "#15261E",
+                border: "1px solid rgba(197, 160, 89, 0.22)",
+                borderRadius: 6,
                 padding: 26,
-                transition: "all 0.2s ease",
+                transition: "background 0.7s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.7s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "#475164";
+                e.currentTarget.style.background = "#1B2E24";
+                e.currentTarget.style.borderColor = "rgba(197, 160, 89, 0.45)";
+                e.currentTarget.style.boxShadow = "0 16px 32px rgba(0, 0, 0, 0.5)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "#262a33";
+                e.currentTarget.style.background = "#15261E";
+                e.currentTarget.style.borderColor = "rgba(197, 160, 89, 0.22)";
+                e.currentTarget.style.boxShadow = "none";
               }}
             >
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "#cbd5e1", fontWeight: 700 }}>
-                  [{board.code}]
+                <span style={{ fontFamily: "var(--font-serif)", fontSize: 14, color: "#C5A059", fontWeight: 700 }}>
+                  {board.code}
                 </span>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: 9, padding: "2px 6px", background: "#1a1d23", color: "#64748b", border: "1px solid #262a33" }}>
+                <span style={{ fontFamily: "var(--font-serif)", fontSize: 11, padding: "2px 8px", background: "#1B2E24", color: "#FAF6EE", border: "1px solid rgba(197, 160, 89, 0.25)", borderRadius: 3, letterSpacing: "0.04em" }}>
                   {board.tag}
                 </span>
               </div>
               <h3
                 style={{
-                  color: "#f8fafc",
-                  fontFamily: "var(--font-sans)",
-                  textTransform: "uppercase",
-                  fontSize: 16,
-                  fontWeight: 700,
+                  color: "#FAF6EE",
+                  fontFamily: "var(--font-serif)",
+                  fontSize: 18,
+                  fontWeight: 600,
                   marginBottom: 10,
-                  letterSpacing: "-0.02em",
+                  letterSpacing: "0.01em",
                 }}
               >
                 {board.title}
               </h3>
               <p
                 style={{
-                  fontFamily: "var(--font-sans)",
-                  fontSize: 13,
-                  color: "#94a3b8",
-                  lineHeight: 1.6,
+                  fontFamily: "var(--font-body)",
+                  fontSize: 14,
+                  color: "#E8E3D6",
+                  lineHeight: 1.65,
                   margin: 0,
+                  opacity: 0.88,
                 }}
               >
                 {board.desc}
@@ -544,35 +579,35 @@ export default function Home() {
           padding: "90px 5% 80px",
           maxWidth: 1400,
           margin: "0 auto",
-          borderBottom: "1px solid #1e222b",
+          borderBottom: "1px solid rgba(197, 160, 89, 0.18)",
         }}
       >
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <span
             style={{
-              fontFamily: "var(--font-mono)",
-              fontSize: 11,
-              color: "#94a3b8",
+              fontFamily: "var(--font-serif)",
+              fontSize: 13,
+              color: "#C5A059",
               textTransform: "uppercase",
-              letterSpacing: "0.15em",
+              letterSpacing: "0.14em",
               display: "block",
               marginBottom: 8,
+              fontWeight: 600,
             }}
           >
-            [ 05 // TECHNICAL_PUBLICATIONS ]
+            V. Archival Monographs & Selected Essays
           </span>
           <h2
             style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: "clamp(26px, 3.2vw, 38px)",
-              fontWeight: 800,
-              color: "#f8fafc",
-              letterSpacing: "-0.03em",
+              fontFamily: "var(--font-serif)",
+              fontSize: "clamp(28px, 3.2vw, 42px)",
+              fontWeight: 600,
+              color: "#FAF6EE",
+              letterSpacing: "-0.01em",
               margin: 0,
-              textTransform: "uppercase",
             }}
           >
-            Featured Technical Articles & Research
+            Featured Archival Monographs & Research
           </h2>
         </div>
 
@@ -592,32 +627,39 @@ export default function Home() {
                 display: "flex",
                 flexDirection: "column",
                 textDecoration: "none",
-                background: "#131519",
-                border: "1px solid #262a33",
-                padding: 24,
-                transition: "all 0.2s ease",
+                background: "#15261E",
+                border: "1px solid rgba(197, 160, 89, 0.22)",
+                borderRadius: 6,
+                padding: 26,
+                transition: "background 0.7s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.7s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
                 height: "100%",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "#475164";
-                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.background = "#1B2E24";
+                e.currentTarget.style.borderColor = "rgba(197, 160, 89, 0.45)";
+                e.currentTarget.style.boxShadow = "0 18px 36px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(197, 160, 89, 0.2)";
+                e.currentTarget.style.transform = "translateY(-3px)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "#262a33";
+                e.currentTarget.style.background = "#15261E";
+                e.currentTarget.style.borderColor = "rgba(197, 160, 89, 0.22)";
+                e.currentTarget.style.boxShadow = "none";
                 e.currentTarget.style.transform = "translateY(0)";
               }}
             >
               <div
                 style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 10,
+                  fontFamily: "var(--font-serif)",
+                  fontSize: 11,
                   textTransform: "uppercase",
-                  color: "#cbd5e1",
+                  color: "#C5A059",
                   marginBottom: 14,
-                  borderBottom: "1px solid #1e222b",
+                  borderBottom: "1px solid rgba(197, 160, 89, 0.14)",
                   paddingBottom: 8,
                   display: "flex",
                   justifyContent: "space-between",
+                  letterSpacing: "0.06em",
+                  fontWeight: 600,
                 }}
               >
                 <span>
@@ -627,15 +669,14 @@ export default function Home() {
                     day: "numeric",
                   })}
                 </span>
-                <span style={{ color: "#64748b" }}>{post.readingTime} MIN READ</span>
+                <span style={{ color: "#9E978E" }}>{post.readingTime} MIN READ</span>
               </div>
               <h3
                 style={{
-                  color: "#f8fafc",
-                  fontFamily: "var(--font-sans)",
-                  fontWeight: 700,
-                  textTransform: "uppercase",
-                  fontSize: 17,
+                  color: "#FAF6EE",
+                  fontFamily: "var(--font-serif)",
+                  fontWeight: 600,
+                  fontSize: 20,
                   marginBottom: 12,
                   lineHeight: 1.35,
                 }}
@@ -644,22 +685,23 @@ export default function Home() {
               </h3>
               <p
                 style={{
-                  fontFamily: "var(--font-sans)",
+                  fontFamily: "var(--font-body)",
                   fontSize: 14,
-                  color: "#94a3b8",
-                  lineHeight: 1.6,
+                  color: "#E8E3D6",
+                  lineHeight: 1.65,
                   marginBottom: 20,
                   flex: 1,
+                  opacity: 0.9,
                 }}
               >
                 {post.excerpt}
               </p>
-              <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                <span style={{ fontSize: 10, fontFamily: "var(--font-mono)", padding: "3px 7px", background: "#1a1d23", color: "#cbd5e1", border: "1px solid #262a33", textTransform: "uppercase" }}>
+              <div style={{ display: "flex", gap: 6, flexWrap: "wrap", borderTop: "1px solid rgba(197, 160, 89, 0.14)", paddingTop: 14 }}>
+                <span style={{ fontSize: 11, fontFamily: "var(--font-serif)", padding: "3px 8px", background: "rgba(197, 160, 89, 0.08)", color: "#C5A059", border: "1px solid rgba(197, 160, 89, 0.22)", borderRadius: 3, textTransform: "uppercase", letterSpacing: "0.04em" }}>
                   {post.category}
                 </span>
                 {post.subcategory && (
-                  <span style={{ fontSize: 10, fontFamily: "var(--font-mono)", padding: "3px 7px", background: "#1a1d23", color: "#64748b", border: "1px solid #262a33", textTransform: "uppercase" }}>
+                  <span style={{ fontSize: 11, fontFamily: "var(--font-serif)", padding: "3px 8px", background: "rgba(197, 160, 89, 0.08)", color: "#C5A059", border: "1px solid rgba(197, 160, 89, 0.22)", borderRadius: 3, textTransform: "uppercase", letterSpacing: "0.04em" }}>
                     {post.subcategory}
                   </span>
                 )}
@@ -675,29 +717,32 @@ export default function Home() {
               display: "inline-flex",
               alignItems: "center",
               justifyContent: "center",
-              fontFamily: "var(--font-mono)",
+              fontFamily: "var(--font-serif)",
               textTransform: "uppercase",
-              fontSize: 11,
-              fontWeight: 700,
-              color: "#f8fafc",
-              background: "#131519",
-              border: "1px solid #262a33",
-              padding: "12px 28px",
+              fontSize: 13,
+              fontWeight: 600,
+              letterSpacing: "0.08em",
+              color: "#121110",
+              background: "linear-gradient(135deg, #C5A059 0%, #A6803B 100%)",
+              border: "1px solid #C5A059",
+              padding: "13px 28px",
+              borderRadius: 4,
               textDecoration: "none",
-              transition: "all 0.2s ease",
+              boxShadow: "0 4px 16px rgba(197, 160, 89, 0.2)",
+              transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#e2e8f0";
-              e.currentTarget.style.color = "#0b0c0e";
-              e.currentTarget.style.borderColor = "#e2e8f0";
+              e.currentTarget.style.background = "transparent";
+              e.currentTarget.style.color = "#FAF6EE";
+              e.currentTarget.style.boxShadow = "0 6px 22px rgba(197, 160, 89, 0.35)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = "#131519";
-              e.currentTarget.style.color = "#f8fafc";
-              e.currentTarget.style.borderColor = "#262a33";
+              e.currentTarget.style.background = "linear-gradient(135deg, #C5A059 0%, #A6803B 100%)";
+              e.currentTarget.style.color = "#121110";
+              e.currentTarget.style.boxShadow = "0 4px 16px rgba(197, 160, 89, 0.2)";
             }}
           >
-            [ Index of All Technical Articles &rarr; ]
+            Browse Complete Essays Index &rarr;
           </Link>
         </div>
       </section>
@@ -715,100 +760,110 @@ export default function Home() {
       >
         <span
           style={{
-            fontFamily: "var(--font-mono)",
-            fontSize: 11,
-            color: "#94a3b8",
+            fontFamily: "var(--font-serif)",
+            fontSize: 13,
+            color: "#C5A059",
             textTransform: "uppercase",
-            letterSpacing: "0.15em",
+            letterSpacing: "0.14em",
             display: "block",
             marginBottom: 8,
+            fontWeight: 600,
           }}
         >
-          [ 06 // DIRECT_COMMUNICATION ]
+          VI. Direct Inquiries & Archival Liaison
         </span>
         <h2
           style={{
-            fontFamily: "var(--font-sans)",
-            fontSize: "clamp(26px, 3.2vw, 38px)",
-            fontWeight: 800,
-            color: "#f8fafc",
-            letterSpacing: "-0.03em",
+            fontFamily: "var(--font-serif)",
+            fontSize: "clamp(28px, 3.2vw, 42px)",
+            fontWeight: 600,
+            color: "#FAF6EE",
+            letterSpacing: "-0.01em",
             lineHeight: 1.15,
             marginBottom: 16,
-            textTransform: "uppercase",
           }}
         >
-          Let's Connect & Collaborate
+          Direct Correspondence & Scholarly Exchange
         </h2>
         <p
           style={{
-            fontFamily: "var(--font-sans)",
-            fontSize: 15,
-            color: "#94a3b8",
+            fontFamily: "var(--font-body)",
+            fontSize: 16,
+            color: "#E8E3D6",
             lineHeight: 1.7,
             marginBottom: 36,
+            opacity: 0.9,
           }}
         >
-          Open for upstream open source collaboration, automotive engineering exchanges, data science systems, or full-stack software development.
+          Open for upstream open-source collaboration, automotive engineering exchanges, data science systems, or specialized architectural consultation.
         </p>
 
-        <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
           <a
             href="mailto:info@francescocastaldi.it"
             style={{
-              fontFamily: "var(--font-mono)",
+              fontFamily: "var(--font-serif)",
               textTransform: "uppercase",
-              fontSize: 12,
-              fontWeight: 700,
-              color: "#0b0c0e",
-              background: "#e2e8f0",
-              padding: "12px 28px",
-              border: "1px solid #e2e8f0",
+              fontSize: 13,
+              fontWeight: 600,
+              letterSpacing: "0.08em",
+              color: "#121110",
+              background: "linear-gradient(135deg, #C5A059 0%, #A6803B 100%)",
+              padding: "13px 28px",
+              border: "1px solid #C5A059",
+              borderRadius: 4,
               textDecoration: "none",
-              transition: "all 0.2s ease",
+              boxShadow: "0 4px 16px rgba(197, 160, 89, 0.2)",
+              transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#0b0c0e";
-              e.currentTarget.style.color = "#e2e8f0";
+              e.currentTarget.style.background = "transparent";
+              e.currentTarget.style.color = "#FAF6EE";
+              e.currentTarget.style.boxShadow = "0 6px 22px rgba(197, 160, 89, 0.35)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = "#e2e8f0";
-              e.currentTarget.style.color = "#0b0c0e";
+              e.currentTarget.style.background = "linear-gradient(135deg, #C5A059 0%, #A6803B 100%)";
+              e.currentTarget.style.color = "#121110";
+              e.currentTarget.style.boxShadow = "0 4px 16px rgba(197, 160, 89, 0.2)";
             }}
           >
-            [ Direct Email ]
+            Direct Correspondence
           </a>
           <a
             href="https://www.linkedin.com/in/francescocastaldi"
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              fontFamily: "var(--font-mono)",
+              fontFamily: "var(--font-serif)",
               textTransform: "uppercase",
-              fontSize: 12,
-              fontWeight: 700,
-              color: "#cbd5e1",
-              background: "#131519",
-              border: "1px solid #262a33",
-              padding: "12px 28px",
+              fontSize: 13,
+              fontWeight: 600,
+              letterSpacing: "0.08em",
+              color: "#FAF6EE",
+              background: "rgba(21, 38, 30, 0.7)",
+              border: "1px solid rgba(197, 160, 89, 0.35)",
+              borderRadius: 4,
+              padding: "13px 28px",
               textDecoration: "none",
-              transition: "all 0.2s ease",
+              transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "#94a3b8";
-              e.currentTarget.style.color = "#f8fafc";
+              e.currentTarget.style.borderColor = "#C5A059";
+              e.currentTarget.style.color = "#C5A059";
+              e.currentTarget.style.background = "#15261E";
+              e.currentTarget.style.boxShadow = "0 4px 18px rgba(0, 0, 0, 0.5)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "#262a33";
-              e.currentTarget.style.color = "#cbd5e1";
+              e.currentTarget.style.borderColor = "rgba(197, 160, 89, 0.35)";
+              e.currentTarget.style.color = "#FAF6EE";
+              e.currentTarget.style.background = "rgba(21, 38, 30, 0.7)";
+              e.currentTarget.style.boxShadow = "none";
             }}
           >
-            [ LinkedIn Profile ]
+            Curriculum Vitae / LinkedIn
           </a>
         </div>
       </section>
     </div>
   );
 }
-
-

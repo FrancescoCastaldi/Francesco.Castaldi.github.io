@@ -1,8 +1,30 @@
 import "../blog/blog.css";
 import Link from "next/link";
 import Breadcrumb from "@/components/ui/Breadcrumb";
+import { HeritageIcon, ArrowLeftIcon, ArrowRightIcon } from "@/components/ui/HeritageIcon";
 
 export default function ContactPage() {
+  const contactItems = [
+    {
+      label: "Direct Email",
+      value: "info@francescocastaldi.it",
+      href: "mailto:info@francescocastaldi.it",
+      icon: "mail",
+    },
+    {
+      label: "GitHub Archive",
+      value: "github.com/FrancescoCastaldi",
+      href: "https://github.com/FrancescoCastaldi",
+      icon: "github",
+    },
+    {
+      label: "Curriculum / LinkedIn",
+      value: "linkedin.com/in/francescocastaldi",
+      href: "https://www.linkedin.com/in/francescocastaldi",
+      icon: "linkedin",
+    },
+  ];
+
   return (
     <div
       style={{
@@ -13,44 +35,61 @@ export default function ContactPage() {
         alignItems: "center",
         justifyContent: "center",
         padding: "120px 5% 70px",
-        background: "#0b0c0e",
+        background: "#121110",
       }}
     >
-      <div style={{ width: "100%", maxWidth: 560 }}>
+      <div style={{ width: "100%", maxWidth: 580 }}>
         {/* Breadcrumb */}
         <div style={{ textAlign: "center", marginBottom: 24 }}>
           <Breadcrumb items={[
             { label: "Home", href: "/" },
-            { label: "Contact" },
+            { label: "Correspondence" },
           ]} />
         </div>
 
         <div style={{ textAlign: "center", marginBottom: 40 }}>
-          <span style={categoryBadgeStyle}>[ DIRECT_COMMUNICATION ]</span>
-          <h1
+          <span
             style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: "clamp(28px, 4vw, 40px)",
-              fontWeight: 800,
-              color: "#f8fafc",
+              display: "inline-block",
+              fontFamily: "var(--font-serif)",
+              fontSize: 12,
+              color: "#C5A059",
+              background: "rgba(197, 160, 89, 0.08)",
+              border: "1px solid rgba(197, 160, 89, 0.25)",
+              borderRadius: 3,
+              padding: "4px 12px",
               marginBottom: 16,
-              letterSpacing: "-0.03em",
               textTransform: "uppercase",
+              letterSpacing: "0.12em",
+              fontWeight: 600,
             }}
           >
-            Get In Touch
+            CORRESPONDENCE & INQUIRIES
+          </span>
+          <h1
+            style={{
+              fontFamily: "var(--font-serif)",
+              fontSize: "clamp(30px, 4vw, 44px)",
+              fontWeight: 600,
+              color: "#FAF6EE",
+              marginBottom: 16,
+              letterSpacing: "-0.01em",
+            }}
+          >
+            Direct Inquiries & Archival Liaison
           </h1>
           <p
             style={{
-              color: "#94a3b8",
-              fontSize: 15,
-              lineHeight: 1.7,
-              fontFamily: 'var(--font-sans)',
-              maxWidth: 440,
+              color: "#E8E3D6",
+              fontSize: 16,
+              lineHeight: 1.75,
+              fontFamily: "var(--font-body)",
+              maxWidth: 480,
               margin: "0 auto",
+              opacity: 0.9,
             }}
           >
-            Available for upstream open-source contributions, automotive systems engineering, data pipelines, and technical consulting.
+            Open for upstream open-source contributions, automotive systems engineering, data pipelines, and technical consulting.
           </p>
         </div>
 
@@ -62,23 +101,7 @@ export default function ContactPage() {
             marginBottom: 40,
           }}
         >
-          {[
-            {
-              label: "Email",
-              value: "info@francescocastaldi.it",
-              href: "mailto:info@francescocastaldi.it",
-            },
-            {
-              label: "GitHub",
-              value: "github.com/FrancescoCastaldi",
-              href: "https://github.com/FrancescoCastaldi",
-            },
-            {
-              label: "LinkedIn",
-              value: "linkedin.com/in/francescocastaldi",
-              href: "https://www.linkedin.com/in/francescocastaldi",
-            },
-          ].map((item) => (
+          {contactItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
@@ -89,63 +112,75 @@ export default function ContactPage() {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                padding: "16px 20px",
-                border: "1px solid #262a33",
+                padding: "18px 22px",
+                border: "1px solid rgba(197, 160, 89, 0.22)",
+                borderRadius: 6,
                 textDecoration: "none",
-                color: "#cbd5e1",
-                fontSize: 13,
-                fontFamily: 'var(--font-sans)',
-                transition: "border-color 0.2s, color 0.2s, background 0.2s",
-                background: "#131519",
+                color: "#FAF6EE",
+                fontSize: 14,
+                fontFamily: "var(--font-serif)",
+                transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
+                background: "#15261E",
               }}
             >
-              <span
-                style={{
-                  color: "#64748b",
-                  fontSize: 10,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                  fontFamily: 'var(--font-mono)',
-                  fontWeight: 700,
-                }}
-              >
-                [{item.label}]
-              </span>
-              <span style={{ fontFamily: "var(--font-mono)", fontSize: 13, color: "#f8fafc" }}>{item.value}</span>
+              <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                <div
+                  style={{
+                    width: 32,
+                    height: 32,
+                    borderRadius: 4,
+                    background: "rgba(197, 160, 89, 0.1)",
+                    border: "1px solid rgba(197, 160, 89, 0.25)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <HeritageIcon name={item.icon} size={16} color="#C5A059" />
+                </div>
+                <span
+                  style={{
+                    color: "#C5A059",
+                    fontSize: 12,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.08em",
+                    fontFamily: "var(--font-serif)",
+                    fontWeight: 600,
+                  }}
+                >
+                  {item.label}
+                </span>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <span style={{ fontFamily: "var(--font-serif)", fontSize: 14, color: "#FAF6EE" }}>{item.value}</span>
+                <ArrowRightIcon size={14} color="#C5A059" />
+              </div>
             </a>
           ))}
         </div>
 
         <div style={{ textAlign: "center" }}>
-          <Link href="/" style={backLinkStyle}>[ &larr; Back to Home ]</Link>
+          <Link
+            href="/"
+            style={{
+              fontFamily: "var(--font-serif)",
+              fontSize: 12,
+              color: "#C5A059",
+              textDecoration: "none",
+              textTransform: "uppercase",
+              letterSpacing: "0.08em",
+              fontWeight: 600,
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              transition: "color 0.6s ease-out",
+            }}
+          >
+            <ArrowLeftIcon size={14} color="currentColor" />
+            <span>Return to Archival Monograph</span>
+          </Link>
         </div>
       </div>
     </div>
   );
 }
-
-const backLinkStyle = {
-  fontFamily: 'var(--font-mono)',
-  fontSize: 11,
-  color: "#94a3b8",
-  textDecoration: "none",
-  textTransform: "uppercase" as const,
-  display: "inline-flex",
-  alignItems: "center",
-  gap: 6,
-};
-
-const categoryBadgeStyle = {
-  display: "inline-block",
-  fontFamily: 'var(--font-mono)',
-  fontSize: 10,
-  color: "#cbd5e1",
-  background: "#131519",
-  border: "1px solid #262a33",
-  padding: "4px 10px",
-  marginBottom: 16,
-  textTransform: "uppercase" as const,
-  letterSpacing: "0.1em",
-  fontWeight: 700,
-};
-

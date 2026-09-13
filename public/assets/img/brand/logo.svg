@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%" fill="none">
+  <defs>
+    <!-- Satin Antique Gold Linear Gradient -->
+    <linearGradient id="satinGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3E5AB" />
+      <stop offset="35%" stop-color="#D4AF37" />
+      <stop offset="65%" stop-color="#C5A059" />
+      <stop offset="100%" stop-color="#9E7B3B" />
+    </linearGradient>
+
+    <!-- Deep British Racing Green Background -->
+    <radialGradient id="racingGreenBg" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#1B2E24" />
+      <stop offset="70%" stop-color="#15261E" />
+      <stop offset="100%" stop-color="#0E1B15" />
+    </radialGradient>
+
+    <!-- Subtle Gold Drop Shadow -->
+    <filter id="subtleGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Background Shield Canvas (Rounded Aristocratic Shield) -->
+  <path d="M256 24 C370 24 440 80 440 220 C440 340 330 430 256 488 C182 430 72 340 72 220 C72 80 142 24 256 24 Z" 
+        fill="url(#racingGreenBg)" />
+
+  <!-- Outer Double Fillet Border -->
+  <path d="M256 32 C364 32 430 86 430 220 C430 334 324 422 256 476 C188 422 82 334 82 220 C82 86 148 32 256 32 Z" 
+        stroke="url(#satinGold)" stroke-width="2" fill="none" opacity="0.85" />
+  <path d="M256 42 C356 42 418 94 418 220 C418 326 318 412 256 464 C194 412 94 326 94 220 C94 94 156 42 256 42 Z" 
+        stroke="url(#satinGold)" stroke-width="0.8" fill="none" opacity="0.4" />
+
+  <!-- Symmetrical Laurel Leaves (Left & Right Wreath) -->
+  <g stroke="url(#satinGold)" fill="url(#satinGold)" fill-opacity="0.25" stroke-width="1.2">
+    <!-- Left Branch -->
+    <path d="M120 280 C110 240 115 190 135 150 C138 165 145 180 140 200 C130 235 125 260 120 280 Z" />
+    <path d="M105 240 C95 210 102 175 120 145 C122 158 128 172 122 188 C115 212 110 228 105 240 Z" />
+    <path d="M140 330 C125 295 125 250 140 215 C146 228 152 242 150 258 C144 285 142 310 140 330 Z" />
+    <path d="M170 380 C150 350 145 310 155 275 C164 288 170 300 170 318 C168 342 169 365 170 380 Z" />
+    <!-- Right Branch -->
+    <path d="M392 280 C402 240 397 190 377 150 C374 165 367 180 372 200 C382 235 387 260 392 280 Z" />
+    <path d="M407 240 C417 210 410 175 392 145 C390 158 384 172 390 188 C397 212 402 228 407 240 Z" />
+    <path d="M372 330 C387 295 387 250 372 215 C366 228 360 242 362 258 C368 285 370 310 372 330 Z" />
+    <path d="M342 380 C362 350 367 310 357 275 C348 288 342 300 342 318 C344 342 343 365 342 380 Z" />
+  </g>
+
+  <!-- Central Intertwined Heraldic Monogram "FC" -->
+  <g filter="url(#subtleGlow)" fill="url(#satinGold)">
+    <!-- Roman Capital "F" -->
+    <!-- Stem & Bracketed Serifs -->
+    <path d="M192 140 L248 140 L248 156 L232 156 C226 156 224 158 224 166 L224 330 C224 338 226 340 234 340 L250 340 L250 356 L182 356 L182 340 L198 340 C206 340 208 338 208 330 L208 166 C208 158 206 156 198 156 L182 156 L182 140 L192 140 Z" />
+    <!-- Top Horizontal Bar with Serif Drop -->
+    <path d="M224 140 L318 140 C330 140 338 142 342 148 C346 154 346 166 344 182 L328 182 C328 172 326 156 314 156 L224 156 L224 140 Z" />
+    <!-- Middle Horizontal Crossbar with Diamond Finial -->
+    <path d="M208 236 L286 236 C294 236 298 232 300 224 L312 224 L308 256 L298 256 C296 248 292 246 284 246 L208 246 L208 236 Z" />
+
+    <!-- Roman Capital "C" Interwoven Across "F" -->
+    <path d="M336 198 C328 178 308 166 282 166 C248 166 220 192 220 248 C220 304 250 336 290 336 C316 336 336 322 346 298 L360 304 C346 336 320 354 286 354 C236 354 200 312 200 248 C200 186 240 148 290 148 C324 148 350 168 362 196 L336 198 Z" />
+  </g>
+
+  <!-- Discreet Coronet / Crest Apex Finial -->
+  <path d="M246 64 L256 50 L266 64 L276 58 L272 74 L240 74 L236 58 Z" 
+        fill="url(#satinGold)" stroke="url(#satinGold)" stroke-width="0.8" />
+</svg>

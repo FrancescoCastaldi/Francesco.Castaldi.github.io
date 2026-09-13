@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowLeftIcon } from "@/components/ui/HeritageIcon";
 
 export default function NotFound() {
   return (
@@ -10,59 +11,78 @@ export default function NotFound() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "rgba(10, 10, 10, 0.92)",
-        backdropFilter: "blur(16px)",
+        background: "#121110",
+        padding: "24px",
       }}
     >
-      <div style={{ textAlign: "center" }}>
+      <div
+        style={{
+          textAlign: "center",
+          maxWidth: 520,
+          background: "#15261E",
+          border: "1px solid rgba(197, 160, 89, 0.25)",
+          borderRadius: 8,
+          padding: "48px 36px",
+          boxShadow: "0 20px 40px rgba(0, 0, 0, 0.6)",
+        }}
+      >
         <div
           style={{
-            fontSize: 80,
-            fontFamily: "JetBrains Mono, monospace",
-            color: "var(--color-star-gold)",
-            marginBottom: 16,
-            textShadow: "0 0 30px rgba(245, 158, 11, 0.3)",
+            fontSize: 72,
+            fontFamily: "var(--font-serif)",
+            fontWeight: 600,
+            color: "#C5A059",
+            marginBottom: 12,
+            letterSpacing: "0.04em",
           }}
         >
           404
         </div>
         <h1
           style={{
-            fontFamily: "DM Serif Display, Georgia, serif",
-            fontSize: 24,
-            color: "var(--color-text-primary)",
+            fontFamily: "var(--font-serif)",
+            fontSize: 26,
+            fontWeight: 600,
+            color: "#FAF6EE",
             marginBottom: 12,
+            letterSpacing: "0.02em",
           }}
         >
-          Page not found
+          Archival Folio Not Found
         </h1>
         <p
           style={{
-            color: "var(--color-text-body)",
-            fontSize: 14,
-            fontFamily: "Inter, sans-serif",
-            marginBottom: 24,
+            color: "#E8E3D6",
+            fontSize: 15,
+            fontFamily: "var(--font-body)",
+            lineHeight: 1.7,
+            marginBottom: 32,
+            opacity: 0.85,
           }}
         >
-          The page you&apos;re looking for doesn&apos;t exist.
+          The requested monograph, treatise, or repository index does not reside in the permanent archives.
         </p>
         <Link
           href="/"
           style={{
             display: "inline-flex",
             alignItems: "center",
-            gap: 8,
-            color: "var(--color-star-gold)",
-            fontSize: 13,
-            fontFamily: "Inter, sans-serif",
+            gap: 10,
+            color: "#FAF6EE",
+            background: "rgba(197, 160, 89, 0.12)",
+            fontSize: 14,
+            fontFamily: "var(--font-serif)",
+            letterSpacing: "0.06em",
+            textTransform: "uppercase",
             textDecoration: "none",
-            border: "1px solid rgba(245, 158, 11, 0.25)",
-            padding: "10px 20px",
-            borderRadius: 6,
-            transition: "background 0.2s",
+            border: "1px solid rgba(197, 160, 89, 0.4)",
+            padding: "12px 24px",
+            borderRadius: 4,
+            transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
         >
-          Back to home →
+          <ArrowLeftIcon size={16} color="#C5A059" />
+          <span>Return to Archival Monograph</span>
         </Link>
       </div>
     </div>

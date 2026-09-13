@@ -27,7 +27,23 @@ export default function InteractiveLink({
   const isExternal = href.startsWith("http");
   const baseStyle: React.CSSProperties = {
     ...style,
-    transition: "all 0.2s ease",
+    transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
+  };
+
+  const handleMouseEnter = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (hoverStyle) {
+      Object.assign(e.currentTarget.style, hoverStyle);
+    }
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (style) {
+      const targetStyle = e.currentTarget.style as unknown as Record<string, string | number | undefined>;
+      const styleRecord = style as Record<string, string | number | undefined>;
+      Object.keys(style).forEach((key) => {
+        targetStyle[key] = styleRecord[key];
+      });
+    }
   };
 
   if (isExternal || target) {
@@ -38,20 +54,8 @@ export default function InteractiveLink({
         rel={rel || "noopener noreferrer"}
         style={baseStyle}
         className={className}
-        onMouseEnter={(e) => {
-          if (hoverStyle) {
-            Object.assign(e.currentTarget.style, hoverStyle);
-          }
-        }}
-        onMouseLeave={(e) => {
-          if (style) {
-            // Reset to original style
-            Object.keys(style).forEach((key) => {
-              const k = key as keyof React.CSSProperties;
-              (e.currentTarget.style as any)[k] = (style as any)[k];
-            });
-          }
-        }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         {children}
       </a>
@@ -64,19 +68,8 @@ export default function InteractiveLink({
       style={baseStyle}
       className={className}
       onClick={onClick}
-      onMouseEnter={(e) => {
-        if (hoverStyle) {
-          Object.assign(e.currentTarget.style, hoverStyle);
-        }
-      }}
-      onMouseLeave={(e) => {
-        if (style) {
-          Object.keys(style).forEach((key) => {
-            const k = key as keyof React.CSSProperties;
-            (e.currentTarget.style as any)[k] = (style as any)[k];
-          });
-        }
-      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {children}
     </Link>

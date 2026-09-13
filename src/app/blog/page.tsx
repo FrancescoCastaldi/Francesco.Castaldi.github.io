@@ -2,7 +2,9 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { blogPosts } from "@/data/blog-posts";
+import { ArrowRightIcon } from "@/components/ui/HeritageIcon";
 import "./blog.css";
 
 export default function BlogPage() {
@@ -59,12 +61,12 @@ export default function BlogPage() {
         zIndex: 60,
         minHeight: "100vh",
         padding: "120px 5% 90px",
-        background: "var(--color-space-void)",
+        background: "#121110",
       }}
     >
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         
-        {/* Top Telemetry Header */}
+        {/* Top Archival Header */}
         <div style={{ marginBottom: 40 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
             <span
@@ -72,95 +74,95 @@ export default function BlogPage() {
                 width: 7,
                 height: 7,
                 borderRadius: "50%",
-                background: "#cbd5e1",
-                boxShadow: "0 0 8px rgba(203, 213, 225, 0.8)",
+                background: "#C5A059",
                 display: "inline-block",
               }}
             />
             <span
               style={{
-                fontFamily: "var(--font-mono)",
-                fontSize: 11,
-                color: "#94a3b8",
+                fontFamily: "var(--font-serif)",
+                fontSize: 12,
+                color: "#C5A059",
                 textTransform: "uppercase",
                 letterSpacing: "0.15em",
                 fontWeight: 600,
               }}
             >
-              TECHNICAL ARTICLES & TELEMETRY INDEX
+              CURATED ESSAYS & ARCHIVAL PAPERS
             </span>
           </div>
 
           <h1
             style={{
-              fontFamily: "var(--font-sans)",
-              fontSize: "clamp(34px, 5vw, 64px)",
-              fontWeight: 800,
-              color: "#f8fafc",
-              letterSpacing: "-0.04em",
+              fontFamily: "var(--font-serif)",
+              fontSize: "clamp(36px, 5vw, 64px)",
+              fontWeight: 600,
+              color: "#FAF6EE",
+              letterSpacing: "-0.01em",
               margin: 0,
-              lineHeight: 1.05,
-              textTransform: "uppercase",
+              lineHeight: 1.08,
             }}
           >
-            Engineering <span style={{ color: "#94a3b8" }}>Guides & Articles</span>
+            Archival Essays <span style={{ color: "#C5A059" }}>& Monographs</span>
           </h1>
 
           <p
             style={{
-              fontFamily: "var(--font-sans)",
+              fontFamily: "var(--font-body)",
               fontSize: 16,
-              color: "#94a3b8",
+              color: "#E8E3D6",
               marginTop: 14,
               maxWidth: 680,
-              lineHeight: 1.6,
+              lineHeight: 1.7,
+              opacity: 0.9,
             }}
           >
-            Technical deep-dives into Full Hybrid (HEV) automotive systems, Toyota Yaris telemetry, car audio DSP, healthcare data architectures, and software engineering.
+            Scholarly treatises and engineering investigations into Full Hybrid (HEV) automotive systems, Toyota Yaris kinematics, car audio DSP, healthcare data architectures, and software systems.
           </p>
         </div>
 
-        {/* Telemetry Stats Bar */}
+        {/* Ex Libris Archival Registry Stats Bar */}
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
             gap: 16,
-            padding: "16px 20px",
-            background: "#131519",
-            border: "1px solid #262a33",
+            padding: "18px 24px",
+            background: "#15261E",
+            border: "1px solid rgba(197, 160, 89, 0.25)",
+            borderRadius: 6,
             marginBottom: 36,
           }}
         >
           <div>
-            <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 10, color: "#64748b", textTransform: "uppercase" }}>
-              PUBLISHED ARTICLES
+            <span style={{ display: "block", fontFamily: "var(--font-serif)", fontSize: 11, color: "#C5A059", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+              CATALOGUED MONOGRAPHS
             </span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: 16, fontWeight: 700, color: "#f8fafc" }}>
-              {publishedPosts.length} ARTICLES
+            <span style={{ fontFamily: "var(--font-serif)", fontSize: 17, fontWeight: 600, color: "#FAF6EE" }}>
+              {publishedPosts.length} Treatises
             </span>
           </div>
 
           <div>
-            <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 10, color: "#64748b", textTransform: "uppercase" }}>
-              PRIMARY FOCUS
+            <span style={{ display: "block", fontFamily: "var(--font-serif)", fontSize: 11, color: "#C5A059", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+              PRIMARY DISCIPLINES
             </span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: 16, fontWeight: 700, color: "#cbd5e1" }}>
+            <span style={{ fontFamily: "var(--font-serif)", fontSize: 17, fontWeight: 600, color: "#FAF6EE" }}>
               AUTOMOTIVE HEV & SYSTEMS
             </span>
           </div>
 
           <div>
-            <span style={{ display: "block", fontFamily: "var(--font-mono)", fontSize: 10, color: "#64748b", textTransform: "uppercase" }}>
-              TOTAL READ TIME
+            <span style={{ display: "block", fontFamily: "var(--font-serif)", fontSize: 11, color: "#C5A059", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+              ESTIMATED READING FOLIO
             </span>
-            <span style={{ fontFamily: "var(--font-mono)", fontSize: 16, fontWeight: 700, color: "#f8fafc" }}>
-              ~{totalReadingTime} MINS
+            <span style={{ fontFamily: "var(--font-serif)", fontSize: 17, fontWeight: 600, color: "#FAF6EE" }}>
+              ~{totalReadingTime} MINS TOTAL
             </span>
           </div>
         </div>
 
-        {/* Spotlight Featured Article (Only on All view without search query) */}
+        {/* Spotlight Featured Monograph */}
         {selectedCategory === "All" && !searchQuery && featuredPost && (
           <div style={{ marginBottom: 48 }}>
             <div
@@ -169,15 +171,15 @@ export default function BlogPage() {
                 alignItems: "center",
                 gap: 8,
                 marginBottom: 12,
-                fontFamily: "var(--font-mono)",
-                fontSize: 11,
-                color: "#94a3b8",
+                fontFamily: "var(--font-serif)",
+                fontSize: 12,
+                color: "#C5A059",
                 textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                fontWeight: 700,
+                letterSpacing: "0.12em",
+                fontWeight: 600,
               }}
             >
-              <span>[ FEATURED SPOTLIGHT ARTICLE ]</span>
+              <span>FEATURED MONOGRAPH</span>
             </div>
 
             <Link
@@ -188,22 +190,28 @@ export default function BlogPage() {
                 gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
                 gap: 28,
                 padding: "28px",
+                background: "#15261E",
+                border: "1px solid rgba(197, 160, 89, 0.28)",
+                borderRadius: 6,
                 textDecoration: "none",
+                transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
               }}
             >
               {/* Image Thumbnail */}
-              <div style={{ position: "relative", width: "100%", height: 260, overflow: "hidden", border: "1px solid #262a33", background: "#0b0c0e" }}>
-                <img
+              <div style={{ position: "relative", width: "100%", height: 260, overflow: "hidden", borderRadius: 4, border: "1px solid rgba(197, 160, 89, 0.25)", background: "#121110" }}>
+                <Image
                   src="/assets/blog/toyota-yaris-mk4-hev-trend-my25-review/images/cover.png"
                   alt={featuredPost.title}
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  fill
+                  style={{ objectFit: "cover" }}
+                  priority
                 />
                 <div style={{ position: "absolute", top: 12, left: 12, display: "flex", gap: 6 }}>
-                  <span style={{ background: "#e2e8f0", color: "#0b0c0e", padding: "4px 8px", fontSize: 10, fontFamily: "var(--font-mono)", fontWeight: 700, textTransform: "uppercase" }}>
+                  <span style={{ background: "rgba(18, 17, 16, 0.85)", color: "#C5A059", border: "1px solid rgba(197, 160, 89, 0.35)", borderRadius: 3, padding: "4px 10px", fontSize: 11, fontFamily: "var(--font-serif)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.04em" }}>
                     {featuredPost.category}
                   </span>
                   {featuredPost.subcategory && (
-                    <span style={{ background: "#1a1d23", color: "#cbd5e1", border: "1px solid #262a33", padding: "4px 8px", fontSize: 10, fontFamily: "var(--font-mono)", fontWeight: 700, textTransform: "uppercase" }}>
+                    <span style={{ background: "#1B2E24", color: "#FAF6EE", border: "1px solid rgba(197, 160, 89, 0.25)", borderRadius: 3, padding: "4px 10px", fontSize: 11, fontFamily: "var(--font-serif)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.04em" }}>
                       {featuredPost.subcategory}
                     </span>
                   )}
@@ -212,22 +220,23 @@ export default function BlogPage() {
 
               {/* Text Info */}
               <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
-                <div style={{ display: "flex", gap: 16, marginBottom: 12, fontSize: 11, color: "#64748b", fontFamily: "var(--font-mono)", textTransform: "uppercase" }}>
+                <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 12, fontSize: 12, color: "#9E978E", fontFamily: "var(--font-serif)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
                   <span>{new Date(featuredPost.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                  <span>&bull;</span>
+                  <span style={{ color: "rgba(197, 160, 89, 0.4)" }}>•</span>
                   <span>{featuredPost.readingTime} MIN READ</span>
                 </div>
 
-                <h2 style={{ fontFamily: "var(--font-sans)", fontSize: 24, fontWeight: 800, color: "#f8fafc", marginBottom: 14, lineHeight: 1.25, letterSpacing: "-0.02em", textTransform: "uppercase" }}>
+                <h2 style={{ fontFamily: "var(--font-serif)", fontSize: 24, fontWeight: 600, color: "#FAF6EE", marginBottom: 14, lineHeight: 1.25, letterSpacing: "-0.01em" }}>
                   {featuredPost.title}
                 </h2>
 
-                <p style={{ color: "#94a3b8", fontSize: 14, lineHeight: 1.6, margin: 0, marginBottom: 20 }}>
+                <p style={{ color: "#E8E3D6", fontSize: 14, lineHeight: 1.65, margin: 0, marginBottom: 20, opacity: 0.9, fontFamily: "var(--font-body)" }}>
                   {featuredPost.excerpt}
                 </p>
 
-                <div style={{ marginTop: "auto", display: "inline-flex", alignItems: "center", gap: 8, color: "#f8fafc", fontFamily: "var(--font-mono)", fontSize: 11, fontWeight: 700, textTransform: "uppercase" }}>
-                  <span>[ READ TECHNICAL GUIDE &rarr; ]</span>
+                <div style={{ marginTop: "auto", display: "inline-flex", alignItems: "center", gap: 8, color: "#C5A059", fontFamily: "var(--font-serif)", fontSize: 13, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em" }}>
+                  <span>Read Archival Essay</span>
+                  <ArrowRightIcon size={14} color="#C5A059" />
                 </div>
               </div>
             </Link>
@@ -248,19 +257,21 @@ export default function BlogPage() {
                     onClick={() => setSelectedCategory(cat)}
                     className="category-tab"
                     style={{
-                      background: isActive ? "#e2e8f0" : "#131519",
-                      color: isActive ? "#0b0c0e" : "#94a3b8",
-                      border: `1px solid ${isActive ? "#e2e8f0" : "#262a33"}`,
-                      padding: "8px 16px",
-                      fontFamily: "var(--font-mono)",
-                      fontSize: 11,
-                      fontWeight: 700,
+                      background: isActive ? "linear-gradient(135deg, #C5A059 0%, #A6803B 100%)" : "#15261E",
+                      color: isActive ? "#121110" : "#E8E3D6",
+                      border: `1px solid ${isActive ? "#C5A059" : "rgba(197, 160, 89, 0.25)"}`,
+                      padding: "8px 18px",
+                      borderRadius: 4,
+                      fontFamily: "var(--font-serif)",
+                      fontSize: 12,
+                      fontWeight: 600,
                       textTransform: "uppercase",
-                      letterSpacing: "0.05em",
+                      letterSpacing: "0.06em",
                       cursor: "pointer",
+                      transition: "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
                     }}
                   >
-                    {cat === "All" ? "ALL ARTICLES" : cat}
+                    {cat === "All" ? "ALL ESSAYS" : cat}
                   </button>
                 );
               })}
@@ -270,18 +281,19 @@ export default function BlogPage() {
             <div style={{ flex: "1 1 260px", maxWidth: 360 }}>
               <input
                 type="text"
-                placeholder="Search articles by keyword..."
+                placeholder="Search archival monographs..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="search-input"
                 style={{
                   width: "100%",
-                  background: "#131519",
-                  border: "1px solid #262a33",
-                  color: "#f8fafc",
+                  background: "#15261E",
+                  border: "1px solid rgba(197, 160, 89, 0.25)",
+                  borderRadius: 4,
+                  color: "#FAF6EE",
                   padding: "10px 16px",
-                  fontSize: 12,
-                  fontFamily: "var(--font-mono)",
+                  fontSize: 13,
+                  fontFamily: "var(--font-body)",
                   outline: "none",
                 }}
               />
@@ -291,12 +303,12 @@ export default function BlogPage() {
 
         {/* Section Title */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
-          <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--color-text-muted)", textTransform: "uppercase" }}>
-            SHOWING {filteredPosts.length} OF {publishedPosts.length} ARTICLES
+          <span style={{ fontFamily: "var(--font-serif)", fontSize: 12, color: "#9E978E", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+            CATALOGUE: SHOWING {filteredPosts.length} OF {publishedPosts.length} MONOGRAPHS
           </span>
         </div>
 
-        {/* Forum Card Grid */}
+        {/* Monograph Card Grid */}
         {gridPosts.length > 0 ? (
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: 20 }}>
             {gridPosts.map((post) => (
@@ -307,63 +319,70 @@ export default function BlogPage() {
                 style={{
                   display: "flex",
                   flexDirection: "column",
-                  padding: "24px",
+                  padding: "26px",
                   textDecoration: "none",
                   height: "100%",
+                  background: "#15261E",
+                  border: "1px solid rgba(197, 160, 89, 0.22)",
+                  borderRadius: 6,
+                  transition: "background 0.7s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.7s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
                 }}
               >
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14, fontSize: 10, color: "var(--color-text-muted)", fontFamily: "var(--font-mono)", textTransform: "uppercase" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14, fontSize: 11, color: "#9E978E", fontFamily: "var(--font-serif)", textTransform: "uppercase", letterSpacing: "0.06em" }}>
                   <span>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
                   <span>{post.readingTime} MIN READ</span>
                 </div>
 
-                <h2 className="blog-card-title" style={{ fontFamily: "var(--font-sans)", fontSize: 18, fontWeight: 700, color: "#f8fafc", marginBottom: 10, lineHeight: 1.35, letterSpacing: "-0.01em", transition: "color 0.2s" }}>
+                <h2 className="blog-card-title" style={{ fontFamily: "var(--font-serif)", fontSize: 20, fontWeight: 600, color: "#FAF6EE", marginBottom: 12, lineHeight: 1.35 }}>
                   {post.title}
                 </h2>
 
-                <p style={{ color: "var(--color-text-body)", fontSize: 13, lineHeight: 1.55, margin: 0, marginBottom: 20, flexGrow: 1 }}>
+                <p style={{ color: "#E8E3D6", fontSize: 14, lineHeight: 1.65, margin: 0, marginBottom: 20, flexGrow: 1, opacity: 0.9, fontFamily: "var(--font-body)" }}>
                   {post.excerpt}
                 </p>
 
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "auto", paddingTop: 14, borderTop: "1px solid #1e222b" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "auto", paddingTop: 14, borderTop: "1px solid rgba(197, 160, 89, 0.14)" }}>
                   <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
-                    <span style={{ border: "1px solid #262a33", background: "#1a1d23", color: "#cbd5e1", padding: "3px 7px", fontSize: 9, fontFamily: "var(--font-mono)", fontWeight: 700, textTransform: "uppercase" }}>
+                    <span style={{ border: "1px solid rgba(197, 160, 89, 0.22)", background: "rgba(197, 160, 89, 0.08)", color: "#C5A059", padding: "3px 8px", borderRadius: 3, fontSize: 11, fontFamily: "var(--font-serif)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.04em" }}>
                       {post.category}
                     </span>
                     {post.subcategory && (
-                      <span style={{ border: "1px solid #262a33", background: "#1a1d23", color: "#64748b", padding: "3px 7px", fontSize: 9, fontFamily: "var(--font-mono)", fontWeight: 700, textTransform: "uppercase" }}>
+                      <span style={{ border: "1px solid rgba(197, 160, 89, 0.22)", background: "rgba(197, 160, 89, 0.08)", color: "#C5A059", padding: "3px 8px", borderRadius: 3, fontSize: 11, fontFamily: "var(--font-serif)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.04em" }}>
                         {post.subcategory}
                       </span>
                     )}
                   </div>
 
-                  <span className="blog-card-arrow" style={{ color: "#64748b", fontSize: 13, fontFamily: "var(--font-mono)", transition: "transform 0.2s, color 0.2s" }}>
-                    [&rarr;]
+                  <span className="blog-card-arrow" style={{ color: "#C5A059", display: "inline-flex", alignItems: "center", transition: "transform 0.6s ease-out, color 0.6s ease-out" }}>
+                    <ArrowRightIcon size={14} color="#C5A059" />
                   </span>
                 </div>
               </Link>
             ))}
           </div>
         ) : (
-          <div style={{ padding: "60px 20px", textAlign: "center", background: "#131519", border: "1px solid #262a33" }}>
-            <p style={{ fontFamily: "var(--font-mono)", fontSize: 13, color: "#64748b", marginBottom: 16 }}>
-              NO ARTICLES FOUND MATCHING YOUR SEARCH QUERY.
+          <div style={{ padding: "60px 20px", textAlign: "center", background: "#15261E", border: "1px solid rgba(197, 160, 89, 0.25)", borderRadius: 6 }}>
+            <p style={{ fontFamily: "var(--font-serif)", fontSize: 16, color: "#E8E3D6", marginBottom: 20 }}>
+              No archival monographs found matching your search query.
             </p>
             <button
               onClick={() => { setSelectedCategory("All"); setSearchQuery(""); }}
               style={{
-                background: "#e2e8f0",
-                color: "#0b0c0e",
-                border: "none",
-                padding: "10px 20px",
-                fontFamily: "var(--font-mono)",
-                fontSize: 11,
-                fontWeight: 700,
+                background: "linear-gradient(135deg, #C5A059 0%, #A6803B 100%)",
+                color: "#121110",
+                border: "1px solid #C5A059",
+                borderRadius: 4,
+                padding: "10px 22px",
+                fontFamily: "var(--font-serif)",
+                fontSize: 12,
+                fontWeight: 600,
                 cursor: "pointer",
                 textTransform: "uppercase",
+                letterSpacing: "0.08em",
+                transition: "all 0.6s ease-out",
               }}
             >
-              [ RESET SEARCH & FILTERS ]
+              Clear Search Criteria
             </button>
           </div>
         )}

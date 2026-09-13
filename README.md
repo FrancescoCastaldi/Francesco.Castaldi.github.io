@@ -1,30 +1,31 @@
 <div align="center">
   <a href="https://francescocastaldi.it" target="_blank">
-    <img src="./public/assets/img/brand/logo.png" alt="Francesco Castaldi Brand Emblem" width="260" style="border-radius: 12px; margin-bottom: 16px;" />
+    <img src="./public/assets/img/brand/logo.svg" alt="Francesco Castaldi Heraldic Crest" width="160" style="margin-bottom: 16px;" />
   </a>
-  <h1>Francesco Castaldi — Automotive & Tech Forum Hub</h1>
-  <p><b>Modern Ultra-Clean Portfolio, Technical Build Logs, and Full Hybrid (HEV) Systems Engineering</b></p>
+  <h1>Francesco Castaldi — Engineering Archives & Curated Works</h1>
+  <p><b>Ultra-Low Cortisol, Old Money & Ralph Lauren Heritage Aesthetic — Computer Engineering, Upstream Systems & Automotive Kinematics</b></p>
 
   <p>
-    <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-16.2-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js 16" /></a>
-    <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS v4" /></a>
-    <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" /></a>
-    <a href="https://francescocastaldi.it"><img src="https://img.shields.io/badge/GitHub_Pages-Live_Site-22C55E?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Pages" /></a>
-    <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-F59E0B?style=for-the-badge" alt="License" /></a>
+    <a href="https://github.com/FrancescoCastaldi/Francesco.Castaldi.github.io/releases/tag/v0.2.0"><img src="https://img.shields.io/badge/Release-v0.2.0-C5A059?style=for-the-badge&logo=github&logoColor=121110" alt="Release v0.2.0" /></a>
+    <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js-16.2-121110?style=for-the-badge&logo=nextdotjs&logoColor=FAF6EE" alt="Next.js 16" /></a>
+    <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS-v4-15261E?style=for-the-badge&logo=tailwindcss&logoColor=FAF6EE" alt="Tailwind CSS v4" /></a>
+    <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-5.0-8D5B4C?style=for-the-badge&logo=typescript&logoColor=FAF6EE" alt="TypeScript" /></a>
+    <a href="https://francescocastaldi.it"><img src="https://img.shields.io/badge/GitHub_Pages-Live_Site-1B382B?style=for-the-badge&logo=github&logoColor=FAF6EE" alt="GitHub Pages" /></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-C5A059?style=for-the-badge" alt="License" /></a>
   </p>
 </div>
 
 ---
 
 <p align="center">
-  <img src="./public/assets/img/hero/hero-bg.png" alt="Automotive Tech Forum Visualization" width="750" style="border-radius: 8px; border: 1px solid #1e293b;" />
+  <img src="./public/assets/img/og/og-image.png" alt="Francesco Castaldi Editorial Showcase" width="750" style="border-radius: 8px; border: 1px solid rgba(197, 160, 89, 0.2);" />
 </p>
 
 ---
 
 ## 📌 Table of Contents
 
-- [ Overview](#-overview)
+- [🏛️ Overview](#️-overview)
 - [🚀 Key Features](#-key-features)
 - [🏗️ Architecture & File Structure](#️-architecture--file-structure)
 - [💻 Core Components Analysis](#-core-components-analysis)
@@ -35,25 +36,21 @@
 
 ---
 
-## 🚗 Overview
+## 🏛️ Overview
 
-Welcome to the official repository of **Francesco Castaldi** — a Computer Engineering student at the University of Bologna specializing in **Automotive Tech**, **Full Hybrid (HEV) Systems**, **Healthcare IT**, and **Data Science**.
+Welcome to the official repository of **Francesco Castaldi** — Computer Engineering student at the University of Bologna specializing in **Upstream Systems**, **Full Hybrid (HEV) Automotive Kinematics**, **Radar Weather AI**, and **Data Architecture**.
 
-This platform is engineered as a high-performance **Static Site Generation (SSG)** web application modeled after a modern automotive tech forum. It features deep technical articles on the Toyota Yaris MK4 HEV platform, e-CVT transaxles, car audio DSP engineering, hospital data pipelines, and sports performance analytics.
+This platform is crafted as a high-performance **Static Site Generation (SSG)** web monograph modeled after an archival gentlemen's library and classic Savile Row / Ralph Lauren heritage aesthetic. It features deep technical articles, full hybrid kinematics derivations, open-source upstream engineering, and sports telematics.
 
 ---
 
 ## 🚀 Key Features
 
-- ** Modern Ultra-Clean Automotive Forum Aesthetic**: Dark asphalt surface colors (`#090d16`), electric cyan (`#38bdf8`), and racing amber (`#f59e0b`) accents.
-- ** W3C/MDN Modern Web Standards**:
-  - **Container Queries (`@container`)**: Fluid responsive grid adapting to container parent bounds instead of traditional viewport queries.
-  - **CSS `:has()` Parent Selector**: Dynamic card elevations and interactive glow states without JavaScript event handlers.
-  - **Glassmorphism & Native `<dialog>`**: Backdrop blur modals and sticky headers with native browser support.
-  - **Core Web Vitals Optimization**: Off-screen content rendering deferred with `content-visibility: auto` and LCP candidate preloading with `fetchPriority="high"`.
-- ** Structured Automotive Taxonomy**: Hierarchical category & subcategory classification (`category: "Automotive"`, `subcategory: "Toyota Yaris MK4 HEV"`).
-- ** Original Content & UUXD Compliance**: Scannable 3-4 line paragraphs, F-pattern bold keyword highlights, WCAG AA high-contrast compliance, and GitHub callout alerts (`> [!NOTE]`, `> [!TIP]`, `> [!IMPORTANT]`).
-- ** Databaseless Zero-Latency Performance**: 100% pre-rendered static HTML/CSS/JS served via global CDN.
+- **🏛️ Heritage Gentlemen's Club & Old Money Aesthetic**: Warm mahogany/espresso canvas (`#121110`), British Racing Green surfaces (`#15261E`), satin antique gold accents (`#C5A059`), and soft ivory reading text (`#FAF6EE`).
+- **🌿 Ultra-Low Cortisol Visual Experience**: Soft ambient chiaroscuro, hairline gold filigree (`1px solid rgba(197, 160, 89, 0.2)`), relaxed typography leading (`line-height: 1.7`), and gentle transitions (`0.6s–0.8s`).
+- **📖 Full Monograph Typography**: Classical Roman serif families (`EB Garamond`, `Cormorant Garamond`, `Newsreader`, `Source Serif 4`) and traditional Roman numerals (`I.`, `II.`, `III.`, `IV.`, `V.`, `VI.`).
+- **👑 Bespoke Heraldic Brand Identity**: Intertwined "FC" monogram with laurel wreath in satin gold and British Racing Green, multi-resolution `favicon.ico`, and `<HeritageIcon />` hairline icons (0.85px).
+- **⚡ Databaseless Zero-Latency Performance**: 100% pre-rendered static HTML/CSS/JS served via global CDN with zero Node.js server overhead at runtime.
 
 ---
 

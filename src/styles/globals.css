@@ -1,58 +1,132 @@
 @import "tailwindcss";
 
 @theme {
-  --color-space-void: #0b0c0e;
-  --color-space-surface: #131519;
-  --color-space-elevated: #1a1d23;
-  --color-space-border: #262a33;
-  --color-space-border-hover: #3f4756;
-  --color-accent-primary: #e2e8f0;
-  --color-accent-amber: #94a3b8;
-  --color-accent-secondary: #94a3b8;
-  --color-accent-titanium: #8590a2;
-  --color-accent-soft: #161920;
-  --color-text-primary: #f8fafc;
-  --color-text-body: #94a3b8;
-  --color-text-muted: #64748b;
-  --color-text-dim: #334155;
-  --font-serif: "Inter", -apple-system, sans-serif;
-  --font-sans: "Inter", -apple-system, sans-serif;
+  /* Heritage Low-Cortisol Design Tokens */
+  --color-heritage-mahogany: #121110;
+  --color-heritage-espresso: #161413;
+  --color-canvas-primary: #121110;
+  --color-canvas-espresso: #161413;
+
+  --color-heritage-green: #15261E;
+  --color-heritage-green-elevated: #1B2E24;
+  --color-heritage-leather: #1A1715;
+  --color-heritage-leather-elevated: #221E1B;
+  --color-surface-racing-green: #15261E;
+  --color-surface-racing-green-light: #1B2E24;
+  --color-surface-leather: #1A1715;
+  --color-surface-leather-elevated: #221E1B;
+
+  --color-heritage-gold: #C5A059;
+  --color-heritage-gold-bright: #D4AF37;
+  --color-heritage-gold-soft: rgba(197, 160, 89, 0.12);
+  --color-heritage-gold-glow: rgba(197, 160, 89, 0.25);
+  --color-accent-gold: #C5A059;
+  --color-accent-gold-rich: #D4AF37;
+  --color-accent-gold-soft: rgba(197, 160, 89, 0.12);
+  --color-accent-gold-glow: rgba(197, 160, 89, 0.25);
+
+  --color-heritage-cognac: #8D5B4C;
+  --color-heritage-sage: #6D7D72;
+  --color-accent-cognac: #8D5B4C;
+  --color-accent-sage: #6D7D72;
+
+  --color-heritage-ivory: #FAF6EE;
+  --color-heritage-parchment: #E8E3D6;
+  --color-heritage-muted: #A89F91;
+  --color-heritage-dim: #5C564C;
+  --color-text-ivory: #FAF6EE;
+  --color-text-parchment: #E8E3D6;
+  --color-text-muted-heritage: #A89F91;
+  --color-text-dim-heritage: #5C564C;
+
+  --color-heritage-border: rgba(197, 160, 89, 0.20);
+  --color-heritage-border-hover: rgba(197, 160, 89, 0.45);
+  --color-heritage-border-rich: rgba(197, 160, 89, 0.35);
+
+  /* Typographic Stacks */
+  --font-display: "Cormorant Garamond", "EB Garamond", Garamond, Georgia, serif;
+  --font-serif: "EB Garamond", "Cormorant Garamond", Garamond, Georgia, serif;
+  --font-body: "Newsreader", "Source Serif 4", Georgia, serif;
+  --font-caps: "Cinzel", "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Newsreader", "Source Serif 4", Georgia, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
+
+  /* Backward Compatibility Aliases */
+  --color-space-void: #121110;
+  --color-space-surface: #15261E;
+  --color-space-elevated: #1B2E24;
+  --color-space-border: rgba(197, 160, 89, 0.20);
+  --color-space-border-hover: rgba(197, 160, 89, 0.45);
+  --color-accent-primary: #C5A059;
+  --color-accent-amber: #D4AF37;
+  --color-accent-secondary: #C5A059;
+  --color-accent-titanium: #6D7D72;
+  --color-accent-soft: #1A1715;
+  --color-text-primary: #FAF6EE;
+  --color-text-body: #E8E3D6;
+  --color-text-muted: #A89F91;
+  --color-text-dim: #5C564C;
 }
 
 @layer base {
   :root {
     --spring-easing: cubic-bezier(0.16, 1, 0.3, 1);
-    --border-metallic: 1px solid #262a33;
-    --border-metallic-glow: 1px solid rgba(226, 232, 240, 0.25);
-    --border-titanium: 1px solid rgba(133, 144, 162, 0.2);
+    --border-metallic: 1px solid rgba(197, 160, 89, 0.20);
+    --border-metallic-glow: 1px solid rgba(197, 160, 89, 0.40);
+    --border-titanium: 1px solid rgba(109, 125, 114, 0.25);
+    --border-gold-hairline: 1px solid rgba(197, 160, 89, 0.20);
+    --border-gold-hover: 1px solid rgba(197, 160, 89, 0.45);
   }
   
   * { margin: 0; padding: 0; box-sizing: border-box; }
   
   html { 
-    background: var(--color-space-void); 
-    color: var(--color-text-primary); 
-    font-family: var(--font-sans);
+    background: #121110; 
+    color: #FAF6EE; 
+    font-family: var(--font-body), "Newsreader", Georgia, serif;
+    font-size: 16px;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
   }
   
   body {
     min-height: 100vh;
     overflow-x: clip;
-    background: var(--color-space-void);
+    background: #121110;
+    color: #E8E3D6;
+    font-family: var(--font-body), "Newsreader", Georgia, serif;
   }
   
   h1, h2, h3, h4 {
-    font-family: var(--font-sans);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1.15;
-    color: var(--color-text-primary);
+    font-family: var(--font-display), "Cormorant Garamond", "EB Garamond", serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    color: #FAF6EE;
+  }
+
+  h2, h3 {
+    font-family: var(--font-serif), "EB Garamond", "Cormorant Garamond", serif;
   }
   
-  a { color: inherit; text-decoration: none; }
+  a { 
+    color: inherit; 
+    text-decoration: none; 
+    transition: color 0.4s var(--spring-easing);
+  }
+
+  ::selection {
+    background: #C5A059;
+    color: #121110;
+  }
+
+  ::-moz-selection {
+    background: #C5A059;
+    color: #121110;
+  }
 }
 
 /* ============================================
@@ -73,18 +147,19 @@
 .hero-entrance:nth-child(4) { animation-delay: 0.4s; }
 .hero-entrance:nth-child(5) { animation-delay: 0.5s; }
 
-/* Remove old complex hero backgrounds, keep minimal solid */
+/* Warm chiaroscuro atmospheric background */
 .hero-bg {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: var(--color-space-void);
-  /* Minimal grid lines */
+  background: #121110;
   background-image: 
-    linear-gradient(var(--color-space-surface) 1px, transparent 1px),
-    linear-gradient(90deg, var(--color-space-surface) 1px, transparent 1px);
-  background-size: 40px 40px;
-  opacity: 0.5;
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(197, 160, 89, 0.09) 0%, transparent 70%),
+    radial-gradient(circle at 15% 25%, rgba(21, 38, 30, 0.50) 0%, transparent 60%),
+    radial-gradient(circle at 85% 75%, rgba(141, 91, 76, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 90% 70% at 50% 100%, rgba(22, 20, 19, 0.95) 0%, transparent 80%);
+  opacity: 1;
+  pointer-events: none;
 }
 
 /* ============================================
@@ -130,8 +205,8 @@
 
 /* Dynamic CSS :has() parent selection */
 .forum-thread-card:has(a:hover) {
-  border-color: var(--color-accent-amber) !important;
-  box-shadow: 0 8px 30px rgba(245, 158, 11, 0.15);
+  border-color: rgba(197, 160, 89, 0.5) !important;
+  box-shadow: 0 8px 30px rgba(197, 160, 89, 0.12);
 }
 
 /* Performance: Deferred rendering for offscreen items */
@@ -142,20 +217,21 @@
 
 /* Glassmorphism & Native Dialog */
 dialog.forum-modal {
-  background: rgba(17, 24, 39, 0.95);
-  border: 1px solid rgba(56, 189, 248, 0.4);
+  background: rgba(21, 38, 30, 0.96);
+  border: 1px solid rgba(197, 160, 89, 0.35);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  color: #f8fafc;
+  color: #FAF6EE;
   padding: 32px;
   max-width: 600px;
   width: 90%;
   margin: auto;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 25px 60px rgba(10, 8, 7, 0.85), 0 0 30px rgba(197, 160, 89, 0.10);
+  border-radius: 4px;
 }
 
 dialog.forum-modal::backdrop {
-  background: rgba(9, 13, 22, 0.8);
+  background: rgba(18, 17, 16, 0.85);
   backdrop-filter: blur(8px);
 }
 
@@ -179,12 +255,24 @@ dialog.forum-modal::backdrop {
 }
 
 /* ============================================
-   Scrollbar
+   Scrollbar & Selection
    ============================================ */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--color-space-void); }
-::-webkit-scrollbar-thumb { background: var(--color-accent-secondary); border-radius: 0px; }
-::-webkit-scrollbar-thumb:hover { background: var(--color-accent-primary); }
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: #121110; }
+::-webkit-scrollbar-thumb { 
+  background: rgba(197, 160, 89, 0.35); 
+  border-radius: 2px; 
+  border: 1px solid rgba(18, 17, 16, 0.8);
+}
+::-webkit-scrollbar-thumb:hover { 
+  background: #C5A059; 
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(197, 160, 89, 0.35) #121110;
+}
 
 /* ============================================
    Section divider
@@ -192,6 +280,6 @@ dialog.forum-modal::backdrop {
 .section-divider {
   width: 100%;
   height: 1px;
-  background: var(--color-space-surface);
+  background: linear-gradient(90deg, transparent 0%, rgba(197, 160, 89, 0.25) 30%, rgba(197, 160, 89, 0.35) 50%, rgba(197, 160, 89, 0.25) 70%, transparent 100%);
   margin: 0;
 }

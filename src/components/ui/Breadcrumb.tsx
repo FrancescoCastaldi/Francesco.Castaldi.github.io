@@ -7,36 +7,49 @@ interface BreadcrumbProps {
 
 export default function Breadcrumb({ items }: BreadcrumbProps) {
   return (
-    <nav aria-label="Breadcrumb" style={{
-      display: "flex",
-      alignItems: "center",
-      gap: 8,
-      fontFamily: 'var(--font-mono)',
-      fontSize: 10,
-      color: "var(--color-text-muted)",
-      letterSpacing: "0.08em",
-      textTransform: "uppercase",
-    }}>
+    <nav
+      aria-label="Breadcrumb"
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 8,
+        fontFamily: "var(--font-serif)",
+        fontSize: 12,
+        color: "#9E978E",
+        letterSpacing: "0.08em",
+        textTransform: "uppercase",
+      }}
+    >
       {items.map((item, i) => (
         <span key={i} style={{ display: "flex", alignItems: "center", gap: 8 }}>
           {i > 0 && (
-            <span style={{ color: "var(--color-space-surface)", userSelect: "none" }}>/</span>
+            <span
+              style={{
+                color: "rgba(197, 160, 89, 0.35)",
+                fontSize: 9,
+                userSelect: "none",
+              }}
+              aria-hidden="true"
+            >
+              •
+            </span>
           )}
           {item.href ? (
             <Link
               href={item.href}
               style={{
-                color: "var(--color-accent-secondary)",
+                color: "#C5A059",
                 textDecoration: "none",
-                transition: "color 0.2s",
+                fontWeight: 600,
+                transition: "color 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--color-accent-primary)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-accent-secondary)")}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#FAF6EE")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "#C5A059")}
             >
-              [ {item.label} ]
+              {item.label}
             </Link>
           ) : (
-            <span style={{ color: "var(--color-text-body)" }}>{item.label}</span>
+            <span style={{ color: "#E8E3D6", fontWeight: 500 }}>{item.label}</span>
           )}
         </span>
       ))}

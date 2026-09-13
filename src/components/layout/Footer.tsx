@@ -1,37 +1,43 @@
 "use client";
+import React from "react";
+
 export default function Footer() {
   const linkStyle: React.CSSProperties = {
-    color: "var(--color-text-muted)",
+    color: "#B8B0A2",
     textDecoration: "none",
-    fontSize: 10,
+    fontSize: 11,
     textTransform: "uppercase",
-    fontFamily: "var(--font-mono)",
+    fontFamily: "var(--font-serif)",
+    letterSpacing: "0.08em",
+    fontWeight: 500,
     display: "inline-flex",
     alignItems: "center",
     gap: 6,
-    transition: "color 0.2s",
+    transition: "color 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
   };
 
   return (
-    <div
+    <footer
       style={{
         position: "fixed",
         bottom: 0,
         left: 0,
         right: 0,
         zIndex: 50,
-        height: 40,
+        height: 42,
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
         padding: "0 5%",
-        background: "rgba(11, 12, 14, 0.9)",
-        backdropFilter: "blur(8px)",
-        borderTop: "1px solid #1e222b",
+        background: "rgba(18, 17, 16, 0.95)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        borderTop: "1px solid rgba(197, 160, 89, 0.18)",
         pointerEvents: "auto",
+        transition: "background 0.7s ease-out, border-color 0.7s ease-out",
       }}
     >
-      {/* Left column — Logo */}
+      {/* Left column — Monogram / Identity */}
       <div
         style={{
           display: "flex",
@@ -41,24 +47,24 @@ export default function Footer() {
       >
         <span
           style={{
-            color: "#cbd5e1",
-            fontFamily: "var(--font-mono)",
-            fontSize: 10,
+            color: "#C5A059",
+            fontFamily: "var(--font-serif)",
+            fontSize: 12,
             textTransform: "uppercase",
-            letterSpacing: "0.1em",
-            fontWeight: 700,
+            letterSpacing: "0.12em",
+            fontWeight: 600,
           }}
         >
-          [ FC.SYS // ENG ]
+          FC • ARCHIVAL MONOGRAPH
         </span>
       </div>
 
-      {/* Center column — Social links */}
+      {/* Center column — Social correspondence links */}
       <div
         style={{
           display: "flex",
           alignItems: "center",
-          gap: 14,
+          gap: 12,
         }}
       >
         <a
@@ -66,48 +72,49 @@ export default function Footer() {
           target="_blank"
           rel="noopener noreferrer"
           style={linkStyle}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#f8fafc")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-muted)")}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#C5A059")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "#B8B0A2")}
         >
           GitHub
         </a>
 
-        <span style={{ color: "#262a33", fontSize: 10, userSelect: "none" }}>|</span>
+        <span style={{ color: "rgba(197, 160, 89, 0.4)", fontSize: 9, userSelect: "none" }}>•</span>
 
         <a
           href="https://www.linkedin.com/in/francescocastaldi"
           target="_blank"
           rel="noopener noreferrer"
           style={linkStyle}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#f8fafc")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-muted)")}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#C5A059")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "#B8B0A2")}
         >
           LinkedIn
         </a>
 
-        <span style={{ color: "#262a33", fontSize: 10, userSelect: "none" }}>|</span>
+        <span style={{ color: "rgba(197, 160, 89, 0.4)", fontSize: 9, userSelect: "none" }}>•</span>
 
         <a
           href="mailto:info@francescocastaldi.it"
           style={linkStyle}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#f8fafc")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "var(--color-text-muted)")}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#C5A059")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "#B8B0A2")}
         >
-          Email
+          Direct Email
         </a>
       </div>
 
-      {/* Right column — Copyright */}
+      {/* Right column — Archival Colophon */}
       <span
         style={{
-          color: "#64748b",
-          fontSize: 10,
-          fontFamily: "var(--font-mono)",
+          color: "#9E978E",
+          fontSize: 11,
+          fontFamily: "var(--font-serif)",
           textTransform: "uppercase",
+          letterSpacing: "0.08em",
         }}
       >
-        FRANCESCO CASTALDI &copy; 2026
+        FRANCESCO CASTALDI • MMXXVI
       </span>
-    </div>
+    </footer>
   );
 }

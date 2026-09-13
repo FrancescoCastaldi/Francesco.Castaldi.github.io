@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 export default function Header() {
@@ -9,12 +10,12 @@ export default function Header() {
   const pathname = usePathname();
   
   const navItems = [
-    { label: "Work Portfolio", href: "/#work-portfolio", desktop: true },
-    { label: "Garage & Hobbies", href: "/#garage-labs", desktop: true },
+    { label: "Portfolio", href: "/#work-portfolio", desktop: true },
+    { label: "Atelier", href: "/#garage-labs", desktop: true },
     { label: "Automotive", href: "/#automotive-hub", desktop: true },
     { label: "Disciplines", href: "/#expertise", desktop: true },
-    { label: "Blog", href: "/blog", desktop: true },
-    { label: "Contact", href: "/#contact", desktop: true },
+    { label: "Monographs", href: "/blog", desktop: true },
+    { label: "Correspondence", href: "/#contact", desktop: true },
   ];
 
   useEffect(() => {
@@ -33,96 +34,117 @@ export default function Header() {
           left: 0,
           right: 0,
           zIndex: 100,
-          height: 56,
+          height: 60,
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
           padding: "0 5%",
-          background: "rgba(11, 12, 14, 0.85)",
-          backdropFilter: "blur(12px)",
-          WebkitBackdropFilter: "blur(12px)",
-          borderBottom: "1px solid #1e222b",
+          background: "rgba(18, 17, 16, 0.94)",
+          backdropFilter: "blur(16px)",
+          WebkitBackdropFilter: "blur(16px)",
+          borderBottom: "1px solid rgba(197, 160, 89, 0.18)",
+          transition: "background 0.7s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.7s ease-out",
         }}
       >
-        {/* Logo */}
+        {/* Heraldic Logo & Monogram */}
         <Link
           href="/"
           style={{
             display: "flex",
             alignItems: "center",
-            gap: 10,
+            gap: 12,
             textDecoration: "none",
           }}
         >
           <div
             style={{
-              width: 24,
-              height: 24,
-              background: "#161920",
-              border: "1px solid #333a48",
+              width: 30,
+              height: 30,
+              borderRadius: "50%",
+              background: "#15261E",
+              border: "1px solid rgba(197, 160, 89, 0.45)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontFamily: "var(--font-mono)",
-              fontSize: 10,
-              fontWeight: 800,
-              color: "#e2e8f0",
+              overflow: "hidden",
+              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.4)",
+              transition: "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.6s ease-out",
             }}
           >
-            FC
+            <Image
+              src="/assets/img/brand/logo.svg"
+              alt="FC Monogram Crest"
+              width={26}
+              height={26}
+              style={{ width: "88%", height: "88%", objectFit: "contain" }}
+              priority
+            />
           </div>
           <span
             style={{
-              color: "#f8fafc",
-              fontFamily: "var(--font-sans)",
-              fontWeight: 700,
-              fontSize: 14,
+              color: "#FAF6EE",
+              fontFamily: "var(--font-serif)",
+              fontWeight: 600,
+              fontSize: 16,
+              letterSpacing: "0.06em",
               textTransform: "uppercase",
-              letterSpacing: "0.08em",
             }}
           >
-            Francesco <span style={{ color: "#94a3b8" }}>Castaldi</span>
+            Francesco <span style={{ color: "#C5A059" }}>Castaldi</span>
           </span>
         </Link>
 
-        {/* Desktop Nav */}
+        {/* Desktop Nav with Micro-Dots */}
         {!isMobile && (
           <nav
             style={{
               display: "flex",
               alignItems: "center",
-              gap: 24,
+              gap: 16,
             }}
           >
             {navItems
               .filter((n) => n.desktop)
-              .map((item) => {
+              .map((item, idx) => {
                 const isActive = pathname?.startsWith(item.href) && item.href !== "/";
                 return (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    onClick={() => setMenuOpen(false)}
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: 11,
-                      fontWeight: 600,
-                      color: isActive ? "#f8fafc" : "#94a3b8",
-                      textDecoration: "none",
-                      letterSpacing: "0.06em",
-                      textTransform: "uppercase",
-                      transition: "color 0.2s ease",
-                      position: "relative",
-                    }}
-                    onMouseEnter={(e) => {
-                      if (!isActive) e.currentTarget.style.color = "#f8fafc";
-                    }}
-                    onMouseLeave={(e) => {
-                      if (!isActive) e.currentTarget.style.color = "#94a3b8";
-                    }}
-                  >
-                    [ {item.label} ]
-                  </Link>
+                  <div key={item.label} style={{ display: "flex", alignItems: "center", gap: 16 }}>
+                    {idx > 0 && (
+                      <span
+                        style={{
+                          color: "rgba(197, 160, 89, 0.35)",
+                          fontSize: 9,
+                          userSelect: "none",
+                        }}
+                        aria-hidden="true"
+                      >
+                        •
+                      </span>
+                    )}
+                    <Link
+                      href={item.href}
+                      onClick={() => setMenuOpen(false)}
+                      style={{
+                        fontFamily: "var(--font-serif)",
+                        fontSize: 13,
+                        fontWeight: 600,
+                        color: isActive ? "#C5A059" : "#B8B0A2",
+                        textDecoration: "none",
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase",
+                        transition: "color 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s ease-out",
+                        position: "relative",
+                      }}
+                      onMouseEnter={(e) => {
+                        if (!isActive) e.currentTarget.style.color = "#C5A059";
+                      }}
+                      onMouseLeave={(e) => {
+                        if (!isActive) e.currentTarget.style.color = "#B8B0A2";
+                      }}
+                    >
+                      {item.label}
+                    </Link>
+                  </div>
                 );
               })}
           </nav>
@@ -135,22 +157,23 @@ export default function Header() {
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Menu"
               style={{
-                background: "#131519",
-                border: "1px solid #262a33",
-                color: "#cbd5e1",
+                background: "#15261E",
+                border: "1px solid rgba(197, 160, 89, 0.3)",
+                color: "#C5A059",
                 width: 36,
                 height: 36,
+                borderRadius: 4,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 cursor: "pointer",
-                fontSize: 14,
+                transition: "all 0.6s ease-out",
               }}
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <line x1="2" y1="4" x2="14" y2="4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
-                <line x1="2" y1="8" x2="14" y2="8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
-                <line x1="2" y1="12" x2="14" y2="12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
+                <line x1="2" y1="4" x2="14" y2="4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+                <line x1="2" y1="8" x2="14" y2="8" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+                <line x1="2" y1="12" x2="14" y2="12" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
               </svg>
             </button>
           </div>
@@ -168,31 +191,35 @@ export default function Header() {
               width: 300,
               height: "100vh",
               zIndex: 200,
-              background: "var(--color-space-void)",
-              borderLeft: "1px solid var(--color-space-surface)",
+              background: "#161413",
+              borderLeft: "1px solid rgba(197, 160, 89, 0.25)",
               display: "flex",
               flexDirection: "column",
               padding: "80px 32px 32px",
-              transition: "transform 0.3s ease",
+              boxShadow: "-10px 0 30px rgba(0,0,0,0.7)",
+              transition: "transform 0.4s ease-out",
             }}
           >
             {/* Close */}
             <button
               onClick={() => setMenuOpen(false)}
+              aria-label="Close navigation"
               style={{
                 position: "absolute",
                 top: 16,
                 right: 16,
-                background: "none",
-                border: "1px solid var(--color-space-surface)",
+                background: "rgba(197, 160, 89, 0.1)",
+                border: "1px solid rgba(197, 160, 89, 0.3)",
+                borderRadius: 4,
                 width: 36,
                 height: 36,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "var(--color-text-body)",
+                color: "#C5A059",
                 fontSize: 20,
                 cursor: "pointer",
+                transition: "all 0.6s ease-out",
               }}
             >
               &times;
@@ -215,16 +242,22 @@ export default function Header() {
                     href={item.href}
                     onClick={() => setMenuOpen(false)}
                     style={{
-                      fontFamily: 'var(--font-sans)',
-                      fontWeight: 700,
-                      fontSize: 24,
+                      fontFamily: "var(--font-serif)",
+                      fontWeight: 600,
+                      fontSize: 20,
+                      letterSpacing: "0.04em",
                       textTransform: "uppercase",
-                      color: isActive ? "var(--color-accent-secondary)" : "var(--color-text-primary)",
+                      color: isActive ? "#C5A059" : "#FAF6EE",
                       textDecoration: "none",
-                      padding: "16px 0",
-                      borderBottom: "1px solid var(--color-space-surface)",
+                      padding: "14px 0",
+                      borderBottom: "1px solid rgba(197, 160, 89, 0.12)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 10,
+                      transition: "color 0.6s ease-out",
                     }}
                   >
+                    <span style={{ color: "rgba(197, 160, 89, 0.4)", fontSize: 12 }}>•</span>
                     {item.label}
                   </Link>
                 );
@@ -232,9 +265,40 @@ export default function Header() {
             </div>
             
             {/* Social links */}
-            <div style={{ marginTop: "auto", display: "flex", gap: 20 }}>
-              <a href="https://github.com/FrancescoCastaldi" target="_blank" rel="noopener noreferrer" style={{ color: "var(--color-text-muted)", fontSize: 12, fontFamily: 'var(--font-mono)', textTransform: "uppercase", textDecoration: "none", letterSpacing: "0.05em" }}>GitHub</a>
-              <a href="https://www.linkedin.com/in/francescocastaldi" target="_blank" rel="noopener noreferrer" style={{ color: "var(--color-text-muted)", fontSize: 12, fontFamily: 'var(--font-mono)', textTransform: "uppercase", textDecoration: "none", letterSpacing: "0.05em" }}>LinkedIn</a>
+            <div style={{ marginTop: "auto", display: "flex", gap: 16, alignItems: "center" }}>
+              <a
+                href="https://github.com/FrancescoCastaldi"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: "#B8B0A2",
+                  fontSize: 12,
+                  fontFamily: "var(--font-serif)",
+                  textTransform: "uppercase",
+                  textDecoration: "none",
+                  letterSpacing: "0.08em",
+                  transition: "color 0.6s ease-out",
+                }}
+              >
+                GitHub
+              </a>
+              <span style={{ color: "rgba(197, 160, 89, 0.35)", fontSize: 10 }}>•</span>
+              <a
+                href="https://www.linkedin.com/in/francescocastaldi"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: "#B8B0A2",
+                  fontSize: 12,
+                  fontFamily: "var(--font-serif)",
+                  textTransform: "uppercase",
+                  textDecoration: "none",
+                  letterSpacing: "0.08em",
+                  transition: "color 0.6s ease-out",
+                }}
+              >
+                LinkedIn
+              </a>
             </div>
           </div>
 
@@ -244,7 +308,7 @@ export default function Header() {
               position: "fixed",
               inset: 0,
               zIndex: 199,
-              background: "rgba(0,0,0,0.8)",
+              background: "rgba(0,0,0,0.75)",
             }}
           />
         </>
