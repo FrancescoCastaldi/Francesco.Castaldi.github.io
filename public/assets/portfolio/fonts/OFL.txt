@@ -1,0 +1,8 @@
+Fraunces: SIL Open Font License, Version 1.1
+Copyright 2020 The Fraunces Project Authors (https://github.com/undercasetype/Fraunces)
+
+Manrope: SIL Open Font License, Version 1.1
+Copyright 2018 The Manrope Project Authors (https://github.com/sharanda/manrope)
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+http://scripts.sil.org/OFL

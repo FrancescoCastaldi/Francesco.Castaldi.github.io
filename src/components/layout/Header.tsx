@@ -1,20 +1,19 @@
 "use client";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const pathname = usePathname();
-  
+
   const navItems = [
-    { label: "I. Upstream", href: "/#upstream", desktop: true },
-    { label: "II. Automotive", href: "/#automotive", desktop: true },
-    { label: "III. Radar & ML", href: "/#radar-ml", desktop: true },
-    { label: "IV. Analytics", href: "/#analytics", desktop: true },
-    { label: "Contact", href: "/#contact", desktop: true },
+    { label: "Overview", href: "/#hero" },
+    { label: "Numbers", href: "/#numbers" },
+    { label: "Selected Work", href: "/#work" },
+    { label: "Archive", href: "/#archive" },
+    { label: "Expertise", href: "/#expertise" },
+    { label: "Contact", href: "/#contact" },
   ];
 
   useEffect(() => {
@@ -24,294 +23,185 @@ export default function Header() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
+  // Chiudi menu con tasto Escape
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && menuOpen) {
+        setMenuOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [menuOpen]);
+
   return (
-    <>
-      <header
+    <header
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 100,
+        height: 64,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "0 5%",
+        background: "rgba(14, 16, 15, 0.92)",
+        backdropFilter: "blur(14px)",
+        WebkitBackdropFilter: "blur(14px)",
+        borderBottom: "1px solid rgba(201, 197, 188, 0.15)",
+      }}
+    >
+      {/* Brand Identity */}
+      <Link
+        href="/"
         style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 100,
-          height: 60,
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
-          padding: "0 5%",
-          background: "rgba(18, 17, 16, 0.94)",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
-          borderBottom: "1px solid rgba(197, 160, 89, 0.18)",
-          transition: "background 0.7s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.7s ease-out",
+          gap: 12,
+          textDecoration: "none",
         }}
       >
-        {/* Heraldic Logo & Monogram */}
-        <Link
-          href="/"
+        <div
+          style={{
+            width: 32,
+            height: 32,
+            borderRadius: "50%",
+            background: "#1F3329",
+            border: "1px solid rgba(201, 197, 188, 0.3)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            overflow: "hidden",
+          }}
+        >
+          <Image
+            src="/assets/img/brand/logo.svg"
+            alt="FC Monogram Crest"
+            width={24}
+            height={24}
+            style={{ width: "80%", height: "80%", objectFit: "contain" }}
+            priority
+          />
+        </div>
+        <span
+          style={{
+            color: "#EDE8DE",
+            fontFamily: "var(--font-display)",
+            fontWeight: 400,
+            fontSize: 18,
+            letterSpacing: "0.02em",
+          }}
+        >
+          Francesco <span style={{ color: "#C1622D" }}>Castaldi</span>
+        </span>
+      </Link>
+
+      {/* Desktop Navigation with Micro-Dots */}
+      {!isMobile && (
+        <nav
           style={{
             display: "flex",
             alignItems: "center",
-            gap: 12,
-            textDecoration: "none",
+            gap: 16,
+          }}
+          aria-label="Main Navigation"
+        >
+          {navItems.map((item, index) => (
+            <React.Fragment key={item.label}>
+              <Link
+                href={item.href}
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: 13,
+                  fontWeight: 500,
+                  color: "#C9C5BC",
+                  textDecoration: "none",
+                  letterSpacing: "0.04em",
+                  transition: "color 0.2s ease",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#EDE8DE")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "#C9C5BC")}
+              >
+                {item.label}
+              </Link>
+              {index < navItems.length - 1 && (
+                <span
+                  style={{
+                    color: "rgba(201, 197, 188, 0.3)",
+                    fontSize: 8,
+                    userSelect: "none",
+                  }}
+                  aria-hidden="true"
+                >
+                  •
+                </span>
+              )}
+            </React.Fragment>
+          ))}
+        </nav>
+      )}
+
+      {/* Mobile Hamburger Button */}
+      {isMobile && (
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Menu"
+          aria-expanded={menuOpen}
+          style={{
+            background: "none",
+            border: "1px solid rgba(201, 197, 188, 0.25)",
+            borderRadius: 4,
+            padding: "8px 12px",
+            color: "#EDE8DE",
+            cursor: "pointer",
+            fontFamily: "var(--font-mono)",
+            fontSize: 12,
           }}
         >
-          <div
-            style={{
-              width: 30,
-              height: 30,
-              borderRadius: "50%",
-              background: "#15261E",
-              border: "1px solid rgba(197, 160, 89, 0.45)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              overflow: "hidden",
-              boxShadow: "0 2px 8px rgba(0, 0, 0, 0.4)",
-              transition: "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.6s ease-out",
-            }}
-          >
-            <Image
-              src="/assets/img/brand/logo.svg"
-              alt="FC Monogram Crest"
-              width={26}
-              height={26}
-              style={{ width: "88%", height: "88%", objectFit: "contain" }}
-              priority
-            />
-          </div>
-          <span
-            style={{
-              color: "#FAF6EE",
-              fontFamily: "var(--font-serif)",
-              fontWeight: 600,
-              fontSize: 16,
-              letterSpacing: "0.06em",
-              textTransform: "uppercase",
-            }}
-          >
-            Francesco <span style={{ color: "#C5A059" }}>Castaldi</span>
-          </span>
-        </Link>
-
-        {/* Desktop Nav with Micro-Dots */}
-        {!isMobile && (
-          <nav
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 16,
-            }}
-          >
-            {navItems
-              .filter((n) => n.desktop)
-              .map((item, idx) => {
-                const isActive = pathname?.startsWith(item.href) && item.href !== "/";
-                return (
-                  <div key={item.label} style={{ display: "flex", alignItems: "center", gap: 16 }}>
-                    {idx > 0 && (
-                      <span
-                        style={{
-                          color: "rgba(197, 160, 89, 0.35)",
-                          fontSize: 9,
-                          userSelect: "none",
-                        }}
-                        aria-hidden="true"
-                      >
-                        •
-                      </span>
-                    )}
-                    <Link
-                      href={item.href}
-                      onClick={() => setMenuOpen(false)}
-                      style={{
-                        fontFamily: "var(--font-serif)",
-                        fontSize: 13,
-                        fontWeight: 600,
-                        color: isActive ? "#C5A059" : "#B8B0A2",
-                        textDecoration: "none",
-                        letterSpacing: "0.08em",
-                        textTransform: "uppercase",
-                        transition: "color 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s ease-out",
-                        position: "relative",
-                      }}
-                      onMouseEnter={(e) => {
-                        if (!isActive) e.currentTarget.style.color = "#C5A059";
-                      }}
-                      onMouseLeave={(e) => {
-                        if (!isActive) e.currentTarget.style.color = "#B8B0A2";
-                      }}
-                    >
-                      {item.label}
-                    </Link>
-                  </div>
-                );
-              })}
-          </nav>
-        )}
-
-        {/* Mobile Hamburger */}
-        {isMobile && (
-          <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              aria-label="Menu"
-              style={{
-                background: "#15261E",
-                border: "1px solid rgba(197, 160, 89, 0.3)",
-                color: "#C5A059",
-                width: 36,
-                height: 36,
-                borderRadius: 4,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-                transition: "all 0.6s ease-out",
-              }}
-            >
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <line x1="2" y1="4" x2="14" y2="4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-                <line x1="2" y1="8" x2="14" y2="8" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-                <line x1="2" y1="12" x2="14" y2="12" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-              </svg>
-            </button>
-          </div>
-        )}
-      </header>
-
-      {/* Mobile slide-in panel */}
-      {menuOpen && isMobile && (
-        <>
-          <div
-            style={{
-              position: "fixed",
-              top: 0,
-              right: 0,
-              width: 300,
-              height: "100vh",
-              zIndex: 200,
-              background: "#161413",
-              borderLeft: "1px solid rgba(197, 160, 89, 0.25)",
-              display: "flex",
-              flexDirection: "column",
-              padding: "80px 32px 32px",
-              boxShadow: "-10px 0 30px rgba(0,0,0,0.7)",
-              transition: "transform 0.4s ease-out",
-            }}
-          >
-            {/* Close */}
-            <button
-              onClick={() => setMenuOpen(false)}
-              aria-label="Close navigation"
-              style={{
-                position: "absolute",
-                top: 16,
-                right: 16,
-                background: "rgba(197, 160, 89, 0.1)",
-                border: "1px solid rgba(197, 160, 89, 0.3)",
-                borderRadius: 4,
-                width: 36,
-                height: 36,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#C5A059",
-                fontSize: 20,
-                cursor: "pointer",
-                transition: "all 0.6s ease-out",
-              }}
-            >
-              &times;
-            </button>
-
-            {/* Nav items */}
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 8,
-                marginTop: 20,
-              }}
-            >
-              {navItems.map((item) => {
-                const isActive = pathname?.startsWith(item.href) && item.href !== "/";
-                return (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    onClick={() => setMenuOpen(false)}
-                    style={{
-                      fontFamily: "var(--font-serif)",
-                      fontWeight: 600,
-                      fontSize: 20,
-                      letterSpacing: "0.04em",
-                      textTransform: "uppercase",
-                      color: isActive ? "#C5A059" : "#FAF6EE",
-                      textDecoration: "none",
-                      padding: "14px 0",
-                      borderBottom: "1px solid rgba(197, 160, 89, 0.12)",
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 10,
-                      transition: "color 0.6s ease-out",
-                    }}
-                  >
-                    <span style={{ color: "rgba(197, 160, 89, 0.4)", fontSize: 12 }}>•</span>
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </div>
-            
-            {/* Social links */}
-            <div style={{ marginTop: "auto", display: "flex", gap: 16, alignItems: "center" }}>
-              <a
-                href="https://github.com/FrancescoCastaldi"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  color: "#B8B0A2",
-                  fontSize: 12,
-                  fontFamily: "var(--font-serif)",
-                  textTransform: "uppercase",
-                  textDecoration: "none",
-                  letterSpacing: "0.08em",
-                  transition: "color 0.6s ease-out",
-                }}
-              >
-                GitHub
-              </a>
-              <span style={{ color: "rgba(197, 160, 89, 0.35)", fontSize: 10 }}>•</span>
-              <a
-                href="https://www.linkedin.com/in/francescocastaldi"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  color: "#B8B0A2",
-                  fontSize: 12,
-                  fontFamily: "var(--font-serif)",
-                  textTransform: "uppercase",
-                  textDecoration: "none",
-                  letterSpacing: "0.08em",
-                  transition: "color 0.6s ease-out",
-                }}
-              >
-                LinkedIn
-              </a>
-            </div>
-          </div>
-
-          <div
-            onClick={() => setMenuOpen(false)}
-            style={{
-              position: "fixed",
-              inset: 0,
-              zIndex: 199,
-              background: "rgba(0,0,0,0.75)",
-            }}
-          />
-        </>
+          {menuOpen ? "CLOSE [ESC]" : "MENU"}
+        </button>
       )}
-    </>
+
+      {/* Mobile Navigation Drawer */}
+      {isMobile && menuOpen && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          style={{
+            position: "fixed",
+            top: 64,
+            left: 0,
+            right: 0,
+            background: "rgba(14, 16, 15, 0.98)",
+            borderBottom: "1px solid rgba(201, 197, 188, 0.2)",
+            padding: "24px 5%",
+            display: "flex",
+            flexDirection: "column",
+            gap: 16,
+            backdropFilter: "blur(16px)",
+          }}
+        >
+          {navItems.map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              onClick={() => setMenuOpen(false)}
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: 18,
+                color: "#EDE8DE",
+                textDecoration: "none",
+                padding: "8px 0",
+                borderBottom: "1px solid rgba(201, 197, 188, 0.1)",
+              }}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </header>
   );
 }

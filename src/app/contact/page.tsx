@@ -34,7 +34,7 @@ export default function ContactPage() {
         alignItems: "center",
         justifyContent: "center",
         padding: "120px 5% 70px",
-        background: "#121110",
+        background: "#0E100F",
       }}
     >
       <div style={{ width: "100%", maxWidth: 580 }}>
@@ -50,11 +50,11 @@ export default function ContactPage() {
           <span
             style={{
               display: "inline-block",
-              fontFamily: "var(--font-serif)",
+              fontFamily: "var(--font-mono)",
               fontSize: 12,
-              color: "#C5A059",
-              background: "rgba(197, 160, 89, 0.08)",
-              border: "1px solid rgba(197, 160, 89, 0.25)",
+              color: "#C1622D",
+              background: "rgba(193, 98, 45, 0.12)",
+              border: "1px solid rgba(193, 98, 45, 0.3)",
               borderRadius: 3,
               padding: "4px 12px",
               marginBottom: 16,
@@ -63,32 +63,31 @@ export default function ContactPage() {
               fontWeight: 600,
             }}
           >
-            CORRESPONDENCE & INQUIRIES
+            05 // DIRECT INQUIRIES & ARCHIVAL LIAISON
           </span>
           <h1
             style={{
-              fontFamily: "var(--font-serif)",
+              fontFamily: "var(--font-display)",
               fontSize: "clamp(30px, 4vw, 44px)",
-              fontWeight: 600,
-              color: "#FAF6EE",
+              fontWeight: 400,
+              color: "#EDE8DE",
               marginBottom: 16,
               letterSpacing: "-0.01em",
             }}
           >
-            Direct Inquiries & Archival Liaison
+            Initiate Direct Dialogue
           </h1>
           <p
             style={{
-              color: "#E8E3D6",
-              fontSize: 16,
-              lineHeight: 1.75,
+              color: "#C9C5BC",
+              fontSize: 15,
+              lineHeight: 1.7,
               fontFamily: "var(--font-body)",
               maxWidth: 480,
               margin: "0 auto",
-              opacity: 0.9,
             }}
           >
-            Open for upstream open-source contributions, automotive systems engineering, data pipelines, and technical consulting.
+            Available for upstream open-source core engineering, powertrain telematics, stochastic systems, and technical consulting.
           </p>
         </div>
 
@@ -112,14 +111,14 @@ export default function ContactPage() {
                 justifyContent: "space-between",
                 alignItems: "center",
                 padding: "18px 22px",
-                border: "1px solid rgba(197, 160, 89, 0.22)",
-                borderRadius: 6,
+                border: "1px solid rgba(201, 197, 188, 0.18)",
+                borderRadius: 4,
                 textDecoration: "none",
-                color: "#FAF6EE",
+                color: "#EDE8DE",
                 fontSize: 14,
-                fontFamily: "var(--font-serif)",
-                transition: "all 0.7s cubic-bezier(0.16, 1, 0.3, 1)",
-                background: "#15261E",
+                fontFamily: "var(--font-body)",
+                transition: "all 0.25s ease",
+                background: "#2A2D2B",
               }}
             >
               <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
@@ -128,22 +127,22 @@ export default function ContactPage() {
                     width: 32,
                     height: 32,
                     borderRadius: 4,
-                    background: "rgba(197, 160, 89, 0.1)",
-                    border: "1px solid rgba(197, 160, 89, 0.25)",
+                    background: "rgba(193, 98, 45, 0.12)",
+                    border: "1px solid rgba(193, 98, 45, 0.3)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                   }}
                 >
-                  <HeritageIcon name={item.icon} size={16} color="#C5A059" />
+                  <HeritageIcon name={item.icon} size={16} color="#C1622D" />
                 </div>
                 <span
                   style={{
-                    color: "#C5A059",
+                    color: "#C1622D",
                     fontSize: 12,
                     textTransform: "uppercase",
                     letterSpacing: "0.08em",
-                    fontFamily: "var(--font-serif)",
+                    fontFamily: "var(--font-mono)",
                     fontWeight: 600,
                   }}
                 >
@@ -151,8 +150,8 @@ export default function ContactPage() {
                 </span>
               </div>
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <span style={{ fontFamily: "var(--font-serif)", fontSize: 14, color: "#FAF6EE" }}>{item.value}</span>
-                <ArrowRightIcon size={14} color="#C5A059" />
+                <span style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "#EDE8DE" }}>{item.value}</span>
+                <ArrowRightIcon size={14} color="#C1622D" />
               </div>
             </a>
           ))}
@@ -162,21 +161,21 @@ export default function ContactPage() {
           <Link
             href="/"
             style={{
-              fontFamily: "var(--font-serif)",
-              fontSize: 12,
-              color: "#C5A059",
+              fontFamily: "var(--font-body)",
+              fontSize: 13,
+              color: "#C1622D",
               textDecoration: "none",
               textTransform: "uppercase",
-              letterSpacing: "0.08em",
+              letterSpacing: "0.06em",
               fontWeight: 600,
               display: "inline-flex",
               alignItems: "center",
               gap: 8,
-              transition: "color 0.6s ease-out",
+              transition: "color 0.2s ease",
             }}
           >
             <ArrowLeftIcon size={14} color="currentColor" />
-            <span>Return to Archival Monograph</span>
+            <span>Return to Monograph</span>
           </Link>
         </div>
       </div>

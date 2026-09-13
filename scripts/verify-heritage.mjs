@@ -180,180 +180,175 @@ runner.setTier(
   "Verifies core design tokens, Google fonts, brand assets, and route definitions"
 );
 
-// 1.1 Primary Canvas Mahogany / Deep Espresso Palette
+// 1.1 Primary Canvas Charcoal Palette
 runner.test(
   "T1.1",
-  "Design Tokens — Primary Canvas Mahogany/Espresso (#121110 / #161413)",
+  "Design Tokens — Primary Canvas Charcoal (#0E100F)",
   async () => {
     const css = readFileUtf8("src/styles/globals.css");
     if (!css) throw new Error("src/styles/globals.css not found");
 
-    const hasMahogany = /#121110|#161413/i.test(css);
-    if (!hasMahogany) {
+    const hasCharcoal = /#0E100F/i.test(css);
+    if (!hasCharcoal) {
       throw new Error(
-        "Expected warm mahogany/espresso canvas token (#121110 or #161413) in globals.css @theme, but neither was found."
+        "Expected Charcoal canvas token (#0E100F) in globals.css @theme, but it was not found."
       );
     }
-    return { status: "Found mahogany/espresso token in globals.css" };
+    return { status: "Found Charcoal token in globals.css" };
   },
-  { source: "ORIGINAL_REQUEST.md §R1", milestone: "M1" }
+  { source: "PORTFOLIO_3D_PLAN.md §1.1", milestone: "M1" }
 );
 
-// 1.2 Elevated Surfaces British Racing Green Palette
+// 1.2 Elevated Surfaces Anthracite & Pine Green Palette
 runner.test(
   "T1.2",
-  "Design Tokens — British Racing Green Surfaces (#15261E / #1B2E24 / #1A1715)",
+  "Design Tokens — Anthracite Surfaces (#2A2D2B) & Pine Green (#1F3329)",
   async () => {
     const css = readFileUtf8("src/styles/globals.css");
     if (!css) throw new Error("src/styles/globals.css not found");
 
-    const hasGreen = /#15261E|#1B2E24|#1A1715/i.test(css);
-    if (!hasGreen) {
+    const hasAnthracite = /#2A2D2B/i.test(css);
+    const hasPineGreen = /#1F3329/i.test(css);
+    if (!hasAnthracite || !hasPineGreen) {
       throw new Error(
-        "Expected British Racing Green or dark leather elevated surface token (#15261E, #1B2E24, or #1A1715) in globals.css."
+        "Expected Anthracite (#2A2D2B) and Pine Green (#1F3329) tokens in globals.css."
       );
     }
-    return { status: "Found British Racing Green surface token in globals.css" };
+    return { status: "Found Anthracite and Pine Green surface tokens in globals.css" };
   },
-  { source: "ORIGINAL_REQUEST.md §R1", milestone: "M1" }
+  { source: "PORTFOLIO_3D_PLAN.md §1.1", milestone: "M1" }
 );
 
-// 1.3 Noble Accent Antique Satin Gold Palette
+// 1.3 Burnt Orange Accent Palette
 runner.test(
   "T1.3",
-  "Design Tokens — Antique Satin Gold Noble Accent (#C5A059 / #D4AF37)",
+  "Design Tokens — Burnt Orange Accent (#C1622D)",
   async () => {
     const css = readFileUtf8("src/styles/globals.css");
     if (!css) throw new Error("src/styles/globals.css not found");
 
-    const hasGold = /#C5A059|#D4AF37/i.test(css);
-    if (!hasGold) {
+    const hasOrange = /#C1622D/i.test(css);
+    if (!hasOrange) {
       throw new Error(
-        "Expected warm antique satin gold accent token (#C5A059 or #D4AF37) in globals.css."
+        "Expected warm Burnt Orange accent token (#C1622D) in globals.css."
       );
     }
-    return { status: "Found antique satin gold accent token in globals.css" };
+    return { status: "Found Burnt Orange accent token in globals.css" };
   },
-  { source: "ORIGINAL_REQUEST.md §R1", milestone: "M1" }
+  { source: "PORTFOLIO_3D_PLAN.md §1.1", milestone: "M1" }
 );
 
-// 1.4 Warm Leather & Sage Secondary Accents
+// 1.4 Stone Gray Secondary Accent
 runner.test(
   "T1.4",
-  "Design Tokens — Warm Cognac Leather & Sage Accents (#8D5B4C / #6D7D72)",
+  "Design Tokens — Stone Gray Secondary Accent (#C9C5BC)",
   async () => {
     const css = readFileUtf8("src/styles/globals.css");
     if (!css) throw new Error("src/styles/globals.css not found");
 
-    const hasCognac = /#8D5B4C/i.test(css);
-    const hasSage = /#6D7D72/i.test(css);
-    if (!hasCognac && !hasSage) {
+    const hasStone = /#C9C5BC/i.test(css);
+    if (!hasStone) {
       throw new Error(
-        "Expected warm cognac (#8D5B4C) or sage slate (#6D7D72) accent token in globals.css."
+        "Expected Stone Gray (#C9C5BC) accent token in globals.css."
       );
     }
-    return { status: "Found cognac / sage accent token in globals.css" };
+    return { status: "Found Stone Gray accent token in globals.css" };
   },
-  { source: "ORIGINAL_REQUEST.md §R1", milestone: "M1" }
+  { source: "PORTFOLIO_3D_PLAN.md §1.1", milestone: "M1" }
 );
 
-// 1.5 Soft Ivory & Warm Parchment Typography Palette
+// 1.5 Soft Ivory Typography Palette
 runner.test(
   "T1.5",
-  "Design Tokens — Soft Ivory & Warm Parchment Typography (#FAF6EE / #E8E3D6)",
+  "Design Tokens — Soft Ivory Primary Typography (#EDE8DE)",
   async () => {
     const css = readFileUtf8("src/styles/globals.css");
     if (!css) throw new Error("src/styles/globals.css not found");
 
-    const hasIvory = /#FAF6EE|#E8E3D6/i.test(css);
+    const hasIvory = /#EDE8DE/i.test(css);
     if (!hasIvory) {
       throw new Error(
-        "Expected soft ivory (#FAF6EE) or warm parchment (#E8E3D6) text token in globals.css."
+        "Expected Soft Ivory (#EDE8DE) text token in globals.css."
       );
     }
-    return { status: "Found soft ivory / parchment token in globals.css" };
+    return { status: "Found Soft Ivory token in globals.css" };
   },
-  { source: "ORIGINAL_REQUEST.md §R1", milestone: "M1" }
+  { source: "PORTFOLIO_3D_PLAN.md §1.1", milestone: "M1" }
 );
 
-// 1.6 Satin Gold Hairline Border Token
+// 1.6 Subtle Border Token
 runner.test(
   "T1.6",
-  "Design Tokens — Hairline Satin Gold Fillet (rgba(197, 160, 89, 0.20))",
+  "Design Tokens — Subtle Stone Gray Border (rgba(201, 197, 188, 0.15))",
   async () => {
     const css = readFileUtf8("src/styles/globals.css");
     if (!css) throw new Error("src/styles/globals.css not found");
 
-    const hasHairline = /rgba\(\s*197\s*,\s*160\s*,\s*89/i.test(css);
-    if (!hasHairline) {
+    const hasSubtleBorder = /rgba\(\s*201\s*,\s*197\s*,\s*188/i.test(css);
+    if (!hasSubtleBorder) {
       throw new Error(
-        "Expected satin gold hairline border definition rgba(197, 160, 89, ...) in globals.css."
+        "Expected subtle stone gray border definition rgba(201, 197, 188, ...) in globals.css."
       );
     }
-    return { status: "Found satin gold hairline border token in globals.css" };
+    return { status: "Found subtle stone border token in globals.css" };
   },
-  { source: "ORIGINAL_REQUEST.md §R1", milestone: "M1" }
+  { source: "PORTFOLIO_3D_PLAN.md §1.1", milestone: "M1" }
 );
 
-// 1.7 Rejection of Cold Asphalt Primary Canvas
+// 1.7 Zero External Google Fonts Calls in Layout
 runner.test(
   "T1.7",
-  "Design Tokens — Elimination of Cold Asphalt Void (#0b0c0e as Active Canvas)",
+  "Typography — Zero External Google Fonts in src/app/layout.tsx (Self-Hosted)",
+  async () => {
+    const layout = readFileUtf8("src/app/layout.tsx");
+    if (!layout) throw new Error("src/app/layout.tsx not found");
+
+    const hasGoogleFonts = layout.includes("fonts.googleapis.com") || layout.includes("fonts.gstatic.com");
+    if (hasGoogleFonts) {
+      throw new Error(
+        "Layout still contains Google Fonts external links. Must be 100% self-hosted per PORTFOLIO_3D_PLAN.md §1.2."
+      );
+    }
+    return { status: "Verified zero Google Fonts requests in layout.tsx" };
+  },
+  { source: "PORTFOLIO_3D_PLAN.md §1.2", milestone: "M1" }
+);
+
+// 1.8 Self-Hosted WOFF2 Fonts in Assets
+runner.test(
+  "T1.8",
+  "Typography — Self-Hosted Fraunces & Manrope WOFF2 Fonts in public/assets/portfolio/fonts/",
+  async () => {
+    const fraunces = getFileSize("public/assets/portfolio/fonts/fraunces-latin.woff2");
+    const manrope = getFileSize("public/assets/portfolio/fonts/manrope-latin.woff2");
+
+    if (fraunces === 0 || manrope === 0) {
+      throw new Error("Missing self-hosted WOFF2 font files in public/assets/portfolio/fonts/.");
+    }
+    return { frauncesBytes: fraunces, manropeBytes: manrope };
+  },
+  { source: "PORTFOLIO_3D_PLAN.md §1.2", milestone: "M1" }
+);
+
+// 1.9 Font Family Definitions Declared in Globals
+runner.test(
+  "T1.9",
+  "Typography — Fraunces Display & Manrope Body Font Face in globals.css",
   async () => {
     const css = readFileUtf8("src/styles/globals.css");
     if (!css) throw new Error("src/styles/globals.css not found");
 
-    const isColdVoid = /--color-space-void:\s*#0b0c0e/i.test(css);
-    if (isColdVoid) {
+    const hasFraunces = css.includes("font-family: 'Fraunces'") || css.includes('font-family: "Fraunces"');
+    const hasManrope = css.includes("font-family: 'Manrope'") || css.includes('font-family: "Manrope"');
+
+    if (!hasFraunces || !hasManrope) {
       throw new Error(
-        "Cold asphalt token #0b0c0e is still assigned to --color-space-void. Must be replaced with warm mahogany #121110."
+        "Expected @font-face declarations for Fraunces and Manrope in globals.css."
       );
     }
-    return { status: "Verified --color-space-void does not map to cold #0b0c0e" };
+    return { status: "Self-hosted font-face declarations verified in globals.css" };
   },
-  { source: "ORIGINAL_REQUEST.md §R1", milestone: "M1" }
-);
-
-// 1.8 Google Fonts Preconnect in Layout
-runner.test(
-  "T1.8",
-  "Typography — Google Fonts Preconnect in src/app/layout.tsx",
-  async () => {
-    const layout = readFileUtf8("src/app/layout.tsx");
-    if (!layout) throw new Error("src/app/layout.tsx not found");
-
-    const hasFontsPreconnect = layout.includes("https://fonts.googleapis.com");
-    const hasGstaticPreconnect = layout.includes("https://fonts.gstatic.com");
-    if (!hasFontsPreconnect || !hasGstaticPreconnect) {
-      throw new Error(
-        "Expected preconnect links to https://fonts.googleapis.com and https://fonts.gstatic.com in layout.tsx."
-      );
-    }
-    return { status: "Preconnect links verified in layout.tsx" };
-  },
-  { source: "ORIGINAL_REQUEST.md §R2", milestone: "M1" }
-);
-
-// 1.9 Prestigious Serif Fonts Linked in Layout
-runner.test(
-  "T1.9",
-  "Typography — Garamond, Newsreader/Source Serif, & Cinzel in Layout Link",
-  async () => {
-    const layout = readFileUtf8("src/app/layout.tsx");
-    if (!layout) throw new Error("src/app/layout.tsx not found");
-
-    const hasGaramond = /Cormorant\+Garamond|EB\+Garamond/i.test(layout);
-    const hasEditorialSerif = /Newsreader|Source\+Serif/i.test(layout);
-    const hasCinzel = /Cinzel/i.test(layout);
-
-    if (!hasGaramond || !hasEditorialSerif || !hasCinzel) {
-      throw new Error(
-        `Expected Google Fonts link to include Garamond (found: ${hasGaramond}), Newsreader/Source Serif (found: ${hasEditorialSerif}), and Cinzel (found: ${hasCinzel}).`
-      );
-    }
-    return { status: "All required noble serif font families linked in layout.tsx" };
-  },
-  { source: "ORIGINAL_REQUEST.md §R2", milestone: "M1" }
+  { source: "PORTFOLIO_3D_PLAN.md §1.2", milestone: "M1" }
 );
 
 // 1.10 Serif Font Family Variables Declared in Globals
@@ -441,22 +436,18 @@ runner.test(
   "T1.15",
   "Route Architecture — generateStaticParams Defined in Dynamic Routes",
   async () => {
-    const blogDynamic = readFileUtf8("src/app/blog/[slug]/page.tsx");
     const projectDynamic = readFileUtf8("src/app/project/[slug]/page.tsx");
     const skillDynamic = readFileUtf8("src/app/skill/[id]/page.tsx");
 
-    if (!blogDynamic || !blogDynamic.includes("generateStaticParams")) {
-      throw new Error("src/app/blog/[slug]/page.tsx is missing generateStaticParams().");
-    }
     if (!projectDynamic || !projectDynamic.includes("generateStaticParams")) {
       throw new Error("src/app/project/[slug]/page.tsx is missing generateStaticParams().");
     }
     if (!skillDynamic || !skillDynamic.includes("generateStaticParams")) {
       throw new Error("src/app/skill/[id]/page.tsx is missing generateStaticParams().");
     }
-    return { status: "All 3 dynamic routes properly export generateStaticParams" };
+    return { status: "Dynamic routes properly export generateStaticParams" };
   },
-  { source: "PROJECT.md Feature 14", milestone: "M4" }
+  { source: "PORTFOLIO_3D_PLAN.md §2", milestone: "M4" }
 );
 
 // ==============================================================================
@@ -510,26 +501,21 @@ runner.test(
   { source: "ORIGINAL_REQUEST.md §R2, §R4", milestone: "M3" }
 );
 
-// 2.3 Blog Empty State Handling on Filter
+// 2.3 Project Archive Categorization by Practice Area
 runner.test(
   "T2.3",
-  "Boundary Cases — Blog Search/Filter Empty State Graceful Handling",
+  "Boundary Cases — Project Archive Displays 4 Practice Areas",
   async () => {
-    const blogIndex = readFileUtf8("src/app/blog/page.tsx");
-    if (!blogIndex) throw new Error("src/app/blog/page.tsx not found");
+    const archive = readFileUtf8("src/components/portfolio/ProjectArchive.tsx");
+    if (!archive) throw new Error("src/components/portfolio/ProjectArchive.tsx not found");
 
-    const hasEmptyState =
-      /filtered.*length\s*===?\s*0|no.*found|nessun.*post|nessun.*articolo|no.*monograph/i.test(
-        blogIndex
-      );
-    if (!hasEmptyState) {
-      throw new Error(
-        "src/app/blog/page.tsx does not provide a graceful fallback message when zero posts match filter/search."
-      );
+    const hasPillars = archive.includes("upstream") && archive.includes("automotive") && archive.includes("data-science") && archive.includes("analytics");
+    if (!hasPillars) {
+      throw new Error("ProjectArchive does not reference all 4 practice area pillar IDs.");
     }
-    return { status: "Blog empty state verified in src/app/blog/page.tsx" };
+    return { status: "ProjectArchive 4 practice areas verified" };
   },
-  { source: "ORIGINAL_REQUEST.md §R4", milestone: "M3" }
+  { source: "PORTFOLIO_3D_PLAN.md §2.3", milestone: "M3" }
 );
 
 // 2.4 Mobile Navigation Responsive Rules in Header
@@ -684,7 +670,21 @@ runner.test(
     const header = readFileUtf8("src/components/layout/Header.tsx");
     if (!header) throw new Error("src/components/layout/Header.tsx not found");
 
-    const pageContent = readFileUtf8("src/app/page.tsx") || "";
+    const heroSection = readFileUtf8("src/components/portfolio/HeroSection.tsx") || "";
+    const impactSection = readFileUtf8("src/components/portfolio/ImpactSection.tsx") || "";
+    const projectGallery = readFileUtf8("src/components/portfolio/ProjectGallery.tsx") || "";
+    const projectArchive = readFileUtf8("src/components/portfolio/ProjectArchive.tsx") || "";
+    const expertiseSection = readFileUtf8("src/components/portfolio/ExpertiseSection.tsx") || "";
+    const contactSection = readFileUtf8("src/components/portfolio/ContactSection.tsx") || "";
+
+    const combinedHomeContent = [
+      heroSection,
+      impactSection,
+      projectGallery,
+      projectArchive,
+      expertiseSection,
+      contactSection,
+    ].join("\n");
 
     const hrefMatches = [...header.matchAll(/href:\s*["']([^"']+)["']/g)].map((m) => m[1]);
     if (hrefMatches.length === 0) {
@@ -693,15 +693,14 @@ runner.test(
 
     const invalidLinks = [];
     for (const href of hrefMatches) {
-      if (href === "/" || href === "/blog" || href === "/contact") continue;
+      if (href === "/" || href === "/contact") continue;
       if (href.startsWith("/#")) {
         const anchorId = href.slice(2);
         const hasAnchor =
-          pageContent.includes(`id="${anchorId}"`) ||
-          pageContent.includes(`id='${anchorId}'`) ||
-          pageContent.includes(`id={\`${anchorId}\`}`);
+          combinedHomeContent.includes(`id="${anchorId}"`) ||
+          combinedHomeContent.includes(`id='${anchorId}'`);
         if (!hasAnchor) {
-          invalidLinks.push(`${href} (anchor id "${anchorId}" not found in page.tsx)`);
+          invalidLinks.push(`${href} (anchor id "${anchorId}" not found on homepage sections)`);
         }
       }
     }
@@ -713,7 +712,7 @@ runner.test(
     }
     return { validHrefsCount: hrefMatches.length };
   },
-  { source: "ORIGINAL_REQUEST.md §R4", milestone: "M3" }
+  { source: "PORTFOLIO_3D_PLAN.md §9", milestone: "M3" }
 );
 
 // 3.4 Micro-Dot Navigation Separator in Header
@@ -737,30 +736,28 @@ runner.test(
     }
     return { status: "Header navigation micro-dots confirmed" };
   },
-  { source: "ORIGINAL_REQUEST.md §R4", milestone: "M3" }
+  { source: "PORTFOLIO_3D_PLAN.md §1.2", milestone: "M3" }
 );
 
-// 3.5 Blog Post Slugs Parity with Dynamic Route
+// 3.5 Career Declarations D5 and D6 Present in Model
 runner.test(
   "T3.5",
-  "Cross-Feature — Data Parity: All Blog Post Slugs Follow Valid Kebab-Case",
+  "Cross-Feature — Career Declarations D5 & D6 in src/data/portfolio.ts",
   async () => {
-    const blogData = readFileUtf8("src/data/blog-posts.ts");
-    if (!blogData) throw new Error("src/data/blog-posts.ts not found");
+    const portfolioData = readFileUtf8("src/data/portfolio.ts");
+    if (!portfolioData) throw new Error("src/data/portfolio.ts not found");
 
-    const slugMatches = [...blogData.matchAll(/slug:\s*["']([^"']+)["']/g)].map((m) => m[1]);
-    if (slugMatches.length === 0) {
-      throw new Error("No slugs detected in src/data/blog-posts.ts.");
+    const hasD5 = portfolioData.includes("Healthcare Business & Systems Consulting") || portfolioData.includes("2 Years");
+    const hasD6_BSc = portfolioData.includes("BSc Computer Engineering");
+    const hasD6_MSc = portfolioData.includes("MSc Computer Science");
+
+    if (!hasD5 || !hasD6_BSc || !hasD6_MSc) {
+      throw new Error("Career declarations D5/D6 missing or altered in src/data/portfolio.ts.");
     }
 
-    const invalidSlugs = slugMatches.filter((s) => !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(s));
-    if (invalidSlugs.length > 0) {
-      throw new Error(`Invalid slug format found in blog-posts.ts: ${invalidSlugs.join(", ")}`);
-    }
-
-    return { totalBlogSlugs: slugMatches.length };
+    return { status: "Verified D5 & D6 career declarations in portfolio.ts" };
   },
-  { source: "PROJECT.md Feature 13", milestone: "M4" }
+  { source: "PORTFOLIO_3D_PLAN.md §0 D5/D6", milestone: "M1" }
 );
 
 // 3.6 Projects Slugs Parity with Dynamic Route
@@ -859,17 +856,17 @@ runner.test(
     }
 
     const htmlFiles = collectFiles("out", /\.html$/);
-    if (htmlFiles.length < 58) {
+    if (htmlFiles.length < 30) {
       throw new Error(
-        `Expected at least 58-60 static HTML files in out/, but found only ${htmlFiles.length}.`
+        `Expected at least 30 static HTML files in out/, but found only ${htmlFiles.length}.`
       );
     }
 
     const essentialPages = [
       "out/index.html",
-      "out/blog.html",
       "out/contact.html",
       "out/404.html",
+      "out/sitemap.xml",
     ];
 
     const missingEssentials = essentialPages.filter(
@@ -882,7 +879,7 @@ runner.test(
 
     return { totalHtmlExported: htmlFiles.length };
   },
-  { source: "ORIGINAL_REQUEST.md §R5", milestone: "M4" }
+  { source: "PORTFOLIO_3D_PLAN.md §6", milestone: "M4" }
 );
 
 // 4.2 Clean UTF-8 Encoding with Exactly 0 BOMs Across Codebase

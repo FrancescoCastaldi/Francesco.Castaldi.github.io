@@ -3,117 +3,93 @@ import React from "react";
 
 export default function Footer() {
   const linkStyle: React.CSSProperties = {
-    color: "#B8B0A2",
+    color: "#C9C5BC",
     textDecoration: "none",
-    fontSize: 11,
-    textTransform: "uppercase",
-    fontFamily: "var(--font-serif)",
-    letterSpacing: "0.08em",
+    fontSize: 12,
+    fontFamily: "var(--font-body)",
+    letterSpacing: "0.04em",
     fontWeight: 500,
-    display: "inline-flex",
-    alignItems: "center",
-    gap: 6,
-    transition: "color 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
+    transition: "color 0.25s ease",
   };
 
   return (
     <footer
       style={{
-        position: "fixed",
-        bottom: 0,
-        left: 0,
-        right: 0,
-        zIndex: 50,
-        height: 42,
+        position: "relative",
+        zIndex: 20,
+        padding: "36px 5%",
+        background: "#0E100F",
+        borderTop: "1px solid rgba(201, 197, 188, 0.15)",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: "0 5%",
-        background: "rgba(18, 17, 16, 0.95)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        borderTop: "1px solid rgba(197, 160, 89, 0.18)",
-        pointerEvents: "auto",
-        transition: "background 0.7s ease-out, border-color 0.7s ease-out",
+        flexWrap: "wrap",
+        gap: 20,
       }}
     >
-      {/* Left column — Monogram / Identity */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 8,
-        }}
-      >
+      {/* Left: Colophon & Brand */}
+      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
         <span
           style={{
-            color: "#C5A059",
-            fontFamily: "var(--font-serif)",
+            color: "#C1622D",
+            fontFamily: "var(--font-mono)",
             fontSize: 12,
-            textTransform: "uppercase",
-            letterSpacing: "0.12em",
             fontWeight: 600,
+            letterSpacing: "0.08em",
           }}
         >
-          FC • ARCHIVAL MONOGRAPH
+          FC // THE SCULPTED ATLAS
         </span>
       </div>
 
-      {/* Center column — Social correspondence links */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 12,
-        }}
-      >
+      {/* Center: Correspondence Links */}
+      <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
         <a
           href="https://github.com/FrancescoCastaldi"
           target="_blank"
           rel="noopener noreferrer"
           style={linkStyle}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#C5A059")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#B8B0A2")}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#EDE8DE")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "#C9C5BC")}
         >
           GitHub
         </a>
 
-        <span style={{ color: "rgba(197, 160, 89, 0.4)", fontSize: 9, userSelect: "none" }}>•</span>
+        <span style={{ color: "rgba(201, 197, 188, 0.3)", fontSize: 10 }}>•</span>
 
         <a
           href="https://www.linkedin.com/in/francescocastaldi"
           target="_blank"
           rel="noopener noreferrer"
           style={linkStyle}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#C5A059")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#B8B0A2")}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#EDE8DE")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "#C9C5BC")}
         >
           LinkedIn
         </a>
 
-        <span style={{ color: "rgba(197, 160, 89, 0.4)", fontSize: 9, userSelect: "none" }}>•</span>
+        <span style={{ color: "rgba(201, 197, 188, 0.3)", fontSize: 10 }}>•</span>
 
         <a
           href="mailto:info@francescocastaldi.it"
           style={linkStyle}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "#C5A059")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#B8B0A2")}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#C1622D")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "#C9C5BC")}
         >
           Direct Email
         </a>
       </div>
 
-      {/* Right column — Archival Colophon */}
+      {/* Right: Year & Location */}
       <span
         style={{
-          color: "#9E978E",
-          fontSize: 11,
-          fontFamily: "var(--font-serif)",
-          textTransform: "uppercase",
-          letterSpacing: "0.08em",
+          color: "#C9C5BC",
+          fontSize: 12,
+          fontFamily: "var(--font-mono)",
+          opacity: 0.7,
         }}
       >
-        FRANCESCO CASTALDI • MMXXVI
+        BOLOGNA, IT • 2026
       </span>
     </footer>
   );

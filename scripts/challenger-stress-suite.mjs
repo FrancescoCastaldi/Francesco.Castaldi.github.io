@@ -61,16 +61,15 @@ const projectSlugs = [...projectsContent.matchAll(/slug:\s*["']([^"']+)["']/g)].
 const skillIds = [...skillsContent.matchAll(/id:\s*["']([^"']+)["']/g)].map(m => m[1]);
 
 console.log(`  Ground truth expected counts:`);
-console.log(`    - Published Blog Posts: ${publishedBlogSlugs.length} (expected 24)`);
-console.log(`    - Projects: ${projectSlugs.length} (expected 19)`);
+console.log(`    - Published Blog Posts: ${publishedBlogSlugs.length} (expected 0)`);
+console.log(`    - Projects: ${projectSlugs.length} (expected 15)`);
 console.log(`    - Skills: ${skillIds.length} (expected 11)`);
-console.log(`    - Root & Core Routes: 6 (index.html, 404.html, _not-found.html, blog.html, contact.html, sitemap.xml)`);
+console.log(`    - Root & Core Routes: 5 (index.html, 404.html, _not-found.html, contact.html, sitemap.xml)`);
 
 const expectedStaticFiles = [
   "index.html",
   "404.html",
   "_not-found.html",
-  "blog.html",
   "contact.html",
   "sitemap.xml",
 ];
@@ -90,14 +89,13 @@ skillIds.forEach(id => {
 console.log(`    - Total Expected Static Artifacts: ${expectedStaticFiles.length}`);
 
 assert(
-  expectedStaticFiles.length === 60,
-  `Expected route count equals 60 (actual: ${expectedStaticFiles.length})`
+  expectedStaticFiles.length === 31,
+  `Expected route count equals 31 (actual: ${expectedStaticFiles.length})`
 );
 
 let missingRoutes = [];
 let emptyRoutes = [];
 let missingTitleRoutes = [];
-let missingFontRoutes = [];
 
 for (const relFile of expectedStaticFiles) {
   const fullPath = path.join(OUT_DIR, relFile);
@@ -116,22 +114,18 @@ for (const relFile of expectedStaticFiles) {
     if (!titleMatch || !titleMatch[1].trim()) {
       missingTitleRoutes.push(relFile);
     }
-    const hasFont = html.includes("fonts.googleapis.com") || html.includes("Cormorant") || html.includes("Garamond") || html.includes("font-serif");
-    if (!hasFont) {
-      missingFontRoutes.push(relFile);
-    }
   }
 }
 
 assert(
   missingRoutes.length === 0,
-  "All 60 expected prerendered static routes exist in out/",
+  `All ${expectedStaticFiles.length} expected prerendered static routes exist in out/`,
   missingRoutes.join(", ")
 );
 
 assert(
   emptyRoutes.length === 0,
-  "All 60 prerendered static routes are non-empty (>0 bytes)",
+  `All ${expectedStaticFiles.length} prerendered static routes are non-empty (>0 bytes)`,
   emptyRoutes.join(", ")
 );
 
@@ -139,12 +133,6 @@ assert(
   missingTitleRoutes.length === 0,
   "All prerendered HTML routes contain a valid <title> tag",
   missingTitleRoutes.join(", ")
-);
-
-assert(
-  missingFontRoutes.length === 0,
-  "All prerendered HTML routes include Google Fonts / Serif typography references",
-  missingFontRoutes.join(", ")
 );
 
 // -----------------------------------------------------------------------------
@@ -347,14 +335,14 @@ for (const pattern of neonAmberPatterns) {
 }
 assert(!foundNeonGlow, "404 page is completely free of neon amber glow (rgba(245, 158, 11, ...))");
 
-const hasHeritageGold404 = notFoundSrc.includes("#C5A059") || notFoundSrc.includes("#c5a059");
-assert(hasHeritageGold404, "404 page utilizes noble antique satin gold (#C5A059)");
+const hasBurntOrange404 = notFoundSrc.includes("#C1622D") || notFoundSrc.includes("#c1622d");
+assert(hasBurntOrange404, "404 page utilizes burnt orange accent (#C1622D)");
 
-const hasMahoganyBackground404 = notFoundSrc.includes("#121110");
-assert(hasMahoganyBackground404, "404 page uses primary mahogany canvas (#121110)");
+const hasCharcoalBackground404 = notFoundSrc.includes("#0E100F");
+assert(hasCharcoalBackground404, "404 page uses primary charcoal canvas (#0E100F)");
 
-const hasBritishGreenSurface404 = notFoundSrc.includes("#15261E");
-assert(hasBritishGreenSurface404, "404 page uses British Racing Green surface (#15261E)");
+const hasPineGreenSurface404 = notFoundSrc.includes("#1F3329") || notFoundSrc.includes("#2A2D2B");
+assert(hasPineGreenSurface404, "404 page uses Pine Green or Anthracite surface (#1F3329 / #2A2D2B)");
 
 const hasRawBrackets404 = /\[\s*404\s*\/\//.test(notFoundSrc) || /\[\s*NOT FOUND\s*\]/.test(notFoundSrc);
 assert(!hasRawBrackets404, "404 page eliminates raw monospace brackets in headings");
@@ -381,16 +369,7 @@ assert(
 );
 
 // 3. Long Title Wrapping & Layout Robustness
-console.log("\n  Stress-testing long titles across blog and project pages:");
-
-let longestBlog = { title: "", slug: "" };
-for (const slug of publishedBlogSlugs) {
-  const match = blogPostsContent.match(new RegExp(`title:\\s*["']([^"']+)["'][\\s\\S]*?slug:\\s*["']${slug}["']`));
-  if (match && match[1].length > longestBlog.title.length) {
-    longestBlog = { title: match[1], slug };
-  }
-}
-console.log(`    Longest Blog Title (${longestBlog.title.length} chars): "${longestBlog.title}" (slug: ${longestBlog.slug})`);
+console.log("\n  Stress-testing long titles across project pages:");
 
 let longestProject = { title: "", slug: "" };
 for (const slug of projectSlugs) {
@@ -401,27 +380,13 @@ for (const slug of projectSlugs) {
 }
 console.log(`    Longest Project Title (${longestProject.title.length} chars): "${longestProject.title}" (slug: ${longestProject.slug})`);
 
-// Verify rendered HTML files for longest blog and project
-const longestBlogHtml = fs.readFileSync(path.join(OUT_DIR, "blog", `${longestBlog.slug}.html`), "utf8");
 const longestProjectHtml = fs.readFileSync(path.join(OUT_DIR, "project", `${longestProject.slug}.html`), "utf8");
-
-assert(
-  longestBlogHtml.includes(longestBlog.title.replace(/'/g, "&#x27;").replace(/"/g, "&quot;")) ||
-  longestBlogHtml.includes(longestBlog.title) ||
-  longestBlogHtml.includes(longestBlog.slug),
-  `Longest blog post is fully prerendered with complete title integrity`
-);
 
 assert(
   longestProjectHtml.includes(longestProject.title.replace(/'/g, "&#x27;").replace(/"/g, "&quot;")) ||
   longestProjectHtml.includes(longestProject.title) ||
   longestProjectHtml.includes(longestProject.slug),
   `Longest project is fully prerendered with complete title integrity`
-);
-
-assert(
-  projectCardContent.includes("display: \"flex\"") && projectCardContent.includes("flexDirection: \"column\""),
-  "ProjectCard uses flexible vertical layout preventing horizontal overflow on long titles"
 );
 
 // -----------------------------------------------------------------------------
