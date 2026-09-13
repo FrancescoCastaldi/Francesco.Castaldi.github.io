@@ -1,31 +1,30 @@
 "use client";
-import Link from "next/link";
 
 export default function HeroSection() {
   const engineeringDisciplines = [
     {
       code: "I.",
-      area: "OPEN SOURCE & UPSTREAM",
+      area: "UPSTREAM & CLOUD NATIVE",
       desc: "Architected multi-language & filter systems in Evidence (Svelte), enriched Superset engine ASTs, fixed Docker CLI Zsh completion, and contributed to Kanister & Duckle.",
-      tags: ["Evidence", "Superset", "Docker CLI", "DuckDB"],
+      tags: ["Docker CLI", "Kanister", "Evidence BI", "Apache Superset", "DuckDB"],
     },
     {
       code: "II.",
-      area: "RADAR NOWCASTING & AI",
-      desc: "Dual-polarization radar storm cell tracking, optical flow motion fields, and machine learning models for real-time severe hail and convective prediction.",
-      tags: ["HailCast-ML", "PyTorch", "OpenCV", "NumPy"],
+      area: "AUTOMOTIVE & KINEMATICS",
+      desc: "Full structural CAD, dynamic inertia derivation, Goodman-Smith fatigue verification for Toyota M15A 1.5L HEV connecting rods, and real-time CAN/OBD-II telemetry.",
+      tags: ["Toyota Dynamic Force", "Yaris HV Telemetry", "Goodman-Smith", "UDS IO Control"],
     },
     {
       code: "III.",
-      area: "3D WEBGL & INTERACTIVE CAD",
-      desc: "High-performance browser-based 3D engines, real-time SVG-to-mesh decal projection, GLB parsers, and automated Tech Pack production pipelines.",
-      tags: ["Three.js", "WebGL", "TypeScript", "3D CAD"],
+      area: "RADAR AI & STOCHASTIC MODELING",
+      desc: "Dual-polarization radar storm cell tracking, optical flow motion fields, discrete Markov chain epidemic dynamics, and deep learning medical cytology restoration.",
+      tags: ["HailCast-ML", "SIR Markov Chains", "DiffPIR / UNet", "SGF² Fairness"],
     },
     {
       code: "IV.",
-      area: "AUTOMOTIVE & KINEMATICS",
-      desc: "Full structural CAD, dynamic inertia derivation, Goodman-Smith fatigue verification for Toyota M15A 1.5L HEV connecting rods, and CAN-bus telemetry.",
-      tags: ["Toyota HEV", "SolidWorks", "FEA", "Fatigue"],
+      area: "ENTERPRISE ANALYTICS & VISUALIZATION",
+      desc: "Enterprise hierarchical matrix chart plugins for Apache Superset 6.1.0, calendar cross-filters, real-time 3D WebGL texture customizers, and manufacturing KPI engines.",
+      tags: ["Superset Hierarchical Table", "Three.js WebGL", "Cross-Filtering", "TruMetraPla"],
     },
   ];
 
@@ -146,7 +145,7 @@ export default function HeroSection() {
               opacity: 0.9,
             }}
           >
-            Curating resilient software architectures, contributing to upstream enterprise open-source tools (Evidence, Apache Superset, Docker CLI), and engineering high-precision data & mechanical systems.
+            Curating resilient software architectures, contributing to upstream enterprise open-source tools (Docker CLI, CNCF Kanister, Evidence, Apache Superset), and engineering high-precision mechanical kinematics & telemetry systems.
           </p>
 
           {/* Action CTAs */}
@@ -160,7 +159,7 @@ export default function HeroSection() {
             }}
           >
             <a
-              href="#work-portfolio"
+              href="/#upstream"
               style={{
                 fontFamily: "var(--font-serif)",
                 textTransform: "uppercase",
@@ -187,10 +186,10 @@ export default function HeroSection() {
                 e.currentTarget.style.boxShadow = "0 4px 16px rgba(197, 160, 89, 0.2)";
               }}
             >
-              I. Selected Works & Portfolio
+              I. Upstream Systems
             </a>
             <a
-              href="#garage-labs"
+              href="/#automotive"
               style={{
                 fontFamily: "var(--font-serif)",
                 textTransform: "uppercase",
@@ -218,7 +217,7 @@ export default function HeroSection() {
                 e.currentTarget.style.boxShadow = "none";
               }}
             >
-              II. Workshop & Kinematics
+              II. Automotive Kinematics
             </a>
           </div>
         </div>
@@ -255,7 +254,7 @@ export default function HeroSection() {
                   fontWeight: 600,
                 }}
               >
-                I. ARCHIVAL SPECIFICATIONS & EXPERTISE
+                THE FOUR NOBLE PILLARS
               </span>
               <span
                 style={{

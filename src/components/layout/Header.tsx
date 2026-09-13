@@ -10,12 +10,11 @@ export default function Header() {
   const pathname = usePathname();
   
   const navItems = [
-    { label: "Portfolio", href: "/#work-portfolio", desktop: true },
-    { label: "Atelier", href: "/#garage-labs", desktop: true },
-    { label: "Automotive", href: "/#automotive-hub", desktop: true },
-    { label: "Disciplines", href: "/#expertise", desktop: true },
-    { label: "Monographs", href: "/blog", desktop: true },
-    { label: "Correspondence", href: "/#contact", desktop: true },
+    { label: "I. Upstream", href: "/#upstream", desktop: true },
+    { label: "II. Automotive", href: "/#automotive", desktop: true },
+    { label: "III. Radar & ML", href: "/#radar-ml", desktop: true },
+    { label: "IV. Analytics", href: "/#analytics", desktop: true },
+    { label: "Contact", href: "/#contact", desktop: true },
   ];
 
   useEffect(() => {

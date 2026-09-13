@@ -1,4 +1,3 @@
-import "../blog/blog.css";
 import Link from "next/link";
 import Breadcrumb from "@/components/ui/Breadcrumb";
 import { HeritageIcon, ArrowLeftIcon, ArrowRightIcon } from "@/components/ui/HeritageIcon";

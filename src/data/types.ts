@@ -1,9 +1,26 @@
+export type EngineeringPillarId = "upstream" | "automotive" | "data-science" | "analytics";
+export type PillarRoman = "I" | "II" | "III" | "IV";
+
+export interface EngineeringPillar {
+  id: EngineeringPillarId;
+  roman: "I." | "II." | "III." | "IV.";
+  code: PillarRoman;
+  title: string;
+  shortTitle: string;
+  navLabel: string;
+  sectionId: string;
+  subtitle: string;
+  description: string;
+}
+
 export interface ProjectNode {
   id: string;
   label: string;
   title: string;
   slug: string;
-  track: "work" | "hobby";
+  pillar: EngineeringPillarId;
+  pillarRoman: PillarRoman;
+  track?: "work" | "hobby";
   color?: string;
   description: string;
   longDescription: string;
@@ -14,6 +31,7 @@ export interface ProjectNode {
     github?: string;
     demo?: string;
     paper?: string;
+    apk?: string;
   };
   image?: string;
   featured: boolean;
@@ -46,4 +64,3 @@ export interface BlogPost {
   category: string;
   subcategory?: string;
 }
-

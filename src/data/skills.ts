@@ -10,7 +10,13 @@ export const skills: SkillNode[] = [
     level: "expert",
     description:
       "Active upstream contributor to enterprise open source platforms including Evidence, Apache Superset, Docker CLI, Kanister, and Duckle.",
-    relatedProjects: ["evidence-bi-as-code", "apache-superset-contributions", "docker-cli-contributions", "kanister-kubernetes-operator", "duckle-workspace-orchestration"],
+    relatedProjects: [
+      "evidence-bi-as-code",
+      "apache-superset-contributions",
+      "docker-cli-contributions",
+      "kanister-kubernetes-operator",
+      "duckle-workspace-orchestration",
+    ],
     icon: "🌐",
     color: "#cbd5e1",
   },
@@ -23,7 +29,7 @@ export const skills: SkillNode[] = [
     level: "expert",
     description:
       "Dynamic engine kinematics, hybrid powertrain telematics, fatigue analysis (Goodman-Smith), CAD modeling, and real-world fuel economy optimization.",
-    relatedProjects: ["toyota-m15a-connecting-rod", "benzatracker"],
+    relatedProjects: ["toyota-m15a-connecting-rod", "yaris-hv-fan-optimizer"],
     icon: "🏎️",
     color: "#94a3b8",
   },
@@ -36,7 +42,18 @@ export const skills: SkillNode[] = [
     level: "expert",
     description:
       "Statistical modeling, data pipelines, BI as code, and visualization using Python (NumPy, pandas, Matplotlib), DuckDB, and Apache Superset.",
-    relatedProjects: ["evidence-bi-as-code", "apache-superset-contributions", "duckle-workspace-orchestration", "hailcast-ml-radar-nowcasting", "velometric", "trumetrapla", "sir-markov", "ci-cervical", "sgf2-ai"],
+    relatedProjects: [
+      "evidence-bi-as-code",
+      "apache-superset-contributions",
+      "duckle-workspace-orchestration",
+      "hailcast-ml-radar-nowcasting",
+      "trumetrapla",
+      "sir-markov-chain",
+      "ci-cervical-lbc",
+      "sgf2-ai-project",
+      "superset-plugin-chart-hierarchical-table",
+      "superset-calendar-filter",
+    ],
     icon: "📊",
     color: "#a8b3cf",
   },
@@ -49,7 +66,12 @@ export const skills: SkillNode[] = [
     level: "advanced",
     description:
       "Deep learning with PyTorch, convective storm nowcasting, optical flow tracking, image deblurring (UNet/DiffPIR), and algorithmic fairness auditing.",
-    relatedProjects: ["hailcast-ml-radar-nowcasting", "ci-cervical", "sgf2-ai", "sir-markov"],
+    relatedProjects: [
+      "hailcast-ml-radar-nowcasting",
+      "ci-cervical-lbc",
+      "sgf2-ai-project",
+      "sir-markov-chain",
+    ],
     icon: "🧠",
     color: "#94a3b8",
   },
@@ -62,7 +84,12 @@ export const skills: SkillNode[] = [
     level: "expert",
     description:
       "Building high-performance interactive web apps with TypeScript, React, Next.js, Three.js/WebGL, Svelte, Vite, Leaflet, and Tailwind CSS.",
-    relatedProjects: ["mini-jersey-studio", "evidence-bi-as-code", "gpx-editor", "superset-calendar"],
+    relatedProjects: [
+      "mini-jersey-studio",
+      "evidence-bi-as-code",
+      "superset-plugin-chart-hierarchical-table",
+      "superset-calendar-filter",
+    ],
     icon: "💻",
     color: "#cbd5e1",
   },
@@ -75,7 +102,13 @@ export const skills: SkillNode[] = [
     level: "advanced",
     description:
       "Kubernetes operators, Helm chart infrastructure, Docker CLI tooling, CI/CD workflows, air-gapped deployments, and static web architectures.",
-    relatedProjects: ["kanister-kubernetes-operator", "docker-cli-contributions", "duckle-workspace-orchestration", "superset-calendar"],
+    relatedProjects: [
+      "kanister-kubernetes-operator",
+      "docker-cli-contributions",
+      "duckle-workspace-orchestration",
+      "superset-plugin-chart-hierarchical-table",
+      "superset-calendar-filter",
+    ],
     icon: "☁️",
     color: "#8590a2",
   },
@@ -88,7 +121,7 @@ export const skills: SkillNode[] = [
     level: "expert",
     description:
       "Predictive component wear modeling, Strava/Garmin FIT telemetry parsing, drivetrain friction analysis, and 3D cycling apparel customization.",
-    relatedProjects: ["velometric", "mini-jersey-studio", "gpx-editor"],
+    relatedProjects: ["mini-jersey-studio"],
     icon: "🚴",
     color: "#94a3b8",
   },
@@ -100,8 +133,8 @@ export const skills: SkillNode[] = [
     area: "security",
     level: "advanced",
     description:
-      "Network packet sniffing, SNMP OID extraction, wireless firmware telemetry bypass, and hardware diagnostic reverse engineering.",
-    relatedProjects: ["epson-air-resuscitator"],
+      "Network packet sniffing, CAN bus protocol decoding, ISO-TP reassembly, UDS diagnostic manipulation, and ECU reverse engineering.",
+    relatedProjects: ["yaris-hv-fan-optimizer"],
     icon: "🔌",
     color: "#a8b3cf",
   },
@@ -114,7 +147,7 @@ export const skills: SkillNode[] = [
     level: "advanced",
     description:
       "Design and implementation of digital solutions for healthcare environments, compliance audit trails, and privacy-first hospital systems.",
-    relatedProjects: ["hosp-san-tracker", "tpertutti-ux"],
+    relatedProjects: ["ci-cervical-lbc", "trumetrapla"],
     icon: "🏥",
     color: "#8590a2",
   },
@@ -127,7 +160,7 @@ export const skills: SkillNode[] = [
     level: "advanced",
     description:
       "Smart contract development with Solidity, deployment on Ethereum testnets, and integration with frontend applications via Ethers.js.",
-    relatedProjects: ["hosp-san-tracker"],
+    relatedProjects: ["kanister-kubernetes-operator"],
     icon: "⛓️",
     color: "#64748b",
   },
@@ -140,7 +173,7 @@ export const skills: SkillNode[] = [
     level: "advanced",
     description:
       "User experience research, Double Diamond design methodology, usability testing, and stakeholder communication for digital transformation.",
-    relatedProjects: ["tpertutti-ux"],
+    relatedProjects: ["toyota-m15a-connecting-rod", "trumetrapla"],
     icon: "💼",
     color: "#e2e8f0",
   },
