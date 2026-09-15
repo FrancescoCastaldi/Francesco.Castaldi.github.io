@@ -22,7 +22,9 @@ export default async function SkillPage({ params }: { params: Promise<{ id: stri
       zIndex: 60,
       minHeight: "100vh",
       padding: "120px 5% 70px",
-      background: "#0E100F",
+      background: "rgba(14, 16, 15, 0.85)", /* Canvas Charcoal #0E100F */
+      backdropFilter: "blur(8px)",
+      WebkitBackdropFilter: "blur(8px)",
     }}>
       <main style={{ maxWidth: 780, margin: "0 auto" }}>
         {/* Breadcrumb */}

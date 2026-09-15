@@ -1,9 +1,10 @@
 "use client";
-import React, { useMemo, useRef } from "react";
+import React, { useMemo, useRef, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { getDerivedConstellationGraph } from "@/lib/portfolio/derive";
 import { SCENE_CONFIG } from "@/lib/portfolio/scene-config";
+import { useResourceCleanup } from "@/components/experience/ResourceCleaner";
 
 interface SkillsConstellationProps {
   hoveredSkillId?: string | null;
@@ -11,6 +12,8 @@ interface SkillsConstellationProps {
 
 export default function SkillsConstellation({ hoveredSkillId }: SkillsConstellationProps) {
   const groupRef = useRef<THREE.Group>(null);
+  useResourceCleanup(groupRef);
+
   const graph = useMemo(() => getDerivedConstellationGraph(), []);
 
   // Creazione linee per gli archi reali
@@ -30,6 +33,12 @@ export default function SkillsConstellation({ hoveredSkillId }: SkillsConstellat
     const geometry = new THREE.BufferGeometry().setFromPoints(points);
     return geometry;
   }, [graph]);
+
+  useEffect(() => {
+    return () => {
+      lineSegments.dispose();
+    };
+  }, [lineSegments]);
 
   useFrame((_, delta) => {
     if (!groupRef.current) return;

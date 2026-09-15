@@ -51,6 +51,9 @@ export const metadata: Metadata = {
   robots: "index, follow",
 };
 
+import { SceneProvider } from "@/context/SceneContext";
+import GlobalExperience from "@/components/experience/GlobalExperience";
+
 export default function RootLayout({
   children,
 }: {
@@ -64,9 +67,12 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
       <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <SceneProvider>
+          <GlobalExperience />
+          <Header />
+          <main style={{ position: "relative", zIndex: 10 }}>{children}</main>
+          <Footer />
+        </SceneProvider>
       </body>
     </html>
   );

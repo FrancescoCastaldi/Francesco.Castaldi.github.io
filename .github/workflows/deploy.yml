@@ -1,7 +1,5 @@
-name: Deploy to GitHub Pages
+name: Deploy to GitHub Pages (Legacy SSG)
 on:
-  push:
-    branches: [master]
   workflow_dispatch:
 
 permissions:

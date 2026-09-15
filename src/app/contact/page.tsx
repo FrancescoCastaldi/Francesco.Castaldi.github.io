@@ -34,7 +34,9 @@ export default function ContactPage() {
         alignItems: "center",
         justifyContent: "center",
         padding: "120px 5% 70px",
-        background: "#0E100F",
+        background: "rgba(14, 16, 15, 0.85)", /* Canvas Charcoal #0E100F */
+        backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(8px)",
       }}
     >
       <div style={{ width: "100%", maxWidth: 580 }}>

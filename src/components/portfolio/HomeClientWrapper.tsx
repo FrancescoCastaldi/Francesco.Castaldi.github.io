@@ -1,13 +1,13 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import HeroSection from "@/components/portfolio/HeroSection";
 import ImpactSection from "@/components/portfolio/ImpactSection";
 import ProjectGallery from "@/components/portfolio/ProjectGallery";
 import ProjectArchive from "@/components/portfolio/ProjectArchive";
 import ExpertiseSection from "@/components/portfolio/ExpertiseSection";
 import ContactSection from "@/components/portfolio/ContactSection";
-import ExperienceClient from "@/components/experience/ExperienceClient";
 import ScrollController from "@/components/experience/ScrollController";
+import { useScene } from "@/context/SceneContext";
 import { useExperienceQuality } from "@/hooks/useExperienceQuality";
 import type { DerivedPortfolioStats } from "@/lib/portfolio/derive";
 import type { ProjectNode, SkillNode } from "@/data/types";
@@ -26,23 +26,38 @@ export default function HomeClientWrapper({
   allSkills,
 }: HomeClientWrapperProps) {
   const quality = useExperienceQuality();
-  const [activeProjectIndex, setActiveProjectIndex] = useState(0);
-  const [hoveredSkillId, setHoveredSkillId] = useState<string | null>(null);
-  const [isHeroHovered, setIsHeroHovered] = useState(false);
+  const {
+    setCurrentSection,
+    setActiveProjectIndex,
+    setHoveredSkillId,
+    setIsHeroHovered,
+  } = useScene();
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const sectionIds = ["hero", "numbers", "work", "archive", "expertise", "contact"];
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + window.innerHeight * 0.35;
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sectionIds[i]);
+        if (el && el.offsetTop <= scrollPos) {
+          const mappedSection = sectionIds[i] === "archive" ? "work" : sectionIds[i];
+          setCurrentSection(mappedSection);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [setCurrentSection]);
 
   return (
-    <div style={{ position: "relative", minHeight: "100vh", background: "#0E100F" }}>
+    <div style={{ position: "relative", minHeight: "100vh", background: "transparent" }}>
       {/* Lenis Smooth Scroll Controller */}
       <ScrollController />
-
-      {/* 3D Scene Layer (Client only, falls back to 2D gracefully) */}
-      <ExperienceClient
-        distribution={stats.areaDistribution}
-        activeProjectIndex={activeProjectIndex}
-        totalProjects={featuredProjects.length}
-        hoveredSkillId={hoveredSkillId}
-        isHeroHovered={isHeroHovered}
-      />
 
       {/* Semantic Accessible HTML Content Layer */}
       <div style={{ position: "relative", zIndex: 10 }}>

@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { ArrowLeftIcon } from "@/components/ui/HeritageIcon";
+import NotFoundRealignLink from "@/components/ui/NotFoundRealignLink";
 
 export default function NotFound() {
   return (
@@ -11,7 +10,9 @@ export default function NotFound() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "#0E100F",
+        background: "rgba(14, 16, 15, 0.85)", /* Canvas Charcoal #0E100F */
+        backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(8px)",
         padding: "24px",
       }}
     >
@@ -61,28 +62,7 @@ export default function NotFound() {
         >
           The requested monograph, treatise, or repository index does not reside in the permanent archives.
         </p>
-        <Link
-          href="/"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 10,
-            color: "#EDE8DE",
-            background: "#1F3329",
-            fontSize: 13,
-            fontFamily: "var(--font-body)",
-            letterSpacing: "0.06em",
-            textTransform: "uppercase",
-            textDecoration: "none",
-            border: "1px solid rgba(201, 197, 188, 0.3)",
-            padding: "12px 24px",
-            borderRadius: 3,
-            transition: "all 0.25s ease",
-          }}
-        >
-          <ArrowLeftIcon size={16} color="#C1622D" />
-          <span>Return to Monograph</span>
-        </Link>
+        <NotFoundRealignLink href="/" />
       </div>
     </div>
   );

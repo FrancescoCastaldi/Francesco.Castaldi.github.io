@@ -109,3 +109,136 @@ export const PRACTICE_AREA_METADATA: Record<
     description: "High-density data visualization architectures, WebGL projection engines, and industrial KPI plugins.",
   },
 };
+
+export interface ProjectRepoMapping {
+  projectId: string;
+  repoName: string;
+  repoUrl: string;
+  affiliation: "owned" | "upstream";
+  primaryLanguage: string;
+  topics: string[];
+}
+
+export const PROJECT_REPO_MAPPINGS: readonly ProjectRepoMapping[] = [
+  {
+    projectId: "docker-cli-contributions",
+    repoName: "docker/cli",
+    repoUrl: "https://github.com/docker/cli",
+    affiliation: "upstream",
+    primaryLanguage: "Go",
+    topics: ["cli", "docker", "zsh", "cobra", "containers"],
+  },
+  {
+    projectId: "kanister-kubernetes-operator",
+    repoName: "kanisterio/kanister",
+    repoUrl: "https://github.com/kanisterio/kanister",
+    affiliation: "upstream",
+    primaryLanguage: "Go",
+    topics: ["kubernetes", "backup", "disaster-recovery", "operator", "cloud-native"],
+  },
+  {
+    projectId: "toyota-m15a-connecting-rod",
+    repoName: "FrancescoCastaldi/toyota-m15a-connecting-rod",
+    repoUrl: "https://github.com/FrancescoCastaldi/toyota-m15a-connecting-rod",
+    affiliation: "owned",
+    primaryLanguage: "MATLAB",
+    topics: ["automotive", "kinematics", "cad", "fea", "m15a-fks"],
+  },
+  {
+    projectId: "yaris-hv-fan-optimizer",
+    repoName: "FrancescoCastaldi/yaris-hv-fan-optimizer",
+    repoUrl: "https://github.com/FrancescoCastaldi/yaris-hv-fan-optimizer",
+    affiliation: "owned",
+    primaryLanguage: "Kotlin",
+    topics: ["android", "obd2", "can-bus", "hybrid", "telematics"],
+  },
+  {
+    projectId: "evidence-bi-as-code",
+    repoName: "evidence-dev/evidence",
+    repoUrl: "https://github.com/evidence-dev/evidence",
+    affiliation: "upstream",
+    primaryLanguage: "Svelte",
+    topics: ["bi-as-code", "sql", "svelte", "analytics", "data-visualization"],
+  },
+  {
+    projectId: "apache-superset-contributions",
+    repoName: "apache/superset",
+    repoUrl: "https://github.com/apache/superset",
+    affiliation: "upstream",
+    primaryLanguage: "TypeScript",
+    topics: ["superset", "visualization", "bi", "react", "plugins"],
+  },
+  {
+    projectId: "hailcast-ml-radar-nowcasting",
+    repoName: "FrancescoCastaldi/hailcast-ml-radar-nowcasting",
+    repoUrl: "https://github.com/FrancescoCastaldi/hailcast-ml-radar-nowcasting",
+    affiliation: "owned",
+    primaryLanguage: "Python",
+    topics: ["radar", "machine-learning", "meteorology", "nowcasting", "doppler"],
+  },
+  {
+    projectId: "sir-markov-chain",
+    repoName: "FrancescoCastaldi/sir-markov-chain",
+    repoUrl: "https://github.com/FrancescoCastaldi/sir-markov-chain",
+    affiliation: "owned",
+    primaryLanguage: "Python",
+    topics: ["markov-chain", "epidemiology", "stochastic-processes", "simulation"],
+  },
+  {
+    projectId: "ci-cervical-lbc",
+    repoName: "FrancescoCastaldi/ci-cervical-lbc",
+    repoUrl: "https://github.com/FrancescoCastaldi/ci-cervical-lbc",
+    affiliation: "owned",
+    primaryLanguage: "Python",
+    topics: ["deep-learning", "computer-vision", "healthcare", "cytology"],
+  },
+  {
+    projectId: "sgf2-ai-project",
+    repoName: "FrancescoCastaldi/sgf2-ai-project",
+    repoUrl: "https://github.com/FrancescoCastaldi/sgf2-ai-project",
+    affiliation: "owned",
+    primaryLanguage: "Python",
+    topics: ["fairness-ai", "demographic-parity", "shap", "xgboost"],
+  },
+  {
+    projectId: "mini-jersey-studio",
+    repoName: "FrancescoCastaldi/mini-jersey-studio",
+    repoUrl: "https://github.com/FrancescoCastaldi/mini-jersey-studio",
+    affiliation: "owned",
+    primaryLanguage: "TypeScript",
+    topics: ["threejs", "webgl", "r3f", "3d-configurator"],
+  },
+  {
+    projectId: "trumetrapla",
+    repoName: "FrancescoCastaldi/trumetrapla",
+    repoUrl: "https://github.com/FrancescoCastaldi/trumetrapla",
+    affiliation: "owned",
+    primaryLanguage: "TypeScript",
+    topics: ["bi", "dashboard", "analytics", "enterprise"],
+  },
+  {
+    projectId: "duckle-workspace-orchestration",
+    repoName: "FrancescoCastaldi/duckle-workspace-orchestration",
+    repoUrl: "https://github.com/FrancescoCastaldi/duckle-workspace-orchestration",
+    affiliation: "owned",
+    primaryLanguage: "TypeScript",
+    topics: ["duckdb", "data-engineering", "workspace", "orchestration"],
+  },
+  {
+    projectId: "superset-plugin-chart-hierarchical-table",
+    repoName: "FrancescoCastaldi/superset-plugin-chart-hierarchical-table",
+    repoUrl: "https://github.com/FrancescoCastaldi/superset-plugin-chart-hierarchical-table",
+    affiliation: "owned",
+    primaryLanguage: "TypeScript",
+    topics: ["superset", "plugin", "matrix", "hierarchical-table"],
+  },
+  {
+    projectId: "superset-calendar-filter",
+    repoName: "FrancescoCastaldi/superset-calendar-filter",
+    repoUrl: "https://github.com/FrancescoCastaldi/superset-calendar-filter",
+    affiliation: "owned",
+    primaryLanguage: "TypeScript",
+    topics: ["superset", "filter", "calendar", "time-grain"],
+  },
+] as const;
+

@@ -4,40 +4,35 @@ Questo documento traccia le scelte architetturali, i vincoli e le metodologie di
 
 ## Panoramica
 
-Il sito è costruito con **Next.js 16 (App Router)** ed è compilato come sito puramente statico (SSG via `output: "export"` nella directory `out/`).
-Combina una homepage esperienziale interattiva 3D WebGL («The Sculpted Atlas») con pagine interne ad alte prestazioni puramente 2D. Non è presente alcun backend attivo o database in produzione.
+Il sito è costruito con **Next.js 16 (App Router su Node.js 22)** con supporto runtime Vercel nativo e SSG prerendering di tutte le rotte editoriali finite.
+Combina una suite esperienziale 3D WebGL persistente su tutte le superfici pubbliche («The Sculpted Atlas») con pagine semantiche ad alte prestazioni e un adapter GitHub server-only protetto da cache a 15 minuti e fallback offline su snapshot.
 
 ## Scelte Architetturali
 
 | Componente | Tecnologia | Rationale |
 |---|---|---|
-| **Core Framework** | Next.js 16 (App Router) | Routing basato su filesystem e generazione statica tramite `output: "export"`. |
-| **Motore 3D** | Three.js, React Three Fiber, Drei | Esperienza visiva 3D integrata nel ciclo di vita React, con gestione fine del framerate e del contesto GPU. |
+| **Core Framework** | Next.js 16 (App Router) | Vercel Native Runtime su Node.js 22.x con prerendering SSG per le pagine statiche e Route Handler protetto per `/api/github`. |
+| **Motore 3D** | Three.js, React Three Fiber, Drei | Esperienza visiva 3D integrata nel ciclo di vita React, con gestione fine del framerate, DPR dinamico adattivo e dispose sicuro delle risorse GPU. |
 | **Smooth Scroll & Animazione** | Lenis, GSAP ScrollTrigger | Scorrimento fluido sincronizzato con il progresso della camera 3D e il cambio di fase visivo. |
 | **Styling** | Tailwind CSS v4 | Utility classes con token di design system («The Sculpted Atlas»): Carbone, Antracite, Verde pino, Arancione bruciato, Grigio pietra, Avorio. |
 | **Tipografia** | Fraunces & Manrope (WOFF2 self-hosted) | Zero chiamate esterne di rete (Google Fonts rimosso). Font self-hosted in `public/assets/portfolio/fonts/`. |
 | **Language** | TypeScript | Type safety rigorosa per modelli di dati, derivazioni e costrutti 3D. |
 | **Dati & Derivazione** | `src/data/portfolio.ts` + `src/lib/portfolio/derive.ts` | Single Source of Truth statica con pipeline di validazione referenziale e calcolo distribuzioni a build-time. |
-
-## Modello di Rendering: SSG (Static Site Generation)
-
-Il sito utilizza la direttiva `output: "export"` in `next.config.ts`:
-
-- A build time, Next.js valuta tutti i moduli statici ed esporta 31 pagine HTML pure nella directory `out/` (Home, 15 progetti, 11 skill, 5 rotte di supporto).
-- Le immagini e gli asset WOFF2 vengono copiati direttamente nella cartella `out/` senza server di trasformazione dinamica.
-- Webpack opera con `config.cache = false;` per garantire massima compatibilità e stabilità durante l'esportazione su ambienti Windows.
+| **Adapter GitHub** | `src/lib/github/` | Client GraphQL server-only (`import 'server-only'`), zero token leak e cache 900s con fallback su `github-snapshot.json`. |
 
 ## CI/CD e Deployment Strategy
 
-Il sito è ospitato su **GitHub Pages**.
+Il repository funge da Single Source of Truth del codice con deployment automatico:
 
-1. **Workflow (`.github/workflows/deploy.yml`)**:
+1. **Vercel (Produzione)**:
+   - Build automatica su push al branch `master` con runtime nativo Next.js 16.
+   - Dominio canonico `francescocastaldi.it` con gestione DNS e certificati SSL automatici.
+2. **Workflow CI GitHub Actions (`.github/workflows/ci.yml`)**:
    - Checkout del repository.
-   - Installazione pulita dipendenze con Node.js.
-   - Esecuzione `npm run build` (Next.js static export).
-   - Pubblicazione della directory `out/` sulla CDN di GitHub Pages.
-2. **Politica di rilascio**:
-   - Nessun commit automatico o push sul remote senza autorizzazione esplicita dell'utente.
+   - Installazione pulita dipendenze con Node.js 22.
+   - Esecuzione `npm run lint`, `npm run typecheck` e `npm run build`.
+3. **Politica di rilascio**:
+   - Incremento obbligatorio della versione semantica e di `versionCode` in `package.json` a ogni release.
 
 ## Accessibilità e Fallback Progressivo
 

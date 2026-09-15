@@ -1,5 +1,5 @@
 "use client";
-import { useSyncExternalStore } from "react";
+import { useSyncExternalStore, useEffect, useState } from "react";
 
 export interface ExperienceQuality {
   canRender3D: boolean;
@@ -98,4 +98,25 @@ function subscribe(callback: () => void): () => void {
 
 export function useExperienceQuality(): ExperienceQuality {
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+}
+
+export function useTabVisibility(): boolean {
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+
+    const handleVisibility = () => {
+      setIsVisible(document.visibilityState !== "hidden");
+    };
+
+    document.addEventListener("visibilitychange", handleVisibility);
+    handleVisibility();
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibility);
+    };
+  }, []);
+
+  return isVisible;
 }

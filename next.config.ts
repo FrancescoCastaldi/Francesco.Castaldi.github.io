@@ -1,10 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
   images: { unoptimized: true },
   reactStrictMode: false,
-  typescript: { ignoreBuildErrors: true },
+  typescript: {
+    // Blocking type check for production build safety
+    ignoreBuildErrors: false,
+  },
   webpack: (config) => {
     config.resolve = {
       ...config.resolve,

@@ -3,6 +3,7 @@ import React, { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { SCENE_CONFIG } from "@/lib/portfolio/scene-config";
+import { useResourceCleanup } from "@/components/experience/ResourceCleaner";
 
 interface HeroSculptureProps {
   isPaused?: boolean;
@@ -10,6 +11,7 @@ interface HeroSculptureProps {
 
 export default function HeroSculpture({ isPaused = false }: HeroSculptureProps) {
   const groupRef = useRef<THREE.Group>(null);
+  useResourceCleanup(groupRef);
   const count = SCENE_CONFIG.lamellae.count;
 
   // Profilo sinusoidale/asincrono ispirato alle sezioni CAD di bielle

@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { SCENE_CONFIG } from "@/lib/portfolio/scene-config";
+import { useResourceCleanup } from "@/components/experience/ResourceCleaner";
 
 interface ProjectStageProps {
   activeIndex: number;
@@ -11,6 +12,7 @@ interface ProjectStageProps {
 
 export default function ProjectStage({ activeIndex }: ProjectStageProps) {
   const groupRef = useRef<THREE.Group>(null);
+  useResourceCleanup(groupRef);
 
   useFrame((_, delta) => {
     if (!groupRef.current) return;
